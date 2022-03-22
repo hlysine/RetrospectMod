@@ -1,5 +1,6 @@
-package theRetrospect.cards;
+package theRetrospect.cards.template;
 
+import basemod.AutoAdd;
 import basemod.abstracts.CustomCard;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;

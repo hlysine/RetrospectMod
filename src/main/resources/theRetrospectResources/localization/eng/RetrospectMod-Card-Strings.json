@@ -49,5 +49,9 @@
   "theRetrospect:OrbSkill": {
     "NAME": "Get Orb",
     "DESCRIPTION": "Channel 1 Default Orb."
+  },
+  "theRetrospect:Divert": {
+    "NAME": "Divert",
+    "DESCRIPTION": "Create 1 timeline."
   }
 }

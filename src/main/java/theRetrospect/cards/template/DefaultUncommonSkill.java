@@ -1,68 +1,67 @@
-package theRetrospect.cards;
+package theRetrospect.cards.template;
 
-import com.megacrit.cardcrawl.actions.AbstractGameAction;
-import com.megacrit.cardcrawl.actions.common.DamageAction;
-import com.megacrit.cardcrawl.cards.DamageInfo;
+import basemod.AutoAdd;
+import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.powers.PlatedArmorPower;
 import theRetrospect.RetrospectMod;
+import theRetrospect.cards.AbstractDynamicCard;
 import theRetrospect.characters.TheRetrospect;
 
 import static theRetrospect.RetrospectMod.makeCardPath;
 
-public class DefaultUncommonAttack extends AbstractDynamicCard {
+public class DefaultUncommonSkill extends AbstractDynamicCard {
 
     /*
      * Wiki-page: https://github.com/daviscook477/BaseMod/wiki/Custom-Cards
      *
-     * Big Slap Deal 10(15)) damage.
+     * A Better Defend Gain 1 Plated Armor. Affected by Dexterity.
      */
 
     // TEXT DECLARATION 
 
-    public static final String ID = RetrospectMod.makeID(DefaultUncommonAttack.class.getSimpleName());
-    public static final String IMG = makeCardPath("Attack.png");
+    public static final String ID = RetrospectMod.makeID(DefaultUncommonSkill.class.getSimpleName());
+    public static final String IMG = makeCardPath("Skill.png");
 
     // /TEXT DECLARATION/
-
 
     // STAT DECLARATION 	
 
     private static final CardRarity RARITY = CardRarity.UNCOMMON;
-    private static final CardTarget TARGET = CardTarget.ENEMY;
-    private static final CardType TYPE = CardType.ATTACK;
+    private static final CardTarget TARGET = CardTarget.SELF;
+    private static final CardType TYPE = CardType.SKILL;
     public static final CardColor COLOR = TheRetrospect.Enums.COLOR_GRAY;
 
     private static final int COST = 1;
-    private static final int DAMAGE = 10;
-    private static final int UPGRADE_PLUS_DMG = 5;
+    private static final int UPGRADE_REDUCED_COST = 0;
+
+    private static final int BLOCK = 1;
+    private static final int UPGRADE_PLUS_BLOCK = 2;
 
     // /STAT DECLARATION/
 
 
-    public DefaultUncommonAttack() {
+    public DefaultUncommonSkill() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
-        baseDamage = DAMAGE;
+        baseBlock = BLOCK;
     }
 
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-
-
         AbstractDungeon.actionManager.addToBottom(
-                new DamageAction(m, new DamageInfo(p, damage, damageTypeForTurn),
-                        AbstractGameAction.AttackEffect.BLUNT_LIGHT));
-
+                new ApplyPowerAction(p, p, new PlatedArmorPower(p, block), block));
     }
 
-    //Upgraded stats.
+    // Upgraded stats.
     @Override
     public void upgrade() {
         if (!upgraded) {
             upgradeName();
-            upgradeDamage(UPGRADE_PLUS_DMG);
+            upgradeBlock(UPGRADE_PLUS_BLOCK);
+            upgradeBaseCost(UPGRADE_REDUCED_COST);
             initializeDescription();
         }
     }

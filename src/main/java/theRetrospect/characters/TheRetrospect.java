@@ -22,7 +22,8 @@ import com.megacrit.cardcrawl.unlock.UnlockTracker;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import theRetrospect.RetrospectMod;
-import theRetrospect.cards.*;
+import theRetrospect.cards.Divert;
+import theRetrospect.cards.template.*;
 import theRetrospect.relics.DefaultClickableRelic;
 import theRetrospect.relics.PlaceholderRelic;
 import theRetrospect.relics.PlaceholderRelic2;
@@ -157,20 +158,21 @@ public class TheRetrospect extends CustomPlayer {
         logger.info("Begin loading starter Deck Strings");
 
         retVal.add(DefaultCommonAttack.ID);
-        retVal.add(DefaultUncommonAttack.ID);
-        retVal.add(DefaultRareAttack.ID);
+        //retVal.add(DefaultUncommonAttack.ID);
+        //retVal.add(DefaultRareAttack.ID);
 
         retVal.add(DefaultCommonSkill.ID);
-        retVal.add(DefaultUncommonSkill.ID);
-        retVal.add(DefaultRareSkill.ID);
+        //retVal.add(DefaultUncommonSkill.ID);
+        //retVal.add(DefaultRareSkill.ID);
 
-        retVal.add(DefaultCommonPower.ID);
+        //retVal.add(DefaultCommonPower.ID);
         retVal.add(DefaultUncommonPower.ID);
         retVal.add(DefaultRarePower.ID);
 
-        retVal.add(DefaultAttackWithVariable.ID);
-        retVal.add(DefaultSecondMagicNumberSkill.ID);
+        //retVal.add(DefaultAttackWithVariable.ID);
+        //retVal.add(DefaultSecondMagicNumberSkill.ID);
         retVal.add(OrbSkill.ID);
+        retVal.add(Divert.ID);
         return retVal;
     }
 
