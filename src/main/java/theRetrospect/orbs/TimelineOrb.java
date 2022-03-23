@@ -7,12 +7,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.MathUtils;
 import com.evacipated.cardcrawl.mod.stslib.actions.defect.EvokeSpecificOrbAction;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
-import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.actions.common.HealAction;
-import com.megacrit.cardcrawl.actions.common.PlayTopCardAction;
-import com.megacrit.cardcrawl.actions.defect.EvokeOrbAction;
-import com.megacrit.cardcrawl.actions.utility.NewQueueCardAction;
-import com.megacrit.cardcrawl.actions.utility.QueueCardAction;
 import com.megacrit.cardcrawl.actions.utility.SFXAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.CardQueueItem;
@@ -73,9 +68,9 @@ public class TimelineOrb extends CustomOrb {
     public void updateDescription() {
         applyFocus(); // Apply Focus (Look at the next method)
         if (passiveAmount == 1) {
-            description = DESCRIPTIONS[0] + passiveAmount + DESCRIPTIONS[1] + DESCRIPTIONS[3] + 15 + DESCRIPTIONS[4];
+            description = DESCRIPTIONS[0] + passiveAmount + DESCRIPTIONS[1] + DESCRIPTIONS[3];
         } else if (passiveAmount > 1) {
-            description = DESCRIPTIONS[0] + passiveAmount + DESCRIPTIONS[2] + DESCRIPTIONS[3] + 15 + DESCRIPTIONS[4];
+            description = DESCRIPTIONS[0] + passiveAmount + DESCRIPTIONS[2] + DESCRIPTIONS[3];
         }
     }
 
@@ -97,18 +92,12 @@ public class TimelineOrb extends CustomOrb {
     }
 
     @Override
-    public void onStartOfTurn() {// 1.At the start of your turn.
-        AbstractDungeon.actionManager.addToBottom(// 2.This orb will have a flare effect
-                new VFXAction(new OrbFlareEffect(this, OrbFlareEffect.OrbFlareColor.FROST), 0.1f));
-
-        AbstractDungeon.actionManager.addToBottom(// 3. And draw you cards.
-                new DrawCardAction(AbstractDungeon.player, passiveAmount));
-    }
-
-    @Override
     public void onEndOfTurn() {
-        AbstractCard card = cards.get(0);
-        if (!card.purgeOnUse) {
+        if (cards.size() > 0) {
+            AbstractDungeon.actionManager.addToBottom(
+                    new VFXAction(new OrbFlareEffect(this, OrbFlareEffect.OrbFlareColor.FROST), 0.1f));
+
+            AbstractCard card = cards.get(0);
             AbstractCard tmp = card.makeSameInstanceOf();
             AbstractDungeon.player.limbo.addToBottom(tmp);
             tmp.current_x = card.current_x;
@@ -118,8 +107,10 @@ public class TimelineOrb extends CustomOrb {
 
             tmp.purgeOnUse = true;
             AbstractDungeon.actionManager.addCardQueueItem(new CardQueueItem(tmp, true, EnergyPanel.getCurrentEnergy(), true, true), true);
+
+            cards.remove(card);
         }
-        cards.remove(card);
+
         evokeAmount = cards.size();
         if (cards.size() == 0)
             AbstractDungeon.actionManager.addToTop(new EvokeSpecificOrbAction(this));

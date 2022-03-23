@@ -16,5 +16,19 @@
       "multikeyword"
     ],
     "DESCRIPTION": "Make sure the first element in the NAMES is the same as your PROPER_NAME. The rest is to match keywords like the single word keyword."
+  },
+  {
+    "NAMES": [
+      "timeline",
+      "timelines"
+    ],
+    "DESCRIPTION": "#rReplay your past cards at a variable speed. Borrows HP until #ycollapsed."
+  },
+  {
+    "NAMES": [
+      "collapse",
+      "collapsed"
+    ],
+    "DESCRIPTION": "Remove the #ytimeline and return borrowed HP."
   }
 ]

@@ -12,11 +12,10 @@
   "theRetrospect:TimelineOrb": {
     "NAME": "Timeline",
     "DESCRIPTION": [
-      "#yPassive: At the end of your turn, #rreplay #b",
+      "#yReplay: At the end of your turn, play #b",
       " card.",
       " cards.",
-      " #pCollapse this timeline when all cards are replayed. NL #yCollapse: Restore ",
-      " health."
+      " NL #yCollapse this #ytimeline when all cards are replayed."
     ]
   }
 }
