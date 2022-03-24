@@ -53,5 +53,9 @@
   "theRetrospect:Divert": {
     "NAME": "Divert",
     "DESCRIPTION": "Create #b1 theretrospect:timeline."
+  },
+  "theRetrospect:SpawnMinion": {
+    "NAME": "Spawn Minion",
+    "DESCRIPTION": "Create #b1 minion."
   }
 }

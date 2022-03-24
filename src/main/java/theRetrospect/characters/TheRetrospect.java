@@ -19,10 +19,13 @@ import com.megacrit.cardcrawl.helpers.ScreenShake;
 import com.megacrit.cardcrawl.localization.CharacterStrings;
 import com.megacrit.cardcrawl.screens.CharSelectInfo;
 import com.megacrit.cardcrawl.unlock.UnlockTracker;
+import kobting.friendlyminions.characters.AbstractPlayerWithMinions;
+import kobting.friendlyminions.characters.CustomCharSelectInfo;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import theRetrospect.RetrospectMod;
 import theRetrospect.cards.Divert;
+import theRetrospect.cards.SpawnMinion;
 import theRetrospect.cards.template.*;
 import theRetrospect.relics.DefaultClickableRelic;
 import theRetrospect.relics.PlaceholderRelic;
@@ -37,7 +40,7 @@ import static theRetrospect.characters.TheRetrospect.Enums.COLOR_GRAY;
 //and https://github.com/daviscook477/BaseMod/wiki/Migrating-to-5.0
 //All text (starting description and loadout, anything labeled TEXT[]) can be found in DefaultMod-character-Strings.json in the resources
 
-public class TheRetrospect extends CustomPlayer {
+public class TheRetrospect extends AbstractPlayerWithMinions {
     public static final Logger logger = LogManager.getLogger(RetrospectMod.class.getName());
 
     // =============== CHARACTER ENUMERATORS =================
@@ -145,8 +148,17 @@ public class TheRetrospect extends CustomPlayer {
     // Starting description and loadout
     @Override
     public CharSelectInfo getLoadout() {
-        return new CharSelectInfo(NAMES[0], TEXT[0],
-                STARTING_HP, MAX_HP, ORB_SLOTS, STARTING_GOLD, CARD_DRAW, this, getStartingRelics(),
+        return new CustomCharSelectInfo(
+                NAMES[0], TEXT[0],
+                STARTING_HP, MAX_HP, ORB_SLOTS,2,  STARTING_GOLD, CARD_DRAW, this, getStartingRelics(),
+                getStartingDeck(), false);
+    }
+
+    @Override
+    public CustomCharSelectInfo getInfo() {
+        return new CustomCharSelectInfo(
+                NAMES[0], TEXT[0],
+                STARTING_HP, MAX_HP, ORB_SLOTS,2,  STARTING_GOLD, CARD_DRAW, this, getStartingRelics(),
                 getStartingDeck(), false);
     }
 
@@ -173,6 +185,7 @@ public class TheRetrospect extends CustomPlayer {
         //retVal.add(DefaultSecondMagicNumberSkill.ID);
         retVal.add(OrbSkill.ID);
         retVal.add(Divert.ID);
+        retVal.add(SpawnMinion.ID);
         return retVal;
     }
 

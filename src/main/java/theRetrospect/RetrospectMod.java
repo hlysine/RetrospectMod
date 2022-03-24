@@ -18,6 +18,7 @@ import com.megacrit.cardcrawl.helpers.CardHelper;
 import com.megacrit.cardcrawl.helpers.FontHelper;
 import com.megacrit.cardcrawl.localization.*;
 import com.megacrit.cardcrawl.unlock.UnlockTracker;
+import kobting.friendlyminions.helpers.MinionConfigHelper;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import theRetrospect.cards.*;
@@ -256,6 +257,8 @@ public class RetrospectMod implements
     public static void initialize() {
         logger.info("========================= Initializing Retrospect Mod. Hi. =========================");
         RetrospectMod retrospectMod = new RetrospectMod();
+        MinionConfigHelper.MinionAttackTargetChance = 0;
+        MinionConfigHelper.MinionPowerChance = 0;
         logger.info("========================= /Retrospect Mod Initialized. Hello World./ =========================");
     }
     

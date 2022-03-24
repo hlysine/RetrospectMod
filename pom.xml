@@ -52,6 +52,13 @@
             <systemPath>${Dependencies.path}/StSLib.jar</systemPath>
             <!--<systemPath>${basedir}/../lib/StSLib.jar</systemPath>-->
         </dependency>
+        <dependency>
+            <groupId>friendlyminions</groupId>
+            <artifactId>FriendlyMinions</artifactId>
+            <version>0.1.2</version>
+            <scope>system</scope>
+            <systemPath>${Dependencies.path}/FriendlyMinions.jar</systemPath>
+        </dependency>
     </dependencies>
 
 
