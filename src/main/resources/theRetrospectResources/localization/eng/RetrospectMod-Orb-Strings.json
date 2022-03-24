@@ -8,14 +8,5 @@
       " NL #yEvoke: Deal #b",
       " damage to all enemies."
     ]
-  },
-  "theRetrospect:TimelineOrb": {
-    "NAME": "Timeline",
-    "DESCRIPTION": [
-      "#yReplay: At the end of your turn, play #b",
-      " card.",
-      " cards.",
-      " NL #yCollapse this #ytimeline when all cards are replayed."
-    ]
   }
 }

@@ -1,6 +1,5 @@
 package theRetrospect.characters;
 
-import basemod.abstracts.CustomPlayer;
 import basemod.animations.SpriterAnimation;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
@@ -25,7 +24,6 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import theRetrospect.RetrospectMod;
 import theRetrospect.cards.Divert;
-import theRetrospect.cards.SpawnMinion;
 import theRetrospect.cards.template.*;
 import theRetrospect.relics.DefaultClickableRelic;
 import theRetrospect.relics.PlaceholderRelic;
@@ -185,7 +183,6 @@ public class TheRetrospect extends AbstractPlayerWithMinions {
         //retVal.add(DefaultSecondMagicNumberSkill.ID);
         retVal.add(OrbSkill.ID);
         retVal.add(Divert.ID);
-        retVal.add(SpawnMinion.ID);
         return retVal;
     }
 

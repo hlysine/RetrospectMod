@@ -1,24 +1,23 @@
 package theRetrospect.cards;
 
-import com.megacrit.cardcrawl.actions.common.DamageAction;
-import com.megacrit.cardcrawl.actions.common.LoseHPAction;
+import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import kobting.friendlyminions.characters.AbstractPlayerWithMinions;
+import kobting.friendlyminions.monsters.AbstractFriendlyMonster;
 import theRetrospect.RetrospectMod;
-import theRetrospect.actions.IgnoreCapacityChannelAction;
 import theRetrospect.characters.TheRetrospect;
-import theRetrospect.orbs.TimelineOrb;
+import theRetrospect.minions.TimelineMinion;
 
+import java.util.List;
 import java.util.stream.Collectors;
 
 import static theRetrospect.RetrospectMod.makeCardPath;
 
 public class Divert extends AbstractDynamicCard {
-
-    // todo: remove orb-based timeline
 
     // TEXT DECLARATION
 
@@ -46,17 +45,24 @@ public class Divert extends AbstractDynamicCard {
 
     public Divert() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
-
     }
 
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        this.addToBot(new LoseHPAction(p, p, 15));
-        this.addToBot(new IgnoreCapacityChannelAction(
-                new TimelineOrb(
-                        AbstractDungeon.actionManager.cardsPlayedThisTurn.stream()
-                                .filter(c -> !(c instanceof Divert)).collect(Collectors.toList())))); // todo: use action to access cards played
+        if (p instanceof AbstractPlayerWithMinions) {
+            AbstractPlayerWithMinions player = (AbstractPlayerWithMinions) p;
+            AbstractFriendlyMonster minion = new TimelineMinion(
+                    filterReplayableCards(AbstractDungeon.actionManager.cardsPlayedThisTurn),
+                    -700, 0);
+            player.addMinion(minion);
+        }
+    }
+
+    private List<AbstractCard> filterReplayableCards(List<AbstractCard> cards) {
+        // todo: add isReplayable field to base card class
+        return cards.stream()
+                .filter(c -> !(c instanceof Divert)).map(AbstractCard::makeStatEquivalentCopy).collect(Collectors.toList());
     }
 
     // Upgraded stats.

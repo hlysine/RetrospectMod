@@ -1,10 +1,29 @@
 {
-"theRetrospect:CommonPower": {
-        "NAME": "Placeholder Power",
-        "DESCRIPTIONS": ["You applied #b", " keyword.", " keywords."]
-},
-"theRetrospect:RarePower": {
-        "NAME": "Placeholder Power",
-        "DESCRIPTIONS": ["At the start of your turn, TOUCH #b", " enemy." , " enemies."]
-}
+  "theRetrospect:CommonPower": {
+    "NAME": "Placeholder Power",
+    "DESCRIPTIONS": [
+      "You applied #b",
+      " keyword.",
+      " keywords."
+    ]
+  },
+  "theRetrospect:RarePower": {
+    "NAME": "Placeholder Power",
+    "DESCRIPTIONS": [
+      "At the start of your turn, TOUCH #b",
+      " enemy.",
+      " enemies."
+    ]
+  },
+  "theRetrospect:TimerPower": {
+    "NAME": "Timer",
+    "DESCRIPTIONS": [
+      "#yReplay #b",
+      " out of #b",
+      " card",
+      " cards",
+      " at the end of your turn. NL #yCollapse this #ytimeline when all cards are replayed.",
+      "This power has no effect."
+    ]
+  }
 }
