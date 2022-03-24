@@ -56,7 +56,7 @@ public class SpawnMinion extends AbstractDynamicCard {
         if (p instanceof AbstractPlayerWithMinions) {
             AbstractPlayerWithMinions player = (AbstractPlayerWithMinions) p;
             AbstractFriendlyMonster minion = new TimelineMinion(AbstractDungeon.actionManager.cardsPlayedThisTurn.stream()
-                    .filter(c -> !(c instanceof SpawnMinion)).map(AbstractCard::makeStatEquivalentCopy).collect(Collectors.toList()), -1000, 0);
+                    .filter(c -> !(c instanceof SpawnMinion)).map(AbstractCard::makeStatEquivalentCopy).collect(Collectors.toList()), -700, 0);
             player.addMinion(minion);
         }
     }
