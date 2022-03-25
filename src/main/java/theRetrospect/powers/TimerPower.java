@@ -65,9 +65,7 @@ public class TimerPower extends AbstractPower implements CloneablePowerInterface
     }
 
     @Override
-    public void onDeath() {
-        // todo: this is not triggering
-        // execute actions immediately
+    public void onVictory() {
         new NonTriggeringHealthChange(AbstractDungeon.player, minion.currentHealth).update();
         new InstantKillAction(minion).update();
     }
