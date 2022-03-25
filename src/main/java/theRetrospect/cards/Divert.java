@@ -6,7 +6,6 @@ import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theRetrospect.RetrospectMod;
 import theRetrospect.actions.ConstructTimelineAction;
-import theRetrospect.characters.TheRetrospect;
 
 import static theRetrospect.RetrospectMod.makeCardPath;
 
@@ -27,16 +26,19 @@ public class Divert extends AbstractRetrospectCard {
 
     // STAT DECLARATION
 
-    private static final CardRarity RARITY = CardRarity.UNCOMMON;
+    private static final CardRarity RARITY = CardRarity.BASIC;
     private static final CardTarget TARGET = CardTarget.SELF;
     private static final CardType TYPE = CardType.SKILL;
 
-    private static final int COST = 1;
+    private static final int BASE_COST = 2;
 
     // /STAT DECLARATION/
 
     public Divert() {
-        super(ID, IMG, COST, TYPE, RARITY, TARGET);
+        super(ID, IMG, BASE_COST, TYPE, RARITY, TARGET);
+
+        this.baseMagicNumber = 1;
+        this.magicNumber = this.baseMagicNumber;
     }
 
     // Actions the card should do.
@@ -50,6 +52,7 @@ public class Divert extends AbstractRetrospectCard {
     public void upgrade() {
         if (!this.upgraded) {
             this.upgradeName();
+            this.upgradeBaseCost(1);
             this.initializeDescription();
         }
     }
