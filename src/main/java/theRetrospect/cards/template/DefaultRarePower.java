@@ -1,19 +1,18 @@
 package theRetrospect.cards.template;
 
-import basemod.AutoAdd;
 import basemod.helpers.BaseModCardTags;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theRetrospect.RetrospectMod;
-import theRetrospect.cards.AbstractDynamicCard;
+import theRetrospect.cards.AbstractRetrospectCard;
 import theRetrospect.characters.TheRetrospect;
 import theRetrospect.powers.RarePower;
 
 import static theRetrospect.RetrospectMod.makeCardPath;
 
-public class DefaultRarePower extends AbstractDynamicCard {
+public class DefaultRarePower extends AbstractRetrospectCard {
 
     /*
      * Wiki-page: https://github.com/daviscook477/BaseMod/wiki/Custom-Cards

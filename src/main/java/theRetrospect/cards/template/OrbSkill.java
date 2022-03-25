@@ -1,6 +1,5 @@
 package theRetrospect.cards.template;
 
-import basemod.AutoAdd;
 import com.megacrit.cardcrawl.actions.defect.ChannelAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
@@ -8,13 +7,13 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theRetrospect.RetrospectMod;
-import theRetrospect.cards.AbstractDynamicCard;
+import theRetrospect.cards.AbstractRetrospectCard;
 import theRetrospect.characters.TheRetrospect;
 import theRetrospect.orbs.DefaultOrb;
 
 import static theRetrospect.RetrospectMod.makeCardPath;
 
-public class OrbSkill extends AbstractDynamicCard {
+public class OrbSkill extends AbstractRetrospectCard {
 
     /*
      * Orb time.

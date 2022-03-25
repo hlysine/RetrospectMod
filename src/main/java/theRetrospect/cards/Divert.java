@@ -10,7 +10,7 @@ import theRetrospect.characters.TheRetrospect;
 
 import static theRetrospect.RetrospectMod.makeCardPath;
 
-public class Divert extends AbstractDynamicCard {
+public class Divert extends AbstractRetrospectCard {
 
     // TEXT DECLARATION
 

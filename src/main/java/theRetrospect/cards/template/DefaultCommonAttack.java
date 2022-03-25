@@ -1,7 +1,5 @@
 package theRetrospect.cards.template;
 
-import basemod.AutoAdd;
-import basemod.abstracts.CustomCard;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
@@ -11,6 +9,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theRetrospect.RetrospectMod;
+import theRetrospect.cards.AbstractRetrospectCard;
 import theRetrospect.characters.TheRetrospect;
 
 import static theRetrospect.RetrospectMod.makeCardPath;
@@ -24,7 +23,7 @@ import static theRetrospect.RetrospectMod.makeCardPath;
 // Abstract Dynamic Card builds up on Abstract Default Card even more and makes it so that you don't need to add
 // the NAME and the DESCRIPTION into your card - it'll get it automatically. Of course, this functionality could have easily
 // Been added to the default card rather than creating a new Dynamic one, but was done so to deliberately to showcase custom cards/inheritance a bit more.
-public class DefaultCommonAttack extends CustomCard {
+public class DefaultCommonAttack extends AbstractRetrospectCard {
 
     /*
      * Wiki-page: https://github.com/daviscook477/BaseMod/wiki/Custom-Cards
@@ -43,10 +42,6 @@ public class DefaultCommonAttack extends CustomCard {
     // There's makeCardPath, makeRelicPath, power, orb, event, etc..
     // The list of all of them can be found in the main DefaultMod.java file in the
     // ==INPUT TEXTURE LOCATION== section under ==MAKE IMAGE PATHS==
-
-
-    public static final String NAME = cardStrings.NAME;
-    public static final String DESCRIPTION = cardStrings.DESCRIPTION;
 
     // /TEXT DECLARATION/
 
@@ -81,7 +76,7 @@ public class DefaultCommonAttack extends CustomCard {
     // in your main class, in the receiveEditCards() method
 
     public DefaultCommonAttack() {
-        super(ID, NAME, IMG, COST, DESCRIPTION, TYPE, COLOR, RARITY, TARGET);
+        super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
 
         // Aside from baseDamage/MagicNumber/Block there's also a few more.
         // Just type this.base and let intelliJ auto complete for you, or, go read up AbstractCard

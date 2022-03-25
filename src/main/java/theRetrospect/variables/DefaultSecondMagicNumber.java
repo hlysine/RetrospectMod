@@ -2,7 +2,7 @@ package theRetrospect.variables;
 
 import basemod.abstracts.DynamicVariable;
 import com.megacrit.cardcrawl.cards.AbstractCard;
-import theRetrospect.cards.AbstractDefaultCard;
+import theRetrospect.cards.AbstractRetrospectCard;
 
 import static theRetrospect.RetrospectMod.makeID;
 
@@ -20,22 +20,22 @@ public class DefaultSecondMagicNumber extends DynamicVariable {
 
     @Override
     public boolean isModified(AbstractCard card) {
-        return ((AbstractDefaultCard) card).isDefaultSecondMagicNumberModified;
+        return ((AbstractRetrospectCard) card).isDefaultSecondMagicNumberModified;
 
     }
 
     @Override
     public int value(AbstractCard card) {
-        return ((AbstractDefaultCard) card).defaultSecondMagicNumber;
+        return ((AbstractRetrospectCard) card).defaultSecondMagicNumber;
     }
 
     @Override
     public int baseValue(AbstractCard card) {
-        return ((AbstractDefaultCard) card).defaultBaseSecondMagicNumber;
+        return ((AbstractRetrospectCard) card).defaultBaseSecondMagicNumber;
     }
 
     @Override
     public boolean upgraded(AbstractCard card) {
-        return ((AbstractDefaultCard) card).upgradedDefaultSecondMagicNumber;
+        return ((AbstractRetrospectCard) card).upgradedDefaultSecondMagicNumber;
     }
 }
