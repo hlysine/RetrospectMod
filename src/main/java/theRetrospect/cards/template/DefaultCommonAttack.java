@@ -51,7 +51,6 @@ public class DefaultCommonAttack extends AbstractRetrospectCard {
     private static final CardRarity RARITY = CardRarity.BASIC;
     private static final CardTarget TARGET = CardTarget.ENEMY;
     private static final CardType TYPE = CardType.ATTACK;
-    public static final CardColor COLOR = TheRetrospect.Enums.COLOR_GRAY;
 
     private static final int COST = 1;
     private static final int DAMAGE = 6;
@@ -76,7 +75,7 @@ public class DefaultCommonAttack extends AbstractRetrospectCard {
     // in your main class, in the receiveEditCards() method
 
     public DefaultCommonAttack() {
-        super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
+        super(ID, IMG, COST, TYPE, RARITY, TARGET);
 
         // Aside from baseDamage/MagicNumber/Block there's also a few more.
         // Just type this.base and let intelliJ auto complete for you, or, go read up AbstractCard

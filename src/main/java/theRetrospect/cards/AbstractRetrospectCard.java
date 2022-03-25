@@ -1,9 +1,12 @@
 package theRetrospect.cards;
 import basemod.abstracts.CustomCard;
+import theRetrospect.characters.TheRetrospect;
 
 import static com.megacrit.cardcrawl.core.CardCrawlGame.languagePack;
 
 public abstract class AbstractRetrospectCard extends CustomCard {
+
+    public static final CardColor COLOR = TheRetrospect.Enums.COLOR_GRAY;
 
     public int defaultSecondMagicNumber;        // Just like magic number, or any number for that matter, we want our regular, modifiable stat
     public int defaultBaseSecondMagicNumber;    // And our base stat - the number in it's base state. It will reset to that by default.
@@ -14,11 +17,10 @@ public abstract class AbstractRetrospectCard extends CustomCard {
                                   final String img,
                                   final int cost,
                                   final CardType type,
-                                  final CardColor color,
                                   final CardRarity rarity,
                                   final CardTarget target) {
 
-        super(id, languagePack.getCardStrings(id).NAME, img, cost, languagePack.getCardStrings(id).DESCRIPTION, type, color, rarity, target);
+        super(id, languagePack.getCardStrings(id).NAME, img, cost, languagePack.getCardStrings(id).DESCRIPTION, type, COLOR, rarity, target);
 
         isDefaultSecondMagicNumberModified = false;
     }

@@ -32,7 +32,6 @@ public class DefaultCommonSkill extends AbstractRetrospectCard {
     private static final CardRarity RARITY = CardRarity.BASIC;
     private static final CardTarget TARGET = CardTarget.SELF;
     private static final CardType TYPE = CardType.SKILL;
-    public static final CardColor COLOR = TheRetrospect.Enums.COLOR_GRAY;
 
     private static final int COST = 1;
     private static final int BLOCK = 5;
@@ -43,7 +42,7 @@ public class DefaultCommonSkill extends AbstractRetrospectCard {
 
 
     public DefaultCommonSkill() {
-        super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
+        super(ID, IMG, COST, TYPE, RARITY, TARGET);
         baseBlock = BLOCK;
 
         this.tags.add(CardTags.STARTER_DEFEND); //Tag your strike, defend and form (Wraith form, Demon form, Echo form, etc.) cards so that they function correctly.

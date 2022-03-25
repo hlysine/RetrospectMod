@@ -33,7 +33,6 @@ public class DefaultRarePower extends AbstractRetrospectCard {
     private static final CardRarity RARITY = CardRarity.RARE;
     private static final CardTarget TARGET = CardTarget.SELF;
     private static final CardType TYPE = CardType.POWER;
-    public static final CardColor COLOR = TheRetrospect.Enums.COLOR_GRAY;
 
     private static final int COST = 3;
     private static final int UPGRADE_COST = 2;
@@ -45,7 +44,7 @@ public class DefaultRarePower extends AbstractRetrospectCard {
 
     public DefaultRarePower() {
 
-        super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
+        super(ID, IMG, COST, TYPE, RARITY, TARGET);
         magicNumber = baseMagicNumber = MAGIC;
 
         this.tags.add(BaseModCardTags.FORM); //Tag your strike, defend and form cards so that they work correctly.

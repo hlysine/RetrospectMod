@@ -34,7 +34,6 @@ public class DefaultAttackWithVariable extends AbstractRetrospectCard {
     private static final CardRarity RARITY = CardRarity.COMMON;
     private static final CardTarget TARGET = CardTarget.ENEMY;
     private static final CardType TYPE = CardType.ATTACK;
-    public static final CardColor COLOR = TheRetrospect.Enums.COLOR_GRAY;
 
     private static final int COST = 1;
     private static final int DAMAGE = 7;
@@ -45,7 +44,7 @@ public class DefaultAttackWithVariable extends AbstractRetrospectCard {
     // /STAT DECLARATION/
 
     public DefaultAttackWithVariable() {
-        super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
+        super(ID, IMG, COST, TYPE, RARITY, TARGET);
         baseDamage = DAMAGE;
 
         isMultiDamage = true;

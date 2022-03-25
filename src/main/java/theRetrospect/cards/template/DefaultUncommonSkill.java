@@ -31,7 +31,6 @@ public class DefaultUncommonSkill extends AbstractRetrospectCard {
     private static final CardRarity RARITY = CardRarity.UNCOMMON;
     private static final CardTarget TARGET = CardTarget.SELF;
     private static final CardType TYPE = CardType.SKILL;
-    public static final CardColor COLOR = TheRetrospect.Enums.COLOR_GRAY;
 
     private static final int COST = 1;
     private static final int UPGRADE_REDUCED_COST = 0;
@@ -43,7 +42,7 @@ public class DefaultUncommonSkill extends AbstractRetrospectCard {
 
 
     public DefaultUncommonSkill() {
-        super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
+        super(ID, IMG, COST, TYPE, RARITY, TARGET);
         baseBlock = BLOCK;
     }
 
