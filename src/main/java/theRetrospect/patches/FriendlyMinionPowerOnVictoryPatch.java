@@ -5,8 +5,7 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.monsters.MonsterGroup;
 import com.megacrit.cardcrawl.powers.AbstractPower;
-import kobting.friendlyminions.characters.AbstractPlayerWithMinions;
-import kobting.friendlyminions.helpers.BasePlayerMinionHelper;
+import theRetrospect.util.MinionUtils;
 
 import java.util.ArrayList;
 
@@ -17,13 +16,7 @@ import java.util.ArrayList;
 public class FriendlyMinionPowerOnVictoryPatch {
     public static void Postfix(AbstractPlayer __instance) {
         if (!__instance.isDying) {
-            MonsterGroup minions;
-            if (__instance instanceof AbstractPlayerWithMinions) {
-                AbstractPlayerWithMinions player = (AbstractPlayerWithMinions) __instance;
-                minions = player.minions;
-            } else {
-                minions = BasePlayerMinionHelper.getMinions(__instance);
-            }
+            MonsterGroup minions = MinionUtils.getMinions(__instance);
             ArrayList<AbstractMonster> monsters = minions.monsters;
             for (int i = monsters.size() - 1; i >= 0; i--) {
                 AbstractMonster monster = monsters.get(i);

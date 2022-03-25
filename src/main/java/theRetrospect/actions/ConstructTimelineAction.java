@@ -3,11 +3,10 @@ package theRetrospect.actions;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import kobting.friendlyminions.characters.AbstractPlayerWithMinions;
-import kobting.friendlyminions.helpers.BasePlayerMinionHelper;
 import kobting.friendlyminions.monsters.AbstractFriendlyMonster;
 import theRetrospect.cards.Divert;
 import theRetrospect.minions.TimelineMinion;
+import theRetrospect.util.MinionUtils;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -25,12 +24,7 @@ public class ConstructTimelineAction extends AbstractGameAction {
         AbstractFriendlyMonster minion = new TimelineMinion(
                 filterReplayableCards(AbstractDungeon.actionManager.cardsPlayedThisTurn),
                 (int) (Math.random() * 200 + -700), (int) (Math.random() * 200 - 100), healthBorrowed);
-        if (AbstractDungeon.player instanceof AbstractPlayerWithMinions) {
-            AbstractPlayerWithMinions player = (AbstractPlayerWithMinions) AbstractDungeon.player;
-            player.addMinion(minion);
-        } else {
-            BasePlayerMinionHelper.addMinion(AbstractDungeon.player, minion);
-        }
+        MinionUtils.addMinion(AbstractDungeon.player, minion);
 
         AbstractDungeon.actionManager.addToBottom(new NonTriggeringHealthChange(AbstractDungeon.player, -healthBorrowed));
 
