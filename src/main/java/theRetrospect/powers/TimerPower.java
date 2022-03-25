@@ -16,7 +16,7 @@ import theRetrospect.actions.QueueCardIntentAction;
 import theRetrospect.minions.AbstractMinionWithCards;
 import theRetrospect.util.TextureLoader;
 
-public class TimerPower extends AbstractPower implements CloneablePowerInterface {
+public class TimerPower extends AbstractPower implements CloneablePowerInterface, EndOfTurnCardPlayingPower {
     public AbstractMinionWithCards minion;
 
     public static final String POWER_ID = RetrospectMod.makeID(TimerPower.class.getSimpleName());
@@ -47,8 +47,7 @@ public class TimerPower extends AbstractPower implements CloneablePowerInterface
     }
 
     @Override
-    public void atEndOfTurn(boolean isPlayer) {
-        // todo: Cards queued by QueueCardIntentAction are being cleared by ClearCardQueueAction at end of turn
+    public void endOfTurnPlayCards() {
         for (int i = 0; i < amount; i++) {
             if (minion.cards.size() <= 0) break;
             AbstractCard cardToPlay = minion.cards.get(0);
