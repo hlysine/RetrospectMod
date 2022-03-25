@@ -26,9 +26,9 @@ public class QueueCardIntentAction extends AbstractGameAction {
     public void update() {
         if (cardStack != null)
             cardStack.cards.remove(card);
+        card.targetDrawScale = 1f;
         AbstractDungeon.effectList.add(new CardFlashVfx(card));
-        AbstractDungeon.actionManager.addCardQueueItem(new CardQueueItem(card, true, EnergyPanel.getCurrentEnergy(), true, true), true);
-        //AbstractDungeon.actionManager.addToBottom(new NewQueueCardAction(card, true, false, true));
+        AbstractDungeon.actionManager.addCardQueueItem(new CardQueueItem(card, true, EnergyPanel.getCurrentEnergy(), true, true));
         this.isDone = true;
     }
 }

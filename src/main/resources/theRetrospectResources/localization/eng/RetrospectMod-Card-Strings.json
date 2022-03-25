@@ -52,6 +52,6 @@
   },
   "theRetrospect:Divert": {
     "NAME": "Divert",
-    "DESCRIPTION": "Create 1 theretrospect:timeline."
+    "DESCRIPTION": "theretrospect:Construct 1 theretrospect:timeline."
   }
 }

@@ -3,15 +3,15 @@ package theRetrospect.powers;
 import basemod.interfaces.CloneablePowerInterface;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
+import com.megacrit.cardcrawl.actions.common.InstantKillAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
-import com.megacrit.cardcrawl.cards.CardQueueItem;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
-import com.megacrit.cardcrawl.ui.panels.EnergyPanel;
 import theRetrospect.RetrospectMod;
+import theRetrospect.actions.NonTriggeringHealthChange;
 import theRetrospect.actions.QueueCardIntentAction;
 import theRetrospect.minions.AbstractMinionWithCards;
 import theRetrospect.util.TextureLoader;
@@ -53,10 +53,23 @@ public class TimerPower extends AbstractPower implements CloneablePowerInterface
             AbstractCard cardToPlay = minion.cards.get(0);
             minion.cards.remove(0);
             cardToPlay.purgeOnUse = true;
-            cardToPlay.freeToPlayOnce = true;
             AbstractDungeon.player.limbo.addToBottom(cardToPlay);
             AbstractDungeon.actionManager.addToBottom(new QueueCardIntentAction(cardToPlay, minion.cardStack));
         }
+        updateDescription();
+        updateCardIntents();
+        if (minion.cards.size() == 0) {
+            AbstractDungeon.actionManager.addToBottom(new NonTriggeringHealthChange(AbstractDungeon.player, minion.currentHealth));
+            AbstractDungeon.actionManager.addToBottom(new InstantKillAction(minion));
+        }
+    }
+
+    @Override
+    public void onDeath() {
+        // todo: this is not triggering
+        // execute actions immediately
+        new NonTriggeringHealthChange(AbstractDungeon.player, minion.currentHealth).update();
+        new InstantKillAction(minion).update();
     }
 
     private void updateCardIntents() {
