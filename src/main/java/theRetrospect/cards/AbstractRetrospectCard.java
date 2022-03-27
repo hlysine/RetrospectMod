@@ -1,4 +1,5 @@
 package theRetrospect.cards;
+
 import basemod.abstracts.CustomCard;
 import theRetrospect.characters.TheRetrospect;
 
@@ -38,5 +39,9 @@ public abstract class AbstractRetrospectCard extends CustomCard {
         defaultBaseSecondMagicNumber += amount; // Upgrade the number by the amount you provide in your card.
         defaultSecondMagicNumber = defaultBaseSecondMagicNumber; // Set the number to be equal to the base value.
         upgradedDefaultSecondMagicNumber = true; // Upgraded = true - which does what the above method does.
+    }
+
+    public boolean isReplayable() {
+        return true;
     }
 }

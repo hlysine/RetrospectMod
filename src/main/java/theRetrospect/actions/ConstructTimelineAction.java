@@ -4,6 +4,7 @@ import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import kobting.friendlyminions.monsters.AbstractFriendlyMonster;
+import theRetrospect.cards.AbstractRetrospectCard;
 import theRetrospect.cards.Divert;
 import theRetrospect.minions.TimelineMinion;
 import theRetrospect.util.MinionUtils;
@@ -32,9 +33,8 @@ public class ConstructTimelineAction extends AbstractGameAction {
     }
 
     private List<AbstractCard> filterReplayableCards(List<AbstractCard> cards) {
-        // todo: add isReplayable field to base card class
         return cards.stream()
-                .filter(c -> !(c instanceof Divert))
+                .filter(c -> !(c instanceof AbstractRetrospectCard) || ((AbstractRetrospectCard) c).isReplayable())
                 .map(AbstractCard::makeStatEquivalentCopy)
                 .collect(Collectors.toList());
     }

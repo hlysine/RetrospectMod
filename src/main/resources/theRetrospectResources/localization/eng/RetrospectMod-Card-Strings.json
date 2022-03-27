@@ -52,6 +52,17 @@
   },
   "theRetrospect:Divert": {
     "NAME": "Divert",
-    "DESCRIPTION": "theretrospect:Construct !M! theretrospect:timeline."
+    "DESCRIPTION": "theretrospect:Construct !M! theretrospect:timeline.",
+    "EXTENDED_DESCRIPTION": [
+      "I don't have enough health.",
+      "I have too many timelines."
+    ]
+  },
+  "theRetrospect:Ephemeral": {
+    "NAME": "Ephemeral",
+    "DESCRIPTION": "theretrospect:Construct 3 theretrospect:timelines and theretrospect:shatter your present self. Die in !M! turns.",
+    "EXTENDED_DESCRIPTION": [
+      "I have too many timelines."
+    ]
   }
 }

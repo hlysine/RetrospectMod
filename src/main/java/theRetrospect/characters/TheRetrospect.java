@@ -24,6 +24,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import theRetrospect.RetrospectMod;
 import theRetrospect.cards.Divert;
+import theRetrospect.cards.Ephemeral;
 import theRetrospect.cards.template.*;
 import theRetrospect.relics.DefaultClickableRelic;
 import theRetrospect.relics.PlaceholderRelic;
@@ -185,6 +186,8 @@ public class TheRetrospect extends AbstractPlayerWithMinions {
         //retVal.add(DefaultSecondMagicNumberSkill.ID);
         retVal.add(OrbSkill.ID);
         retVal.add(Divert.ID);
+        retVal.add(Ephemeral.ID);
+
         return retVal;
     }
 

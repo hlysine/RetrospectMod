@@ -25,5 +25,13 @@
       " at the end of your turn. NL #yCollapse this #ytimeline when all cards are replayed.",
       "This power has no effect."
     ]
+  },
+  "theRetrospect:TimedDeathPower": {
+    "NAME": "Timed Death",
+    "DESCRIPTIONS": [
+      "Die in #b",
+      " turns. There is no escape.",
+      "Die next turn. There is no escape."
+    ]
   }
 }

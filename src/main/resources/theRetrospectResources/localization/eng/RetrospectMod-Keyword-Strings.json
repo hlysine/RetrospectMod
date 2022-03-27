@@ -22,7 +22,7 @@
       "timeline",
       "timelines"
     ],
-    "DESCRIPTION": "#rReplay your past cards at the end of your turn. Borrows HP until #ycollapsed."
+    "DESCRIPTION": "Replay your past cards at the end of your turn. Borrows HP until #ycollapsed."
   },
   {
     "NAMES": [
@@ -36,5 +36,13 @@
       "collapsed"
     ],
     "DESCRIPTION": "Remove the #ytimeline and return borrowed HP."
+  },
+  {
+    "PROPER_NAME": "Shattered",
+    "NAMES": [
+      "shatter",
+      "shattered"
+    ],
+    "DESCRIPTION": "You have no health and cannot play any cards. Can be reverted by healing."
   }
 ]
