@@ -41,6 +41,9 @@ public class Divert extends AbstractRetrospectCard {
         this.magicNumber = this.baseMagicNumber;
     }
 
+    // todo: check HP
+    // todo: check max minion count
+
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {

@@ -53,7 +53,8 @@ public class TheRetrospect extends AbstractPlayerWithMinions {
         public static AbstractPlayer.PlayerClass THE_RETROSPECT;
         @SpireEnum(name = "DEFAULT_GRAY_COLOR") // These two HAVE to have the same absolutely identical name.
         public static AbstractCard.CardColor COLOR_GRAY;
-        @SpireEnum(name = "DEFAULT_GRAY_COLOR") @SuppressWarnings("unused")
+        @SpireEnum(name = "DEFAULT_GRAY_COLOR")
+        @SuppressWarnings("unused")
         public static CardLibrary.LibraryType LIBRARY_COLOR;
     }
 
@@ -68,6 +69,7 @@ public class TheRetrospect extends AbstractPlayerWithMinions {
     public static final int STARTING_GOLD = 99;
     public static final int CARD_DRAW = 5;
     public static final int ORB_SLOTS = 0;
+    public static final int MAX_MINIONS = 10;
 
     // =============== /BASE STATS/ =================
 
@@ -148,7 +150,7 @@ public class TheRetrospect extends AbstractPlayerWithMinions {
     public CharSelectInfo getLoadout() {
         return new CustomCharSelectInfo(
                 NAMES[0], TEXT[0],
-                STARTING_HP, MAX_HP, ORB_SLOTS,2,  STARTING_GOLD, CARD_DRAW, this, getStartingRelics(),
+                STARTING_HP, MAX_HP, ORB_SLOTS, MAX_MINIONS, STARTING_GOLD, CARD_DRAW, this, getStartingRelics(),
                 getStartingDeck(), false);
     }
 
@@ -156,7 +158,7 @@ public class TheRetrospect extends AbstractPlayerWithMinions {
     public CustomCharSelectInfo getInfo() {
         return new CustomCharSelectInfo(
                 NAMES[0], TEXT[0],
-                STARTING_HP, MAX_HP, ORB_SLOTS,2,  STARTING_GOLD, CARD_DRAW, this, getStartingRelics(),
+                STARTING_HP, MAX_HP, ORB_SLOTS, MAX_MINIONS, STARTING_GOLD, CARD_DRAW, this, getStartingRelics(),
                 getStartingDeck(), false);
     }
 
