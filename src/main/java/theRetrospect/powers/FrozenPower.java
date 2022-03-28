@@ -50,6 +50,8 @@ public class FrozenPower extends AbstractPower implements CloneablePowerInterfac
 
     @Override
     public boolean canPlayCard(AbstractCard card) {
+        // todo: check if card is being played by timeline
+        //  need to patch a field in abstract card
         return false;
     }
 
