@@ -38,8 +38,8 @@
     "NAME": "Frozen",
     "DESCRIPTIONS": [
       "You cannot play any cards for #b",
-      " turn.",
-      " turns."
+      " turn. Does not affect timelines.",
+      " turns. Does not affect timelines."
     ]
   }
 }
