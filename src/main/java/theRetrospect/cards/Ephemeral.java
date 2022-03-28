@@ -8,6 +8,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theRetrospect.RetrospectMod;
 import theRetrospect.actions.ConstructTimelineAction;
 import theRetrospect.actions.NonTriggeringHealthChange;
+import theRetrospect.powers.FrozenPower;
 import theRetrospect.powers.TimedDeathPower;
 import theRetrospect.util.MinionUtils;
 
@@ -54,10 +55,10 @@ public class Ephemeral extends AbstractRetrospectCard {
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new NonTriggeringHealthChange(p, -Integer.MAX_VALUE));
         addToBot(new ConstructTimelineAction(HEALTH_COST));
         addToBot(new ConstructTimelineAction(HEALTH_COST));
         addToBot(new ConstructTimelineAction(HEALTH_COST));
+        addToBot(new ApplyPowerAction(p, p, new FrozenPower(p, 99)));
         addToBot(new ApplyPowerAction(p, p, new TimedDeathPower(p, this.magicNumber)));
     }
 

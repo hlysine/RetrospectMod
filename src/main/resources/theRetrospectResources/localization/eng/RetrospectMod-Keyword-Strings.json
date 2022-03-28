@@ -38,11 +38,9 @@
     "DESCRIPTION": "Remove the #ytimeline and return borrowed HP."
   },
   {
-    "PROPER_NAME": "Shattered",
     "NAMES": [
-      "shatter",
-      "shattered"
+      "frozen"
     ],
-    "DESCRIPTION": "You have no health and cannot play any cards. Can be reverted by healing."
+    "DESCRIPTION": "You cannot play any cards, but your #ytimelines can."
   }
 ]

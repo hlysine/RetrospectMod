@@ -60,7 +60,7 @@
   },
   "theRetrospect:Ephemeral": {
     "NAME": "Ephemeral",
-    "DESCRIPTION": "theretrospect:Construct 3 theretrospect:timelines and theretrospect:shatter your present self. Die in !M! turns.",
+    "DESCRIPTION": "theretrospect:Construct 3 theretrospect:timelines and be theretrospect:Frozen. Die in !M! turns.",
     "EXTENDED_DESCRIPTION": [
       "I have too many timelines."
     ]

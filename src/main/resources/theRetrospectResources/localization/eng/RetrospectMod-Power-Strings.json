@@ -33,5 +33,13 @@
       " turns. There is no escape.",
       "Die next turn. There is no escape."
     ]
+  },
+  "theRetrospect:FrozenPower": {
+    "NAME": "Frozen",
+    "DESCRIPTIONS": [
+      "You cannot play any cards for #b",
+      " turn.",
+      " turns."
+    ]
   }
 }
