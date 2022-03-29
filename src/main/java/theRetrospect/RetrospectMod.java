@@ -92,7 +92,7 @@ public class RetrospectMod implements
     
     // Colors (RGB)
     // Character Color
-    public static final Color DEFAULT_GRAY = CardHelper.getColor(64.0f, 70.0f, 70.0f);
+    public static final Color RETROSPECT_PURPLE = CardHelper.getColor(102, 27, 255);
     
     // Potion Colors in RGB
     public static final Color PLACEHOLDER_POTION_LIQUID = CardHelper.getColor(209.0f, 53.0f, 18.0f); // Orange-ish Red
@@ -100,16 +100,16 @@ public class RetrospectMod implements
     public static final Color PLACEHOLDER_POTION_SPOTS = CardHelper.getColor(100.0f, 25.0f, 10.0f); // Super Dark Red/Brown
   
     // Card backgrounds - The actual rectangular card.
-    private static final String ATTACK_DEFAULT_GRAY = "theRetrospectResources/images/512/bg_attack_default_gray.png";
-    private static final String SKILL_DEFAULT_GRAY = "theRetrospectResources/images/512/bg_skill_default_gray.png";
-    private static final String POWER_DEFAULT_GRAY = "theRetrospectResources/images/512/bg_power_default_gray.png";
+    private static final String ATTACK_DEFAULT_GRAY = "theRetrospectResources/images/512/bg_attack_retrospect_purple.png";
+    private static final String SKILL_DEFAULT_GRAY = "theRetrospectResources/images/512/bg_skill_retrospect_purple.png";
+    private static final String POWER_DEFAULT_GRAY = "theRetrospectResources/images/512/bg_power_retrospect_purple.png";
     
     private static final String ENERGY_ORB_DEFAULT_GRAY = "theRetrospectResources/images/512/card_default_gray_orb.png";
     private static final String CARD_ENERGY_ORB = "theRetrospectResources/images/512/card_small_orb.png";
     
-    private static final String ATTACK_DEFAULT_GRAY_PORTRAIT = "theRetrospectResources/images/1024/bg_attack_default_gray.png";
-    private static final String SKILL_DEFAULT_GRAY_PORTRAIT = "theRetrospectResources/images/1024/bg_skill_default_gray.png";
-    private static final String POWER_DEFAULT_GRAY_PORTRAIT = "theRetrospectResources/images/1024/bg_power_default_gray.png";
+    private static final String ATTACK_DEFAULT_GRAY_PORTRAIT = "theRetrospectResources/images/1024/bg_attack_retrospect_purple.png";
+    private static final String SKILL_DEFAULT_GRAY_PORTRAIT = "theRetrospectResources/images/1024/bg_skill_retrospect_purple.png";
+    private static final String POWER_DEFAULT_GRAY_PORTRAIT = "theRetrospectResources/images/1024/bg_power_retrospect_purple.png";
     private static final String ENERGY_ORB_DEFAULT_GRAY_PORTRAIT = "theRetrospectResources/images/1024/card_default_gray_orb.png";
     
     // Character assets
@@ -183,10 +183,10 @@ public class RetrospectMod implements
         
         logger.info("Done subscribing");
         
-        logger.info("Creating the color " + TheRetrospect.Enums.COLOR_GRAY.toString());
+        logger.info("Creating the color " + TheRetrospect.Enums.RETROSPECT_CARD_PURPLE.toString());
         
-        BaseMod.addColor(TheRetrospect.Enums.COLOR_GRAY, DEFAULT_GRAY, DEFAULT_GRAY, DEFAULT_GRAY,
-                DEFAULT_GRAY, DEFAULT_GRAY, DEFAULT_GRAY, DEFAULT_GRAY,
+        BaseMod.addColor(TheRetrospect.Enums.RETROSPECT_CARD_PURPLE, RETROSPECT_PURPLE, RETROSPECT_PURPLE, RETROSPECT_PURPLE,
+                RETROSPECT_PURPLE, RETROSPECT_PURPLE, RETROSPECT_PURPLE, RETROSPECT_PURPLE,
                 ATTACK_DEFAULT_GRAY, SKILL_DEFAULT_GRAY, POWER_DEFAULT_GRAY, ENERGY_ORB_DEFAULT_GRAY,
                 ATTACK_DEFAULT_GRAY_PORTRAIT, SKILL_DEFAULT_GRAY_PORTRAIT, POWER_DEFAULT_GRAY_PORTRAIT,
                 ENERGY_ORB_DEFAULT_GRAY_PORTRAIT, CARD_ENERGY_ORB);
@@ -375,9 +375,9 @@ public class RetrospectMod implements
         // in order to automatically differentiate which pool to add the relic too.
 
         // This adds a character specific relic. Only when you play with the mentioned color, will you get this relic.
-        BaseMod.addRelicToCustomPool(new PlaceholderRelic(), TheRetrospect.Enums.COLOR_GRAY);
-        BaseMod.addRelicToCustomPool(new BottledPlaceholderRelic(), TheRetrospect.Enums.COLOR_GRAY);
-        BaseMod.addRelicToCustomPool(new DefaultClickableRelic(), TheRetrospect.Enums.COLOR_GRAY);
+        BaseMod.addRelicToCustomPool(new PlaceholderRelic(), TheRetrospect.Enums.RETROSPECT_CARD_PURPLE);
+        BaseMod.addRelicToCustomPool(new BottledPlaceholderRelic(), TheRetrospect.Enums.RETROSPECT_CARD_PURPLE);
+        BaseMod.addRelicToCustomPool(new DefaultClickableRelic(), TheRetrospect.Enums.RETROSPECT_CARD_PURPLE);
         
         // This adds a relic to the Shared pool. Every character can find this relic.
         BaseMod.addRelic(new PlaceholderRelic2(), RelicType.SHARED);

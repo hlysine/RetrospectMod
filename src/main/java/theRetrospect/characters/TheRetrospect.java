@@ -33,7 +33,6 @@ import theRetrospect.relics.PlaceholderRelic2;
 import java.util.ArrayList;
 
 import static theRetrospect.RetrospectMod.*;
-import static theRetrospect.characters.TheRetrospect.Enums.COLOR_GRAY;
 
 //Wiki-page https://github.com/daviscook477/BaseMod/wiki/Custom-Characters
 //and https://github.com/daviscook477/BaseMod/wiki/Migrating-to-5.0
@@ -52,9 +51,9 @@ public class TheRetrospect extends AbstractPlayerWithMinions {
     public static class Enums {
         @SpireEnum
         public static AbstractPlayer.PlayerClass THE_RETROSPECT;
-        @SpireEnum(name = "DEFAULT_GRAY_COLOR") // These two HAVE to have the same absolutely identical name.
-        public static AbstractCard.CardColor COLOR_GRAY;
-        @SpireEnum(name = "DEFAULT_GRAY_COLOR")
+        @SpireEnum(name = "RETROSPECT_PURPLE") // These two HAVE to have the same absolutely identical name.
+        public static AbstractCard.CardColor RETROSPECT_CARD_PURPLE;
+        @SpireEnum(name = "RETROSPECT_PURPLE")
         @SuppressWarnings("unused")
         public static CardLibrary.LibraryType LIBRARY_COLOR;
     }
@@ -232,13 +231,13 @@ public class TheRetrospect extends AbstractPlayerWithMinions {
     // Should return the card color enum to be associated with your character.
     @Override
     public AbstractCard.CardColor getCardColor() {
-        return COLOR_GRAY;
+        return Enums.RETROSPECT_CARD_PURPLE;
     }
 
     // Should return a color object to be used to color the trail of moving cards
     @Override
     public Color getCardTrailColor() {
-        return RetrospectMod.DEFAULT_GRAY;
+        return RetrospectMod.RETROSPECT_PURPLE;
     }
 
     // Should return a BitmapFont object that you can use to customize how your
@@ -275,14 +274,14 @@ public class TheRetrospect extends AbstractPlayerWithMinions {
     // Should return a Color object to be used to color the miniature card images in run history.
     @Override
     public Color getCardRenderColor() {
-        return RetrospectMod.DEFAULT_GRAY;
+        return RetrospectMod.RETROSPECT_PURPLE;
     }
 
     // Should return a Color object to be used as screen tint effect when your
     // character attacks the heart.
     @Override
     public Color getSlashAttackColor() {
-        return RetrospectMod.DEFAULT_GRAY;
+        return RetrospectMod.RETROSPECT_PURPLE;
     }
 
     // Should return an AttackEffect array of any size greater than 0. These effects
