@@ -111,13 +111,12 @@ public class TheRetrospect extends AbstractPlayerWithMinions {
                         "theRetrospectResources/images/char/retrospectCharacter/Spriter/theRetrospectAnimation.scml"));
 
 
-        // =============== CHARACTER AND TEXT BUBBLE LOCATION =================
+        // =============== TEXT BUBBLE LOCATION =================
 
-        this.drawX = Settings.WIDTH * 0.1F;
         dialogX = (drawX + 0.0F * Settings.scale); // set location for text bubbles
         dialogY = (drawY + 220.0F * Settings.scale); // you can just copy these values
 
-        // =============== /CHARACTER AND TEXT BUBBLE LOCATION/ =================
+        // =============== /TEXT BUBBLE LOCATION/ =================
 
 
         // =============== TEXTURES, ENERGY, LOADOUT =================  
