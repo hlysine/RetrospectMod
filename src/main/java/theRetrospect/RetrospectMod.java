@@ -104,9 +104,9 @@ public class RetrospectMod implements
     private static final String CARD_BG_SKILL = "theRetrospectResources/images/512/bg_skill_retrospect_purple.png";
     private static final String CARD_BG_POWER = "theRetrospectResources/images/512/bg_power_retrospect_purple.png";
 
-    private static final String ENERGY_ORB_SMALL = "theRetrospectResources/images/512/card_small_orb.png";
-    private static final String ENERGY_ORB = "theRetrospectResources/images/512/card_default_gray_orb.png";
-    private static final String ENERGY_ORB_LARGE = "theRetrospectResources/images/1024/card_default_gray_orb.png";
+    private static final String ENERGY_ORB_SMALL = "theRetrospectResources/images/512/card_text_energy_icon_small.png";
+    private static final String ENERGY_ORB_CARD_CORNER = "theRetrospectResources/images/512/card_corner_energy.png";
+    private static final String ENERGY_ORB_LARGE = "theRetrospectResources/images/1024/card_text_energy_icon_large.png";
 
     private static final String CARD_BG_ATTACK_LARGE = "theRetrospectResources/images/1024/bg_attack_retrospect_purple.png";
     private static final String CARD_BG_SKILL_LARGE = "theRetrospectResources/images/1024/bg_skill_retrospect_purple.png";
@@ -196,7 +196,7 @@ public class RetrospectMod implements
                 CARD_BG_ATTACK,
                 CARD_BG_SKILL,
                 CARD_BG_POWER,
-                ENERGY_ORB,
+                ENERGY_ORB_CARD_CORNER,
                 CARD_BG_ATTACK_LARGE,
                 CARD_BG_SKILL_LARGE,
                 CARD_BG_POWER_LARGE,
