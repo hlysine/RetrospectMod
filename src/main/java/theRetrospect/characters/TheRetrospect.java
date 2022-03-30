@@ -25,6 +25,7 @@ import org.apache.logging.log4j.Logger;
 import theRetrospect.RetrospectMod;
 import theRetrospect.cards.Defend_V;
 import theRetrospect.cards.Divert;
+import theRetrospect.cards.IntoTheVoid;
 import theRetrospect.cards.Strike_V;
 import theRetrospect.relics.DefaultClickableRelic;
 import theRetrospect.relics.PlaceholderRelic;
@@ -182,6 +183,7 @@ public class TheRetrospect extends AbstractPlayerWithMinions {
         retVal.add(Defend_V.ID);
 
         retVal.add(Divert.ID);
+        retVal.add(IntoTheVoid.ID);
 
         return retVal;
     }

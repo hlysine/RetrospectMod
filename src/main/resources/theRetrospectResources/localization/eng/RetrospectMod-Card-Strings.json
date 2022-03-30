@@ -20,6 +20,20 @@
     "DESCRIPTION": "Ethereal. NL theretrospect:Construct !theRetrospect:TimelineCount! theretrospect:timeline.",
     "UPGRADE_DESCRIPTION": "theretrospect:Construct !theRetrospect:TimelineCount! theretrospect:timeline."
   },
+  "theRetrospect:IntoTheVoid": {
+    "NAME": "Into The Void",
+    "DESCRIPTION": "Retain. NL Replay ALL theretrospect:timelines once and theretrospect:collapse them. NL Exhaust.",
+    "UPGRADE_DESCRIPTION": "Innate. NL Retain. NL Replay ALL theretrospect:timelines once and theretrospect:collapse them. NL Exhaust."
+  },
+  "theRetrospect:Overcore": {
+    "NAME": "Overcore",
+    "DESCRIPTION": "theretrospect:Construct 3 theretrospect:timelines and be theretrospect:Frozen for !M! turns.",
+    "UPGRADE_DESCRIPTION": "theretrospect:Construct 3 theretrospect:timelines and be theretrospect:Frozen for !M! turn."
+  },
+  "theRetrospect:Misdirection": {
+    "NAME": "Misdirection",
+    "DESCRIPTION": "theretrospect:Construct 1 theretrospect:timeline and play a random attack card from your discard pile."
+  },
   "theRetrospect:DefaultCommonPower": {
     "NAME": "Hold Place",
     "DESCRIPTION": "Gain !M! theretrospect:Keyword.",
@@ -62,12 +76,5 @@
   "theRetrospect:OrbSkill": {
     "NAME": "Get Orb",
     "DESCRIPTION": "Channel 1 Default Orb."
-  },
-  "theRetrospect:Ephemeral": {
-    "NAME": "Ephemeral",
-    "DESCRIPTION": "theretrospect:Construct 3 theretrospect:timelines and be theretrospect:Frozen. Die in !M! turns.",
-    "EXTENDED_DESCRIPTION": [
-      "I have too many timelines."
-    ]
   }
 }

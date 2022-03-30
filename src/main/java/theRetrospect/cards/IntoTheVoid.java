@@ -4,14 +4,19 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.monsters.MonsterGroup;
 import theRetrospect.RetrospectMod;
+import theRetrospect.actions.CollapseTimelineAction;
 import theRetrospect.actions.ConstructTimelineAction;
+import theRetrospect.actions.TriggerTimelineReplayAction;
+import theRetrospect.minions.TimelineMinion;
+import theRetrospect.util.MinionUtils;
 
 import static theRetrospect.RetrospectMod.makeCardPath;
 
-public class Divert extends AbstractTimelineCard {
+public class IntoTheVoid extends AbstractTimelineCard {
 
-    public static final String ID = RetrospectMod.makeID(Divert.class.getSimpleName());
+    public static final String ID = RetrospectMod.makeID(IntoTheVoid.class.getSimpleName());
     private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
 
     public static final String IMG = makeCardPath("Skill.png");
@@ -26,18 +31,24 @@ public class Divert extends AbstractTimelineCard {
 
     private static final int COST = 1;
 
-    public Divert() {
+    public IntoTheVoid() {
         super(ID, IMG, COST, TYPE, RARITY, TARGET);
 
-        this.isEthereal = true;
-        this.baseTimelineCount = 1;
-        this.timelineCount = this.baseTimelineCount;
+        this.selfRetain = true;
+        this.exhaust = true;
     }
 
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new ConstructTimelineAction(healthCostPerTimeline));
+        MonsterGroup minions = MinionUtils.getMinions(p);
+        for (AbstractMonster monster : minions.monsters) {
+            if (monster instanceof TimelineMinion) {
+                TimelineMinion minion = (TimelineMinion) monster;
+                addToBot(new TriggerTimelineReplayAction(minion));
+                addToBot(new CollapseTimelineAction(minion));
+            }
+        }
     }
 
     // Upgraded stats.
@@ -45,7 +56,7 @@ public class Divert extends AbstractTimelineCard {
     public void upgrade() {
         if (!this.upgraded) {
             this.upgradeName();
-            this.isEthereal = false;
+            this.isInnate = true;
             this.rawDescription = cardStrings.UPGRADE_DESCRIPTION;
             this.initializeDescription();
         }

@@ -11,10 +11,12 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import theRetrospect.RetrospectMod;
+import theRetrospect.actions.CollapseTimelineAction;
 import theRetrospect.actions.NonTriggeringHealthChange;
 import theRetrospect.actions.QueueCardIntentAction;
 import theRetrospect.minions.AbstractMinionWithCards;
 import theRetrospect.util.CardUtils;
+import theRetrospect.util.HoverableCardStack;
 import theRetrospect.util.TextureLoader;
 
 public class TimerPower extends AbstractPower implements CloneablePowerInterface, EndOfTurnCardPlayingPower {
@@ -47,23 +49,34 @@ public class TimerPower extends AbstractPower implements CloneablePowerInterface
         updateCardIntents();
     }
 
+    public void extraReplay() {
+        for (int i = 0; i < amount; i++) {
+            if (minion.cards.size() <= i) break;
+            AbstractCard cardToPlay = minion.cards.get(i).makeStatEquivalentCopy();
+            replayCard(cardToPlay, null);
+        }
+    }
+
     @Override
     public void endOfTurnPlayCards() {
         for (int i = 0; i < amount; i++) {
             if (minion.cards.size() <= 0) break;
             AbstractCard cardToPlay = minion.cards.get(0);
             minion.cards.remove(0);
-            cardToPlay.purgeOnUse = true;
-            CardUtils.setIsBeingReplayed(cardToPlay, true);
-            AbstractDungeon.player.limbo.addToBottom(cardToPlay);
-            AbstractDungeon.actionManager.addToBottom(new QueueCardIntentAction(cardToPlay, minion.cardStack));
+            replayCard(cardToPlay, minion.cardStack);
         }
         updateDescription();
         updateCardIntents();
         if (minion.cards.size() == 0) {
-            AbstractDungeon.actionManager.addToBottom(new NonTriggeringHealthChange(AbstractDungeon.player, minion.currentHealth));
-            AbstractDungeon.actionManager.addToBottom(new InstantKillAction(minion));
+            AbstractDungeon.actionManager.addToBottom(new CollapseTimelineAction(minion));
         }
+    }
+
+    private void replayCard(AbstractCard cardToPlay, HoverableCardStack cardStack) {
+        cardToPlay.purgeOnUse = true;
+        CardUtils.setIsBeingReplayed(cardToPlay, true);
+        AbstractDungeon.player.limbo.addToBottom(cardToPlay);
+        AbstractDungeon.actionManager.addToBottom(new QueueCardIntentAction(cardToPlay, cardStack));
     }
 
     @Override

@@ -24,7 +24,7 @@ public class ConstructTimelineAction extends AbstractGameAction {
     public void update() {
         AbstractFriendlyMonster minion = new TimelineMinion(
                 filterReplayableCards(AbstractDungeon.actionManager.cardsPlayedThisTurn),
-                (int) (Math.random() * 200 + -700), (int) (Math.random() * 200 - 100), healthBorrowed);
+                (int) (Math.random() * 200 - 700), (int) (Math.random() * 200 - 100), healthBorrowed);
         MinionUtils.addMinion(AbstractDungeon.player, minion);
 
         AbstractDungeon.actionManager.addToBottom(new NonTriggeringHealthChange(AbstractDungeon.player, -healthBorrowed));
@@ -35,7 +35,14 @@ public class ConstructTimelineAction extends AbstractGameAction {
     private List<AbstractCard> filterReplayableCards(List<AbstractCard> cards) {
         return cards.stream()
                 .filter(c -> !(c instanceof AbstractRetrospectCard) || ((AbstractRetrospectCard) c).isReplayable())
-                .map(AbstractCard::makeStatEquivalentCopy)
+                .map(card -> {
+                    AbstractCard newCard = card.makeStatEquivalentCopy();
+                    newCard.current_x = card.current_x;
+                    newCard.target_x = newCard.current_x;
+                    newCard.current_y = card.current_y;
+                    newCard.target_y = newCard.current_y;
+                    return newCard;
+                })
                 .collect(Collectors.toList());
     }
 }
