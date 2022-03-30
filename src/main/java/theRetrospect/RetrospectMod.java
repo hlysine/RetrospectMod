@@ -33,6 +33,7 @@ import theRetrospect.util.IDCheckDontTouchPls;
 import theRetrospect.util.TextureLoader;
 import theRetrospect.variables.DefaultCustomVariable;
 import theRetrospect.variables.DefaultSecondMagicNumber;
+import theRetrospect.variables.TimelineCountVariable;
 
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -417,6 +418,7 @@ public class RetrospectMod implements
         // Add the Custom Dynamic variables
         BaseMod.addDynamicVariable(new DefaultCustomVariable());
         BaseMod.addDynamicVariable(new DefaultSecondMagicNumber());
+        BaseMod.addDynamicVariable(new TimelineCountVariable());
 
         logger.info("Adding cards");
         // Add the cards

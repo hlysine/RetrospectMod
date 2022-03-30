@@ -1,11 +1,11 @@
 {
-  "theRetrospect:DefaultCommonAttack": {
+  "theRetrospect:Attack_V": {
     "NAME": "Strike",
-    "DESCRIPTION": "Deal !D! damage. NL [#0000ff]This[] [#ff0000]Is[] [#ffff00]How[] [#88888]color[] [#ff00ff]works.[]"
+    "DESCRIPTION": "Deal !D! damage."
   },
-  "theRetrospect:DefaultCommonSkill": {
+  "theRetrospect:Defend_V": {
     "NAME": "Defend",
-    "DESCRIPTION": "Gain !B! Block. NL theretrospect:Multiword_Keyword."
+    "DESCRIPTION": "Gain !B! Block."
   },
   "theRetrospect:DefaultCommonPower": {
     "NAME": "Hold Place",
@@ -50,13 +50,18 @@
     "NAME": "Get Orb",
     "DESCRIPTION": "Channel 1 Default Orb."
   },
-  "theRetrospect:Divert": {
-    "NAME": "Divert",
-    "DESCRIPTION": "theretrospect:Construct !M! theretrospect:timeline.",
+  "theRetrospect:AbstractTimelineCard": {
+    "NAME": "Abstract Timeline Card",
+    "DESCRIPTION": "theretrospect:Construct !theRetrospect:TimelineCount! theretrospect:timeline.",
     "EXTENDED_DESCRIPTION": [
       "I don't have enough health.",
       "I have too many timelines."
     ]
+  },
+  "theRetrospect:Divert": {
+    "NAME": "Divert",
+    "DESCRIPTION": "Ethereal. NL theretrospect:Construct !theRetrospect:TimelineCount! theretrospect:timeline.",
+    "UPGRADE_DESCRIPTION": "theretrospect:Construct !theRetrospect:TimelineCount! theretrospect:timeline."
   },
   "theRetrospect:Ephemeral": {
     "NAME": "Ephemeral",

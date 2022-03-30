@@ -16,8 +16,6 @@ import static theRetrospect.RetrospectMod.makeCardPath;
 
 public class Ephemeral extends AbstractRetrospectCard {
 
-    // TEXT DECLARATION
-
     public static final String ID = RetrospectMod.makeID(Ephemeral.class.getSimpleName());
     private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
 
@@ -26,10 +24,6 @@ public class Ephemeral extends AbstractRetrospectCard {
     public static final String NAME = cardStrings.NAME;
     public static final String DESCRIPTION = cardStrings.DESCRIPTION;
 
-    // /TEXT DECLARATION/
-
-
-    // STAT DECLARATION
 
     private static final CardRarity RARITY = CardRarity.RARE;
     private static final CardTarget TARGET = CardTarget.SELF;
@@ -37,8 +31,6 @@ public class Ephemeral extends AbstractRetrospectCard {
 
     private static final int BASE_COST = 1;
     private static final int HEALTH_COST = 20;
-
-    // /STAT DECLARATION/
 
     public Ephemeral() {
         super(ID, IMG, BASE_COST, TYPE, RARITY, TARGET);
