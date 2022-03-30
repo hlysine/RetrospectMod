@@ -14,6 +14,7 @@ import theRetrospect.RetrospectMod;
 import theRetrospect.actions.NonTriggeringHealthChange;
 import theRetrospect.actions.QueueCardIntentAction;
 import theRetrospect.minions.AbstractMinionWithCards;
+import theRetrospect.util.CardUtils;
 import theRetrospect.util.TextureLoader;
 
 public class TimerPower extends AbstractPower implements CloneablePowerInterface, EndOfTurnCardPlayingPower {
@@ -53,6 +54,7 @@ public class TimerPower extends AbstractPower implements CloneablePowerInterface
             AbstractCard cardToPlay = minion.cards.get(0);
             minion.cards.remove(0);
             cardToPlay.purgeOnUse = true;
+            CardUtils.setIsBeingReplayed(cardToPlay, true);
             AbstractDungeon.player.limbo.addToBottom(cardToPlay);
             AbstractDungeon.actionManager.addToBottom(new QueueCardIntentAction(cardToPlay, minion.cardStack));
         }
