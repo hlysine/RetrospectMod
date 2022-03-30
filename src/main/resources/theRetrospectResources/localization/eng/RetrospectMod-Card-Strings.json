@@ -7,6 +7,19 @@
     "NAME": "Defend",
     "DESCRIPTION": "Gain !B! Block."
   },
+  "theRetrospect:AbstractTimelineCard": {
+    "NAME": "Abstract Timeline Card",
+    "DESCRIPTION": "theretrospect:Construct !theRetrospect:TimelineCount! theretrospect:timeline.",
+    "EXTENDED_DESCRIPTION": [
+      "I don't have enough health.",
+      "I have too many timelines."
+    ]
+  },
+  "theRetrospect:Divert": {
+    "NAME": "Divert",
+    "DESCRIPTION": "Ethereal. NL theretrospect:Construct !theRetrospect:TimelineCount! theretrospect:timeline.",
+    "UPGRADE_DESCRIPTION": "theretrospect:Construct !theRetrospect:TimelineCount! theretrospect:timeline."
+  },
   "theRetrospect:DefaultCommonPower": {
     "NAME": "Hold Place",
     "DESCRIPTION": "Gain !M! theretrospect:Keyword.",
@@ -49,19 +62,6 @@
   "theRetrospect:OrbSkill": {
     "NAME": "Get Orb",
     "DESCRIPTION": "Channel 1 Default Orb."
-  },
-  "theRetrospect:AbstractTimelineCard": {
-    "NAME": "Abstract Timeline Card",
-    "DESCRIPTION": "theretrospect:Construct !theRetrospect:TimelineCount! theretrospect:timeline.",
-    "EXTENDED_DESCRIPTION": [
-      "I don't have enough health.",
-      "I have too many timelines."
-    ]
-  },
-  "theRetrospect:Divert": {
-    "NAME": "Divert",
-    "DESCRIPTION": "Ethereal. NL theretrospect:Construct !theRetrospect:TimelineCount! theretrospect:timeline.",
-    "UPGRADE_DESCRIPTION": "theretrospect:Construct !theRetrospect:TimelineCount! theretrospect:timeline."
   },
   "theRetrospect:Ephemeral": {
     "NAME": "Ephemeral",
