@@ -2,6 +2,7 @@ package theRetrospect.util;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.core.Settings;
 
 import java.util.HashMap;
 import java.util.List;
@@ -67,11 +68,11 @@ public class HoverableCardStack {
                     AbstractCard card = cards.get(i);
                     if (i != hoverIndex) {
                         if (i < hoverIndex) {
-                            card.target_x = newHoveredCard.target_x + newHoveredCard.hb.width / 2 + SPACING * (hoverIndex - i) + HOVERED_CARD_MARGIN;
+                            card.target_x = newHoveredCard.target_x + newHoveredCard.hb.width / 2 + SPACING * (hoverIndex - i) * Settings.scale + HOVERED_CARD_MARGIN * Settings.scale;
                         } else {
-                            card.target_x = newHoveredCard.target_x - newHoveredCard.hb.width / 2 - SPACING * (i - hoverIndex) - HOVERED_CARD_MARGIN;
+                            card.target_x = newHoveredCard.target_x - newHoveredCard.hb.width / 2 - SPACING * (i - hoverIndex) * Settings.scale - HOVERED_CARD_MARGIN * Settings.scale;
                         }
-                        card.target_y = this.y;
+                        card.target_y = this.y + AbstractCard.IMG_HEIGHT * UNHOVERED_SCALE / 2;
                     }
                 }
             }
@@ -89,10 +90,10 @@ public class HoverableCardStack {
     }
 
     private void setCardPosition(int cardIndex) {
-        float offsetX = (cards.size() - 1) * SPACING / 2;
+        float offsetX = (cards.size() - 1) * SPACING / 2 * Settings.scale;
         AbstractCard card = cards.get(cardIndex);
-        card.target_x = this.x + offsetX - SPACING * cardIndex;
-        card.target_y = this.y;
+        card.target_x = this.x + offsetX - SPACING * cardIndex * Settings.scale;
+        card.target_y = this.y + AbstractCard.IMG_HEIGHT * UNHOVERED_SCALE / 2;
     }
 
     public void render(SpriteBatch sb) {

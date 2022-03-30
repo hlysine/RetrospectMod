@@ -2,6 +2,7 @@ package theRetrospect.minions;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.helpers.MathHelper;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import kobting.friendlyminions.monsters.AbstractFriendlyMonster;
 import theRetrospect.powers.EndOfTurnCardPlayingPower;
@@ -27,8 +28,13 @@ public class AbstractMinionWithCards extends AbstractFriendlyMonster {
      */
     public final List<AbstractCard> cards;
 
+    public float target_x;
+    public float target_y;
+
     public AbstractMinionWithCards(String name, String id, int maxHealth, float hb_x, float hb_y, float hb_w, float hb_h, String imgUrl, float offsetX, float offsetY) {
         super(name, id, maxHealth, hb_x, hb_y, hb_w, hb_h, imgUrl, offsetX, offsetY);
+        target_x = drawX;
+        target_y = drawY;
         cards = new ArrayList<>();
         cardIntents = new ArrayList<>();
         cardStack = new HoverableCardStack(cardIntents, this.intentHb.cX, this.intentHb.cY);
@@ -51,6 +57,17 @@ public class AbstractMinionWithCards extends AbstractFriendlyMonster {
                 cardPlayingPower.endOfTurnPlayCards();
             }
         }
+    }
+
+    @Override
+    public void updateAnimations() {
+        super.updateAnimations();
+        this.drawX = MathHelper.orbLerpSnap(this.drawX, this.target_x);
+        this.drawY = MathHelper.orbLerpSnap(this.drawY, this.target_y);
+        refreshHitboxLocation();
+        refreshIntentHbLocation();
+        this.cardStack.x = this.intentHb.cX;
+        this.cardStack.y = this.intentHb.cY;
     }
 
     @Override

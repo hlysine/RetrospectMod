@@ -17,6 +17,7 @@ public class CollapseTimelineAction extends AbstractGameAction {
     public void update() {
         addToBot(new NonTriggeringHealthChange(AbstractDungeon.player, minion.currentHealth));
         addToBot(new InstantKillAction(minion));
+        addToBot(new RepositionTimelinesAction());
         this.isDone = true;
     }
 }
