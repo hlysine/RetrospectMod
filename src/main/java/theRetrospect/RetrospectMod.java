@@ -87,90 +87,90 @@ public class RetrospectMod implements
     private static final String MODNAME = "The Retrospect";
     private static final String AUTHOR = "hlysine"; // And pretty soon - You!
     private static final String DESCRIPTION = "A character mod for the Retrospect.";
-    
+
     // =============== INPUT TEXTURE LOCATION =================
-    
+
     // Colors (RGB)
     // Character Color
     public static final Color RETROSPECT_PURPLE = CardHelper.getColor(102, 27, 255);
-    
+
     // Potion Colors in RGB
     public static final Color PLACEHOLDER_POTION_LIQUID = CardHelper.getColor(209.0f, 53.0f, 18.0f); // Orange-ish Red
     public static final Color PLACEHOLDER_POTION_HYBRID = CardHelper.getColor(255.0f, 230.0f, 230.0f); // Near White
     public static final Color PLACEHOLDER_POTION_SPOTS = CardHelper.getColor(100.0f, 25.0f, 10.0f); // Super Dark Red/Brown
-  
+
     // Card backgrounds - The actual rectangular card.
-    private static final String ATTACK_DEFAULT_GRAY = "theRetrospectResources/images/512/bg_attack_retrospect_purple.png";
-    private static final String SKILL_DEFAULT_GRAY = "theRetrospectResources/images/512/bg_skill_retrospect_purple.png";
-    private static final String POWER_DEFAULT_GRAY = "theRetrospectResources/images/512/bg_power_retrospect_purple.png";
-    
-    private static final String ENERGY_ORB_DEFAULT_GRAY = "theRetrospectResources/images/512/card_default_gray_orb.png";
-    private static final String CARD_ENERGY_ORB = "theRetrospectResources/images/512/card_small_orb.png";
-    
-    private static final String ATTACK_DEFAULT_GRAY_PORTRAIT = "theRetrospectResources/images/1024/bg_attack_retrospect_purple.png";
-    private static final String SKILL_DEFAULT_GRAY_PORTRAIT = "theRetrospectResources/images/1024/bg_skill_retrospect_purple.png";
-    private static final String POWER_DEFAULT_GRAY_PORTRAIT = "theRetrospectResources/images/1024/bg_power_retrospect_purple.png";
-    private static final String ENERGY_ORB_DEFAULT_GRAY_PORTRAIT = "theRetrospectResources/images/1024/card_default_gray_orb.png";
-    
+    private static final String CARD_BG_ATTACK = "theRetrospectResources/images/512/bg_attack_retrospect_purple.png";
+    private static final String CARD_BG_SKILL = "theRetrospectResources/images/512/bg_skill_retrospect_purple.png";
+    private static final String CARD_BG_POWER = "theRetrospectResources/images/512/bg_power_retrospect_purple.png";
+
+    private static final String ENERGY_ORB_SMALL = "theRetrospectResources/images/512/card_small_orb.png";
+    private static final String ENERGY_ORB = "theRetrospectResources/images/512/card_default_gray_orb.png";
+    private static final String ENERGY_ORB_LARGE = "theRetrospectResources/images/1024/card_default_gray_orb.png";
+
+    private static final String CARD_BG_ATTACK_LARGE = "theRetrospectResources/images/1024/bg_attack_retrospect_purple.png";
+    private static final String CARD_BG_SKILL_LARGE = "theRetrospectResources/images/1024/bg_skill_retrospect_purple.png";
+    private static final String CARD_BG_POWER_LARGE = "theRetrospectResources/images/1024/bg_power_retrospect_purple.png";
+
     // Character assets
     private static final String THE_RETROSPECT_BUTTON = "theRetrospectResources/images/charSelect/RetrospectCharacterButton.png";
     private static final String THE_RETROSPECT_PORTRAIT = "theRetrospectResources/images/charSelect/RetrospectCharacterPortraitBG.png";
     public static final String THE_RETROSPECT_SHOULDER_1 = "theRetrospectResources/images/char/retrospectCharacter/shoulder.png";
     public static final String THE_RETROSPECT_SHOULDER_2 = "theRetrospectResources/images/char/retrospectCharacter/shoulder2.png";
     public static final String THE_RETROSPECT_CORPSE = "theRetrospectResources/images/char/retrospectCharacter/corpse.png";
-    
+
     //Mod Badge - A small icon that appears in the mod settings menu next to your mod.
     public static final String BADGE_IMAGE = "theRetrospectResources/images/Badge.png";
-    
+
     // Atlas and JSON files for the Animations
     public static final String THE_RETROSPECT_SKELETON_ATLAS = "theRetrospectResources/images/char/retrospectCharacter/skeleton.atlas";
     public static final String THE_RETROSPECT_SKELETON_JSON = "theRetrospectResources/images/char/retrospectCharacter/skeleton.json";
-    
+
     // =============== MAKE IMAGE PATHS =================
-    
+
     public static String makeCardPath(String resourcePath) {
         return getModID() + "Resources/images/cards/" + resourcePath;
     }
-    
+
     public static String makeRelicPath(String resourcePath) {
         return getModID() + "Resources/images/relics/" + resourcePath;
     }
-    
+
     public static String makeRelicOutlinePath(String resourcePath) {
         return getModID() + "Resources/images/relics/outline/" + resourcePath;
     }
-    
+
     public static String makeOrbPath(String resourcePath) {
         return getModID() + "Resources/images/orbs/" + resourcePath;
     }
-    
+
     public static String makePowerPath(String resourcePath) {
         return getModID() + "Resources/images/powers/" + resourcePath;
     }
-    
+
     public static String makeEventPath(String resourcePath) {
         return getModID() + "Resources/images/events/" + resourcePath;
     }
-    
+
     // =============== /MAKE IMAGE PATHS/ =================
-    
+
     // =============== /INPUT TEXTURE LOCATION/ =================
-    
-    
+
+
     // =============== SUBSCRIBE, CREATE THE COLOR_GRAY, INITIALIZE =================
-    
+
     public RetrospectMod() {
         logger.info("Subscribe to BaseMod hooks");
-        
+
         BaseMod.subscribe(this);
-      
+
         setModID("theRetrospect");
         // cool
         // TODO: NOW READ THIS!!!!!!!!!!!!!!!:
-        
+
         // 1. Go to your resources folder in the project panel, and refactor> rename theDefaultResources to
         // yourModIDResources.
-        
+
         // 2. Click on the localization > eng folder and press ctrl+shift+r, then select "Directory" (rather than in Project) and press alt+c (or mark the match case option)
         // replace all instances of theDefault with yourModID, and all instances of thedefault with yourmodid (the same but all lowercase).
         // Because your mod ID isn't the default. Your cards (and everything else) should have Your mod id. Not mine.
@@ -180,20 +180,32 @@ public class RetrospectMod implements
 
         // 4. FINALLY and most importantly: Scroll up a bit. You may have noticed the image locations above don't use getModID()
         // Change their locations to reflect your actual ID rather than theDefault. They get loaded before getID is a thing.
-        
+
         logger.info("Done subscribing");
-        
+
         logger.info("Creating the color " + TheRetrospect.Enums.RETROSPECT_CARD_PURPLE.toString());
-        
-        BaseMod.addColor(TheRetrospect.Enums.RETROSPECT_CARD_PURPLE, RETROSPECT_PURPLE, RETROSPECT_PURPLE, RETROSPECT_PURPLE,
-                RETROSPECT_PURPLE, RETROSPECT_PURPLE, RETROSPECT_PURPLE, RETROSPECT_PURPLE,
-                ATTACK_DEFAULT_GRAY, SKILL_DEFAULT_GRAY, POWER_DEFAULT_GRAY, ENERGY_ORB_DEFAULT_GRAY,
-                ATTACK_DEFAULT_GRAY_PORTRAIT, SKILL_DEFAULT_GRAY_PORTRAIT, POWER_DEFAULT_GRAY_PORTRAIT,
-                ENERGY_ORB_DEFAULT_GRAY_PORTRAIT, CARD_ENERGY_ORB);
-        
+
+        BaseMod.addColor(TheRetrospect.Enums.RETROSPECT_CARD_PURPLE,
+                RETROSPECT_PURPLE,
+                RETROSPECT_PURPLE,
+                RETROSPECT_PURPLE,
+                RETROSPECT_PURPLE,
+                RETROSPECT_PURPLE,
+                RETROSPECT_PURPLE,
+                RETROSPECT_PURPLE,
+                CARD_BG_ATTACK,
+                CARD_BG_SKILL,
+                CARD_BG_POWER,
+                ENERGY_ORB,
+                CARD_BG_ATTACK_LARGE,
+                CARD_BG_SKILL_LARGE,
+                CARD_BG_POWER_LARGE,
+                ENERGY_ORB_LARGE,
+                ENERGY_ORB_SMALL);
+
         logger.info("Done creating the color");
-        
-        
+
+
         logger.info("Adding mod settings");
         // This loads the mod settings.
         // The actual mod Button is added below in receivePostInitialize()
@@ -207,13 +219,13 @@ public class RetrospectMod implements
             e.printStackTrace();
         }
         logger.info("Done adding mod settings");
-        
+
     }
-    
+
     // ====== NO EDIT AREA ======
     // DON'T TOUCH THIS STUFF. IT IS HERE FOR STANDARDIZATION BETWEEN MODS AND TO ENSURE GOOD CODE PRACTICES.
     // IF YOU MODIFY THIS I WILL HUNT YOU DOWN AND DOWNVOTE YOUR MOD ON WORKSHOP
-    
+
     public static void setModID(String ID) { // DON'T EDIT
         Gson coolG = new Gson(); // EY DON'T EDIT THIS
         //   String IDjson = Gdx.files.internal("IDCheckStringsDONT-EDIT-AT-ALL.json").readString(String.valueOf(StandardCharsets.UTF_8)); // i hate u Gdx.files
@@ -229,11 +241,11 @@ public class RetrospectMod implements
         } // NO
         logger.info("Success! ID is " + modID); // WHY WOULD U WANT IT NOT TO LOG?? DON'T EDIT THIS.
     } // NO
-    
+
     public static String getModID() { // NO
         return modID; // DOUBLE NO
     } // NU-UH
-    
+
     private static void pathCheck() { // ALSO NO
         Gson coolG = new Gson(); // NOPE DON'T EDIT THIS
         //   String IDjson = Gdx.files.internal("IDCheckStringsDONT-EDIT-AT-ALL.json").readString(String.valueOf(StandardCharsets.UTF_8)); // i still hate u btw Gdx.files
@@ -250,10 +262,10 @@ public class RetrospectMod implements
             }// NO
         }// NO
     }// NO
-    
+
     // ====== YOU CAN EDIT AGAIN ======
-    
-    
+
+
     public static void initialize() {
         logger.info("========================= Initializing Retrospect Mod. Hi. =========================");
         RetrospectMod retrospectMod = new RetrospectMod();
@@ -261,62 +273,63 @@ public class RetrospectMod implements
         MinionConfigHelper.MinionPowerChance = 0;
         logger.info("========================= /Retrospect Mod Initialized. Hello World./ =========================");
     }
-    
+
     // ============== /SUBSCRIBE, CREATE THE COLOR_GRAY, INITIALIZE/ =================
-    
-    
+
+
     // =============== LOAD THE CHARACTER =================
-    
+
     @Override
     public void receiveEditCharacters() {
         logger.info("Beginning to edit characters. " + "Add " + TheRetrospect.Enums.THE_RETROSPECT.toString());
-        
+
         BaseMod.addCharacter(new TheRetrospect("the Retrospect", TheRetrospect.Enums.THE_RETROSPECT),
                 THE_RETROSPECT_BUTTON, THE_RETROSPECT_PORTRAIT, TheRetrospect.Enums.THE_RETROSPECT);
-        
+
         receiveEditPotions();
         logger.info("Added " + TheRetrospect.Enums.THE_RETROSPECT.toString());
     }
-    
+
     // =============== /LOAD THE CHARACTER/ =================
-    
-    
+
+
     // =============== POST-INITIALIZE =================
-    
+
     @Override
     public void receivePostInitialize() {
         logger.info("Loading badge image and mod options");
-        
+
         // Load the Mod Badge
         Texture badgeTexture = TextureLoader.getTexture(BADGE_IMAGE);
-        
+
         // Create the Mod Menu
         ModPanel settingsPanel = new ModPanel();
-        
+
         // Create the on/off button:
         ModLabeledToggleButton enableNormalsButton = new ModLabeledToggleButton("This is the text which goes next to the checkbox.",
                 350.0f, 700.0f, Settings.CREAM_COLOR, FontHelper.charDescFont, // Position (trial and error it), color, font
                 enablePlaceholder, // Boolean it uses
                 settingsPanel, // The mod panel in which this button will be in
-                (label) -> {}, // thing??????? idk
+                (label) -> {
+                }, // thing??????? idk
                 (button) -> { // The actual button:
-            
-            enablePlaceholder = button.enabled; // The boolean true/false will be whether the button is enabled or not
-            try {
-                // And based on that boolean, set the settings and save them
-                SpireConfig config = new SpireConfig("retrospectMod", "theRetrospectConfig", theRetrospectDefaultSettings);
-                config.setBool(ENABLE_PLACEHOLDER_SETTINGS, enablePlaceholder);
-                config.save();
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        });
-        
+
+                    enablePlaceholder = button.enabled; // The boolean true/false will be whether the button is enabled or not
+                    try {
+                        // And based on that boolean, set the settings and save them
+                        SpireConfig config = new SpireConfig("retrospectMod", "theRetrospectConfig", theRetrospectDefaultSettings);
+                        config.setBool(ENABLE_PLACEHOLDER_SETTINGS, enablePlaceholder);
+                        config.save();
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                });
+
         settingsPanel.addUIElement(enableNormalsButton); // Add the button to the settings panel. Button is a go.
-        
+
         BaseMod.registerModBadge(badgeTexture, MODNAME, AUTHOR, DESCRIPTION, settingsPanel);
 
-        
+
         // =============== EVENTS =================
         // https://github.com/daviscook477/BaseMod/wiki/Custom-Events
 
@@ -332,9 +345,9 @@ public class RetrospectMod implements
         // Create a new event builder
         // Since this is a builder these method calls (outside of create()) can be skipped/added as necessary
         AddEventParams eventParams = new AddEventParams.Builder(IdentityCrisisEvent.ID, IdentityCrisisEvent.class) // for this specific event
-            .dungeonID(TheCity.ID) // The dungeon (act) this event will appear in
-            .playerClass(TheRetrospect.Enums.THE_RETROSPECT) // Character specific event
-            .create();
+                .dungeonID(TheCity.ID) // The dungeon (act) this event will appear in
+                .playerClass(TheRetrospect.Enums.THE_RETROSPECT) // Character specific event
+                .create();
 
         // Add the event
         BaseMod.addEvent(eventParams);
@@ -342,27 +355,27 @@ public class RetrospectMod implements
         // =============== /EVENTS/ =================
         logger.info("Done loading badge Image and mod options");
     }
-    
+
     // =============== / POST-INITIALIZE/ =================
-    
+
     // ================ ADD POTIONS ===================
-    
+
     public void receiveEditPotions() {
         logger.info("Beginning to edit potions");
-        
+
         // Class Specific Potion. If you want your potion to not be class-specific,
         // just remove the player class at the end (in this case the "TheDefaultEnum.THE_DEFAULT".
         // Remember, you can press ctrl+P inside parentheses like addPotions)
         BaseMod.addPotion(PlaceholderPotion.class, PLACEHOLDER_POTION_LIQUID, PLACEHOLDER_POTION_HYBRID, PLACEHOLDER_POTION_SPOTS, PlaceholderPotion.POTION_ID, TheRetrospect.Enums.THE_RETROSPECT);
-        
+
         logger.info("Done editing potions");
     }
-    
+
     // ================ /ADD POTIONS/ ===================
-    
-    
+
+
     // ================ ADD RELICS ===================
-    
+
     @Override
     public void receiveEditRelics() {
         logger.info("Adding relics");
@@ -378,22 +391,22 @@ public class RetrospectMod implements
         BaseMod.addRelicToCustomPool(new PlaceholderRelic(), TheRetrospect.Enums.RETROSPECT_CARD_PURPLE);
         BaseMod.addRelicToCustomPool(new BottledPlaceholderRelic(), TheRetrospect.Enums.RETROSPECT_CARD_PURPLE);
         BaseMod.addRelicToCustomPool(new DefaultClickableRelic(), TheRetrospect.Enums.RETROSPECT_CARD_PURPLE);
-        
+
         // This adds a relic to the Shared pool. Every character can find this relic.
         BaseMod.addRelic(new PlaceholderRelic2(), RelicType.SHARED);
-        
+
         // Mark relics as seen - makes it visible in the compendium immediately
         // If you don't have this it won't be visible in the compendium until you see them in game
         // (the others are all starters so they're marked as seen in the character file)
         UnlockTracker.markRelicAsSeen(BottledPlaceholderRelic.ID);
         logger.info("Done adding relics!");
     }
-    
+
     // ================ /ADD RELICS/ ===================
-    
-    
+
+
     // ================ ADD CARDS ===================
-    
+
     @Override
     public void receiveEditCards() {
         logger.info("Adding variables");
@@ -404,7 +417,7 @@ public class RetrospectMod implements
         // Add the Custom Dynamic variables
         BaseMod.addDynamicVariable(new DefaultCustomVariable());
         BaseMod.addDynamicVariable(new DefaultSecondMagicNumber());
-        
+
         logger.info("Adding cards");
         // Add the cards
         // Don't delete these default cards yet. You need 1 of each type and rarity (technically) for your game not to crash
@@ -420,9 +433,9 @@ public class RetrospectMod implements
         //TODO: Rename the "DefaultMod" with the modid in your ModTheSpire.json file
         //TODO: The artifact mentioned in ModTheSpire.json is the artifactId in pom.xml you should've edited earlier
         new AutoAdd("RetrospectMod") // ${project.artifactId}
-            .packageFilter(AbstractRetrospectCard.class) // filters to any class in the same package as AbstractDefaultCard, nested packages included
-            .setDefaultSeen(true)
-            .cards();
+                .packageFilter(AbstractRetrospectCard.class) // filters to any class in the same package as AbstractDefaultCard, nested packages included
+                .setDefaultSeen(true)
+                .cards();
 
         // .setDefaultSeen(true) unlocks the cards
         // This is so that they are all "seen" in the library,
@@ -430,50 +443,50 @@ public class RetrospectMod implements
 
         logger.info("Done adding cards!");
     }
-    
+
     // ================ /ADD CARDS/ ===================
-    
-    
+
+
     // ================ LOAD THE TEXT ===================
-    
+
     @Override
     public void receiveEditStrings() {
         logger.info("You seeing this?");
         logger.info("Beginning to edit strings for mod with ID: " + getModID());
-        
+
         // CardStrings
         BaseMod.loadCustomStringsFile(CardStrings.class,
                 getModID() + "Resources/localization/eng/RetrospectMod-Card-Strings.json");
-        
+
         // PowerStrings
         BaseMod.loadCustomStringsFile(PowerStrings.class,
                 getModID() + "Resources/localization/eng/RetrospectMod-Power-Strings.json");
-        
+
         // RelicStrings
         BaseMod.loadCustomStringsFile(RelicStrings.class,
                 getModID() + "Resources/localization/eng/RetrospectMod-Relic-Strings.json");
-        
+
         // Event Strings
         BaseMod.loadCustomStringsFile(EventStrings.class,
                 getModID() + "Resources/localization/eng/RetrospectMod-Event-Strings.json");
-        
+
         // PotionStrings
         BaseMod.loadCustomStringsFile(PotionStrings.class,
                 getModID() + "Resources/localization/eng/RetrospectMod-Potion-Strings.json");
-        
+
         // CharacterStrings
         BaseMod.loadCustomStringsFile(CharacterStrings.class,
                 getModID() + "Resources/localization/eng/RetrospectMod-Character-Strings.json");
-        
+
         // OrbStrings
         BaseMod.loadCustomStringsFile(OrbStrings.class,
                 getModID() + "Resources/localization/eng/RetrospectMod-Orb-Strings.json");
-        
+
         logger.info("Done edittting strings");
     }
-    
+
     // ================ /LOAD THE TEXT/ ===================
-    
+
     // ================ LOAD THE KEYWORDS ===================
 
     @Override
@@ -485,11 +498,11 @@ public class RetrospectMod implements
         // If you're using multiword keywords, the first element in your NAMES array in your keywords-strings.json has to be the same as the PROPER_NAME.
         // That is, in Card-Strings.json you would have #yA_Long_Keyword (#y highlights the keyword in yellow).
         // In Keyword-Strings.json you would have PROPER_NAME as A Long Keyword and the first element in NAMES be a long keyword, and the second element be a_long_keyword
-        
+
         Gson gson = new Gson();
         String json = Gdx.files.internal(getModID() + "Resources/localization/eng/RetrospectMod-Keyword-Strings.json").readString(String.valueOf(StandardCharsets.UTF_8));
         com.evacipated.cardcrawl.mod.stslib.Keyword[] keywords = gson.fromJson(json, com.evacipated.cardcrawl.mod.stslib.Keyword[].class);
-        
+
         if (keywords != null) {
             for (Keyword keyword : keywords) {
                 BaseMod.addKeyword(getModID().toLowerCase(), keyword.PROPER_NAME, keyword.NAMES, keyword.DESCRIPTION);
@@ -497,9 +510,9 @@ public class RetrospectMod implements
             }
         }
     }
-    
+
     // ================ /LOAD THE KEYWORDS/ ===================    
-    
+
     // this adds "ModName:" before the ID of any card/relic/power etc.
     // in order to avoid conflicts if any other mod uses the same ID.
     public static String makeID(String idText) {
