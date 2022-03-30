@@ -52,7 +52,7 @@ public class TheRetrospect extends AbstractPlayerWithMinions {
         @SpireEnum
         public static AbstractPlayer.PlayerClass THE_RETROSPECT;
         @SpireEnum(name = "RETROSPECT_PURPLE") // These two HAVE to have the same absolutely identical name.
-        public static AbstractCard.CardColor RETROSPECT_CARD_PURPLE;
+        public static AbstractCard.CardColor RETROSPECT_CARD_VIOLET;
         @SpireEnum(name = "RETROSPECT_PURPLE")
         @SuppressWarnings("unused")
         public static CardLibrary.LibraryType LIBRARY_COLOR;
@@ -231,13 +231,13 @@ public class TheRetrospect extends AbstractPlayerWithMinions {
     // Should return the card color enum to be associated with your character.
     @Override
     public AbstractCard.CardColor getCardColor() {
-        return Enums.RETROSPECT_CARD_PURPLE;
+        return Enums.RETROSPECT_CARD_VIOLET;
     }
 
     // Should return a color object to be used to color the trail of moving cards
     @Override
     public Color getCardTrailColor() {
-        return RetrospectMod.RETROSPECT_PURPLE;
+        return RetrospectMod.RETROSPECT_VIOLET;
     }
 
     // Should return a BitmapFont object that you can use to customize how your
@@ -274,14 +274,14 @@ public class TheRetrospect extends AbstractPlayerWithMinions {
     // Should return a Color object to be used to color the miniature card images in run history.
     @Override
     public Color getCardRenderColor() {
-        return RetrospectMod.RETROSPECT_PURPLE;
+        return RetrospectMod.RETROSPECT_VIOLET;
     }
 
     // Should return a Color object to be used as screen tint effect when your
     // character attacks the heart.
     @Override
     public Color getSlashAttackColor() {
-        return RetrospectMod.RETROSPECT_PURPLE;
+        return RetrospectMod.RETROSPECT_VIOLET;
     }
 
     // Should return an AttackEffect array of any size greater than 0. These effects

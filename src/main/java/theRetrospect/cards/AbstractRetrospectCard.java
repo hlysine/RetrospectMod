@@ -7,7 +7,7 @@ import static com.megacrit.cardcrawl.core.CardCrawlGame.languagePack;
 
 public abstract class AbstractRetrospectCard extends CustomCard {
 
-    public static final CardColor COLOR = TheRetrospect.Enums.RETROSPECT_CARD_PURPLE;
+    public static final CardColor COLOR = TheRetrospect.Enums.RETROSPECT_CARD_VIOLET;
 
     public int defaultSecondMagicNumber;        // Just like magic number, or any number for that matter, we want our regular, modifiable stat
     public int defaultBaseSecondMagicNumber;    // And our base stat - the number in it's base state. It will reset to that by default.

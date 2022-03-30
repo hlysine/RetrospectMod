@@ -92,7 +92,7 @@ public class RetrospectMod implements
 
     // Colors (RGB)
     // Character Color
-    public static final Color RETROSPECT_PURPLE = CardHelper.getColor(102, 27, 255);
+    public static final Color RETROSPECT_VIOLET = CardHelper.getColor(102, 27, 255);
 
     // Potion Colors in RGB
     public static final Color PLACEHOLDER_POTION_LIQUID = CardHelper.getColor(209.0f, 53.0f, 18.0f); // Orange-ish Red
@@ -183,16 +183,16 @@ public class RetrospectMod implements
 
         logger.info("Done subscribing");
 
-        logger.info("Creating the color " + TheRetrospect.Enums.RETROSPECT_CARD_PURPLE.toString());
+        logger.info("Creating the color " + TheRetrospect.Enums.RETROSPECT_CARD_VIOLET.toString());
 
-        BaseMod.addColor(TheRetrospect.Enums.RETROSPECT_CARD_PURPLE,
-                RETROSPECT_PURPLE,
-                RETROSPECT_PURPLE,
-                RETROSPECT_PURPLE,
-                RETROSPECT_PURPLE,
-                RETROSPECT_PURPLE,
-                RETROSPECT_PURPLE,
-                RETROSPECT_PURPLE,
+        BaseMod.addColor(TheRetrospect.Enums.RETROSPECT_CARD_VIOLET,
+                RETROSPECT_VIOLET,
+                RETROSPECT_VIOLET,
+                RETROSPECT_VIOLET,
+                RETROSPECT_VIOLET,
+                RETROSPECT_VIOLET,
+                RETROSPECT_VIOLET,
+                RETROSPECT_VIOLET,
                 CARD_BG_ATTACK,
                 CARD_BG_SKILL,
                 CARD_BG_POWER,
@@ -388,9 +388,9 @@ public class RetrospectMod implements
         // in order to automatically differentiate which pool to add the relic too.
 
         // This adds a character specific relic. Only when you play with the mentioned color, will you get this relic.
-        BaseMod.addRelicToCustomPool(new PlaceholderRelic(), TheRetrospect.Enums.RETROSPECT_CARD_PURPLE);
-        BaseMod.addRelicToCustomPool(new BottledPlaceholderRelic(), TheRetrospect.Enums.RETROSPECT_CARD_PURPLE);
-        BaseMod.addRelicToCustomPool(new DefaultClickableRelic(), TheRetrospect.Enums.RETROSPECT_CARD_PURPLE);
+        BaseMod.addRelicToCustomPool(new PlaceholderRelic(), TheRetrospect.Enums.RETROSPECT_CARD_VIOLET);
+        BaseMod.addRelicToCustomPool(new BottledPlaceholderRelic(), TheRetrospect.Enums.RETROSPECT_CARD_VIOLET);
+        BaseMod.addRelicToCustomPool(new DefaultClickableRelic(), TheRetrospect.Enums.RETROSPECT_CARD_VIOLET);
 
         // This adds a relic to the Shared pool. Every character can find this relic.
         BaseMod.addRelic(new PlaceholderRelic2(), RelicType.SHARED);
