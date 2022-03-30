@@ -23,11 +23,9 @@ import kobting.friendlyminions.characters.CustomCharSelectInfo;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import theRetrospect.RetrospectMod;
-import theRetrospect.cards.Attack_V;
 import theRetrospect.cards.Defend_V;
 import theRetrospect.cards.Divert;
-import theRetrospect.cards.Ephemeral;
-import theRetrospect.cards.template.*;
+import theRetrospect.cards.Strike_V;
 import theRetrospect.relics.DefaultClickableRelic;
 import theRetrospect.relics.PlaceholderRelic;
 import theRetrospect.relics.PlaceholderRelic2;
@@ -171,31 +169,19 @@ public class TheRetrospect extends AbstractPlayerWithMinions {
 
         logger.info("Begin loading starter Deck Strings");
 
-        retVal.add(Attack_V.ID);
-        retVal.add(Attack_V.ID);
-        retVal.add(Attack_V.ID);
-        retVal.add(Attack_V.ID);
-        retVal.add(Attack_V.ID);
-        //retVal.add(DefaultUncommonAttack.ID);
-        //retVal.add(DefaultRareAttack.ID);
+        retVal.add(Strike_V.ID);
+        retVal.add(Strike_V.ID);
+        retVal.add(Strike_V.ID);
+        retVal.add(Strike_V.ID);
+        retVal.add(Strike_V.ID);
 
         retVal.add(Defend_V.ID);
         retVal.add(Defend_V.ID);
         retVal.add(Defend_V.ID);
         retVal.add(Defend_V.ID);
         retVal.add(Defend_V.ID);
-        //retVal.add(DefaultUncommonSkill.ID);
-        //retVal.add(DefaultRareSkill.ID);
 
-        //retVal.add(DefaultCommonPower.ID);
-        //retVal.add(DefaultUncommonPower.ID);
-        //retVal.add(DefaultRarePower.ID);
-
-        //retVal.add(DefaultAttackWithVariable.ID);
-        //retVal.add(DefaultSecondMagicNumberSkill.ID);
-        //retVal.add(OrbSkill.ID);
         retVal.add(Divert.ID);
-        retVal.add(Ephemeral.ID);
 
         return retVal;
     }
@@ -266,7 +252,7 @@ public class TheRetrospect extends AbstractPlayerWithMinions {
     //Which card should be obtainable from the Match and Keep event?
     @Override
     public AbstractCard getStartCardForEvent() {
-        return new Attack_V();
+        return new Strike_V();
     }
 
     // The class name as it appears next to your player name in-game

@@ -10,9 +10,9 @@ import theRetrospect.RetrospectMod;
 
 import static theRetrospect.RetrospectMod.makeCardPath;
 
-public class Attack_V extends AbstractRetrospectCard {
+public class Strike_V extends AbstractRetrospectCard {
 
-    public static final String ID = RetrospectMod.makeID(Attack_V.class.getSimpleName());
+    public static final String ID = RetrospectMod.makeID(Strike_V.class.getSimpleName());
 
     public static final String IMG = makeCardPath("Attack.png");
 
@@ -24,7 +24,7 @@ public class Attack_V extends AbstractRetrospectCard {
     private static final int DAMAGE = 6;
     private static final int UPGRADE_PLUS_DMG = 3;
 
-    public Attack_V() {
+    public Strike_V() {
         super(ID, IMG, COST, TYPE, RARITY, TARGET);
 
         baseDamage = DAMAGE;
@@ -36,7 +36,7 @@ public class Attack_V extends AbstractRetrospectCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         AbstractDungeon.actionManager.addToBottom(
-                new DamageAction(m, new DamageInfo(p, damage, damageTypeForTurn), AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));
+                new DamageAction(m, new DamageInfo(p, damage, damageTypeForTurn), AbstractGameAction.AttackEffect.SLASH_DIAGONAL));
     }
 
     @Override
