@@ -39,6 +39,10 @@
     "DESCRIPTION": "Exhaust 1 card. Gain energy equal to the card's cost.",
     "UPGRADE_DESCRIPTION": "Discard 1 card. Gain energy equal to the card's cost."
   },
+  "theRetrospect:Concurrency": {
+    "NAME": "Concurrency",
+    "DESCRIPTION": "Deal !D! damage for each timeline you have."
+  },
   "theRetrospect:DefaultCommonPower": {
     "NAME": "Hold Place",
     "DESCRIPTION": "Gain !M! theretrospect:Keyword.",
