@@ -20,12 +20,13 @@ public class Defend_V extends AbstractRetrospectCard {
 
     private static final int COST = 1;
     private static final int BASE_BLOCK = 5;
-    private static final int UPGRADE_PLUS_BLOCK = 3;
+    private static final int UPGRADE_BLOCK = 3;
 
     public Defend_V() {
         super(ID, IMG, COST, TYPE, RARITY, TARGET);
 
         baseBlock = BASE_BLOCK;
+        block = baseBlock;
 
         this.tags.add(CardTags.STARTER_DEFEND);
     }
@@ -39,7 +40,7 @@ public class Defend_V extends AbstractRetrospectCard {
     public void upgrade() {
         if (!upgraded) {
             upgradeName();
-            upgradeBlock(UPGRADE_PLUS_BLOCK);
+            upgradeBlock(UPGRADE_BLOCK);
             initializeDescription();
         }
     }

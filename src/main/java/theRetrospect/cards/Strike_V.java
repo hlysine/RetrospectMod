@@ -4,7 +4,6 @@ import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theRetrospect.RetrospectMod;
 
@@ -22,12 +21,13 @@ public class Strike_V extends AbstractRetrospectCard {
 
     private static final int COST = 1;
     private static final int BASE_DAMAGE = 6;
-    private static final int UPGRADE_PLUS_DMG = 3;
+    private static final int UPGRADE_DAMAGE = 3;
 
     public Strike_V() {
         super(ID, IMG, COST, TYPE, RARITY, TARGET);
 
         baseDamage = BASE_DAMAGE;
+        damage = baseDamage;
 
         this.tags.add(CardTags.STARTER_STRIKE);
         this.tags.add(CardTags.STRIKE);
@@ -42,7 +42,7 @@ public class Strike_V extends AbstractRetrospectCard {
     public void upgrade() {
         if (!upgraded) {
             upgradeName();
-            upgradeDamage(UPGRADE_PLUS_DMG);
+            upgradeDamage(UPGRADE_DAMAGE);
             initializeDescription();
         }
     }

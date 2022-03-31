@@ -22,12 +22,13 @@ public class SleightOfHand extends AbstractRetrospectCard {
 
     private static final int COST = 2;
     private static final int BASE_DAMAGE = 8;
-    private static final int UPGRADE_PLUS_DMG = 4;
+    private static final int UPGRADE_DAMAGE = 4;
 
     public SleightOfHand() {
         super(ID, IMG, COST, TYPE, RARITY, TARGET);
 
         baseDamage = BASE_DAMAGE;
+        damage = baseDamage;
     }
 
     @Override
@@ -40,7 +41,7 @@ public class SleightOfHand extends AbstractRetrospectCard {
     public void upgrade() {
         if (!upgraded) {
             upgradeName();
-            upgradeDamage(UPGRADE_PLUS_DMG);
+            upgradeDamage(UPGRADE_DAMAGE);
             initializeDescription();
         }
     }

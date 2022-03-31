@@ -20,12 +20,13 @@ public class Concurrency extends AbstractRetrospectCard {
 
     private static final int COST = 1;
     private static final int BASE_DAMAGE = 8;
-    private static final int UPGRADE_PLUS_DMG = 3;
+    private static final int UPGRADE_DAMAGE = 3;
 
     public Concurrency() {
         super(ID, IMG, COST, TYPE, RARITY, TARGET);
 
         baseDamage = BASE_DAMAGE;
+        damage = baseDamage;
     }
 
     @Override
@@ -37,7 +38,7 @@ public class Concurrency extends AbstractRetrospectCard {
     public void upgrade() {
         if (!upgraded) {
             upgradeName();
-            upgradeDamage(UPGRADE_PLUS_DMG);
+            upgradeDamage(UPGRADE_DAMAGE);
             initializeDescription();
         }
     }

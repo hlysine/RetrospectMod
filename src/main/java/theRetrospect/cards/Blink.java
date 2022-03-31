@@ -4,14 +4,10 @@ import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.DamageAllEnemiesAction;
 import com.megacrit.cardcrawl.actions.utility.SFXAction;
-import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
-import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.vfx.AbstractGameEffect;
 import com.megacrit.cardcrawl.vfx.combat.CleaveEffect;
 import theRetrospect.RetrospectMod;
-import theRetrospect.actions.ConcurrencyAction;
 
 import static theRetrospect.RetrospectMod.makeCardPath;
 
@@ -27,12 +23,14 @@ public class Blink extends AbstractRetrospectCard {
 
     private static final int COST = 0;
     private static final int BASE_DAMAGE = 5;
-    private static final int UPGRADE_PLUS_DMG = 3;
+    private static final int UPGRADE_DAMAGE = 3;
 
     public Blink() {
         super(ID, IMG, COST, TYPE, RARITY, TARGET);
 
         baseDamage = BASE_DAMAGE;
+        damage = baseDamage;
+
         isMultiDamage = true;
     }
 
@@ -47,7 +45,7 @@ public class Blink extends AbstractRetrospectCard {
     public void upgrade() {
         if (!upgraded) {
             upgradeName();
-            upgradeDamage(UPGRADE_PLUS_DMG);
+            upgradeDamage(UPGRADE_DAMAGE);
             initializeDescription();
         }
     }
