@@ -33,7 +33,7 @@ public class Defend_V extends AbstractRetrospectCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        AbstractDungeon.actionManager.addToBottom(new GainBlockAction(p, p, block));
+        addToBot(new GainBlockAction(p, p, block));
     }
 
     @Override
