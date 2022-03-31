@@ -60,6 +60,10 @@
     "NAME": "Sleight of Hand",
     "DESCRIPTION": "Deal !D! damage. Replay your last card this turn."
   },
+  "theRetrospect:AlternativeReality": {
+    "NAME": "Alternative Reality",
+    "DESCRIPTION": "If you have an odd number of cards in your draw pile, gain !B! Block. Otherwise, draw !M! cards."
+  },
   "theRetrospect:DefaultCommonPower": {
     "NAME": "Hold Place",
     "DESCRIPTION": "Gain !M! theretrospect:Keyword.",
