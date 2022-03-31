@@ -34,6 +34,11 @@
     "NAME": "Misdirection",
     "DESCRIPTION": "theretrospect:Construct 1 theretrospect:timeline and play a random attack card from your discard pile."
   },
+  "theRetrospect:Transmute": {
+    "NAME": "Transmute",
+    "DESCRIPTION": "Exhaust 1 card. Gain energy equal to the card's cost.",
+    "UPGRADE_DESCRIPTION": "Discard 1 card. Gain energy equal to the card's cost."
+  },
   "theRetrospect:DefaultCommonPower": {
     "NAME": "Hold Place",
     "DESCRIPTION": "Gain !M! theretrospect:Keyword.",
