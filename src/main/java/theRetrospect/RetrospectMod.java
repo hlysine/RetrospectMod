@@ -25,10 +25,7 @@ import theRetrospect.cards.*;
 import theRetrospect.characters.TheRetrospect;
 import theRetrospect.events.IdentityCrisisEvent;
 import theRetrospect.potions.PlaceholderPotion;
-import theRetrospect.relics.BottledPlaceholderRelic;
-import theRetrospect.relics.DefaultClickableRelic;
-import theRetrospect.relics.PlaceholderRelic;
-import theRetrospect.relics.PlaceholderRelic2;
+import theRetrospect.relics.*;
 import theRetrospect.util.IDCheckDontTouchPls;
 import theRetrospect.util.TextureLoader;
 import theRetrospect.variables.DefaultCustomVariable;
@@ -231,6 +228,7 @@ public class RetrospectMod implements
         Gson coolG = new Gson(); // EY DON'T EDIT THIS
         //   String IDjson = Gdx.files.internal("IDCheckStringsDONT-EDIT-AT-ALL.json").readString(String.valueOf(StandardCharsets.UTF_8)); // i hate u Gdx.files
         InputStream in = RetrospectMod.class.getResourceAsStream("/IDCheckStringsDONT-EDIT-AT-ALL.json"); // DON'T EDIT THIS ETHER
+        assert in != null;
         IDCheckDontTouchPls EXCEPTION_STRINGS = coolG.fromJson(new InputStreamReader(in, StandardCharsets.UTF_8), IDCheckDontTouchPls.class); // OR THIS, DON'T EDIT IT
         logger.info("You are attempting to set your mod ID as: " + ID); // NO WHY
         if (ID.equals(EXCEPTION_STRINGS.DEFAULTID)) { // DO *NOT* CHANGE THIS ESPECIALLY, TO EDIT YOUR MOD ID, SCROLL UP JUST A LITTLE, IT'S JUST ABOVE
@@ -251,6 +249,7 @@ public class RetrospectMod implements
         Gson coolG = new Gson(); // NOPE DON'T EDIT THIS
         //   String IDjson = Gdx.files.internal("IDCheckStringsDONT-EDIT-AT-ALL.json").readString(String.valueOf(StandardCharsets.UTF_8)); // i still hate u btw Gdx.files
         InputStream in = RetrospectMod.class.getResourceAsStream("/IDCheckStringsDONT-EDIT-AT-ALL.json"); // DON'T EDIT THISSSSS
+        assert in != null;
         IDCheckDontTouchPls EXCEPTION_STRINGS = coolG.fromJson(new InputStreamReader(in, StandardCharsets.UTF_8), IDCheckDontTouchPls.class); // NAH, NO EDIT
         String packageName = RetrospectMod.class.getPackage().getName(); // STILL NO EDIT ZONE
         FileHandle resourcePathExists = Gdx.files.internal(getModID() + "Resources"); // PLEASE DON'T EDIT THINGS HERE, THANKS
@@ -389,9 +388,11 @@ public class RetrospectMod implements
         // in order to automatically differentiate which pool to add the relic too.
 
         // This adds a character specific relic. Only when you play with the mentioned color, will you get this relic.
+        BaseMod.addRelicToCustomPool(new AdaptiveShield(), TheRetrospect.Enums.RETROSPECT_CARD_VIOLET);
         BaseMod.addRelicToCustomPool(new PlaceholderRelic(), TheRetrospect.Enums.RETROSPECT_CARD_VIOLET);
         BaseMod.addRelicToCustomPool(new BottledPlaceholderRelic(), TheRetrospect.Enums.RETROSPECT_CARD_VIOLET);
         BaseMod.addRelicToCustomPool(new DefaultClickableRelic(), TheRetrospect.Enums.RETROSPECT_CARD_VIOLET);
+
 
         // This adds a relic to the Shared pool. Every character can find this relic.
         BaseMod.addRelic(new PlaceholderRelic2(), RelicType.SHARED);

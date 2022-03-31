@@ -1,4 +1,11 @@
 {
+  "theRetrospect:AdaptiveShield": {
+    "NAME": "Adaptive Shield",
+    "FLAVOR": "The impossible shield: lighter than feather, yet stronger than steel.",
+    "DESCRIPTIONS": [
+      "At the end of combat, increase your max HP by 1."
+    ]
+  },
   "theRetrospect:PlaceholderRelic": {
     "NAME": "Placeholder Energy Relic",
     "FLAVOR": "The snake is a friend.",

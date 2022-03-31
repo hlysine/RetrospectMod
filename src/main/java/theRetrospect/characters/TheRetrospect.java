@@ -28,6 +28,7 @@ import theRetrospect.cards.Defend_V;
 import theRetrospect.cards.Divert;
 import theRetrospect.cards.IntoTheVoid;
 import theRetrospect.cards.Strike_V;
+import theRetrospect.relics.AdaptiveShield;
 import theRetrospect.relics.DefaultClickableRelic;
 import theRetrospect.relics.PlaceholderRelic;
 import theRetrospect.relics.PlaceholderRelic2;
@@ -189,6 +190,11 @@ public class TheRetrospect extends AbstractPlayerWithMinions {
         retVal.add(Divert.ID);
         retVal.add(IntoTheVoid.ID);
 
+        UnlockTracker.markCardAsSeen(Strike_V.ID);
+        UnlockTracker.markCardAsSeen(Defend_V.ID);
+        UnlockTracker.markCardAsSeen(Divert.ID);
+        UnlockTracker.markCardAsSeen(IntoTheVoid.ID);
+
         return retVal;
     }
 
@@ -196,15 +202,11 @@ public class TheRetrospect extends AbstractPlayerWithMinions {
     public ArrayList<String> getStartingRelics() {
         ArrayList<String> retVal = new ArrayList<>();
 
-        retVal.add(PlaceholderRelic.ID);
-        retVal.add(PlaceholderRelic2.ID);
-        retVal.add(DefaultClickableRelic.ID);
+        retVal.add(AdaptiveShield.ID);
 
         // Mark relics as seen - makes it visible in the compendium immediately
         // If you don't have this it won't be visible in the compendium until you see them in game
-        UnlockTracker.markRelicAsSeen(PlaceholderRelic.ID);
-        UnlockTracker.markRelicAsSeen(PlaceholderRelic2.ID);
-        UnlockTracker.markRelicAsSeen(DefaultClickableRelic.ID);
+        UnlockTracker.markRelicAsSeen(AdaptiveShield.ID);
 
         return retVal;
     }
