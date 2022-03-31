@@ -7,14 +7,13 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.monsters.MonsterGroup;
 import theRetrospect.RetrospectMod;
 import theRetrospect.actions.CollapseTimelineAction;
-import theRetrospect.actions.ConstructTimelineAction;
 import theRetrospect.actions.TriggerTimelineReplayAction;
 import theRetrospect.minions.TimelineMinion;
 import theRetrospect.util.MinionUtils;
 
 import static theRetrospect.RetrospectMod.makeCardPath;
 
-public class IntoTheVoid extends AbstractTimelineCard {
+public class IntoTheVoid extends AbstractRetrospectCard {
 
     public static final String ID = RetrospectMod.makeID(IntoTheVoid.class.getSimpleName());
     private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
