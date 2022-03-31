@@ -95,6 +95,10 @@
     "DESCRIPTION": "Ethereal. NL At the start of your turn, add 1 theretrospect:Timer to a random theretrospect:timeline.",
     "UPGRADE_DESCRIPTION": "At the start of your turn, add 1 theretrospect:Timer to a random theretrospect:timeline."
   },
+  "theRetrospect:UnstableChronology": {
+    "NAME": "Unstable Chronology",
+    "DESCRIPTION": "Cost 1 less [E] for each time you take damage in this combat. theretrospect:Construct 1 theretrospect:timeline."
+  },
   "theRetrospect:DefaultCommonPower": {
     "NAME": "Hold Place",
     "DESCRIPTION": "Gain !M! theretrospect:Keyword.",
