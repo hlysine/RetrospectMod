@@ -1,7 +1,5 @@
 package theRetrospect.cards;
 
-import com.megacrit.cardcrawl.actions.common.DiscardAction;
-import com.megacrit.cardcrawl.actions.common.ExhaustAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.CardStrings;
@@ -32,13 +30,11 @@ public class Transmute extends AbstractRetrospectCard {
         super(ID, IMG, COST, TYPE, RARITY, TARGET);
     }
 
-    // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         addToBot(new TransmuteAction(this.upgraded));
     }
 
-    // Upgraded stats.
     @Override
     public void upgrade() {
         if (!this.upgraded) {

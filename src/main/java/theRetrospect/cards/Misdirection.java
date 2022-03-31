@@ -35,7 +35,6 @@ public class Misdirection extends AbstractTimelineCard {
         this.timelineCount = this.baseTimelineCount;
     }
 
-    // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         addToBot(new ConstructTimelineAction(healthCostPerTimeline));
@@ -49,7 +48,6 @@ public class Misdirection extends AbstractTimelineCard {
         }
     }
 
-    // Upgraded stats.
     @Override
     public void upgrade() {
         if (!this.upgraded) {

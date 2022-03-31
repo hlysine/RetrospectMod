@@ -21,13 +21,13 @@ public class Strike_V extends AbstractRetrospectCard {
     private static final CardType TYPE = CardType.ATTACK;
 
     private static final int COST = 1;
-    private static final int DAMAGE = 6;
+    private static final int BASE_DAMAGE = 6;
     private static final int UPGRADE_PLUS_DMG = 3;
 
     public Strike_V() {
         super(ID, IMG, COST, TYPE, RARITY, TARGET);
 
-        baseDamage = DAMAGE;
+        baseDamage = BASE_DAMAGE;
 
         this.tags.add(CardTags.STARTER_STRIKE);
         this.tags.add(CardTags.STRIKE);
@@ -35,8 +35,7 @@ public class Strike_V extends AbstractRetrospectCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        AbstractDungeon.actionManager.addToBottom(
-                new DamageAction(m, new DamageInfo(p, damage, damageTypeForTurn), AbstractGameAction.AttackEffect.SLASH_DIAGONAL));
+        addToBot(new DamageAction(m, new DamageInfo(p, damage, damageTypeForTurn), AbstractGameAction.AttackEffect.SLASH_DIAGONAL));
     }
 
     @Override

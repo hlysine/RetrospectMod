@@ -37,7 +37,6 @@ public class IntoTheVoid extends AbstractRetrospectCard {
         this.exhaust = true;
     }
 
-    // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         MonsterGroup minions = MinionUtils.getMinions(p);
@@ -50,7 +49,6 @@ public class IntoTheVoid extends AbstractRetrospectCard {
         }
     }
 
-    // Upgraded stats.
     @Override
     public void upgrade() {
         if (!this.upgraded) {
