@@ -23,46 +23,16 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import theRetrospect.cards.*;
 import theRetrospect.characters.TheRetrospect;
-import theRetrospect.events.IdentityCrisisEvent;
-import theRetrospect.potions.PlaceholderPotion;
 import theRetrospect.potions.TimelinePotion;
 import theRetrospect.relics.*;
 import theRetrospect.util.IDCheckDontTouchPls;
 import theRetrospect.util.TextureLoader;
-import theRetrospect.variables.DefaultCustomVariable;
-import theRetrospect.variables.DefaultSecondMagicNumber;
 import theRetrospect.variables.TimelineCountVariable;
 
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
 import java.util.Properties;
-
-//TODO: DON'T MASS RENAME/REFACTOR
-// Please don't just mass replace "theDefault" with "yourMod" everywhere.
-// It'll be a bigger pain for you. You only need to replace it in 4 places.
-// I comment those places below, under the place where you set your ID.
-
-//TODO: FIRST THINGS FIRST: RENAME YOUR PACKAGE AND ID NAMES FIRST-THING!!!
-// Right click the package (Open the project pane on the left. Folder with black dot on it. The name's at the very top) -> Refactor -> Rename, and name it whatever you wanna call your mod.
-// Scroll down in this file. Change the ID from "theDefault:" to "yourModName:" or whatever your heart desires (don't use spaces). Dw, you'll see it.
-// In the JSON strings (resources>localization>eng>[all them files] make sure they all go "yourModName:" rather than "theDefault", and change to "yourmodname" rather than "thedefault".
-// You can ctrl+R to replace in 1 file, or ctrl+shift+r to mass replace in specific files/directories, and press alt+c to make the replace case sensitive (Be careful.).
-// Start with the DefaultCommon cards - they are the most commented cards since I don't feel it's necessary to put identical comments on every card.
-// After you sorta get the hang of how to make cards, check out the card template which will make your life easier
-
-/*
- * With that out of the way:
- * Welcome to this super over-commented Slay the Spire modding base.
- * Use it to make your own mod of any type. - If you want to add any standard in-game content (character,
- * cards, relics), this is a good starting point.
- * It features 1 character with a minimal set of things: 1 card of each type, 1 debuff, couple of relics, etc.
- * If you're new to modding, you basically *need* the BaseMod wiki for whatever you wish to add
- * https://github.com/daviscook477/BaseMod/wiki - work your way through with this base.
- * Feel free to use this in any way you like, of course. MIT licence applies. Happy modding!
- *
- * And pls. Read the comments.
- */
 
 @SpireInitializer
 public class RetrospectMod implements
@@ -161,21 +131,6 @@ public class RetrospectMod implements
         BaseMod.subscribe(this);
 
         setModID("theRetrospect");
-        // cool
-        // TODO: NOW READ THIS!!!!!!!!!!!!!!!:
-
-        // 1. Go to your resources folder in the project panel, and refactor> rename theDefaultResources to
-        // yourModIDResources.
-
-        // 2. Click on the localization > eng folder and press ctrl+shift+r, then select "Directory" (rather than in Project) and press alt+c (or mark the match case option)
-        // replace all instances of theDefault with yourModID, and all instances of thedefault with yourmodid (the same but all lowercase).
-        // Because your mod ID isn't the default. Your cards (and everything else) should have Your mod id. Not mine.
-        // It's important that the mod ID prefix for keywords used in the cards descriptions is lowercase!
-
-        // 3. Scroll down (or search for "ADD CARDS") till you reach the ADD CARDS section, and follow the TODO instructions
-
-        // 4. FINALLY and most importantly: Scroll up a bit. You may have noticed the image locations above don't use getModID()
-        // Change their locations to reflect your actual ID rather than theDefault. They get loaded before getID is a thing.
 
         logger.info("Done subscribing");
 
@@ -342,13 +297,7 @@ public class RetrospectMod implements
 
         // Create a new event builder
         // Since this is a builder these method calls (outside of create()) can be skipped/added as necessary
-        AddEventParams eventParams = new AddEventParams.Builder(IdentityCrisisEvent.ID, IdentityCrisisEvent.class) // for this specific event
-                .dungeonID(TheCity.ID) // The dungeon (act) this event will appear in
-                .playerClass(TheRetrospect.Enums.THE_RETROSPECT) // Character specific event
-                .create();
 
-        // Add the event
-        BaseMod.addEvent(eventParams);
 
         // =============== /EVENTS/ =================
         logger.info("Done loading badge Image and mod options");
@@ -394,18 +343,12 @@ public class RetrospectMod implements
         BaseMod.addRelicToCustomPool(new AdaptiveShield(), TheRetrospect.Enums.RETROSPECT_CARD_VIOLET);
         BaseMod.addRelicToCustomPool(new AntiqueStopwatch(), TheRetrospect.Enums.RETROSPECT_CARD_VIOLET);
         BaseMod.addRelicToCustomPool(new PerpetualHourglass(), TheRetrospect.Enums.RETROSPECT_CARD_VIOLET);
-        BaseMod.addRelicToCustomPool(new PlaceholderRelic(), TheRetrospect.Enums.RETROSPECT_CARD_VIOLET);
-        BaseMod.addRelicToCustomPool(new BottledPlaceholderRelic(), TheRetrospect.Enums.RETROSPECT_CARD_VIOLET);
-        BaseMod.addRelicToCustomPool(new DefaultClickableRelic(), TheRetrospect.Enums.RETROSPECT_CARD_VIOLET);
-
-
-        // This adds a relic to the Shared pool. Every character can find this relic.
-        BaseMod.addRelic(new PlaceholderRelic2(), RelicType.SHARED);
 
         // Mark relics as seen - makes it visible in the compendium immediately
         // If you don't have this it won't be visible in the compendium until you see them in game
-        // (the others are all starters so they're marked as seen in the character file)
-        UnlockTracker.markRelicAsSeen(BottledPlaceholderRelic.ID);
+        // (the others are all starters, so they're marked as seen in the character file)
+        UnlockTracker.markRelicAsSeen(AdaptiveShield.ID);
+
         logger.info("Done adding relics!");
     }
 
@@ -422,8 +365,6 @@ public class RetrospectMod implements
         // Add the Custom Dynamic Variables
         logger.info("Add variables");
         // Add the Custom Dynamic variables
-        BaseMod.addDynamicVariable(new DefaultCustomVariable());
-        BaseMod.addDynamicVariable(new DefaultSecondMagicNumber());
         BaseMod.addDynamicVariable(new TimelineCountVariable());
 
         logger.info("Adding cards");

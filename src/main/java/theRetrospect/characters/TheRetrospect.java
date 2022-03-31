@@ -29,9 +29,6 @@ import theRetrospect.cards.Divert;
 import theRetrospect.cards.IntoTheVoid;
 import theRetrospect.cards.Strike_V;
 import theRetrospect.relics.AdaptiveShield;
-import theRetrospect.relics.DefaultClickableRelic;
-import theRetrospect.relics.PlaceholderRelic;
-import theRetrospect.relics.PlaceholderRelic2;
 
 import java.util.ArrayList;
 
