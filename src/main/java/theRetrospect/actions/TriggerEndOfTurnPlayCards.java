@@ -7,7 +7,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.monsters.MonsterGroup;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import theRetrospect.minions.AbstractMinionWithCards;
-import theRetrospect.powers.EndOfTurnCardPlaying;
+import theRetrospect.util.EndOfTurnCardPlaying;
 import theRetrospect.util.MinionUtils;
 
 public class TriggerEndOfTurnPlayCards extends AbstractGameAction {

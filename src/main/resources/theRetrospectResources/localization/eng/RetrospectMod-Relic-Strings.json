@@ -13,6 +13,13 @@
       "At the end of your first turn, play 1 #yDivert."
     ]
   },
+  "theRetrospect:PerpetualHourglass": {
+    "NAME": "Perpetual Hourglass",
+    "FLAVOR": "An hourglass with a top that never depletes and a bottom that never fill up. How odd.",
+    "DESCRIPTIONS": [
+      "When a timeline #ycollapses, gain [E] next turn."
+    ]
+  },
   "theRetrospect:PlaceholderRelic": {
     "NAME": "Placeholder Energy Relic",
     "FLAVOR": "The snake is a friend.",

@@ -1,4 +1,4 @@
-package theRetrospect.powers;
+package theRetrospect.util;
 
 import com.megacrit.cardcrawl.powers.AbstractPower;
 

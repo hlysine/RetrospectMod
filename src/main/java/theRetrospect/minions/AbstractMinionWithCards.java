@@ -5,7 +5,7 @@ import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.helpers.MathHelper;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import kobting.friendlyminions.monsters.AbstractFriendlyMonster;
-import theRetrospect.powers.EndOfTurnCardPlaying;
+import theRetrospect.util.EndOfTurnCardPlaying;
 import theRetrospect.util.HoverableCardStack;
 
 import java.util.ArrayList;

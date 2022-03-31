@@ -390,6 +390,7 @@ public class RetrospectMod implements
         // This adds a character specific relic. Only when you play with the mentioned color, will you get this relic.
         BaseMod.addRelicToCustomPool(new AdaptiveShield(), TheRetrospect.Enums.RETROSPECT_CARD_VIOLET);
         BaseMod.addRelicToCustomPool(new AntiqueStopwatch(), TheRetrospect.Enums.RETROSPECT_CARD_VIOLET);
+        BaseMod.addRelicToCustomPool(new PerpetualHourglass(), TheRetrospect.Enums.RETROSPECT_CARD_VIOLET);
         BaseMod.addRelicToCustomPool(new PlaceholderRelic(), TheRetrospect.Enums.RETROSPECT_CARD_VIOLET);
         BaseMod.addRelicToCustomPool(new BottledPlaceholderRelic(), TheRetrospect.Enums.RETROSPECT_CARD_VIOLET);
         BaseMod.addRelicToCustomPool(new DefaultClickableRelic(), TheRetrospect.Enums.RETROSPECT_CARD_VIOLET);

@@ -28,6 +28,7 @@ public class AntiqueStopwatch extends CustomRelic {
 
     @Override
     public void atBattleStart() {
+        flash();
         AbstractPlayer player = AbstractDungeon.player;
         addToBot(new ApplyPowerAction(player, player, new AntiqueStopwatchPower(player, 1)));
     }

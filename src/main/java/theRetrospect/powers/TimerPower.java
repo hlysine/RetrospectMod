@@ -15,6 +15,7 @@ import theRetrospect.actions.CollapseTimelineAction;
 import theRetrospect.actions.NonTriggeringHealthChange;
 import theRetrospect.actions.QueueCardIntentAction;
 import theRetrospect.minions.AbstractMinionWithCards;
+import theRetrospect.util.EndOfTurnCardPlaying;
 import theRetrospect.util.HoverableCardStack;
 import theRetrospect.util.TextureLoader;
 

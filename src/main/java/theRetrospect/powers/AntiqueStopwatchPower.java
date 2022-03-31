@@ -13,6 +13,7 @@ import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import theRetrospect.RetrospectMod;
 import theRetrospect.cards.Divert;
+import theRetrospect.util.EndOfTurnCardPlaying;
 import theRetrospect.util.TextureLoader;
 
 public class AntiqueStopwatchPower extends AbstractPower implements CloneablePowerInterface, EndOfTurnCardPlaying {
