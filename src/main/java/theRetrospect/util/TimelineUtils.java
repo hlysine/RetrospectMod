@@ -25,9 +25,11 @@ public class TimelineUtils {
         }
 
         float startX = midX + width / 2;
-        for (AbstractMinionWithCards minion : minions) {
+        for (int i = 0; i < minions.size(); i++) {
+            AbstractMinionWithCards minion = minions.get(i);
+
             minion.target_x = startX;
-            minion.target_y = y;
+            minion.target_y = y + player.hb_h * (i % 2 == 0 ? 0.1f : -0.1f);
 
             startX -= minion.hb_w + gap;
         }
