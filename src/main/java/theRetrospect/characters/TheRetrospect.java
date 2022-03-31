@@ -1,5 +1,6 @@
 package theRetrospect.characters;
 
+import basemod.abstracts.CustomEnergyOrb;
 import basemod.animations.SpriterAnimation;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
@@ -106,7 +107,10 @@ public class TheRetrospect extends AbstractPlayerWithMinions {
 
     public TheRetrospect(String name, PlayerClass setClass) {
         super(name, setClass, orbTextures,
-                "theRetrospectResources/images/char/retrospectCharacter/energyOrb/vfx.png", null,
+                "theRetrospectResources/images/char/retrospectCharacter/energyOrb/vfx.png",
+                new float[]{
+                        -20.0F, 20.0F, -40.0F, 40.0F, 0
+                },
                 new SpriterAnimation(
                         "theRetrospectResources/images/char/retrospectCharacter/Spriter/theRetrospectAnimation.scml"));
 
