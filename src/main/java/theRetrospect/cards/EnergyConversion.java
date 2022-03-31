@@ -1,21 +1,20 @@
 package theRetrospect.cards;
 
-import basemod.interfaces.XCostModifier;
-import basemod.patches.com.megacrit.cardcrawl.characters.AbstractPlayer.ModifyXCostPatch;
+import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
+import com.megacrit.cardcrawl.cards.tempCards.Miracle;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.ui.panels.EnergyPanel;
 import theRetrospect.RetrospectMod;
-import theRetrospect.actions.TriggerTimelineReplayAction;
 import theRetrospect.util.CardUtils;
 
 import static theRetrospect.RetrospectMod.makeCardPath;
 
-public class TemporalAnomaly extends AbstractRetrospectCard {
+public class EnergyConversion extends AbstractRetrospectCard {
 
-    public static final String ID = RetrospectMod.makeID(TemporalAnomaly.class.getSimpleName());
+    public static final String ID = RetrospectMod.makeID(EnergyConversion.class.getSimpleName());
     private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
 
     public static final String IMG = makeCardPath("Skill.png");
@@ -30,8 +29,10 @@ public class TemporalAnomaly extends AbstractRetrospectCard {
 
     private static final int COST = -1;
 
-    public TemporalAnomaly() {
+    public EnergyConversion() {
         super(ID, IMG, COST, TYPE, RARITY, TARGET);
+
+        this.cardsToPreview = new Miracle();
     }
 
     @Override
@@ -42,9 +43,7 @@ public class TemporalAnomaly extends AbstractRetrospectCard {
             effect += 1;
 
         if (effect > 0) {
-            for (int i = 0; i < effect; i++) {
-                addToBot(new TriggerTimelineReplayAction(null, true));
-            }
+            addToTop(new MakeTempCardInHandAction(this.cardsToPreview.makeStatEquivalentCopy(), effect));
 
             if (!this.freeToPlayOnce) {
                 p.energy.use(EnergyPanel.totalCount);

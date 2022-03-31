@@ -81,6 +81,11 @@
     "NAME": "Déjà vu",
     "DESCRIPTION": "Gain !B! Block. Permanently increase ALL Déjà vu's Block by !M!. Exhaust."
   },
+  "theRetrospect:EnergyConversion": {
+    "NAME": "Energy Conversion",
+    "DESCRIPTION": "Add X *Miracles into your hand.",
+    "UPGRADE_DESCRIPTION": "Add X+1 Miracles into your hand."
+  },
   "theRetrospect:BreakneckForm": {
     "NAME": "Breakneck Form",
     "DESCRIPTION": "Ethereal. NL At the start of your turn, add 1 theretrospect:Timer to a random theretrospect:timeline.",

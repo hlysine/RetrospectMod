@@ -1,6 +1,8 @@
 package theRetrospect.util;
 
 import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.ui.panels.EnergyPanel;
 import theRetrospect.cards.AbstractRetrospectCard;
 import theRetrospect.patches.CardAddReplayFieldPatch;
 
@@ -55,5 +57,19 @@ public class CardUtils {
         newCard.target_y = newCard.current_y;
         newCard.applyPowers();
         return newCard;
+    }
+
+    public static int calculateXCostEffect(AbstractCard card) {
+        int effect = EnergyPanel.totalCount;
+        if (card.energyOnUse != -1) {
+            effect = card.energyOnUse;
+        }
+
+        if (AbstractDungeon.player.hasRelic("Chemical X")) {
+            effect += 2;
+            AbstractDungeon.player.getRelic("Chemical X").flash();
+        }
+
+        return effect;
     }
 }
