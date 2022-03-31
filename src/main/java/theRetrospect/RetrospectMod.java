@@ -25,6 +25,7 @@ import theRetrospect.cards.*;
 import theRetrospect.characters.TheRetrospect;
 import theRetrospect.events.IdentityCrisisEvent;
 import theRetrospect.potions.PlaceholderPotion;
+import theRetrospect.potions.TimelinePotion;
 import theRetrospect.relics.*;
 import theRetrospect.util.IDCheckDontTouchPls;
 import theRetrospect.util.TextureLoader;
@@ -93,9 +94,6 @@ public class RetrospectMod implements
     public static final Color RETROSPECT_VIOLET = CardHelper.getColor(102, 27, 255);
 
     // Potion Colors in RGB
-    public static final Color PLACEHOLDER_POTION_LIQUID = CardHelper.getColor(209.0f, 53.0f, 18.0f); // Orange-ish Red
-    public static final Color PLACEHOLDER_POTION_HYBRID = CardHelper.getColor(255.0f, 230.0f, 230.0f); // Near White
-    public static final Color PLACEHOLDER_POTION_SPOTS = CardHelper.getColor(100.0f, 25.0f, 10.0f); // Super Dark Red/Brown
 
     // Card backgrounds - The actual rectangular card.
     private static final String CARD_BG_ATTACK = "theRetrospectResources/images/512/bg_attack_retrospect_purple.png";
@@ -366,7 +364,12 @@ public class RetrospectMod implements
         // Class Specific Potion. If you want your potion to not be class-specific,
         // just remove the player class at the end (in this case the "TheDefaultEnum.THE_DEFAULT".
         // Remember, you can press ctrl+P inside parentheses like addPotions)
-        BaseMod.addPotion(PlaceholderPotion.class, PLACEHOLDER_POTION_LIQUID, PLACEHOLDER_POTION_HYBRID, PLACEHOLDER_POTION_SPOTS, PlaceholderPotion.POTION_ID, TheRetrospect.Enums.THE_RETROSPECT);
+        BaseMod.addPotion(TimelinePotion.class,
+                TimelinePotion.LIQUID_COLOR,
+                TimelinePotion.HYBRID_COLOR,
+                TimelinePotion.SPOTS_COLOR,
+                TimelinePotion.POTION_ID,
+                TheRetrospect.Enums.THE_RETROSPECT);
 
         logger.info("Done editing potions");
     }

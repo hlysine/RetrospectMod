@@ -1,6 +1,16 @@
 {
-"theRetrospect:PlaceholderPotion": {
-        "NAME": "Placeholder Potion",
-        "DESCRIPTIONS": ["Gain ", " At the end of your turn, lose ", " Strength."]
-}
+  "theRetrospect:TimelinePotion": {
+    "NAME": "Timeline Potion",
+    "DESCRIPTIONS": [
+      "#yConstruct 1 #ytimeline."
+    ]
+  },
+  "theRetrospect:PlaceholderPotion": {
+    "NAME": "Placeholder Potion",
+    "DESCRIPTIONS": [
+      "Gain ",
+      " At the end of your turn, lose ",
+      " Strength."
+    ]
+  }
 }
