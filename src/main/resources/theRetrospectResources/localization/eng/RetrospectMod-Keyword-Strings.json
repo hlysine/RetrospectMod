@@ -42,5 +42,12 @@
       "frozen"
     ],
     "DESCRIPTION": "You cannot play any cards, but your #ytimelines can."
+  },
+  {
+    "NAMES": [
+      "timer",
+      "timers"
+    ],
+    "DESCRIPTION": "Replay cards at the end of your turn. NL #yCollapse the #ytimeline when all cards are replayed."
   }
 ]

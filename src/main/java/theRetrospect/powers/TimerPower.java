@@ -44,7 +44,10 @@ public class TimerPower extends AbstractPower implements CloneablePowerInterface
 
         this.region128 = new TextureAtlas.AtlasRegion(tex84, 0, 0, 84, 84);
         this.region48 = new TextureAtlas.AtlasRegion(tex32, 0, 0, 32, 32);
+    }
 
+    @Override
+    public void onInitialApplication() {
         updateDescription();
         updateCardIntents();
     }
@@ -61,8 +64,7 @@ public class TimerPower extends AbstractPower implements CloneablePowerInterface
     public void endOfTurnPlayCards() {
         for (int i = 0; i < amount; i++) {
             if (minion.cards.size() <= 0) break;
-            AbstractCard cardToPlay = minion.cards.get(0);
-            minion.cards.remove(0);
+            AbstractCard cardToPlay = minion.cards.remove(0);
             replayCard(cardToPlay, minion.cardStack);
         }
         updateDescription();
@@ -74,6 +76,13 @@ public class TimerPower extends AbstractPower implements CloneablePowerInterface
 
     private void replayCard(AbstractCard cardToPlay, HoverableCardStack cardStack) {
         AbstractDungeon.actionManager.addToBottom(new QueueCardIntentAction(cardToPlay, cardStack, true));
+    }
+
+    @Override
+    public void stackPower(int stackAmount) {
+        super.stackPower(stackAmount);
+        updateDescription();
+        updateCardIntents();
     }
 
     @Override

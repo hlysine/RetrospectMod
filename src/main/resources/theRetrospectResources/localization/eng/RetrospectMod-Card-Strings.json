@@ -81,6 +81,11 @@
     "NAME": "Déjà vu",
     "DESCRIPTION": "Gain !B! Block. Permanently increase ALL Déjà vu's Block by !M!. Exhaust."
   },
+  "theRetrospect:BreakneckForm": {
+    "NAME": "Breakneck Form",
+    "DESCRIPTION": "Ethereal. NL At the start of your turn, add 1 theretrospect:Timer to a random theretrospect:timeline.",
+    "UPGRADE_DESCRIPTION": "At the start of your turn, add 1 theretrospect:Timer to a random theretrospect:timeline."
+  },
   "theRetrospect:DefaultCommonPower": {
     "NAME": "Hold Place",
     "DESCRIPTION": "Gain !M! theretrospect:Keyword.",
