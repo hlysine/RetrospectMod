@@ -5,7 +5,7 @@ import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.helpers.MathHelper;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import kobting.friendlyminions.monsters.AbstractFriendlyMonster;
-import theRetrospect.powers.EndOfTurnCardPlayingPower;
+import theRetrospect.powers.EndOfTurnCardPlaying;
 import theRetrospect.util.HoverableCardStack;
 
 import java.util.ArrayList;
@@ -52,8 +52,8 @@ public class AbstractMinionWithCards extends AbstractFriendlyMonster {
 
     public void endOfTurnPlayCards() {
         for (AbstractPower power : powers) {
-            if (power instanceof EndOfTurnCardPlayingPower) {
-                EndOfTurnCardPlayingPower cardPlayingPower = (EndOfTurnCardPlayingPower) power;
+            if (power instanceof EndOfTurnCardPlaying) {
+                EndOfTurnCardPlaying cardPlayingPower = (EndOfTurnCardPlaying) power;
                 cardPlayingPower.endOfTurnPlayCards();
             }
         }

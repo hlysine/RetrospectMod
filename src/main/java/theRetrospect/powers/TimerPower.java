@@ -15,11 +15,10 @@ import theRetrospect.actions.CollapseTimelineAction;
 import theRetrospect.actions.NonTriggeringHealthChange;
 import theRetrospect.actions.QueueCardIntentAction;
 import theRetrospect.minions.AbstractMinionWithCards;
-import theRetrospect.util.CardUtils;
 import theRetrospect.util.HoverableCardStack;
 import theRetrospect.util.TextureLoader;
 
-public class TimerPower extends AbstractPower implements CloneablePowerInterface, EndOfTurnCardPlayingPower {
+public class TimerPower extends AbstractPower implements CloneablePowerInterface, EndOfTurnCardPlaying {
     public AbstractMinionWithCards minion;
 
     public static final String POWER_ID = RetrospectMod.makeID(TimerPower.class.getSimpleName());
@@ -75,7 +74,7 @@ public class TimerPower extends AbstractPower implements CloneablePowerInterface
     }
 
     private void replayCard(AbstractCard cardToPlay, HoverableCardStack cardStack) {
-        AbstractDungeon.actionManager.addToBottom(new QueueCardIntentAction(cardToPlay, cardStack, true));
+        addToBot(new QueueCardIntentAction(cardToPlay, cardStack, true));
     }
 
     @Override

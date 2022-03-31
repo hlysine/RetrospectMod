@@ -33,6 +33,13 @@
       " #yTimer to a random #ytimeline."
     ]
   },
+  "theRetrospect:AntiqueStopwatchPower": {
+    "NAME": "Antique Stopwatch",
+    "DESCRIPTIONS": [
+      "At the end of your turn, play #b",
+      " #yDivert."
+    ]
+  },
   "theRetrospect:CommonPower": {
     "NAME": "Placeholder Power",
     "DESCRIPTIONS": [
