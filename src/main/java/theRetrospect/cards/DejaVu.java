@@ -20,7 +20,7 @@ public class DejaVu extends AbstractRetrospectCard {
 
     private static final int COST = 1;
     private static final int BASE_BLOCK = 1;
-    private static final int BLOCK_INCREASE = 2;
+    private static final int BLOCK_INCREASE = 1;
     private static final int UPGRADE_BLOCK_INCREASE = 1;
 
     public DejaVu() {
