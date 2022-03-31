@@ -86,6 +86,10 @@
     "DESCRIPTION": "Add X *Miracles into your hand.",
     "UPGRADE_DESCRIPTION": "Add X+1 Miracles into your hand."
   },
+  "theRetrospect:RewriteHistory": {
+    "NAME": "Rewrite History",
+    "DESCRIPTION": "Deal damage equal to !M! times the number of cards in discard pile. Shuffle discard pile back to draw pile. NL Exhaust."
+  },
   "theRetrospect:BreakneckForm": {
     "NAME": "Breakneck Form",
     "DESCRIPTION": "Ethereal. NL At the start of your turn, add 1 theretrospect:Timer to a random theretrospect:timeline.",
