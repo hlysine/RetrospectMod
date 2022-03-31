@@ -47,6 +47,10 @@
     "NAME": "Blink",
     "DESCRIPTION": "Deal !D! damage to ALL enemies."
   },
+  "theRetrospect:Empty": {
+    "NAME": "Empty",
+    "DESCRIPTION": "Exhaust."
+  },
   "theRetrospect:DefaultCommonPower": {
     "NAME": "Hold Place",
     "DESCRIPTION": "Gain !M! theretrospect:Keyword.",
