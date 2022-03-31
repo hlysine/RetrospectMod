@@ -26,8 +26,7 @@ public class Strike_V extends AbstractRetrospectCard {
     public Strike_V() {
         super(ID, IMG, COST, TYPE, RARITY, TARGET);
 
-        baseDamage = BASE_DAMAGE;
-        damage = baseDamage;
+        damage = baseDamage = BASE_DAMAGE;
 
         this.tags.add(CardTags.STARTER_STRIKE);
         this.tags.add(CardTags.STRIKE);

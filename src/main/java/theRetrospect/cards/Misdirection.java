@@ -31,8 +31,7 @@ public class Misdirection extends AbstractTimelineCard {
     public Misdirection() {
         super(ID, IMG, BASE_COST, TYPE, RARITY, TARGET);
 
-        this.baseTimelineCount = 1;
-        this.timelineCount = this.baseTimelineCount;
+        timelineCount = baseTimelineCount = 1;
     }
 
     @Override

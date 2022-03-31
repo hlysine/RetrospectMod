@@ -21,7 +21,7 @@ public class Empty extends AbstractRetrospectCard {
     public Empty() {
         super(ID, IMG, BASE_COST, TYPE, RARITY, TARGET);
 
-        exhaust = true;
+        this.exhaust = true;
     }
 
     @Override

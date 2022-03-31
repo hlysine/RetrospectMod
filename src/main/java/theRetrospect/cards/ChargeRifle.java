@@ -29,10 +29,8 @@ public class ChargeRifle extends AbstractRetrospectCard {
     public ChargeRifle() {
         super(ID, IMG, COST, TYPE, RARITY, TARGET);
 
-        baseDamage = BASE_DAMAGE;
-        damage = baseDamage;
-        baseMagicNumber = DAMAGE_INCREASE;
-        magicNumber = baseMagicNumber;
+        damage = baseDamage = BASE_DAMAGE;
+        magicNumber = baseMagicNumber = DAMAGE_INCREASE;
     }
 
     @Override

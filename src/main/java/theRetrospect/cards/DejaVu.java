@@ -26,11 +26,8 @@ public class DejaVu extends AbstractRetrospectCard {
     public DejaVu() {
         super(ID, IMG, COST, TYPE, RARITY, TARGET);
 
-        this.misc = BASE_BLOCK;
-        this.baseBlock = this.misc;
-        this.block = this.baseBlock;
-        this.baseMagicNumber = BLOCK_INCREASE;
-        this.magicNumber = this.baseMagicNumber;
+        block = baseBlock = misc = BASE_BLOCK;
+        magicNumber = baseMagicNumber = BLOCK_INCREASE;
         this.exhaust = true;
     }
 

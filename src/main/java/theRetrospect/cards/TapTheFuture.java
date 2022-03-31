@@ -38,8 +38,7 @@ public class TapTheFuture extends AbstractRetrospectCard {
     public TapTheFuture() {
         super(ID, IMG, COST, TYPE, RARITY, TARGET);
 
-        this.baseMagicNumber = ENERGY_GAIN;
-        this.magicNumber = baseMagicNumber;
+        magicNumber = baseMagicNumber = ENERGY_GAIN;
         this.cardsToPreview = new Empty();
     }
 

@@ -28,9 +28,8 @@ public class Harvest extends AbstractRetrospectCard {
     public Harvest() {
         super(ID, IMG, COST, TYPE, RARITY, TARGET);
 
-        baseDamage = BASE_DAMAGE;
-        damage = baseDamage;
-        isMultiDamage = true;
+        damage = baseDamage = BASE_DAMAGE;
+        this.isMultiDamage = true;
 
         this.tags.add(CardTags.HEALING);
     }

@@ -30,8 +30,7 @@ public class Divert extends AbstractTimelineCard {
         super(ID, IMG, COST, TYPE, RARITY, TARGET);
 
         this.isEthereal = true;
-        this.baseTimelineCount = 1;
-        this.timelineCount = this.baseTimelineCount;
+        timelineCount = baseTimelineCount = 1;
     }
 
     @Override

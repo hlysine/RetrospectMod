@@ -27,10 +27,8 @@ public class AlternativeReality extends AbstractRetrospectCard {
     public AlternativeReality() {
         super(ID, IMG, COST, TYPE, RARITY, TARGET);
 
-        baseBlock = BASE_BLOCK;
-        block = baseBlock;
-        baseMagicNumber = BASE_CARD_DRAW;
-        magicNumber = baseMagicNumber;
+        block = baseBlock = BASE_BLOCK;
+        magicNumber = baseMagicNumber = BASE_CARD_DRAW;
     }
 
     @Override

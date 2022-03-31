@@ -27,8 +27,7 @@ public class Concurrency extends AbstractRetrospectCard {
     public Concurrency() {
         super(ID, IMG, COST, TYPE, RARITY, TARGET);
 
-        baseDamage = BASE_DAMAGE;
-        damage = baseDamage;
+        damage = baseDamage = BASE_DAMAGE;
     }
 
     @Override

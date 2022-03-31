@@ -25,8 +25,7 @@ public class Defend_V extends AbstractRetrospectCard {
     public Defend_V() {
         super(ID, IMG, COST, TYPE, RARITY, TARGET);
 
-        baseBlock = BASE_BLOCK;
-        block = baseBlock;
+        block = baseBlock = BASE_BLOCK;
 
         this.tags.add(CardTags.STARTER_DEFEND);
     }

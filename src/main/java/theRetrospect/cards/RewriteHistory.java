@@ -30,8 +30,7 @@ public class RewriteHistory extends AbstractRetrospectCard {
     public RewriteHistory() {
         super(ID, IMG, COST, TYPE, RARITY, TARGET);
 
-        baseMagicNumber = BASE_MULTIPLIER;
-        magicNumber = baseMagicNumber;
+        magicNumber = baseMagicNumber = BASE_MULTIPLIER;
     }
 
     @Override

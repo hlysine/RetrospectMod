@@ -34,10 +34,8 @@ public class Overcore extends AbstractTimelineCard {
     public Overcore() {
         super(ID, IMG, BASE_COST, TYPE, RARITY, TARGET);
 
-        this.baseTimelineCount = BASE_TIMELINE_COUNT;
-        this.timelineCount = this.baseTimelineCount;
-        this.baseMagicNumber = BASE_FROZEN_COUNT;
-        this.magicNumber = this.baseMagicNumber;
+        timelineCount = baseTimelineCount = BASE_TIMELINE_COUNT;
+        magicNumber = baseMagicNumber = BASE_FROZEN_COUNT;
     }
 
     @Override
