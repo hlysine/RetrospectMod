@@ -68,6 +68,11 @@
     "NAME": "Harvest",
     "DESCRIPTION": "For each timeline you have, deal !D! damage to ALL enemies. Heal HP equal to unblocked damage."
   },
+  "theRetrospect:TemporalAnomaly": {
+    "NAME": "Temporal Anomaly",
+    "DESCRIPTION": "Randomly replay X timelines.",
+    "UPGRADE_DESCRIPTION": "Randomly replay X+1 timelines."
+  },
   "theRetrospect:DefaultCommonPower": {
     "NAME": "Hold Place",
     "DESCRIPTION": "Gain !M! theretrospect:Keyword.",

@@ -4,18 +4,15 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.monsters.MonsterGroup;
+import com.megacrit.cardcrawl.ui.panels.EnergyPanel;
 import theRetrospect.RetrospectMod;
-import theRetrospect.actions.CollapseTimelineAction;
 import theRetrospect.actions.TriggerTimelineReplayAction;
-import theRetrospect.minions.TimelineMinion;
-import theRetrospect.util.MinionUtils;
 
 import static theRetrospect.RetrospectMod.makeCardPath;
 
-public class IntoTheVoid extends AbstractRetrospectCard {
+public class TemporalAnomaly extends AbstractTimelineCard {
 
-    public static final String ID = RetrospectMod.makeID(IntoTheVoid.class.getSimpleName());
+    public static final String ID = RetrospectMod.makeID(TemporalAnomaly.class.getSimpleName());
     private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
 
     public static final String IMG = makeCardPath("Skill.png");
@@ -24,27 +21,38 @@ public class IntoTheVoid extends AbstractRetrospectCard {
     public static final String DESCRIPTION = cardStrings.DESCRIPTION;
 
 
-    private static final CardRarity RARITY = CardRarity.BASIC;
+    private static final CardRarity RARITY = CardRarity.UNCOMMON;
     private static final CardTarget TARGET = CardTarget.SELF;
     private static final CardType TYPE = CardType.SKILL;
 
-    private static final int COST = 1;
+    private static final int COST = -1;
 
-    public IntoTheVoid() {
+    public TemporalAnomaly() {
         super(ID, IMG, COST, TYPE, RARITY, TARGET);
-
-        this.selfRetain = true;
-        this.exhaust = true;
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        MonsterGroup minions = MinionUtils.getMinions(p);
-        for (AbstractMonster monster : minions.monsters) {
-            if (monster instanceof TimelineMinion) {
-                TimelineMinion minion = (TimelineMinion) monster;
-                addToBot(new TriggerTimelineReplayAction(minion, false));
-                addToBot(new CollapseTimelineAction(minion));
+        int effect = EnergyPanel.totalCount;
+        if (this.energyOnUse != -1) {
+            effect = this.energyOnUse;
+        }
+
+        if (p.hasRelic("Chemical X")) {
+            effect += 2;
+            p.getRelic("Chemical X").flash();
+        }
+
+        if (this.upgraded)
+            effect += 1;
+
+        if (effect > 0) {
+            for (int i = 0; i < effect; i++) {
+                addToBot(new TriggerTimelineReplayAction(null, true));
+            }
+
+            if (!this.freeToPlayOnce) {
+                p.energy.use(EnergyPanel.totalCount);
             }
         }
     }
@@ -53,7 +61,6 @@ public class IntoTheVoid extends AbstractRetrospectCard {
     public void upgrade() {
         if (!this.upgraded) {
             this.upgradeName();
-            this.isInnate = true;
             this.rawDescription = cardStrings.UPGRADE_DESCRIPTION;
             this.initializeDescription();
         }
