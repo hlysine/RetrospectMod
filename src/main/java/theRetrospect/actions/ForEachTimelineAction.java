@@ -1,22 +1,19 @@
 package theRetrospect.actions;
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
-import com.megacrit.cardcrawl.actions.common.DamageAction;
-import com.megacrit.cardcrawl.cards.DamageInfo;
-import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.monsters.MonsterGroup;
 import theRetrospect.minions.TimelineMinion;
 import theRetrospect.util.MinionUtils;
 
-public class ConcurrencyAction extends AbstractGameAction {
-    private final DamageInfo info;
-    private final AbstractCreature target;
+import java.util.function.Consumer;
 
-    public ConcurrencyAction(AbstractCreature m, DamageInfo info) {
-        this.info = info;
-        this.target = m;
+public class ForEachTimelineAction extends AbstractGameAction {
+    private final Consumer<TimelineMinion> action;
+
+    public ForEachTimelineAction(Consumer<TimelineMinion> action) {
+        this.action = action;
     }
 
     @Override
@@ -24,7 +21,7 @@ public class ConcurrencyAction extends AbstractGameAction {
         MonsterGroup minions = MinionUtils.getMinions(AbstractDungeon.player);
         for (AbstractMonster monster : minions.monsters) {
             if (monster instanceof TimelineMinion) {
-                addToTop(new DamageAction(this.target, this.info, AbstractGameAction.AttackEffect.BLUNT_LIGHT, true));
+                action.accept((TimelineMinion) monster);
             }
         }
 

@@ -64,6 +64,10 @@
     "NAME": "Alternative Reality",
     "DESCRIPTION": "If you have an odd number of cards in your draw pile, gain !B! Block. Otherwise, draw !M! cards."
   },
+  "theRetrospect:Harvest": {
+    "NAME": "Harvest",
+    "DESCRIPTION": "For each timeline you have, deal !D! damage to ALL enemies. Heal HP equal to unblocked damage."
+  },
   "theRetrospect:DefaultCommonPower": {
     "NAME": "Hold Place",
     "DESCRIPTION": "Gain !M! theretrospect:Keyword.",
