@@ -4,8 +4,8 @@ import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import theRetrospect.cards.AbstractRetrospectCard;
 import theRetrospect.minions.TimelineMinion;
+import theRetrospect.util.CardUtils;
 import theRetrospect.util.MinionUtils;
 import theRetrospect.util.TimelineUtils;
 
@@ -37,15 +37,8 @@ public class ConstructTimelineAction extends AbstractGameAction {
 
     private List<AbstractCard> filterReplayableCards(List<AbstractCard> cards) {
         return cards.stream()
-                .filter(c -> !(c instanceof AbstractRetrospectCard) || ((AbstractRetrospectCard) c).isReplayable())
-                .map(card -> {
-                    AbstractCard newCard = card.makeStatEquivalentCopy();
-                    newCard.current_x = card.current_x;
-                    newCard.target_x = newCard.current_x;
-                    newCard.current_y = card.current_y;
-                    newCard.target_y = newCard.current_y;
-                    return newCard;
-                })
+                .filter(CardUtils::isCardReplayable)
+                .map(CardUtils::makeStatEquivalentCopyWithPosition)
                 .collect(Collectors.toList());
     }
 }

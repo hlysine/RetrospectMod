@@ -73,10 +73,7 @@ public class TimerPower extends AbstractPower implements CloneablePowerInterface
     }
 
     private void replayCard(AbstractCard cardToPlay, HoverableCardStack cardStack) {
-        cardToPlay.purgeOnUse = true;
-        CardUtils.setIsBeingReplayed(cardToPlay, true);
-        AbstractDungeon.player.limbo.addToBottom(cardToPlay);
-        AbstractDungeon.actionManager.addToBottom(new QueueCardIntentAction(cardToPlay, cardStack));
+        AbstractDungeon.actionManager.addToBottom(new QueueCardIntentAction(cardToPlay, cardStack, true));
     }
 
     @Override

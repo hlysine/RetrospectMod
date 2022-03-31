@@ -56,6 +56,10 @@
     "DESCRIPTION": "Gain [E] [E]. NL Shuffle 2 *Empty to your draw pile.",
     "UPGRADE_DESCRIPTION": "Gain [E] [E] [E]. NL Shuffle 2 *Empty to your draw pile."
   },
+  "theRetrospect:SleightOfHand": {
+    "NAME": "Sleight of Hand",
+    "DESCRIPTION": "Deal !D! damage. Replay your last card this turn."
+  },
   "theRetrospect:DefaultCommonPower": {
     "NAME": "Hold Place",
     "DESCRIPTION": "Gain !M! theretrospect:Keyword.",
