@@ -11,7 +11,7 @@ import static theRetrospect.RetrospectMod.makeCardPath;
 public class Defend_V extends AbstractRetrospectCard {
 
     public static final String ID = RetrospectMod.makeID(Defend_V.class.getSimpleName());
-    public static final String IMG = makeCardPath("Skill.png");
+    public static final String IMG = makeCardPath("defend.png");
 
 
     private static final CardRarity RARITY = CardRarity.BASIC;

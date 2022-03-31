@@ -17,7 +17,7 @@ public class RewriteHistory extends AbstractRetrospectCard {
 
     public static final String ID = RetrospectMod.makeID(RewriteHistory.class.getSimpleName());
 
-    public static final String IMG = makeCardPath("Attack.png");
+    public static final String IMG = makeCardPath("rewrite_history.png");
 
     private static final CardRarity RARITY = CardRarity.RARE;
     private static final CardTarget TARGET = CardTarget.ENEMY;

@@ -14,7 +14,7 @@ public class SleightOfHand extends AbstractRetrospectCard {
 
     public static final String ID = RetrospectMod.makeID(SleightOfHand.class.getSimpleName());
 
-    public static final String IMG = makeCardPath("Attack.png");
+    public static final String IMG = makeCardPath("sleight_of_hand.png");
 
     private static final CardRarity RARITY = CardRarity.COMMON;
     private static final CardTarget TARGET = CardTarget.ENEMY;

@@ -16,8 +16,8 @@ public class AntiqueStopwatch extends CustomRelic {
 
     public static final String ID = RetrospectMod.makeID(AntiqueStopwatch.class.getSimpleName());
 
-    private static final Texture IMG = TextureLoader.getTexture(makeRelicPath("placeholder_relic.png"));
-    private static final Texture OUTLINE = TextureLoader.getTexture(makeRelicOutlinePath("placeholder_relic.png"));
+    private static final Texture IMG = TextureLoader.getTexture(makeRelicPath("default_clickable_relic.png"));
+    private static final Texture OUTLINE = TextureLoader.getTexture(makeRelicOutlinePath("default_clickable_relic.png"));
 
     private static final RelicTier TIER = RelicTier.UNCOMMON;
     private static final LandingSound LANDING_SOUND = LandingSound.CLINK;

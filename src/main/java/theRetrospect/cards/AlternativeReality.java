@@ -11,7 +11,7 @@ import static theRetrospect.RetrospectMod.makeCardPath;
 public class AlternativeReality extends AbstractRetrospectCard {
 
     public static final String ID = RetrospectMod.makeID(AlternativeReality.class.getSimpleName());
-    public static final String IMG = makeCardPath("Skill.png");
+    public static final String IMG = makeCardPath("alternative_reality.png");
 
 
     private static final CardRarity RARITY = CardRarity.UNCOMMON;

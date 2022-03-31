@@ -13,7 +13,7 @@ public class Strike_V extends AbstractRetrospectCard {
 
     public static final String ID = RetrospectMod.makeID(Strike_V.class.getSimpleName());
 
-    public static final String IMG = makeCardPath("Attack.png");
+    public static final String IMG = makeCardPath("strike.png");
 
     private static final CardRarity RARITY = CardRarity.BASIC;
     private static final CardTarget TARGET = CardTarget.ENEMY;

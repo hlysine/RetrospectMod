@@ -15,7 +15,7 @@ public class Harvest extends AbstractRetrospectCard {
 
     public static final String ID = RetrospectMod.makeID(Harvest.class.getSimpleName());
 
-    public static final String IMG = makeCardPath("Attack.png");
+    public static final String IMG = makeCardPath("harvest.png");
 
     private static final CardRarity RARITY = CardRarity.RARE;
     private static final CardTarget TARGET = CardTarget.ALL_ENEMY;

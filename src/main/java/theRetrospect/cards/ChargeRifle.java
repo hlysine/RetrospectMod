@@ -15,7 +15,7 @@ public class ChargeRifle extends AbstractRetrospectCard {
 
     public static final String ID = RetrospectMod.makeID(ChargeRifle.class.getSimpleName());
 
-    public static final String IMG = makeCardPath("Attack.png");
+    public static final String IMG = makeCardPath("charge_rifle.png");
 
     private static final CardRarity RARITY = CardRarity.COMMON;
     private static final CardTarget TARGET = CardTarget.ENEMY;

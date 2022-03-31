@@ -15,7 +15,7 @@ public class BreakneckForm extends AbstractRetrospectCard {
 
     public static final String ID = RetrospectMod.makeID(BreakneckForm.class.getSimpleName());
     private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
-    public static final String IMG = makeCardPath("Power.png");
+    public static final String IMG = makeCardPath("breakneck_form.png");
 
     private static final CardRarity RARITY = CardRarity.RARE;
     private static final CardTarget TARGET = CardTarget.SELF;

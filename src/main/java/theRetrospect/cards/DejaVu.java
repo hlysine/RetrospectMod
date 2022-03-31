@@ -11,7 +11,7 @@ import static theRetrospect.RetrospectMod.makeCardPath;
 public class DejaVu extends AbstractRetrospectCard {
 
     public static final String ID = RetrospectMod.makeID(DejaVu.class.getSimpleName());
-    public static final String IMG = makeCardPath("Skill.png");
+    public static final String IMG = makeCardPath("deja_vu.png");
 
 
     private static final CardRarity RARITY = CardRarity.UNCOMMON;

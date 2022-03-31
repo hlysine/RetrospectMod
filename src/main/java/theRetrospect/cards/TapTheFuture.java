@@ -20,7 +20,7 @@ public class TapTheFuture extends AbstractRetrospectCard {
     public static final String ID = RetrospectMod.makeID(TapTheFuture.class.getSimpleName());
     private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
 
-    public static final String IMG = makeCardPath("Skill.png");
+    public static final String IMG = makeCardPath("tap_the_future.png");
 
     public static final String NAME = cardStrings.NAME;
     public static final String DESCRIPTION = cardStrings.DESCRIPTION;

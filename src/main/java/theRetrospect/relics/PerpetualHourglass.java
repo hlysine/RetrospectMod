@@ -22,8 +22,8 @@ public class PerpetualHourglass extends CustomRelic implements TimelineCollapseL
 
     public static final String ID = RetrospectMod.makeID(PerpetualHourglass.class.getSimpleName());
 
-    private static final Texture IMG = TextureLoader.getTexture(makeRelicPath("placeholder_relic.png"));
-    private static final Texture OUTLINE = TextureLoader.getTexture(makeRelicOutlinePath("placeholder_relic.png"));
+    private static final Texture IMG = TextureLoader.getTexture(makeRelicPath("placeholder_relic2.png"));
+    private static final Texture OUTLINE = TextureLoader.getTexture(makeRelicOutlinePath("placeholder_relic2.png"));
 
     private static final RelicTier TIER = RelicTier.RARE;
     private static final LandingSound LANDING_SOUND = LandingSound.MAGICAL;
