@@ -43,6 +43,10 @@
     "NAME": "Concurrency",
     "DESCRIPTION": "Deal !D! damage for each timeline you have."
   },
+  "theRetrospect:Blink": {
+    "NAME": "Blink",
+    "DESCRIPTION": "Deal !D! damage to ALL enemies."
+  },
   "theRetrospect:DefaultCommonPower": {
     "NAME": "Hold Place",
     "DESCRIPTION": "Gain !M! theretrospect:Keyword.",
