@@ -1,15 +1,11 @@
 package theRetrospect.actions;
 
-import basemod.abstracts.cardbuilder.actionbuilder.EffectActionBuilder;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
-import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import com.megacrit.cardcrawl.vfx.combat.EmpowerCircleEffect;
 import com.megacrit.cardcrawl.vfx.combat.EmpowerEffect;
-import com.megacrit.cardcrawl.vfx.combat.HealEffect;
 import theRetrospect.minions.TimelineMinion;
 import theRetrospect.util.CardUtils;
 import theRetrospect.util.MinionUtils;
@@ -47,7 +43,7 @@ public class ConstructTimelineAction extends AbstractGameAction {
     private List<AbstractCard> filterReplayableCards(List<AbstractCard> cards) {
         return cards.stream()
                 .filter(CardUtils::isCardReplayable)
-                .map(CardUtils::makeStatEquivalentCopyWithPosition)
+                .map(CardUtils::makeAdvancedCopy)
                 .collect(Collectors.toList());
     }
 }

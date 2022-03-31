@@ -41,12 +41,19 @@ public class CardUtils {
         return !(card instanceof AbstractRetrospectCard) || ((AbstractRetrospectCard) card).isReplayable();
     }
 
-    public static AbstractCard makeStatEquivalentCopyWithPosition(AbstractCard card) {
+    /**
+     * Make a copy of the card with the same stats, position and powers applied.
+     *
+     * @param card The card to be copied.
+     * @return A new copy of the card.
+     */
+    public static AbstractCard makeAdvancedCopy(AbstractCard card) {
         AbstractCard newCard = card.makeStatEquivalentCopy();
         newCard.current_x = card.current_x;
         newCard.target_x = newCard.current_x;
         newCard.current_y = card.current_y;
         newCard.target_y = newCard.current_y;
+        newCard.applyPowers();
         return newCard;
     }
 }

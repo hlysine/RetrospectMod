@@ -60,6 +60,13 @@ public class AbstractMinionWithCards extends AbstractFriendlyMonster {
     }
 
     @Override
+    public void applyPowers() {
+        for (AbstractCard card : cards) {
+            card.applyPowers();
+        }
+    }
+
+    @Override
     public void updateAnimations() {
         super.updateAnimations();
         this.drawX = MathHelper.orbLerpSnap(this.drawX, this.target_x);

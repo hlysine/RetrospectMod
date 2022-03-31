@@ -73,6 +73,10 @@
     "DESCRIPTION": "Randomly replay X timelines.",
     "UPGRADE_DESCRIPTION": "Randomly replay X+1 timelines."
   },
+  "theRetrospect:ChargeRifle": {
+    "NAME": "Charge Rifle",
+    "DESCRIPTION": "Deal !D! damage. Increase the damage of ALL Charge Rifle cards by !M! this combat."
+  },
   "theRetrospect:DefaultCommonPower": {
     "NAME": "Hold Place",
     "DESCRIPTION": "Gain !M! theretrospect:Keyword.",
