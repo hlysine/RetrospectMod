@@ -77,6 +77,10 @@
     "NAME": "Charge Rifle",
     "DESCRIPTION": "Deal !D! damage. Increase the damage of ALL Charge Rifle cards by !M! this combat."
   },
+  "theRetrospect:DejaVu": {
+    "NAME": "Déjà vu",
+    "DESCRIPTION": "Gain !B! Block. Permanently increase ALL Déjà vu's Block by !M!. Exhaust."
+  },
   "theRetrospect:DefaultCommonPower": {
     "NAME": "Hold Place",
     "DESCRIPTION": "Gain !M! theretrospect:Keyword.",
