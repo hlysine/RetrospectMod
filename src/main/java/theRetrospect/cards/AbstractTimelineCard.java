@@ -12,6 +12,8 @@ public abstract class AbstractTimelineCard extends AbstractRetrospectCard {
     public static final String ID = RetrospectMod.makeID(AbstractTimelineCard.class.getSimpleName());
     private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
 
+    public static final int DEFAULT_TIMELINE_HEALTH_COST = 20;
+
     public int timelineCount;
     public int baseTimelineCount;
     public boolean upgradedTimelineCount;
@@ -27,7 +29,7 @@ public abstract class AbstractTimelineCard extends AbstractRetrospectCard {
                                 final CardTarget target) {
 
         super(id, img, cost, type, rarity, target);
-        this.healthCostPerTimeline = 20;
+        this.healthCostPerTimeline = DEFAULT_TIMELINE_HEALTH_COST;
 
         isTimelineCountModified = false;
     }

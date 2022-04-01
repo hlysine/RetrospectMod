@@ -2,6 +2,7 @@ package theRetrospect.potions;
 
 import basemod.abstracts.CustomPotion;
 import com.badlogic.gdx.graphics.Color;
+import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -11,6 +12,8 @@ import com.megacrit.cardcrawl.localization.PotionStrings;
 import com.megacrit.cardcrawl.potions.AbstractPotion;
 import theRetrospect.RetrospectMod;
 import theRetrospect.actions.ConstructTimelineAction;
+import theRetrospect.cards.AbstractTimelineCard;
+import theRetrospect.util.MinionUtils;
 
 public class TimelinePotion extends CustomPotion {
 
@@ -28,7 +31,7 @@ public class TimelinePotion extends CustomPotion {
     private static final PotionSize SIZE = PotionSize.SPHERE;
     private static final PotionColor COLOR = PotionColor.ELIXIR;
 
-    private static final int HEALTH_COST = 20;
+    private static final int HEALTH_COST = AbstractTimelineCard.DEFAULT_TIMELINE_HEALTH_COST;
 
     public TimelinePotion() {
         super(NAME, POTION_ID, RARITY, SIZE, COLOR);
@@ -50,7 +53,12 @@ public class TimelinePotion extends CustomPotion {
     @Override
     public boolean canUse() {
         if (!super.canUse()) return false;
-        return AbstractDungeon.player.currentHealth > HEALTH_COST;
+        AbstractPlayer player = AbstractDungeon.player;
+
+        if (player.currentHealth <= HEALTH_COST)
+            return false;
+
+        return MinionUtils.getMinions(player).monsters.size() < MinionUtils.getMaxMinions(player);
     }
 
     @Override
