@@ -6,22 +6,13 @@
     ],
     "TEXT": [
       "Future adventurer coming to solve problems of the past. NL Skillful manipulation of time amplifies his attacks.",
-      "NL You TOUCH the heart.",
-      "Navigating an unlit street, you come across several hooded figures in the midst of some dark ritual. As you approach, they turn to you in eerie unison. The tallest among them bares fanged teeth and extends a long, pale hand towards you. NL ~\"Join~ ~us~ ~basic~ ~one,~ ~and~ ~feel~ ~the~ ~warmth~ ~of~ ~the~ ~Spire.\"~"
+      "NL You run through all timelines...",
+      "Navigating an unlit street, you come across several hooded figures in the midst of some dark ritual. As you approach, they turn to you in eerie unison. The tallest among them bares fanged teeth and extends a long, pale hand towards you. NL ~\"Join~ ~us~ ~brother,~ ~and~ ~feel~ ~the~ ~warmth~ ~of~ ~the~ ~Spire.\"~"
     ]
   },
   "theRetrospect:TimelineMinion": {
     "NAMES": [
       "Timeline"
-    ],
-    "TEXT": [
-      "This #ytimeline contains #b",
-      " card.",
-      " cards.",
-      " NL #yReplay #b",
-      " card",
-      " cards",
-      " at the end of your turn. NL #yCollapse this #ytimeline when all cards are replayed."
     ]
   }
 }

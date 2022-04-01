@@ -79,7 +79,7 @@
   },
   "theRetrospect:DejaVu": {
     "NAME": "Déjà vu",
-    "DESCRIPTION": "Gain !B! Block. Permanently increase ALL Déjà vu's Block by !M!. Exhaust."
+    "DESCRIPTION": "Gain !B! Block. Permanently increase ALL Déjà vu's Block by !M!. NL Exhaust."
   },
   "theRetrospect:EnergyConversion": {
     "NAME": "Energy Conversion",
@@ -98,48 +98,5 @@
   "theRetrospect:UnstableChronology": {
     "NAME": "Unstable Chronology",
     "DESCRIPTION": "Cost 1 less [E] for each time you take damage in this combat. theretrospect:Construct 1 theretrospect:timeline."
-  },
-  "theRetrospect:DefaultCommonPower": {
-    "NAME": "Hold Place",
-    "DESCRIPTION": "Gain !M! theretrospect:Keyword.",
-    "UPGRADE_DESCRIPTION": "Gain !M! theretrospect:Keywords."
-  },
-  "theRetrospect:DefaultUncommonAttack": {
-    "NAME": "Big slap",
-    "DESCRIPTION": "Deal !D! damage."
-  },
-  "theRetrospect:DefaultUncommonSkill": {
-    "NAME": "A Better Defend",
-    "DESCRIPTION": "Gain !B! Plated Armor. Affected by Dexterity."
-  },
-  "theRetrospect:DefaultUncommonPower": {
-    "NAME": "Weirdness",
-    "DESCRIPTION": "Gain X theretrospect:Keywords.",
-    "UPGRADE_DESCRIPTION": "Gain X +1 theretrospect:Keywords."
-  },
-  "theRetrospect:DefaultRareAttack": {
-    "NAME": "TOUCH",
-    "DESCRIPTION": "Deal !D! damage."
-  },
-  "theRetrospect:DefaultRareSkill": {
-    "NAME": "For Each Loop x2",
-    "DESCRIPTION": "Apply !M! Vulnerable to all enemies, 2 times.",
-    "UPGRADE_DESCRIPTION": "Apply !M! Vulnerable to all enemies, 3 times."
-  },
-  "theRetrospect:DefaultRarePower": {
-    "NAME": "In-Progress Form",
-    "DESCRIPTION": "At the start of your turn, play a TOUCH."
-  },
-  "theRetrospect:DefaultAttackWithVariable": {
-    "NAME": "Special Strike",
-    "DESCRIPTION": "Deal !D! damage [E] times. NL (Deal !theRetrospect:ENERGY_DAMAGE! damage total.)"
-  },
-  "theRetrospect:DefaultSecondMagicNumberSkill": {
-    "NAME": "Cool 2 Number Card",
-    "DESCRIPTION": "Apply !M! Vulnerable and !theRetrospect:SecondMagic! poison to an enemy."
-  },
-  "theRetrospect:OrbSkill": {
-    "NAME": "Get Orb",
-    "DESCRIPTION": "Channel 1 Default Orb."
   }
 }
