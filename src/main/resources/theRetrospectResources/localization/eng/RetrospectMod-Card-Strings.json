@@ -71,7 +71,7 @@
   "theRetrospect:TemporalAnomaly": {
     "NAME": "Temporal Anomaly",
     "DESCRIPTION": "Randomly replay X timelines.",
-    "UPGRADE_DESCRIPTION": "Randomly replay X+1 timelines."
+    "UPGRADE_DESCRIPTION": "Randomly replay X+1 theretrospect:timelines."
   },
   "theRetrospect:ChargeRifle": {
     "NAME": "Charge Rifle",
