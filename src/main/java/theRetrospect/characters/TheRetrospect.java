@@ -175,9 +175,7 @@ public class TheRetrospect extends AbstractPlayerWithMinions {
         retVal.add(Strike.ID);
         retVal.add(Strike.ID);
         retVal.add(Strike.ID);
-        retVal.add(Strike.ID);
 
-        retVal.add(Defend.ID);
         retVal.add(Defend.ID);
         retVal.add(Defend.ID);
         retVal.add(Defend.ID);
@@ -210,7 +208,7 @@ public class TheRetrospect extends AbstractPlayerWithMinions {
     // character Select screen effect
     @Override
     public void doCharSelectScreenSelectEffect() {
-        CardCrawlGame.sound.playA("ATTACK_DAGGER_1", 1.25f); // Sound Effect
+        CardCrawlGame.sound.playA("ATTACK_DEFECT_BEAM", 1.25f); // Sound Effect
         CardCrawlGame.screenShake.shake(ScreenShake.ShakeIntensity.LOW, ScreenShake.ShakeDur.SHORT,
                 false); // Screen Effect
     }
@@ -218,14 +216,14 @@ public class TheRetrospect extends AbstractPlayerWithMinions {
     // character Select on-button-press sound effect
     @Override
     public String getCustomModeCharacterButtonSoundKey() {
-        return "ATTACK_DAGGER_1";
+        return "ATTACK_DEFECT_BEAM";
     }
 
     // Should return how much HP your maximum HP reduces by when starting a run at
     // Ascension 14 or higher. (ironclad loses 5, defect and silent lose 4 hp respectively)
     @Override
     public int getAscensionMaxHPLoss() {
-        return 0;
+        return 4;
     }
 
     // Should return the card color enum to be associated with your character.
@@ -256,7 +254,7 @@ public class TheRetrospect extends AbstractPlayerWithMinions {
     //Which card should be obtainable from the Match and Keep event?
     @Override
     public AbstractCard getStartCardForEvent() {
-        return new Strike();
+        return new Divert();
     }
 
     // The class name as it appears next to your player name in-game
@@ -290,7 +288,9 @@ public class TheRetrospect extends AbstractPlayerWithMinions {
     @Override
     public AbstractGameAction.AttackEffect[] getSpireHeartSlashEffect() {
         return new AbstractGameAction.AttackEffect[]{
-                AbstractGameAction.AttackEffect.BLUNT_HEAVY,
+                AbstractGameAction.AttackEffect.SMASH,
+                AbstractGameAction.AttackEffect.SMASH,
+                AbstractGameAction.AttackEffect.LIGHTNING,
                 AbstractGameAction.AttackEffect.BLUNT_HEAVY,
                 AbstractGameAction.AttackEffect.BLUNT_HEAVY};
     }
