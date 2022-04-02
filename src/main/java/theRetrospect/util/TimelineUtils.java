@@ -10,8 +10,10 @@ import java.util.stream.Collectors;
 
 public class TimelineUtils {
     public static void repositionTimelines(AbstractPlayer player) {
-        float midX = Settings.WIDTH * 0.4f;
-        float y = AbstractDungeon.floorY + player.hb_h * 0.2f;
+        boolean isPlayerSurrounded = player.drawX > Settings.WIDTH * 0.4f;
+
+        float midX = Settings.WIDTH * (isPlayerSurrounded ? 0.5f : 0.35f);
+        float y = AbstractDungeon.floorY + player.hb_h * (isPlayerSurrounded ? 1f : 0.2f);
         float gap = 20 * Settings.scale;
 
         List<AbstractMinionWithCards> minions = MinionUtils.getMinions(player).monsters.stream()
@@ -34,7 +36,9 @@ public class TimelineUtils {
             startX -= minion.hb_w + gap;
         }
 
-        startX -= AbstractDungeon.player.hb_w / 2;
-        AbstractDungeon.player.movePosition(Math.min(Settings.WIDTH * 0.25f, startX), AbstractDungeon.player.drawY);
+        if (!isPlayerSurrounded) {
+            startX -= player.hb_w / 2;
+            player.movePosition(Math.min(Settings.WIDTH * 0.25f, startX), player.drawY);
+        }
     }
 }
