@@ -1,8 +1,6 @@
 package theRetrospect;
 
 import basemod.*;
-import basemod.eventUtil.AddEventParams;
-import basemod.helpers.RelicType;
 import basemod.interfaces.*;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.files.FileHandle;
@@ -13,7 +11,6 @@ import com.evacipated.cardcrawl.modthespire.lib.SpireConfig;
 import com.evacipated.cardcrawl.modthespire.lib.SpireInitializer;
 import com.google.gson.Gson;
 import com.megacrit.cardcrawl.core.Settings;
-import com.megacrit.cardcrawl.dungeons.TheCity;
 import com.megacrit.cardcrawl.helpers.CardHelper;
 import com.megacrit.cardcrawl.helpers.FontHelper;
 import com.megacrit.cardcrawl.localization.*;
@@ -342,7 +339,7 @@ public class RetrospectMod implements
         // This adds a character specific relic. Only when you play with the mentioned color, will you get this relic.
         BaseMod.addRelicToCustomPool(new AdaptiveShield(), TheRetrospect.Enums.RETROSPECT_CARD_VIOLET);
         BaseMod.addRelicToCustomPool(new AntiqueStopwatch(), TheRetrospect.Enums.RETROSPECT_CARD_VIOLET);
-        BaseMod.addRelicToCustomPool(new PerpetualHourglass(), TheRetrospect.Enums.RETROSPECT_CARD_VIOLET);
+        BaseMod.addRelicToCustomPool(new QuantumHourglass(), TheRetrospect.Enums.RETROSPECT_CARD_VIOLET);
 
         // Mark relics as seen - makes it visible in the compendium immediately
         // If you don't have this it won't be visible in the compendium until you see them in game

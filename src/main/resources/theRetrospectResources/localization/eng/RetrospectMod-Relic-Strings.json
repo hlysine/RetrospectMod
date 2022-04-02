@@ -13,9 +13,9 @@
       "At the end of your first turn, play 1 #yDivert."
     ]
   },
-  "theRetrospect:PerpetualHourglass": {
-    "NAME": "Perpetual Hourglass",
-    "FLAVOR": "An hourglass with a top that never depletes and a bottom that never fill up. How odd.",
+  "theRetrospect:QuantumHourglass": {
+    "NAME": "Quantum Hourglass",
+    "FLAVOR": "An hourglass that drips both ways simultaneously.",
     "DESCRIPTIONS": [
       "When a timeline #ycollapses, gain [E] next turn."
     ]
