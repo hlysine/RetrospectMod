@@ -1,6 +1,5 @@
 package theRetrospect.characters;
 
-import basemod.abstracts.CustomEnergyOrb;
 import basemod.animations.SpriterAnimation;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
@@ -24,10 +23,10 @@ import kobting.friendlyminions.characters.CustomCharSelectInfo;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import theRetrospect.RetrospectMod;
-import theRetrospect.cards.Defend_V;
+import theRetrospect.cards.Defend;
 import theRetrospect.cards.Divert;
 import theRetrospect.cards.IntoTheVoid;
-import theRetrospect.cards.Strike_V;
+import theRetrospect.cards.Strike;
 import theRetrospect.relics.AdaptiveShield;
 
 import java.util.ArrayList;
@@ -172,23 +171,23 @@ public class TheRetrospect extends AbstractPlayerWithMinions {
 
         logger.info("Begin loading starter Deck Strings");
 
-        retVal.add(Strike_V.ID);
-        retVal.add(Strike_V.ID);
-        retVal.add(Strike_V.ID);
-        retVal.add(Strike_V.ID);
-        retVal.add(Strike_V.ID);
+        retVal.add(Strike.ID);
+        retVal.add(Strike.ID);
+        retVal.add(Strike.ID);
+        retVal.add(Strike.ID);
+        retVal.add(Strike.ID);
 
-        retVal.add(Defend_V.ID);
-        retVal.add(Defend_V.ID);
-        retVal.add(Defend_V.ID);
-        retVal.add(Defend_V.ID);
-        retVal.add(Defend_V.ID);
+        retVal.add(Defend.ID);
+        retVal.add(Defend.ID);
+        retVal.add(Defend.ID);
+        retVal.add(Defend.ID);
+        retVal.add(Defend.ID);
 
         retVal.add(Divert.ID);
         retVal.add(IntoTheVoid.ID);
 
-        UnlockTracker.markCardAsSeen(Strike_V.ID);
-        UnlockTracker.markCardAsSeen(Defend_V.ID);
+        UnlockTracker.markCardAsSeen(Strike.ID);
+        UnlockTracker.markCardAsSeen(Defend.ID);
         UnlockTracker.markCardAsSeen(Divert.ID);
         UnlockTracker.markCardAsSeen(IntoTheVoid.ID);
 
@@ -257,7 +256,7 @@ public class TheRetrospect extends AbstractPlayerWithMinions {
     //Which card should be obtainable from the Match and Keep event?
     @Override
     public AbstractCard getStartCardForEvent() {
-        return new Strike_V();
+        return new Strike();
     }
 
     // The class name as it appears next to your player name in-game

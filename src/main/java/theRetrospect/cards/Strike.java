@@ -9,9 +9,9 @@ import theRetrospect.RetrospectMod;
 
 import static theRetrospect.RetrospectMod.makeCardPath;
 
-public class Strike_V extends AbstractRetrospectCard {
+public class Strike extends AbstractRetrospectCard {
 
-    public static final String ID = RetrospectMod.makeID(Strike_V.class.getSimpleName());
+    public static final String ID = RetrospectMod.makeID(Strike.class.getSimpleName());
 
     public static final String IMG = makeCardPath("strike.png");
 
@@ -23,7 +23,7 @@ public class Strike_V extends AbstractRetrospectCard {
     private static final int BASE_DAMAGE = 6;
     private static final int UPGRADE_DAMAGE = 3;
 
-    public Strike_V() {
+    public Strike() {
         super(ID, IMG, COST, TYPE, RARITY, TARGET);
 
         damage = baseDamage = BASE_DAMAGE;

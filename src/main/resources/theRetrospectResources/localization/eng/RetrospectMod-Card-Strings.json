@@ -1,9 +1,9 @@
 {
-  "theRetrospect:Strike_V": {
+  "theRetrospect:Strike": {
     "NAME": "Strike",
     "DESCRIPTION": "Deal !D! damage."
   },
-  "theRetrospect:Defend_V": {
+  "theRetrospect:Defend": {
     "NAME": "Defend",
     "DESCRIPTION": "Gain !B! Block."
   },

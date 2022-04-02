@@ -2,15 +2,14 @@ package theRetrospect.cards;
 
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theRetrospect.RetrospectMod;
 
 import static theRetrospect.RetrospectMod.makeCardPath;
 
-public class Defend_V extends AbstractRetrospectCard {
+public class Defend extends AbstractRetrospectCard {
 
-    public static final String ID = RetrospectMod.makeID(Defend_V.class.getSimpleName());
+    public static final String ID = RetrospectMod.makeID(Defend.class.getSimpleName());
     public static final String IMG = makeCardPath("defend.png");
 
 
@@ -22,7 +21,7 @@ public class Defend_V extends AbstractRetrospectCard {
     private static final int BASE_BLOCK = 5;
     private static final int UPGRADE_BLOCK = 3;
 
-    public Defend_V() {
+    public Defend() {
         super(ID, IMG, COST, TYPE, RARITY, TARGET);
 
         block = baseBlock = BASE_BLOCK;
