@@ -30,6 +30,6 @@ public class TimelineCountVariable extends DynamicVariable {
 
     @Override
     public boolean upgraded(AbstractCard card) {
-        return ((AbstractTimelineCard) card).upgradedDefaultSecondMagicNumber;
+        return ((AbstractTimelineCard) card).upgradedTimelineCount;
     }
 }
