@@ -26,8 +26,8 @@
       " turns. Does not affect timelines."
     ]
   },
-  "theRetrospect:BreakneckFormPower": {
-    "NAME": "Breakneck Form",
+  "theRetrospect:ShadowFormPower": {
+    "NAME": "Shadow Form",
     "DESCRIPTIONS": [
       "At the start of your turn, add #b",
       " #yTimer to a random #ytimeline."

@@ -17,9 +17,9 @@ import theRetrospect.util.TextureLoader;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class BreakneckFormPower extends AbstractPower implements CloneablePowerInterface {
+public class ShadowFormPower extends AbstractPower implements CloneablePowerInterface {
 
-    public static final String POWER_ID = RetrospectMod.makeID(BreakneckFormPower.class.getSimpleName());
+    public static final String POWER_ID = RetrospectMod.makeID(ShadowFormPower.class.getSimpleName());
     private static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
     public static final String NAME = powerStrings.NAME;
     public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
@@ -27,7 +27,7 @@ public class BreakneckFormPower extends AbstractPower implements CloneablePowerI
     private static final Texture tex84 = TextureLoader.getTexture("theRetrospectResources/images/powers/placeholder_power84.png");
     private static final Texture tex32 = TextureLoader.getTexture("theRetrospectResources/images/powers/placeholder_power32.png");
 
-    public BreakneckFormPower(final AbstractCreature owner, final int amount) {
+    public ShadowFormPower(final AbstractCreature owner, final int amount) {
         name = NAME;
         ID = POWER_ID;
 
@@ -63,6 +63,6 @@ public class BreakneckFormPower extends AbstractPower implements CloneablePowerI
 
     @Override
     public AbstractPower makeCopy() {
-        return new BreakneckFormPower(owner, amount);
+        return new ShadowFormPower(owner, amount);
     }
 }

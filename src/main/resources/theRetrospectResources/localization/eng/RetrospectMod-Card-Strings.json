@@ -94,8 +94,8 @@
     "NAME": "Rewrite History",
     "DESCRIPTION": "Deal damage equal to !M! times the number of cards in discard pile. Shuffle discard pile back to draw pile. NL Exhaust."
   },
-  "theRetrospect:BreakneckForm": {
-    "NAME": "Breakneck Form",
+  "theRetrospect:ShadowForm": {
+    "NAME": "Shadow Form",
     "DESCRIPTION": "Ethereal. NL At the start of your turn, add 1 theretrospect:Timer to a random theretrospect:timeline.",
     "UPGRADE_DESCRIPTION": "At the start of your turn, add 1 theretrospect:Timer to a random theretrospect:timeline."
   },

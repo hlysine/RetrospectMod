@@ -7,15 +7,15 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theRetrospect.RetrospectMod;
-import theRetrospect.powers.BreakneckFormPower;
+import theRetrospect.powers.ShadowFormPower;
 
 import static theRetrospect.RetrospectMod.makeCardPath;
 
-public class BreakneckForm extends AbstractRetrospectCard {
+public class ShadowForm extends AbstractRetrospectCard {
 
-    public static final String ID = RetrospectMod.makeID(BreakneckForm.class.getSimpleName());
+    public static final String ID = RetrospectMod.makeID(ShadowForm.class.getSimpleName());
     private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
-    public static final String IMG = makeCardPath("breakneck_form.png");
+    public static final String IMG = makeCardPath("shadow_form.png");
 
     private static final CardRarity RARITY = CardRarity.RARE;
     private static final CardTarget TARGET = CardTarget.SELF;
@@ -24,7 +24,7 @@ public class BreakneckForm extends AbstractRetrospectCard {
     private static final int COST = 3;
     private static final int POWER_AMOUNT = 1;
 
-    public BreakneckForm() {
+    public ShadowForm() {
 
         super(ID, IMG, COST, TYPE, RARITY, TARGET);
 
@@ -36,7 +36,7 @@ public class BreakneckForm extends AbstractRetrospectCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new ApplyPowerAction(p, p, new BreakneckFormPower(p, magicNumber)));
+        addToBot(new ApplyPowerAction(p, p, new ShadowFormPower(p, magicNumber)));
     }
 
     @Override
