@@ -383,7 +383,7 @@ public class RetrospectMod implements
         //TODO: The artifact mentioned in ModTheSpire.json is the artifactId in pom.xml you should've edited earlier
         new AutoAdd("RetrospectMod") // ${project.artifactId}
                 .packageFilter(AbstractRetrospectCard.class) // filters to any class in the same package as AbstractDefaultCard, nested packages included
-                .setDefaultSeen(true)
+                .setDefaultSeen(false)
                 .cards();
 
         // .setDefaultSeen(true) unlocks the cards
