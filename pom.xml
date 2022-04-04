@@ -6,7 +6,7 @@
     <groupId>retrospectmod</groupId>
     <artifactId>RetrospectMod</artifactId> <!--Keep a note of this one: this is the ID used in the "auto add cards" method-->
     <name>The Retrospect</name>
-    <version>0.0.2</version>
+    <version>0.0.3</version>
     <description>A character mod for the Retrospect.</description>
 
     <properties>
