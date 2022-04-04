@@ -16,7 +16,8 @@
         <ModTheSpire.version>3.25.2</ModTheSpire.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <!--CHANGE THIS TO YOUR STEAM INSTALLATION-->
-        <Dependencies.path>D:\Projects\SLAY_THE_SPIRE\Dependencies</Dependencies.path>
+        <Dependencies.path>${basedir}/lib</Dependencies.path>
+        <Game.path>D:\Projects\SLAY_THE_SPIRE\Dependencies</Game.path>
     </properties>
 
     <dependencies>
@@ -25,7 +26,7 @@
             <artifactId>slaythespire</artifactId>
             <version>${SlayTheSpire.version}</version>
             <scope>system</scope>
-            <systemPath>${Dependencies.path}/SlayTheSpire-2.3/desktop-1.0.jar</systemPath>
+            <systemPath>${Dependencies.path}/desktop-1.0.jar</systemPath>
             <!--<systemPath>${basedir}/../lib/desktop-1.0.jar</systemPath>-->
         </dependency>
         <dependency>
@@ -86,7 +87,7 @@
                         <configuration>
                             <target>
                                 <!-- This moves your mod into a common folder where all mods you make can go. -->
-                                <copy file="target/${project.artifactId}.jar" tofile="${Dependencies.path}/SlayTheSpire-2.3/mods/${project.artifactId}.jar"/>
+                                <copy file="target/${project.artifactId}.jar" tofile="${Game.path}/SlayTheSpire-2.3/mods/${project.artifactId}.jar"/>
                             </target>
                         </configuration>
                         <goals>
