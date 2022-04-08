@@ -92,7 +92,7 @@
   },
   "theRetrospect:RewriteHistory": {
     "NAME": "Rewrite History",
-    "DESCRIPTION": "Deal damage equal to !M! times the number of cards in discard pile. Shuffle discard pile back to draw pile. NL Exhaust."
+    "DESCRIPTION": "Deal !D! damage for each card in your discard pile. Shuffle your discard pile into your draw pile. NL Exhaust."
   },
   "theRetrospect:ShadowForm": {
     "NAME": "Shadow Form",

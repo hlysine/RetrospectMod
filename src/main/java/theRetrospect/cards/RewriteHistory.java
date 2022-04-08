@@ -1,13 +1,14 @@
 package theRetrospect.cards;
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
-import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
+import com.megacrit.cardcrawl.actions.utility.SFXAction;
 import com.megacrit.cardcrawl.actions.utility.WaitAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.vfx.combat.WeightyImpactEffect;
+import com.megacrit.cardcrawl.vfx.CollectorCurseEffect;
 import theRetrospect.RetrospectMod;
 import theRetrospect.actions.ShuffleDiscardPileAction;
 
@@ -24,22 +25,26 @@ public class RewriteHistory extends AbstractRetrospectCard {
     private static final CardType TYPE = CardType.ATTACK;
 
     private static final int COST = 2;
-    private static final int BASE_MULTIPLIER = 2;
-    private static final int UPGRADE_MULTIPLIER = 1;
+    private static final int BASE_DAMAGE = 2;
+    private static final int UPGRADE_DAMAGE = 1;
 
     public RewriteHistory() {
         super(ID, IMG, COST, TYPE, RARITY, TARGET);
 
-        magicNumber = baseMagicNumber = BASE_MULTIPLIER;
+        damage = baseDamage = BASE_DAMAGE;
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         if (m != null) {
-            addToBot(new VFXAction(new WeightyImpactEffect(m.hb.cX, m.hb.cY)));
+            addToBot(new SFXAction("MONSTER_COLLECTOR_DEBUFF"));
+            AbstractDungeon.effectsQueue.add(new CollectorCurseEffect(m.hb.cX, m.hb.cY));
         }
-        addToBot(new WaitAction(0.8F));
-        addToBot(new DamageAction(m, new DamageInfo(p, magicNumber * p.discardPile.size(), damageTypeForTurn), AbstractGameAction.AttackEffect.NONE));
+        addToBot(new WaitAction(0.5f));
+        int count = p.discardPile.size();
+        for (int i = 0; i < count; i++) {
+            addToBot(new DamageAction(m, new DamageInfo(p, damage, damageTypeForTurn), AbstractGameAction.AttackEffect.SLASH_DIAGONAL, true));
+        }
         addToBot(new ShuffleDiscardPileAction());
     }
 
@@ -47,7 +52,7 @@ public class RewriteHistory extends AbstractRetrospectCard {
     public void upgrade() {
         if (!upgraded) {
             upgradeName();
-            upgradeMagicNumber(UPGRADE_MULTIPLIER);
+            upgradeDamage(UPGRADE_DAMAGE);
             initializeDescription();
         }
     }
