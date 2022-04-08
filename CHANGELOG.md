@@ -26,7 +26,6 @@
 - Removed 1 Strike and 1 Defend from starting deck, making the starting deck size now 10
 - Renamed Perpetual Hourglass to Quantum Hourglass and changed its flavor
 
-
 ## [0.0.2] - Hotfix - 2022-04-01
 ###Changed
 - Updated strings
