@@ -60,7 +60,7 @@ public class AlternativeReality extends AbstractRetrospectCard {
     public void update() {
         super.update();
         int lastDescriptionIdx = descriptionIdx;
-        if (AbstractDungeon.player == null) {
+        if (AbstractDungeon.player == null || AbstractDungeon.player.drawPile == null) {
             this.rawDescription = cardStrings.DESCRIPTION;
             descriptionIdx = 0;
         } else if (AbstractDungeon.player.drawPile.size() % 2 == 0) {
