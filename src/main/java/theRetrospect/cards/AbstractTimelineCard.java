@@ -12,14 +12,10 @@ public abstract class AbstractTimelineCard extends AbstractRetrospectCard {
     public static final String ID = RetrospectMod.makeID(AbstractTimelineCard.class.getSimpleName());
     private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
 
-    public static final int DEFAULT_TIMELINE_HEALTH_COST = 20;
-
     public int timelineCount;
     public int baseTimelineCount;
     public boolean upgradedTimelineCount;
     public boolean isTimelineCountModified;
-
-    protected int healthCostPerTimeline;
 
     public AbstractTimelineCard(final String id,
                                 final String img,
@@ -29,27 +25,8 @@ public abstract class AbstractTimelineCard extends AbstractRetrospectCard {
                                 final CardTarget target) {
 
         super(id, img, cost, type, rarity, target);
-        this.healthCostPerTimeline = DEFAULT_TIMELINE_HEALTH_COST;
 
         isTimelineCountModified = false;
-    }
-
-    @Override
-    public boolean canUse(AbstractPlayer p, AbstractMonster m) {
-        boolean canUse = super.canUse(p, m);
-        if (!canUse) return false;
-
-        if (p.currentHealth <= healthCostPerTimeline * timelineCount) {
-            this.cantUseMessage = cardStrings.EXTENDED_DESCRIPTION[0];
-            return false;
-        }
-
-        if (MinionUtils.getMinions(p).monsters.size() + timelineCount > MinionUtils.getMaxMinions(p)) {
-            this.cantUseMessage = cardStrings.EXTENDED_DESCRIPTION[1];
-            return false;
-        }
-
-        return true;
     }
 
     public void displayUpgrades() {

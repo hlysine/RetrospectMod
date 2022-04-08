@@ -36,7 +36,7 @@ public class Misdirection extends AbstractTimelineCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new ConstructTimelineAction(healthCostPerTimeline));
+        addToBot(new ConstructTimelineAction());
 
         if (p.discardPile.size() > 0) {
             AbstractCard card = p.discardPile.getRandomCard(CardType.ATTACK, true);

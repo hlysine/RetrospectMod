@@ -4,20 +4,20 @@
       "timeline",
       "timelines"
     ],
-    "DESCRIPTION": "Replay your past cards at the end of your turn. Borrows 20 HP until #ycollapsed."
+    "DESCRIPTION": "Replay your past cards at the end of your turn. Borrows #b40% of your current HP until #ycollapsed."
   },
   {
     "NAMES": [
       "construct"
     ],
-    "DESCRIPTION": "Create a #ytimeline and share 20 HP to it."
+    "DESCRIPTION": "Create a #ytimeline and share #b40% of your current HP to it."
   },
   {
     "NAMES": [
       "collapse",
       "collapsed"
     ],
-    "DESCRIPTION": "Remove the #ytimeline and return 20 HP."
+    "DESCRIPTION": "Remove the #ytimeline and return its HP to you."
   },
   {
     "NAMES": [

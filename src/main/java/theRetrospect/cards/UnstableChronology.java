@@ -41,7 +41,7 @@ public class UnstableChronology extends AbstractTimelineCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new ConstructTimelineAction(healthCostPerTimeline));
+        addToBot(new ConstructTimelineAction());
     }
 
     @Override

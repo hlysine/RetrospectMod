@@ -24,10 +24,10 @@ public class CollapseTimelineAction extends AbstractGameAction {
     @Override
     public void update() {
         CardCrawlGame.sound.playA("STANCE_ENTER_CALM", 0.1f);
-        addToBot(new VFXAction(new TimelineCollapseEffect(minion)));
-        addToBot(new NonTriggeringHealthChange(AbstractDungeon.player, minion.currentHealth));
-        addToBot(new InstantKillAction(minion));
-        addToBot(new RepositionTimelinesAction());
+        addToTop(new RepositionTimelinesAction());
+        addToTop(new InstantKillAction(minion));
+        addToTop(new VFXAction(new TimelineCollapseEffect(minion)));
+        addToTop(new NonTriggeringHealthChange(AbstractDungeon.player, minion.currentHealth));
         for (AbstractRelic relic : AbstractDungeon.player.relics) {
             if (relic instanceof TimelineCollapseListener) {
                 TimelineCollapseListener listener = (TimelineCollapseListener) relic;

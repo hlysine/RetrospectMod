@@ -31,8 +31,6 @@ public class TimelinePotion extends CustomPotion {
     private static final PotionSize SIZE = PotionSize.SPHERE;
     private static final PotionColor COLOR = PotionColor.ELIXIR;
 
-    private static final int HEALTH_COST = AbstractTimelineCard.DEFAULT_TIMELINE_HEALTH_COST;
-
     public TimelinePotion() {
         super(NAME, POTION_ID, RARITY, SIZE, COLOR);
 
@@ -47,7 +45,7 @@ public class TimelinePotion extends CustomPotion {
 
     @Override
     public void use(AbstractCreature target) {
-        addToBot(new ConstructTimelineAction(HEALTH_COST));
+        addToBot(new ConstructTimelineAction());
     }
 
     @Override
@@ -55,7 +53,7 @@ public class TimelinePotion extends CustomPotion {
         if (!super.canUse()) return false;
         AbstractPlayer player = AbstractDungeon.player;
 
-        if (player.currentHealth <= HEALTH_COST)
+        if (player.currentHealth <= 1)
             return false;
 
         return MinionUtils.getMinions(player).monsters.size() < MinionUtils.getMaxMinions(player);

@@ -11,7 +11,7 @@
     "NAME": "Abstract Timeline Card",
     "DESCRIPTION": "theretrospect:Construct !theRetrospect:TimelineCount! theretrospect:timeline.",
     "EXTENDED_DESCRIPTION": [
-      "I don't have enough health.",
+      "Not enough #rHP.",
       "I have too many timelines."
     ]
   },
