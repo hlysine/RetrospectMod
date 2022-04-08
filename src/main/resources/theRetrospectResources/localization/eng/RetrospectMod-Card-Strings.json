@@ -96,8 +96,8 @@
   },
   "theRetrospect:ShadowForm": {
     "NAME": "Shadow Form",
-    "DESCRIPTION": "Ethereal. NL At the start of your turn, add 1 theretrospect:Timer to a random theretrospect:timeline.",
-    "UPGRADE_DESCRIPTION": "At the start of your turn, add 1 theretrospect:Timer to a random theretrospect:timeline."
+    "DESCRIPTION": "Ethereal. NL At the start of your turn, draw 1 additional card and increase this number by 1.",
+    "UPGRADE_DESCRIPTION": "At the start of your turn, draw 1 additional card and increase this number by 1."
   },
   "theRetrospect:UnstableChronology": {
     "NAME": "Unstable Chronology",

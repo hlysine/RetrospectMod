@@ -29,8 +29,10 @@
   "theRetrospect:ShadowFormPower": {
     "NAME": "Shadow Form",
     "DESCRIPTIONS": [
-      "At the start of your turn, add #b",
-      " #yTimer to a random #ytimeline."
+      "At the start of your turn, draw #b",
+      " additional card and increase this number by #b",
+      " additional cards and increase this number by #b",
+      "."
     ]
   },
   "theRetrospect:AntiqueStopwatchPower": {

@@ -3,19 +3,13 @@ package theRetrospect.powers;
 import basemod.interfaces.CloneablePowerInterface;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
+import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import theRetrospect.RetrospectMod;
-import theRetrospect.actions.SpeedUpTimelineAction;
-import theRetrospect.minions.TimelineMinion;
-import theRetrospect.util.MinionUtils;
 import theRetrospect.util.TextureLoader;
-
-import java.util.List;
-import java.util.stream.Collectors;
 
 public class ShadowFormPower extends AbstractPower implements CloneablePowerInterface {
 
@@ -27,12 +21,15 @@ public class ShadowFormPower extends AbstractPower implements CloneablePowerInte
     private static final Texture tex84 = TextureLoader.getTexture("theRetrospectResources/images/powers/placeholder_power84.png");
     private static final Texture tex32 = TextureLoader.getTexture("theRetrospectResources/images/powers/placeholder_power32.png");
 
+    private int cardDrawAmount = 1;
+
     public ShadowFormPower(final AbstractCreature owner, final int amount) {
         name = NAME;
         ID = POWER_ID;
 
         this.owner = owner;
         this.amount = amount;
+        this.cardDrawAmount = amount;
 
         type = PowerType.BUFF;
         isTurnBased = true;
@@ -44,21 +41,27 @@ public class ShadowFormPower extends AbstractPower implements CloneablePowerInte
     }
 
     @Override
-    public void atStartOfTurn() {
-        List<TimelineMinion> timelines = MinionUtils.getMinions(AbstractDungeon.player).monsters.stream()
-                .filter(m -> m instanceof TimelineMinion)
-                .map(m -> (TimelineMinion) m)
-                .collect(Collectors.toList());
-        if (timelines.size() == 0) return;
-        for (int i = 0; i < this.amount; i++) {
-            TimelineMinion target = timelines.get(AbstractDungeon.cardRng.random(timelines.size() - 1));
-            addToBot(new SpeedUpTimelineAction(target, 1));
-        }
+    public void stackPower(int stackAmount) {
+        super.stackPower(stackAmount);
+        this.cardDrawAmount++;
+    }
+
+    @Override
+    public void atStartOfTurnPostDraw() {
+        flash();
+        addToBot(new DrawCardAction(this.cardDrawAmount));
+        this.cardDrawAmount += this.amount;
+        updateDescription();
     }
 
     @Override
     public void updateDescription() {
-        description = DESCRIPTIONS[0] + this.amount + DESCRIPTIONS[1];
+        description = DESCRIPTIONS[0] + describeNumber(this.cardDrawAmount, 1) + this.amount + DESCRIPTIONS[3];
+    }
+
+    private String describeNumber(int number, int singularIndex) {
+        if (number > 1) return number + DESCRIPTIONS[singularIndex + 1];
+        else return number + DESCRIPTIONS[singularIndex];
     }
 
     @Override
