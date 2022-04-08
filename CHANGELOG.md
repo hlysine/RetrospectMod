@@ -27,7 +27,7 @@
 - Renamed Perpetual Hourglass to Quantum Hourglass and changed its flavor
 
 ## [0.0.2] - Hotfix - 2022-04-01
-###Changed
+### Changed
 - Updated strings
 - Prevent the use of timeline potion if a timeline cannot be created
 
