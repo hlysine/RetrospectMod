@@ -17,7 +17,14 @@
     "NAME": "Quantum Hourglass",
     "FLAVOR": "An hourglass that drips both ways simultaneously.",
     "DESCRIPTIONS": [
-      "When a timeline #ycollapses, gain [E] next turn."
+      "When a #ytimeline #ycollapses, gain [E] next turn."
+    ]
+  },
+  "theRetrospect:SlantedMirror": {
+    "NAME": "Slanted Mirror",
+    "FLAVOR": "Magicians' favourite.",
+    "DESCRIPTIONS": [
+      "When you #yconstruct a #ytimeline, gain 10 Block."
     ]
   }
 }

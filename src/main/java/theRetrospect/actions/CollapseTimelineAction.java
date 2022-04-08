@@ -6,12 +6,10 @@ import com.megacrit.cardcrawl.actions.common.InstantKillAction;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
-import com.megacrit.cardcrawl.stances.CalmStance;
-import com.megacrit.cardcrawl.vfx.stance.CalmParticleEffect;
 import kobting.friendlyminions.monsters.AbstractFriendlyMonster;
 import theRetrospect.effects.TimelineCollapseEffect;
 import theRetrospect.minions.TimelineMinion;
-import theRetrospect.util.TimelineCollapseListener;
+import theRetrospect.subscribers.TimelineCollapseSubscriber;
 
 public class CollapseTimelineAction extends AbstractGameAction {
 
@@ -29,8 +27,8 @@ public class CollapseTimelineAction extends AbstractGameAction {
         addToTop(new VFXAction(new TimelineCollapseEffect(minion)));
         addToTop(new NonTriggeringHealthChange(AbstractDungeon.player, minion.currentHealth));
         for (AbstractRelic relic : AbstractDungeon.player.relics) {
-            if (relic instanceof TimelineCollapseListener) {
-                TimelineCollapseListener listener = (TimelineCollapseListener) relic;
+            if (relic instanceof TimelineCollapseSubscriber) {
+                TimelineCollapseSubscriber listener = (TimelineCollapseSubscriber) relic;
                 listener.onTimelineCollapse((TimelineMinion) minion);
             }
         }

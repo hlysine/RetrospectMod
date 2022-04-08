@@ -1,7 +1,7 @@
-package theRetrospect.util;
+package theRetrospect.subscribers;
 
 import theRetrospect.minions.TimelineMinion;
 
-public interface TimelineCollapseListener {
+public interface TimelineCollapseSubscriber {
     void onTimelineCollapse(TimelineMinion timeline);
 }

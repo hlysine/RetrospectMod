@@ -8,11 +8,14 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
+import com.megacrit.cardcrawl.relics.AbstractRelic;
 import com.megacrit.cardcrawl.vfx.ThoughtBubble;
 import com.megacrit.cardcrawl.vfx.combat.EmpowerEffect;
 import theRetrospect.RetrospectMod;
 import theRetrospect.cards.AbstractTimelineCard;
 import theRetrospect.minions.TimelineMinion;
+import theRetrospect.subscribers.TimelineCollapseSubscriber;
+import theRetrospect.subscribers.TimelineConstructSubscriber;
 import theRetrospect.util.CardUtils;
 import theRetrospect.util.MinionUtils;
 import theRetrospect.util.TimelineUtils;
@@ -64,6 +67,13 @@ public class ConstructTimelineAction extends AbstractGameAction {
             AbstractDungeon.actionManager.addToTop(new NonTriggeringHealthChange(player, -health));
 
             AbstractDungeon.actionManager.addToTop(new VFXAction(new EmpowerEffect(minion.drawX, minion.drawY)));
+
+            for (AbstractRelic relic : AbstractDungeon.player.relics) {
+                if (relic instanceof TimelineConstructSubscriber) {
+                    TimelineConstructSubscriber listener = (TimelineConstructSubscriber) relic;
+                    listener.onTimelineConstruct(minion);
+                }
+            }
         } else {
             AbstractDungeon.effectList.add(new ThoughtBubble(player.dialogX, player.dialogY, 3.0F, cardStrings.EXTENDED_DESCRIPTION[0], true));
         }

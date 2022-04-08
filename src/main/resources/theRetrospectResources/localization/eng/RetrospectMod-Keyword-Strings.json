@@ -4,7 +4,7 @@
       "timeline",
       "timelines"
     ],
-    "DESCRIPTION": "Replay your past cards at the end of your turn. Borrows #b40% of your current HP until #ycollapsed."
+    "DESCRIPTION": "Replay your past cards at the end of your turn."
   },
   {
     "NAMES": [
@@ -15,6 +15,7 @@
   {
     "NAMES": [
       "collapse",
+      "collapses",
       "collapsed"
     ],
     "DESCRIPTION": "Remove the #ytimeline and return its HP to you."

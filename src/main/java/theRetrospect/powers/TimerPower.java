@@ -15,11 +15,11 @@ import theRetrospect.actions.CollapseTimelineAction;
 import theRetrospect.actions.NonTriggeringHealthChange;
 import theRetrospect.actions.QueueCardIntentAction;
 import theRetrospect.minions.AbstractMinionWithCards;
-import theRetrospect.util.EndOfTurnCardPlaying;
+import theRetrospect.subscribers.EndOfTurnCardSubscriber;
 import theRetrospect.util.HoverableCardStack;
 import theRetrospect.util.TextureLoader;
 
-public class TimerPower extends AbstractPower implements CloneablePowerInterface, EndOfTurnCardPlaying {
+public class TimerPower extends AbstractPower implements CloneablePowerInterface, EndOfTurnCardSubscriber {
     public AbstractMinionWithCards minion;
 
     public static final String POWER_ID = RetrospectMod.makeID(TimerPower.class.getSimpleName());

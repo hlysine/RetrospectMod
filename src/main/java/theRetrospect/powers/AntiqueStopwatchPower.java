@@ -13,10 +13,10 @@ import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import theRetrospect.RetrospectMod;
 import theRetrospect.cards.Divert;
-import theRetrospect.util.EndOfTurnCardPlaying;
+import theRetrospect.subscribers.EndOfTurnCardSubscriber;
 import theRetrospect.util.TextureLoader;
 
-public class AntiqueStopwatchPower extends AbstractPower implements CloneablePowerInterface, EndOfTurnCardPlaying {
+public class AntiqueStopwatchPower extends AbstractPower implements CloneablePowerInterface, EndOfTurnCardSubscriber {
 
     public static final String POWER_ID = RetrospectMod.makeID(AntiqueStopwatchPower.class.getSimpleName());
     private static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);

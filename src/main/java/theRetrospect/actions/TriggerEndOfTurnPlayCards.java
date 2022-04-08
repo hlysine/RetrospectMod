@@ -7,15 +7,15 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.monsters.MonsterGroup;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import theRetrospect.minions.AbstractMinionWithCards;
-import theRetrospect.util.EndOfTurnCardPlaying;
+import theRetrospect.subscribers.EndOfTurnCardSubscriber;
 import theRetrospect.util.MinionUtils;
 
 public class TriggerEndOfTurnPlayCards extends AbstractGameAction {
     public void update() {
         AbstractPlayer player = AbstractDungeon.player;
         for (AbstractPower power : player.powers) {
-            if (power instanceof EndOfTurnCardPlaying) {
-                EndOfTurnCardPlaying cardPower = (EndOfTurnCardPlaying) power;
+            if (power instanceof EndOfTurnCardSubscriber) {
+                EndOfTurnCardSubscriber cardPower = (EndOfTurnCardSubscriber) power;
                 cardPower.endOfTurnPlayCards();
             }
         }

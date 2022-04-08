@@ -340,6 +340,7 @@ public class RetrospectMod implements
         BaseMod.addRelicToCustomPool(new AdaptiveShield(), TheRetrospect.Enums.RETROSPECT_CARD_VIOLET);
         BaseMod.addRelicToCustomPool(new AntiqueStopwatch(), TheRetrospect.Enums.RETROSPECT_CARD_VIOLET);
         BaseMod.addRelicToCustomPool(new QuantumHourglass(), TheRetrospect.Enums.RETROSPECT_CARD_VIOLET);
+        BaseMod.addRelicToCustomPool(new SlantedMirror(), TheRetrospect.Enums.RETROSPECT_CARD_VIOLET);
 
         // Mark relics as seen - makes it visible in the compendium immediately
         // If you don't have this it won't be visible in the compendium until you see them in game
