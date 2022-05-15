@@ -290,9 +290,9 @@ public class TheRetrospect extends AbstractPlayerWithMinions {
         return new AbstractGameAction.AttackEffect[]{
                 AbstractGameAction.AttackEffect.SMASH,
                 AbstractGameAction.AttackEffect.SMASH,
-                AbstractGameAction.AttackEffect.LIGHTNING,
                 AbstractGameAction.AttackEffect.BLUNT_HEAVY,
-                AbstractGameAction.AttackEffect.BLUNT_HEAVY};
+                AbstractGameAction.AttackEffect.BLUNT_HEAVY,
+                AbstractGameAction.AttackEffect.LIGHTNING};
     }
 
     // Should return a string containing what text is shown when your character is
