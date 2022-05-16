@@ -16,8 +16,12 @@ import theRetrospect.actions.NonTriggeringHealthChange;
 import theRetrospect.actions.QueueCardIntentAction;
 import theRetrospect.minions.AbstractMinionWithCards;
 import theRetrospect.subscribers.EndOfTurnCardSubscriber;
+import theRetrospect.util.CardUtils;
 import theRetrospect.util.HoverableCardStack;
 import theRetrospect.util.TextureLoader;
+
+import java.util.concurrent.atomic.AtomicInteger;
+import java.util.concurrent.atomic.AtomicReference;
 
 public class TimerPower extends AbstractPower implements CloneablePowerInterface, EndOfTurnCardSubscriber {
     public AbstractMinionWithCards minion;
@@ -62,14 +66,32 @@ public class TimerPower extends AbstractPower implements CloneablePowerInterface
 
     @Override
     public void triggerOnEndOfTurnForPlayingCard() {
-        for (int i = 0; i < amount; i++) {
-            if (minion.cards.size() <= 0) break;
+        AtomicInteger remainingAmount = new AtomicInteger(amount);
+        AtomicReference<Runnable> afterUseHandler = new AtomicReference<>();
+        afterUseHandler.set(() -> {
+            if (minion.cards.size() <= 0) {
+                addToBot(new CollapseTimelineAction(minion));
+                return;
+            }
+            if (remainingAmount.get() <= 0) return;
+            if (minion.isDead) return;
+            remainingAmount.set(0);
+
             AbstractCard cardToPlay = minion.cards.remove(0);
+            CardUtils.setActionAfterUse(cardToPlay, afterUseHandler.get());
             replayCard(cardToPlay, minion.cardStack);
-        }
-        updateDescription();
-        updateCardIntents();
-        if (minion.cards.size() == 0) {
+            remainingAmount.decrementAndGet();
+            updateDescription();
+            updateCardIntents();
+        });
+        if (remainingAmount.get() > 0) {
+            AbstractCard cardToPlay = minion.cards.remove(0);
+            CardUtils.setActionAfterUse(cardToPlay, afterUseHandler.get());
+            replayCard(cardToPlay, minion.cardStack);
+            remainingAmount.decrementAndGet();
+            updateDescription();
+            updateCardIntents();
+        } else {
             addToBot(new CollapseTimelineAction(minion));
         }
     }
