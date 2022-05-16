@@ -56,7 +56,7 @@ public class TriggerTimelineReplayAction extends AbstractGameAction {
         if (timer.isPresent()) {
             for (int i = 0; i < replayCount && target.cards.size() > 0; i++) {
                 if (consumeCards)
-                    timer.get().endOfTurnPlayCards();
+                    timer.get().triggerOnEndOfTurnForPlayingCard();
                 else
                     timer.get().extraReplay();
             }

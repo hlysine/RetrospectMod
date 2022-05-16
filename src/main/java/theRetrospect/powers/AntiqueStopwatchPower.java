@@ -43,7 +43,7 @@ public class AntiqueStopwatchPower extends AbstractPower implements CloneablePow
     }
 
     @Override
-    public void endOfTurnPlayCards() {
+    public void triggerOnEndOfTurnForPlayingCard() {
         for (int i = 0; i < amount; i++) {
             AbstractCard card = new Divert();
             card.purgeOnUse = true;

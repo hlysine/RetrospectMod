@@ -4,12 +4,14 @@ import basemod.interfaces.CloneablePowerInterface;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.megacrit.cardcrawl.actions.common.InstantKillAction;
+import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
+import com.megacrit.cardcrawl.vfx.combat.EmpowerCircleEffect;
 import theRetrospect.RetrospectMod;
 import theRetrospect.actions.CollapseTimelineAction;
 import theRetrospect.actions.NonTriggeringHealthChange;
@@ -61,7 +63,7 @@ public class TimerPower extends AbstractPower implements CloneablePowerInterface
     }
 
     @Override
-    public void endOfTurnPlayCards() {
+    public void triggerOnEndOfTurnForPlayingCard() {
         for (int i = 0; i < amount; i++) {
             if (minion.cards.size() <= 0) break;
             AbstractCard cardToPlay = minion.cards.remove(0);
@@ -70,7 +72,7 @@ public class TimerPower extends AbstractPower implements CloneablePowerInterface
         updateDescription();
         updateCardIntents();
         if (minion.cards.size() == 0) {
-            AbstractDungeon.actionManager.addToBottom(new CollapseTimelineAction(minion));
+            addToBot(new CollapseTimelineAction(minion));
         }
     }
 

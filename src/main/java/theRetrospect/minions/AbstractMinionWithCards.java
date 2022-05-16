@@ -50,11 +50,11 @@ public class AbstractMinionWithCards extends AbstractFriendlyMonster {
         this.cardIntents.addAll(cardIntents);
     }
 
-    public void endOfTurnPlayCards() {
+    public void triggerOnEndOfTurnForPlayingCard() {
         for (AbstractPower power : powers) {
             if (power instanceof EndOfTurnCardSubscriber) {
                 EndOfTurnCardSubscriber cardPlayingPower = (EndOfTurnCardSubscriber) power;
-                cardPlayingPower.endOfTurnPlayCards();
+                cardPlayingPower.triggerOnEndOfTurnForPlayingCard();
             }
         }
     }
