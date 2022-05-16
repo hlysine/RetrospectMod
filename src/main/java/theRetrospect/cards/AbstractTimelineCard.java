@@ -1,11 +1,8 @@
 package theRetrospect.cards;
 
-import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.CardStrings;
-import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theRetrospect.RetrospectMod;
-import theRetrospect.util.MinionUtils;
 
 public abstract class AbstractTimelineCard extends AbstractRetrospectCard {
 

@@ -14,7 +14,6 @@ import com.megacrit.cardcrawl.vfx.combat.EmpowerEffect;
 import theRetrospect.RetrospectMod;
 import theRetrospect.cards.AbstractTimelineCard;
 import theRetrospect.minions.TimelineMinion;
-import theRetrospect.subscribers.TimelineCollapseSubscriber;
 import theRetrospect.subscribers.TimelineConstructSubscriber;
 import theRetrospect.util.CardUtils;
 import theRetrospect.util.MinionUtils;

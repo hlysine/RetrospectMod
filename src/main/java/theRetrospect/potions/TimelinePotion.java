@@ -12,7 +12,6 @@ import com.megacrit.cardcrawl.localization.PotionStrings;
 import com.megacrit.cardcrawl.potions.AbstractPotion;
 import theRetrospect.RetrospectMod;
 import theRetrospect.actions.ConstructTimelineAction;
-import theRetrospect.cards.AbstractTimelineCard;
 import theRetrospect.util.MinionUtils;
 
 public class TimelinePotion extends CustomPotion {
