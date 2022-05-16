@@ -5,6 +5,7 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.actions.utility.NewQueueCardAction;
+import com.megacrit.cardcrawl.actions.utility.WaitAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
@@ -14,7 +15,11 @@ import com.megacrit.cardcrawl.powers.AbstractPower;
 import theRetrospect.RetrospectMod;
 import theRetrospect.cards.Divert;
 import theRetrospect.subscribers.EndOfTurnCardSubscriber;
+import theRetrospect.util.CallbackUtils;
+import theRetrospect.util.CardUtils;
 import theRetrospect.util.TextureLoader;
+
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class AntiqueStopwatchPower extends AbstractPower implements CloneablePowerInterface, EndOfTurnCardSubscriber {
 
@@ -44,14 +49,24 @@ public class AntiqueStopwatchPower extends AbstractPower implements CloneablePow
 
     @Override
     public void triggerOnEndOfTurnForPlayingCard() {
-        for (int i = 0; i < amount; i++) {
-            AbstractCard card = new Divert();
-            card.purgeOnUse = true;
-            card.current_x = card.target_x = AbstractDungeon.player.drawX;
-            card.current_y = card.target_y = AbstractDungeon.player.drawY;
-            addToBot(new NewQueueCardAction(card, true, true, true));
-        }
-        addToBot(new RemoveSpecificPowerAction(owner, owner, this));
+        AtomicInteger remainingAmount = new AtomicInteger(amount);
+        CallbackUtils.ForLoop(
+                () -> remainingAmount.get() > 0,
+                () -> {
+                    int i = remainingAmount.decrementAndGet();
+                    if (i > 0)
+                        addToBot(new WaitAction(0.75f));
+                },
+                next -> {
+                    AbstractCard card = new Divert();
+                    card.purgeOnUse = true;
+                    card.current_x = card.target_x = AbstractDungeon.player.drawX;
+                    card.current_y = card.target_y = AbstractDungeon.player.drawY;
+                    CardUtils.addActionAfterUse(card, next);
+                    addToBot(new NewQueueCardAction(card, true, true, true));
+                },
+                () -> addToBot(new RemoveSpecificPowerAction(owner, owner, this))
+        );
     }
 
     @Override
