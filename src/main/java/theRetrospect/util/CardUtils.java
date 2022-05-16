@@ -7,6 +7,7 @@ import theRetrospect.cards.AbstractRetrospectCard;
 import theRetrospect.patches.CardAddFieldsPatch;
 
 import java.lang.reflect.Field;
+import java.util.List;
 
 public class CardUtils {
     private static final Field hoveredField;
@@ -39,8 +40,17 @@ public class CardUtils {
         CardAddFieldsPatch.isBeingReplayed.set(card, newVal);
     }
 
-    public static Runnable getActionAfterUse(AbstractCard card) {
+    public static List<Runnable> getActionsAfterUse(AbstractCard card) {
         return CardAddFieldsPatch.actionAfterUse.get(card);
+    }
+
+    /**
+     * Remove all actions from the card.
+     *
+     * @param card The card to remove actions from.
+     */
+    public static void clearActionsAfterUse(AbstractCard card) {
+        CardAddFieldsPatch.actionAfterUse.get(card).clear();
     }
 
     /**
@@ -51,8 +61,19 @@ public class CardUtils {
      * @param card           The card to store the action in.
      * @param actionAfterUse The action to be executed.
      */
-    public static void setActionAfterUse(AbstractCard card, Runnable actionAfterUse) {
-        CardAddFieldsPatch.actionAfterUse.set(card, actionAfterUse);
+    public static void addActionAfterUse(AbstractCard card, Runnable actionAfterUse) {
+        CardAddFieldsPatch.actionAfterUse.get(card).add(actionAfterUse);
+    }
+
+    /**
+     * Remove an existing action. Does nothing if the action does not exist on the card.
+     *
+     * @param card           The card to remove the action from.
+     * @param actionAfterUse The action to be removed.
+     * @return True if the action was in the card.
+     */
+    public static boolean removeActionAfterUse(AbstractCard card, Runnable actionAfterUse) {
+        return CardAddFieldsPatch.actionAfterUse.get(card).remove(actionAfterUse);
     }
 
     public static boolean isCardReplayable(AbstractCard card) {

@@ -4,6 +4,7 @@ import basemod.interfaces.CloneablePowerInterface;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.megacrit.cardcrawl.actions.common.InstantKillAction;
+import com.megacrit.cardcrawl.actions.utility.WaitAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
@@ -68,29 +69,29 @@ public class TimerPower extends AbstractPower implements CloneablePowerInterface
     public void triggerOnEndOfTurnForPlayingCard() {
         AtomicInteger remainingAmount = new AtomicInteger(amount);
         AtomicReference<Runnable> afterUseHandler = new AtomicReference<>();
+        Runnable playNewCard = () -> {
+            AbstractCard cardToPlay = minion.cards.remove(0);
+            CardUtils.addActionAfterUse(cardToPlay, afterUseHandler.get());
+            replayCard(cardToPlay, minion.cardStack);
+            remainingAmount.decrementAndGet();
+        };
         afterUseHandler.set(() -> {
+            updateDescription();
+            updateCardIntents();
             if (minion.cards.size() <= 0) {
                 addToBot(new CollapseTimelineAction(minion));
                 return;
             }
             if (remainingAmount.get() <= 0) return;
             if (minion.isDead) return;
-            remainingAmount.set(0);
 
-            AbstractCard cardToPlay = minion.cards.remove(0);
-            CardUtils.setActionAfterUse(cardToPlay, afterUseHandler.get());
-            replayCard(cardToPlay, minion.cardStack);
-            remainingAmount.decrementAndGet();
-            updateDescription();
-            updateCardIntents();
+            addToBot(new WaitAction(0.75f));
+            playNewCard.run();
         });
+        updateDescription();
+        updateCardIntents();
         if (remainingAmount.get() > 0) {
-            AbstractCard cardToPlay = minion.cards.remove(0);
-            CardUtils.setActionAfterUse(cardToPlay, afterUseHandler.get());
-            replayCard(cardToPlay, minion.cardStack);
-            remainingAmount.decrementAndGet();
-            updateDescription();
-            updateCardIntents();
+            playNewCard.run();
         } else {
             addToBot(new CollapseTimelineAction(minion));
         }

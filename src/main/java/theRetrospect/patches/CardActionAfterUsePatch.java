@@ -16,10 +16,11 @@ public class CardActionAfterUsePatch {
     public static void Postfix(UseCardAction __instance, AbstractCard ___targetCard) {
         if (__instance.isDone) {
             if (!___targetCard.dontTriggerOnUseCard) {
-                Runnable action = CardUtils.getActionAfterUse(___targetCard);
-                if (action != null) action.run();
+                for (Runnable runnable : CardUtils.getActionsAfterUse(___targetCard)) {
+                    runnable.run();
+                }
             }
-            CardUtils.setActionAfterUse(___targetCard, null);
+            CardUtils.clearActionsAfterUse(___targetCard);
         }
     }
 }
