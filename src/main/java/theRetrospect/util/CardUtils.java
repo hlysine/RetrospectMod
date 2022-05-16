@@ -39,6 +39,22 @@ public class CardUtils {
         CardAddFieldsPatch.isBeingReplayed.set(card, newVal);
     }
 
+    public static Runnable getActionAfterUse(AbstractCard card) {
+        return CardAddFieldsPatch.actionAfterUse.get(card);
+    }
+
+    /**
+     * Set an action to be executed after the card is played and all the onAfterCardUse triggers are complete.
+     * The action is only executed once and is cleared afterwards.
+     * Note that if dontTriggerAfterUse is true, the action is cleared without being executed.
+     *
+     * @param card           The card to store the action in.
+     * @param actionAfterUse The action to be executed.
+     */
+    public static void setActionAfterUse(AbstractCard card, Runnable actionAfterUse) {
+        CardAddFieldsPatch.actionAfterUse.set(card, actionAfterUse);
+    }
+
     public static boolean isCardReplayable(AbstractCard card) {
         return !(card instanceof AbstractRetrospectCard) || ((AbstractRetrospectCard) card).isReplayable();
     }

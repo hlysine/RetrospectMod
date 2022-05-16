@@ -10,5 +10,7 @@ import com.megacrit.cardcrawl.cards.AbstractCard;
 )
 public class CardAddFieldsPatch {
     public static SpireField<Boolean> isBeingReplayed = new SpireField<>(() -> false);
+
+    public static SpireField<Runnable> actionAfterUse = new SpireField<>(() -> null);
 }
 
