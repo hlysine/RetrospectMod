@@ -11,6 +11,9 @@ import java.util.List;
 import java.util.UUID;
 import java.util.stream.Collectors;
 
+/**
+ * Fix IncreaseMiscAction so that it affects timeline cards as well
+ */
 @SpirePatch(
         clz = IncreaseMiscAction.class,
         method = "update"

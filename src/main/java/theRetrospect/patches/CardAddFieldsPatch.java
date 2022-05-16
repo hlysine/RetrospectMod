@@ -8,7 +8,7 @@ import com.megacrit.cardcrawl.cards.AbstractCard;
         clz = AbstractCard.class,
         method = SpirePatch.CLASS
 )
-public class CardAddReplayFieldPatch {
+public class CardAddFieldsPatch {
     public static SpireField<Boolean> isBeingReplayed = new SpireField<>(() -> false);
 }
 

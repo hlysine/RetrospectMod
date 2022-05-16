@@ -4,6 +4,9 @@ import com.evacipated.cardcrawl.modthespire.lib.SpirePatch;
 import com.megacrit.cardcrawl.actions.GameActionManager;
 import theRetrospect.actions.TriggerOnEndOfTurnForPlayingCard;
 
+/**
+ * Trigger onEndOfTurnForPlayingCard for player powers and minions
+ */
 @SpirePatch(
         clz= GameActionManager.class,
         method="callEndOfTurnActions"

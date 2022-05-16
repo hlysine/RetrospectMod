@@ -9,6 +9,9 @@ import theRetrospect.util.MinionUtils;
 
 import java.util.ArrayList;
 
+/**
+ * Trigger onVictory for minions
+ */
 @SpirePatch(
         clz = AbstractPlayer.class,
         method = "onVictory"

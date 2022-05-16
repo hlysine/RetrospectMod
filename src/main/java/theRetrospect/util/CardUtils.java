@@ -4,7 +4,7 @@ import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.ui.panels.EnergyPanel;
 import theRetrospect.cards.AbstractRetrospectCard;
-import theRetrospect.patches.CardAddReplayFieldPatch;
+import theRetrospect.patches.CardAddFieldsPatch;
 
 import java.lang.reflect.Field;
 
@@ -32,11 +32,11 @@ public class CardUtils {
     }
 
     public static boolean getIsBeingReplayed(AbstractCard card) {
-        return CardAddReplayFieldPatch.isBeingReplayed.get(card);
+        return CardAddFieldsPatch.isBeingReplayed.get(card);
     }
 
     public static void setIsBeingReplayed(AbstractCard card, boolean newVal) {
-        CardAddReplayFieldPatch.isBeingReplayed.set(card, newVal);
+        CardAddFieldsPatch.isBeingReplayed.set(card, newVal);
     }
 
     public static boolean isCardReplayable(AbstractCard card) {

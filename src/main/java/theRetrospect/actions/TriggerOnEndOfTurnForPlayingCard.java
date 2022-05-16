@@ -10,6 +10,9 @@ import theRetrospect.minions.AbstractMinionWithCards;
 import theRetrospect.subscribers.EndOfTurnCardSubscriber;
 import theRetrospect.util.MinionUtils;
 
+/**
+ * Trigger onEndOfTurnForPlayingCard for player powers and minions
+ */
 public class TriggerOnEndOfTurnForPlayingCard extends AbstractGameAction {
     public void update() {
         AbstractPlayer player = AbstractDungeon.player;

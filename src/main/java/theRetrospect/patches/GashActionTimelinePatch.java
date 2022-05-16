@@ -11,6 +11,9 @@ import theRetrospect.util.MinionUtils;
 import java.util.List;
 import java.util.stream.Collectors;
 
+/**
+ * Patch Gash(Claw) card so that it affects timeline cards as well
+ */
 @SpirePatch(
         clz = GashAction.class,
         method = "update"
