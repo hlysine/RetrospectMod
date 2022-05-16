@@ -17,12 +17,12 @@ import theRetrospect.actions.NonTriggeringHealthChange;
 import theRetrospect.actions.QueueCardIntentAction;
 import theRetrospect.minions.AbstractMinionWithCards;
 import theRetrospect.subscribers.EndOfTurnCardSubscriber;
+import theRetrospect.util.CallbackUtils;
 import theRetrospect.util.CardUtils;
 import theRetrospect.util.HoverableCardStack;
 import theRetrospect.util.TextureLoader;
 
 import java.util.concurrent.atomic.AtomicInteger;
-import java.util.concurrent.atomic.AtomicReference;
 
 public class TimerPower extends AbstractPower implements CloneablePowerInterface, EndOfTurnCardSubscriber {
     public AbstractMinionWithCards minion;
@@ -68,33 +68,28 @@ public class TimerPower extends AbstractPower implements CloneablePowerInterface
     @Override
     public void triggerOnEndOfTurnForPlayingCard() {
         AtomicInteger remainingAmount = new AtomicInteger(amount);
-        AtomicReference<Runnable> afterUseHandler = new AtomicReference<>();
-        Runnable playNewCard = () -> {
-            AbstractCard cardToPlay = minion.cards.remove(0);
-            CardUtils.addActionAfterUse(cardToPlay, afterUseHandler.get());
-            replayCard(cardToPlay, minion.cardStack);
-            remainingAmount.decrementAndGet();
-        };
-        afterUseHandler.set(() -> {
-            updateDescription();
-            updateCardIntents();
-            if (minion.cards.size() <= 0) {
-                addToBot(new CollapseTimelineAction(minion));
-                return;
-            }
-            if (remainingAmount.get() <= 0) return;
-            if (minion.isDead) return;
-
-            addToBot(new WaitAction(0.75f));
-            playNewCard.run();
-        });
-        updateDescription();
-        updateCardIntents();
-        if (remainingAmount.get() > 0) {
-            playNewCard.run();
-        } else {
-            addToBot(new CollapseTimelineAction(minion));
-        }
+        CallbackUtils.ForLoop(
+                () -> {
+                    updateDescription();
+                    updateCardIntents();
+                    if (minion.cards.size() <= 0) {
+                        addToBot(new CollapseTimelineAction(minion));
+                        return false;
+                    }
+                    if (remainingAmount.get() <= 0) return false;
+                    return !minion.isDead;
+                },
+                () -> {
+                    int i = remainingAmount.decrementAndGet();
+                    if (i > 0)
+                        addToBot(new WaitAction(0.75f));
+                },
+                next -> {
+                    AbstractCard cardToPlay = minion.cards.remove(0);
+                    CardUtils.addActionAfterUse(cardToPlay, next);
+                    replayCard(cardToPlay, minion.cardStack);
+                }
+        );
     }
 
     private void replayCard(AbstractCard cardToPlay, HoverableCardStack cardStack) {

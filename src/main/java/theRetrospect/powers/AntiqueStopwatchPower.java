@@ -51,13 +51,18 @@ public class AntiqueStopwatchPower extends AbstractPower implements CloneablePow
     public void triggerOnEndOfTurnForPlayingCard() {
         AtomicInteger remainingAmount = new AtomicInteger(amount);
         CallbackUtils.ForLoop(
-                () -> remainingAmount.get() > 0,
                 () -> {
+                    RetrospectMod.logger.info("condition check");
+                    return remainingAmount.get() > 0;
+                },
+                () -> {
+                    RetrospectMod.logger.info("post iteration");
                     int i = remainingAmount.decrementAndGet();
                     if (i > 0)
                         addToBot(new WaitAction(0.75f));
                 },
                 next -> {
+                    RetrospectMod.logger.info("main loop");
                     AbstractCard card = new Divert();
                     card.purgeOnUse = true;
                     card.current_x = card.target_x = AbstractDungeon.player.drawX;
@@ -65,7 +70,10 @@ public class AntiqueStopwatchPower extends AbstractPower implements CloneablePow
                     CardUtils.addActionAfterUse(card, next);
                     addToBot(new NewQueueCardAction(card, true, true, true));
                 },
-                () -> addToBot(new RemoveSpecificPowerAction(owner, owner, this))
+                () -> {
+                    RetrospectMod.logger.info("complete action");
+                    addToBot(new RemoveSpecificPowerAction(owner, owner, this));
+                }
         );
     }
 

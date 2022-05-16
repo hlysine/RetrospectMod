@@ -45,7 +45,7 @@ public class CallbackUtils {
             iteration.accept(() -> {
                 if (postIteration != null)
                     postIteration.run();
-                ForLoop(continueCondition, postIteration, iteration);
+                ForLoop(continueCondition, postIteration, iteration, loopComplete);
             });
         } else {
             if (loopComplete != null)
