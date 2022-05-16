@@ -41,16 +41,13 @@ public class TimelineEventsPatch {
                 rloc = 7
         )
         public static void Insert(UseCardAction __instance, AbstractCard ___targetCard, float ___duration) {
-            RetrospectMod.logger.info("Start insert patch");
             for (AbstractMonster monster : MinionUtils.getMinions(AbstractDungeon.player).monsters) {
                 for (AbstractPower power : monster.powers) {
                     if (!___targetCard.dontTriggerOnUseCard) {
                         power.onAfterUseCard(___targetCard, __instance);
-                        RetrospectMod.logger.info("Trigger on after use card");
                     }
                 }
             }
-            RetrospectMod.logger.info("End insert patch");
         }
     }
 }
