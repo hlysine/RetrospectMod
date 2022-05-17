@@ -8,6 +8,7 @@ import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theRetrospect.RetrospectMod;
 import theRetrospect.actions.ConstructTimelineAction;
+import theRetrospect.util.CardUtils;
 
 import static theRetrospect.RetrospectMod.makeCardPath;
 
@@ -36,12 +37,11 @@ public class Misdirection extends AbstractTimelineCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new ConstructTimelineAction());
-
         if (p.discardPile.size() > 0) {
             AbstractCard card = p.discardPile.getRandomCard(CardType.ATTACK, true);
             if (card != null) {
                 p.discardPile.removeCard(card);
+                CardUtils.addActionAfterUse(card, () -> addToBot(new ConstructTimelineAction()));
                 addToBot(new NewQueueCardAction(card, true, true, true));
             }
         }
