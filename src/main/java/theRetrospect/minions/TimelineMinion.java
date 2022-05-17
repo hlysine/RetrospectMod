@@ -25,7 +25,7 @@ public class TimelineMinion extends AbstractMinionWithCards {
     public TimelineMinion(List<AbstractCard> cards, int offsetX, int offsetY, int maxHealth) {
         super(NAME, ID, maxHealth, 0, 0, 120, 120, IMG, offsetX, offsetY);
         setCards(cards);
-        addPower(new TimerPower(this, 10));
+        addPower(new TimerPower(this, 1));
         this.powers.forEach(AbstractPower::onInitialApplication);
     }
 

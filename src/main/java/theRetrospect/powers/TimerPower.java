@@ -57,16 +57,32 @@ public class TimerPower extends AbstractPower implements CloneablePowerInterface
         updateCardIntents();
     }
 
-    public void extraReplay() {
-        for (int i = 0; i < amount; i++) {
-            if (minion.cards.size() <= i) break;
-            AbstractCard cardToPlay = minion.cards.get(i).makeStatEquivalentCopy();
-            replayCard(cardToPlay, null);
-        }
+    public void extraReplay(Runnable next) {
+        AtomicInteger cardIdx = new AtomicInteger(0);
+        CallbackUtils.ForLoop(
+                () -> {
+                    if (minion.cards.size() <= 0) return false;
+                    int idx = cardIdx.get();
+                    if (minion.cards.size() <= idx) return false;
+                    if (idx >= amount) return false;
+                    return !minion.isDead;
+                },
+                () -> {
+                    int i = cardIdx.decrementAndGet();
+                    if (i < amount - 1)
+                        addToBot(new WaitAction(0.75f));
+                },
+                nxt -> {
+                    AbstractCard cardToPlay = minion.cards.get(cardIdx.get()).makeStatEquivalentCopy();
+                    CardUtils.addActionAfterUse(cardToPlay, nxt);
+                    replayCard(cardToPlay, null);
+                },
+                next
+        );
     }
 
     @Override
-    public void triggerOnEndOfTurnForPlayingCard() {
+    public void triggerOnEndOfTurnForPlayingCard(Runnable next) {
         AtomicInteger remainingAmount = new AtomicInteger(amount);
         CallbackUtils.ForLoop(
                 () -> {
@@ -84,11 +100,12 @@ public class TimerPower extends AbstractPower implements CloneablePowerInterface
                     if (i > 0)
                         addToBot(new WaitAction(0.75f));
                 },
-                next -> {
+                nxt -> {
                     AbstractCard cardToPlay = minion.cards.remove(0);
-                    CardUtils.addActionAfterUse(cardToPlay, next);
+                    CardUtils.addActionAfterUse(cardToPlay, nxt);
                     replayCard(cardToPlay, minion.cardStack);
-                }
+                },
+                next
         );
     }
 

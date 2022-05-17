@@ -3,9 +3,9 @@ package theRetrospect.minions;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.helpers.MathHelper;
-import com.megacrit.cardcrawl.powers.AbstractPower;
 import kobting.friendlyminions.monsters.AbstractFriendlyMonster;
 import theRetrospect.subscribers.EndOfTurnCardSubscriber;
+import theRetrospect.util.CallbackUtils;
 import theRetrospect.util.HoverableCardStack;
 
 import java.util.ArrayList;
@@ -50,13 +50,15 @@ public class AbstractMinionWithCards extends AbstractFriendlyMonster {
         this.cardIntents.addAll(cardIntents);
     }
 
-    public void triggerOnEndOfTurnForPlayingCard() {
-        for (AbstractPower power : powers) {
+    public void triggerOnEndOfTurnForPlayingCard(Runnable next) {
+        CallbackUtils.ForEachLoop(powers, (power, nxt) -> {
             if (power instanceof EndOfTurnCardSubscriber) {
                 EndOfTurnCardSubscriber cardPlayingPower = (EndOfTurnCardSubscriber) power;
-                cardPlayingPower.triggerOnEndOfTurnForPlayingCard();
+                cardPlayingPower.triggerOnEndOfTurnForPlayingCard(nxt);
+            } else {
+                nxt.run();
             }
-        }
+        }, next);
     }
 
     @Override

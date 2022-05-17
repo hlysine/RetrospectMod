@@ -1,14 +1,17 @@
 package theRetrospect.actions;
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.utility.WaitAction;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.MonsterGroup;
 import theRetrospect.minions.TimelineMinion;
 import theRetrospect.powers.TimerPower;
+import theRetrospect.util.CallbackUtils;
 import theRetrospect.util.MinionUtils;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Collectors;
 
 public class TriggerTimelineReplayAction extends AbstractGameAction {
@@ -54,13 +57,22 @@ public class TriggerTimelineReplayAction extends AbstractGameAction {
 
         Optional<TimerPower> timer = target.powers.stream().filter(p -> p instanceof TimerPower).findFirst().map(p -> (TimerPower) p);
         if (timer.isPresent()) {
-            for (int i = 0; i < replayCount && target.cards.size() > 0; i++) {
-                if (consumeCards)
-                    timer.get().triggerOnEndOfTurnForPlayingCard();
-                else
-                    timer.get().extraReplay();
-            }
-
+            AtomicInteger remainingAmount = new AtomicInteger(replayCount);
+            TimelineMinion finalTarget = target;
+            CallbackUtils.ForLoop(
+                    () -> remainingAmount.get() > 0 && finalTarget.cards.size() > 0,
+                    () -> {
+                        int i = remainingAmount.decrementAndGet();
+                        if (i > 0)
+                            addToBot(new WaitAction(0.75f));
+                    },
+                    next -> {
+                        if (consumeCards)
+                            timer.get().triggerOnEndOfTurnForPlayingCard(next);
+                        else
+                            timer.get().extraReplay(next);
+                    }
+            );
         }
         this.isDone = true;
     }
