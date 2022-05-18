@@ -60,7 +60,7 @@ public class TriggerTimelineReplayAction extends AbstractGameAction {
             AtomicInteger remainingAmount = new AtomicInteger(replayCount);
             TimelineMinion finalTarget = target;
             CallbackUtils.ForLoop(
-                    () -> remainingAmount.get() > 0 && finalTarget.cards.size() > 0,
+                    () -> remainingAmount.get() > 0 && finalTarget.cards.size() > 0 && !finalTarget.isDead,
                     () -> {
                         int i = remainingAmount.decrementAndGet();
                         if (i > 0)
