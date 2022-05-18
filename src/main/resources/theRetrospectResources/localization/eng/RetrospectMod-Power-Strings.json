@@ -2,11 +2,11 @@
   "theRetrospect:TimerPower": {
     "NAME": "Timer",
     "DESCRIPTIONS": [
-      "Replay #b",
+      "#yTrigger at the end of your turn: Play #b",
       " out of #b",
       " card",
       " cards",
-      " at the end of your turn. NL #yCollapse this #ytimeline when all cards are replayed.",
+      ". NL #yCollapse this #ytimeline when there are no cards left.",
       "This power has no effect."
     ]
   },
@@ -22,8 +22,8 @@
     "NAME": "Frozen",
     "DESCRIPTIONS": [
       "You cannot play any cards for #b",
-      " turn. Does not affect timelines.",
-      " turns. Does not affect timelines."
+      " turn, except auto-played cards.",
+      " turns, except auto-played cards."
     ]
   },
   "theRetrospect:ShadowFormPower": {

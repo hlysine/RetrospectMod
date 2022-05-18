@@ -1,16 +1,9 @@
 [
   {
     "NAMES": [
-      "timeline",
-      "timelines"
-    ],
-    "DESCRIPTION": "Replay your past cards at the end of your turn."
-  },
-  {
-    "NAMES": [
       "construct"
     ],
-    "DESCRIPTION": "Create a #ytimeline and share #b40% of your current HP to it."
+    "DESCRIPTION": "Create a timeline and share #b40% of your current HP to it."
   },
   {
     "NAMES": [
@@ -18,19 +11,26 @@
       "collapses",
       "collapsed"
     ],
-    "DESCRIPTION": "Remove the #ytimeline and return its HP to you."
+    "DESCRIPTION": "Remove the timeline and return its HP to you."
   },
   {
     "NAMES": [
       "frozen"
     ],
-    "DESCRIPTION": "You cannot play any cards, but your #ytimelines can."
+    "DESCRIPTION": "You cannot play any cards, except those that are auto-played."
   },
   {
     "NAMES": [
       "timer",
       "timers"
     ],
-    "DESCRIPTION": "Replay cards at the end of your turn. NL #yCollapse the #ytimeline when all cards are replayed."
+    "DESCRIPTION": "Play the timeline's cards at the end of your turn. NL Collapse the timeline when all cards are played."
+  },
+  {
+    "NAMES": [
+      "trigger",
+      "triggers"
+    ],
+    "DESCRIPTION": "Cause a timeline to play its cards."
   }
 ]

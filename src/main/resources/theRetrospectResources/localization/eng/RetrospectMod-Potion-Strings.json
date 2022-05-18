@@ -2,7 +2,7 @@
   "theRetrospect:TimelinePotion": {
     "NAME": "Timeline Potion",
     "DESCRIPTIONS": [
-      "#yConstruct 1 #ytimeline."
+      "#yConstruct 1 timeline."
     ]
   }
 }

@@ -9,7 +9,7 @@
   },
   "theRetrospect:AbstractTimelineCard": {
     "NAME": "Abstract Timeline Card",
-    "DESCRIPTION": "theretrospect:Construct !theRetrospect:TimelineCount! theretrospect:timeline.",
+    "DESCRIPTION": "theretrospect:Construct !theRetrospect:TimelineCount! timeline.",
     "EXTENDED_DESCRIPTION": [
       "Not enough #rHP.",
       "I have too many timelines."
@@ -17,22 +17,22 @@
   },
   "theRetrospect:Divert": {
     "NAME": "Divert",
-    "DESCRIPTION": "Ethereal. NL theretrospect:Construct !theRetrospect:TimelineCount! theretrospect:timeline.",
-    "UPGRADE_DESCRIPTION": "theretrospect:Construct !theRetrospect:TimelineCount! theretrospect:timeline."
+    "DESCRIPTION": "Ethereal. NL theretrospect:Construct !theRetrospect:TimelineCount! timeline.",
+    "UPGRADE_DESCRIPTION": "theretrospect:Construct !theRetrospect:TimelineCount! timeline."
   },
   "theRetrospect:IntoTheVoid": {
     "NAME": "Into The Void",
-    "DESCRIPTION": "Retain. NL Replay ALL theretrospect:timelines once and theretrospect:collapse them. NL Exhaust.",
-    "UPGRADE_DESCRIPTION": "Innate. NL Retain. NL Replay ALL theretrospect:timelines once and theretrospect:collapse them. NL Exhaust."
+    "DESCRIPTION": "Retain. NL theretrospect:Trigger ALL timelines once and theretrospect:collapse them. NL Exhaust.",
+    "UPGRADE_DESCRIPTION": "Innate. NL Retain. NL theretrospect:Trigger ALL timelines once and theretrospect:collapse them. NL Exhaust."
   },
   "theRetrospect:Overcore": {
     "NAME": "Overcore",
-    "DESCRIPTION": "theretrospect:Construct 3 theretrospect:timelines and be theretrospect:Frozen for !M! turns.",
-    "UPGRADE_DESCRIPTION": "theretrospect:Construct 3 theretrospect:timelines and be theretrospect:Frozen for !M! turn."
+    "DESCRIPTION": "theretrospect:Construct 3 timelines and be theretrospect:Frozen for !M! turns.",
+    "UPGRADE_DESCRIPTION": "theretrospect:Construct 3 timelines and be theretrospect:Frozen for !M! turn."
   },
   "theRetrospect:Misdirection": {
     "NAME": "Misdirection",
-    "DESCRIPTION": "Play a random attack card from your discard pile, then theretrospect:Construct 1 theretrospect:timeline."
+    "DESCRIPTION": "Play a random attack card from your discard pile, then theretrospect:Construct 1 timeline."
   },
   "theRetrospect:Transmute": {
     "NAME": "Transmute",
@@ -74,8 +74,8 @@
   },
   "theRetrospect:TemporalAnomaly": {
     "NAME": "Temporal Anomaly",
-    "DESCRIPTION": "Randomly replay X timelines.",
-    "UPGRADE_DESCRIPTION": "Randomly replay X+1 theretrospect:timelines."
+    "DESCRIPTION": "Randomly theretrospect:trigger X timelines.",
+    "UPGRADE_DESCRIPTION": "Randomly theretrospect:trigger X+1 timelines."
   },
   "theRetrospect:ChargeRifle": {
     "NAME": "Charge Rifle",
@@ -100,6 +100,6 @@
   },
   "theRetrospect:UnstableChronology": {
     "NAME": "Unstable Chronology",
-    "DESCRIPTION": "Cost 1 less [E] for each time you take damage in this combat. theretrospect:Construct 1 theretrospect:timeline."
+    "DESCRIPTION": "Cost 1 less [E] for each time you take damage in this combat. theretrospect:Construct 1 timeline."
   }
 }
