@@ -53,8 +53,8 @@
   },
   "theRetrospect:TapTheFuture": {
     "NAME": "Tap the Future",
-    "DESCRIPTION": "Gain [E] [E]. NL Shuffle 2 *Empty to your draw pile.",
-    "UPGRADE_DESCRIPTION": "Gain [E] [E] [E]. NL Shuffle 2 *Empty to your draw pile."
+    "DESCRIPTION": "Gain [E] [E]. NL Shuffle an *Empty to your draw pile.",
+    "UPGRADE_DESCRIPTION": "Gain [E] [E] [E]. NL Shuffle an *Empty to your draw pile."
   },
   "theRetrospect:SleightOfHand": {
     "NAME": "Sleight of Hand",

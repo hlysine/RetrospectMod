@@ -28,7 +28,7 @@ public class TapTheFuture extends AbstractRetrospectCard {
     private static final int COST = 0;
     private static final int ENERGY_GAIN = 2;
     private static final int UPGRADE_ENERGY_GAIN = 1;
-    private static final int EMPTY_CARD_COUNT = 2;
+    private static final int EMPTY_CARD_COUNT = 1;
 
     public TapTheFuture() {
         super(ID, IMG, COST, TYPE, RARITY, TARGET);
