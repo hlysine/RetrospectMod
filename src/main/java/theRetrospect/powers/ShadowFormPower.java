@@ -21,15 +21,12 @@ public class ShadowFormPower extends AbstractPower implements CloneablePowerInte
     private static final Texture tex84 = TextureLoader.getTexture("theRetrospectResources/images/powers/placeholder_power84.png");
     private static final Texture tex32 = TextureLoader.getTexture("theRetrospectResources/images/powers/placeholder_power32.png");
 
-    private int cardDrawAmount = 1;
-
     public ShadowFormPower(final AbstractCreature owner, final int amount) {
         name = NAME;
         ID = POWER_ID;
 
         this.owner = owner;
         this.amount = amount;
-        this.cardDrawAmount = amount;
 
         type = PowerType.BUFF;
         isTurnBased = true;
@@ -41,22 +38,15 @@ public class ShadowFormPower extends AbstractPower implements CloneablePowerInte
     }
 
     @Override
-    public void stackPower(int stackAmount) {
-        super.stackPower(stackAmount);
-        this.cardDrawAmount++;
-    }
-
-    @Override
     public void atStartOfTurnPostDraw() {
         flash();
-        addToBot(new DrawCardAction(this.cardDrawAmount));
-        this.cardDrawAmount += this.amount;
+        addToBot(new DrawCardAction(this.amount));
         updateDescription();
     }
 
     @Override
     public void updateDescription() {
-        description = DESCRIPTIONS[0] + describeNumber(this.cardDrawAmount, 1) + this.amount + DESCRIPTIONS[3];
+        description = DESCRIPTIONS[0] + describeNumber(this.amount, 1);
     }
 
     private String describeNumber(int number, int singularIndex) {

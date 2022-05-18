@@ -22,14 +22,13 @@ public class ShadowForm extends AbstractRetrospectCard {
     private static final CardType TYPE = CardType.POWER;
 
     private static final int COST = 3;
-    private static final int POWER_AMOUNT = 1;
+    private static final int BASE_CARD_DRAW = 2;
+    private static final int UPGRADE_CARD_DRAW = 1;
 
     public ShadowForm() {
-
         super(ID, IMG, COST, TYPE, RARITY, TARGET);
 
-        magicNumber = baseMagicNumber = POWER_AMOUNT;
-        this.isEthereal = true;
+        magicNumber = baseMagicNumber = BASE_CARD_DRAW;
 
         this.tags.add(BaseModCardTags.FORM);
     }
@@ -43,8 +42,7 @@ public class ShadowForm extends AbstractRetrospectCard {
     public void upgrade() {
         if (!upgraded) {
             upgradeName();
-            this.isEthereal = false;
-            this.rawDescription = cardStrings.UPGRADE_DESCRIPTION;
+            upgradeMagicNumber(UPGRADE_CARD_DRAW);
             initializeDescription();
         }
     }
