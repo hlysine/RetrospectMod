@@ -19,7 +19,6 @@ import theRetrospect.util.CardUtils;
 import theRetrospect.util.MinionUtils;
 import theRetrospect.util.TimelineUtils;
 
-import java.util.List;
 import java.util.stream.Collectors;
 
 public class ConstructTimelineAction extends AbstractGameAction {
@@ -31,13 +30,16 @@ public class ConstructTimelineAction extends AbstractGameAction {
 
     private final boolean overrideHealthCost;
     private final int healthBorrowed;
+    private final AbstractCard constructionCard;
 
-    public ConstructTimelineAction(int healthBorrowed) {
+    public ConstructTimelineAction(AbstractCard constructionCard, int healthBorrowed) {
+        this.constructionCard = constructionCard;
         this.overrideHealthCost = true;
         this.healthBorrowed = healthBorrowed;
     }
 
-    public ConstructTimelineAction() {
+    public ConstructTimelineAction(AbstractCard constructionCard) {
+        this.constructionCard = constructionCard;
         this.overrideHealthCost = false;
         this.healthBorrowed = 0;
     }
@@ -56,7 +58,10 @@ public class ConstructTimelineAction extends AbstractGameAction {
 
         if (player.currentHealth > health) {
             TimelineMinion minion = new TimelineMinion(
-                    filterReplayableCards(AbstractDungeon.actionManager.cardsPlayedThisTurn),
+                    AbstractDungeon.actionManager.cardsPlayedThisTurn.stream()
+                            .filter(card -> card != constructionCard)
+                            .map(CardUtils::makeAdvancedCopy)
+                            .collect(Collectors.toList()),
                     (int) (-Settings.WIDTH * 0.5), 0, health);
 
             MinionUtils.addMinion(player, minion);
@@ -89,12 +94,5 @@ public class ConstructTimelineAction extends AbstractGameAction {
             ret = (int) Math.ceil(player.currentHealth * HEALTH_PERCENTAGE_COST);
 
         return Math.max(1, Math.min(player.currentHealth, ret));
-    }
-
-    private List<AbstractCard> filterReplayableCards(List<AbstractCard> cards) {
-        return cards.stream()
-                .filter(CardUtils::isCardReplayable)
-                .map(CardUtils::makeAdvancedCopy)
-                .collect(Collectors.toList());
     }
 }

@@ -3,7 +3,6 @@ package theRetrospect.util;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.ui.panels.EnergyPanel;
-import theRetrospect.cards.AbstractRetrospectCard;
 import theRetrospect.patches.CardAddFieldsPatch;
 
 import java.lang.reflect.Field;
@@ -74,10 +73,6 @@ public class CardUtils {
      */
     public static boolean removeActionAfterUse(AbstractCard card, Runnable actionAfterUse) {
         return CardAddFieldsPatch.actionAfterUse.get(card).remove(actionAfterUse);
-    }
-
-    public static boolean isCardReplayable(AbstractCard card) {
-        return !(card instanceof AbstractRetrospectCard) || ((AbstractRetrospectCard) card).isReplayable();
     }
 
     /**

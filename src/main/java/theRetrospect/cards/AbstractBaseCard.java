@@ -16,8 +16,4 @@ public abstract class AbstractBaseCard extends CustomCard {
 
         super(id, languagePack.getCardStrings(id).NAME, img, cost, languagePack.getCardStrings(id).DESCRIPTION, type, color, rarity, target);
     }
-
-    public boolean isReplayable() {
-        return true;
-    }
 }

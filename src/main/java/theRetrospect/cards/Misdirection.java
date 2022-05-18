@@ -41,7 +41,7 @@ public class Misdirection extends AbstractTimelineCard {
             AbstractCard card = p.discardPile.getRandomCard(CardType.ATTACK, true);
             if (card != null) {
                 p.discardPile.removeCard(card);
-                CardUtils.addActionAfterUse(card, () -> addToBot(new ConstructTimelineAction()));
+                CardUtils.addActionAfterUse(card, () -> addToBot(new ConstructTimelineAction(this)));
                 addToBot(new NewQueueCardAction(card, true, true, true));
             }
         }

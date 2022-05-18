@@ -11,13 +11,11 @@ import java.util.function.Predicate;
 public class ReplayLastCardsAction extends AbstractGameAction {
     private final Predicate<AbstractCard> filter;
     private final int replayCount;
-    private final boolean allowNonReplayable;
     private final boolean countAsReplay;
 
-    public ReplayLastCardsAction(Predicate<AbstractCard> filter, int replayCount, boolean allowNonReplayable, boolean countAsReplay) {
+    public ReplayLastCardsAction(Predicate<AbstractCard> filter, int replayCount, boolean countAsReplay) {
         this.filter = filter;
         this.replayCount = replayCount;
-        this.allowNonReplayable = allowNonReplayable;
         this.countAsReplay = countAsReplay;
     }
 
@@ -27,9 +25,9 @@ public class ReplayLastCardsAction extends AbstractGameAction {
         int remaining = replayCount;
         for (int i = lastPlayedCards.size() - 2; i >= 0 && remaining > 0; i--) {
             AbstractCard card = lastPlayedCards.get(i);
-            if (filter.test(card) && (allowNonReplayable || CardUtils.isCardReplayable(card))) {
+            if (filter.test(card)) {
                 remaining--;
-                addToBot(new QueueCardIntentAction(CardUtils.makeAdvancedCopy(card),null, countAsReplay));
+                addToBot(new QueueCardIntentAction(CardUtils.makeAdvancedCopy(card), null, countAsReplay));
             }
         }
         this.isDone = true;

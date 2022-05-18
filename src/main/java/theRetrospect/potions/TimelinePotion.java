@@ -44,7 +44,7 @@ public class TimelinePotion extends CustomPotion {
 
     @Override
     public void use(AbstractCreature target) {
-        addToBot(new ConstructTimelineAction());
+        addToBot(new ConstructTimelineAction(null));
     }
 
     @Override

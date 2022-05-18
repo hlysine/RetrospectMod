@@ -41,7 +41,7 @@ public class Overcore extends AbstractTimelineCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         for (int i = 0; i < baseTimelineCount; i++)
-            addToBot(new ConstructTimelineAction());
+            addToBot(new ConstructTimelineAction(this));
         addToBot(new ApplyPowerAction(p, p, new FrozenPower(p, this.magicNumber)));
     }
 

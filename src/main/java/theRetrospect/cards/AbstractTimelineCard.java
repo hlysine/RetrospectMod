@@ -39,8 +39,4 @@ public abstract class AbstractTimelineCard extends AbstractRetrospectCard {
         timelineCount = baseTimelineCount;
         upgradedTimelineCount = true;
     }
-
-    public boolean isReplayable() {
-        return false;
-    }
 }
