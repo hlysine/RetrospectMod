@@ -32,6 +32,7 @@ public class RewriteHistory extends AbstractRetrospectCard {
         super(ID, IMG, COST, TYPE, RARITY, TARGET);
 
         damage = baseDamage = BASE_DAMAGE;
+        exhaust = true;
     }
 
     @Override
