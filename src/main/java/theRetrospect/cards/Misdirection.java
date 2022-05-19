@@ -1,13 +1,16 @@
 package theRetrospect.cards;
 
+import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.utility.NewQueueCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
+import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theRetrospect.RetrospectMod;
 import theRetrospect.actions.ConstructTimelineAction;
+import theRetrospect.effects.ShowCardToBePlayedEffect;
 import theRetrospect.util.CardUtils;
 
 import static theRetrospect.RetrospectMod.makeCardPath;
@@ -42,6 +45,7 @@ public class Misdirection extends AbstractTimelineCard {
             if (card != null) {
                 p.discardPile.removeCard(card);
                 CardUtils.addActionAfterUse(card, () -> addToBot(new ConstructTimelineAction(this)));
+                addToBot(new VFXAction(null, new ShowCardToBePlayedEffect(card), Settings.FAST_MODE ? 0.5F : 1.5F, true));
                 addToBot(new NewQueueCardAction(card, true, true, true));
             }
         }
