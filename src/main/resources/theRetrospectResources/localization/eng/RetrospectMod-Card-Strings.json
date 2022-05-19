@@ -101,5 +101,12 @@
   "theRetrospect:UnstableChronology": {
     "NAME": "Unstable Chronology",
     "DESCRIPTION": "Cost 1 less [E] for each time you take damage in this combat. theretrospect:Construct 1 timeline."
+  },
+  "theRetrospect:Paradox": {
+    "NAME": "Paradox",
+    "DESCRIPTION": "Unplayable. theretrospect:Delusional. NL You cannot play any cards when your hand is full.",
+    "EXTENDED_DESCRIPTION": [
+      "My #rHand #ris #rFull!"
+    ]
   }
 }

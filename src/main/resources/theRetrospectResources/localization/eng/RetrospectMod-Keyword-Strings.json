@@ -32,5 +32,11 @@
       "triggers"
     ],
     "DESCRIPTION": "Cause a timeline to play its cards."
+  },
+  {
+    "NAMES": [
+      "delusional"
+    ],
+    "DESCRIPTION": "Immediately exhaust this card when drawn."
   }
 ]
