@@ -30,6 +30,11 @@ public class Empty extends AbstractBaseCard {
     }
 
     @Override
+    public boolean canUpgrade() {
+        return !upgraded;
+    }
+
+    @Override
     public void upgrade() {
         if (!upgraded) {
             upgradeName();
