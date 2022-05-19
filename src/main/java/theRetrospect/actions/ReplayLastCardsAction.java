@@ -24,7 +24,7 @@ public class ReplayLastCardsAction extends AbstractGameAction {
     public void update() {
         List<AbstractCard> lastPlayedCards = AbstractDungeon.actionManager.cardsPlayedThisTurn;
         int remaining = replayCount;
-        for (int i = lastPlayedCards.size() - 2; i >= 0 && remaining > 0; i--) {
+        for (int i = lastPlayedCards.size() - 1; i >= 0 && remaining > 0; i--) {
             AbstractCard card = lastPlayedCards.get(i);
             if (filter.test(card)) {
                 remaining--;

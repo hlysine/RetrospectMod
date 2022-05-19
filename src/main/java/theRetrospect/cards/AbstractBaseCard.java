@@ -9,6 +9,7 @@ import static com.megacrit.cardcrawl.core.CardCrawlGame.languagePack;
 public abstract class AbstractBaseCard extends CustomCard {
 
     public boolean delusional = false;
+    public boolean paradoxical = false;
 
     public AbstractBaseCard(final String id,
                             final String img,

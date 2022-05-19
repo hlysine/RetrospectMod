@@ -29,12 +29,14 @@ public class SleightOfHand extends AbstractRetrospectCard {
         super(ID, IMG, COST, TYPE, RARITY, TARGET);
 
         damage = baseDamage = BASE_DAMAGE;
+        paradoxical = true;
+        cardsToPreview = new Paradox();
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         addToBot(new DamageAction(m, new DamageInfo(p, damage, damageTypeForTurn), AbstractGameAction.AttackEffect.SLASH_VERTICAL));
-        addToBot(new ReplayLastCardsAction(card -> !(card instanceof SleightOfHand), 1, CardPlaySource.CARD));
+        addToBot(new ReplayLastCardsAction(card -> card != this, 1, CardPlaySource.CARD));
     }
 
     @Override

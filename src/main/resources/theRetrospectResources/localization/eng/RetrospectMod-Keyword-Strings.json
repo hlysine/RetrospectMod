@@ -38,5 +38,11 @@
       "delusional"
     ],
     "DESCRIPTION": "Immediately exhaust this card when drawn."
+  },
+  {
+    "NAMES": [
+      "paradoxical"
+    ],
+    "DESCRIPTION": "Add a #yParadox to your hand if this card is played by another card."
   }
 ]

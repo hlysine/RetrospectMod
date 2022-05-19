@@ -32,7 +32,7 @@
   },
   "theRetrospect:Misdirection": {
     "NAME": "Misdirection",
-    "DESCRIPTION": "Play a random attack card from your discard pile, then theretrospect:Construct 1 timeline."
+    "DESCRIPTION": "Play a random attack card from your discard pile, then theretrospect:construct 1 timeline."
   },
   "theRetrospect:Transmute": {
     "NAME": "Transmute",
@@ -58,7 +58,7 @@
   },
   "theRetrospect:SleightOfHand": {
     "NAME": "Sleight of Hand",
-    "DESCRIPTION": "Deal !D! damage. Replay your last card this turn."
+    "DESCRIPTION": "theretrospect:Paradoxical. NL Deal !D! damage. Replay your last card this turn."
   },
   "theRetrospect:AlternativeReality": {
     "NAME": "Alternative Reality",
