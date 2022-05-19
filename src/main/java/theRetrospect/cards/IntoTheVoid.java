@@ -7,7 +7,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.monsters.MonsterGroup;
 import theRetrospect.RetrospectMod;
 import theRetrospect.actions.CollapseTimelineAction;
-import theRetrospect.actions.TriggerTimelineReplayAction;
+import theRetrospect.actions.TriggerTimelineAction;
 import theRetrospect.minions.TimelineMinion;
 import theRetrospect.util.MinionUtils;
 
@@ -43,7 +43,7 @@ public class IntoTheVoid extends AbstractRetrospectCard {
         for (AbstractMonster monster : minions.monsters) {
             if (monster instanceof TimelineMinion) {
                 TimelineMinion minion = (TimelineMinion) monster;
-                addToBot(new TriggerTimelineReplayAction(minion, false));
+                addToBot(new TriggerTimelineAction(minion, false));
                 addToBot(new CollapseTimelineAction(minion));
             }
         }

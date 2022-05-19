@@ -6,7 +6,7 @@ import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.ui.panels.EnergyPanel;
 import theRetrospect.RetrospectMod;
-import theRetrospect.actions.TriggerTimelineReplayAction;
+import theRetrospect.actions.TriggerTimelineAction;
 import theRetrospect.util.CardUtils;
 
 import static theRetrospect.RetrospectMod.makeCardPath;
@@ -41,7 +41,7 @@ public class TemporalAnomaly extends AbstractRetrospectCard {
 
         if (effect > 0) {
             for (int i = 0; i < effect; i++) {
-                addToBot(new TriggerTimelineReplayAction(null, true));
+                addToBot(new TriggerTimelineAction(null, true));
             }
 
             if (!this.freeToPlayOnce) {

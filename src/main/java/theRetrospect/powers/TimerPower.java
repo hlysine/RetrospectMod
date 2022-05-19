@@ -57,7 +57,7 @@ public class TimerPower extends AbstractPower implements CloneablePowerInterface
         updateCardIntents();
     }
 
-    public void extraReplay(Runnable next) {
+    public void triggerWithoutConsumingCards(Runnable next) {
         AtomicInteger cardIdx = new AtomicInteger(0);
         CallbackUtils.ForLoop(
                 () -> {

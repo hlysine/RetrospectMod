@@ -14,31 +14,31 @@ import java.util.Optional;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Collectors;
 
-public class TriggerTimelineReplayAction extends AbstractGameAction {
+public class TriggerTimelineAction extends AbstractGameAction {
 
     private final TimelineMinion minion;
-    private final int replayCount;
+    private final int triggerCount;
     private final boolean consumeCards;
 
     /**
-     * Create an action that triggers a timeline replay.
+     * Create an action that triggers a timeline.
      *
      * @param minion       The timeline to trigger. Use null for a random timeline.
-     * @param replayCount  How many times the replay should be triggered.
-     * @param consumeCards Whether the replayed cards should disappear from the timeline.
+     * @param triggerCount How many times the timeline should be triggered.
+     * @param consumeCards Whether the played cards should disappear from the timeline.
      */
-    public TriggerTimelineReplayAction(TimelineMinion minion, int replayCount, boolean consumeCards) {
+    public TriggerTimelineAction(TimelineMinion minion, int triggerCount, boolean consumeCards) {
         this.minion = minion;
-        this.replayCount = replayCount;
+        this.triggerCount = triggerCount;
         this.consumeCards = consumeCards;
     }
 
     /**
-     * Create an action that triggers a timeline replay.
+     * Create an action that triggers a timeline.
      *
      * @param minion The timeline to trigger. Use null for a random timeline.
      */
-    public TriggerTimelineReplayAction(TimelineMinion minion, boolean consumeCards) {
+    public TriggerTimelineAction(TimelineMinion minion, boolean consumeCards) {
         this(minion, 1, consumeCards);
     }
 
@@ -57,7 +57,7 @@ public class TriggerTimelineReplayAction extends AbstractGameAction {
 
         Optional<TimerPower> timer = target.powers.stream().filter(p -> p instanceof TimerPower).findFirst().map(p -> (TimerPower) p);
         if (timer.isPresent()) {
-            AtomicInteger remainingAmount = new AtomicInteger(replayCount);
+            AtomicInteger remainingAmount = new AtomicInteger(triggerCount);
             TimelineMinion finalTarget = target;
             CallbackUtils.ForLoop(
                     () -> remainingAmount.get() > 0 && finalTarget.cards.size() > 0 && !finalTarget.isDead,
@@ -70,7 +70,7 @@ public class TriggerTimelineReplayAction extends AbstractGameAction {
                         if (consumeCards)
                             timer.get().triggerOnEndOfTurnForPlayingCard(next);
                         else
-                            timer.get().extraReplay(next);
+                            timer.get().triggerWithoutConsumingCards(next);
                     }
             );
         }
