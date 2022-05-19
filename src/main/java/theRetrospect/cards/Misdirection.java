@@ -40,6 +40,7 @@ public class Misdirection extends AbstractTimelineCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
+        boolean cardPlayed = false;
         if (p.discardPile.size() > 0) {
             AbstractCard card = p.discardPile.getRandomCard(CardType.ATTACK, true);
             if (card != null) {
@@ -47,7 +48,11 @@ public class Misdirection extends AbstractTimelineCard {
                 CardUtils.addActionAfterUse(card, () -> addToBot(new ConstructTimelineAction(this)));
                 addToBot(new VFXAction(null, new ShowCardToBePlayedEffect(card), Settings.FAST_MODE ? 0.5F : 1.5F, true));
                 addToBot(new NewQueueCardAction(card, true, true, true));
+                cardPlayed = true;
             }
+        }
+        if (!cardPlayed) {
+            addToBot(new ConstructTimelineAction(this));
         }
     }
 
