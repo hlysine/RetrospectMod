@@ -18,6 +18,8 @@ public class ShadowFormPower extends AbstractPower implements CloneablePowerInte
     public static final String NAME = powerStrings.NAME;
     public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
 
+    public static final int MAX_AMOUNT = 10; // anything more than 10 is meaningless since the player's hand size is 10
+
     private static final Texture tex84 = TextureLoader.getTexture("theRetrospectResources/images/powers/placeholder_power84.png");
     private static final Texture tex32 = TextureLoader.getTexture("theRetrospectResources/images/powers/placeholder_power32.png");
 
@@ -26,7 +28,7 @@ public class ShadowFormPower extends AbstractPower implements CloneablePowerInte
         ID = POWER_ID;
 
         this.owner = owner;
-        this.amount = amount;
+        this.amount = Math.min(MAX_AMOUNT, amount);
 
         type = PowerType.BUFF;
         isTurnBased = true;
@@ -35,6 +37,12 @@ public class ShadowFormPower extends AbstractPower implements CloneablePowerInte
         this.region48 = new TextureAtlas.AtlasRegion(tex32, 0, 0, 32, 32);
 
         updateDescription();
+    }
+
+    @Override
+    public void stackPower(int stackAmount) {
+        this.fontScale = 8.0F;
+        this.amount = Math.min(MAX_AMOUNT, this.amount + stackAmount);
     }
 
     @Override
