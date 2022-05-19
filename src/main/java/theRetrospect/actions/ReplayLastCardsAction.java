@@ -3,6 +3,7 @@ package theRetrospect.actions;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import theRetrospect.util.CardPlaySource;
 import theRetrospect.util.CardUtils;
 
 import java.util.List;
@@ -11,12 +12,12 @@ import java.util.function.Predicate;
 public class ReplayLastCardsAction extends AbstractGameAction {
     private final Predicate<AbstractCard> filter;
     private final int replayCount;
-    private final boolean countAsReplay;
+    private final CardPlaySource source;
 
-    public ReplayLastCardsAction(Predicate<AbstractCard> filter, int replayCount, boolean countAsReplay) {
+    public ReplayLastCardsAction(Predicate<AbstractCard> filter, int replayCount, CardPlaySource source) {
         this.filter = filter;
         this.replayCount = replayCount;
-        this.countAsReplay = countAsReplay;
+        this.source = source;
     }
 
     @Override
@@ -27,7 +28,7 @@ public class ReplayLastCardsAction extends AbstractGameAction {
             AbstractCard card = lastPlayedCards.get(i);
             if (filter.test(card)) {
                 remaining--;
-                addToBot(new QueueCardIntentAction(CardUtils.makeAdvancedCopy(card), null, countAsReplay));
+                addToBot(new QueueCardIntentAction(CardUtils.makeAdvancedCopy(card), null, source));
             }
         }
         this.isDone = true;

@@ -10,6 +10,8 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.monsters.MonsterGroup;
 import com.megacrit.cardcrawl.powers.AbstractPower;
+import theRetrospect.RetrospectMod;
+import theRetrospect.util.CardUtils;
 import theRetrospect.util.MinionUtils;
 
 /**
@@ -69,6 +71,7 @@ public class TimelineEventsPatch {
         )
         public static void Insert(UseCardAction __instance, AbstractCard ___targetCard) {
             MonsterGroup minions = MinionUtils.getMinions(AbstractDungeon.player);
+            RetrospectMod.logger.info("Play card: " + ___targetCard.cardID + " source: " + CardUtils.getPlaySource(___targetCard).toString());
             for (AbstractMonster minion : minions.monsters) {
                 for (AbstractPower p : minion.powers) {
                     if (!___targetCard.dontTriggerOnUseCard) {

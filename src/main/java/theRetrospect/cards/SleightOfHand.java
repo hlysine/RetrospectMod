@@ -7,6 +7,7 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theRetrospect.RetrospectMod;
 import theRetrospect.actions.ReplayLastCardsAction;
+import theRetrospect.util.CardPlaySource;
 
 import static theRetrospect.RetrospectMod.makeCardPath;
 
@@ -33,7 +34,7 @@ public class SleightOfHand extends AbstractRetrospectCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         addToBot(new DamageAction(m, new DamageInfo(p, damage, damageTypeForTurn), AbstractGameAction.AttackEffect.SLASH_VERTICAL));
-        addToBot(new ReplayLastCardsAction(card -> !(card instanceof SleightOfHand), 1, false));
+        addToBot(new ReplayLastCardsAction(card -> !(card instanceof SleightOfHand), 1, CardPlaySource.CARD));
     }
 
     @Override

@@ -17,10 +17,7 @@ import theRetrospect.actions.NonTriggeringHealthChange;
 import theRetrospect.actions.QueueCardIntentAction;
 import theRetrospect.minions.AbstractMinionWithCards;
 import theRetrospect.subscribers.EndOfTurnCardSubscriber;
-import theRetrospect.util.CallbackUtils;
-import theRetrospect.util.CardUtils;
-import theRetrospect.util.HoverableCardStack;
-import theRetrospect.util.TextureLoader;
+import theRetrospect.util.*;
 
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -110,7 +107,7 @@ public class TimerPower extends AbstractPower implements CloneablePowerInterface
     }
 
     private void replayCard(AbstractCard cardToPlay, HoverableCardStack cardStack) {
-        addToBot(new QueueCardIntentAction(cardToPlay, cardStack, true));
+        addToBot(new QueueCardIntentAction(cardToPlay, cardStack, CardPlaySource.TIMELINE));
     }
 
     @Override

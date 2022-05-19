@@ -3,6 +3,7 @@ package theRetrospect.patches;
 import com.evacipated.cardcrawl.modthespire.lib.SpireField;
 import com.evacipated.cardcrawl.modthespire.lib.SpirePatch;
 import com.megacrit.cardcrawl.cards.AbstractCard;
+import theRetrospect.util.CardPlaySource;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,7 +13,7 @@ import java.util.List;
         method = SpirePatch.CLASS
 )
 public class CardAddFieldsPatch {
-    public static SpireField<Boolean> isBeingReplayed = new SpireField<>(() -> false);
+    public static SpireField<CardPlaySource> playSource = new SpireField<>(() -> null);
 
     public static SpireField<List<Runnable>> actionAfterUse = new SpireField<>(ArrayList::new);
 }

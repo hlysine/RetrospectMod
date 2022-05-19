@@ -31,12 +31,19 @@ public class CardUtils {
         }
     }
 
-    public static boolean getIsBeingReplayed(AbstractCard card) {
-        return CardAddFieldsPatch.isBeingReplayed.get(card);
+    public static CardPlaySource getPlaySource(AbstractCard card) {
+        CardPlaySource source = CardAddFieldsPatch.playSource.get(card);
+
+        // Return the specified play source, if any
+        if (source != null) return source;
+
+        // Do a best-effort guess if none is available
+        if (card.isInAutoplay) return CardPlaySource.CARD;
+        else return CardPlaySource.PLAYER;
     }
 
-    public static void setIsBeingReplayed(AbstractCard card, boolean newVal) {
-        CardAddFieldsPatch.isBeingReplayed.set(card, newVal);
+    public static void setPlaySource(AbstractCard card, CardPlaySource source) {
+        CardAddFieldsPatch.playSource.set(card, source);
     }
 
     public static List<Runnable> getActionsAfterUse(AbstractCard card) {
