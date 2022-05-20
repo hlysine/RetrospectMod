@@ -1,5 +1,6 @@
 package theRetrospect.util;
 
+import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.ui.panels.EnergyPanel;
@@ -46,8 +47,8 @@ public class CardUtils {
         CardAddFieldsPatch.playSource.set(card, source);
     }
 
-    public static List<Runnable> getActionsAfterUse(AbstractCard card) {
-        return CardAddFieldsPatch.actionAfterUse.get(card);
+    public static List<AbstractGameAction> getFollowUpActions(AbstractCard card) {
+        return CardAddFieldsPatch.followUpActions.get(card);
     }
 
     /**
@@ -55,8 +56,8 @@ public class CardUtils {
      *
      * @param card The card to remove actions from.
      */
-    public static void clearActionsAfterUse(AbstractCard card) {
-        CardAddFieldsPatch.actionAfterUse.get(card).clear();
+    public static void clearFollowUpActions(AbstractCard card) {
+        CardAddFieldsPatch.followUpActions.get(card).clear();
     }
 
     /**
@@ -67,8 +68,8 @@ public class CardUtils {
      * @param card           The card to store the action in.
      * @param actionAfterUse The action to be executed.
      */
-    public static void addActionAfterUse(AbstractCard card, Runnable actionAfterUse) {
-        CardAddFieldsPatch.actionAfterUse.get(card).add(actionAfterUse);
+    public static void addFollowUpAction(AbstractCard card, AbstractGameAction actionAfterUse) {
+        CardAddFieldsPatch.followUpActions.get(card).add(actionAfterUse);
     }
 
     /**
@@ -78,8 +79,8 @@ public class CardUtils {
      * @param actionAfterUse The action to be removed.
      * @return True if the action was in the card.
      */
-    public static boolean removeActionAfterUse(AbstractCard card, Runnable actionAfterUse) {
-        return CardAddFieldsPatch.actionAfterUse.get(card).remove(actionAfterUse);
+    public static boolean removeFollowUpAction(AbstractCard card, AbstractGameAction actionAfterUse) {
+        return CardAddFieldsPatch.followUpActions.get(card).remove(actionAfterUse);
     }
 
     /**

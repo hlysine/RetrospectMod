@@ -45,7 +45,7 @@ public class Misdirection extends AbstractTimelineCard {
             AbstractCard card = p.discardPile.getRandomCard(CardType.ATTACK, true);
             if (card != null) {
                 p.discardPile.removeCard(card);
-                CardUtils.addActionAfterUse(card, () -> addToBot(new ConstructTimelineAction(this)));
+                CardUtils.addFollowUpAction(card, new ConstructTimelineAction(this));
                 addToBot(new VFXAction(null, new ShowCardToBePlayedEffect(card), Settings.FAST_MODE ? 0.5F : 1.5F, true));
                 addToBot(new NewQueueCardAction(card, true, true, true));
                 cardPlayed = true;

@@ -13,6 +13,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import theRetrospect.RetrospectMod;
+import theRetrospect.actions.RunnableAction;
 import theRetrospect.cards.Divert;
 import theRetrospect.subscribers.EndOfTurnCardSubscriber;
 import theRetrospect.util.CallbackUtils;
@@ -67,7 +68,7 @@ public class AntiqueStopwatchPower extends AbstractPower implements CloneablePow
                     card.purgeOnUse = true;
                     card.current_x = card.target_x = AbstractDungeon.player.drawX;
                     card.current_y = card.target_y = AbstractDungeon.player.drawY;
-                    CardUtils.addActionAfterUse(card, nxt);
+                    CardUtils.addFollowUpAction(card, new RunnableAction(nxt));
                     addToBot(new NewQueueCardAction(card, true, true, true));
                 },
                 () -> {

@@ -15,6 +15,7 @@ import theRetrospect.RetrospectMod;
 import theRetrospect.actions.CollapseTimelineAction;
 import theRetrospect.actions.NonTriggeringHealthChange;
 import theRetrospect.actions.QueueCardIntentAction;
+import theRetrospect.actions.RunnableAction;
 import theRetrospect.minions.AbstractMinionWithCards;
 import theRetrospect.subscribers.EndOfTurnCardSubscriber;
 import theRetrospect.util.*;
@@ -71,7 +72,7 @@ public class TimerPower extends AbstractPower implements CloneablePowerInterface
                 },
                 nxt -> {
                     AbstractCard cardToPlay = minion.cards.get(cardIdx.get()).makeStatEquivalentCopy();
-                    CardUtils.addActionAfterUse(cardToPlay, nxt);
+                    CardUtils.addFollowUpAction(cardToPlay, new RunnableAction(nxt));
                     replayCard(cardToPlay, null);
                 },
                 next
@@ -99,7 +100,7 @@ public class TimerPower extends AbstractPower implements CloneablePowerInterface
                 },
                 nxt -> {
                     AbstractCard cardToPlay = minion.cards.remove(0);
-                    CardUtils.addActionAfterUse(cardToPlay, nxt);
+                    CardUtils.addFollowUpAction(cardToPlay, new RunnableAction(nxt));
                     replayCard(cardToPlay, minion.cardStack);
                 },
                 next
