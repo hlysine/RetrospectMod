@@ -11,6 +11,8 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import theRetrospect.RetrospectMod;
+import theRetrospect.util.CardPlaySource;
+import theRetrospect.util.CardUtils;
 import theRetrospect.util.TextureLoader;
 
 public class FrozenPower extends AbstractPower implements CloneablePowerInterface {
@@ -50,7 +52,7 @@ public class FrozenPower extends AbstractPower implements CloneablePowerInterfac
 
     @Override
     public boolean canPlayCard(AbstractCard card) {
-        return card.isInAutoplay;
+        return CardUtils.getPlaySource(card) != CardPlaySource.PLAYER;
     }
 
     @Override

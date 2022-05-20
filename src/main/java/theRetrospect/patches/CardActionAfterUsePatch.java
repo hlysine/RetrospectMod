@@ -15,6 +15,7 @@ import theRetrospect.util.CardUtils;
 public class CardActionAfterUsePatch {
     public static void Postfix(UseCardAction __instance, AbstractCard ___targetCard) {
         if (__instance.isDone) {
+            CardUtils.setPlaySource(___targetCard, null);
             if (!___targetCard.dontTriggerOnUseCard) {
                 for (Runnable runnable : CardUtils.getActionsAfterUse(___targetCard)) {
                     runnable.run();
