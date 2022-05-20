@@ -22,8 +22,8 @@
   },
   "theRetrospect:IntoTheVoid": {
     "NAME": "Into The Void",
-    "DESCRIPTION": "Retain. NL theretrospect:Trigger ALL timelines once and theretrospect:collapse them. NL Exhaust.",
-    "UPGRADE_DESCRIPTION": "Innate. NL Retain. NL theretrospect:Trigger ALL timelines once and theretrospect:collapse them. NL Exhaust."
+    "DESCRIPTION": "theretrospect:Trigger a timeline once and theretrospect:collapse it.",
+    "UPGRADE_DESCRIPTION": "theretrospect:Trigger a timeline twice and theretrospect:collapse it."
   },
   "theRetrospect:Overcore": {
     "NAME": "Overcore",
