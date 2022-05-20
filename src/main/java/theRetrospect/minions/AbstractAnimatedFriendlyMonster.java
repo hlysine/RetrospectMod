@@ -48,18 +48,18 @@ public class AbstractAnimatedFriendlyMonster extends AbstractFriendlyMonster imp
 
     public AbstractAnimatedFriendlyMonster(String name, String id, int maxHealth, float hb_x, float hb_y, float hb_w, float hb_h, AbstractAnimation animation, float offsetX, float offsetY) {
         super(name, id, maxHealth, hb_x, hb_y, hb_w, hb_h, null, offsetX, offsetY);
-        this.animation = animation;// 85
-        if (animation instanceof SpineAnimation) {// 87
-            SpineAnimation spine = (SpineAnimation) animation;// 88
-            this.loadAnimation(spine.atlasUrl, spine.skeletonUrl, spine.scale);// 89
+        this.animation = animation;
+        if (animation instanceof SpineAnimation) {
+            SpineAnimation spine = (SpineAnimation) animation;
+            this.loadAnimation(spine.atlasUrl, spine.skeletonUrl, spine.scale);
         }
 
-        if (animation.type() != AbstractAnimation.Type.NONE) {// 92
-            this.atlas = new TextureAtlas();// 93
+        if (animation.type() != AbstractAnimation.Type.NONE) {
+            this.atlas = new TextureAtlas();
         }
 
-        if (animation.type() == AbstractAnimation.Type.MODEL) {// 96
-            BaseMod.subscribe(this);// 97
+        if (animation.type() == AbstractAnimation.Type.MODEL) {
+            BaseMod.subscribe(this);
         }
     }
 
