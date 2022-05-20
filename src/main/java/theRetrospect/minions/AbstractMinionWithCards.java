@@ -1,9 +1,9 @@
 package theRetrospect.minions;
 
+import basemod.animations.AbstractAnimation;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.helpers.MathHelper;
-import kobting.friendlyminions.monsters.AbstractFriendlyMonster;
 import theRetrospect.subscribers.EndOfTurnCardSubscriber;
 import theRetrospect.util.CallbackUtils;
 import theRetrospect.util.HoverableCardStack;
@@ -11,7 +11,7 @@ import theRetrospect.util.HoverableCardStack;
 import java.util.ArrayList;
 import java.util.List;
 
-public class AbstractMinionWithCards extends AbstractFriendlyMonster {
+public class AbstractMinionWithCards extends AbstractAnimatedFriendlyMonster {
 
     /**
      * A stack of cards rendered on top of this minion. Used to visualize {@link AbstractMinionWithCards#cardIntents}
@@ -21,12 +21,12 @@ public class AbstractMinionWithCards extends AbstractFriendlyMonster {
     /**
      * A list of cards that this minion intends to play.
      */
-    public final List<AbstractCard> cardIntents;
+    public final List<AbstractCard> cardIntents = new ArrayList<>();
 
     /**
      * All the cards that this minion has.
      */
-    public final List<AbstractCard> cards;
+    public final List<AbstractCard> cards = new ArrayList<>();
 
     public float target_x;
     public float target_y;
@@ -35,8 +35,13 @@ public class AbstractMinionWithCards extends AbstractFriendlyMonster {
         super(name, id, maxHealth, hb_x, hb_y, hb_w, hb_h, imgUrl, offsetX, offsetY);
         target_x = drawX;
         target_y = drawY;
-        cards = new ArrayList<>();
-        cardIntents = new ArrayList<>();
+        cardStack = new HoverableCardStack(cardIntents, this.intentHb.cX, this.intentHb.cY);
+    }
+
+    public AbstractMinionWithCards(String name, String id, int maxHealth, float hb_x, float hb_y, float hb_w, float hb_h, AbstractAnimation animation, float offsetX, float offsetY) {
+        super(name, id, maxHealth, hb_x, hb_y, hb_w, hb_h, animation, offsetX, offsetY);
+        target_x = drawX;
+        target_y = drawY;
         cardStack = new HoverableCardStack(cardIntents, this.intentHb.cX, this.intentHb.cY);
     }
 

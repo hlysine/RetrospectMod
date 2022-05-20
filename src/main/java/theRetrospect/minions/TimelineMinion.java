@@ -1,5 +1,6 @@
 package theRetrospect.minions;
 
+import basemod.animations.SpriterAnimation;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.math.MathUtils;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -23,7 +24,14 @@ public class TimelineMinion extends AbstractMinionWithCards {
     private float auraEffectTimer = 0.5f;
 
     public TimelineMinion(List<AbstractCard> cards, int offsetX, int offsetY, int maxHealth) {
-        super(NAME, ID, maxHealth, 0, 0, 120, 120, IMG, offsetX, offsetY);
+        super(NAME, ID, maxHealth, 0, 0, 120, 120,
+                new SpriterAnimation(
+                        "theRetrospectResources/images/char/retrospectCharacter/Spriter/theRetrospectAnimation.scml"
+                ), offsetX, offsetY);
+
+        SpriterAnimation spriter = (SpriterAnimation) this.animation;
+        spriter.myPlayer.scale(0.5f);
+
         setCards(cards);
         addPower(new TimerPower(this, 1));
         this.powers.forEach(AbstractPower::onInitialApplication);
