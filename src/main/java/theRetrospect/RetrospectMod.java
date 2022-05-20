@@ -1,12 +1,16 @@
 package theRetrospect;
 
-import basemod.*;
+import basemod.AutoAdd;
+import basemod.BaseMod;
+import basemod.ModLabeledToggleButton;
+import basemod.ModPanel;
 import basemod.interfaces.*;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.evacipated.cardcrawl.mod.stslib.Keyword;
+import com.evacipated.cardcrawl.mod.stslib.patches.CustomTargeting;
 import com.evacipated.cardcrawl.modthespire.lib.SpireConfig;
 import com.evacipated.cardcrawl.modthespire.lib.SpireInitializer;
 import com.google.gson.Gson;
@@ -18,12 +22,16 @@ import com.megacrit.cardcrawl.unlock.UnlockTracker;
 import kobting.friendlyminions.helpers.MinionConfigHelper;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import theRetrospect.cards.*;
+import theRetrospect.cards.AbstractRetrospectCard;
 import theRetrospect.characters.TheRetrospect;
 import theRetrospect.potions.TimelinePotion;
-import theRetrospect.relics.*;
+import theRetrospect.relics.AdaptiveShield;
+import theRetrospect.relics.AntiqueStopwatch;
+import theRetrospect.relics.QuantumHourglass;
+import theRetrospect.relics.SlantedMirror;
 import theRetrospect.util.IDCheckDontTouchPls;
 import theRetrospect.util.TextureLoader;
+import theRetrospect.util.TimelineTargeting;
 import theRetrospect.variables.TimelineCountVariable;
 
 import java.io.InputStream;
@@ -278,6 +286,8 @@ public class RetrospectMod implements
         settingsPanel.addUIElement(enableNormalsButton); // Add the button to the settings panel. Button is a go.
 
         BaseMod.registerModBadge(badgeTexture, MODNAME, AUTHOR, DESCRIPTION, settingsPanel);
+
+        CustomTargeting.registerCustomTargeting(TimelineTargeting.TIMELINE, new TimelineTargeting());
 
 
         // =============== EVENTS =================
