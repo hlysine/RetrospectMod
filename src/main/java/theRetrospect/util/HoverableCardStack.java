@@ -3,6 +3,7 @@ package theRetrospect.util;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.Settings;
+import com.megacrit.cardcrawl.helpers.DrawMaster;
 
 import java.util.HashMap;
 import java.util.List;
@@ -38,6 +39,7 @@ public class HoverableCardStack {
         if (hoveredCard.isPresent()) {
             AbstractCard card = hoveredCard.get().getKey();
             card.updateHoverLogic();
+            DrawMaster.drawList.add(new CardDrawable(card));
             if (card.hb.hovered) {
                 card.drawScale = HOVERED_SCALE;
                 card.targetDrawScale = HOVERED_SCALE;
