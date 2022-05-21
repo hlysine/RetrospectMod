@@ -112,5 +112,10 @@
   "theRetrospect:TimeLoop": {
     "NAME": "Time Loop",
     "DESCRIPTION": "Apply to a timeline. Cards played by this timeline return to the timeline instead of exhausting."
+  },
+  "theRetrospect:Shortcut": {
+    "NAME": "Shortcut",
+    "DESCRIPTION": "Timelines require !M!% less HP to construct.",
+    "UPGRADE_DESCRIPTION": "Innate. Timelines require !M!% less HP to construct."
   }
 }

@@ -8,6 +8,7 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
+import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 import com.megacrit.cardcrawl.vfx.ThoughtBubble;
 import com.megacrit.cardcrawl.vfx.combat.EmpowerEffect;
@@ -28,20 +29,10 @@ public class ConstructTimelineAction extends AbstractGameAction {
 
     public static final float HEALTH_PERCENTAGE_COST = 0.4f;
 
-    private final boolean overrideHealthCost;
-    private final int healthBorrowed;
     private final AbstractCard constructionCard;
-
-    public ConstructTimelineAction(AbstractCard constructionCard, int healthBorrowed) {
-        this.constructionCard = constructionCard;
-        this.overrideHealthCost = true;
-        this.healthBorrowed = healthBorrowed;
-    }
 
     public ConstructTimelineAction(AbstractCard constructionCard) {
         this.constructionCard = constructionCard;
-        this.overrideHealthCost = false;
-        this.healthBorrowed = 0;
     }
 
     @Override
@@ -73,10 +64,17 @@ public class ConstructTimelineAction extends AbstractGameAction {
 
             AbstractDungeon.actionManager.addToTop(new VFXAction(new EmpowerEffect(minion.drawX, minion.drawY)));
 
+            for (AbstractPower power : AbstractDungeon.player.powers) {
+                if (power instanceof TimelineConstructSubscriber) {
+                    TimelineConstructSubscriber listener = (TimelineConstructSubscriber) power;
+                    listener.afterTimelineConstruct(minion);
+                }
+            }
+
             for (AbstractRelic relic : AbstractDungeon.player.relics) {
                 if (relic instanceof TimelineConstructSubscriber) {
                     TimelineConstructSubscriber listener = (TimelineConstructSubscriber) relic;
-                    listener.onTimelineConstruct(minion);
+                    listener.afterTimelineConstruct(minion);
                 }
             }
         } else {
@@ -87,13 +85,23 @@ public class ConstructTimelineAction extends AbstractGameAction {
     }
 
     private int calculateHealthBorrowed(AbstractPlayer player) {
-        int ret;
+        float percentage = HEALTH_PERCENTAGE_COST;
 
-        if (overrideHealthCost)
-            ret = healthBorrowed;
-        else
-            ret = (int) Math.ceil(player.currentHealth * HEALTH_PERCENTAGE_COST);
+        for (AbstractPower power : player.powers) {
+            if (power instanceof TimelineConstructSubscriber) {
+                TimelineConstructSubscriber listener = (TimelineConstructSubscriber) power;
+                percentage = listener.modifyTimelineConstruct(constructionCard, percentage);
+            }
+        }
 
+        for (AbstractRelic relic : player.relics) {
+            if (relic instanceof TimelineConstructSubscriber) {
+                TimelineConstructSubscriber listener = (TimelineConstructSubscriber) relic;
+                percentage = listener.modifyTimelineConstruct(constructionCard, percentage);
+            }
+        }
+
+        int ret = (int) Math.ceil(player.currentHealth * percentage);
         return Math.max(1, Math.min(player.currentHealth, ret));
     }
 }

@@ -28,7 +28,7 @@ public class SlantedMirror extends CustomRelic implements TimelineConstructSubsc
     }
 
     @Override
-    public void onTimelineConstruct(TimelineMinion timeline) {
+    public void afterTimelineConstruct(TimelineMinion timeline) {
         flash();
         addToTop(new RelicAboveCreatureAction(AbstractDungeon.player, this));
         addToTop(new GainBlockAction(AbstractDungeon.player, 10));

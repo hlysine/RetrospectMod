@@ -46,5 +46,12 @@
     "DESCRIPTIONS": [
       "Cards played by this timeline return to the timeline instead of exhausting."
     ]
+  },
+  "theRetrospect:ShortcutPower": {
+    "NAME": "Shortcut",
+    "DESCRIPTIONS": [
+      "Timelines require #b",
+      "% less HP to construct."
+    ]
   }
 }
