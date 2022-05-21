@@ -17,7 +17,7 @@ public class TimeLoop extends AbstractRetrospectCard {
 
     public static final String ID = RetrospectMod.makeID(TimeLoop.class.getSimpleName());
     private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
-    public static final String IMG = makeCardPath("shadow_form.png");
+    public static final String IMG = makeCardPath("time_loop.png");
 
     private static final CardRarity RARITY = CardRarity.UNCOMMON;
     private static final CardTarget TARGET = TimelineTargeting.TIMELINE;

@@ -3,11 +3,13 @@ package theRetrospect.powers;
 import basemod.interfaces.CloneablePowerInterface;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
+import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
+import com.megacrit.cardcrawl.vfx.combat.FlashPowerEffect;
 import theRetrospect.RetrospectMod;
 import theRetrospect.minions.AbstractMinionWithCards;
 import theRetrospect.subscribers.BeforeMinionPlayCardSubscriber;
@@ -44,6 +46,7 @@ public class TimeLoopPower extends AbstractPower implements CloneablePowerInterf
     public void beforeMinionPlayCard(AbstractMinionWithCards timeline, AbstractCard card) {
         if (timeline == this.owner) {
             CardUtils.setReturnToMinion(card, timeline);
+            CardUtils.addFollowUpActionToTop(card, new VFXAction(new FlashPowerEffect(this)));
         }
     }
 
