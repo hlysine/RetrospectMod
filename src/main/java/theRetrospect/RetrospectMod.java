@@ -59,7 +59,7 @@ public class RetrospectMod implements
 
     //This is for the in-game mod settings panel.
     private static final String MODNAME = "The Retrospect";
-    private static final String AUTHOR = "hlysine"; // And pretty soon - You!
+    private static final String AUTHOR = "Lysine";
     private static final String DESCRIPTION = "A character mod for the Retrospect.";
 
     // =============== INPUT TEXTURE LOCATION =================
