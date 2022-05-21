@@ -37,8 +37,18 @@ public class AbstractMinionWithCards extends AbstractAnimatedFriendlyMonster {
         cardStack = new HoverableCardStack(cardIntents, this.intentHb.cX, this.intentHb.cY);
     }
 
+    public void addCard(AbstractCard card) {
+        card.current_x = card.target_x = this.drawX;
+        card.current_y = card.target_y = this.drawY;
+        this.cards.add(card);
+    }
+
     public void setCards(List<AbstractCard> cards) {
         this.cards.clear();
+        cards.forEach(card -> {
+            card.current_x = card.target_x = this.drawX;
+            card.current_y = card.target_y = this.drawY;
+        });
         this.cards.addAll(cards);
     }
 

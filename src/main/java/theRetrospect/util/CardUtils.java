@@ -137,12 +137,12 @@ public class CardUtils {
     private static void setUpSoulForMinion(Soul soul, AbstractCard card, AbstractMinionWithCards timeline) {
         soul.card = card;
         soul.group = null;
-        timeline.cards.add(card);
-        Optional<TimerPower> power = timeline.powers.stream().filter(p -> p instanceof TimerPower).findFirst().map(p -> (TimerPower) p);
-        power.ifPresent(TimerPower::refresh);
         ReflectionHacks.setPrivate(soul, Soul.class, "pos", new Vector2(card.current_x, card.current_y));
         ReflectionHacks.setPrivate(soul, Soul.class, "target", new Vector2(timeline.drawX, timeline.drawY));
         ReflectionHacks.privateMethod(Soul.class, "setSharedVariables").invoke(soul);
+        timeline.addCard(card);
+        Optional<TimerPower> power = timeline.powers.stream().filter(p -> p instanceof TimerPower).findFirst().map(p -> (TimerPower) p);
+        power.ifPresent(TimerPower::refresh);
         CardReturnToMinionPatch.SoulAddFieldPatch.returnToMinion.set(soul, timeline);
         ReflectionHacks.setPrivate(soul, Soul.class, "rotation", card.angle + 270.0F);
         ReflectionHacks.setPrivate(soul, Soul.class, "rotateClockwise", true);
