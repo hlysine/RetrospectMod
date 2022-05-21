@@ -63,7 +63,7 @@ public class AntiqueStopwatchPower extends AbstractPower implements CloneablePow
                     card.purgeOnUse = true;
                     card.current_x = card.target_x = AbstractDungeon.player.drawX;
                     card.current_y = card.target_y = AbstractDungeon.player.drawY;
-                    CardUtils.addFollowUpAction(card, new RunnableAction(nxt));
+                    CardUtils.addFollowUpActionToBottom(card, new RunnableAction(nxt));
                     addToBot(new NewQueueCardAction(card, true, true, true));
                 },
                 () -> {

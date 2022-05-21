@@ -1,7 +1,6 @@
 package theRetrospect.patches;
 
 import com.evacipated.cardcrawl.modthespire.lib.SpirePatch;
-import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -20,8 +19,11 @@ public class CardFollowUpActionsPatch {
             CardUtils.setPlaySource(___targetCard, null);
             CardUtils.setReturnToMinion(___targetCard, null);
             if (!___targetCard.dontTriggerOnUseCard) {
-                for (AbstractGameAction action : CardUtils.getFollowUpActions(___targetCard)) {
-                    AbstractDungeon.actionManager.addToBottom(action);
+                for (CardAddFieldsPatch.ActionQueueItem item : CardUtils.getFollowUpActions(___targetCard)) {
+                    if (item.onTop)
+                        AbstractDungeon.actionManager.addToTop(item.action);
+                    else
+                        AbstractDungeon.actionManager.addToBottom(item.action);
                 }
             }
             CardUtils.clearFollowUpActions(___targetCard);

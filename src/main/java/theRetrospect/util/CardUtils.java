@@ -40,7 +40,7 @@ public class CardUtils {
         CardAddFieldsPatch.playSource.set(card, source);
     }
 
-    public static List<AbstractGameAction> getFollowUpActions(AbstractCard card) {
+    public static List<CardAddFieldsPatch.ActionQueueItem> getFollowUpActions(AbstractCard card) {
         return CardAddFieldsPatch.followUpActions.get(card);
     }
 
@@ -54,15 +54,41 @@ public class CardUtils {
     }
 
     /**
-     * Set an action to be executed after the card is played and all the onAfterCardUse triggers are complete.
+     * Set an action to be executed after the card is played, all the onAfterCardUse triggers are complete,
+     * and all remaining actions are done.
      * The action is only executed once and is cleared afterwards.
      * Note that if dontTriggerAfterUse is true, the action is cleared without being executed.
      *
      * @param card           The card to store the action in.
      * @param actionAfterUse The action to be executed.
      */
-    public static void addFollowUpAction(AbstractCard card, AbstractGameAction actionAfterUse) {
-        CardAddFieldsPatch.followUpActions.get(card).add(actionAfterUse);
+    public static void addFollowUpActionToBottom(AbstractCard card, AbstractGameAction actionAfterUse) {
+        addFollowUpAction(card, actionAfterUse, false);
+    }
+
+    /**
+     * Set an action to be executed immediately after the card is played and all the onAfterCardUse triggers are complete.
+     * The action is only executed once and is cleared afterwards.
+     * Note that if dontTriggerAfterUse is true, the action is cleared without being executed.
+     *
+     * @param card           The card to store the action in.
+     * @param actionAfterUse The action to be executed.
+     */
+    public static void addFollowUpActionToTop(AbstractCard card, AbstractGameAction actionAfterUse) {
+        addFollowUpAction(card, actionAfterUse, true);
+    }
+
+    /**
+     * Set an action to be executed immediately after the card is played and all the onAfterCardUse triggers are complete.
+     * The action is only executed once and is cleared afterwards.
+     * Note that if dontTriggerAfterUse is true, the action is cleared without being executed.
+     *
+     * @param card           The card to store the action in.
+     * @param actionAfterUse The action to be executed.
+     * @param onTop          Whether to immediately execute the action or wait until remaining actions are done.
+     */
+    public static void addFollowUpAction(AbstractCard card, AbstractGameAction actionAfterUse, boolean onTop) {
+        CardAddFieldsPatch.followUpActions.get(card).add(new CardAddFieldsPatch.ActionQueueItem(actionAfterUse, onTop));
     }
 
     /**
@@ -73,7 +99,7 @@ public class CardUtils {
      * @return True if the action was in the card.
      */
     public static boolean removeFollowUpAction(AbstractCard card, AbstractGameAction actionAfterUse) {
-        return CardAddFieldsPatch.followUpActions.get(card).remove(actionAfterUse);
+        return CardAddFieldsPatch.followUpActions.get(card).removeIf(t -> t.action == actionAfterUse);
     }
 
     public static AbstractMinionWithCards getReturnToMinion(AbstractCard card) {

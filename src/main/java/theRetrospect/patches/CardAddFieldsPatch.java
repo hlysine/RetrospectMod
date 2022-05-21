@@ -23,11 +23,21 @@ public class CardAddFieldsPatch {
     /**
      * A list of actions to be queued after the card is played.
      */
-    public static SpireField<List<AbstractGameAction>> followUpActions = new SpireField<>(ArrayList::new);
+    public static SpireField<List<ActionQueueItem>> followUpActions = new SpireField<>(ArrayList::new);
 
     /**
      * If not null, return this card to a minion (timeline) after playing instead of purging it.
      */
     public static SpireField<AbstractMinionWithCards> returnToMinion = new SpireField<>(() -> null);
+
+    public static class ActionQueueItem {
+        public final AbstractGameAction action;
+        public final boolean onTop;
+
+        public ActionQueueItem(AbstractGameAction action, boolean onTop) {
+            this.action = action;
+            this.onTop = onTop;
+        }
+    }
 }
 
