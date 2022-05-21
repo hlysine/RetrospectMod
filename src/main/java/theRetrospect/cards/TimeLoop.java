@@ -19,7 +19,7 @@ public class TimeLoop extends AbstractRetrospectCard {
     private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
     public static final String IMG = makeCardPath("time_loop.png");
 
-    private static final CardRarity RARITY = CardRarity.UNCOMMON;
+    private static final CardRarity RARITY = CardRarity.RARE;
     private static final CardTarget TARGET = TimelineTargeting.TIMELINE;
     private static final CardType TYPE = CardType.POWER;
 
