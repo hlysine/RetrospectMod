@@ -1,13 +1,23 @@
 package theRetrospect.util;
 
 import basemod.ReflectionHacks;
+import com.badlogic.gdx.math.MathUtils;
+import com.badlogic.gdx.math.Vector2;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.cards.Soul;
+import com.megacrit.cardcrawl.cards.SoulGroup;
+import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.ui.panels.EnergyPanel;
+import theRetrospect.RetrospectMod;
+import theRetrospect.minions.AbstractMinionWithCards;
 import theRetrospect.patches.CardAddFieldsPatch;
+import theRetrospect.patches.CardReturnToMinionPatch;
+import theRetrospect.powers.TimerPower;
 
 import java.util.List;
+import java.util.Optional;
 
 public class CardUtils {
 
@@ -66,6 +76,14 @@ public class CardUtils {
         return CardAddFieldsPatch.followUpActions.get(card).remove(actionAfterUse);
     }
 
+    public static AbstractMinionWithCards getReturnToMinion(AbstractCard card) {
+        return CardAddFieldsPatch.returnToMinion.get(card);
+    }
+
+    public static void setReturnToMinion(AbstractCard card, AbstractMinionWithCards timeline) {
+        CardAddFieldsPatch.returnToMinion.set(card, timeline);
+    }
+
     /**
      * Make a copy of the card with the same stats, position and powers applied.
      *
@@ -94,5 +112,45 @@ public class CardUtils {
         }
 
         return effect;
+    }
+
+    public static void soulReturnToMinion(SoulGroup souls, AbstractCard card, AbstractMinionWithCards timeline) {
+        boolean needMoreSouls = true;
+        List<Soul> soulList = ReflectionHacks.getPrivate(souls, SoulGroup.class, "souls");
+        for (Soul s : soulList) {
+            if (s.isReadyForReuse) {
+                card.untip();
+                card.unhover();
+                setUpSoulForMinion(s, card, timeline);
+                needMoreSouls = false;
+                break;
+            }
+        }
+        if (needMoreSouls) {
+            RetrospectMod.logger.info("Not enough souls, creating...");
+            Soul s = new Soul();
+            setUpSoulForMinion(s, card, timeline);
+            soulList.add(s);
+        }
+    }
+
+    private static void setUpSoulForMinion(Soul soul, AbstractCard card, AbstractMinionWithCards timeline) {
+        soul.card = card;
+        soul.group = null;
+        timeline.cards.add(card);
+        Optional<TimerPower> power = timeline.powers.stream().filter(p -> p instanceof TimerPower).findFirst().map(p -> (TimerPower) p);
+        power.ifPresent(TimerPower::refresh);
+        ReflectionHacks.setPrivate(soul, Soul.class, "pos", new Vector2(card.current_x, card.current_y));
+        ReflectionHacks.setPrivate(soul, Soul.class, "target", new Vector2(timeline.drawX, timeline.drawY));
+        ReflectionHacks.privateMethod(Soul.class, "setSharedVariables").invoke(soul);
+        CardReturnToMinionPatch.SoulAddFieldPatch.returnToMinion.set(soul, timeline);
+        ReflectionHacks.setPrivate(soul, Soul.class, "rotation", card.angle + 270.0F);
+        ReflectionHacks.setPrivate(soul, Soul.class, "rotateClockwise", true);
+        final float START_VELOCITY = ReflectionHacks.getPrivateStatic(Soul.class, "START_VELOCITY");
+        if (Settings.FAST_MODE) {
+            ReflectionHacks.setPrivate(soul, Soul.class, "currentSpeed", START_VELOCITY * MathUtils.random(4.0F, 6.0F));
+        } else {
+            ReflectionHacks.setPrivate(soul, Soul.class, "currentSpeed", START_VELOCITY * MathUtils.random(1.0F, 4.0F));
+        }
     }
 }

@@ -17,6 +17,7 @@ import theRetrospect.actions.NonTriggeringHealthChange;
 import theRetrospect.actions.QueueCardIntentAction;
 import theRetrospect.actions.RunnableAction;
 import theRetrospect.minions.AbstractMinionWithCards;
+import theRetrospect.subscribers.BeforeMinionPlayCardSubscriber;
 import theRetrospect.subscribers.EndOfTurnCardSubscriber;
 import theRetrospect.util.*;
 
@@ -51,6 +52,10 @@ public class TimerPower extends AbstractPower implements CloneablePowerInterface
 
     @Override
     public void onInitialApplication() {
+        refresh();
+    }
+
+    public void refresh() {
         updateDescription();
         updateCardIntents();
     }
@@ -108,6 +113,10 @@ public class TimerPower extends AbstractPower implements CloneablePowerInterface
     }
 
     private void playCard(AbstractCard cardToPlay, HoverableCardStack cardStack) {
+        this.owner.powers.stream()
+                .filter(p -> p instanceof BeforeMinionPlayCardSubscriber)
+                .map(p -> (BeforeMinionPlayCardSubscriber) p)
+                .forEach(p -> p.beforeMinionPlayCard(this.minion, cardToPlay));
         addToBot(new QueueCardIntentAction(cardToPlay, cardStack, CardPlaySource.TIMELINE));
     }
 

@@ -40,5 +40,11 @@
       "At the end of your turn, play #b",
       " #yDivert."
     ]
+  },
+  "theRetrospect:TimeLoopPower": {
+    "NAME": "Time Loop",
+    "DESCRIPTIONS": [
+      "Cards played by this timeline return to the timeline instead of exhausting."
+    ]
   }
 }
