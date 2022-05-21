@@ -58,6 +58,7 @@ public class ConstructTimelineAction extends AbstractGameAction {
 
         if (player.currentHealth > health) {
             TimelineMinion minion = new TimelineMinion(
+                    player,
                     AbstractDungeon.actionManager.cardsPlayedThisTurn.stream()
                             .filter(card -> card != constructionCard)
                             .map(CardUtils::makeAdvancedCopy)

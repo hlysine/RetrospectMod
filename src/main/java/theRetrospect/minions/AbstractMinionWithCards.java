@@ -1,6 +1,5 @@
 package theRetrospect.minions;
 
-import basemod.animations.AbstractAnimation;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.helpers.MathHelper;
@@ -33,13 +32,6 @@ public class AbstractMinionWithCards extends AbstractAnimatedFriendlyMonster {
 
     public AbstractMinionWithCards(String name, String id, int maxHealth, float hb_x, float hb_y, float hb_w, float hb_h, String imgUrl, float offsetX, float offsetY) {
         super(name, id, maxHealth, hb_x, hb_y, hb_w, hb_h, imgUrl, offsetX, offsetY);
-        target_x = drawX;
-        target_y = drawY;
-        cardStack = new HoverableCardStack(cardIntents, this.intentHb.cX, this.intentHb.cY);
-    }
-
-    public AbstractMinionWithCards(String name, String id, int maxHealth, float hb_x, float hb_y, float hb_w, float hb_h, AbstractAnimation animation, float offsetX, float offsetY) {
-        super(name, id, maxHealth, hb_x, hb_y, hb_w, hb_h, animation, offsetX, offsetY);
         target_x = drawX;
         target_y = drawY;
         cardStack = new HoverableCardStack(cardIntents, this.intentHb.cX, this.intentHb.cY);

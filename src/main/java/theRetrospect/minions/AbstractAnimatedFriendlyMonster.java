@@ -6,10 +6,12 @@ import basemod.animations.SpineAnimation;
 import basemod.interfaces.ModelRenderSubscriber;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g3d.Environment;
 import com.badlogic.gdx.graphics.g3d.ModelBatch;
+import com.esotericsoftware.spine.AnimationStateData;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -41,13 +43,19 @@ public class AbstractAnimatedFriendlyMonster extends AbstractFriendlyMonster imp
     }
 
     public AbstractAnimation animation;
+    public boolean renderCorpse = false;
+    public float scale = 1.0f;
+    public Texture corpseImg = null;
+
+    public AnimationStateData getStateData() {
+        return this.stateData;
+    }
 
     public AbstractAnimatedFriendlyMonster(String name, String id, int maxHealth, float hb_x, float hb_y, float hb_w, float hb_h, String imgUrl, float offsetX, float offsetY) {
         super(name, id, maxHealth, hb_x, hb_y, hb_w, hb_h, imgUrl, offsetX, offsetY);
     }
 
-    public AbstractAnimatedFriendlyMonster(String name, String id, int maxHealth, float hb_x, float hb_y, float hb_w, float hb_h, AbstractAnimation animation, float offsetX, float offsetY) {
-        super(name, id, maxHealth, hb_x, hb_y, hb_w, hb_h, null, offsetX, offsetY);
+    protected void loadAnimation(AbstractAnimation animation) {
         this.animation = animation;
         if (animation instanceof SpineAnimation) {
             SpineAnimation spine = (SpineAnimation) animation;
@@ -63,22 +71,40 @@ public class AbstractAnimatedFriendlyMonster extends AbstractFriendlyMonster imp
         }
     }
 
+    public void playDeathAnimation() {
+        if (this.corpseImg != null) {
+            this.img = this.corpseImg;
+            this.renderCorpse = true;
+        }
+    }
+
+    @Override
+    public void dispose() {
+        super.dispose();
+
+        if (this.corpseImg != null) {
+            this.corpseImg.dispose();
+            this.corpseImg = null;
+        }
+    }
+
     @Override
     public void render(SpriteBatch sb) {
         if (!this.isDead && !this.escaped) {
-            if (this.atlas == null) {
+            if (this.atlas == null || this.renderCorpse) {
                 sb.setColor(this.tint.color);
                 if (this.img != null) {
-                    sb.draw(this.img, this.drawX - this.img
-
-                            .getWidth() * Settings.scale / 2.0F + this.animX, this.drawY + this.animY, this.img
-
-                            .getWidth() * Settings.scale, this.img
-                            .getHeight() * Settings.scale, 0, 0, this.img
-
-
-                            .getWidth(), this.img
-                            .getHeight(), this.flipHorizontal, this.flipVertical);
+                    sb.draw(this.img,
+                            this.drawX - this.img.getWidth() * scale * Settings.scale / 2.0F + this.animX,
+                            this.drawY + this.animY,
+                            this.img.getWidth() * scale * Settings.scale,
+                            this.img.getHeight() * scale * Settings.scale,
+                            0,
+                            0,
+                            this.img.getWidth(),
+                            this.img.getHeight(),
+                            this.flipHorizontal,
+                            this.flipVertical);
                 }
             } else {
                 switch (this.animation.type()) {
@@ -110,17 +136,17 @@ public class AbstractAnimatedFriendlyMonster extends AbstractFriendlyMonster imp
                 sb.setBlendFunction(770, 1);
                 sb.setColor(new Color(1.0F, 1.0F, 1.0F, 0.1F));
                 if (this.img != null) {
-                    sb.draw(this.img, this.drawX - this.img
-
-                            .getWidth() * Settings.scale / 2.0F + this.animX, this.drawY + this.animY, this.img
-
-                            .getWidth() * Settings.scale, this.img
-                            .getHeight() * Settings.scale, 0, 0, this.img
-
-
-                            .getWidth(), this.img
-                            .getHeight(), this.flipHorizontal, this.flipVertical);
-
+                    sb.draw(this.img,
+                            this.drawX - this.img.getWidth() * scale * Settings.scale / 2.0F + this.animX,
+                            this.drawY + this.animY,
+                            this.img.getWidth() * scale * Settings.scale,
+                            this.img.getHeight() * scale * Settings.scale,
+                            0,
+                            0,
+                            this.img.getWidth(),
+                            this.img.getHeight(),
+                            this.flipHorizontal,
+                            this.flipVertical);
 
                     sb.setBlendFunction(770, 771);
                 }

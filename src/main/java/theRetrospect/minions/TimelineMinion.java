@@ -1,9 +1,11 @@
 package theRetrospect.minions;
 
-import basemod.animations.SpriterAnimation;
+import basemod.ReflectionHacks;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.math.MathUtils;
 import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CharacterStrings;
@@ -11,6 +13,7 @@ import com.megacrit.cardcrawl.powers.AbstractPower;
 import theRetrospect.RetrospectMod;
 import theRetrospect.effects.TimelineAuraEffect;
 import theRetrospect.powers.TimerPower;
+import theRetrospect.util.AnimationUtils;
 
 import java.util.List;
 
@@ -23,14 +26,14 @@ public class TimelineMinion extends AbstractMinionWithCards {
 
     private float auraEffectTimer = 0.5f;
 
-    public TimelineMinion(List<AbstractCard> cards, int offsetX, int offsetY, int maxHealth) {
-        super(NAME, ID, maxHealth, 0, 0, 120, 120,
-                new SpriterAnimation(
-                        "theRetrospectResources/images/char/retrospectCharacter/Spriter/theRetrospectAnimation.scml"
-                ), offsetX, offsetY);
+    public TimelineMinion(AbstractPlayer summoner, List<AbstractCard> cards, int offsetX, int offsetY, int maxHealth) {
+        super(NAME, ID, maxHealth, 0, 0, 120, 120, null, offsetX, offsetY);
 
-        SpriterAnimation spriter = (SpriterAnimation) this.animation;
-        spriter.myPlayer.scale(0.5f);
+        this.scale = 0.5f;
+
+        this.loadAnimation(AnimationUtils.cloneAnimation(summoner, this.scale));
+        AnimationUtils.cloneAnimationStates(summoner, this);
+        this.corpseImg = summoner.corpseImg;
 
         setCards(cards);
         addPower(new TimerPower(this, 1));
@@ -44,6 +47,16 @@ public class TimelineMinion extends AbstractMinionWithCards {
         if (this.auraEffectTimer < 0.0F) {
             this.auraEffectTimer = MathUtils.random(0.45F, 0.55F);
             AbstractDungeon.effectsQueue.add(new TimelineAuraEffect(this));
+        }
+    }
+
+    @Override
+    public void playDeathAnimation() {
+        super.playDeathAnimation();
+        this.tint.color.a = 0.3f;
+        for (AbstractCard card : cardStack.cards) {
+            Color tint = ReflectionHacks.getPrivate(card, AbstractCard.class, "tintColor");
+            tint.a = 0.3f;
         }
     }
 }
