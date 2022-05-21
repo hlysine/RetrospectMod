@@ -1,10 +1,11 @@
 package theRetrospect.effects;
 
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.vfx.AbstractGameEffect;
+import theRetrospect.util.CardUtils;
 
 public class ShowCardToBePlayedEffect extends AbstractGameEffect {
     private final AbstractCard cardToPlay;
@@ -12,20 +13,21 @@ public class ShowCardToBePlayedEffect extends AbstractGameEffect {
 
     public ShowCardToBePlayedEffect(AbstractCard cardToPlay) {
         this.cardToPlay = cardToPlay;
-        this.duration = Settings.FAST_MODE ? 0.5f : 1.5f;
-        this.startingDuration = Settings.FAST_MODE ? 0.5f : 1.5f;
         this.cardToPlay.target_x = Settings.WIDTH / 2f - PADDING - AbstractCard.IMG_WIDTH;
         this.cardToPlay.target_y = Settings.HEIGHT / 2f;
         this.cardToPlay.targetDrawScale = 0.75f;
+        AbstractGameEffect self = this;
+        CardUtils.addFollowUpActionToTop(this.cardToPlay, new AbstractGameAction() {
+            @Override
+            public void update() {
+                self.isDone = true;
+                this.isDone = true;
+            }
+        });
     }
 
     public void update() {
-        this.duration -= Gdx.graphics.getDeltaTime();
         this.cardToPlay.update();
-
-        if (this.duration < 0.0F) {
-            this.isDone = true;
-        }
     }
 
 
