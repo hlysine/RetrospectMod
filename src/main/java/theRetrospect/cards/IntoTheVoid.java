@@ -10,6 +10,7 @@ import theRetrospect.actions.TriggerTimelineAction;
 import theRetrospect.minions.TimelineMinion;
 import theRetrospect.util.MinionUtils;
 import theRetrospect.util.TimelineTargeting;
+import theRetrospect.util.TimelineUtils;
 
 import static theRetrospect.RetrospectMod.makeCardPath;
 
@@ -42,6 +43,8 @@ public class IntoTheVoid extends AbstractRetrospectCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         TimelineMinion target = (TimelineMinion) TimelineTargeting.getTarget(this);
+        if (target == null) target = TimelineUtils.getRandomTimeline(p);
+        if (target == null) return;
 
         addToBot(new TriggerTimelineAction(target, magicNumber, false));
         addToBot(new CollapseTimelineAction(target));

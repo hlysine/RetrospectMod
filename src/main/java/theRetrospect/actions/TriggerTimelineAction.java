@@ -3,16 +3,13 @@ package theRetrospect.actions;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.utility.WaitAction;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import com.megacrit.cardcrawl.monsters.MonsterGroup;
 import theRetrospect.minions.TimelineMinion;
 import theRetrospect.powers.TimerPower;
 import theRetrospect.util.CallbackUtils;
-import theRetrospect.util.MinionUtils;
+import theRetrospect.util.TimelineUtils;
 
-import java.util.List;
 import java.util.Optional;
 import java.util.concurrent.atomic.AtomicInteger;
-import java.util.stream.Collectors;
 
 public class TriggerTimelineAction extends AbstractGameAction {
 
@@ -45,14 +42,10 @@ public class TriggerTimelineAction extends AbstractGameAction {
     @Override
     public void update() {
         TimelineMinion target = this.minion;
+        if (target == null) target = TimelineUtils.getRandomTimeline(AbstractDungeon.player);
         if (target == null) {
-            MonsterGroup monsters = MinionUtils.getMinions(AbstractDungeon.player);
-            List<TimelineMinion> timelines = monsters.monsters.stream().filter(m -> m instanceof TimelineMinion).map(m -> (TimelineMinion) m).collect(Collectors.toList());
-            if (timelines.size() <= 0) {
-                this.isDone = true;
-                return;
-            }
-            target = timelines.get(AbstractDungeon.cardRng.random(timelines.size() - 1));
+            this.isDone = true;
+            return;
         }
 
         Optional<TimerPower> timer = target.powers.stream().filter(p -> p instanceof TimerPower).findFirst().map(p -> (TimerPower) p);
