@@ -73,7 +73,7 @@ public class TimerPower extends AbstractPower implements CloneablePowerInterface
                 nxt -> {
                     AbstractCard cardToPlay = minion.cards.get(cardIdx.get()).makeStatEquivalentCopy();
                     CardUtils.addFollowUpAction(cardToPlay, new RunnableAction(nxt));
-                    replayCard(cardToPlay, null);
+                    playCard(cardToPlay, null);
                 },
                 next
         );
@@ -101,13 +101,13 @@ public class TimerPower extends AbstractPower implements CloneablePowerInterface
                 nxt -> {
                     AbstractCard cardToPlay = minion.cards.remove(0);
                     CardUtils.addFollowUpAction(cardToPlay, new RunnableAction(nxt));
-                    replayCard(cardToPlay, minion.cardStack);
+                    playCard(cardToPlay, minion.cardStack);
                 },
                 next
         );
     }
 
-    private void replayCard(AbstractCard cardToPlay, HoverableCardStack cardStack) {
+    private void playCard(AbstractCard cardToPlay, HoverableCardStack cardStack) {
         addToBot(new QueueCardIntentAction(cardToPlay, cardStack, CardPlaySource.TIMELINE));
     }
 

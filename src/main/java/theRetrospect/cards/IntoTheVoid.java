@@ -46,7 +46,7 @@ public class IntoTheVoid extends AbstractRetrospectCard {
         if (target == null) target = TimelineUtils.getRandomTimeline(p);
         if (target == null) return;
 
-        addToBot(new TriggerTimelineAction(target, magicNumber, false));
+        addToBot(new TriggerTimelineAction(target, magicNumber, true));
         addToBot(new CollapseTimelineAction(target));
     }
 
