@@ -13,7 +13,7 @@ import com.megacrit.cardcrawl.relics.AbstractRelic;
 import com.megacrit.cardcrawl.vfx.ThoughtBubble;
 import com.megacrit.cardcrawl.vfx.combat.EmpowerEffect;
 import theRetrospect.RetrospectMod;
-import theRetrospect.cards.AbstractTimelineCard;
+import theRetrospect.cards.AbstractRetrospectCard;
 import theRetrospect.minions.TimelineMinion;
 import theRetrospect.subscribers.TimelineConstructSubscriber;
 import theRetrospect.util.CardUtils;
@@ -24,7 +24,7 @@ import java.util.stream.Collectors;
 
 public class ConstructTimelineAction extends AbstractGameAction {
 
-    public static final String ID = RetrospectMod.makeID(AbstractTimelineCard.class.getSimpleName());
+    public static final String ID = RetrospectMod.makeID(AbstractRetrospectCard.class.getSimpleName());
     private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
 
     public static final float HEALTH_PERCENTAGE_COST = 0.4f;

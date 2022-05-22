@@ -11,7 +11,7 @@ import theRetrospect.actions.ConstructTimelineAction;
 
 import static theRetrospect.RetrospectMod.makeCardPath;
 
-public class UnstableChronology extends AbstractTimelineCard {
+public class UnstableChronology extends AbstractRetrospectCard {
 
     public static final String ID = RetrospectMod.makeID(UnstableChronology.class.getSimpleName());
     private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);

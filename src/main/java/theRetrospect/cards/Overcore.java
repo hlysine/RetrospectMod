@@ -11,7 +11,7 @@ import theRetrospect.powers.FrozenPower;
 
 import static theRetrospect.RetrospectMod.makeCardPath;
 
-public class Overcore extends AbstractTimelineCard {
+public class Overcore extends AbstractRetrospectCard {
 
     public static final String ID = RetrospectMod.makeID(Overcore.class.getSimpleName());
     private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);

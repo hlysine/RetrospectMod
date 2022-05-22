@@ -10,7 +10,7 @@ import theRetrospect.actions.ConstructTimelineAction;
 
 import static theRetrospect.RetrospectMod.makeCardPath;
 
-public class Avert extends AbstractTimelineCard {
+public class Avert extends AbstractRetrospectCard {
 
     public static final String ID = RetrospectMod.makeID(Avert.class.getSimpleName());
     private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);

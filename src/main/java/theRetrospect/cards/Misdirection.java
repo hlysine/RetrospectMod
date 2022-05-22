@@ -13,7 +13,7 @@ import theRetrospect.util.CardUtils;
 
 import static theRetrospect.RetrospectMod.makeCardPath;
 
-public class Misdirection extends AbstractTimelineCard {
+public class Misdirection extends AbstractRetrospectCard {
 
     public static final String ID = RetrospectMod.makeID(Misdirection.class.getSimpleName());
     private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
