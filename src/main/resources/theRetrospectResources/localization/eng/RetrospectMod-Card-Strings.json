@@ -139,5 +139,12 @@
     "EXTENDED_DESCRIPTION": [
       "I have no timelines."
     ]
+  },
+  "theRetrospect:LightspeedLeap": {
+    "NAME": "Lightspeed Leap",
+    "DESCRIPTION": "Only playable if you have played at least !M! cards this turn. theretrospect:Construct !theRetrospect:TimelineCount! timeline.",
+    "EXTENDED_DESCRIPTION": [
+      "I haven't played enough cards."
+    ]
   }
 }
