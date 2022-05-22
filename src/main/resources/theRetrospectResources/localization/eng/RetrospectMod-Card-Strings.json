@@ -175,5 +175,9 @@
   "theRetrospect:Ambush": {
     "NAME": "Ambush",
     "DESCRIPTION": "For every !M! cards in your draw pile, deal !D! damage."
+  },
+  "theRetrospect:HatTrick": {
+    "NAME": "Hat Trick",
+    "DESCRIPTION": "Put !M! card from your draw pile into your hand."
   }
 }
