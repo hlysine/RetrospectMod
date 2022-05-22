@@ -117,5 +117,9 @@
     "NAME": "Shortcut",
     "DESCRIPTION": "Timelines require !M!% less HP to construct.",
     "UPGRADE_DESCRIPTION": "Innate. NL Timelines require !M!% less HP to construct."
+  },
+  "theRetrospect:ElectricShock": {
+    "NAME": "Electric Shock",
+    "DESCRIPTION": "Deal !D! damage. Apply !M! weak."
   }
 }
