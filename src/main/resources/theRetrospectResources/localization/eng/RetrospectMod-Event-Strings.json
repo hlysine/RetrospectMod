@@ -1,2 +1,22 @@
 {
+  "theRetrospect:MysteriousProphetEvent": {
+    "NAME": "Mysterious Prophet",
+    "DESCRIPTIONS": [
+      "While moving through a dark corridor, you are suddenly #p~blinded~ by a bright light. NL NL A voice emanated from above. NL NL \"Many have set foot on the Spire across different timelines. Some have already succeeded before you...\"",
+      "\"I can foresee your victory, but you must learn from the great ones before you.\" NL NL The light disappeared, and you stare at the old figure with disbelief.",
+      "\" #pI #pcontrol #pmy #pown #ptime. Prophecy is for the uninitiated.\" NL NL You left with confidence.",
+      "The prophet offers you 4 #p~books~ #p~of~ #p~knowledge~ . NL NL \"Pick one, and don't give up until you master the spirit.\"",
+      "You humbly accepted his offer, and the prophet left with a grin."
+    ],
+    "OPTIONS": [
+      "[Listen on]",
+      "[Stay]",
+      "[Ignore]",
+      "[Leave]",
+      "[Book of Demons] Gain #rSoulless #rDemon",
+      "[Book of Transformation] Gain #gNoxious #gWraith",
+      "[Book of Automation] Gain #bDefective #bEcho",
+      "[Book of Divinity] Gain #pDivine #pEye"
+    ]
+  }
 }

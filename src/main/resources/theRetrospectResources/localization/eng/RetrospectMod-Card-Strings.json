@@ -188,5 +188,22 @@
     "NAME": "Evanescence",
     "DESCRIPTION": "At the start of your turn, discard all Status cards in your hand.",
     "UPGRADE_DESCRIPTION": "Innate. NL At the start of your turn, discard all Status cards in your hand."
+  },
+  "theRetrospect:SoullessDemon": {
+    "NAME": "Soulless Demon",
+    "DESCRIPTION": "Gain !M! Strength. At the end of this turn, lose 1 Strength."
+  },
+  "theRetrospect:NoxiousWraith": {
+    "NAME": "Noxious Wraith",
+    "DESCRIPTION": "Gain 1 Intangible and lose !M! Dexterity."
+  },
+  "theRetrospect:DefectiveEcho": {
+    "NAME": "Defective Echo",
+    "DESCRIPTION": "Next turn, you first !M! cards are played twice."
+  },
+  "theRetrospect:DivineEye": {
+    "NAME": "Divine Eye",
+    "DESCRIPTION": "Next turn, NL gain [E] [E].",
+    "UPGRADE_DESCRIPTION": "Next turn, NL gain [E] [E] [E]."
   }
 }

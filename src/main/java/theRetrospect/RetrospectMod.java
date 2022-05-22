@@ -2,6 +2,7 @@ package theRetrospect;
 
 import basemod.AutoAdd;
 import basemod.BaseMod;
+import basemod.eventUtil.AddEventParams;
 import basemod.interfaces.*;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.files.FileHandle;
@@ -19,6 +20,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import theRetrospect.cards.AbstractRetrospectCard;
 import theRetrospect.characters.TheRetrospect;
+import theRetrospect.events.MysteriousProphetEvent;
 import theRetrospect.potions.TimelinePotion;
 import theRetrospect.relics.AdaptiveShield;
 import theRetrospect.relics.AntiqueStopwatch;
@@ -203,6 +205,12 @@ public class RetrospectMod implements
         CustomTargeting.registerCustomTargeting(TimelineTargeting.TIMELINE, new TimelineTargeting());
 
         logger.info("Done loading badge Image and mod options");
+
+        AddEventParams eventParams = new AddEventParams.Builder(MysteriousProphetEvent.ID, MysteriousProphetEvent.class)
+                .playerClass(TheRetrospect.Enums.THE_RETROSPECT)
+                .create();
+
+        BaseMod.addEvent(eventParams);
     }
 
     public void receiveEditPotions() {

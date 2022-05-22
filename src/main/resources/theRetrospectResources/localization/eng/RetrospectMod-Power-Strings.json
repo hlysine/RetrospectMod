@@ -66,5 +66,25 @@
     "DESCRIPTIONS": [
       "At the start of your turn, discard all #yStatus cards in your hand."
     ]
+  },
+  "theRetrospect:DefectiveEchoPower": {
+    "NAME": "Defective Echo",
+    "DESCRIPTIONS": [
+      "The first card you play next turn is played twice.",
+      "The first #b",
+      " cards you play next turn are played twice.",
+      "The next card you play this turn is played twice.",
+      "The next #b",
+      " cards you play this turn are played twice."
+    ]
+  },
+  "theRetrospect:EnergizedPower": {
+    "NAME": "Energized",
+    "DESCRIPTIONS": [
+      "Gain #b",
+      " additional [E] next turn.",
+      " additional [E] next turn.",
+      " - TRANSLATOR NOTE: - The above line is for plural if needed to distinguish from singular."
+    ]
   }
 }
