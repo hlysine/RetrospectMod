@@ -94,17 +94,7 @@ public class AbstractAnimatedFriendlyMonster extends AbstractFriendlyMonster imp
             if (this.atlas == null || this.renderCorpse) {
                 sb.setColor(this.tint.color);
                 if (this.img != null) {
-                    sb.draw(this.img,
-                            this.drawX - this.img.getWidth() * scale * Settings.scale / 2.0F + this.animX,
-                            this.drawY + this.animY,
-                            this.img.getWidth() * scale * Settings.scale,
-                            this.img.getHeight() * scale * Settings.scale,
-                            0,
-                            0,
-                            this.img.getWidth(),
-                            this.img.getHeight(),
-                            this.flipHorizontal,
-                            this.flipVertical);
+                    drawStaticImg(sb);
                 }
             } else {
                 switch (this.animation.type()) {
@@ -136,18 +126,7 @@ public class AbstractAnimatedFriendlyMonster extends AbstractFriendlyMonster imp
                 sb.setBlendFunction(770, 1);
                 sb.setColor(new Color(1.0F, 1.0F, 1.0F, 0.1F));
                 if (this.img != null) {
-                    sb.draw(this.img,
-                            this.drawX - this.img.getWidth() * scale * Settings.scale / 2.0F + this.animX,
-                            this.drawY + this.animY,
-                            this.img.getWidth() * scale * Settings.scale,
-                            this.img.getHeight() * scale * Settings.scale,
-                            0,
-                            0,
-                            this.img.getWidth(),
-                            this.img.getHeight(),
-                            this.flipHorizontal,
-                            this.flipVertical);
-
+                    drawStaticImg(sb);
                     sb.setBlendFunction(770, 771);
                 }
             }
@@ -169,6 +148,20 @@ public class AbstractAnimatedFriendlyMonster extends AbstractFriendlyMonster imp
         if (!this.hasTakenTurn()) {
             moves.render(sb);
         }
+    }
+
+    private void drawStaticImg(SpriteBatch sb) {
+        sb.draw(this.img,
+                this.drawX - this.img.getWidth() * scale * Settings.scale / 2.0F + this.animX,
+                this.drawY + this.animY,
+                this.img.getWidth() * scale * Settings.scale,
+                this.img.getHeight() * scale * Settings.scale,
+                0,
+                0,
+                this.img.getWidth(),
+                this.img.getHeight(),
+                this.flipHorizontal,
+                this.flipVertical);
     }
 
     @Override

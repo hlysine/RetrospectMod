@@ -13,9 +13,6 @@ out/
 # maven build target
 target/
 
-# Dependencies sources
-sources/
-
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/
 

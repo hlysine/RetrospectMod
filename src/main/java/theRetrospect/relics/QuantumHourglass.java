@@ -1,6 +1,5 @@
 package theRetrospect.relics;
 
-import basemod.abstracts.CustomRelic;
 import com.badlogic.gdx.graphics.Texture;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.RelicAboveCreatureAction;
@@ -8,13 +7,13 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.powers.EnergizedPower;
 import theRetrospect.RetrospectMod;
 import theRetrospect.minions.TimelineMinion;
-import theRetrospect.util.TextureLoader;
 import theRetrospect.subscribers.TimelineCollapseSubscriber;
+import theRetrospect.util.TextureLoader;
 
 import static theRetrospect.RetrospectMod.makeRelicOutlinePath;
 import static theRetrospect.RetrospectMod.makeRelicPath;
 
-public class QuantumHourglass extends CustomRelic implements TimelineCollapseSubscriber {
+public class QuantumHourglass extends AbstractBaseRelic implements TimelineCollapseSubscriber {
 
     public static final String ID = RetrospectMod.makeID(QuantumHourglass.class.getSimpleName());
 

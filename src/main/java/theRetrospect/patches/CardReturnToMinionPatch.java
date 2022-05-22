@@ -21,7 +21,7 @@ public class CardReturnToMinionPatch {
             method = SpirePatch.CLASS
     )
     public static class SoulAddFieldPatch {
-        public static SpireField<AbstractMinionWithCards> returnToMinion = new SpireField<>(() -> null);
+        public static final SpireField<AbstractMinionWithCards> returnToMinion = new SpireField<>(() -> null);
     }
 
     @SpirePatch(

@@ -12,11 +12,11 @@ public class AnimationPatch {
             method = SpirePatch.CLASS
     )
     public static class CreatureAnimationFieldsPatch {
-        public static SpireField<String> atlasUrl = new SpireField<>(() -> null);
+        public static final SpireField<String> atlasUrl = new SpireField<>(() -> null);
 
-        public static SpireField<String> skeletonUrl = new SpireField<>(() -> null);
+        public static final SpireField<String> skeletonUrl = new SpireField<>(() -> null);
 
-        public static SpireField<Float> animationLoadScale = new SpireField<>(() -> 1.0f);
+        public static final SpireField<Float> animationLoadScale = new SpireField<>(() -> 1.0f);
     }
 
     @SpirePatch(
@@ -36,7 +36,7 @@ public class AnimationPatch {
             method = SpirePatch.CLASS
     )
     public static class SpriterAnimationFieldsPatch {
-        public static SpireField<String> filePath = new SpireField<>(() -> null);
+        public static final SpireField<String> filePath = new SpireField<>(() -> null);
     }
 
     @SpirePatch(

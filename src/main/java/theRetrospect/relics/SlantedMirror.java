@@ -1,6 +1,5 @@
 package theRetrospect.relics;
 
-import basemod.abstracts.CustomRelic;
 import com.badlogic.gdx.graphics.Texture;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.actions.common.RelicAboveCreatureAction;
@@ -13,7 +12,7 @@ import theRetrospect.util.TextureLoader;
 import static theRetrospect.RetrospectMod.makeRelicOutlinePath;
 import static theRetrospect.RetrospectMod.makeRelicPath;
 
-public class SlantedMirror extends CustomRelic implements TimelineConstructSubscriber {
+public class SlantedMirror extends AbstractBaseRelic implements TimelineConstructSubscriber {
 
     public static final String ID = RetrospectMod.makeID(SlantedMirror.class.getSimpleName());
 

@@ -1,6 +1,5 @@
 package theRetrospect.relics;
 
-import basemod.abstracts.CustomRelic;
 import com.badlogic.gdx.graphics.Texture;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -12,7 +11,7 @@ import theRetrospect.util.TextureLoader;
 import static theRetrospect.RetrospectMod.makeRelicOutlinePath;
 import static theRetrospect.RetrospectMod.makeRelicPath;
 
-public class AntiqueStopwatch extends CustomRelic {
+public class AntiqueStopwatch extends AbstractBaseRelic {
 
     public static final String ID = RetrospectMod.makeID(AntiqueStopwatch.class.getSimpleName());
 

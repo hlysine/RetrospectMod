@@ -41,6 +41,7 @@ public class TimelineCollapseParticleEffect extends AbstractGameEffect {
         this.y += this.vY * Gdx.graphics.getDeltaTime();
         this.vY += Gdx.graphics.getDeltaTime() * this.dvy;
         this.vX -= Gdx.graphics.getDeltaTime() * this.dvx;
+        //noinspection SuspiciousNameCombination
         this.rotation = -(57.295776F * MathUtils.atan2(this.vX, this.vY)) - 0.0F;
 
         if (this.duration > this.dur_div2) {
