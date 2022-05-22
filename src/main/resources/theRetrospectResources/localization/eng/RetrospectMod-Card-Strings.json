@@ -132,5 +132,12 @@
   "theRetrospect:Avert": {
     "NAME": "Avert",
     "DESCRIPTION": "Gain !B! Block. theretrospect:Construct !theRetrospect:TimelineCount! timeline."
+  },
+  "theRetrospect:TacticalRetreat": {
+    "NAME": "Tactical Retreat",
+    "DESCRIPTION": "theretrospect:Collapse a timeline. Gain !B! Block.",
+    "EXTENDED_DESCRIPTION": [
+      "I have no timelines."
+    ]
   }
 }
