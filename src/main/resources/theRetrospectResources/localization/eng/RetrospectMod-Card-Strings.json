@@ -171,5 +171,9 @@
       "Choose ",
       " Cards to Copy into Your Hand."
     ]
+  },
+  "theRetrospect:Ambush": {
+    "NAME": "Ambush",
+    "DESCRIPTION": "For every !M! cards in your draw pile, deal !D! damage."
   }
 }
