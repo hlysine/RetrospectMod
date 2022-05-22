@@ -158,5 +158,9 @@
   "theRetrospect:WarmUp": {
     "NAME": "Warm Up",
     "DESCRIPTION": "Deal !D! damage. Gain !M! Dexterity next turn."
+  },
+  "theRetrospect:Telekinesis": {
+    "NAME": "Telekinesis",
+    "DESCRIPTION": "Deal !D! damage ignoring the enemy's Block."
   }
 }
