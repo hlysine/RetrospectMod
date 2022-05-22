@@ -150,5 +150,9 @@
   "theRetrospect:FastForward": {
     "NAME": "Fast Forward",
     "DESCRIPTION": "Draw !M! cards. Discard up to !M! cards."
+  },
+  "theRetrospect:AllOutAttack": {
+    "NAME": "All-Out Attack",
+    "DESCRIPTION": "Deal !D! damage. NL Gain !M! Weak."
   }
 }
