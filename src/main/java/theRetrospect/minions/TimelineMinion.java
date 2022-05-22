@@ -56,7 +56,7 @@ public class TimelineMinion extends AbstractMinionWithCards {
     @Override
     public void playDeathAnimation() {
         super.playDeathAnimation();
-        this.tint.color.a = 0.3f;
+        this.tint.color.a = 0.5f;
         for (AbstractCard card : cardStack.cards) {
             Color tint = ReflectionHacks.getPrivate(card, AbstractCard.class, "tintColor");
             tint.a = 0.3f;

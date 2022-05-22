@@ -75,6 +75,7 @@ public class AbstractMinionWithCards extends AbstractAnimatedFriendlyMonster {
         }
     }
 
+    @SuppressWarnings("SuspiciousNameCombination")
     @Override
     public void updateAnimations() {
         super.updateAnimations();
@@ -95,6 +96,7 @@ public class AbstractMinionWithCards extends AbstractAnimatedFriendlyMonster {
     @Override
     public void render(SpriteBatch sb) {
         super.render(sb);
-        cardStack.render(sb);
+        if (!this.renderCorpse)
+            cardStack.render(sb);
     }
 }
