@@ -8,13 +8,10 @@ import theRetrospect.RetrospectMod;
 import theRetrospect.actions.CollapseTimelineAction;
 import theRetrospect.actions.TriggerTimelineAction;
 import theRetrospect.minions.TimelineMinion;
-import theRetrospect.util.MinionUtils;
-import theRetrospect.util.TimelineTargeting;
-import theRetrospect.util.TimelineUtils;
 
 import static theRetrospect.RetrospectMod.makeCardPath;
 
-public class IntoTheVoid extends AbstractRetrospectCard {
+public class IntoTheVoid extends TimelineTargetingCard {
 
     public static final String ID = RetrospectMod.makeID(IntoTheVoid.class.getSimpleName());
     private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
@@ -26,7 +23,6 @@ public class IntoTheVoid extends AbstractRetrospectCard {
 
 
     private static final CardRarity RARITY = CardRarity.BASIC;
-    private static final CardTarget TARGET = TimelineTargeting.TIMELINE;
     private static final CardType TYPE = CardType.SKILL;
 
     private static final int BASE_TRIGGER_COUNT = 1;
@@ -35,26 +31,15 @@ public class IntoTheVoid extends AbstractRetrospectCard {
     private static final int COST = 1;
 
     public IntoTheVoid() {
-        super(ID, IMG, COST, TYPE, RARITY, TARGET);
+        super(ID, IMG, COST, TYPE, RARITY);
 
         magicNumber = baseMagicNumber = BASE_TRIGGER_COUNT;
     }
 
     @Override
-    public void use(AbstractPlayer p, AbstractMonster m) {
-        TimelineMinion target = (TimelineMinion) TimelineTargeting.getTarget(this);
-        if (target == null) target = TimelineUtils.getRandomTimeline(p);
-        if (target == null) return;
-
+    public void useOnTarget(AbstractPlayer p, AbstractMonster m, TimelineMinion target) {
         addToBot(new TriggerTimelineAction(target, magicNumber, true));
         addToBot(new CollapseTimelineAction(target));
-    }
-
-    @Override
-    public boolean canUse(AbstractPlayer p, AbstractMonster m) {
-        boolean canUse = super.canUse(p, m);
-        if (!canUse) return false;
-        return MinionUtils.getMinions(p).monsters.size() != 0;
     }
 
     @Override

@@ -15,6 +15,13 @@
       "I have too many timelines."
     ]
   },
+  "theRetrospect:TimelineTargetingCard": {
+    "NAME": "Timeline Targeting Card",
+    "DESCRIPTION": "theretrospect:Collapse !theRetrospect:TimelineCount! timeline.",
+    "EXTENDED_DESCRIPTION": [
+      "I have no timelines."
+    ]
+  },
   "theRetrospect:Divert": {
     "NAME": "Divert",
     "DESCRIPTION": "Ethereal. NL theretrospect:Construct !theRetrospect:TimelineCount! timeline.",
