@@ -64,7 +64,7 @@
   "theRetrospect:EvanescencePower": {
     "NAME": "Evanescence",
     "DESCRIPTIONS": [
-      "At the start of your turn, discard all Status cards in your hand."
+      "At the start of your turn, discard all #yStatus cards in your hand."
     ]
   }
 }
