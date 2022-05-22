@@ -183,5 +183,10 @@
   "theRetrospect:BlindStrike": {
     "NAME": "Blind Strike",
     "DESCRIPTION": "Deal !D! damage. Shuffle a *Dazed into your draw pile."
+  },
+  "theRetrospect:Evanescence": {
+    "NAME": "Evanescence",
+    "DESCRIPTION": "At the start of your turn, discard all Status cards in your hand.",
+    "UPGRADE_DESCRIPTION": "Innate. NL At the start of your turn, discard all Status cards in your hand."
   }
 }

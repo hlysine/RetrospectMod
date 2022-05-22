@@ -60,5 +60,11 @@
       "Next turn, gain #b",
       " #yDexterity."
     ]
+  },
+  "theRetrospect:EvanescencePower": {
+    "NAME": "Evanescence",
+    "DESCRIPTIONS": [
+      "At the start of your turn, discard all Status cards in your hand."
+    ]
   }
 }
