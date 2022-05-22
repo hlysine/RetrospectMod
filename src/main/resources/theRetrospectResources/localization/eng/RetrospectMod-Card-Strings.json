@@ -162,5 +162,14 @@
   "theRetrospect:Telekinesis": {
     "NAME": "Telekinesis",
     "DESCRIPTION": "Deal !D! damage ignoring the enemy's Block."
+  },
+  "theRetrospect:Recollection": {
+    "NAME": "Recollection",
+    "DESCRIPTION": "Copy !M! cards from your discard pile into your hand. They cost 0 this turn. NL Exhaust.",
+    "EXTENDED_DESCRIPTION": [
+      "Choose a Card to Copy into Your Hand.",
+      "Choose ",
+      " Cards to Copy into Your Hand."
+    ]
   }
 }
