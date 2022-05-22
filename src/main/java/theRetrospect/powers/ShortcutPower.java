@@ -33,7 +33,7 @@ public class ShortcutPower extends AbstractPower implements CloneablePowerInterf
         this.owner = owner;
         this.amount = Math.min(MAX_AMOUNT, amount);
 
-        type = PowerType.DEBUFF;
+        type = PowerType.BUFF;
         isTurnBased = false;
 
         this.region128 = new TextureAtlas.AtlasRegion(tex84, 0, 0, 84, 84);
