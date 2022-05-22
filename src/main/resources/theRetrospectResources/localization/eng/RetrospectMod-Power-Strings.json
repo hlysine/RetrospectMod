@@ -53,5 +53,12 @@
       "Timelines require #b",
       "% less HP to construct."
     ]
+  },
+  "theRetrospect:WarmUpPower": {
+    "NAME": "Warm Up",
+    "DESCRIPTIONS": [
+      "Next turn, gain #b",
+      " #yDexterity."
+    ]
   }
 }
