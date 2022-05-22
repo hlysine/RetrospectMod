@@ -117,7 +117,7 @@ public class TimerPower extends AbstractPower implements CloneablePowerInterface
                 .filter(p -> p instanceof BeforeMinionPlayCardSubscriber)
                 .map(p -> (BeforeMinionPlayCardSubscriber) p)
                 .forEach(p -> p.beforeMinionPlayCard(this.minion, cardToPlay));
-        addToBot(new QueueCardIntentAction(cardToPlay, cardStack, CardPlaySource.TIMELINE));
+        addToBot(new QueueCardIntentAction(cardToPlay, cardStack, CardPlaySource.TIMELINE, false));
     }
 
     @Override

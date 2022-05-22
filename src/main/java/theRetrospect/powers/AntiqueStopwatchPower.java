@@ -4,7 +4,6 @@ import basemod.interfaces.CloneablePowerInterface;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
-import com.megacrit.cardcrawl.actions.utility.NewQueueCardAction;
 import com.megacrit.cardcrawl.actions.utility.WaitAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.AbstractCreature;
@@ -13,7 +12,9 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import theRetrospect.RetrospectMod;
+import theRetrospect.actions.CustomQueueCardAction;
 import theRetrospect.actions.RunnableAction;
+import theRetrospect.actions.ShowCardToBePlayedAction;
 import theRetrospect.cards.Divert;
 import theRetrospect.subscribers.EndOfTurnCardSubscriber;
 import theRetrospect.util.CallbackUtils;
@@ -64,7 +65,8 @@ public class AntiqueStopwatchPower extends AbstractPower implements CloneablePow
                     card.current_x = card.target_x = AbstractDungeon.player.drawX;
                     card.current_y = card.target_y = AbstractDungeon.player.drawY;
                     CardUtils.addFollowUpActionToBottom(card, new RunnableAction(nxt));
-                    addToBot(new NewQueueCardAction(card, true, true, true));
+                    addToBot(new ShowCardToBePlayedAction(card));
+                    addToBot(new CustomQueueCardAction(card, true, false, true));
                 },
                 () -> {
                     addToBot(new RemoveSpecificPowerAction(owner, owner, this));

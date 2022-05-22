@@ -2,9 +2,7 @@ package theRetrospect.actions;
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
-import com.megacrit.cardcrawl.cards.CardQueueItem;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import com.megacrit.cardcrawl.ui.panels.EnergyPanel;
 import com.megacrit.cardcrawl.vfx.cardManip.CardFlashVfx;
 import theRetrospect.util.CardPlaySource;
 import theRetrospect.util.CardUtils;
@@ -14,15 +12,17 @@ public class QueueCardIntentAction extends AbstractGameAction {
     private final AbstractCard card;
     private final HoverableCardStack cardStack;
     private final CardPlaySource source;
+    private final boolean inFrontOfQueue;
 
-    public QueueCardIntentAction(AbstractCard card, CardPlaySource source) {
-        this(card, null, source);
+    public QueueCardIntentAction(AbstractCard card, CardPlaySource source, boolean inFrontOfQueue) {
+        this(card, null, source, inFrontOfQueue);
     }
 
-    public QueueCardIntentAction(AbstractCard card, HoverableCardStack cardStack, CardPlaySource source) {
+    public QueueCardIntentAction(AbstractCard card, HoverableCardStack cardStack, CardPlaySource source, boolean inFrontOfQueue) {
         this.card = card;
         this.cardStack = cardStack;
         this.source = source;
+        this.inFrontOfQueue = inFrontOfQueue;
     }
 
     @Override
@@ -34,7 +34,7 @@ public class QueueCardIntentAction extends AbstractGameAction {
         CardUtils.setPlaySource(card, source);
         AbstractDungeon.player.limbo.addToBottom(card);
         AbstractDungeon.effectList.add(new CardFlashVfx(card));
-        AbstractDungeon.actionManager.addCardQueueItem(new CardQueueItem(card, true, EnergyPanel.getCurrentEnergy(), true, true));
+        addToTop(new CustomQueueCardAction(card, true, inFrontOfQueue, true));
         this.isDone = true;
     }
 }

@@ -28,7 +28,7 @@ public class ReplayLastCardsAction extends AbstractGameAction {
             AbstractCard card = lastPlayedCards.get(i);
             if (filter.test(card)) {
                 remaining--;
-                addToBot(new QueueCardIntentAction(CardUtils.makeAdvancedCopy(card), null, source));
+                addToBot(new QueueCardIntentAction(CardUtils.makeAdvancedCopy(card), null, source, true));
             }
         }
         this.isDone = true;
