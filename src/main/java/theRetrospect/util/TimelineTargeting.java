@@ -79,13 +79,13 @@ public class TimelineTargeting extends TargetingHandler<AbstractCreature> {
     @Override
     public int getDefaultTargetX() {
         Optional<AbstractMonster> minion = MinionUtils.getMinions(AbstractDungeon.player).monsters.stream().filter(m -> m instanceof TimelineMinion).findFirst();
-        return minion.map(abstractMonster -> (int) abstractMonster.hb.cX).orElse(0);
+        return minion.map(abstractMonster -> (int) abstractMonster.hb.cX).orElse(Settings.WIDTH / 2);
     }
 
     @Override
     public int getDefaultTargetY() {
         Optional<AbstractMonster> minion = MinionUtils.getMinions(AbstractDungeon.player).monsters.stream().filter(m -> m instanceof TimelineMinion).findFirst();
-        return minion.map(abstractMonster -> (int) abstractMonster.hb.cY).orElse(0);
+        return minion.map(abstractMonster -> (int) abstractMonster.hb.cY).orElse(Settings.HEIGHT / 2);
     }
 
     @Override
