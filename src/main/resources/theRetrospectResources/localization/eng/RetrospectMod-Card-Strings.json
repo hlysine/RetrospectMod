@@ -121,5 +121,9 @@
   "theRetrospect:ElectricShock": {
     "NAME": "Electric Shock",
     "DESCRIPTION": "Deal !D! damage. Apply !M! weak."
+  },
+  "theRetrospect:Avert": {
+    "NAME": "Avert",
+    "DESCRIPTION": "Gain !B! Block. theretrospect:Construct !theRetrospect:TimelineCount! timeline."
   }
 }
