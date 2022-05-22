@@ -173,9 +173,6 @@ public class RetrospectMod implements
         }
     }
 
-    // ====== YOU CAN EDIT AGAIN ======
-
-
     public static void initialize() {
         logger.info("========================= Initializing Retrospect Mod. =========================");
         RetrospectMod retrospectMod = new RetrospectMod();
