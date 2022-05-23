@@ -38,8 +38,7 @@ public class IntoTheVoid extends TimelineTargetingCard {
 
     @Override
     public void useOnTarget(AbstractPlayer p, AbstractMonster m, TimelineMinion target) {
-        addToBot(new TriggerTimelineAction(target, magicNumber, true));
-        addToBot(new CollapseTimelineAction(target));
+        addToBot(new TriggerTimelineAction(target, magicNumber, true, new CollapseTimelineAction(target)));
     }
 
     @Override

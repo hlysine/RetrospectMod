@@ -16,6 +16,7 @@ public class TriggerTimelineAction extends AbstractGameAction {
     private final TimelineMinion minion;
     private final int triggerCount;
     private final boolean consumeCards;
+    private final AbstractGameAction followUpAction;
 
     /**
      * Create an action that triggers a timeline.
@@ -24,10 +25,11 @@ public class TriggerTimelineAction extends AbstractGameAction {
      * @param triggerCount How many times the timeline should be triggered.
      * @param consumeCards Whether the played cards should disappear from the timeline.
      */
-    public TriggerTimelineAction(TimelineMinion minion, int triggerCount, boolean consumeCards) {
+    public TriggerTimelineAction(TimelineMinion minion, int triggerCount, boolean consumeCards, AbstractGameAction followUpAction) {
         this.minion = minion;
         this.triggerCount = triggerCount;
         this.consumeCards = consumeCards;
+        this.followUpAction = followUpAction;
     }
 
     /**
@@ -35,8 +37,8 @@ public class TriggerTimelineAction extends AbstractGameAction {
      *
      * @param minion The timeline to trigger. Use null for a random timeline.
      */
-    public TriggerTimelineAction(TimelineMinion minion, boolean consumeCards) {
-        this(minion, 1, consumeCards);
+    public TriggerTimelineAction(TimelineMinion minion, boolean consumeCards, AbstractGameAction followUpAction) {
+        this(minion, 1, consumeCards, followUpAction);
     }
 
     @Override
@@ -64,7 +66,8 @@ public class TriggerTimelineAction extends AbstractGameAction {
                             timer.get().triggerOnEndOfTurnForPlayingCard(next);
                         else
                             timer.get().triggerWithoutConsumingCards(next);
-                    }
+                    },
+                    () -> addToBot(followUpAction)
             );
         }
         this.isDone = true;
