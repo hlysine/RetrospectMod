@@ -1,5 +1,16 @@
 # Changelog
 
+## [0.2.1] - Hotfix - 2022-05-23
+### Mechanics
+- Skip collapse timeline action if the timeline is already dead
+
+### Cards
+- Fixed a bug that prevents Into The Void+ from triggering a timeline twice
+- Changed Temporal Anomaly to trigger timelines one after the other
+
+### VFX
+- Skip Rewrite History VFX if there are no cards in discard pile
+
 ## [0.2.0] - Second Technical Test - 2022-05-22
 ### Mechanics
 - Timelines now play cards one after the other instead of queueing all cards at once
