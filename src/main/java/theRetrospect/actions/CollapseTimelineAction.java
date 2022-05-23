@@ -7,11 +7,15 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 import kobting.friendlyminions.monsters.AbstractFriendlyMonster;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import theRetrospect.effects.TimelineCollapseEffect;
 import theRetrospect.minions.TimelineMinion;
 import theRetrospect.subscribers.TimelineCollapseSubscriber;
 
 public class CollapseTimelineAction extends AbstractGameAction {
+
+    public static final Logger logger = LogManager.getLogger(CollapseTimelineAction.class.getName());
 
     private final AbstractFriendlyMonster minion;
 
@@ -21,6 +25,11 @@ public class CollapseTimelineAction extends AbstractGameAction {
 
     @Override
     public void update() {
+        if (minion.isDead) {
+            logger.warn("Timeline is already dead before collapsing");
+            this.isDone = true;
+            return;
+        }
         CardCrawlGame.sound.playA("STANCE_ENTER_CALM", 0.1f);
         addToTop(new RepositionTimelinesAction());
         addToTop(new InstantKillAction(minion));
