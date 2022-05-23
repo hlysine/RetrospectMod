@@ -37,14 +37,16 @@ public class RewriteHistory extends AbstractRetrospectCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        if (m != null) {
-            addToBot(new SFXAction("MONSTER_COLLECTOR_DEBUFF"));
-            AbstractDungeon.effectsQueue.add(new CollectorCurseEffect(m.hb.cX, m.hb.cY));
-        }
-        addToBot(new WaitAction(0.5f));
         int count = p.discardPile.size();
-        for (int i = 0; i < count; i++) {
-            addToBot(new DamageAction(m, new DamageInfo(p, damage, damageTypeForTurn), AbstractGameAction.AttackEffect.SLASH_DIAGONAL, true));
+        if (count > 0) {
+            if (m != null) {
+                addToBot(new SFXAction("MONSTER_COLLECTOR_DEBUFF"));
+                AbstractDungeon.effectsQueue.add(new CollectorCurseEffect(m.hb.cX, m.hb.cY));
+            }
+            addToBot(new WaitAction(0.5f));
+            for (int i = 0; i < count; i++) {
+                addToBot(new DamageAction(m, new DamageInfo(p, damage, damageTypeForTurn), AbstractGameAction.AttackEffect.SLASH_DIAGONAL, true));
+            }
         }
         addToBot(new ShuffleDiscardPileAction());
     }
