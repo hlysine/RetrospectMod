@@ -51,6 +51,6 @@ public class TimelineUtils {
         if (timelines.size() <= 0) {
             return null;
         }
-        return timelines.get(AbstractDungeon.cardRng.random(timelines.size() - 1));
+        return timelines.get(AbstractDungeon.cardRandomRng.random(timelines.size() - 1));
     }
 }
