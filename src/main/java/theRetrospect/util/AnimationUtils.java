@@ -11,7 +11,7 @@ import com.esotericsoftware.spine.AnimationState;
 import com.esotericsoftware.spine.AnimationStateData;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.AbstractCreature;
-import theRetrospect.minions.AbstractAnimatedFriendlyMonster;
+import hlysine.friendlymonsters.monsters.AbstractFriendlyMonster;
 import theRetrospect.patches.AnimationPatch;
 
 public class AnimationUtils {
@@ -49,7 +49,7 @@ public class AnimationUtils {
         return null;
     }
 
-    public static void cloneAnimationStates(AbstractPlayer from, AbstractAnimatedFriendlyMonster to) {
+    public static void cloneAnimationStates(AbstractPlayer from, AbstractFriendlyMonster to) {
         if (to.animation.type() == AbstractAnimation.Type.NONE) {
             AnimationState.TrackEntry current = from.state.getCurrent(0);
             AnimationState.TrackEntry e = to.state.setAnimation(0, current.getAnimation().getName(), current.getLoop());

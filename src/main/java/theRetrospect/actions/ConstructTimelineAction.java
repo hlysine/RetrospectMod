@@ -12,12 +12,12 @@ import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 import com.megacrit.cardcrawl.vfx.ThoughtBubble;
 import com.megacrit.cardcrawl.vfx.combat.EmpowerEffect;
+import hlysine.friendlymonsters.utils.MinionUtils;
 import theRetrospect.RetrospectMod;
 import theRetrospect.cards.AbstractRetrospectCard;
 import theRetrospect.minions.TimelineMinion;
 import theRetrospect.subscribers.TimelineConstructSubscriber;
 import theRetrospect.util.CardUtils;
-import theRetrospect.util.MinionUtils;
 import theRetrospect.util.TimelineUtils;
 
 import java.util.stream.Collectors;
@@ -39,7 +39,7 @@ public class ConstructTimelineAction extends AbstractGameAction {
     public void update() {
         AbstractPlayer player = AbstractDungeon.player;
 
-        if (MinionUtils.getMinions(player).monsters.size() >= MinionUtils.getMaxMinions(player)) {
+        if (MinionUtils.getMinions(player).monsters.size() >= MinionUtils.getMaxMinionCount(player)) {
             AbstractDungeon.effectList.add(new ThoughtBubble(player.dialogX, player.dialogY, 3.0F, cardStrings.EXTENDED_DESCRIPTION[1], true));
             this.isDone = true;
             return;

@@ -5,10 +5,10 @@ import com.megacrit.cardcrawl.actions.utility.WaitAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.MonsterGroup;
+import hlysine.friendlymonsters.utils.MinionUtils;
 import theRetrospect.minions.AbstractMinionWithCards;
 import theRetrospect.subscribers.EndOfTurnCardSubscriber;
 import theRetrospect.util.CallbackUtils;
-import theRetrospect.util.MinionUtils;
 
 /**
  * Trigger onEndOfTurnForPlayingCard for player powers and minions

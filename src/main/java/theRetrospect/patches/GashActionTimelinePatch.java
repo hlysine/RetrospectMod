@@ -5,8 +5,8 @@ import com.megacrit.cardcrawl.actions.defect.GashAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.blue.Claw;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import hlysine.friendlymonsters.utils.MinionUtils;
 import theRetrospect.minions.TimelineMinion;
-import theRetrospect.util.MinionUtils;
 
 import java.util.List;
 import java.util.stream.Collectors;

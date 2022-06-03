@@ -50,11 +50,11 @@
             <systemPath>${Dependencies.path}\1609158507\StSLib.jar</systemPath>
         </dependency>
         <dependency>
-            <groupId>friendlyminions</groupId>
-            <artifactId>FriendlyMinions</artifactId>
-            <version>0.1.2</version>
+            <groupId>friendlymonsters</groupId>
+            <artifactId>FriendlyMonsters</artifactId>
+            <version>1.0.0</version>
             <scope>system</scope>
-            <systemPath>${Dependencies.path}\1612426481\FriendlyMinions.jar</systemPath>
+            <systemPath>D:\Projects\SLAY_THE_SPIRE\FriendlyMonsters\target\FriendlyMonsters.jar</systemPath>
         </dependency>
     </dependencies>
 

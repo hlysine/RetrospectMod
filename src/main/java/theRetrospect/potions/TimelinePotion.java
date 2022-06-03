@@ -10,9 +10,9 @@ import com.megacrit.cardcrawl.helpers.CardHelper;
 import com.megacrit.cardcrawl.helpers.PowerTip;
 import com.megacrit.cardcrawl.localization.PotionStrings;
 import com.megacrit.cardcrawl.potions.AbstractPotion;
+import hlysine.friendlymonsters.utils.MinionUtils;
 import theRetrospect.RetrospectMod;
 import theRetrospect.actions.ConstructTimelineAction;
-import theRetrospect.util.MinionUtils;
 
 public class TimelinePotion extends CustomPotion {
 
@@ -55,7 +55,7 @@ public class TimelinePotion extends CustomPotion {
         if (player.currentHealth <= 1)
             return false;
 
-        return MinionUtils.getMinions(player).monsters.size() < MinionUtils.getMaxMinions(player);
+        return MinionUtils.getMinions(player).monsters.size() < MinionUtils.getMaxMinionCount(player);
     }
 
     @Override

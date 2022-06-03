@@ -4,8 +4,8 @@ import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.monsters.MonsterGroup;
+import hlysine.friendlymonsters.utils.MinionUtils;
 import theRetrospect.minions.TimelineMinion;
-import theRetrospect.util.MinionUtils;
 
 import java.util.function.Consumer;
 

@@ -1,4 +1,4 @@
-package theRetrospect.patches;
+package theRetrospect.patches.debug;
 
 import com.evacipated.cardcrawl.modthespire.lib.SpirePatch;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;

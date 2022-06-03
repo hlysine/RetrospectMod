@@ -18,8 +18,7 @@ import com.megacrit.cardcrawl.helpers.ScreenShake;
 import com.megacrit.cardcrawl.localization.CharacterStrings;
 import com.megacrit.cardcrawl.screens.CharSelectInfo;
 import com.megacrit.cardcrawl.unlock.UnlockTracker;
-import kobting.friendlyminions.characters.AbstractPlayerWithMinions;
-import kobting.friendlyminions.characters.CustomCharSelectInfo;
+import hlysine.friendlymonsters.characters.AbstractPlayerWithMinions;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import theRetrospect.RetrospectMod;
@@ -142,7 +141,6 @@ public class TheRetrospect extends AbstractPlayerWithMinions {
         e.setTime(e.getEndTime() * MathUtils.random());
 
         // =============== /ANIMATIONS/ =================
-
     }
 
     // =============== /CHARACTER CLASS END/ =================
@@ -150,17 +148,9 @@ public class TheRetrospect extends AbstractPlayerWithMinions {
     // Starting description and loadout
     @Override
     public CharSelectInfo getLoadout() {
-        return new CustomCharSelectInfo(
+        return new CharSelectInfo(
                 NAMES[0], TEXT[0],
-                STARTING_HP, MAX_HP, ORB_SLOTS, MAX_MINIONS, STARTING_GOLD, CARD_DRAW, this, getStartingRelics(),
-                getStartingDeck(), false);
-    }
-
-    @Override
-    public CustomCharSelectInfo getInfo() {
-        return new CustomCharSelectInfo(
-                NAMES[0], TEXT[0],
-                STARTING_HP, MAX_HP, ORB_SLOTS, MAX_MINIONS, STARTING_GOLD, CARD_DRAW, this, getStartingRelics(),
+                STARTING_HP, MAX_HP, ORB_SLOTS, STARTING_GOLD, CARD_DRAW, this, getStartingRelics(),
                 getStartingDeck(), false);
     }
 

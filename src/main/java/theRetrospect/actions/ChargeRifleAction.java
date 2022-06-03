@@ -3,9 +3,9 @@ package theRetrospect.actions;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import hlysine.friendlymonsters.utils.MinionUtils;
 import theRetrospect.cards.ChargeRifle;
 import theRetrospect.minions.TimelineMinion;
-import theRetrospect.util.MinionUtils;
 
 import java.util.List;
 import java.util.stream.Collectors;

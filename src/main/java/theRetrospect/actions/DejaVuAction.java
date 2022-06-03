@@ -4,9 +4,9 @@ import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.defect.IncreaseMiscAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import hlysine.friendlymonsters.utils.MinionUtils;
 import theRetrospect.cards.DejaVu;
 import theRetrospect.minions.TimelineMinion;
-import theRetrospect.util.MinionUtils;
 
 import java.util.ArrayList;
 import java.util.List;

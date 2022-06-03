@@ -16,6 +16,7 @@ import com.megacrit.cardcrawl.helpers.controller.CInputActionSet;
 import com.megacrit.cardcrawl.helpers.input.InputActionSet;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.monsters.MonsterGroup;
+import hlysine.friendlymonsters.utils.MinionUtils;
 import theRetrospect.minions.TimelineMinion;
 
 import java.util.ArrayList;

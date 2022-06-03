@@ -4,6 +4,7 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.MonsterGroup;
+import hlysine.friendlymonsters.utils.MinionUtils;
 import theRetrospect.minions.AbstractMinionWithCards;
 import theRetrospect.minions.TimelineMinion;
 

@@ -2,7 +2,7 @@ package theRetrospect.minions;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.megacrit.cardcrawl.cards.AbstractCard;
-import com.megacrit.cardcrawl.helpers.MathHelper;
+import hlysine.friendlymonsters.monsters.AbstractFriendlyMonster;
 import theRetrospect.subscribers.EndOfTurnCardSubscriber;
 import theRetrospect.util.CallbackUtils;
 import theRetrospect.util.HoverableCardStack;
@@ -10,7 +10,7 @@ import theRetrospect.util.HoverableCardStack;
 import java.util.ArrayList;
 import java.util.List;
 
-public class AbstractMinionWithCards extends AbstractAnimatedFriendlyMonster {
+public class AbstractMinionWithCards extends AbstractFriendlyMonster {
 
     /**
      * A stack of cards rendered on top of this minion. Used to visualize {@link AbstractMinionWithCards#cardIntents}
@@ -27,13 +27,8 @@ public class AbstractMinionWithCards extends AbstractAnimatedFriendlyMonster {
      */
     public final List<AbstractCard> cards = new ArrayList<>();
 
-    public float target_x;
-    public float target_y;
-
     public AbstractMinionWithCards(String name, String id, int maxHealth, float hb_x, float hb_y, float hb_w, float hb_h, String imgUrl, float offsetX, float offsetY) {
         super(name, id, maxHealth, hb_x, hb_y, hb_w, hb_h, imgUrl, offsetX, offsetY);
-        target_x = drawX;
-        target_y = drawY;
         cardStack = new HoverableCardStack(cardIntents, this.intentHb.cX, this.intentHb.cY);
     }
 
@@ -75,14 +70,9 @@ public class AbstractMinionWithCards extends AbstractAnimatedFriendlyMonster {
         }
     }
 
-    @SuppressWarnings("SuspiciousNameCombination")
     @Override
     public void updateAnimations() {
         super.updateAnimations();
-        this.drawX = MathHelper.orbLerpSnap(this.drawX, this.target_x);
-        this.drawY = MathHelper.orbLerpSnap(this.drawY, this.target_y);
-        refreshHitboxLocation();
-        refreshIntentHbLocation();
         this.cardStack.x = this.intentHb.cX;
         this.cardStack.y = this.intentHb.cY;
     }

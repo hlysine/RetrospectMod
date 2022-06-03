@@ -8,7 +8,7 @@ import com.badlogic.gdx.math.MathUtils;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.vfx.AbstractGameEffect;
-import kobting.friendlyminions.monsters.AbstractFriendlyMonster;
+import hlysine.friendlymonsters.monsters.AbstractFriendlyMonster;
 
 public class TimelineCollapseParticleEffect extends AbstractGameEffect {
     private final float dur_div2;
