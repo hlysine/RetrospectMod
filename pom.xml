@@ -54,7 +54,7 @@
             <artifactId>FriendlyMonsters</artifactId>
             <version>1.0.0</version>
             <scope>system</scope>
-            <systemPath>D:\Projects\SLAY_THE_SPIRE\FriendlyMonsters\target\FriendlyMonsters.jar</systemPath>
+            <systemPath>${Dependencies.path}\2816293692\FriendlyMonsters.jar</systemPath>
         </dependency>
     </dependencies>
 
