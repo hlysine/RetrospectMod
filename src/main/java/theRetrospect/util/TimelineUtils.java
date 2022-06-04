@@ -41,7 +41,11 @@ public class TimelineUtils {
 
         if (!isPlayerSurrounded) {
             startX -= player.hb_w / 2;
+            startX += gap;
             player.movePosition(Math.min(Settings.WIDTH * 0.25f, startX), player.drawY);
+            for (int i = 0; i < player.orbs.size(); i++) {
+                player.orbs.get(i).setSlot(i, player.maxOrbs);
+            }
         }
     }
 
