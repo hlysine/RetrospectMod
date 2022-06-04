@@ -1,8 +1,6 @@
 package theRetrospect.actions;
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
-import com.megacrit.cardcrawl.actions.animations.VFXAction;
-import com.megacrit.cardcrawl.actions.common.InstantKillAction;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
@@ -18,6 +16,7 @@ public class CollapseTimelineAction extends AbstractGameAction {
     public static final Logger logger = LogManager.getLogger(CollapseTimelineAction.class.getName());
 
     private final AbstractFriendlyMonster minion;
+    private boolean firstFrame = true;
 
     public CollapseTimelineAction(AbstractFriendlyMonster minion) {
         this.minion = minion;
@@ -26,21 +25,24 @@ public class CollapseTimelineAction extends AbstractGameAction {
     @Override
     public void update() {
         if (minion.isDead) {
-            logger.warn("Timeline is already dead before collapsing");
+            if (firstFrame)
+                logger.warn("Timeline is already dead before collapsing");
             this.isDone = true;
             return;
         }
-        CardCrawlGame.sound.playA("STANCE_ENTER_CALM", 0.1f);
-        addToTop(new RepositionTimelinesAction());
-        addToTop(new InstantKillAction(minion));
-        addToTop(new VFXAction(new TimelineCollapseEffect(minion)));
-        addToTop(new NonTriggeringHealthChange(AbstractDungeon.player, minion.currentHealth));
-        for (AbstractRelic relic : AbstractDungeon.player.relics) {
-            if (relic instanceof TimelineCollapseSubscriber) {
-                TimelineCollapseSubscriber listener = (TimelineCollapseSubscriber) relic;
-                listener.onTimelineCollapse((TimelineMinion) minion);
+        if (firstFrame) {
+            CardCrawlGame.sound.playA("STANCE_ENTER_CALM", 0.1f);
+            addToTop(new RepositionTimelinesAction());
+            minion.die(false);
+            AbstractDungeon.effectsQueue.add(new TimelineCollapseEffect(minion));
+            addToTop(new NonTriggeringHealthChange(AbstractDungeon.player, minion.currentHealth));
+            for (AbstractRelic relic : AbstractDungeon.player.relics) {
+                if (relic instanceof TimelineCollapseSubscriber) {
+                    TimelineCollapseSubscriber listener = (TimelineCollapseSubscriber) relic;
+                    listener.onTimelineCollapse((TimelineMinion) minion);
+                }
             }
+            firstFrame = false;
         }
-        this.isDone = true;
     }
 }
