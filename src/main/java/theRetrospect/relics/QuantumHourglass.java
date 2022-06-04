@@ -28,7 +28,7 @@ public class QuantumHourglass extends AbstractBaseRelic implements TimelineColla
     }
 
     @Override
-    public void onTimelineCollapse(TimelineMinion timeline) {
+    public void afterTimelineCollapse(TimelineMinion timeline) {
         flash();
         addToTop(new RelicAboveCreatureAction(AbstractDungeon.player, this));
         addToTop(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new EnergizedPower(AbstractDungeon.player, 1)));
