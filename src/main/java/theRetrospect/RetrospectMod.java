@@ -4,6 +4,7 @@ import basemod.AutoAdd;
 import basemod.BaseMod;
 import basemod.abstracts.CustomRelic;
 import basemod.eventUtil.AddEventParams;
+import basemod.helpers.CardBorderGlowManager;
 import basemod.interfaces.*;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.files.FileHandle;
@@ -25,6 +26,7 @@ import theRetrospect.potions.TimelinePotion;
 import theRetrospect.relics.AbstractBaseRelic;
 import theRetrospect.util.IDCheckDontTouchPls;
 import theRetrospect.util.TextureLoader;
+import theRetrospect.util.TimelineCardGlow;
 import theRetrospect.util.TimelineTargeting;
 import theRetrospect.variables.TimelineCountVariable;
 
@@ -206,6 +208,8 @@ public class RetrospectMod implements
                 .create();
 
         BaseMod.addEvent(eventParams);
+
+        CardBorderGlowManager.addGlowInfo(new TimelineCardGlow());
     }
 
     public void receiveEditPotions() {

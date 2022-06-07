@@ -57,4 +57,11 @@ public class TimelineUtils {
         }
         return timelines.get(AbstractDungeon.cardRandomRng.random(timelines.size() - 1));
     }
+
+    public static List<TimelineMinion> getTimelines(AbstractPlayer player) {
+        return MinionUtils.getMinions(player).monsters.stream()
+                .filter(m -> m instanceof TimelineMinion)
+                .map(m -> (TimelineMinion) m)
+                .collect(Collectors.toList());
+    }
 }
