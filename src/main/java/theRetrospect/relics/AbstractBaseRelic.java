@@ -3,7 +3,7 @@ package theRetrospect.relics;
 import basemod.abstracts.CustomRelic;
 import com.badlogic.gdx.graphics.Texture;
 
-public class AbstractBaseRelic extends CustomRelic {
+public abstract class AbstractBaseRelic extends CustomRelic {
     public AbstractBaseRelic(String id, Texture texture, RelicTier tier, LandingSound sfx) {
         super(id, texture, tier, sfx);
     }

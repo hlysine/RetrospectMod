@@ -1,5 +1,6 @@
 package theRetrospect.relics;
 
+import basemod.AutoAdd;
 import com.badlogic.gdx.graphics.Texture;
 import com.megacrit.cardcrawl.actions.common.RelicAboveCreatureAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -10,6 +11,7 @@ import theRetrospect.util.TextureLoader;
 import static theRetrospect.RetrospectMod.makeRelicOutlinePath;
 import static theRetrospect.RetrospectMod.makeRelicPath;
 
+@AutoAdd.Seen
 public class AdaptiveShield extends AbstractBaseRelic {
 
     public static final String ID = RetrospectMod.makeID(AdaptiveShield.class.getSimpleName());

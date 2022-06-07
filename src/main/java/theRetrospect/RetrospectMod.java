@@ -2,6 +2,7 @@ package theRetrospect;
 
 import basemod.AutoAdd;
 import basemod.BaseMod;
+import basemod.abstracts.CustomRelic;
 import basemod.eventUtil.AddEventParams;
 import basemod.interfaces.*;
 import com.badlogic.gdx.Gdx;
@@ -21,10 +22,7 @@ import theRetrospect.cards.AbstractRetrospectCard;
 import theRetrospect.characters.TheRetrospect;
 import theRetrospect.events.MysteriousProphetEvent;
 import theRetrospect.potions.TimelinePotion;
-import theRetrospect.relics.AdaptiveShield;
-import theRetrospect.relics.AntiqueStopwatch;
-import theRetrospect.relics.QuantumHourglass;
-import theRetrospect.relics.SlantedMirror;
+import theRetrospect.relics.AbstractBaseRelic;
 import theRetrospect.util.IDCheckDontTouchPls;
 import theRetrospect.util.TextureLoader;
 import theRetrospect.util.TimelineTargeting;
@@ -227,12 +225,16 @@ public class RetrospectMod implements
     public void receiveEditRelics() {
         logger.info("Adding relics");
 
-        BaseMod.addRelicToCustomPool(new AdaptiveShield(), TheRetrospect.Enums.RETROSPECT_CARD_VIOLET);
-        BaseMod.addRelicToCustomPool(new AntiqueStopwatch(), TheRetrospect.Enums.RETROSPECT_CARD_VIOLET);
-        BaseMod.addRelicToCustomPool(new QuantumHourglass(), TheRetrospect.Enums.RETROSPECT_CARD_VIOLET);
-        BaseMod.addRelicToCustomPool(new SlantedMirror(), TheRetrospect.Enums.RETROSPECT_CARD_VIOLET);
-
-        UnlockTracker.markRelicAsSeen(AdaptiveShield.ID);
+        new AutoAdd("RetrospectMod")
+                .packageFilter(AbstractBaseRelic.class)
+                .any(CustomRelic.class, (info, relic) -> {
+                    if (!info.ignore) {
+                        BaseMod.addRelicToCustomPool(relic, TheRetrospect.Enums.RETROSPECT_CARD_VIOLET);
+                        if (info.seen) {
+                            UnlockTracker.markRelicAsSeen(relic.relicId);
+                        }
+                    }
+                });
 
         logger.info("Done adding relics!");
     }
