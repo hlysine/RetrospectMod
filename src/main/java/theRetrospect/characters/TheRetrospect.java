@@ -22,10 +22,10 @@ import hlysine.friendlymonsters.characters.AbstractPlayerWithMinions;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import theRetrospect.RetrospectMod;
-import theRetrospect.cards.Defend;
-import theRetrospect.cards.Divert;
-import theRetrospect.cards.IntoTheVoid;
-import theRetrospect.cards.Strike;
+import theRetrospect.cards.attacks.Strike;
+import theRetrospect.cards.skills.Defend;
+import theRetrospect.cards.skills.Divert;
+import theRetrospect.cards.skills.IntoTheVoid;
 import theRetrospect.relics.AdaptiveShield;
 
 import java.util.ArrayList;

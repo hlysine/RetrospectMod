@@ -12,7 +12,7 @@ import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.vfx.combat.LightningEffect;
 import theRetrospect.RetrospectMod;
-import theRetrospect.actions.GuaranteedKillAction;
+import theRetrospect.actions.general.GuaranteedKillAction;
 import theRetrospect.util.TextureLoader;
 
 public class TimedDeathPower extends AbstractPower implements CloneablePowerInterface {

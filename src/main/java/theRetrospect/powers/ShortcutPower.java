@@ -9,7 +9,7 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import theRetrospect.RetrospectMod;
-import theRetrospect.actions.ConstructTimelineAction;
+import theRetrospect.actions.timelineActions.ConstructTimelineAction;
 import theRetrospect.subscribers.TimelineConstructSubscriber;
 import theRetrospect.util.TextureLoader;
 

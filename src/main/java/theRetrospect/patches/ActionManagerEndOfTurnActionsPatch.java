@@ -2,7 +2,7 @@ package theRetrospect.patches;
 
 import com.evacipated.cardcrawl.modthespire.lib.SpirePatch;
 import com.megacrit.cardcrawl.actions.GameActionManager;
-import theRetrospect.actions.TriggerOnEndOfTurnForPlayingCard;
+import theRetrospect.actions.general.TriggerOnEndOfTurnForPlayingCard;
 
 /**
  * Trigger onEndOfTurnForPlayingCard for player powers and minions

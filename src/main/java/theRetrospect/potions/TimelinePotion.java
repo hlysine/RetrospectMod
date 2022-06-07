@@ -12,7 +12,7 @@ import com.megacrit.cardcrawl.localization.PotionStrings;
 import com.megacrit.cardcrawl.potions.AbstractPotion;
 import hlysine.friendlymonsters.utils.MinionUtils;
 import theRetrospect.RetrospectMod;
-import theRetrospect.actions.ConstructTimelineAction;
+import theRetrospect.actions.timelineActions.ConstructTimelineAction;
 
 public class TimelinePotion extends CustomPotion {
 

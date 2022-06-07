@@ -8,10 +8,10 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.EventStrings;
 import com.megacrit.cardcrawl.vfx.cardManip.ShowCardAndObtainEffect;
 import theRetrospect.RetrospectMod;
-import theRetrospect.cards.DefectiveEcho;
-import theRetrospect.cards.DivineEye;
-import theRetrospect.cards.NoxiousWraith;
-import theRetrospect.cards.SoullessDemon;
+import theRetrospect.cards.skills.DefectiveEcho;
+import theRetrospect.cards.skills.DivineEye;
+import theRetrospect.cards.skills.NoxiousWraith;
+import theRetrospect.cards.skills.SoullessDemon;
 
 import static theRetrospect.RetrospectMod.makeEventPath;
 
