@@ -1,5 +1,6 @@
 package theRetrospect.cards;
 
+import basemod.BaseMod;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
@@ -31,7 +32,7 @@ public class Paradox extends AbstractBaseCard {
 
     @Override
     public boolean canPlay(AbstractCard card) {
-        if (AbstractDungeon.player.hand.size() >= 10) {
+        if (AbstractDungeon.player.hand.size() >= BaseMod.MAX_HAND_SIZE) {
             card.cantUseMessage = cardStrings.EXTENDED_DESCRIPTION[0];
             return false;
         }
