@@ -39,4 +39,16 @@ public abstract class TimelineTargetingCard extends AbstractRetrospectCard {
     }
 
     protected abstract void useOnTarget(AbstractPlayer p, AbstractMonster m, TimelineMinion target);
+
+    @Override
+    public boolean canUse(AbstractPlayer p, AbstractMonster m) {
+        if (!super.canUse(p, m)) return false;
+
+        if (TimelineUtils.getTimelines(p).size() <= 0) {
+            cantUseMessage = cardStrings.EXTENDED_DESCRIPTION[0];
+            return false;
+        }
+
+        return true;
+    }
 }
