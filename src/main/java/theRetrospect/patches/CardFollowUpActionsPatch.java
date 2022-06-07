@@ -18,13 +18,11 @@ public class CardFollowUpActionsPatch {
         if (__instance.isDone) {
             CardUtils.setPlaySource(___targetCard, null);
             CardUtils.setReturnToMinion(___targetCard, null);
-            if (!___targetCard.dontTriggerOnUseCard) {
-                for (CardAddFieldsPatch.ActionQueueItem item : CardUtils.getFollowUpActions(___targetCard)) {
-                    if (item.onTop)
-                        AbstractDungeon.actionManager.addToTop(item.action);
-                    else
-                        AbstractDungeon.actionManager.addToBottom(item.action);
-                }
+            for (CardAddFieldsPatch.ActionQueueItem item : CardUtils.getFollowUpActions(___targetCard)) {
+                if (item.onTop)
+                    AbstractDungeon.actionManager.addToTop(item.action);
+                else
+                    AbstractDungeon.actionManager.addToBottom(item.action);
             }
             CardUtils.clearFollowUpActions(___targetCard);
         }
