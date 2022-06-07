@@ -4,6 +4,7 @@ import basemod.helpers.CardBorderGlowManager;
 import com.badlogic.gdx.graphics.Color;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.helpers.CardHelper;
 import theRetrospect.RetrospectMod;
 
 public class TimelineCardGlow extends CardBorderGlowManager.GlowInfo {
@@ -14,7 +15,7 @@ public class TimelineCardGlow extends CardBorderGlowManager.GlowInfo {
 
     @Override
     public Color getColor(AbstractCard card) {
-        return RetrospectMod.RETROSPECT_VIOLET.cpy();
+        return CardHelper.getColor(122, 67, 255);
     }
 
     @Override
