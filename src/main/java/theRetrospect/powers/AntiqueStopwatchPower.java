@@ -3,7 +3,7 @@ package theRetrospect.powers;
 import basemod.interfaces.CloneablePowerInterface;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
-import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
+import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
 import com.megacrit.cardcrawl.actions.utility.WaitAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.AbstractCreature;
@@ -64,14 +64,12 @@ public class AntiqueStopwatchPower extends AbstractPower implements CloneablePow
                     card.purgeOnUse = true;
                     card.current_x = card.target_x = AbstractDungeon.player.drawX;
                     card.current_y = card.target_y = AbstractDungeon.player.drawY;
-                    CardUtils.addFollowUpActionToBottom(card, new RunnableAction(nxt));
+                    CardUtils.addFollowUpActionToBottom(card, new RunnableAction(nxt), true);
                     addToBot(new ShowCardToBePlayedAction(card));
                     addToBot(new CustomQueueCardAction(card, true, false, true));
+                    addToBot(new ReducePowerAction(owner, owner, this, 1));
                 },
-                () -> {
-                    addToBot(new RemoveSpecificPowerAction(owner, owner, this));
-                    next.run();
-                }
+                next
         );
     }
 

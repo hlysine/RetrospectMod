@@ -4,6 +4,7 @@ import com.evacipated.cardcrawl.modthespire.lib.SpirePatch;
 import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import theRetrospect.util.CardFollowUpAction;
 import theRetrospect.util.CardUtils;
 
 /**
@@ -18,13 +19,17 @@ public class CardFollowUpActionsPatch {
         if (__instance.isDone) {
             CardUtils.setPlaySource(___targetCard, null);
             CardUtils.setReturnToMinion(___targetCard, null);
-            for (CardAddFieldsPatch.ActionQueueItem item : CardUtils.getFollowUpActions(___targetCard)) {
+            for (CardFollowUpAction item : CardUtils.getFollowUpActions(___targetCard)) {
+                if (CardUtils.getTurnEnding(___targetCard) && item.skipIfEndTurn)
+                    continue;
+
                 if (item.onTop)
                     AbstractDungeon.actionManager.addToTop(item.action);
                 else
                     AbstractDungeon.actionManager.addToBottom(item.action);
             }
             CardUtils.clearFollowUpActions(___targetCard);
+            CardUtils.setTurnEnding(___targetCard, false);
         }
     }
 }

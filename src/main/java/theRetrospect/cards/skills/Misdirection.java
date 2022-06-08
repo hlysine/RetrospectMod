@@ -44,7 +44,7 @@ public class Misdirection extends AbstractRetrospectCard {
             AbstractCard card = p.discardPile.getRandomCard(CardType.ATTACK, true);
             if (card != null) {
                 p.discardPile.removeCard(card);
-                CardUtils.addFollowUpActionToTop(card, new ConstructTimelineAction(this));
+                CardUtils.addFollowUpActionToTop(card, new ConstructTimelineAction(this), false);
                 addToBot(new ShowCardToBePlayedAction(card));
                 addToBot(new CustomQueueCardAction(card, true, true, true));
                 cardPlayed = true;

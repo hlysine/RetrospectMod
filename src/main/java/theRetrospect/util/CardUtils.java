@@ -40,7 +40,7 @@ public class CardUtils {
         CardAddFieldsPatch.playSource.set(card, source);
     }
 
-    public static List<CardAddFieldsPatch.ActionQueueItem> getFollowUpActions(AbstractCard card) {
+    public static List<CardFollowUpAction> getFollowUpActions(AbstractCard card) {
         return CardAddFieldsPatch.followUpActions.get(card);
     }
 
@@ -61,9 +61,10 @@ public class CardUtils {
      *
      * @param card           The card to store the action in.
      * @param actionAfterUse The action to be executed.
+     * @param skipIfEndTurn  Whether to skip queuing this action when the player's turn has already ended
      */
-    public static void addFollowUpActionToBottom(AbstractCard card, AbstractGameAction actionAfterUse) {
-        addFollowUpAction(card, actionAfterUse, false);
+    public static void addFollowUpActionToBottom(AbstractCard card, AbstractGameAction actionAfterUse, boolean skipIfEndTurn) {
+        addFollowUpAction(card, actionAfterUse, false, skipIfEndTurn);
     }
 
     /**
@@ -73,9 +74,10 @@ public class CardUtils {
      *
      * @param card           The card to store the action in.
      * @param actionAfterUse The action to be executed.
+     * @param skipIfEndTurn  Whether to skip queuing this action when the player's turn has already ended
      */
-    public static void addFollowUpActionToTop(AbstractCard card, AbstractGameAction actionAfterUse) {
-        addFollowUpAction(card, actionAfterUse, true);
+    public static void addFollowUpActionToTop(AbstractCard card, AbstractGameAction actionAfterUse, boolean skipIfEndTurn) {
+        addFollowUpAction(card, actionAfterUse, true, skipIfEndTurn);
     }
 
     /**
@@ -86,9 +88,10 @@ public class CardUtils {
      * @param card           The card to store the action in.
      * @param actionAfterUse The action to be executed.
      * @param onTop          Whether to immediately execute the action or wait until remaining actions are done.
+     * @param skipIfEndTurn  Whether to skip queuing this action when the player's turn has already ended
      */
-    public static void addFollowUpAction(AbstractCard card, AbstractGameAction actionAfterUse, boolean onTop) {
-        CardAddFieldsPatch.followUpActions.get(card).add(new CardAddFieldsPatch.ActionQueueItem(actionAfterUse, onTop));
+    public static void addFollowUpAction(AbstractCard card, AbstractGameAction actionAfterUse, boolean onTop, boolean skipIfEndTurn) {
+        CardAddFieldsPatch.followUpActions.get(card).add(new CardFollowUpAction(actionAfterUse, onTop, skipIfEndTurn));
     }
 
     /**
@@ -108,6 +111,14 @@ public class CardUtils {
 
     public static void setReturnToMinion(AbstractCard card, AbstractMinionWithCards timeline) {
         CardAddFieldsPatch.returnToMinion.set(card, timeline);
+    }
+
+    public static boolean getTurnEnding(AbstractCard card) {
+        return CardAddFieldsPatch.turnEnding.get(card);
+    }
+
+    public static void setTurnEnding(AbstractCard card, boolean value) {
+        CardAddFieldsPatch.turnEnding.set(card, value);
     }
 
     /**

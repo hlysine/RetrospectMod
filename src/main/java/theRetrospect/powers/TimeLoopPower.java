@@ -46,7 +46,7 @@ public class TimeLoopPower extends AbstractPower implements CloneablePowerInterf
     public void beforeMinionPlayCard(AbstractMinionWithCards timeline, AbstractCard card) {
         if (timeline == this.owner) {
             CardUtils.setReturnToMinion(card, timeline);
-            CardUtils.addFollowUpActionToTop(card, new VFXAction(new FlashPowerEffect(this)));
+            CardUtils.addFollowUpActionToTop(card, new VFXAction(new FlashPowerEffect(this)), false);
         }
     }
 
