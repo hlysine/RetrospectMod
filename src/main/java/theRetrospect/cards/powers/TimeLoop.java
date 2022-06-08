@@ -21,7 +21,7 @@ public class TimeLoop extends TimelineTargetingCard {
     private static final CardRarity RARITY = CardRarity.RARE;
     private static final CardType TYPE = CardType.POWER;
 
-    private static final int BASE_COST = 3;
+    private static final int BASE_COST = 2;
 
     public TimeLoop() {
         super(ID, IMG, BASE_COST, TYPE, RARITY);
@@ -36,7 +36,7 @@ public class TimeLoop extends TimelineTargetingCard {
     public void upgrade() {
         if (!upgraded) {
             upgradeName();
-            upgradeBaseCost(2);
+            upgradeBaseCost(1);
             initializeDescription();
         }
     }
