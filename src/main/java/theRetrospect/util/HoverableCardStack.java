@@ -3,7 +3,9 @@ package theRetrospect.util;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.Settings;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.DrawMaster;
+import com.megacrit.cardcrawl.ui.buttons.PeekButton;
 
 import java.util.HashMap;
 import java.util.List;
@@ -39,7 +41,8 @@ public class HoverableCardStack {
         if (hoveredCard.isPresent()) {
             AbstractCard card = hoveredCard.get().getKey();
             card.updateHoverLogic();
-            DrawMaster.drawList.add(new CardDrawable(card));
+            if (!AbstractDungeon.isScreenUp || PeekButton.isPeeking)
+                DrawMaster.drawList.add(new CardDrawable(card));
             if (card.hb.hovered) {
                 card.drawScale = HOVERED_SCALE;
                 card.targetDrawScale = HOVERED_SCALE;
@@ -103,7 +106,8 @@ public class HoverableCardStack {
             AbstractCard card = cards.get(i);
             card.render(sb);
             if (card.hb.hovered) {
-                card.renderCardTip(sb);
+                if (!AbstractDungeon.isScreenUp || PeekButton.isPeeking)
+                    card.renderCardTip(sb);
             }
         }
     }
