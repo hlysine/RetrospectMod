@@ -81,6 +81,10 @@ public class TheRetrospect extends AbstractPlayerWithMinions {
 
     // =============== /STRINGS/ =================
 
+    // Atlas and JSON files for the Animations
+    public static final String SKELETON_ATLAS = "theRetrospectResources/images/char/retrospectCharacter/skeleton.atlas";
+    public static final String SKELETON_JSON = "theRetrospectResources/images/char/retrospectCharacter/skeleton.json";
+
 
     // =============== TEXTURES OF BIG ENERGY ORB ===============
 
@@ -134,8 +138,8 @@ public class TheRetrospect extends AbstractPlayerWithMinions {
         // =============== ANIMATIONS =================  
 
         loadAnimation(
-                THE_RETROSPECT_SKELETON_ATLAS,
-                THE_RETROSPECT_SKELETON_JSON,
+                SKELETON_ATLAS,
+                SKELETON_JSON,
                 1.0f);
         AnimationState.TrackEntry e = state.setAnimation(0, "animation", true);
         e.setTime(e.getEndTime() * MathUtils.random());

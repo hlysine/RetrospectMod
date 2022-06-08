@@ -75,10 +75,6 @@ public class RetrospectMod implements
     //Mod Badge - A small icon that appears in the mod settings menu.
     public static final String BADGE_IMAGE = "theRetrospectResources/images/Badge.png";
 
-    // Atlas and JSON files for the Animations
-    public static final String THE_RETROSPECT_SKELETON_ATLAS = "theRetrospectResources/images/char/retrospectCharacter/skeleton.atlas";
-    public static final String THE_RETROSPECT_SKELETON_JSON = "theRetrospectResources/images/char/retrospectCharacter/skeleton.json";
-
     public static String makeCardPath(String resourcePath) {
         return getModID() + "Resources/images/cards/" + resourcePath;
     }
