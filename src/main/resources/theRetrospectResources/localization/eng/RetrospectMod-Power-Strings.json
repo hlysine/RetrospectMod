@@ -34,8 +34,8 @@
       " additional cards."
     ]
   },
-  "theRetrospect:AntiqueStopwatchPower": {
-    "NAME": "Antique Stopwatch",
+  "theRetrospect:AntiqueClockPower": {
+    "NAME": "Antique Clock",
     "DESCRIPTIONS": [
       "At the end of your turn, play #b",
       " #yDivert."

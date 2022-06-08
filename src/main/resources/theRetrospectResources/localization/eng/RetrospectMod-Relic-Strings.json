@@ -6,8 +6,8 @@
       "At the end of combat, increase your max HP by 1."
     ]
   },
-  "theRetrospect:AntiqueStopwatch": {
-    "NAME": "Antique Stopwatch",
+  "theRetrospect:AntiqueClock": {
+    "NAME": "Antique Clock",
     "FLAVOR": "Antique in your eyes, futuristic in others'.",
     "DESCRIPTIONS": [
       "At the end of your first turn, play 1 #yDivert."

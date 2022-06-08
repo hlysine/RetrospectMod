@@ -23,9 +23,9 @@ import theRetrospect.util.TextureLoader;
 
 import java.util.concurrent.atomic.AtomicInteger;
 
-public class AntiqueStopwatchPower extends AbstractPower implements CloneablePowerInterface, EndOfTurnCardSubscriber {
+public class AntiqueClockPower extends AbstractPower implements CloneablePowerInterface, EndOfTurnCardSubscriber {
 
-    public static final String POWER_ID = RetrospectMod.makeID(AntiqueStopwatchPower.class.getSimpleName());
+    public static final String POWER_ID = RetrospectMod.makeID(AntiqueClockPower.class.getSimpleName());
     private static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
     public static final String NAME = powerStrings.NAME;
     public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
@@ -33,7 +33,7 @@ public class AntiqueStopwatchPower extends AbstractPower implements CloneablePow
     private static final Texture tex84 = TextureLoader.getTexture("theRetrospectResources/images/powers/placeholder_power84.png");
     private static final Texture tex32 = TextureLoader.getTexture("theRetrospectResources/images/powers/placeholder_power32.png");
 
-    public AntiqueStopwatchPower(final AbstractCreature owner, final int amount) {
+    public AntiqueClockPower(final AbstractCreature owner, final int amount) {
         name = NAME;
         ID = POWER_ID;
 
@@ -80,6 +80,6 @@ public class AntiqueStopwatchPower extends AbstractPower implements CloneablePow
 
     @Override
     public AbstractPower makeCopy() {
-        return new AntiqueStopwatchPower(owner, amount);
+        return new AntiqueClockPower(owner, amount);
     }
 }
