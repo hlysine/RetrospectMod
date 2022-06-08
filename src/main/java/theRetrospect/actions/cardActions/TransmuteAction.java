@@ -12,9 +12,11 @@ import theRetrospect.actions.general.GainEnergyFromCardAction;
 
 public class TransmuteAction extends AbstractGameAction {
 
+    private final int amount;
     private final boolean discardInstead;
 
-    public TransmuteAction(boolean discardInstead) {
+    public TransmuteAction(int amount, boolean discardInstead) {
+        this.amount = amount;
         this.discardInstead = discardInstead;
     }
 
@@ -27,21 +29,23 @@ public class TransmuteAction extends AbstractGameAction {
         }
 
         if (discardInstead) {
-            if (player.hand.size() == 1) {
-                AbstractCard c = player.hand.getTopCard();
-                addToBot(new DiscardSpecificCardAction(c));
-                addToBot(new GainEnergyFromCardAction(c));
+            if (player.hand.size() <= this.amount) {
+                for (AbstractCard card : player.hand.group) {
+                    addToBot(new DiscardSpecificCardAction(card));
+                    addToBot(new GainEnergyFromCardAction(card));
+                }
             } else {
-                addToBot(new DiscardAction(player, player, 1, false));
+                addToBot(new DiscardAction(player, player, amount, false));
                 addToBot(new GainEnergyFromCardAction());
             }
         } else {
-            if (player.hand.size() == 1) {
-                AbstractCard c = player.hand.getTopCard();
-                addToBot(new ExhaustSpecificCardAction(c, player.hand));
-                addToBot(new GainEnergyFromCardAction(c));
+            if (player.hand.size() <= this.amount) {
+                for (AbstractCard card : player.hand.group) {
+                    addToBot(new ExhaustSpecificCardAction(card, player.hand));
+                    addToBot(new GainEnergyFromCardAction(card));
+                }
             } else {
-                addToBot(new ExhaustAction(player, player, 1, false));
+                addToBot(new ExhaustAction(player, player, amount, false));
                 addToBot(new GainEnergyFromCardAction());
             }
         }

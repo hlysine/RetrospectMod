@@ -6,41 +6,55 @@ import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.ui.panels.EnergyPanel;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class GainEnergyFromCardAction extends AbstractGameAction {
 
-    private final AbstractCard card;
+    private final List<AbstractCard> cards;
 
     public GainEnergyFromCardAction(AbstractCard card) {
-        this.card = card;
+        this.cards = new ArrayList<>(1);
+        this.cards.add(card);
+    }
+
+    public GainEnergyFromCardAction(List<AbstractCard> cards) {
+        this.cards = cards;
     }
 
     public GainEnergyFromCardAction() {
-        this(null);
+        this.cards = null;
     }
 
     @Override
     public void update() {
-        AbstractCard target = getCard();
+        List<AbstractCard> target = getCards();
         if (target == null) {
             this.isDone = true;
             return;
         }
 
-        int cost = target.cost;
-        if (cost > 0)
-            addToBot(new GainEnergyAction(cost));
-        else if (cost == -1)
-            addToBot(new GainEnergyAction(EnergyPanel.getCurrentEnergy()));
+        int totalGain = 0;
+        for (AbstractCard card : target) {
+            int cost = card.cost;
+            if (cost > 0)
+                totalGain += cost;
+            else if (cost == -1)
+                totalGain += EnergyPanel.getCurrentEnergy();
+        }
+
+        addToBot(new GainEnergyAction(totalGain));
+
         this.isDone = true;
     }
 
-    private AbstractCard getCard() {
-        if (card != null) return card;
+    private List<AbstractCard> getCards() {
+        if (cards != null) return cards;
 
         if (AbstractDungeon.handCardSelectScreen.selectedCards.size() <= 0) {
             return null;
         } else {
-            return AbstractDungeon.handCardSelectScreen.selectedCards.getTopCard();
+            return AbstractDungeon.handCardSelectScreen.selectedCards.group;
         }
     }
 }

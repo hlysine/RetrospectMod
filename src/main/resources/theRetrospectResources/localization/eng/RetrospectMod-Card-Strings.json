@@ -40,7 +40,7 @@
   },
   "theRetrospect:Transmute": {
     "NAME": "Transmute",
-    "DESCRIPTION": "{@@}{!Upgrades!|@=Discard|0=Exhaust} 1 card. Gain energy equal to the card's cost."
+    "DESCRIPTION": "{@@}Discard !M! card{!M!|>1=s}. Gain energy equal to the {!M!|@=card's|>1=cards' total} cost."
   },
   "theRetrospect:Concurrency": {
     "NAME": "Concurrency",

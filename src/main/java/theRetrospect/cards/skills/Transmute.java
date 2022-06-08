@@ -26,20 +26,24 @@ public class Transmute extends AbstractRetrospectCard {
     private static final CardType TYPE = CardType.SKILL;
 
     private static final int COST = 0;
+    private static final int BASE_CARD_COUNT = 1;
+    private static final int UPGRADE_CARD_COUNT = 1;
 
     public Transmute() {
         super(ID, IMG, COST, TYPE, RARITY, TARGET);
+        magicNumber = baseMagicNumber = BASE_CARD_COUNT;
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new TransmuteAction(this.upgraded));
+        addToBot(new TransmuteAction(magicNumber, true));
     }
 
     @Override
     public void upgrade() {
         if (!this.upgraded) {
             this.upgradeName();
+            this.upgradeMagicNumber(UPGRADE_CARD_COUNT);
             this.initializeDescription();
         }
     }
