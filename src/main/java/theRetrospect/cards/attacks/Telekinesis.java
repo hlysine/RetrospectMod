@@ -1,9 +1,12 @@
 package theRetrospect.cards.attacks;
 
+import com.evacipated.cardcrawl.mod.stslib.damagemods.AbstractDamageModifier;
+import com.evacipated.cardcrawl.mod.stslib.damagemods.DamageModifierManager;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
+import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theRetrospect.RetrospectMod;
 import theRetrospect.cards.AbstractRetrospectCard;
@@ -27,8 +30,8 @@ public class Telekinesis extends AbstractRetrospectCard {
     public Telekinesis() {
         super(ID, IMG, COST, TYPE, RARITY, TARGET);
 
-        damageType = damageTypeForTurn = DamageInfo.DamageType.HP_LOSS;
         damage = baseDamage = BASE_DAMAGE;
+        DamageModifierManager.addModifier(this, new TelekinesisDamage());
     }
 
     @Override
@@ -42,6 +45,23 @@ public class Telekinesis extends AbstractRetrospectCard {
             upgradeName();
             upgradeDamage(UPGRADE_DAMAGE);
             initializeDescription();
+        }
+    }
+
+    public static class TelekinesisDamage extends AbstractDamageModifier {
+        @Override
+        public AbstractDamageModifier makeCopy() {
+            return new TelekinesisDamage();
+        }
+
+        @Override
+        public boolean isInherent() {
+            return true;
+        }
+
+        @Override
+        public boolean ignoresBlock(AbstractCreature target) {
+            return true;
         }
     }
 }
