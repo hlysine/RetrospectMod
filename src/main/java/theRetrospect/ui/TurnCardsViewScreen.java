@@ -27,8 +27,6 @@ public class TurnCardsViewScreen implements ScrollBarListener {
     public static final String[] TEXT = uiStrings.TEXT;
 
     private final CardGroup turnCardsCopy = new CardGroup(CardGroup.CardGroupType.UNSPECIFIED);
-    public boolean isHovered = false;
-    private static final int CARDS_PER_LINE = 5;
     private boolean grabbedScreen = false;
     private float grabStartY = 0.0F;
     private float currentDiffY = 0.0F;
@@ -143,9 +141,6 @@ public class TurnCardsViewScreen implements ScrollBarListener {
                 }
             } else {
                 index -= 4;
-                if (index < 0) {
-                    index = 0;
-                }
             }
             CInputHelper.setCursor(this.turnCardsCopy.group.get(index).hb);
             this.controllerCard = this.turnCardsCopy.group.get(index);
@@ -198,6 +193,7 @@ public class TurnCardsViewScreen implements ScrollBarListener {
     }
 
 
+    @SuppressWarnings("SuspiciousNameCombination")
     private void resetScrolling() {
         if (this.currentDiffY < this.scrollLowerBound) {
             this.currentDiffY = MathHelper.scrollSnapLerpSpeed(this.currentDiffY, this.scrollLowerBound);
@@ -247,7 +243,6 @@ public class TurnCardsViewScreen implements ScrollBarListener {
         for (AbstractCard c : AbstractDungeon.actionManager.cardsPlayedThisTurn) {
             AbstractCard toAdd = c.makeStatEquivalentCopy();
             toAdd.setAngle(0.0F, true);
-            toAdd.targetDrawScale = 0.75F;
             toAdd.targetDrawScale = 0.75F;
             toAdd.drawScale = 0.75F;
             toAdd.lighten(true);

@@ -20,7 +20,7 @@ public class TurnCardsPanel extends AbstractPanel {
     public static final String[] MSG = tutorialStrings.TEXT;
     public static final String[] LABEL = tutorialStrings.LABEL;
     private static final float COUNT_CIRCLE_W = 128.0F * Settings.scale;
-    private Hitbox hb = new Hitbox(0.0F, 0.0F, 100.0F * Settings.scale, 100.0F * Settings.scale);
+    private final Hitbox hb = new Hitbox(0.0F, 0.0F, 100.0F * Settings.scale, 100.0F * Settings.scale);
     public static float energyVfxTimer = 0.0F;
     public static final Color textColor = CardHelper.getColor(170, 40, 200);
 
