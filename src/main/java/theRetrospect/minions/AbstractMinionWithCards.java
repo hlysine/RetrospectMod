@@ -1,8 +1,11 @@
 package theRetrospect.minions;
 
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.helpers.input.InputHelper;
 import hlysine.friendlymonsters.monsters.AbstractFriendlyMonster;
 import theRetrospect.RetrospectMod;
@@ -30,6 +33,8 @@ public class AbstractMinionWithCards extends AbstractFriendlyMonster {
      * All the cards that this minion has.
      */
     public final List<AbstractCard> cards = new ArrayList<>();
+
+    private static final Color HOVER_BLEND_COLOR = new Color(1.0F, 1.0F, 1.0F, 1.0F);
 
     public AbstractMinionWithCards(String name, String id, int maxHealth, float hb_x, float hb_y, float hb_w, float hb_h, String imgUrl, float offsetX, float offsetY) {
         super(name, id, maxHealth, hb_x, hb_y, hb_w, hb_h, imgUrl, offsetX, offsetY);
@@ -128,7 +133,21 @@ public class AbstractMinionWithCards extends AbstractFriendlyMonster {
     @Override
     public void render(SpriteBatch sb) {
         super.render(sb);
+        if (this.hb.hovered &&
+                AbstractDungeon.overlayMenu.combatPanelsShown &&
+                AbstractDungeon.getMonsters() != null &&
+                !AbstractDungeon.getMonsters().areMonstersDead() &&
+                !AbstractDungeon.player.isDead &&
+                !this.isDeadOrEscaped() && !this.isDead &&
+                !cards.isEmpty()) {
+            renderPeekButton(sb);
+        }
         if (!this.renderCorpse)
             cardStack.render(sb);
+    }
+
+    private void renderPeekButton(SpriteBatch sb) {
+        sb.setColor(HOVER_BLEND_COLOR);
+        sb.draw(ImageMaster.PEEK_BUTTON, this.hb.cX - 48, this.hb.cY - 48, 48, 48, 96, 96, Settings.scale, Settings.scale, 0.0F, 0, 0, 128, 128, false, false);
     }
 }
