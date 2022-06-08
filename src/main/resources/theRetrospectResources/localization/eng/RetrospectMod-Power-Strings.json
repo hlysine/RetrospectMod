@@ -73,7 +73,12 @@
     "DESCRIPTIONS": [
       "The first card you play next turn is played twice.",
       "The first #b",
-      " cards you play next turn are played twice.",
+      " cards you play next turn are played twice."
+    ]
+  },
+  "theRetrospect:ActiveEchoPower": {
+    "NAME": "Active Echo",
+    "DESCRIPTIONS": [
       "The next card you play this turn is played twice.",
       "The next #b",
       " cards you play this turn are played twice."

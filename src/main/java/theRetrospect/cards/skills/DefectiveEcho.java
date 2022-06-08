@@ -20,7 +20,7 @@ public class DefectiveEcho extends AbstractRetrospectCard {
     private static final CardType TYPE = CardType.SKILL;
 
     private static final int COST = 1;
-    private static final int BASE_CARD_COUNT = 2;
+    private static final int BASE_CARD_COUNT = 1;
     private static final int UPGRADE_CARD_COUNT = 1;
 
     public DefectiveEcho() {

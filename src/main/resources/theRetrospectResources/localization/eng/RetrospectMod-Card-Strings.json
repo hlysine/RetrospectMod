@@ -183,11 +183,11 @@
   },
   "theRetrospect:NoxiousWraith": {
     "NAME": "Noxious Wraith",
-    "DESCRIPTION": "Gain 1 Intangible. NL Lose !M! Dexterity."
+    "DESCRIPTION": "Gain 2 Intangible. NL Lose !M! Dexterity."
   },
   "theRetrospect:DefectiveEcho": {
     "NAME": "Defective Echo",
-    "DESCRIPTION": "{@@}Next turn, you first !M! card{!M!|>1=s} are played twice."
+    "DESCRIPTION": "{@@}Next turn, you first {!M!|@=!M! card is|1=card is|>1=!M! cards are} played twice."
   },
   "theRetrospect:DivineEye": {
     "NAME": "Divine Eye",

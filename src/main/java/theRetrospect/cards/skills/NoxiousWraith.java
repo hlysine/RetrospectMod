@@ -21,6 +21,7 @@ public class NoxiousWraith extends AbstractRetrospectCard {
     private static final CardType TYPE = CardType.SKILL;
 
     private static final int COST = 1;
+    private static final int INTANGIBLE = 2;
     private static final int BASE_DEXTERITY_LOSS = 4;
     private static final int UPGRADE_DEXTERITY_LOSS = -2;
 
@@ -32,7 +33,7 @@ public class NoxiousWraith extends AbstractRetrospectCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new ApplyPowerAction(p, p, new IntangiblePlayerPower(p, 1), 1));
+        addToBot(new ApplyPowerAction(p, p, new IntangiblePlayerPower(p, INTANGIBLE), INTANGIBLE));
         addToBot(new ApplyPowerAction(p, p, new DexterityPower(p, -this.magicNumber), -this.magicNumber));
     }
 
