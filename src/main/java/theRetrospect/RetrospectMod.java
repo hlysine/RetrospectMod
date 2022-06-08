@@ -281,6 +281,9 @@ public class RetrospectMod implements
         BaseMod.loadCustomStringsFile(TutorialStrings.class,
                 getModID() + "Resources/localization/eng/RetrospectMod-Tutorial-Strings.json");
 
+        BaseMod.loadCustomStringsFile(MonsterStrings.class,
+                getModID() + "Resources/localization/eng/RetrospectMod-Monster-Strings.json");
+
         logger.info("Done editing strings");
     }
 
