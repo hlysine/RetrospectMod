@@ -1,13 +1,16 @@
 package theRetrospect.cards.skills;
 
-import com.megacrit.cardcrawl.actions.common.GainBlockAction;
+import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theRetrospect.RetrospectMod;
+import theRetrospect.actions.general.CustomQueueCardAction;
+import theRetrospect.actions.general.ShowCardToBePlayedAction;
 import theRetrospect.actions.timelineActions.ConstructTimelineAction;
 import theRetrospect.cards.AbstractRetrospectCard;
+import theRetrospect.util.CardUtils;
 
 import static theRetrospect.RetrospectMod.makeCardPath;
 
@@ -26,28 +29,37 @@ public class Avert extends AbstractRetrospectCard {
     private static final CardTarget TARGET = CardTarget.SELF;
     private static final CardType TYPE = CardType.SKILL;
 
-    private static final int COST = 2;
-    private static final int BASE_BLOCK = 10;
-    private static final int UPGRADE_BLOCK = 5;
+    private static final int BASE_COST = 2;
 
     public Avert() {
-        super(ID, IMG, COST, TYPE, RARITY, TARGET);
+        super(ID, IMG, BASE_COST, TYPE, RARITY, TARGET);
 
-        block = baseBlock = BASE_BLOCK;
         timelineCount = baseTimelineCount = 1;
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new GainBlockAction(p, p, block));
-        addToBot(new ConstructTimelineAction(this));
+        boolean cardPlayed = false;
+        if (p.discardPile.size() > 0) {
+            AbstractCard card = p.discardPile.getRandomCard(CardType.ATTACK, true);
+            if (card != null) {
+                p.discardPile.removeCard(card);
+                CardUtils.addFollowUpActionToTop(card, new ConstructTimelineAction(this), false);
+                addToBot(new ShowCardToBePlayedAction(card));
+                addToBot(new CustomQueueCardAction(card, true, true, true));
+                cardPlayed = true;
+            }
+        }
+        if (!cardPlayed) {
+            addToBot(new ConstructTimelineAction(this));
+        }
     }
 
     @Override
     public void upgrade() {
         if (!this.upgraded) {
             this.upgradeName();
-            this.upgradeBlock(UPGRADE_BLOCK);
+            this.upgradeBaseCost(1);
             this.initializeDescription();
         }
     }

@@ -34,8 +34,8 @@
     "NAME": "Overcore",
     "DESCRIPTION": "{@@}theretrospect:Construct !theRetrospect:TimelineCount! timeline{!theRetrospect:TimelineCount!|>1=s} and be theretrospect:Frozen for !M! turn{!M!|>1=s}.{!Upgrades!|0= NL Exhaust.}"
   },
-  "theRetrospect:Misdirection": {
-    "NAME": "Misdirection",
+  "theRetrospect:Avert": {
+    "NAME": "Avert",
     "DESCRIPTION": "{@@}Play a random attack card from your discard pile, then theretrospect:construct !theRetrospect:TimelineCount! timeline{!theRetrospect:TimelineCount!|>1=s}."
   },
   "theRetrospect:Transmute": {
@@ -121,8 +121,8 @@
     "NAME": "Electric Shock",
     "DESCRIPTION": "Deal !D! damage. NL Apply !M! weak."
   },
-  "theRetrospect:Avert": {
-    "NAME": "Avert",
+  "theRetrospect:Misdirection": {
+    "NAME": "Misdirection",
     "DESCRIPTION": "{@@}Gain !B! Block. theretrospect:Construct !theRetrospect:TimelineCount! timeline{!theRetrospect:TimelineCount!|>1=s}."
   },
   "theRetrospect:TacticalRetreat": {
