@@ -211,8 +211,7 @@ public class RetrospectMod implements
                 TimelinePotion.LIQUID_COLOR,
                 TimelinePotion.HYBRID_COLOR,
                 TimelinePotion.SPOTS_COLOR,
-                TimelinePotion.POTION_ID,
-                TheRetrospect.Enums.THE_RETROSPECT);
+                TimelinePotion.POTION_ID);
 
         logger.info("Done editing potions");
     }
