@@ -26,9 +26,9 @@
     "NAME": "Divert",
     "DESCRIPTION": "{@@}{!Upgrades!|0=Ethereal. NL }theretrospect:Construct !theRetrospect:TimelineCount! timeline{!theRetrospect:TimelineCount!|>1=s}."
   },
-  "theRetrospect:IntoTheVoid": {
-    "NAME": "Into The Void",
-    "DESCRIPTION": "{@@}theretrospect:Trigger a timeline {!Upgrades!|@=twice|0=once} and theretrospect:collapse it."
+  "theRetrospect:DoubleTime": {
+    "NAME": "Double Time",
+    "DESCRIPTION": "theretrospect:Trigger a timeline once and theretrospect:collapse it."
   },
   "theRetrospect:Overcore": {
     "NAME": "Overcore",

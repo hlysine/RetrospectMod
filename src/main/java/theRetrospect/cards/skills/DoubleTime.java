@@ -12,12 +12,12 @@ import theRetrospect.minions.TimelineMinion;
 
 import static theRetrospect.RetrospectMod.makeCardPath;
 
-public class IntoTheVoid extends TimelineTargetingCard {
+public class DoubleTime extends TimelineTargetingCard {
 
-    public static final String ID = RetrospectMod.makeID(IntoTheVoid.class.getSimpleName());
+    public static final String ID = RetrospectMod.makeID(DoubleTime.class.getSimpleName());
     private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
 
-    public static final String IMG = makeCardPath("into_the_void.png");
+    public static final String IMG = makeCardPath("double_time.png");
 
     public static final String NAME = cardStrings.NAME;
     public static final String DESCRIPTION = cardStrings.DESCRIPTION;
@@ -26,27 +26,22 @@ public class IntoTheVoid extends TimelineTargetingCard {
     private static final CardRarity RARITY = CardRarity.BASIC;
     private static final CardType TYPE = CardType.SKILL;
 
-    private static final int BASE_TRIGGER_COUNT = 1;
-    private static final int UPGRADE_TRIGGER_COUNT = 1;
+    private static final int BASE_COST = 1;
 
-    private static final int COST = 1;
-
-    public IntoTheVoid() {
-        super(ID, IMG, COST, TYPE, RARITY);
-
-        magicNumber = baseMagicNumber = BASE_TRIGGER_COUNT;
+    public DoubleTime() {
+        super(ID, IMG, BASE_COST, TYPE, RARITY);
     }
 
     @Override
     public void useOnTarget(AbstractPlayer p, AbstractMonster m, TimelineMinion target) {
-        addToBot(new TriggerTimelineAction(target, magicNumber, true, new CollapseTimelineAction(target)));
+        addToBot(new TriggerTimelineAction(target, 1, true, new CollapseTimelineAction(target)));
     }
 
     @Override
     public void upgrade() {
         if (!this.upgraded) {
             this.upgradeName();
-            this.upgradeMagicNumber(UPGRADE_TRIGGER_COUNT);
+            this.upgradeBaseCost(0);
             this.initializeDescription();
         }
     }

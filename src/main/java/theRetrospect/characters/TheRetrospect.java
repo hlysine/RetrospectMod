@@ -25,7 +25,7 @@ import theRetrospect.RetrospectMod;
 import theRetrospect.cards.attacks.Strike;
 import theRetrospect.cards.skills.Defend;
 import theRetrospect.cards.skills.Divert;
-import theRetrospect.cards.skills.IntoTheVoid;
+import theRetrospect.cards.skills.DoubleTime;
 import theRetrospect.relics.AntiqueClock;
 
 import java.util.ArrayList;
@@ -176,12 +176,12 @@ public class TheRetrospect extends AbstractPlayerWithMinions {
         retVal.add(Defend.ID);
 
         retVal.add(Divert.ID);
-        retVal.add(IntoTheVoid.ID);
+        retVal.add(DoubleTime.ID);
 
         UnlockTracker.markCardAsSeen(Strike.ID);
         UnlockTracker.markCardAsSeen(Defend.ID);
         UnlockTracker.markCardAsSeen(Divert.ID);
-        UnlockTracker.markCardAsSeen(IntoTheVoid.ID);
+        UnlockTracker.markCardAsSeen(DoubleTime.ID);
 
         return retVal;
     }
