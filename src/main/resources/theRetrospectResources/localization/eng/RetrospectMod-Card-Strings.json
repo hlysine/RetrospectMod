@@ -32,7 +32,7 @@
   },
   "theRetrospect:Overcore": {
     "NAME": "Overcore",
-    "DESCRIPTION": "{@@}theretrospect:Construct !theRetrospect:TimelineCount! timeline{!theRetrospect:TimelineCount!|>1=s} and be theretrospect:Frozen for !M! turn{!M!|>1=s}."
+    "DESCRIPTION": "{@@}theretrospect:Construct !theRetrospect:TimelineCount! timeline{!theRetrospect:TimelineCount!|>1=s} and be theretrospect:Frozen for !M! turn{!M!|>1=s}.{!Upgrades!|0= NL Exhaust.}"
   },
   "theRetrospect:Misdirection": {
     "NAME": "Misdirection",

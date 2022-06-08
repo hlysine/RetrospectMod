@@ -27,16 +27,17 @@ public class Overcore extends AbstractRetrospectCard {
     private static final CardTarget TARGET = CardTarget.SELF;
     private static final CardType TYPE = CardType.SKILL;
 
-    private static final int BASE_COST = 1;
-    private static final int BASE_TIMELINE_COUNT = 3;
-    private static final int BASE_FROZEN_COUNT = 2;
-    private static final int UPGRADE_FROZEN = -1;
+    private static final int COST = 1;
+    private static final int TIMELINE_COUNT = 3;
+    private static final int FROZEN_COUNT = 1;
 
     public Overcore() {
-        super(ID, IMG, BASE_COST, TYPE, RARITY, TARGET);
+        super(ID, IMG, COST, TYPE, RARITY, TARGET);
 
-        timelineCount = baseTimelineCount = BASE_TIMELINE_COUNT;
-        magicNumber = baseMagicNumber = BASE_FROZEN_COUNT;
+        timelineCount = baseTimelineCount = TIMELINE_COUNT;
+        magicNumber = baseMagicNumber = FROZEN_COUNT;
+
+        this.exhaust = true;
     }
 
     @Override
@@ -50,7 +51,7 @@ public class Overcore extends AbstractRetrospectCard {
     public void upgrade() {
         if (!this.upgraded) {
             this.upgradeName();
-            this.upgradeMagicNumber(UPGRADE_FROZEN);
+            this.exhaust = false;
             this.initializeDescription();
         }
     }
