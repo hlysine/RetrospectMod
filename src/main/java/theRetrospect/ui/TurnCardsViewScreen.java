@@ -251,7 +251,7 @@ public class TurnCardsViewScreen implements ScrollBarListener {
             toAdd.targetDrawScale = 0.75F;
             toAdd.drawScale = 0.75F;
             toAdd.lighten(true);
-            this.turnCardsCopy.addToBottom(toAdd);
+            this.turnCardsCopy.addToTop(toAdd);
         }
 
         hideCards();
