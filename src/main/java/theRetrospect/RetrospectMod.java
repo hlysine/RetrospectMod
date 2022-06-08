@@ -275,6 +275,12 @@ public class RetrospectMod implements
         BaseMod.loadCustomStringsFile(OrbStrings.class,
                 getModID() + "Resources/localization/eng/RetrospectMod-Orb-Strings.json");
 
+        BaseMod.loadCustomStringsFile(UIStrings.class,
+                getModID() + "Resources/localization/eng/RetrospectMod-Ui-Strings.json");
+
+        BaseMod.loadCustomStringsFile(TutorialStrings.class,
+                getModID() + "Resources/localization/eng/RetrospectMod-Tutorial-Strings.json");
+
         logger.info("Done editing strings");
     }
 

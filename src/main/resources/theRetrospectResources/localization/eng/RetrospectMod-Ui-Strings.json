@@ -1,0 +1,8 @@
+{
+  "theRetrospect:TurnCardsViewScreen": {
+    "TEXT": [
+      "These cards were played this turn.",
+      "Return"
+    ]
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "theRetrospect:TurnCardsPanel": {
+    "TEXT": [
+      "Click to view cards played this turn.",
+      "View cards played this turn."
+    ],
+    "LABEL": [
+      "Cards Played This Turn"
+    ]
+  }
+}
