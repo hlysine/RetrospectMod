@@ -1,5 +1,6 @@
 package theRetrospect.relics;
 
+import basemod.AutoAdd;
 import com.badlogic.gdx.graphics.Texture;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -11,6 +12,7 @@ import theRetrospect.util.TextureLoader;
 import static theRetrospect.RetrospectMod.makeRelicOutlinePath;
 import static theRetrospect.RetrospectMod.makeRelicPath;
 
+@AutoAdd.Seen
 public class AntiqueClock extends AbstractBaseRelic {
 
     public static final String ID = RetrospectMod.makeID(AntiqueClock.class.getSimpleName());
@@ -18,7 +20,7 @@ public class AntiqueClock extends AbstractBaseRelic {
     private static final Texture IMG = TextureLoader.getTexture(makeRelicPath("default_clickable_relic.png"));
     private static final Texture OUTLINE = TextureLoader.getTexture(makeRelicOutlinePath("default_clickable_relic.png"));
 
-    private static final RelicTier TIER = RelicTier.UNCOMMON;
+    private static final RelicTier TIER = RelicTier.STARTER;
     private static final LandingSound LANDING_SOUND = LandingSound.CLINK;
 
     public AntiqueClock() {

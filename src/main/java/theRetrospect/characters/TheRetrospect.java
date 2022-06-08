@@ -26,7 +26,7 @@ import theRetrospect.cards.attacks.Strike;
 import theRetrospect.cards.skills.Defend;
 import theRetrospect.cards.skills.Divert;
 import theRetrospect.cards.skills.IntoTheVoid;
-import theRetrospect.relics.AdaptiveShield;
+import theRetrospect.relics.AntiqueClock;
 
 import java.util.ArrayList;
 
@@ -190,11 +190,11 @@ public class TheRetrospect extends AbstractPlayerWithMinions {
     public ArrayList<String> getStartingRelics() {
         ArrayList<String> retVal = new ArrayList<>();
 
-        retVal.add(AdaptiveShield.ID);
+        retVal.add(AntiqueClock.ID);
 
         // Mark relics as seen - makes it visible in the compendium immediately
         // If you don't have this it won't be visible in the compendium until you see them in game
-        UnlockTracker.markRelicAsSeen(AdaptiveShield.ID);
+        UnlockTracker.markRelicAsSeen(AntiqueClock.ID);
 
         return retVal;
     }
