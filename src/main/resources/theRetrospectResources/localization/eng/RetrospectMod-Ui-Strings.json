@@ -4,5 +4,11 @@
       "These cards were played this turn.",
       "Return"
     ]
+  },
+  "theRetrospect:MinionCardsViewScreen": {
+    "TEXT": [
+      "These cards belong to the timeline.",
+      "Return"
+    ]
   }
 }

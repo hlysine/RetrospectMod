@@ -5,8 +5,8 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.UIStrings;
 import theRetrospect.RetrospectMod;
 
-public class TurnCardsViewScreen extends AbstractViewScreen {
-    public static final String ID = RetrospectMod.makeID(TurnCardsViewScreen.class.getSimpleName());
+public class MinionCardsViewScreen extends AbstractViewScreen {
+    public static final String ID = RetrospectMod.makeID(MinionCardsViewScreen.class.getSimpleName());
 
     @Override
     protected UIStrings getUIStrings() {
@@ -15,10 +15,6 @@ public class TurnCardsViewScreen extends AbstractViewScreen {
 
     @Override
     protected AbstractDungeon.CurrentScreen getScreen() {
-        return UIManager.TURN_CARDS_VIEW;
-    }
-
-    public void open() {
-        open(AbstractDungeon.actionManager.cardsPlayedThisTurn);
+        return UIManager.TIMELINE_CARDS_VIEW;
     }
 }

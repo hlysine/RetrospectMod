@@ -2,8 +2,12 @@ package theRetrospect.minions;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.helpers.input.InputHelper;
 import hlysine.friendlymonsters.monsters.AbstractFriendlyMonster;
+import theRetrospect.RetrospectMod;
 import theRetrospect.subscribers.EndOfTurnCardSubscriber;
+import theRetrospect.ui.UIManager;
 import theRetrospect.util.CallbackUtils;
 import theRetrospect.util.HoverableCardStack;
 
@@ -80,7 +84,45 @@ public class AbstractMinionWithCards extends AbstractFriendlyMonster {
     @Override
     public void update() {
         super.update();
+        this.hb.update();
+        if (this.hb.hovered && !AbstractDungeon.isScreenUp) {
+            if (InputHelper.justClickedLeft) {
+                this.hb.clickStarted = true;
+            }
+        }
+        if (this.hb.clicked &&
+                AbstractDungeon.overlayMenu.combatPanelsShown &&
+                AbstractDungeon.getMonsters() != null &&
+                !AbstractDungeon.getMonsters().areMonstersDead() &&
+                !AbstractDungeon.player.isDead &&
+                !this.isDeadOrEscaped() && !this.isDead &&
+                !cards.isEmpty()) {
+            this.hb.clicked = false;
+            this.hb.hovered = false;
+            RetrospectMod.logger.info("Open card view screen for timeline");
+
+            if (AbstractDungeon.isScreenUp) {
+                if (AbstractDungeon.previousScreen == null) {
+                    AbstractDungeon.previousScreen = AbstractDungeon.screen;
+                }
+            } else {
+                AbstractDungeon.previousScreen = null;
+            }
+
+            openMinionCardsViewScreen();
+        }
         cardStack.update();
+    }
+
+    private void openMinionCardsViewScreen() {
+        if (AbstractDungeon.player.hoveredCard != null) {
+            AbstractDungeon.player.releaseCard();
+        }
+
+        AbstractDungeon.dynamicBanner.hide();
+        UIManager.minionCardsViewScreen.open(cards);
+        this.hb.hovered = false;
+        InputHelper.justClickedLeft = false;
     }
 
     @Override
