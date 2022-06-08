@@ -42,7 +42,6 @@ public class DivineEye extends AbstractRetrospectCard {
         if (!upgraded) {
             upgradeName();
             upgradeMagicNumber(UPGRADE_ENERGY);
-            this.rawDescription = cardStrings.UPGRADE_DESCRIPTION;
             initializeDescription();
         }
     }

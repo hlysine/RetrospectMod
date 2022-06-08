@@ -47,7 +47,6 @@ public class IntoTheVoid extends TimelineTargetingCard {
         if (!this.upgraded) {
             this.upgradeName();
             this.upgradeMagicNumber(UPGRADE_TRIGGER_COUNT);
-            this.rawDescription = cardStrings.UPGRADE_DESCRIPTION;
             this.initializeDescription();
         }
     }

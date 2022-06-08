@@ -9,7 +9,7 @@
   },
   "theRetrospect:AbstractRetrospectCard": {
     "NAME": "Abstract Retrospect Card",
-    "DESCRIPTION": "theretrospect:Construct !theRetrospect:TimelineCount! timeline.",
+    "DESCRIPTION": "{@@}theretrospect:Construct !theRetrospect:TimelineCount! timeline{!theRetrospect:TimelineCount!|>1=s}.",
     "EXTENDED_DESCRIPTION": [
       "Not enough #rHP.",
       "I have too many timelines."
@@ -17,34 +17,30 @@
   },
   "theRetrospect:TimelineTargetingCard": {
     "NAME": "Timeline Targeting Card",
-    "DESCRIPTION": "theretrospect:Collapse !theRetrospect:TimelineCount! timeline.",
+    "DESCRIPTION": "{@@}theretrospect:Collapse !theRetrospect:TimelineCount! timeline{!theRetrospect:TimelineCount!|>1=s}.",
     "EXTENDED_DESCRIPTION": [
       "I have no timelines."
     ]
   },
   "theRetrospect:Divert": {
     "NAME": "Divert",
-    "DESCRIPTION": "Ethereal. NL theretrospect:Construct !theRetrospect:TimelineCount! timeline.",
-    "UPGRADE_DESCRIPTION": "theretrospect:Construct !theRetrospect:TimelineCount! timeline."
+    "DESCRIPTION": "{@@}{!Upgrades!|0=Ethereal. NL }theretrospect:Construct !theRetrospect:TimelineCount! timeline{!theRetrospect:TimelineCount!|>1=s}."
   },
   "theRetrospect:IntoTheVoid": {
     "NAME": "Into The Void",
-    "DESCRIPTION": "theretrospect:Trigger a timeline once and theretrospect:collapse it.",
-    "UPGRADE_DESCRIPTION": "theretrospect:Trigger a timeline twice and theretrospect:collapse it."
+    "DESCRIPTION": "{@@}theretrospect:Trigger a timeline {!Upgrades!|@=twice|0=once} and theretrospect:collapse it."
   },
   "theRetrospect:Overcore": {
     "NAME": "Overcore",
-    "DESCRIPTION": "theretrospect:Construct 3 timelines and be theretrospect:Frozen for !M! turns.",
-    "UPGRADE_DESCRIPTION": "theretrospect:Construct 3 timelines and be theretrospect:Frozen for !M! turn."
+    "DESCRIPTION": "{@@}theretrospect:Construct !theRetrospect:TimelineCount! timeline{!theRetrospect:TimelineCount!|>1=s} and be theretrospect:Frozen for !M! turn{!M!|>1=s}."
   },
   "theRetrospect:Misdirection": {
     "NAME": "Misdirection",
-    "DESCRIPTION": "Play a random attack card from your discard pile, then theretrospect:construct 1 timeline."
+    "DESCRIPTION": "{@@}Play a random attack card from your discard pile, then theretrospect:construct !theRetrospect:TimelineCount! timeline{!theRetrospect:TimelineCount!|>1=s}."
   },
   "theRetrospect:Transmute": {
     "NAME": "Transmute",
-    "DESCRIPTION": "Exhaust 1 card. Gain energy equal to the card's cost.",
-    "UPGRADE_DESCRIPTION": "Discard 1 card. Gain energy equal to the card's cost."
+    "DESCRIPTION": "{@@}{!Upgrades!|@=Discard|0=Exhaust} 1 card. Gain energy equal to the card's cost."
   },
   "theRetrospect:Concurrency": {
     "NAME": "Concurrency",
@@ -60,8 +56,7 @@
   },
   "theRetrospect:TapTheFuture": {
     "NAME": "Tap the Future",
-    "DESCRIPTION": "Gain [E] [E]. NL Shuffle an *Empty to your draw pile.",
-    "UPGRADE_DESCRIPTION": "Gain [E] [E] [E]. NL Shuffle an *Empty to your draw pile."
+    "DESCRIPTION": "{@@}Gain {!Upgrades!|@=[E] [E] [E]|0=[E] [E]}. NL Shuffle an *Empty to your draw pile."
   },
   "theRetrospect:SleightOfHand": {
     "NAME": "Sleight of Hand",
@@ -69,10 +64,10 @@
   },
   "theRetrospect:AlternativeReality": {
     "NAME": "Alternative Reality",
-    "DESCRIPTION": "If you have an odd number of cards in your draw pile, gain !B! Block. Otherwise, draw !M! cards.",
+    "DESCRIPTION": "{@@}If you have an odd number of cards in your draw pile, gain !B! Block. Otherwise, draw !M! card{!M!|>1=s}.",
     "EXTENDED_DESCRIPTION": [
-      "[#888888]If[] [#888888]you[] [#888888]have[] [#888888]an[] [#888888]odd[] [#888888]number[] [#888888]of[] [#888888]cards[] [#888888]in[] [#888888]your[] [#888888]draw[] [#888888]pile,[] [#888888]gain[] !B! Block. [#ffff00]Otherwise,[] [#ffff00]draw[] !M! [#ffff00]cards.[]",
-      "[#ffff00]If[] [#ffff00]you[] [#ffff00]have[] [#ffff00]an[] [#ffff00]odd[] [#ffff00]number[] [#ffff00]of[] [#ffff00]cards[] [#ffff00]in[] [#ffff00]your[] [#ffff00]draw[] [#ffff00]pile,[] [#ffff00]gain[] !B! Block. [#888888]Otherwise,[] [#888888]draw[] !M! [#888888]cards.[]"
+      "{@@}[#888888]If[] [#888888]you[] [#888888]have[] [#888888]an[] [#888888]odd[] [#888888]number[] [#888888]of[] [#888888]cards[] [#888888]in[] [#888888]your[] [#888888]draw[] [#888888]pile,[] [#888888]gain[] !B! Block. [#ffff00]Otherwise,[] [#ffff00]draw[] !M! [#ffff00]card{!M!|>1=s}.[]",
+      "{@@}[#ffff00]If[] [#ffff00]you[] [#ffff00]have[] [#ffff00]an[] [#ffff00]odd[] [#ffff00]number[] [#ffff00]of[] [#ffff00]cards[] [#ffff00]in[] [#ffff00]your[] [#ffff00]draw[] [#ffff00]pile,[] [#ffff00]gain[] !B! Block. [#888888]Otherwise,[] [#888888]draw[] !M! [#888888]card{!M!|>1=s}.[]"
     ]
   },
   "theRetrospect:Harvest": {
@@ -81,8 +76,7 @@
   },
   "theRetrospect:TemporalAnomaly": {
     "NAME": "Temporal Anomaly",
-    "DESCRIPTION": "Randomly theretrospect:trigger X timelines.",
-    "UPGRADE_DESCRIPTION": "Randomly theretrospect:trigger X+1 timelines."
+    "DESCRIPTION": "{@@}Randomly theretrospect:trigger {!Upgrades!|@=X+1|0=X} timelines."
   },
   "theRetrospect:ChargeRifle": {
     "NAME": "Charge Rifle",
@@ -94,8 +88,7 @@
   },
   "theRetrospect:EnergyConversion": {
     "NAME": "Energy Conversion",
-    "DESCRIPTION": "Add X *Miracles into your hand.",
-    "UPGRADE_DESCRIPTION": "Add X+1 Miracles into your hand."
+    "DESCRIPTION": "{@@}Add {!Upgrades!|@=X+1|0=X} *Miracles into your hand."
   },
   "theRetrospect:RewriteHistory": {
     "NAME": "Rewrite History",
@@ -103,11 +96,11 @@
   },
   "theRetrospect:ShadowForm": {
     "NAME": "Shadow Form",
-    "DESCRIPTION": "At the start of your turn, draw !M! additional cards."
+    "DESCRIPTION": "{@@}At the start of your turn, draw !M! additional card{!M!|>1=s}."
   },
   "theRetrospect:UnstableChronology": {
     "NAME": "Unstable Chronology",
-    "DESCRIPTION": "Cost 1 less [E] for each time you take damage in this combat. theretrospect:Construct 1 timeline."
+    "DESCRIPTION": "{@@}Cost 1 less [E] for each time you take damage in this combat. theretrospect:Construct !theRetrospect:TimelineCount! timeline{!theRetrospect:TimelineCount!|>1=s}."
   },
   "theRetrospect:Paradox": {
     "NAME": "Paradox",
@@ -122,34 +115,30 @@
   },
   "theRetrospect:Shortcut": {
     "NAME": "Shortcut",
-    "DESCRIPTION": "Timelines require !M!% less HP to construct.",
-    "UPGRADE_DESCRIPTION": "Innate. NL Timelines require !M!% less HP to construct."
+    "DESCRIPTION": "{@@}{!Upgrades!|@=Innate. NL |0=}Timelines require !M!% less HP to construct."
   },
   "theRetrospect:ElectricShock": {
     "NAME": "Electric Shock",
-    "DESCRIPTION": "Deal !D! damage. Apply !M! weak."
+    "DESCRIPTION": "Deal !D! damage. NL Apply !M! weak."
   },
   "theRetrospect:Avert": {
     "NAME": "Avert",
-    "DESCRIPTION": "Gain !B! Block. theretrospect:Construct !theRetrospect:TimelineCount! timeline."
+    "DESCRIPTION": "{@@}Gain !B! Block. theretrospect:Construct !theRetrospect:TimelineCount! timeline{!theRetrospect:TimelineCount!|>1=s}."
   },
   "theRetrospect:TacticalRetreat": {
     "NAME": "Tactical Retreat",
-    "DESCRIPTION": "theretrospect:Collapse a timeline. Gain !B! Block.",
-    "EXTENDED_DESCRIPTION": [
-      "I have no timelines."
-    ]
+    "DESCRIPTION": "theretrospect:Collapse a timeline. Gain !B! Block."
   },
   "theRetrospect:LightspeedLeap": {
     "NAME": "Lightspeed Leap",
-    "DESCRIPTION": "Only playable if you have played at least !M! cards this turn. theretrospect:Construct !theRetrospect:TimelineCount! timeline.",
+    "DESCRIPTION": "{@@}Only playable if you have played at least !M! card{!M!|>1=s} this turn. theretrospect:Construct !theRetrospect:TimelineCount! timeline{!theRetrospect:TimelineCount!|>1=s}.",
     "EXTENDED_DESCRIPTION": [
       "I haven't played enough cards."
     ]
   },
   "theRetrospect:FastForward": {
     "NAME": "Fast Forward",
-    "DESCRIPTION": "Draw !M! cards. Discard up to !M! cards."
+    "DESCRIPTION": "{@@}Draw !M! card{!M!|>1=s}. Discard up to !M! card{!M!|>1=s}."
   },
   "theRetrospect:AllOutAttack": {
     "NAME": "All-Out Attack",
@@ -157,7 +146,7 @@
   },
   "theRetrospect:WarmUp": {
     "NAME": "Warm Up",
-    "DESCRIPTION": "Deal !D! damage. Gain !M! Dexterity next turn."
+    "DESCRIPTION": "Deal !D! damage. NL Gain !M! Dexterity next turn."
   },
   "theRetrospect:Telekinesis": {
     "NAME": "Telekinesis",
@@ -165,7 +154,7 @@
   },
   "theRetrospect:Recollection": {
     "NAME": "Recollection",
-    "DESCRIPTION": "Copy !M! cards from your discard pile into your hand. They cost 0 this turn. NL Exhaust.",
+    "DESCRIPTION": "{@@}Copy !M! card{!M!|>1=s} from your discard pile into your hand. {!M!|@=It costs|>1=They cost} 0 this turn. NL Exhaust.",
     "EXTENDED_DESCRIPTION": [
       "Choose a Card to Copy into Your Hand.",
       "Choose ",
@@ -174,11 +163,11 @@
   },
   "theRetrospect:Ambush": {
     "NAME": "Ambush",
-    "DESCRIPTION": "For every !M! cards in your draw pile, deal !D! damage."
+    "DESCRIPTION": "{@@}For every !M! card{!M!|>1=s} in your draw pile, deal !D! damage."
   },
   "theRetrospect:HatTrick": {
     "NAME": "Hat Trick",
-    "DESCRIPTION": "Put !M! card from your draw pile into your hand."
+    "DESCRIPTION": "{@@}Put !M! card{!M!|>1=s} from your draw pile into your hand."
   },
   "theRetrospect:BlindStrike": {
     "NAME": "Blind Strike",
@@ -186,24 +175,22 @@
   },
   "theRetrospect:Evanescence": {
     "NAME": "Evanescence",
-    "DESCRIPTION": "At the start of your turn, discard all Status cards in your hand.",
-    "UPGRADE_DESCRIPTION": "Innate. NL At the start of your turn, discard all Status cards in your hand."
+    "DESCRIPTION": "{@@}{!Upgrades!|@=Innate. NL |0=}At the start of your turn, discard all Status cards in your hand."
   },
   "theRetrospect:SoullessDemon": {
     "NAME": "Soulless Demon",
-    "DESCRIPTION": "Gain !M! Strength. At the end of this turn, lose 1 Strength."
+    "DESCRIPTION": "Gain !M! Strength. NL At the end of this turn, lose 1 Strength."
   },
   "theRetrospect:NoxiousWraith": {
     "NAME": "Noxious Wraith",
-    "DESCRIPTION": "Gain 1 Intangible and lose !M! Dexterity."
+    "DESCRIPTION": "Gain 1 Intangible. NL Lose !M! Dexterity."
   },
   "theRetrospect:DefectiveEcho": {
     "NAME": "Defective Echo",
-    "DESCRIPTION": "Next turn, you first !M! cards are played twice."
+    "DESCRIPTION": "{@@}Next turn, you first !M! card{!M!|>1=s} are played twice."
   },
   "theRetrospect:DivineEye": {
     "NAME": "Divine Eye",
-    "DESCRIPTION": "Next turn, NL gain [E] [E].",
-    "UPGRADE_DESCRIPTION": "Next turn, NL gain [E] [E] [E]."
+    "DESCRIPTION": "{@@}Next turn, NL gain {!Upgrades!|@=[E] [E] [E]|0=[E] [E]}."
   }
 }

@@ -51,7 +51,6 @@ public class Overcore extends AbstractRetrospectCard {
         if (!this.upgraded) {
             this.upgradeName();
             this.upgradeMagicNumber(UPGRADE_FROZEN);
-            this.rawDescription = cardStrings.UPGRADE_DESCRIPTION;
             this.initializeDescription();
         }
     }

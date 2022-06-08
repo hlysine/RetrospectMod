@@ -39,7 +39,6 @@ public class Shortcut extends AbstractRetrospectCard {
         if (!upgraded) {
             upgradeName();
             this.isInnate = true;
-            this.rawDescription = cardStrings.UPGRADE_DESCRIPTION;
             this.initializeDescription();
         }
     }

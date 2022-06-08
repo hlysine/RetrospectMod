@@ -50,7 +50,6 @@ public class TapTheFuture extends AbstractRetrospectCard {
         if (!this.upgraded) {
             this.upgradeName();
             this.upgradeMagicNumber(UPGRADE_ENERGY_GAIN);
-            this.rawDescription = cardStrings.UPGRADE_DESCRIPTION;
             this.initializeDescription();
         }
     }

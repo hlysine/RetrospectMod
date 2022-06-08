@@ -44,7 +44,6 @@ public class Divert extends AbstractRetrospectCard {
         if (!this.upgraded) {
             this.upgradeName();
             this.isEthereal = false;
-            this.rawDescription = cardStrings.UPGRADE_DESCRIPTION;
             this.initializeDescription();
         }
     }

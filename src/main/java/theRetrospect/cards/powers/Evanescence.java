@@ -37,7 +37,6 @@ public class Evanescence extends AbstractRetrospectCard {
         if (!upgraded) {
             upgradeName();
             this.isInnate = true;
-            this.rawDescription = cardStrings.UPGRADE_DESCRIPTION;
             initializeDescription();
         }
     }

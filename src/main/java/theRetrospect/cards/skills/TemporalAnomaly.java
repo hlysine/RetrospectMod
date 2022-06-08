@@ -68,7 +68,6 @@ public class TemporalAnomaly extends AbstractRetrospectCard {
     public void upgrade() {
         if (!this.upgraded) {
             this.upgradeName();
-            this.rawDescription = cardStrings.UPGRADE_DESCRIPTION;
             this.initializeDescription();
         }
     }
