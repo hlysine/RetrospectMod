@@ -26,7 +26,7 @@ public class RewriteHistory extends AbstractRetrospectCard {
     private static final CardType TYPE = CardType.ATTACK;
 
     private static final int COST = 2;
-    private static final int BASE_DAMAGE = 2;
+    private static final int BASE_DAMAGE = 1;
     private static final int UPGRADE_DAMAGE = 1;
 
     public RewriteHistory() {
