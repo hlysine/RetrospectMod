@@ -175,7 +175,7 @@
   },
   "theRetrospect:Evanescence": {
     "NAME": "Evanescence",
-    "DESCRIPTION": "{@@}{!Upgrades!|@=Innate. NL |0=}At the start of your turn, discard all Status cards in your hand."
+    "DESCRIPTION": "Whenever you draw a Status card, gain !M! Block."
   },
   "theRetrospect:SoullessDemon": {
     "NAME": "Soulless Demon",

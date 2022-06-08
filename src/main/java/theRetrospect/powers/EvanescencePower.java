@@ -3,12 +3,11 @@ package theRetrospect.powers;
 import basemod.interfaces.CloneablePowerInterface;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
-import com.megacrit.cardcrawl.actions.AbstractGameAction;
-import com.megacrit.cardcrawl.actions.common.DiscardSpecificCardAction;
+import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
-import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import theRetrospect.RetrospectMod;
@@ -24,12 +23,12 @@ public class EvanescencePower extends AbstractPower implements CloneablePowerInt
     private static final Texture tex84 = TextureLoader.getTexture("theRetrospectResources/images/powers/placeholder_power84.png");
     private static final Texture tex32 = TextureLoader.getTexture("theRetrospectResources/images/powers/placeholder_power32.png");
 
-    public EvanescencePower(final AbstractCreature owner) {
+    public EvanescencePower(final AbstractCreature owner, final int amount) {
         name = NAME;
         ID = POWER_ID;
 
         this.owner = owner;
-        this.amount = -1;
+        this.amount = amount;
 
         type = PowerType.BUFF;
         isTurnBased = false;
@@ -40,32 +39,20 @@ public class EvanescencePower extends AbstractPower implements CloneablePowerInt
         updateDescription();
     }
 
-    @Override
-    public void atStartOfTurnPostDraw() {
-        if (this.owner instanceof AbstractPlayer) {
-            AbstractPlayer player = (AbstractPlayer) this.owner;
-            addToBot(new AbstractGameAction() {
-                @Override
-                public void update() {
-                    flash();
-                    for (AbstractCard card : player.hand.group) {
-                        if (card.type == AbstractCard.CardType.STATUS) {
-                            addToTop(new DiscardSpecificCardAction(card));
-                        }
-                    }
-                    this.isDone = true;
-                }
-            });
+    public void onCardDraw(AbstractCard card) {
+        if (card.type == AbstractCard.CardType.STATUS) {
+            flash();
+            addToBot(new GainBlockAction(AbstractDungeon.player, this.amount));
         }
     }
 
     @Override
     public void updateDescription() {
-        description = DESCRIPTIONS[0];
+        description = DESCRIPTIONS[0] + this.amount + DESCRIPTIONS[1];
     }
 
     @Override
     public AbstractPower makeCopy() {
-        return new EvanescencePower(owner);
+        return new EvanescencePower(owner, amount);
     }
 }
