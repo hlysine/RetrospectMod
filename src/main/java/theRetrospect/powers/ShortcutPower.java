@@ -23,7 +23,7 @@ public class ShortcutPower extends AbstractPower implements CloneablePowerInterf
     private static final Texture tex84 = TextureLoader.getTexture("theRetrospectResources/images/powers/placeholder_power84.png");
     private static final Texture tex32 = TextureLoader.getTexture("theRetrospectResources/images/powers/placeholder_power32.png");
 
-    public static final int UNIT_REDUCTION = 8;
+    public static final int UNIT_REDUCTION = 5;
     private static final int MAX_AMOUNT = (int) (ConstructTimelineAction.HEALTH_PERCENTAGE_COST * 100f / UNIT_REDUCTION);
 
     public ShortcutPower(final AbstractCreature owner, int amount) {
