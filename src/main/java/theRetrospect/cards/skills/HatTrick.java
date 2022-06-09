@@ -22,7 +22,7 @@ public class HatTrick extends AbstractRetrospectCard {
 
 
     private static final CardRarity RARITY = CardRarity.RARE;
-    private static final CardTarget TARGET = CardTarget.SELF;
+    private static final CardTarget TARGET = CardTarget.NONE;
     private static final CardType TYPE = CardType.SKILL;
 
     private static final int BASE_COST = 1;

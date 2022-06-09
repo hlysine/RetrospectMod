@@ -23,7 +23,7 @@ public class FastForward extends AbstractRetrospectCard {
 
 
     private static final CardRarity RARITY = CardRarity.UNCOMMON;
-    private static final CardTarget TARGET = CardTarget.SELF;
+    private static final CardTarget TARGET = CardTarget.NONE;
     private static final CardType TYPE = CardType.SKILL;
 
     private static final int COST = 1;
