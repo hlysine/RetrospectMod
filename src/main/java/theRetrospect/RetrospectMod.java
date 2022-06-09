@@ -13,6 +13,7 @@ import com.evacipated.cardcrawl.mod.stslib.Keyword;
 import com.evacipated.cardcrawl.mod.stslib.patches.CustomTargeting;
 import com.evacipated.cardcrawl.modthespire.lib.SpireInitializer;
 import com.google.gson.Gson;
+import com.megacrit.cardcrawl.dungeons.TheCity;
 import com.megacrit.cardcrawl.helpers.CardHelper;
 import com.megacrit.cardcrawl.localization.*;
 import com.megacrit.cardcrawl.unlock.UnlockTracker;
@@ -20,6 +21,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import theRetrospect.cards.AbstractRetrospectCard;
 import theRetrospect.characters.TheRetrospect;
+import theRetrospect.events.EventHorizonEvent;
 import theRetrospect.events.Ghosts;
 import theRetrospect.events.MysteriousProphetEvent;
 import theRetrospect.potions.TimelinePotion;
@@ -205,6 +207,11 @@ public class RetrospectMod implements
         BaseMod.addEvent(new AddEventParams.Builder(Ghosts.ID, Ghosts.class)
                 .playerClass(TheRetrospect.Enums.THE_RETROSPECT)
                 .overrideEvent("Ghosts")
+                .create());
+
+        BaseMod.addEvent(new AddEventParams.Builder(EventHorizonEvent.ID, EventHorizonEvent.class)
+                .dungeonID(TheCity.ID)
+                .playerClass(TheRetrospect.Enums.THE_RETROSPECT)
                 .create());
     }
 

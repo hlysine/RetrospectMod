@@ -36,5 +36,18 @@
       "",
       "[Leave]"
     ]
+  },
+  "theRetrospect:EventHorizonEvent": {
+    "NAME": "Event Horizon",
+    "DESCRIPTIONS": [
+      "As you walk through a secluded area, you hear a ~loud~ ~hum~ originating somewhere nearby. NL NL You approach the noise to investigate further, only to discover a miniature #p~black~ #p~hole~ destroying everything in the perimeter! NL NL The immense gravity distorts all objects and #rpulls #ryou #rtowards #rthe #rcenter. NL NL You have to make a move before you reach the #pevent #phorizon. What do you do?",
+      "You know that the black hole's ~immense~ ~power~ will be of great help in your ascent. NL NL Moments before you get disintegrated by gravity, you pull out a magic bottle and #ysuccessfully #ycapture its core. NL NL With the black hole inside, the bottle is now #rforever #rstuck #rto #ryour #rhand, but at the same time, you feel #ga #gsurge #gof #gpower like nothing you have experienced before.",
+      "The black hole is #rtoo #rstrong to run away from. You activate your wrist-mounted device just in time to #pphase #paway. NL NL In the blink of an eye, you arrive safely at a timeline where you have never approached the black hole. NL NL Feeling relieved, you continue your ascent like nothing has happened before."
+    ],
+    "OPTIONS": [
+      "[Capture] Gain #yBottled #ySingularity and #robtain #ra #runique #rCurse.",
+      "[Escape]",
+      "[Leave]"
+    ]
   }
 }
