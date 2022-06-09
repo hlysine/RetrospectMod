@@ -13,7 +13,7 @@ public interface TimelineConstructSubscriber {
      * @param healthPercentageCost The current health cost in percentage.
      * @return The new health cost.
      */
-    default float modifyTimelineConstruct(AbstractCard constructionCard, float healthPercentageCost) {
+    default float modifyTimelineHP(AbstractCard constructionCard, float healthPercentageCost) {
         return healthPercentageCost;
     }
 

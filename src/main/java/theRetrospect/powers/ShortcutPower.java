@@ -49,7 +49,7 @@ public class ShortcutPower extends AbstractPower implements CloneablePowerInterf
     }
 
     @Override
-    public float modifyTimelineConstruct(AbstractCard constructionCard, float healthPercentageCost) {
+    public float modifyTimelineHP(AbstractCard constructionCard, float healthPercentageCost) {
         return Math.max(0.01f, healthPercentageCost - UNIT_REDUCTION / 100f * this.amount);
     }
 

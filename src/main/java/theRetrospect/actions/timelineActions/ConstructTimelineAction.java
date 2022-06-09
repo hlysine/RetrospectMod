@@ -91,14 +91,14 @@ public class ConstructTimelineAction extends AbstractGameAction {
         for (AbstractPower power : player.powers) {
             if (power instanceof TimelineConstructSubscriber) {
                 TimelineConstructSubscriber listener = (TimelineConstructSubscriber) power;
-                percentage = listener.modifyTimelineConstruct(constructionCard, percentage);
+                percentage = listener.modifyTimelineHP(constructionCard, percentage);
             }
         }
 
         for (AbstractRelic relic : player.relics) {
             if (relic instanceof TimelineConstructSubscriber) {
                 TimelineConstructSubscriber listener = (TimelineConstructSubscriber) relic;
-                percentage = listener.modifyTimelineConstruct(constructionCard, percentage);
+                percentage = listener.modifyTimelineHP(constructionCard, percentage);
             }
         }
 
