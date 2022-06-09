@@ -7,6 +7,7 @@ import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.EventStrings;
 import theRetrospect.RetrospectMod;
+import theRetrospect.cards.curses.Singularity;
 import theRetrospect.relics.BottledSingularity;
 
 import static theRetrospect.RetrospectMod.makeEventPath;
@@ -23,7 +24,7 @@ public class EventHorizonEvent extends PhasedEvent {
         super(ID, TITLE, IMG);
 
         registerPhase("Encounter", new TextPhase(DESCRIPTIONS[0])
-                .addOption(new TextPhase.OptionInfo(OPTIONS[0], new BottledSingularity()), (i) -> {
+                .addOption(new TextPhase.OptionInfo(OPTIONS[0], new Singularity(), new BottledSingularity()), (i) -> {
                     AbstractDungeon.getCurrRoom().spawnRelicAndObtain(Settings.WIDTH / 2f, Settings.HEIGHT / 2f, new BottledSingularity());
                     transitionKey("Capture");
                 })
