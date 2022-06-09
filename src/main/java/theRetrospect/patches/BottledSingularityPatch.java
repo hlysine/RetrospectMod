@@ -13,13 +13,6 @@ import java.util.ArrayList;
 
 
 public class BottledSingularityPatch {
-    @SpirePatch(
-            clz = AbstractCard.class,
-            method = SpirePatch.CLASS
-    )
-    public static class BottledSingularityAddFieldPatch {
-        public static SpireField<Boolean> isInBottledSingularity = new SpireField<>(() -> false);
-    }
 
     @SpirePatch(
             clz = AbstractCard.class,

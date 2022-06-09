@@ -36,5 +36,10 @@ public class CardAddFieldsPatch {
      * It can be due to the card's effect (such as Conclude), or due to powers such as Time Warp.
      */
     public static final SpireField<Boolean> turnEnding = new SpireField<>(() -> false);
+
+    /**
+     * Whether this card is bottled by Bottled Singularity.
+     */
+    public static SpireField<Boolean> isInBottledSingularity = new SpireField<>(() -> false);
 }
 
