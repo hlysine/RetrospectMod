@@ -20,6 +20,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import theRetrospect.cards.AbstractRetrospectCard;
 import theRetrospect.characters.TheRetrospect;
+import theRetrospect.events.Ghosts;
 import theRetrospect.events.MysteriousProphetEvent;
 import theRetrospect.potions.TimelinePotion;
 import theRetrospect.relics.AbstractBaseRelic;
@@ -197,11 +198,14 @@ public class RetrospectMod implements
 
         logger.info("Done loading badge Image and mod options");
 
-        AddEventParams eventParams = new AddEventParams.Builder(MysteriousProphetEvent.ID, MysteriousProphetEvent.class)
+        BaseMod.addEvent(new AddEventParams.Builder(MysteriousProphetEvent.ID, MysteriousProphetEvent.class)
                 .playerClass(TheRetrospect.Enums.THE_RETROSPECT)
-                .create();
+                .create());
 
-        BaseMod.addEvent(eventParams);
+        BaseMod.addEvent(new AddEventParams.Builder(Ghosts.ID, Ghosts.class)
+                .playerClass(TheRetrospect.Enums.THE_RETROSPECT)
+                .overrideEvent("Ghosts")
+                .create());
     }
 
     public void receiveEditPotions() {

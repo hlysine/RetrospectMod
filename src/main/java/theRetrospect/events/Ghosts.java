@@ -19,7 +19,7 @@ import java.util.List;
  * The Retrospect will receive 3(2) instead of 5(3) Apparitions.
  */
 public class Ghosts extends AbstractImageEvent {
-    public static final String ID = "Ghosts";
+    public static final String ID = RetrospectMod.makeID("Ghosts");
     private static final EventStrings eventStrings = CardCrawlGame.languagePack.getEventString(RetrospectMod.makeID(Ghosts.class.getSimpleName()));
     public static final String NAME = eventStrings.NAME;
     public static final String[] DESCRIPTIONS = eventStrings.DESCRIPTIONS;
