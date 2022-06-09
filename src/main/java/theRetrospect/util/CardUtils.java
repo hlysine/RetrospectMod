@@ -12,6 +12,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.ui.panels.EnergyPanel;
 import theRetrospect.RetrospectMod;
 import theRetrospect.minions.AbstractMinionWithCards;
+import theRetrospect.patches.BottledSingularityPatch;
 import theRetrospect.patches.CardAddFieldsPatch;
 import theRetrospect.patches.CardReturnToMinionPatch;
 import theRetrospect.powers.TimerPower;
@@ -23,6 +24,14 @@ public class CardUtils {
 
     public static boolean getHovered(AbstractCard card) {
         return ReflectionHacks.getPrivate(card, AbstractCard.class, "hovered");
+    }
+
+    public static boolean getIsInBottledSingularity(AbstractCard card) {
+        return BottledSingularityPatch.BottledSingularityAddFieldPatch.isInBottledSingularity.get(card);
+    }
+
+    public static void setIsInBottledSingularity(AbstractCard card, boolean value) {
+        BottledSingularityPatch.BottledSingularityAddFieldPatch.isInBottledSingularity.set(card, value);
     }
 
     public static CardPlaySource getPlaySource(AbstractCard card) {

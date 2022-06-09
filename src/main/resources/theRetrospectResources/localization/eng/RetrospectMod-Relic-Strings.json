@@ -26,5 +26,15 @@
     "DESCRIPTIONS": [
       "When you #yconstruct a timeline, gain 10 Block."
     ]
+  },
+  "theRetrospect:BottledSingularity": {
+    "NAME": "Bottled Singularity",
+    "FLAVOR": "No bottle can overcome the immense gravity. The singularity is forever stuck to your hand.",
+    "DESCRIPTIONS": [
+      "Upon pick up, choose 3 cards and obtain a special Curse. Start each combat with these cards in your hand.",
+      "Start each combat with the 3 bottled cards in your hand.",
+      "Select 3 cards to bottle for ",
+      "."
+    ]
   }
 }

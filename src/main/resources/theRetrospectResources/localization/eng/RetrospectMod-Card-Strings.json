@@ -192,5 +192,9 @@
   "theRetrospect:DivineEye": {
     "NAME": "Divine Eye",
     "DESCRIPTION": "{@@}Next turn, NL gain {!Upgrades!|@=[E] [E] [E]|0=[E] [E]}."
+  },
+  "theRetrospect:Singularity": {
+    "NAME": "Singularity",
+    "DESCRIPTION": "This card is forever stuck to your hand."
   }
 }
