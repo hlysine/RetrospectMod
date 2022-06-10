@@ -11,9 +11,9 @@ import com.megacrit.cardcrawl.powers.AbstractPower;
 import theRetrospect.RetrospectMod;
 import theRetrospect.util.TextureLoader;
 
-public class ShadowFormPower extends AbstractPower implements CloneablePowerInterface {
+public class QuickThinkingPower extends AbstractPower implements CloneablePowerInterface {
 
-    public static final String POWER_ID = RetrospectMod.makeID(ShadowFormPower.class.getSimpleName());
+    public static final String POWER_ID = RetrospectMod.makeID(QuickThinkingPower.class.getSimpleName());
     private static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
     public static final String NAME = powerStrings.NAME;
     public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
@@ -23,7 +23,7 @@ public class ShadowFormPower extends AbstractPower implements CloneablePowerInte
     private static final Texture tex84 = TextureLoader.getTexture("theRetrospectResources/images/powers/placeholder_power84.png");
     private static final Texture tex32 = TextureLoader.getTexture("theRetrospectResources/images/powers/placeholder_power32.png");
 
-    public ShadowFormPower(final AbstractCreature owner, final int amount) {
+    public QuickThinkingPower(final AbstractCreature owner, final int amount) {
         name = NAME;
         ID = POWER_ID;
 
@@ -64,6 +64,6 @@ public class ShadowFormPower extends AbstractPower implements CloneablePowerInte
 
     @Override
     public AbstractPower makeCopy() {
-        return new ShadowFormPower(owner, amount);
+        return new QuickThinkingPower(owner, amount);
     }
 }
