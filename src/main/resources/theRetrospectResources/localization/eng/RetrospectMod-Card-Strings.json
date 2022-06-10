@@ -115,7 +115,7 @@
   },
   "theRetrospect:Shortcut": {
     "NAME": "Shortcut",
-    "DESCRIPTION": "{@@}{!Upgrades!|@=Innate. NL |0=}Timelines require !M!% less HP to construct."
+    "DESCRIPTION": "Timelines require !M! % less HP to construct."
   },
   "theRetrospect:ElectricShock": {
     "NAME": "Electric Shock",

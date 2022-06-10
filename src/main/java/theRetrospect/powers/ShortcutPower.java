@@ -23,8 +23,7 @@ public class ShortcutPower extends AbstractPower implements CloneablePowerInterf
     private static final Texture tex84 = TextureLoader.getTexture("theRetrospectResources/images/powers/placeholder_power84.png");
     private static final Texture tex32 = TextureLoader.getTexture("theRetrospectResources/images/powers/placeholder_power32.png");
 
-    public static final int UNIT_REDUCTION = 5;
-    private static final int MAX_AMOUNT = (int) (ConstructTimelineAction.HEALTH_PERCENTAGE_COST * 100f / UNIT_REDUCTION);
+    private static final int MAX_AMOUNT = (int) (ConstructTimelineAction.HEALTH_PERCENTAGE_COST * 100f);
 
     public ShortcutPower(final AbstractCreature owner, int amount) {
         name = NAME;
@@ -50,12 +49,12 @@ public class ShortcutPower extends AbstractPower implements CloneablePowerInterf
 
     @Override
     public float modifyTimelineHP(AbstractCard constructionCard, float healthPercentageCost) {
-        return Math.max(0.01f, healthPercentageCost - UNIT_REDUCTION / 100f * this.amount);
+        return Math.max(0.01f, healthPercentageCost - this.amount / 100f);
     }
 
     @Override
     public void updateDescription() {
-        description = DESCRIPTIONS[0] + (this.amount * UNIT_REDUCTION) + DESCRIPTIONS[1];
+        description = DESCRIPTIONS[0] + this.amount + DESCRIPTIONS[1];
     }
 
     @Override
