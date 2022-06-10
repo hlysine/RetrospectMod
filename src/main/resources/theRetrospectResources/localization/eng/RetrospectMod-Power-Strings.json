@@ -100,5 +100,12 @@
       " timeline.",
       " timelines."
     ]
+  },
+  "theRetrospect:AtomicClockPower": {
+    "NAME": "Atomic Clock",
+    "DESCRIPTIONS": [
+      "At the end of your turn, play #b",
+      " #yAvert."
+    ]
   }
 }

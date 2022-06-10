@@ -36,5 +36,12 @@
       "Select 3 cards to bottle for ",
       "."
     ]
+  },
+  "theRetrospect:AtomicClock": {
+    "NAME": "Atomic Clock",
+    "FLAVOR": "Cutting-edge technology even in your era.",
+    "DESCRIPTIONS": [
+      "Replaces #pAntique #pClock. At the end of your first turn, play 1 #yAvert."
+    ]
   }
 }
