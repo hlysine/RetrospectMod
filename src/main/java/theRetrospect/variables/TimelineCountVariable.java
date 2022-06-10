@@ -19,6 +19,11 @@ public class TimelineCountVariable extends DynamicVariable {
     }
 
     @Override
+    public void setIsModified(AbstractCard card, boolean v) {
+        ((AbstractRetrospectCard) card).isTimelineCountModified = false;
+    }
+
+    @Override
     public int value(AbstractCard card) {
         return ((AbstractRetrospectCard) card).timelineCount;
     }
