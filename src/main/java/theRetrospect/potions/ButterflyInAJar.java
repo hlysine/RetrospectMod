@@ -2,21 +2,20 @@ package theRetrospect.potions;
 
 import basemod.abstracts.CustomPotion;
 import com.badlogic.gdx.graphics.Color;
-import com.megacrit.cardcrawl.characters.AbstractPlayer;
+import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
+import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.cards.colorless.Metamorphosis;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.CardHelper;
 import com.megacrit.cardcrawl.helpers.PowerTip;
 import com.megacrit.cardcrawl.localization.PotionStrings;
 import com.megacrit.cardcrawl.potions.AbstractPotion;
-import hlysine.friendlymonsters.utils.MinionUtils;
 import theRetrospect.RetrospectMod;
-import theRetrospect.actions.timelineActions.ConstructMultipleTimelineAction;
 
-public class TimelinePotion extends CustomPotion {
+public class ButterflyInAJar extends CustomPotion {
 
-    public static final String POTION_ID = RetrospectMod.makeID(TimelinePotion.class.getSimpleName());
+    public static final String POTION_ID = RetrospectMod.makeID(ButterflyInAJar.class.getSimpleName());
     private static final PotionStrings potionStrings = CardCrawlGame.languagePack.getPotionString(POTION_ID);
 
     public static final Color LIQUID_COLOR = CardHelper.getColor(135, 50, 200);
@@ -27,10 +26,10 @@ public class TimelinePotion extends CustomPotion {
     public static final String[] DESCRIPTIONS = potionStrings.DESCRIPTIONS;
 
     private static final PotionRarity RARITY = PotionRarity.UNCOMMON;
-    private static final PotionSize SIZE = PotionSize.SPHERE;
-    private static final PotionColor COLOR = PotionColor.ELIXIR;
+    private static final PotionSize SIZE = PotionSize.JAR;
+    private static final PotionColor COLOR = PotionColor.FAIRY;
 
-    public TimelinePotion() {
+    public ButterflyInAJar() {
         super(NAME, POTION_ID, RARITY, SIZE, COLOR);
 
         isThrown = false;
@@ -39,18 +38,9 @@ public class TimelinePotion extends CustomPotion {
 
     @Override
     public void use(AbstractCreature target) {
-        addToBot(new ConstructMultipleTimelineAction(null, this.potency));
-    }
-
-    @Override
-    public boolean canUse() {
-        if (!super.canUse()) return false;
-        AbstractPlayer player = AbstractDungeon.player;
-
-        if (player.currentHealth <= 1)
-            return false;
-
-        return MinionUtils.getMinions(player).monsters.size() < MinionUtils.getMaxMinionCount(player);
+        AbstractCard card = new Metamorphosis();
+        card.setCostForTurn(0);
+        addToBot(new MakeTempCardInHandAction(card, this.potency));
     }
 
     @Override
@@ -67,7 +57,7 @@ public class TimelinePotion extends CustomPotion {
 
     @Override
     public AbstractPotion makeCopy() {
-        return new TimelinePotion();
+        return new ButterflyInAJar();
     }
 
     @Override

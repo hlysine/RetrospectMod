@@ -26,6 +26,7 @@ import theRetrospect.events.EventHorizonEvent;
 import theRetrospect.events.FutureGadgetsEvent;
 import theRetrospect.events.Ghosts;
 import theRetrospect.events.MysteriousProphetEvent;
+import theRetrospect.potions.ButterflyInAJar;
 import theRetrospect.potions.TimelinePotion;
 import theRetrospect.relics.AbstractBaseRelic;
 import theRetrospect.util.IDCheckDontTouchPls;
@@ -228,6 +229,12 @@ public class RetrospectMod implements
                 TimelinePotion.HYBRID_COLOR,
                 TimelinePotion.SPOTS_COLOR,
                 TimelinePotion.POTION_ID);
+
+        BaseMod.addPotion(ButterflyInAJar.class,
+                ButterflyInAJar.LIQUID_COLOR,
+                ButterflyInAJar.HYBRID_COLOR,
+                ButterflyInAJar.SPOTS_COLOR,
+                ButterflyInAJar.POTION_ID);
 
         logger.info("Done editing potions");
     }
