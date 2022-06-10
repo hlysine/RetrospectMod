@@ -8,7 +8,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theRetrospect.RetrospectMod;
 import theRetrospect.actions.general.CustomQueueCardAction;
 import theRetrospect.actions.general.ShowCardToBePlayedAction;
-import theRetrospect.actions.timelineActions.ConstructTimelineAction;
+import theRetrospect.actions.timelineActions.ConstructMultipleTimelineAction;
 import theRetrospect.cards.AbstractRetrospectCard;
 import theRetrospect.util.CardUtils;
 
@@ -44,14 +44,14 @@ public class Avert extends AbstractRetrospectCard {
             AbstractCard card = p.discardPile.getRandomCard(CardType.ATTACK, true);
             if (card != null) {
                 p.discardPile.removeCard(card);
-                CardUtils.addFollowUpActionToTop(card, new ConstructTimelineAction(this), false);
+                CardUtils.addFollowUpActionToTop(card, new ConstructMultipleTimelineAction(this, timelineCount), false);
                 addToBot(new ShowCardToBePlayedAction(card));
                 addToBot(new CustomQueueCardAction(card, true, true, true));
                 cardPlayed = true;
             }
         }
         if (!cardPlayed) {
-            addToBot(new ConstructTimelineAction(this));
+            addToBot(new ConstructMultipleTimelineAction(this, timelineCount));
         }
     }
 

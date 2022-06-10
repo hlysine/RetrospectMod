@@ -6,7 +6,7 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theRetrospect.RetrospectMod;
-import theRetrospect.actions.timelineActions.ConstructTimelineAction;
+import theRetrospect.actions.timelineActions.ConstructMultipleTimelineAction;
 import theRetrospect.cards.AbstractRetrospectCard;
 import theRetrospect.powers.FrozenPower;
 
@@ -43,7 +43,7 @@ public class Overcore extends AbstractRetrospectCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         for (int i = 0; i < baseTimelineCount; i++)
-            addToBot(new ConstructTimelineAction(this));
+            addToBot(new ConstructMultipleTimelineAction(this, timelineCount));
         addToBot(new ApplyPowerAction(p, p, new FrozenPower(p, this.magicNumber)));
     }
 

@@ -61,6 +61,7 @@ public class AntiqueClockPower extends AbstractPower implements CloneablePowerIn
                 },
                 nxt -> {
                     AbstractCard card = new Divert();
+                    card.applyPowers();
                     card.purgeOnUse = true;
                     card.current_x = card.target_x = AbstractDungeon.player.drawX;
                     card.current_y = card.target_y = AbstractDungeon.player.drawY;

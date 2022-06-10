@@ -196,5 +196,9 @@
   "theRetrospect:Singularity": {
     "NAME": "Singularity",
     "DESCRIPTION": "This card is forever stuck to your hand."
+  },
+  "theRetrospect:ShadowForm": {
+    "NAME": "Shadow Form",
+    "DESCRIPTION": "{@@}Reduce timeline HP cost by !M! %. All timeline cards theretrospect:construct +1 timeline.{!Upgrades!|0= Ethereal.}"
   }
 }

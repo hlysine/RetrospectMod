@@ -7,7 +7,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theRetrospect.RetrospectMod;
-import theRetrospect.actions.timelineActions.ConstructTimelineAction;
+import theRetrospect.actions.timelineActions.ConstructMultipleTimelineAction;
 import theRetrospect.cards.AbstractRetrospectCard;
 
 import static theRetrospect.RetrospectMod.makeCardPath;
@@ -42,7 +42,7 @@ public class UnstableChronology extends AbstractRetrospectCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new ConstructTimelineAction(this));
+        addToBot(new ConstructMultipleTimelineAction(this, timelineCount));
     }
 
     @Override

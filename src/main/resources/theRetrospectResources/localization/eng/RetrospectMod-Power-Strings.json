@@ -92,5 +92,13 @@
       " additional [E] next turn.",
       " - TRANSLATOR NOTE: - The above line is for plural if needed to distinguish from singular."
     ]
+  },
+  "theRetrospect:ShadowFormPower": {
+    "NAME": "Shadow Form",
+    "DESCRIPTIONS": [
+      "All timeline construction cards construct #b+",
+      " timeline.",
+      " timelines."
+    ]
   }
 }

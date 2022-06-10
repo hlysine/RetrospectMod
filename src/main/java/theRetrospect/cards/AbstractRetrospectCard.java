@@ -1,7 +1,6 @@
 package theRetrospect.cards;
 
-import com.megacrit.cardcrawl.core.CardCrawlGame;
-import com.megacrit.cardcrawl.localization.CardStrings;
+import com.megacrit.cardcrawl.cards.AbstractCard;
 import theRetrospect.RetrospectMod;
 import theRetrospect.characters.TheRetrospect;
 
@@ -10,7 +9,6 @@ public abstract class AbstractRetrospectCard extends AbstractBaseCard {
     public static final CardColor COLOR = TheRetrospect.Enums.RETROSPECT_CARD_VIOLET;
 
     public static final String ID = RetrospectMod.makeID(AbstractRetrospectCard.class.getSimpleName());
-    private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
 
     public int timelineCount;
     public int baseTimelineCount;
@@ -41,5 +39,15 @@ public abstract class AbstractRetrospectCard extends AbstractBaseCard {
         baseTimelineCount += amount;
         timelineCount = baseTimelineCount;
         upgradedTimelineCount = true;
+    }
+
+    @Override
+    public AbstractCard makeStatEquivalentCopy() {
+        AbstractRetrospectCard copy = (AbstractRetrospectCard) super.makeStatEquivalentCopy();
+        copy.baseTimelineCount = this.baseTimelineCount;
+        copy.isTimelineCountModified = this.isTimelineCountModified;
+        copy.timelineCount = this.timelineCount;
+        copy.upgradedTimelineCount = this.upgradedTimelineCount;
+        return copy;
     }
 }
