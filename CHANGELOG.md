@@ -1,10 +1,93 @@
 # Changelog
 
-## [0.2.1] - Hotfix - 2022-05-23
+## [0.3.0] - QoL & Content Update - 2022-06-10
+
 ### Mechanics
+
+- Use `cardRandomRng` instead of `cardRng` when choosing a random timeline to not affect discovery
+- Check `MAX_HAND_SIZE` instead of hard-coding 10 to support increased hand capacity from other mods
+- Fix timelines being interrupted by an unplayable card
+- Fix timeline interactions with Timer Eater: timelines are now interrupted by Time Warp power
+
+### Character
+
+- Change starting relic from Adaptive Shield to Antique Clock
+- Buff starting HP from 70 to 77
+
+### Cards
+
+- Fix pluralization in cards
+- Change Telekinesis to still trigger Thorns effect
+- Change Adaptive Shield to an uncommon relic
+- Rename Into The Void to Double Time
+- Rework Double Time: always triggers a timeline once only, but costs 0 when upgraded
+- Rework Overcore: always gives 1 Frozen, but is Exhaust if not upgraded
+- Swap names of Misdirection and Avert
+- Nerf Misdirection block gain from 10(15) to 8(12)
+- Rework Transmute: always discard cards, discard 2 cards when upgraded
+- Nerf Rewrite History damage from 2(3) to 1(2)
+- Reduce Time Loop cost from 3 to 2(1)
+- Rework Shortcut: reduce timeline HP cost by 5%(7%) instead of 8%, loses Innate
+- Rework Evanescence: Whenever you draw a Status card, gain 3(5) block
+- Nerf Defective Echo card count from 2(3) to 1(2)
+- Fix a bug in Defective Echo that prevents you from using it in 2 consecutive rounds
+- Buff Noxious Wraith Intangible gain from 1 to 2
+- Change target of Divine Eye, Energy Conversion, Fast Forward, Hat Trick, Recollection, and Transmute from self to none
+- Add new Curse card Singularity
+- Add new Power card Quick Thinker
+- Rework Shadow Form: Reduce timeline HP cost by 10%. All timeline cards construct +1 timeline. Ethereal. (Lose Ethereal
+  when upgraded)
+
+### Relics
+
+- Rename Antique Stopwatch to Antique Clock
+- Add new event relic Bottled Singularity
+- Add new boss relic Atomic Clock
+
+### Events
+
+- Nerf Council of Ghosts event for the Retrospect: the Retrospect now only gets 3(2) Apparition cards
+- Add Event Horizon event to give Bottled Singularity relic
+- Change wordings in Mysterious Prophet event
+- Add Future Gadgets event for non-Retrospect characters
+
+### Potions
+
+- Make Timeline Potion available for all characters
+- Update Timeline Potion to be affected by Sacred Bark
+- Add new uncommon potion Butterfly In A Jar
+
+### UI
+
+- Add a screen to view cards played this turn
+- Add a screen to view cards in a timeline
+- Add a peek button on timelines to bring up the card screen
+- Fix a z-ordering issue of timeline cards in hand card select screen
+
+### VFX
+
+- Instead of disappearing instantly, play death animation when collapsing a timeline
+- Fix Defect orbs not following the player when there are timelines
+- Use a consistent card copying method in Timer power
+- Remove card glow for timeline targeting cards when there are no timelines
+- Add a special dialog for Time Eater when playing as the Retrospect
+
+### Compatibility
+
+- Fix a crash when dying as the Retrospect in Together In Spire
+
+### Misc
+
+- Migrate from Kobting/STSFriendlyMinions to hlysine/FriendlyMonsters for timelines
+
+## [0.2.1] - Hotfix - 2022-05-23
+
+### Mechanics
+
 - Skip collapse timeline action if the timeline is already dead
 
 ### Cards
+
 - Fixed a bug that prevents Into The Void+ from triggering a timeline twice
 - Changed Temporal Anomaly to trigger timelines one after the other
 
