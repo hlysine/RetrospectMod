@@ -213,7 +213,6 @@ public class RetrospectMod implements
 
         BaseMod.addEvent(new AddEventParams.Builder(EventHorizonEvent.ID, EventHorizonEvent.class)
                 .dungeonID(TheCity.ID)
-                .playerClass(TheRetrospect.Enums.THE_RETROSPECT)
                 .create());
 
         BaseMod.addEvent(new AddEventParams.Builder(FutureGadgetsEvent.ID, FutureGadgetsEvent.class)
