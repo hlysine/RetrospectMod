@@ -12,7 +12,7 @@ import com.megacrit.cardcrawl.localization.PotionStrings;
 import com.megacrit.cardcrawl.potions.AbstractPotion;
 import hlysine.friendlymonsters.utils.MinionUtils;
 import theRetrospect.RetrospectMod;
-import theRetrospect.actions.timelineActions.ConstructTimelineAction;
+import theRetrospect.actions.timelineActions.ConstructMultipleTimelineAction;
 
 public class TimelinePotion extends CustomPotion {
 
@@ -44,7 +44,7 @@ public class TimelinePotion extends CustomPotion {
 
     @Override
     public void use(AbstractCreature target) {
-        addToBot(new ConstructTimelineAction(null));
+        addToBot(new ConstructMultipleTimelineAction(null, this.potency));
     }
 
     @Override
@@ -63,7 +63,6 @@ public class TimelinePotion extends CustomPotion {
         return new TimelinePotion();
     }
 
-    // This is your potency.
     @Override
     public int getPotency(final int potency) {
         return 1;
