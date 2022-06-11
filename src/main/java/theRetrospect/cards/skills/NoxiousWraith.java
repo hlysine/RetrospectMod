@@ -22,7 +22,7 @@ public class NoxiousWraith extends AbstractRetrospectCard {
 
     private static final int COST = 1;
     private static final int INTANGIBLE = 2;
-    private static final int BASE_DEXTERITY_LOSS = 4;
+    private static final int BASE_DEXTERITY_LOSS = 5;
     private static final int UPGRADE_DEXTERITY_LOSS = -2;
 
     public NoxiousWraith() {
