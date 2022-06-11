@@ -29,6 +29,7 @@ public class NoxiousWraith extends AbstractRetrospectCard {
         super(ID, IMG, COST, TYPE, RARITY, TARGET);
 
         magicNumber = baseMagicNumber = BASE_DEXTERITY_LOSS;
+        this.exhaust = true;
     }
 
     @Override
