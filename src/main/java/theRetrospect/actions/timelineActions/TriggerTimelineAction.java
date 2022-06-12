@@ -62,12 +62,16 @@ public class TriggerTimelineAction extends AbstractGameAction {
                             addToBot(new WaitAction(0.75f));
                     },
                     next -> {
+                        finalTarget.inTurn = true;
                         if (consumeCards)
                             timer.get().triggerOnEndOfTurnForPlayingCard(next);
                         else
                             timer.get().triggerWithoutConsumingCards(next);
                     },
-                    () -> addToBot(followUpAction)
+                    () -> {
+                        finalTarget.inTurn = false;
+                        addToBot(followUpAction);
+                    }
             );
         }
         this.isDone = true;
