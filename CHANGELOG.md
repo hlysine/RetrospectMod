@@ -1,5 +1,22 @@
 # Changelog
 
+## [0.3.1] - VFX & Balancing Update - 2022-06-12
+
+### Mechanics
+
+- Fix a bug where dead timelines can be triggered
+
+### Cards
+
+- Make Noxious Wraith exhaust and increase dexterity loss from 4(2) to 5(3)
+- Fix non-upgraded description of Defective Echo
+
+### VFX
+
+- Add flying orb VFX when constructing a timeline
+- Highlight the newly constructed timeline with a faint circle
+- Change timeline aura color when it is being triggered and will play cards
+
 ## [0.3.0] - QoL & Content Update - 2022-06-10
 
 ### Mechanics
@@ -95,6 +112,7 @@
 - Skip Rewrite History VFX if there are no cards in discard pile
 
 ## [0.2.0] - Second Technical Test - 2022-05-22
+
 ### Mechanics
 - Timelines now play cards one after the other instead of queueing all cards at once
 - Reworded timeline descriptions and keywords
@@ -168,6 +186,7 @@
 - Updated dependencies
 
 ## [0.0.3] - Balancing Changes - 2022-04-08
+
 ### New content
 - Added spire heart finisher sequence
 - Added new relic: Slanted Mirror
@@ -194,11 +213,13 @@
 - Renamed Perpetual Hourglass to Quantum Hourglass and changed its flavor
 
 ## [0.0.2] - Hotfix - 2022-04-01
+
 ### Changed
 - Updated strings
 - Prevent the use of timeline potion if a timeline cannot be created
 
 ## [0.0.1] - First Technical Test - 2022-03-31
+
 ### New content
 - First technical test
   - Timeline mechanics
