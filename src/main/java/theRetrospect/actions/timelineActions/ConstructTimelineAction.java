@@ -2,8 +2,6 @@ package theRetrospect.actions.timelineActions;
 
 import com.badlogic.gdx.graphics.Color;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
-import com.megacrit.cardcrawl.actions.animations.VFXAction;
-import com.megacrit.cardcrawl.actions.utility.SFXAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
@@ -69,12 +67,16 @@ public class ConstructTimelineAction extends AbstractGameAction {
                 addToTop(new NonTriggeringHealthChange(player, -health));
 
                 for (int i = 0; i < minion.cards.size() && i < 10; i++) {
-                    addToTop(new VFXAction(new FlyingOrbEffect(player.hb.cX, player.hb.cY, minion.target_x, minion.target_y + minion.hb.height / 2, new Color(0.5f, 0.2f, 1f, 0.4f))));
+                    AbstractDungeon.effectList.add(new FlyingOrbEffect(
+                            player.hb.cX, player.hb.cY,
+                            minion.target_x, minion.target_y + minion.hb.height / 2,
+                            new Color(0.5f, 0.2f, 1f, 0.4f)
+                    ));
                 }
 
-                addToTop(new SFXAction("CARD_POWER_IMPACT", 0.1f));
+                CardCrawlGame.sound.play("CARD_POWER_IMPACT", 0.1f);
 
-                addToTop(new VFXAction(new TimelineConstructEffect(minion)));
+                AbstractDungeon.effectList.add(new TimelineConstructEffect(minion));
 
                 for (AbstractPower power : AbstractDungeon.player.powers) {
                     if (power instanceof TimelineConstructSubscriber) {
