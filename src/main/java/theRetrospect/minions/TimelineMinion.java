@@ -29,6 +29,11 @@ public class TimelineMinion extends AbstractMinionWithCards {
 
     private float auraEffectTimer = 0.5f;
 
+    /**
+     * If this timeline is in turn, an effect will be shown to indicate that this timeline will play cards.
+     */
+    public boolean inTurn = false;
+
     public TimelineMinion(AbstractPlayer summoner, List<AbstractCard> cards, int offsetX, int offsetY, int maxHealth) {
         super(NAME, ID, maxHealth, 0, 0, 120, 120, IMG, offsetX, offsetY);
 
@@ -49,7 +54,7 @@ public class TimelineMinion extends AbstractMinionWithCards {
         this.auraEffectTimer -= Gdx.graphics.getDeltaTime();
         if (this.auraEffectTimer < 0.0F) {
             this.auraEffectTimer = MathUtils.random(0.45F, 0.55F);
-            AbstractDungeon.effectsQueue.add(new TimelineAuraEffect(this));
+            AbstractDungeon.effectsQueue.add(new TimelineAuraEffect(this, this.inTurn));
         }
     }
 

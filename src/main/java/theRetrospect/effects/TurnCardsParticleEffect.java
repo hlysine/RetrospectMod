@@ -11,11 +11,10 @@ import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.vfx.AbstractGameEffect;
 
 public class TurnCardsParticleEffect extends AbstractGameEffect {
-    private float x;
-    private float scale = 0.01F;
-    private float y;
-    private float vX;
-    private float targetScale;
+    private final float x;
+    private final float y;
+    private float scale;
+    private final float targetScale;
     private static Texture img;
 
     public TurnCardsParticleEffect(float x, float y) {
@@ -40,7 +39,6 @@ public class TurnCardsParticleEffect extends AbstractGameEffect {
 
     public void update() {
         this.scale = Interpolation.smooth.apply(this.targetScale, 0.4f, this.duration / this.startingDuration);
-        this.rotation += this.vX * this.startingDuration * Gdx.graphics.getDeltaTime();
         this.color.a = this.duration / this.startingDuration;
 
         this.duration -= Gdx.graphics.getDeltaTime();

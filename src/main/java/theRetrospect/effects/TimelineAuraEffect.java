@@ -13,21 +13,27 @@ import theRetrospect.minions.TimelineMinion;
 public class TimelineAuraEffect extends AbstractGameEffect {
     public static boolean switcher = true;
     private final TextureAtlas.AtlasRegion img = ImageMaster.EXHAUST_L;
+    private final TimelineMinion minion;
 
+    private float dx;
+    private float dy;
     private final float vY;
 
-    public TimelineAuraEffect(TimelineMinion minion) {
-        if (MathUtils.randomBoolean()) {
+    public TimelineAuraEffect(TimelineMinion minion, boolean highlight) {
+        this.minion = minion;
+        if (highlight) {
+            this.color = new Color(MathUtils.random(0.7f, 0.9f), MathUtils.random(0.8f, 1.0f), 0.2f, 0.0f);
+        } else if (MathUtils.randomBoolean()) {
             this.color = new Color(MathUtils.random(0.6f, 0.7f), MathUtils.random(0.2f, 0.3f), MathUtils.random(0.9f, 1f), 0.0f);
         } else {
             this.color = new Color(MathUtils.random(0.5f, 0.55f), MathUtils.random(0.5f, 0.6f), MathUtils.random(0.7f, 0.8f), 0.0f);
         }
 
-        this.x = minion.hb.cX + MathUtils.random(-minion.hb.width / 16.0F, minion.hb.width / 16.0F);
-        this.y = minion.hb.cY + MathUtils.random(-minion.hb.height / 16.0F, minion.hb.height / 12.0F);
+        this.dx = MathUtils.random(-minion.hb.width / 16.0F, minion.hb.width / 16.0F);
+        this.dy = MathUtils.random(-minion.hb.height / 16.0F, minion.hb.height / 16.0F);
 
-        this.x -= this.img.packedWidth / 2.0f;
-        this.y -= this.img.packedHeight / 2.0f;
+        this.dx -= this.img.packedWidth / 2.0f;
+        this.dy -= this.img.packedHeight / 2.0f;
 
         this.scale *= 1.5;
 
@@ -46,9 +52,6 @@ public class TimelineAuraEffect extends AbstractGameEffect {
         }
     }
 
-    private float y;
-    private float x;
-
     public void update() {
         if (this.duration > 1.0F) {
             this.color.a = Interpolation.fade.apply(0.2f, 0.0f, this.duration - 1.0f);
@@ -65,8 +68,14 @@ public class TimelineAuraEffect extends AbstractGameEffect {
     public void render(SpriteBatch sb) {
         sb.setColor(this.color);
         sb.setBlendFunction(770, 1);
-        sb.draw(this.img, this.x, this.y, this.img.packedWidth / 2.0f, this.img.packedHeight / 2.0f, this.img.packedWidth, this.img.packedHeight, this.scale, this.scale, this.rotation);
-
+        sb.draw(
+                this.img,
+                minion.hb.cX + this.dx, minion.hb.cY + this.dy,
+                this.img.packedWidth / 2.0f, this.img.packedHeight / 2.0f,
+                this.img.packedWidth, this.img.packedHeight,
+                this.scale, this.scale,
+                this.rotation
+        );
         sb.setBlendFunction(770, 771);
     }
 
