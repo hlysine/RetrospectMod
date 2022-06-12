@@ -187,7 +187,7 @@
   },
   "theRetrospect:DefectiveEcho": {
     "NAME": "Defective Echo",
-    "DESCRIPTION": "{@@}Next turn, you first {!M!|@=!M! card is|1=card is|>1=!M! cards are} played twice."
+    "DESCRIPTION": "{@@}Next turn, you first {!M!|1=card is|>1=!M! cards are|@=!M! card is} played twice."
   },
   "theRetrospect:DivineEye": {
     "NAME": "Divine Eye",
