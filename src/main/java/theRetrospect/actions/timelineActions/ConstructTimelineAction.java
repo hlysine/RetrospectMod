@@ -58,7 +58,7 @@ public class ConstructTimelineAction extends AbstractGameAction {
                         player,
                         AbstractDungeon.actionManager.cardsPlayedThisTurn.stream()
                                 .filter(card -> card != constructionCard)
-                                .map(CardUtils::makeAdvancedCopy)
+                                .map(card -> CardUtils.makeAdvancedCopy(card, true))
                                 .collect(Collectors.toList()),
                         (int) (-Settings.WIDTH * 0.5), 0, health);
 

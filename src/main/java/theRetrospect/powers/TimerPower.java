@@ -76,7 +76,7 @@ public class TimerPower extends AbstractPower implements CloneablePowerInterface
                         addToBot(new WaitAction(0.75f));
                 },
                 nxt -> {
-                    AbstractCard cardToPlay = CardUtils.makeAdvancedCopy(minion.cards.get(cardIdx.get()));
+                    AbstractCard cardToPlay = CardUtils.makeAdvancedCopy(minion.cards.get(cardIdx.get()), true);
                     CardUtils.addFollowUpActionToBottom(cardToPlay, new RunnableAction(nxt), true);
                     playCard(cardToPlay, null);
                 },

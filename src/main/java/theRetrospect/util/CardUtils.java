@@ -135,8 +135,12 @@ public class CardUtils {
      * @param card The card to be copied.
      * @return A new copy of the card.
      */
-    public static AbstractCard makeAdvancedCopy(AbstractCard card) {
-        AbstractCard newCard = card.makeStatEquivalentCopy();
+    public static AbstractCard makeAdvancedCopy(AbstractCard card, boolean sameUuid) {
+        AbstractCard newCard;
+        if (sameUuid)
+            newCard = card.makeSameInstanceOf();
+        else
+            newCard = card.makeStatEquivalentCopy();
         newCard.current_x = card.current_x;
         newCard.target_x = newCard.current_x;
         newCard.current_y = card.current_y;
