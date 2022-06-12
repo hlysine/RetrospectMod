@@ -1,5 +1,16 @@
 # Changelog
 
+## [0.3.2] - Hotfix - 2022-06-12
+
+### Mechanics
+
+- Change timelines to create cards with the same UUID
+- Change all global card actions to also affect cards in timelines
+
+### VFX
+
+- Fix incorrect delay in timeline construction VFX
+
 ## [0.3.1] - VFX & Balancing Update - 2022-06-12
 
 ### Mechanics
@@ -109,11 +120,13 @@
 - Changed Temporal Anomaly to trigger timelines one after the other
 
 ### VFX
+
 - Skip Rewrite History VFX if there are no cards in discard pile
 
 ## [0.2.0] - Second Technical Test - 2022-05-22
 
 ### Mechanics
+
 - Timelines now play cards one after the other instead of queueing all cards at once
 - Reworded timeline descriptions and keywords
 - Timelines can now hold and play timeline construction cards
@@ -124,6 +137,7 @@
 - Added Time Loop mechanic with proper VFX
 
 ### Cards
+
 - Changed Misdirection to play the attack card before constructing a timeline
 - Changed Tap The Future to shuffle 1 instead of 2 Empty cards
 - Fixed Rewrite History not exhausting
@@ -133,7 +147,7 @@
 - Changed Sleight Of Hand to be able to replay other Sleight Of Hand cards
 - Added Paradoxical to Sleight Of Hand
 - Reworked Into The Void to target one timeline and no longer exhaust
-- Added new cards: 
+- Added new cards:
   - Time Loop
   - Shortcut
   - Electric Shock
@@ -155,9 +169,11 @@
   - Divine Eye
 
 ### Events
+
 - Added Mysterious Prophet event
 
 ### Powers
+
 - Powers that play cards at the end of a turn now play them sequentially, right before timelines do
 - Frozen power now allows all auto-played cards to be played
 - Added new powers:
@@ -169,6 +185,7 @@
   - Warm Up (card power)
 
 ### VFX
+
 - Changed spire heart attack sequence slightly
 - Added a VFX effect in Misdirection to show the chosen card before playing it
 - Added death animation to timelines
@@ -181,6 +198,7 @@
 - Corrected buff/debuff VFX for some powers
 
 ### Misc
+
 - Updated author field in code
 - Updated base game to version 03-07-2022
 - Updated dependencies
@@ -188,10 +206,12 @@
 ## [0.0.3] - Balancing Changes - 2022-04-08
 
 ### New content
+
 - Added spire heart finisher sequence
 - Added new relic: Slanted Mirror
 
 ### Changes
+
 - Added additional safety checks in Alternative Reality
 - Renamed Breakneck Form to Shadow Form and reworked it
 - Reworked Rewrite History
@@ -215,12 +235,14 @@
 ## [0.0.2] - Hotfix - 2022-04-01
 
 ### Changed
+
 - Updated strings
 - Prevent the use of timeline potion if a timeline cannot be created
 
 ## [0.0.1] - First Technical Test - 2022-03-31
 
 ### New content
+
 - First technical test
   - Timeline mechanics
   - 21 cards
