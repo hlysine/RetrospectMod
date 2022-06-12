@@ -51,7 +51,6 @@ public class CardReturnToMinionPatch {
                     if (AbstractDungeon.player.limbo.contains(___targetCard)) {
                         AbstractDungeon.player.limbo.removeCard(___targetCard);
                     }
-                    AbstractDungeon.player.cardInUse = null;
                     ___targetCard.unhover();
                     ___targetCard.untip();
                     ___targetCard.stopGlowing();
