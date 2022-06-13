@@ -64,11 +64,7 @@
   },
   "theRetrospect:AlternativeReality": {
     "NAME": "Alternative Reality",
-    "DESCRIPTION": "{@@}If you have an odd number of cards in your draw pile, gain !B! Block. Otherwise, draw !M! card{!M!|>1=s}.",
-    "EXTENDED_DESCRIPTION": [
-      "{@@}[#888888]If[] [#888888]you[] [#888888]have[] [#888888]an[] [#888888]odd[] [#888888]number[] [#888888]of[] [#888888]cards[] [#888888]in[] [#888888]your[] [#888888]draw[] [#888888]pile,[] [#888888]gain[] !B! Block. [#ffff00]Otherwise,[] [#ffff00]draw[] !M! [#ffff00]card{!M!|>1=s}.[]",
-      "{@@}[#ffff00]If[] [#ffff00]you[] [#ffff00]have[] [#ffff00]an[] [#ffff00]odd[] [#ffff00]number[] [#ffff00]of[] [#ffff00]cards[] [#ffff00]in[] [#ffff00]your[] [#ffff00]draw[] [#ffff00]pile,[] [#ffff00]gain[] !B! Block. [#888888]Otherwise,[] [#888888]draw[] !M! [#888888]card{!M!|>1=s}.[]"
-    ]
+    "DESCRIPTION": "{@@}theretrospect:In_timeline, gain !B! Block. Otherwise, draw !M! card{!M!|>1=s}."
   },
   "theRetrospect:Harvest": {
     "NAME": "Harvest",
