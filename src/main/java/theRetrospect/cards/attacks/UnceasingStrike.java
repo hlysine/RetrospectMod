@@ -31,6 +31,8 @@ public class UnceasingStrike extends AbstractRetrospectCard {
         super(ID, IMG, COST, TYPE, RARITY, TARGET);
 
         damage = baseDamage = BASE_DAMAGE;
+
+        this.tags.add(CardTags.STRIKE);
     }
 
     @Override
