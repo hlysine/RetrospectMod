@@ -200,5 +200,13 @@
   "theRetrospect:ShadowForm": {
     "NAME": "Shadow Form",
     "DESCRIPTION": "{@@}Reduce timeline HP cost by !M! %. All timeline cards theretrospect:construct +1 timeline.{!Upgrades!|0= Ethereal.}"
+  },
+  "theRetrospect:UnceasingStrike": {
+    "NAME": "Unceasing Strike",
+    "DESCRIPTION": "End your turn. theretrospect:In_timeline: Deal !D! damage."
+  },
+  "theRetrospect:RecursiveAffinity": {
+    "NAME": "Recursive Affinity",
+    "DESCRIPTION": "theretrospect:Paradoxical. NL Replay your last 2 cards this turn."
   }
 }

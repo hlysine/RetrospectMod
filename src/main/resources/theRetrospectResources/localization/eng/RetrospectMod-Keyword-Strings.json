@@ -44,5 +44,13 @@
       "paradoxical"
     ],
     "DESCRIPTION": "Add a #yParadox to your hand if this card is played by another card."
+  },
+  {
+    "PROPER_NAME": "In timeline",
+    "NAMES": [
+      "In timeline",
+      "in_timeline"
+    ],
+    "DESCRIPTION": "This effect only happens if the card is played by a timeline."
   }
 ]
