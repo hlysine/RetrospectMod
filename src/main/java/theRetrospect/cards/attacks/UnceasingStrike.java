@@ -35,9 +35,9 @@ public class UnceasingStrike extends AbstractRetrospectCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToTop(new PressEndTurnButtonAction());
         if (CardUtils.getPlaySource(this) == CardPlaySource.TIMELINE)
             addToBot(new DamageAction(m, new DamageInfo(p, damage, damageTypeForTurn), AbstractGameAction.AttackEffect.BLUNT_HEAVY));
+        addToBot(new PressEndTurnButtonAction());
     }
 
     @Override
