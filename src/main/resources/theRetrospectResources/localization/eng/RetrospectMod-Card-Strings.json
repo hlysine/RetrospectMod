@@ -84,7 +84,7 @@
   },
   "theRetrospect:EnergyConversion": {
     "NAME": "Energy Conversion",
-    "DESCRIPTION": "{@@}Add {!Upgrades!|@=X+1|0=X} *Miracles into your hand."
+    "DESCRIPTION": "{@@}Add {!M!|0=X|@=X + !M!} *Miracles into your hand."
   },
   "theRetrospect:RewriteHistory": {
     "NAME": "Rewrite History",

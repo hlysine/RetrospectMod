@@ -29,10 +29,13 @@ public class EnergyConversion extends AbstractRetrospectCard {
     private static final CardType TYPE = CardType.SKILL;
 
     private static final int COST = -1;
+    private static final int BASE_CARD_COUNT = 1;
+    private static final int UPGRADE_CARD_COUNT = 1;
 
     public EnergyConversion() {
         super(ID, IMG, COST, TYPE, RARITY, TARGET);
 
+        magicNumber = baseMagicNumber = BASE_CARD_COUNT;
         this.cardsToPreview = new Miracle();
     }
 
@@ -40,8 +43,7 @@ public class EnergyConversion extends AbstractRetrospectCard {
     public void use(AbstractPlayer p, AbstractMonster m) {
         int effect = CardUtils.calculateXCostEffect(this);
 
-        if (this.upgraded)
-            effect += 1;
+        effect += this.magicNumber;
 
         if (effect > 0) {
             addToTop(new MakeTempCardInHandAction(this.cardsToPreview.makeStatEquivalentCopy(), effect));
@@ -56,6 +58,7 @@ public class EnergyConversion extends AbstractRetrospectCard {
     public void upgrade() {
         if (!this.upgraded) {
             this.upgradeName();
+            this.upgradeMagicNumber(UPGRADE_CARD_COUNT);
             this.initializeDescription();
         }
     }
