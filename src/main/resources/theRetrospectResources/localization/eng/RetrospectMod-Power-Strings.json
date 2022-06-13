@@ -107,5 +107,13 @@
       "At the end of your turn, play #b",
       " #yAvert."
     ]
+  },
+  "theRetrospect:IntoTheVoidPower": {
+    "NAME": "Into The Void",
+    "DESCRIPTIONS": [
+      "Prevent death for #b",
+      " round.",
+      " rounds."
+    ]
   }
 }
