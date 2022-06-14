@@ -11,10 +11,10 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import theRetrospect.RetrospectMod;
-import theRetrospect.subscribers.OnCreatureDeathPreProtectionSubscriber;
+import theRetrospect.subscribers.OnDeathPreProtectionSubscriber;
 import theRetrospect.util.TextureLoader;
 
-public class IntoTheVoidPower extends AbstractPower implements CloneablePowerInterface, OnCreatureDeathPreProtectionSubscriber {
+public class IntoTheVoidPower extends AbstractPower implements CloneablePowerInterface, OnDeathPreProtectionSubscriber {
 
     public static final String POWER_ID = RetrospectMod.makeID(IntoTheVoidPower.class.getSimpleName());
     private static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
@@ -66,7 +66,7 @@ public class IntoTheVoidPower extends AbstractPower implements CloneablePowerInt
     }
 
     @Override
-    public boolean onPlayerDeathPreProtection(DamageInfo info, boolean canDie) {
+    public boolean onDeathPreProtection(DamageInfo info, boolean canDie) {
         if (canDie)
             this.owner.heal(1);
         return false;

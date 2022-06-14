@@ -9,9 +9,9 @@ import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 import javassist.CannotCompileException;
 import javassist.CtBehavior;
-import theRetrospect.subscribers.OnCreatureDeathPreProtectionSubscriber;
+import theRetrospect.subscribers.OnDeathPreProtectionSubscriber;
 
-public class OnCreatureDeathPreProtectionPatch {
+public class OnDeathPreProtectionPatch {
 
     @SpirePatch(
             clz = AbstractPlayer.class,
@@ -25,15 +25,15 @@ public class OnCreatureDeathPreProtectionPatch {
         public static SpireReturn<Void> Insert(AbstractPlayer __instance, DamageInfo info) {
             boolean canDie = true;
             for (AbstractPower power : __instance.powers) {
-                if (power instanceof OnCreatureDeathPreProtectionSubscriber) {
-                    OnCreatureDeathPreProtectionSubscriber subscriber = (OnCreatureDeathPreProtectionSubscriber) power;
-                    canDie = subscriber.onPlayerDeathPreProtection(info, canDie) && canDie;
+                if (power instanceof OnDeathPreProtectionSubscriber) {
+                    OnDeathPreProtectionSubscriber subscriber = (OnDeathPreProtectionSubscriber) power;
+                    canDie = subscriber.onDeathPreProtection(info, canDie) && canDie;
                 }
             }
             for (AbstractRelic relic : __instance.relics) {
-                if (relic instanceof OnCreatureDeathPreProtectionSubscriber) {
-                    OnCreatureDeathPreProtectionSubscriber subscriber = (OnCreatureDeathPreProtectionSubscriber) relic;
-                    canDie = subscriber.onPlayerDeathPreProtection(info, canDie) && canDie;
+                if (relic instanceof OnDeathPreProtectionSubscriber) {
+                    OnDeathPreProtectionSubscriber subscriber = (OnDeathPreProtectionSubscriber) relic;
+                    canDie = subscriber.onDeathPreProtection(info, canDie) && canDie;
                 }
             }
             if (canDie) {
@@ -65,9 +65,9 @@ public class OnCreatureDeathPreProtectionPatch {
         public static SpireReturn<Void> Insert(AbstractMonster __instance, DamageInfo info) {
             boolean canDie = true;
             for (AbstractPower power : __instance.powers) {
-                if (power instanceof OnCreatureDeathPreProtectionSubscriber) {
-                    OnCreatureDeathPreProtectionSubscriber subscriber = (OnCreatureDeathPreProtectionSubscriber) power;
-                    canDie = subscriber.onPlayerDeathPreProtection(info, canDie) && canDie;
+                if (power instanceof OnDeathPreProtectionSubscriber) {
+                    OnDeathPreProtectionSubscriber subscriber = (OnDeathPreProtectionSubscriber) power;
+                    canDie = subscriber.onDeathPreProtection(info, canDie) && canDie;
                 }
             }
             if (canDie) {
