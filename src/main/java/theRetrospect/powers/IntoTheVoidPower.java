@@ -66,8 +66,9 @@ public class IntoTheVoidPower extends AbstractPower implements CloneablePowerInt
     }
 
     @Override
-    public boolean onPlayerDeathPreProtection(DamageInfo info) {
-        this.owner.heal(1);
+    public boolean onPlayerDeathPreProtection(DamageInfo info, boolean canDie) {
+        if (canDie)
+            this.owner.heal(1);
         return false;
     }
 }

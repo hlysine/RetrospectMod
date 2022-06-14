@@ -27,13 +27,13 @@ public class OnCreatureDeathPreProtectionPatch {
             for (AbstractPower power : __instance.powers) {
                 if (power instanceof OnCreatureDeathPreProtectionSubscriber) {
                     OnCreatureDeathPreProtectionSubscriber subscriber = (OnCreatureDeathPreProtectionSubscriber) power;
-                    canDie = subscriber.onPlayerDeathPreProtection(info) && canDie;
+                    canDie = subscriber.onPlayerDeathPreProtection(info, canDie) && canDie;
                 }
             }
             for (AbstractRelic relic : __instance.relics) {
                 if (relic instanceof OnCreatureDeathPreProtectionSubscriber) {
                     OnCreatureDeathPreProtectionSubscriber subscriber = (OnCreatureDeathPreProtectionSubscriber) relic;
-                    canDie = subscriber.onPlayerDeathPreProtection(info) && canDie;
+                    canDie = subscriber.onPlayerDeathPreProtection(info, canDie) && canDie;
                 }
             }
             if (canDie) {
@@ -67,7 +67,7 @@ public class OnCreatureDeathPreProtectionPatch {
             for (AbstractPower power : __instance.powers) {
                 if (power instanceof OnCreatureDeathPreProtectionSubscriber) {
                     OnCreatureDeathPreProtectionSubscriber subscriber = (OnCreatureDeathPreProtectionSubscriber) power;
-                    canDie = subscriber.onPlayerDeathPreProtection(info) && canDie;
+                    canDie = subscriber.onPlayerDeathPreProtection(info, canDie) && canDie;
                 }
             }
             if (canDie) {
