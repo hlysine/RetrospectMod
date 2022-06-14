@@ -35,6 +35,7 @@ public class IntoTheVoid extends AbstractRetrospectCard {
         super(ID, IMG, COST, TYPE, RARITY, TARGET);
 
         magicNumber = baseMagicNumber = BASE_HP_LOSS;
+        this.exhaust = true;
     }
 
     @Override
