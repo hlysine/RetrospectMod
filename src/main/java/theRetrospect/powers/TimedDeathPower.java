@@ -22,8 +22,8 @@ public class TimedDeathPower extends AbstractPower implements CloneablePowerInte
     public static final String NAME = powerStrings.NAME;
     public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
 
-    private static final Texture tex84 = TextureLoader.getTexture("theRetrospectResources/images/powers/placeholder_power84.png");
-    private static final Texture tex32 = TextureLoader.getTexture("theRetrospectResources/images/powers/placeholder_power32.png");
+    private static final Texture tex84 = TextureLoader.getTexture("theRetrospectResources/images/powers/timed_death84.png");
+    private static final Texture tex32 = TextureLoader.getTexture("theRetrospectResources/images/powers/timed_death32.png");
 
     public TimedDeathPower(final AbstractCreature owner, final int amount) {
         name = NAME;
