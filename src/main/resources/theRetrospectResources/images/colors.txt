@@ -1,0 +1,3 @@
+Card background
+bottom: 41 16 100
+top: 51 60 98
