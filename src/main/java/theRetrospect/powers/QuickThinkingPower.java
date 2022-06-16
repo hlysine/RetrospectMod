@@ -20,8 +20,8 @@ public class QuickThinkingPower extends AbstractPower implements CloneablePowerI
 
     public static final int MAX_AMOUNT = 10; // anything more than 10 is meaningless since the player's hand size is 10
 
-    private static final Texture tex84 = TextureLoader.getTexture("theRetrospectResources/images/powers/placeholder_power84.png");
-    private static final Texture tex32 = TextureLoader.getTexture("theRetrospectResources/images/powers/placeholder_power32.png");
+    private static final Texture tex84 = TextureLoader.getTexture("theRetrospectResources/images/powers/quick_thinking84.png");
+    private static final Texture tex32 = TextureLoader.getTexture("theRetrospectResources/images/powers/quick_thinking32.png");
 
     public QuickThinkingPower(final AbstractCreature owner, final int amount) {
         name = NAME;
