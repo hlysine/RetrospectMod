@@ -17,8 +17,8 @@ public class QuantumHourglass extends AbstractBaseRelic implements TimelineColla
 
     public static final String ID = RetrospectMod.makeID(QuantumHourglass.class.getSimpleName());
 
-    private static final Texture IMG = TextureLoader.getTexture(makeRelicPath("placeholder_relic2.png"));
-    private static final Texture OUTLINE = TextureLoader.getTexture(makeRelicOutlinePath("placeholder_relic2.png"));
+    private static final Texture IMG = TextureLoader.getTexture(makeRelicPath("quantum_hourglass.png"));
+    private static final Texture OUTLINE = TextureLoader.getTexture(makeRelicOutlinePath("quantum_hourglass.png"));
 
     private static final RelicTier TIER = RelicTier.RARE;
     private static final LandingSound LANDING_SOUND = LandingSound.MAGICAL;
