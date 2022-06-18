@@ -23,8 +23,8 @@ public class TimeLoopPower extends AbstractPower implements CloneablePowerInterf
     public static final String NAME = powerStrings.NAME;
     public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
 
-    private static final Texture tex84 = TextureLoader.getTexture("theRetrospectResources/images/powers/placeholder_power84.png");
-    private static final Texture tex32 = TextureLoader.getTexture("theRetrospectResources/images/powers/placeholder_power32.png");
+    private static final Texture tex84 = TextureLoader.getTexture("theRetrospectResources/images/powers/time_loop84.png");
+    private static final Texture tex32 = TextureLoader.getTexture("theRetrospectResources/images/powers/time_loop32.png");
 
     public TimeLoopPower(final AbstractCreature owner) {
         name = NAME;
