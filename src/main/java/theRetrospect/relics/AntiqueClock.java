@@ -17,8 +17,8 @@ public class AntiqueClock extends AbstractBaseRelic {
 
     public static final String ID = RetrospectMod.makeID(AntiqueClock.class.getSimpleName());
 
-    private static final Texture IMG = TextureLoader.getTexture(makeRelicPath("default_clickable_relic.png"));
-    private static final Texture OUTLINE = TextureLoader.getTexture(makeRelicOutlinePath("default_clickable_relic.png"));
+    private static final Texture IMG = TextureLoader.getTexture(makeRelicPath("antique_clock.png"));
+    private static final Texture OUTLINE = TextureLoader.getTexture(makeRelicOutlinePath("antique_clock.png"));
 
     private static final RelicTier TIER = RelicTier.STARTER;
     private static final LandingSound LANDING_SOUND = LandingSound.CLINK;
