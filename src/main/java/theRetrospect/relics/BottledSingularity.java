@@ -31,8 +31,8 @@ public class BottledSingularity extends AbstractBaseRelic implements CustomBottl
     private boolean cardsSelected = true;
 
     public static final String ID = RetrospectMod.makeID(BottledSingularity.class.getSimpleName());
-    private static final Texture IMG = TextureLoader.getTexture(makeRelicPath("BottledPlaceholder.png"));
-    private static final Texture OUTLINE = TextureLoader.getTexture(makeRelicOutlinePath("BottledPlaceholder.png"));
+    private static final Texture IMG = TextureLoader.getTexture(makeRelicPath("bottled_singularity.png"));
+    private static final Texture OUTLINE = TextureLoader.getTexture(makeRelicOutlinePath("bottled_singularity.png"));
 
     public BottledSingularity() {
         super(ID, IMG, OUTLINE, RelicTier.SPECIAL, LandingSound.HEAVY);
