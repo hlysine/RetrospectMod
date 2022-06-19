@@ -1,0 +1,18 @@
+{
+  "theRetrospect:Strike": {
+    "RARITY": "BASIC",
+    "TYPE": "ATTACK",
+    "IMG": "strike.png",
+    "COST": 1,
+    "D": 6,
+    "U_D": 3
+  },
+  "theRetrospect:Defend": {
+    "RARITY": "BASIC",
+    "TYPE": "SKILL",
+    "IMG": "defend.png",
+    "COST": 1,
+    "B": 5,
+    "U_B": 3
+  }
+}

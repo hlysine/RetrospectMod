@@ -5,6 +5,7 @@ import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import hlysine.STSCardInfo.CardInfo;
 import theRetrospect.RetrospectMod;
 import theRetrospect.cards.AbstractRetrospectCard;
 
@@ -14,20 +15,17 @@ public class Strike extends AbstractRetrospectCard {
 
     public static final String ID = RetrospectMod.makeID(Strike.class.getSimpleName());
 
-    public static final String IMG = makeCardPath("strike.png");
+    private static final CardInfo INFO = RetrospectMod.getCardInfo(ID);
+    public static final String IMG = makeCardPath(INFO.getImage());
 
-    private static final CardRarity RARITY = CardRarity.BASIC;
+    private static final CardRarity RARITY = INFO.getRarity();
     private static final CardTarget TARGET = CardTarget.ENEMY;
-    private static final CardType TYPE = CardType.ATTACK;
-
-    private static final int COST = 1;
-    private static final int BASE_DAMAGE = 6;
-    private static final int UPGRADE_DAMAGE = 3;
+    private static final CardType TYPE = INFO.getType();
 
     public Strike() {
-        super(ID, IMG, COST, TYPE, RARITY, TARGET);
+        super(ID, IMG, INFO.getBaseCost(), TYPE, RARITY, TARGET);
 
-        damage = baseDamage = BASE_DAMAGE;
+        INFO.setBaseValues(this);
 
         this.tags.add(CardTags.STARTER_STRIKE);
         this.tags.add(CardTags.STRIKE);
@@ -42,7 +40,7 @@ public class Strike extends AbstractRetrospectCard {
     public void upgrade() {
         if (!upgraded) {
             upgradeName();
-            upgradeDamage(UPGRADE_DAMAGE);
+            INFO.upgradeValues(this);
             initializeDescription();
         }
     }

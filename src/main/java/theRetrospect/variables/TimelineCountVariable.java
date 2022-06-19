@@ -1,16 +1,31 @@
 package theRetrospect.variables;
 
-import basemod.abstracts.DynamicVariable;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import theRetrospect.cards.AbstractRetrospectCard;
 
 import static theRetrospect.RetrospectMod.makeID;
 
-public class TimelineCountVariable extends DynamicVariable {
+public class TimelineCountVariable extends CustomVariable {
 
     @Override
     public String key() {
         return makeID("TimelineCount");
+    }
+
+    @Override
+    public void setBaseValue(AbstractCard card, int value) {
+        if (card instanceof AbstractRetrospectCard) {
+            AbstractRetrospectCard rCard = (AbstractRetrospectCard) card;
+            rCard.baseTimelineCount = rCard.timelineCount = value;
+        }
+    }
+
+    @Override
+    public void upgradeValue(AbstractCard card, int upgradeValue) {
+        if (card instanceof AbstractRetrospectCard) {
+            AbstractRetrospectCard rCard = (AbstractRetrospectCard) card;
+            rCard.upgradeTimelineCount(upgradeValue);
+        }
     }
 
     @Override

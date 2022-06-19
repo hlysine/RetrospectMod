@@ -18,6 +18,9 @@ import com.megacrit.cardcrawl.dungeons.TheCity;
 import com.megacrit.cardcrawl.helpers.CardHelper;
 import com.megacrit.cardcrawl.localization.*;
 import com.megacrit.cardcrawl.unlock.UnlockTracker;
+import hlysine.STSCardInfo.CardInfo;
+import hlysine.STSCardInfo.CardInfoRepository;
+import hlysine.STSCardInfo.ValueHandler;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import theRetrospect.cards.AbstractRetrospectCard;
@@ -32,11 +35,15 @@ import theRetrospect.relics.AbstractBaseRelic;
 import theRetrospect.util.IDCheckDontTouchPls;
 import theRetrospect.util.TextureLoader;
 import theRetrospect.util.TimelineTargeting;
+import theRetrospect.variables.CustomVariable;
 import theRetrospect.variables.TimelineCountVariable;
 
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @SpireInitializer
 public class RetrospectMod implements
@@ -80,6 +87,12 @@ public class RetrospectMod implements
 
     //Mod Badge - A small icon that appears in the mod settings menu.
     public static final String BADGE_IMAGE = "theRetrospectResources/images/Badge.png";
+
+    private static CardInfoRepository cardInfoRepository;
+
+    public static CardInfo getCardInfo(String cardId) {
+        return cardInfoRepository.getCardInfo(cardId);
+    }
 
     public static String makeCardPath(String resourcePath) {
         return getModID() + "Resources/images/cards/" + resourcePath;
@@ -261,7 +274,15 @@ public class RetrospectMod implements
     public void receiveEditCards() {
         logger.info("Adding variables");
         pathCheck();
-        BaseMod.addDynamicVariable(new TimelineCountVariable());
+        List<CustomVariable> customVariables = new ArrayList<>();
+        customVariables.add(new TimelineCountVariable());
+        cardInfoRepository = new CardInfoRepository(
+                RetrospectMod.class.getResourceAsStream("/" + getModID() + "Resources/Card-Values.json"),
+                customVariables.stream().map(variable -> (ValueHandler) variable).collect(Collectors.toList())
+        );
+        for (CustomVariable variable : customVariables) {
+            BaseMod.addDynamicVariable(variable);
+        }
 
         logger.info("Adding cards");
 
