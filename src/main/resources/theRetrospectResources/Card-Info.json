@@ -6,7 +6,7 @@
     "IMG": "strike.png",
     "COST": 1,
     "D": 6,
-    "^D": 3
+    "+D": 3
   },
   "theRetrospect:Defend": {
     "RARITY": "BASIC",
@@ -15,7 +15,7 @@
     "IMG": "defend.png",
     "COST": 1,
     "B": 5,
-    "^B": 3
+    "+B": 3
   },
   "theRetrospect:Divert": {
     "RARITY": "BASIC",
@@ -31,7 +31,7 @@
     "COLOR": "RETROSPECT_PURPLE",
     "IMG": "double_time.png",
     "COST": 1,
-    "^COST": 0
+    "+COST": 0
   },
   "theRetrospect:Overcore": {
     "RARITY": "RARE",
@@ -40,7 +40,7 @@
     "IMG": "overcore.png",
     "COST": 1,
     "theRetrospect:TimelineCount": 3,
-    "M#Frozen Count": 1
+    "M/Frozen Count": 1
   },
   "theRetrospect:Avert": {
     "RARITY": "COMMON",
@@ -48,287 +48,370 @@
     "COLOR": "RETROSPECT_PURPLE",
     "IMG": "avert.png",
     "COST": 2,
-    "^COST": 1,
+    "+COST": 1,
     "theRetrospect:TimelineCount": 1
   },
   "theRetrospect:Transmute": {
-    "RARITY": "BASIC",
+    "RARITY": "COMMON",
     "TYPE": "SKILL",
     "COLOR": "RETROSPECT_PURPLE",
-    "IMG": "defend.png",
-    "COST": 1
+    "IMG": "transmute.png",
+    "COST": 0,
+    "M/Card Count": 1,
+    "+M": 1
   },
   "theRetrospect:Concurrency": {
-    "RARITY": "BASIC",
-    "TYPE": "SKILL",
+    "RARITY": "COMMON",
+    "TYPE": "ATTACK",
     "COLOR": "RETROSPECT_PURPLE",
-    "IMG": "defend.png",
-    "COST": 1
+    "IMG": "concurrency.png",
+    "COST": 1,
+    "D": 8,
+    "+D": 3
   },
   "theRetrospect:Blink": {
-    "RARITY": "BASIC",
-    "TYPE": "SKILL",
+    "RARITY": "COMMON",
+    "TYPE": "ATTACK",
     "COLOR": "RETROSPECT_PURPLE",
-    "IMG": "defend.png",
-    "COST": 1
+    "IMG": "blink.png",
+    "COST": 0,
+    "D": 5,
+    "+D": 3
   },
   "theRetrospect:Empty": {
-    "RARITY": "BASIC",
-    "TYPE": "SKILL",
-    "COLOR": "RETROSPECT_PURPLE",
-    "IMG": "defend.png",
-    "COST": 1
+    "RARITY": "SPECIAL",
+    "TYPE": "STATUS",
+    "COLOR": "COLORLESS",
+    "IMG": "empty.png",
+    "COST": 1,
+    "+COST": 0
   },
   "theRetrospect:TapTheFuture": {
-    "RARITY": "BASIC",
+    "RARITY": "COMMON",
     "TYPE": "SKILL",
     "COLOR": "RETROSPECT_PURPLE",
-    "IMG": "defend.png",
-    "COST": 1
+    "IMG": "tap_the_future.png",
+    "COST": 0,
+    "M/Energy Gain": 2,
+    "+M": 1
   },
   "theRetrospect:SleightOfHand": {
-    "RARITY": "BASIC",
-    "TYPE": "SKILL",
+    "RARITY": "COMMON",
+    "TYPE": "ATTACK",
     "COLOR": "RETROSPECT_PURPLE",
-    "IMG": "defend.png",
-    "COST": 1
+    "IMG": "sleight_of_hand.png",
+    "COST": 2,
+    "D": 8,
+    "+D": 4
   },
   "theRetrospect:AlternativeReality": {
-    "RARITY": "BASIC",
+    "RARITY": "UNCOMMON",
     "TYPE": "SKILL",
     "COLOR": "RETROSPECT_PURPLE",
-    "IMG": "defend.png",
-    "COST": 1
+    "IMG": "alternative_reality.png",
+    "COST": 1,
+    "B": 6,
+    "+B": 2,
+    "M/Card Draw": 2,
+    "+M": 1
   },
   "theRetrospect:Harvest": {
-    "RARITY": "BASIC",
-    "TYPE": "SKILL",
+    "RARITY": "RARE",
+    "TYPE": "ATTACK",
     "COLOR": "RETROSPECT_PURPLE",
-    "IMG": "defend.png",
-    "COST": 1
+    "IMG": "harvest.png",
+    "COST": 2,
+    "D": 4,
+    "+D": 2
   },
   "theRetrospect:TemporalAnomaly": {
-    "RARITY": "BASIC",
+    "RARITY": "UNCOMMON",
     "TYPE": "SKILL",
     "COLOR": "RETROSPECT_PURPLE",
-    "IMG": "defend.png",
-    "COST": 1
+    "IMG": "temporal_anomaly.png",
+    "COST": -1
   },
   "theRetrospect:ChargeRifle": {
-    "RARITY": "BASIC",
-    "TYPE": "SKILL",
+    "RARITY": "COMMON",
+    "TYPE": "ATTACK",
     "COLOR": "RETROSPECT_PURPLE",
-    "IMG": "defend.png",
-    "COST": 1
+    "IMG": "charge_rifle.png",
+    "COST": 0,
+    "D": 2,
+    "+D": 2,
+    "M/Damage Increase": 2
   },
   "theRetrospect:DejaVu": {
-    "RARITY": "BASIC",
+    "RARITY": "UNCOMMON",
     "TYPE": "SKILL",
     "COLOR": "RETROSPECT_PURPLE",
-    "IMG": "defend.png",
-    "COST": 1
+    "IMG": "deja_vu.png",
+    "COST": 1,
+    "B": 1,
+    "M/Block Increase": 1,
+    "+M": 1
   },
   "theRetrospect:EnergyConversion": {
-    "RARITY": "BASIC",
+    "RARITY": "UNCOMMON",
     "TYPE": "SKILL",
     "COLOR": "RETROSPECT_PURPLE",
-    "IMG": "defend.png",
-    "COST": 1
+    "IMG": "energy_conversion.png",
+    "COST": -1,
+    "M/Card Count": 1,
+    "+M": 1
   },
   "theRetrospect:RewriteHistory": {
-    "RARITY": "BASIC",
-    "TYPE": "SKILL",
+    "RARITY": "RARE",
+    "TYPE": "ATTACK",
     "COLOR": "RETROSPECT_PURPLE",
-    "IMG": "defend.png",
-    "COST": 1
+    "IMG": "rewrite_history.png",
+    "COST": 3,
+    "D": 1,
+    "+D": 1
   },
   "theRetrospect:QuickThinker": {
-    "RARITY": "BASIC",
-    "TYPE": "SKILL",
+    "RARITY": "UNCOMMON",
+    "TYPE": "POWER",
     "COLOR": "RETROSPECT_PURPLE",
-    "IMG": "defend.png",
-    "COST": 1
+    "IMG": "quick_thinker.png",
+    "COST": 1,
+    "+COST": 0,
+    "M/Card Draw": 1
   },
   "theRetrospect:UnstableChronology": {
-    "RARITY": "BASIC",
+    "RARITY": "UNCOMMON",
     "TYPE": "SKILL",
     "COLOR": "RETROSPECT_PURPLE",
-    "IMG": "defend.png",
-    "COST": 1
+    "IMG": "unstable_chronology.png",
+    "COST": 4,
+    "theRetrospect:TimelineCount": 1
   },
   "theRetrospect:Paradox": {
-    "RARITY": "BASIC",
-    "TYPE": "SKILL",
-    "COLOR": "RETROSPECT_PURPLE",
-    "IMG": "defend.png",
-    "COST": 1
+    "RARITY": "SPECIAL",
+    "TYPE": "STATUS",
+    "COLOR": "COLORLESS",
+    "IMG": "empty.png",
+    "COST": -2
   },
   "theRetrospect:TimeLoop": {
-    "RARITY": "BASIC",
-    "TYPE": "SKILL",
+    "RARITY": "RARE",
+    "TYPE": "POWER",
     "COLOR": "RETROSPECT_PURPLE",
-    "IMG": "defend.png",
-    "COST": 1
+    "IMG": "time_loop.png",
+    "COST": 2,
+    "+COST": 1
   },
   "theRetrospect:Shortcut": {
-    "RARITY": "BASIC",
-    "TYPE": "SKILL",
+    "RARITY": "RARE",
+    "TYPE": "POWER",
     "COLOR": "RETROSPECT_PURPLE",
-    "IMG": "defend.png",
-    "COST": 1
+    "IMG": "shortcut.png",
+    "COST": 1,
+    "M/Base Power": 5,
+    "+M": 2
   },
   "theRetrospect:ElectricShock": {
-    "RARITY": "BASIC",
-    "TYPE": "SKILL",
+    "RARITY": "COMMON",
+    "TYPE": "ATTACK",
     "COLOR": "RETROSPECT_PURPLE",
-    "IMG": "defend.png",
-    "COST": 1
+    "IMG": "electric_shock.png",
+    "COST": 2,
+    "D": 10,
+    "+D": 3,
+    "M/Weak Power": 2,
+    "+M": 1
   },
   "theRetrospect:Misdirection": {
-    "RARITY": "BASIC",
+    "RARITY": "COMMON",
     "TYPE": "SKILL",
     "COLOR": "RETROSPECT_PURPLE",
-    "IMG": "defend.png",
-    "COST": 1
+    "IMG": "misdirection.png",
+    "COST": 2,
+    "B": 8,
+    "+B": 4,
+    "theRetrospect:TimelineCount": 1
   },
   "theRetrospect:TacticalRetreat": {
-    "RARITY": "BASIC",
+    "RARITY": "COMMON",
     "TYPE": "SKILL",
     "COLOR": "RETROSPECT_PURPLE",
-    "IMG": "defend.png",
-    "COST": 1
+    "IMG": "tactical_retreat.png",
+    "COST": 1,
+    "B": 7,
+    "+B": 4
   },
   "theRetrospect:LightspeedLeap": {
-    "RARITY": "BASIC",
+    "RARITY": "UNCOMMON",
     "TYPE": "SKILL",
     "COLOR": "RETROSPECT_PURPLE",
-    "IMG": "defend.png",
-    "COST": 1
+    "IMG": "lightspeed_leap.png",
+    "COST": 0,
+    "M/Card Count": 4,
+    "+M": -1,
+    "theRetrospect:TimelineCount": 1
   },
   "theRetrospect:FastForward": {
-    "RARITY": "BASIC",
+    "RARITY": "UNCOMMON",
     "TYPE": "SKILL",
     "COLOR": "RETROSPECT_PURPLE",
-    "IMG": "defend.png",
-    "COST": 1
+    "IMG": "fast_forward.png",
+    "COST": 1,
+    "M/Card Count": 2,
+    "+M": 1
   },
   "theRetrospect:AllOutAttack": {
-    "RARITY": "BASIC",
-    "TYPE": "SKILL",
+    "RARITY": "COMMON",
+    "TYPE": "ATTACK",
     "COLOR": "RETROSPECT_PURPLE",
-    "IMG": "defend.png",
-    "COST": 1
+    "IMG": "all_out_attack.png",
+    "COST": 1,
+    "D": 12,
+    "+D": 4,
+    "M/Weak Power": 1
   },
   "theRetrospect:WarmUp": {
-    "RARITY": "BASIC",
-    "TYPE": "SKILL",
+    "RARITY": "COMMON",
+    "TYPE": "ATTACK",
     "COLOR": "RETROSPECT_PURPLE",
-    "IMG": "defend.png",
-    "COST": 1
+    "IMG": "warm_up.png",
+    "COST": 1,
+    "D": 7,
+    "+D": 3,
+    "M/Warm Up Power": 1
   },
   "theRetrospect:Telekinesis": {
-    "RARITY": "BASIC",
-    "TYPE": "SKILL",
+    "RARITY": "UNCOMMON",
+    "TYPE": "ATTACK",
     "COLOR": "RETROSPECT_PURPLE",
-    "IMG": "defend.png",
-    "COST": 1
+    "IMG": "telekinesis.png",
+    "COST": 1,
+    "D": 8,
+    "+D": 4
   },
   "theRetrospect:Recollection": {
-    "RARITY": "BASIC",
+    "RARITY": "UNCOMMON",
     "TYPE": "SKILL",
     "COLOR": "RETROSPECT_PURPLE",
-    "IMG": "defend.png",
-    "COST": 1
+    "IMG": "recollection.png",
+    "COST": 2,
+    "M/Card Count": 2,
+    "+M": 1
   },
   "theRetrospect:Ambush": {
-    "RARITY": "BASIC",
-    "TYPE": "SKILL",
+    "RARITY": "UNCOMMON",
+    "TYPE": "ATTACK",
     "COLOR": "RETROSPECT_PURPLE",
-    "IMG": "defend.png",
-    "COST": 1
+    "IMG": "ambush.png",
+    "COST": 2,
+    "D": 5,
+    "M/Card Count": 6,
+    "+M": -1
   },
   "theRetrospect:HatTrick": {
-    "RARITY": "BASIC",
+    "RARITY": "RARE",
     "TYPE": "SKILL",
     "COLOR": "RETROSPECT_PURPLE",
-    "IMG": "defend.png",
-    "COST": 1
+    "IMG": "hat_trick.png",
+    "COST": 1,
+    "+COST": 0,
+    "M/Card Count": 1
   },
   "theRetrospect:BlindStrike": {
-    "RARITY": "BASIC",
-    "TYPE": "SKILL",
+    "RARITY": "UNCOMMON",
+    "TYPE": "ATTACK",
     "COLOR": "RETROSPECT_PURPLE",
-    "IMG": "defend.png",
-    "COST": 1
+    "IMG": "blind_strike.png",
+    "COST": 1,
+    "D": 12,
+    "+D": 4,
+    "M/Dazed Count": 1
   },
   "theRetrospect:Evanescence": {
-    "RARITY": "BASIC",
-    "TYPE": "SKILL",
+    "RARITY": "UNCOMMON",
+    "TYPE": "POWER",
     "COLOR": "RETROSPECT_PURPLE",
-    "IMG": "defend.png",
-    "COST": 1
+    "IMG": "evanescence.png",
+    "COST": 2,
+    "M/Block Gain": 3,
+    "+M": 2
   },
   "theRetrospect:SoullessDemon": {
-    "RARITY": "BASIC",
+    "RARITY": "SPECIAL",
     "TYPE": "SKILL",
     "COLOR": "RETROSPECT_PURPLE",
-    "IMG": "defend.png",
-    "COST": 1
+    "IMG": "soulless_demon.png",
+    "COST": 1,
+    "M/Strength Power": 2,
+    "+M": 1
   },
   "theRetrospect:NoxiousWraith": {
-    "RARITY": "BASIC",
+    "RARITY": "SPECIAL",
     "TYPE": "SKILL",
     "COLOR": "RETROSPECT_PURPLE",
-    "IMG": "defend.png",
-    "COST": 1
+    "IMG": "noxious_wraith.png",
+    "COST": 1,
+    "M/Dexterity Loss": 5,
+    "+M": -2,
+    "intangible": 2
   },
   "theRetrospect:DefectiveEcho": {
-    "RARITY": "BASIC",
+    "RARITY": "SPECIAL",
     "TYPE": "SKILL",
     "COLOR": "RETROSPECT_PURPLE",
-    "IMG": "defend.png",
-    "COST": 1
+    "IMG": "defective_echo.png",
+    "COST": 1,
+    "M/Card Count": 1,
+    "+M": 1
   },
   "theRetrospect:DivineEye": {
-    "RARITY": "BASIC",
+    "RARITY": "SPECIAL",
     "TYPE": "SKILL",
     "COLOR": "RETROSPECT_PURPLE",
-    "IMG": "defend.png",
-    "COST": 1
+    "IMG": "divine_eye.png",
+    "COST": 1,
+    "M/Energy Gain": 2,
+    "+M": 1
   },
   "theRetrospect:Singularity": {
-    "RARITY": "BASIC",
-    "TYPE": "SKILL",
-    "COLOR": "RETROSPECT_PURPLE",
-    "IMG": "defend.png",
-    "COST": 1
+    "RARITY": "CURSE",
+    "TYPE": "CURSE",
+    "COLOR": "CURSE",
+    "IMG": "singularity.png",
+    "COST": -2
   },
   "theRetrospect:ShadowForm": {
-    "RARITY": "BASIC",
-    "TYPE": "SKILL",
+    "RARITY": "RARE",
+    "TYPE": "POWER",
     "COLOR": "RETROSPECT_PURPLE",
-    "IMG": "defend.png",
-    "COST": 1
+    "IMG": "shadow_form.png",
+    "COST": 3,
+    "M/Timeline HP Reduction": 10
   },
   "theRetrospect:UnceasingStrike": {
-    "RARITY": "BASIC",
-    "TYPE": "SKILL",
+    "RARITY": "RARE",
+    "TYPE": "ATTACK",
     "COLOR": "RETROSPECT_PURPLE",
-    "IMG": "defend.png",
-    "COST": 1
+    "IMG": "unceasing_strike.png",
+    "COST": 1,
+    "D": 10,
+    "+D": 3
   },
   "theRetrospect:RecursiveAffinity": {
-    "RARITY": "BASIC",
+    "RARITY": "UNCOMMON",
     "TYPE": "SKILL",
     "COLOR": "RETROSPECT_PURPLE",
-    "IMG": "defend.png",
-    "COST": 1
+    "IMG": "recursive_affinity.png",
+    "COST": 3,
+    "+COST": 2,
+    "cards": 2
   },
   "theRetrospect:IntoTheVoid": {
-    "RARITY": "BASIC",
+    "RARITY": "RARE",
     "TYPE": "SKILL",
     "COLOR": "RETROSPECT_PURPLE",
-    "IMG": "defend.png",
-    "COST": 1
+    "IMG": "into_the_void.png",
+    "COST": 1,
+    "M/HP Loss": 40,
+    "+M": -10
   }
 }
