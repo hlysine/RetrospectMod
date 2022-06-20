@@ -101,6 +101,12 @@
                                         <exclude>**/*.psd</exclude>
                                     </excludes>
                                 </filter>
+                                <filter>
+                                    <artifact>hlysine:STSCardInfo:*</artifact>
+                                    <excludes>
+                                        <exclude>META-INF/MANIFEST.MF</exclude>
+                                    </excludes>
+                                </filter>
                             </filters>
                         </configuration>
                     </execution>
