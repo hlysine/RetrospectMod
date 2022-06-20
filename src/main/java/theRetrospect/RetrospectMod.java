@@ -272,14 +272,20 @@ public class RetrospectMod implements
 
     @Override
     public void receiveEditCards() {
-        logger.info("Adding variables");
         pathCheck();
+
         List<CustomVariable> customVariables = new ArrayList<>();
         customVariables.add(new TimelineCountVariable());
+
+        logger.info("Loading card info");
+
         cardInfoRepository = new CardInfoRepository(
-                RetrospectMod.class.getResourceAsStream("/" + getModID() + "Resources/Card-Values.json"),
+                RetrospectMod.class.getResourceAsStream("/" + getModID() + "Resources/Card-Info.json"),
                 customVariables.stream().map(variable -> (ValueHandler) variable).collect(Collectors.toList())
         );
+
+        logger.info("Adding variables");
+
         for (CustomVariable variable : customVariables) {
             BaseMod.addDynamicVariable(variable);
         }
