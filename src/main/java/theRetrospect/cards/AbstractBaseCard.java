@@ -41,6 +41,8 @@ public abstract class AbstractBaseCard extends CustomCard {
         cardStrings = languagePack.getCardStrings(id);
         info = getCardInfo(id);
 
+        info.setBaseValues(this);
+
         isTimelineCountModified = false;
     }
 
