@@ -7,7 +7,7 @@
     "NAME": "Defend",
     "DESCRIPTION": "Gain !B! Block."
   },
-  "theRetrospect:AbstractRetrospectCard": {
+  "theRetrospect:AbstractBaseCard": {
     "NAME": "Abstract Retrospect Card",
     "DESCRIPTION": "{@@}theretrospect:Construct !theRetrospect:TimelineCount! timeline{!theRetrospect:TimelineCount!|>1=s}.",
     "EXTENDED_DESCRIPTION": [

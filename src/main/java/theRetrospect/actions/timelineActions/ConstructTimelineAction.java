@@ -14,7 +14,7 @@ import com.megacrit.cardcrawl.vfx.ThoughtBubble;
 import hlysine.friendlymonsters.utils.MinionUtils;
 import theRetrospect.RetrospectMod;
 import theRetrospect.actions.general.NonTriggeringHealthChange;
-import theRetrospect.cards.AbstractRetrospectCard;
+import theRetrospect.cards.AbstractBaseCard;
 import theRetrospect.effects.FlyingOrbEffect;
 import theRetrospect.effects.TimelineConstructEffect;
 import theRetrospect.minions.TimelineMinion;
@@ -26,7 +26,7 @@ import java.util.stream.Collectors;
 
 public class ConstructTimelineAction extends AbstractGameAction {
 
-    public static final String ID = RetrospectMod.makeID(AbstractRetrospectCard.class.getSimpleName());
+    public static final String ID = RetrospectMod.makeID(AbstractBaseCard.class.getSimpleName());
     private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
 
     public static final float HEALTH_PERCENTAGE_COST = 0.4f;

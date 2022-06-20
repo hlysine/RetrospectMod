@@ -10,6 +10,7 @@ import theRetrospect.RetrospectMod;
 
 import static com.megacrit.cardcrawl.core.CardCrawlGame.languagePack;
 import static theRetrospect.RetrospectMod.getCardInfo;
+import static theRetrospect.RetrospectMod.makeCardPath;
 
 public abstract class AbstractBaseCard extends CustomCard {
 
@@ -21,16 +22,16 @@ public abstract class AbstractBaseCard extends CustomCard {
     public boolean delusional = false;
     public boolean paradoxical = false;
 
-    public int timelineCount;
-    public int baseTimelineCount;
-    public boolean upgradedTimelineCount;
-    public boolean isTimelineCountModified;
+    public int timelineCount = 0;
+    public int baseTimelineCount = 0;
+    public boolean upgradedTimelineCount = false;
+    public boolean isTimelineCountModified = false;
 
     public AbstractBaseCard(final String id, final CardTarget target) {
         super(
                 id,
                 languagePack.getCardStrings(id).NAME,
-                getCardInfo(id).getImage(),
+                makeCardPath(getCardInfo(id).getImage()),
                 getCardInfo(id).getBaseCost(),
                 languagePack.getCardStrings(id).DESCRIPTION,
                 getCardInfo(id).getType(),
@@ -42,8 +43,6 @@ public abstract class AbstractBaseCard extends CustomCard {
         info = getCardInfo(id);
 
         info.setBaseValues(this);
-
-        isTimelineCountModified = false;
     }
 
     @Override
@@ -79,5 +78,14 @@ public abstract class AbstractBaseCard extends CustomCard {
 
     protected void upgradeValues() {
         info.upgradeValues(this);
+    }
+
+    @Override
+    public void upgrade() {
+        if (!upgraded) {
+            upgradeName();
+            upgradeValues();
+            initializeDescription();
+        }
     }
 }

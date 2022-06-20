@@ -5,23 +5,14 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theRetrospect.RetrospectMod;
 import theRetrospect.cards.AbstractBaseCard;
 
-import static theRetrospect.RetrospectMod.makeCardPath;
-
 public class Empty extends AbstractBaseCard {
 
     public static final String ID = RetrospectMod.makeID(Empty.class.getSimpleName());
 
-    public static final String IMG = makeCardPath("empty.png");
-
-    private static final CardColor COLOR = CardColor.COLORLESS;
-    private static final CardRarity RARITY = CardRarity.SPECIAL;
-    private static final CardTarget TARGET = CardTarget.SELF;
-    private static final CardType TYPE = CardType.STATUS;
-
-    private static final int BASE_COST = 1;
+    private static final CardTarget TARGET = CardTarget.NONE;
 
     public Empty() {
-        super(ID, IMG, BASE_COST, TYPE, COLOR, RARITY, TARGET);
+        super(ID, TARGET);
 
         this.exhaust = true;
     }
@@ -33,14 +24,5 @@ public class Empty extends AbstractBaseCard {
     @Override
     public boolean canUpgrade() {
         return !upgraded;
-    }
-
-    @Override
-    public void upgrade() {
-        if (!upgraded) {
-            upgradeName();
-            upgradeBaseCost(0);
-            initializeDescription();
-        }
     }
 }

@@ -8,23 +8,14 @@ import com.megacrit.cardcrawl.vfx.NecronomicurseEffect;
 import theRetrospect.RetrospectMod;
 import theRetrospect.cards.AbstractBaseCard;
 
-import static theRetrospect.RetrospectMod.makeCardPath;
-
 public class Singularity extends AbstractBaseCard {
 
     public static final String ID = RetrospectMod.makeID(Singularity.class.getSimpleName());
 
-    public static final String IMG = makeCardPath("singularity.png");
-
-    private static final CardColor COLOR = CardColor.CURSE;
-    private static final CardRarity RARITY = CardRarity.CURSE;
     private static final CardTarget TARGET = CardTarget.NONE;
-    private static final CardType TYPE = CardType.CURSE;
-
-    private static final int COST = -2;
 
     public Singularity() {
-        super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
+        super(ID, TARGET);
 
         this.isInnate = true;
         this.retain = true;
@@ -47,13 +38,5 @@ public class Singularity extends AbstractBaseCard {
     @Override
     public boolean canUpgrade() {
         return false;
-    }
-
-    @Override
-    public void upgrade() {
-        if (!upgraded) {
-            upgradeName();
-            initializeDescription();
-        }
     }
 }
