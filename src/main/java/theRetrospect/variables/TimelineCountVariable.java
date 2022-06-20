@@ -1,7 +1,7 @@
 package theRetrospect.variables;
 
 import com.megacrit.cardcrawl.cards.AbstractCard;
-import theRetrospect.cards.AbstractRetrospectCard;
+import theRetrospect.cards.AbstractBaseCard;
 
 import static theRetrospect.RetrospectMod.makeID;
 
@@ -14,42 +14,42 @@ public class TimelineCountVariable extends CustomVariable {
 
     @Override
     public void setBaseValue(AbstractCard card, int value) {
-        if (card instanceof AbstractRetrospectCard) {
-            AbstractRetrospectCard rCard = (AbstractRetrospectCard) card;
+        if (card instanceof AbstractBaseCard) {
+            AbstractBaseCard rCard = (AbstractBaseCard) card;
             rCard.baseTimelineCount = rCard.timelineCount = value;
         }
     }
 
     @Override
     public void upgradeValue(AbstractCard card, int upgradeValue) {
-        if (card instanceof AbstractRetrospectCard) {
-            AbstractRetrospectCard rCard = (AbstractRetrospectCard) card;
+        if (card instanceof AbstractBaseCard) {
+            AbstractBaseCard rCard = (AbstractBaseCard) card;
             rCard.upgradeTimelineCount(upgradeValue);
         }
     }
 
     @Override
     public boolean isModified(AbstractCard card) {
-        return ((AbstractRetrospectCard) card).isTimelineCountModified;
+        return ((AbstractBaseCard) card).isTimelineCountModified;
     }
 
     @Override
     public void setIsModified(AbstractCard card, boolean v) {
-        ((AbstractRetrospectCard) card).isTimelineCountModified = false;
+        ((AbstractBaseCard) card).isTimelineCountModified = false;
     }
 
     @Override
     public int value(AbstractCard card) {
-        return ((AbstractRetrospectCard) card).timelineCount;
+        return ((AbstractBaseCard) card).timelineCount;
     }
 
     @Override
     public int baseValue(AbstractCard card) {
-        return ((AbstractRetrospectCard) card).baseTimelineCount;
+        return ((AbstractBaseCard) card).baseTimelineCount;
     }
 
     @Override
     public boolean upgraded(AbstractCard card) {
-        return ((AbstractRetrospectCard) card).upgradedTimelineCount;
+        return ((AbstractBaseCard) card).upgradedTimelineCount;
     }
 }

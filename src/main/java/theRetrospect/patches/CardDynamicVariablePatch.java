@@ -4,7 +4,7 @@ import com.evacipated.cardcrawl.modthespire.lib.SpirePatch;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.powers.AbstractPower;
-import theRetrospect.cards.AbstractRetrospectCard;
+import theRetrospect.cards.AbstractBaseCard;
 import theRetrospect.subscribers.TimelineConstructSubscriber;
 
 public class CardDynamicVariablePatch {
@@ -15,8 +15,8 @@ public class CardDynamicVariablePatch {
     )
     public static class ResetAttributesPatch {
         public static void Prefix(AbstractCard __instance) {
-            if (__instance instanceof AbstractRetrospectCard) {
-                AbstractRetrospectCard card = (AbstractRetrospectCard) __instance;
+            if (__instance instanceof AbstractBaseCard) {
+                AbstractBaseCard card = (AbstractBaseCard) __instance;
                 card.timelineCount = card.baseTimelineCount;
                 card.isTimelineCountModified = false;
             }
@@ -29,8 +29,8 @@ public class CardDynamicVariablePatch {
     )
     public static class ApplyPowersPatch {
         public static void Prefix(AbstractCard __instance) {
-            if (__instance instanceof AbstractRetrospectCard) {
-                AbstractRetrospectCard card = (AbstractRetrospectCard) __instance;
+            if (__instance instanceof AbstractBaseCard) {
+                AbstractBaseCard card = (AbstractBaseCard) __instance;
                 card.isTimelineCountModified = false;
                 int tmp = card.baseTimelineCount;
 

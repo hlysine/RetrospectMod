@@ -11,19 +11,15 @@ import theRetrospect.minions.TimelineMinion;
 import theRetrospect.util.TimelineTargeting;
 import theRetrospect.util.TimelineUtils;
 
-public abstract class TimelineTargetingCard extends AbstractRetrospectCard {
+public abstract class TimelineTargetingCard extends AbstractBaseCard {
 
     public static final CardTarget TARGET = TimelineTargeting.TIMELINE;
 
     public static final String ID = RetrospectMod.makeID(TimelineTargetingCard.class.getSimpleName());
     private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
 
-    public TimelineTargetingCard(final String id,
-                                 final String img,
-                                 final int cost,
-                                 final CardType type,
-                                 final CardRarity rarity) {
-        super(id, img, cost, type, rarity, TARGET);
+    public TimelineTargetingCard(final String id) {
+        super(id, TARGET);
     }
 
     @Override

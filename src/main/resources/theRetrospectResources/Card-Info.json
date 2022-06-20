@@ -2,6 +2,7 @@
   "theRetrospect:Strike": {
     "RARITY": "BASIC",
     "TYPE": "ATTACK",
+    "COLOR": "RETROSPECT_PURPLE",
     "IMG": "strike.png",
     "COST": 1,
     "D": 6,
@@ -10,9 +11,324 @@
   "theRetrospect:Defend": {
     "RARITY": "BASIC",
     "TYPE": "SKILL",
+    "COLOR": "RETROSPECT_PURPLE",
     "IMG": "defend.png",
     "COST": 1,
     "B": 5,
     "^B": 3
+  },
+  "theRetrospect:Divert": {
+    "RARITY": "BASIC",
+    "TYPE": "SKILL",
+    "COLOR": "RETROSPECT_PURPLE",
+    "IMG": "divert.png",
+    "COST": 1,
+    "theRetrospect:TimelineCount": 1
+  },
+  "theRetrospect:DoubleTime": {
+    "RARITY": "BASIC",
+    "TYPE": "SKILL",
+    "COLOR": "RETROSPECT_PURPLE",
+    "IMG": "double_time.png",
+    "COST": 1,
+    "^COST": 0
+  },
+  "theRetrospect:Overcore": {
+    "RARITY": "RARE",
+    "TYPE": "SKILL",
+    "COLOR": "RETROSPECT_PURPLE",
+    "IMG": "overcore.png",
+    "COST": 1,
+    "theRetrospect:TimelineCount": 3,
+    "M#Frozen Count": 1
+  },
+  "theRetrospect:Avert": {
+    "RARITY": "COMMON",
+    "TYPE": "SKILL",
+    "COLOR": "RETROSPECT_PURPLE",
+    "IMG": "avert.png",
+    "COST": 2,
+    "^COST": 1,
+    "theRetrospect:TimelineCount": 1
+  },
+  "theRetrospect:Transmute": {
+    "RARITY": "BASIC",
+    "TYPE": "SKILL",
+    "COLOR": "RETROSPECT_PURPLE",
+    "IMG": "defend.png",
+    "COST": 1
+  },
+  "theRetrospect:Concurrency": {
+    "RARITY": "BASIC",
+    "TYPE": "SKILL",
+    "COLOR": "RETROSPECT_PURPLE",
+    "IMG": "defend.png",
+    "COST": 1
+  },
+  "theRetrospect:Blink": {
+    "RARITY": "BASIC",
+    "TYPE": "SKILL",
+    "COLOR": "RETROSPECT_PURPLE",
+    "IMG": "defend.png",
+    "COST": 1
+  },
+  "theRetrospect:Empty": {
+    "RARITY": "BASIC",
+    "TYPE": "SKILL",
+    "COLOR": "RETROSPECT_PURPLE",
+    "IMG": "defend.png",
+    "COST": 1
+  },
+  "theRetrospect:TapTheFuture": {
+    "RARITY": "BASIC",
+    "TYPE": "SKILL",
+    "COLOR": "RETROSPECT_PURPLE",
+    "IMG": "defend.png",
+    "COST": 1
+  },
+  "theRetrospect:SleightOfHand": {
+    "RARITY": "BASIC",
+    "TYPE": "SKILL",
+    "COLOR": "RETROSPECT_PURPLE",
+    "IMG": "defend.png",
+    "COST": 1
+  },
+  "theRetrospect:AlternativeReality": {
+    "RARITY": "BASIC",
+    "TYPE": "SKILL",
+    "COLOR": "RETROSPECT_PURPLE",
+    "IMG": "defend.png",
+    "COST": 1
+  },
+  "theRetrospect:Harvest": {
+    "RARITY": "BASIC",
+    "TYPE": "SKILL",
+    "COLOR": "RETROSPECT_PURPLE",
+    "IMG": "defend.png",
+    "COST": 1
+  },
+  "theRetrospect:TemporalAnomaly": {
+    "RARITY": "BASIC",
+    "TYPE": "SKILL",
+    "COLOR": "RETROSPECT_PURPLE",
+    "IMG": "defend.png",
+    "COST": 1
+  },
+  "theRetrospect:ChargeRifle": {
+    "RARITY": "BASIC",
+    "TYPE": "SKILL",
+    "COLOR": "RETROSPECT_PURPLE",
+    "IMG": "defend.png",
+    "COST": 1
+  },
+  "theRetrospect:DejaVu": {
+    "RARITY": "BASIC",
+    "TYPE": "SKILL",
+    "COLOR": "RETROSPECT_PURPLE",
+    "IMG": "defend.png",
+    "COST": 1
+  },
+  "theRetrospect:EnergyConversion": {
+    "RARITY": "BASIC",
+    "TYPE": "SKILL",
+    "COLOR": "RETROSPECT_PURPLE",
+    "IMG": "defend.png",
+    "COST": 1
+  },
+  "theRetrospect:RewriteHistory": {
+    "RARITY": "BASIC",
+    "TYPE": "SKILL",
+    "COLOR": "RETROSPECT_PURPLE",
+    "IMG": "defend.png",
+    "COST": 1
+  },
+  "theRetrospect:QuickThinker": {
+    "RARITY": "BASIC",
+    "TYPE": "SKILL",
+    "COLOR": "RETROSPECT_PURPLE",
+    "IMG": "defend.png",
+    "COST": 1
+  },
+  "theRetrospect:UnstableChronology": {
+    "RARITY": "BASIC",
+    "TYPE": "SKILL",
+    "COLOR": "RETROSPECT_PURPLE",
+    "IMG": "defend.png",
+    "COST": 1
+  },
+  "theRetrospect:Paradox": {
+    "RARITY": "BASIC",
+    "TYPE": "SKILL",
+    "COLOR": "RETROSPECT_PURPLE",
+    "IMG": "defend.png",
+    "COST": 1
+  },
+  "theRetrospect:TimeLoop": {
+    "RARITY": "BASIC",
+    "TYPE": "SKILL",
+    "COLOR": "RETROSPECT_PURPLE",
+    "IMG": "defend.png",
+    "COST": 1
+  },
+  "theRetrospect:Shortcut": {
+    "RARITY": "BASIC",
+    "TYPE": "SKILL",
+    "COLOR": "RETROSPECT_PURPLE",
+    "IMG": "defend.png",
+    "COST": 1
+  },
+  "theRetrospect:ElectricShock": {
+    "RARITY": "BASIC",
+    "TYPE": "SKILL",
+    "COLOR": "RETROSPECT_PURPLE",
+    "IMG": "defend.png",
+    "COST": 1
+  },
+  "theRetrospect:Misdirection": {
+    "RARITY": "BASIC",
+    "TYPE": "SKILL",
+    "COLOR": "RETROSPECT_PURPLE",
+    "IMG": "defend.png",
+    "COST": 1
+  },
+  "theRetrospect:TacticalRetreat": {
+    "RARITY": "BASIC",
+    "TYPE": "SKILL",
+    "COLOR": "RETROSPECT_PURPLE",
+    "IMG": "defend.png",
+    "COST": 1
+  },
+  "theRetrospect:LightspeedLeap": {
+    "RARITY": "BASIC",
+    "TYPE": "SKILL",
+    "COLOR": "RETROSPECT_PURPLE",
+    "IMG": "defend.png",
+    "COST": 1
+  },
+  "theRetrospect:FastForward": {
+    "RARITY": "BASIC",
+    "TYPE": "SKILL",
+    "COLOR": "RETROSPECT_PURPLE",
+    "IMG": "defend.png",
+    "COST": 1
+  },
+  "theRetrospect:AllOutAttack": {
+    "RARITY": "BASIC",
+    "TYPE": "SKILL",
+    "COLOR": "RETROSPECT_PURPLE",
+    "IMG": "defend.png",
+    "COST": 1
+  },
+  "theRetrospect:WarmUp": {
+    "RARITY": "BASIC",
+    "TYPE": "SKILL",
+    "COLOR": "RETROSPECT_PURPLE",
+    "IMG": "defend.png",
+    "COST": 1
+  },
+  "theRetrospect:Telekinesis": {
+    "RARITY": "BASIC",
+    "TYPE": "SKILL",
+    "COLOR": "RETROSPECT_PURPLE",
+    "IMG": "defend.png",
+    "COST": 1
+  },
+  "theRetrospect:Recollection": {
+    "RARITY": "BASIC",
+    "TYPE": "SKILL",
+    "COLOR": "RETROSPECT_PURPLE",
+    "IMG": "defend.png",
+    "COST": 1
+  },
+  "theRetrospect:Ambush": {
+    "RARITY": "BASIC",
+    "TYPE": "SKILL",
+    "COLOR": "RETROSPECT_PURPLE",
+    "IMG": "defend.png",
+    "COST": 1
+  },
+  "theRetrospect:HatTrick": {
+    "RARITY": "BASIC",
+    "TYPE": "SKILL",
+    "COLOR": "RETROSPECT_PURPLE",
+    "IMG": "defend.png",
+    "COST": 1
+  },
+  "theRetrospect:BlindStrike": {
+    "RARITY": "BASIC",
+    "TYPE": "SKILL",
+    "COLOR": "RETROSPECT_PURPLE",
+    "IMG": "defend.png",
+    "COST": 1
+  },
+  "theRetrospect:Evanescence": {
+    "RARITY": "BASIC",
+    "TYPE": "SKILL",
+    "COLOR": "RETROSPECT_PURPLE",
+    "IMG": "defend.png",
+    "COST": 1
+  },
+  "theRetrospect:SoullessDemon": {
+    "RARITY": "BASIC",
+    "TYPE": "SKILL",
+    "COLOR": "RETROSPECT_PURPLE",
+    "IMG": "defend.png",
+    "COST": 1
+  },
+  "theRetrospect:NoxiousWraith": {
+    "RARITY": "BASIC",
+    "TYPE": "SKILL",
+    "COLOR": "RETROSPECT_PURPLE",
+    "IMG": "defend.png",
+    "COST": 1
+  },
+  "theRetrospect:DefectiveEcho": {
+    "RARITY": "BASIC",
+    "TYPE": "SKILL",
+    "COLOR": "RETROSPECT_PURPLE",
+    "IMG": "defend.png",
+    "COST": 1
+  },
+  "theRetrospect:DivineEye": {
+    "RARITY": "BASIC",
+    "TYPE": "SKILL",
+    "COLOR": "RETROSPECT_PURPLE",
+    "IMG": "defend.png",
+    "COST": 1
+  },
+  "theRetrospect:Singularity": {
+    "RARITY": "BASIC",
+    "TYPE": "SKILL",
+    "COLOR": "RETROSPECT_PURPLE",
+    "IMG": "defend.png",
+    "COST": 1
+  },
+  "theRetrospect:ShadowForm": {
+    "RARITY": "BASIC",
+    "TYPE": "SKILL",
+    "COLOR": "RETROSPECT_PURPLE",
+    "IMG": "defend.png",
+    "COST": 1
+  },
+  "theRetrospect:UnceasingStrike": {
+    "RARITY": "BASIC",
+    "TYPE": "SKILL",
+    "COLOR": "RETROSPECT_PURPLE",
+    "IMG": "defend.png",
+    "COST": 1
+  },
+  "theRetrospect:RecursiveAffinity": {
+    "RARITY": "BASIC",
+    "TYPE": "SKILL",
+    "COLOR": "RETROSPECT_PURPLE",
+    "IMG": "defend.png",
+    "COST": 1
+  },
+  "theRetrospect:IntoTheVoid": {
+    "RARITY": "BASIC",
+    "TYPE": "SKILL",
+    "COLOR": "RETROSPECT_PURPLE",
+    "IMG": "defend.png",
+    "COST": 1
   }
 }

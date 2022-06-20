@@ -23,7 +23,7 @@ import hlysine.STSCardInfo.CardInfoRepository;
 import hlysine.STSCardInfo.ValueHandler;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import theRetrospect.cards.AbstractRetrospectCard;
+import theRetrospect.cards.AbstractBaseCard;
 import theRetrospect.characters.TheRetrospect;
 import theRetrospect.events.EventHorizonEvent;
 import theRetrospect.events.FutureGadgetsEvent;
@@ -293,7 +293,7 @@ public class RetrospectMod implements
         logger.info("Adding cards");
 
         new AutoAdd("RetrospectMod")
-                .packageFilter(AbstractRetrospectCard.class)
+                .packageFilter(AbstractBaseCard.class)
                 .setDefaultSeen(false)
                 .cards();
 
