@@ -32,7 +32,7 @@
   },
   "theRetrospect:Overcore": {
     "NAME": "Overcore",
-    "DESCRIPTION": "{@@}theretrospect:Construct !theRetrospect:TimelineCount! timeline{!theRetrospect:TimelineCount!|>1=s} and be theretrospect:Frozen for !M! turn{!M!|>1=s}.{!Upgrades!|0= NL Exhaust.}"
+    "DESCRIPTION": "{@@}theretrospect:Construct !theRetrospect:TimelineCount! timeline{!theRetrospect:TimelineCount!|>1=s}. Be theretrospect:Frozen for !M! turn{!M!|>1=s}.{!Upgrades!|0= NL Exhaust.}"
   },
   "theRetrospect:Avert": {
     "NAME": "Avert",
@@ -40,7 +40,7 @@
   },
   "theRetrospect:Transmute": {
     "NAME": "Transmute",
-    "DESCRIPTION": "{@@}Discard !M! card{!M!|>1=s}. Gain energy equal to the {!M!|@=card's|>1=cards' total} cost."
+    "DESCRIPTION": "{@@}Discard !M! card{!M!|>1=s}. NL Gain energy equal to the {!M!|@=card's|>1=cards' total} cost."
   },
   "theRetrospect:Concurrency": {
     "NAME": "Concurrency",
@@ -60,11 +60,11 @@
   },
   "theRetrospect:SleightOfHand": {
     "NAME": "Sleight of Hand",
-    "DESCRIPTION": "theretrospect:Paradoxical. NL Deal !D! damage. Replay your last card this turn."
+    "DESCRIPTION": "theretrospect:Paradoxical. NL Deal !D! damage. NL Replay your last card this turn."
   },
   "theRetrospect:AlternativeReality": {
     "NAME": "Alternative Reality",
-    "DESCRIPTION": "{@@}theretrospect:In_timeline, gain !B! Block. Otherwise, draw !M! card{!M!|>1=s}."
+    "DESCRIPTION": "{@@}theretrospect:In_timeline, gain !B! Block. NL Otherwise, draw !M! card{!M!|>1=s}."
   },
   "theRetrospect:Harvest": {
     "NAME": "Harvest",
@@ -96,11 +96,11 @@
   },
   "theRetrospect:UnstableChronology": {
     "NAME": "Unstable Chronology",
-    "DESCRIPTION": "{@@}Cost 1 less [E] for each time you take damage in this combat. theretrospect:Construct !theRetrospect:TimelineCount! timeline{!theRetrospect:TimelineCount!|>1=s}."
+    "DESCRIPTION": "{@@}Cost 1 less [E] for each time you take damage in this combat. NL theretrospect:Construct !theRetrospect:TimelineCount! timeline{!theRetrospect:TimelineCount!|>1=s}."
   },
   "theRetrospect:Paradox": {
     "NAME": "Paradox",
-    "DESCRIPTION": "Unplayable. theretrospect:Delusional. NL You cannot play any cards when your hand is full.",
+    "DESCRIPTION": "Unplayable. NL theretrospect:Delusional. NL You cannot play any cards when your hand is full.",
     "EXTENDED_DESCRIPTION": [
       "My #rHand #ris #rFull!"
     ]
@@ -119,7 +119,7 @@
   },
   "theRetrospect:Misdirection": {
     "NAME": "Misdirection",
-    "DESCRIPTION": "{@@}Gain !B! Block. theretrospect:Construct !theRetrospect:TimelineCount! timeline{!theRetrospect:TimelineCount!|>1=s}."
+    "DESCRIPTION": "{@@}Gain !B! Block. NL theretrospect:Construct !theRetrospect:TimelineCount! timeline{!theRetrospect:TimelineCount!|>1=s}."
   },
   "theRetrospect:TacticalRetreat": {
     "NAME": "Tactical Retreat",
@@ -134,7 +134,7 @@
   },
   "theRetrospect:FastForward": {
     "NAME": "Fast Forward",
-    "DESCRIPTION": "{@@}Draw !M! card{!M!|>1=s}. Discard up to !M! card{!M!|>1=s}."
+    "DESCRIPTION": "{@@}Draw !M! card{!M!|>1=s}. NL Discard up to !M! card{!M!|>1=s}."
   },
   "theRetrospect:AllOutAttack": {
     "NAME": "All-Out Attack",
@@ -167,7 +167,7 @@
   },
   "theRetrospect:BlindStrike": {
     "NAME": "Blind Strike",
-    "DESCRIPTION": "Deal !D! damage. Shuffle a *Dazed into your draw pile."
+    "DESCRIPTION": "Deal !D! damage. NL Shuffle a *Dazed into your draw pile."
   },
   "theRetrospect:Evanescence": {
     "NAME": "Evanescence",
@@ -199,7 +199,7 @@
   },
   "theRetrospect:UnceasingStrike": {
     "NAME": "Unceasing Strike",
-    "DESCRIPTION": "End your turn. theretrospect:In_timeline: Deal !D! damage."
+    "DESCRIPTION": "End your turn. NL theretrospect:In_timeline: Deal !D! damage."
   },
   "theRetrospect:RecursiveAffinity": {
     "NAME": "Recursive Affinity",
