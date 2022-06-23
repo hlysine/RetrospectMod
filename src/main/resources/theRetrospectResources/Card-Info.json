@@ -185,6 +185,7 @@
     "COLOR": "RETROSPECT_PURPLE",
     "IMG": "unstable_chronology.png",
     "COST": 4,
+    "+COST": 3,
     "theRetrospect:TimelineCount": 1
   },
   "theRetrospect:Paradox": {

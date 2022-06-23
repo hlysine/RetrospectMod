@@ -32,13 +32,14 @@ public class UnstableChronology extends AbstractBaseCard {
     public void upgrade() {
         if (!this.upgraded) {
             upgradeName();
+            int costReduction = info.getBaseCost() - info.getUpgradedCost();
             if (this.cost < info.getBaseCost()) {
-                upgradeBaseCost(this.cost - 1);
+                upgradeBaseCost(this.cost - costReduction);
                 if (this.cost < 0) {
                     this.cost = 0;
                 }
             } else {
-                upgradeBaseCost(info.getBaseCost() - 1);
+                upgradeBaseCost(info.getBaseCost() - costReduction);
             }
         }
     }
