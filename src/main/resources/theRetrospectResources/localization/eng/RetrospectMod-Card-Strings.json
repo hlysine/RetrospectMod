@@ -227,5 +227,9 @@
   "theRetrospect:Fragmentation": {
     "NAME": "Fragmentation",
     "DESCRIPTION": "Repeat !M! times, deal !D! damage to a random enemy."
+  },
+  "theRetrospect:FractalBlade": {
+    "NAME": "Fractal Blade",
+    "DESCRIPTION": "Deal !D! damage. Can be upgraded any number of times."
   }
 }

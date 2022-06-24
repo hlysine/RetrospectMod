@@ -451,5 +451,14 @@
     "D": 1,
     "M/Repeat Count": 10,
     "+M": 5
+  },
+  "theRetrospect:FractalBlade": {
+    "RARITY": "UNCOMMON",
+    "TYPE": "ATTACK",
+    "COLOR": "RETROSPECT_PURPLE",
+    "IMG": "fractal_blade.png",
+    "COST": 1,
+    "D": 6,
+    "+D": 2
   }
 }
