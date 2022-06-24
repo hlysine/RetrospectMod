@@ -84,7 +84,8 @@
     "COLOR": "COLORLESS",
     "IMG": "empty.png",
     "COST": 1,
-    "+COST": 0
+    "+COST": 0,
+    "MAX_UPGRADES": 1
   },
   "theRetrospect:TapTheFuture": {
     "RARITY": "COMMON",
@@ -380,8 +381,7 @@
     "TYPE": "CURSE",
     "COLOR": "CURSE",
     "IMG": "singularity.png",
-    "COST": -2,
-    "MAX_UPGRADES": 0
+    "COST": -2
   },
   "theRetrospect:ShadowForm": {
     "RARITY": "RARE",

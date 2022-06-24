@@ -34,9 +34,4 @@ public class Singularity extends AbstractBaseCard {
     }
 
     // Note: Implementation of being stuck in hand is done in SingularityPatch
-
-    @Override
-    public boolean canUpgrade() {
-        return false;
-    }
 }
