@@ -150,6 +150,8 @@ public class TimerPower extends AbstractPower implements CloneablePowerInterface
     @Override
     public void updateDescription() {
         if (minion == null)
+            description = DESCRIPTIONS[6];
+        else if (minion.cards.size() == 0)
             description = DESCRIPTIONS[5];
         else
             description = DESCRIPTIONS[0] + Math.min(amount, minion.cards.size()) + DESCRIPTIONS[1] + describeNumber(minion.cards.size(), 2) + DESCRIPTIONS[4];

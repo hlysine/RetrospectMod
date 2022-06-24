@@ -6,7 +6,8 @@
       " out of #b",
       " card",
       " cards",
-      ". NL #yCollapse this #ytimeline when there are no cards left.",
+      ". NL #yCollapse this timeline when there are no cards left.",
+      "#yCollapse this timeline at the end of this turn.",
       "This power has no effect."
     ]
   },
