@@ -244,7 +244,7 @@
     "+B": 4
   },
   "theRetrospect:LightspeedLeap": {
-    "RARITY": "UNCOMMON",
+    "RARITY": "COMMON",
     "TYPE": "SKILL",
     "COLOR": "RETROSPECT_PURPLE",
     "IMG": "lightspeed_leap.png",
@@ -254,7 +254,7 @@
     "theRetrospect:TimelineCount": 1
   },
   "theRetrospect:FastForward": {
-    "RARITY": "UNCOMMON",
+    "RARITY": "COMMON",
     "TYPE": "SKILL",
     "COLOR": "RETROSPECT_PURPLE",
     "IMG": "fast_forward.png",
@@ -283,7 +283,7 @@
     "M/Warm Up Power": 1
   },
   "theRetrospect:Telekinesis": {
-    "RARITY": "UNCOMMON",
+    "RARITY": "COMMON",
     "TYPE": "ATTACK",
     "COLOR": "RETROSPECT_PURPLE",
     "IMG": "telekinesis.png",
