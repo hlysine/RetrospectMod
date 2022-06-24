@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.css": "/static/css/main.def22d62.css",
-    "main.js": "/static/js/main.d733da89.js",
-    "static/media/cardui.png": "/static/media/cardui.c09b95f5b91fe915f8b3.png",
-    "static/media/cardui2.png": "/static/media/cardui2.260f2ae22bdf4941feb1.png",
-    "static/media/cardui4.png": "/static/media/cardui4.c5a7503d656027324493.png",
-    "static/media/cardui3.png": "/static/media/cardui3.9ef6e1800d3fbaec1525.png",
-    "index.html": "/index.html",
-    "main.def22d62.css.map": "/static/css/main.def22d62.css.map",
-    "main.d733da89.js.map": "/static/js/main.d733da89.js.map"
+    "main.css": "/RetrospectMod/static/css/main.ace3b5ff.css",
+    "main.js": "/RetrospectMod/static/js/main.d733da89.js",
+    "static/media/cardui.png": "/RetrospectMod/static/media/cardui.c09b95f5b91fe915f8b3.png",
+    "static/media/cardui2.png": "/RetrospectMod/static/media/cardui2.260f2ae22bdf4941feb1.png",
+    "static/media/cardui4.png": "/RetrospectMod/static/media/cardui4.c5a7503d656027324493.png",
+    "static/media/cardui3.png": "/RetrospectMod/static/media/cardui3.9ef6e1800d3fbaec1525.png",
+    "index.html": "/RetrospectMod/index.html",
+    "main.ace3b5ff.css.map": "/RetrospectMod/static/css/main.ace3b5ff.css.map",
+    "main.d733da89.js.map": "/RetrospectMod/static/js/main.d733da89.js.map"
   },
   "entrypoints": [
-    "static/css/main.def22d62.css",
+    "static/css/main.ace3b5ff.css",
     "static/js/main.d733da89.js"
   ]
 }
