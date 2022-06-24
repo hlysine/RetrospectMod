@@ -238,5 +238,9 @@
     "EXTENDED_DESCRIPTION": [
       "{@@} (Constructed !M! timeline{!M!|>1=s}.)"
     ]
+  },
+  "theRetrospect:AssetProcurement": {
+    "NAME": "Asset Procurement",
+    "DESCRIPTION": "Add a random colourless card to your hand."
   }
 }

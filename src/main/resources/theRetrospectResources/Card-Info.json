@@ -472,5 +472,13 @@
     "D": 5,
     "+D": 2,
     "M/Timeline Count": 0
+  },
+  "theRetrospect:AssetProcurement": {
+    "RARITY": "UNCOMMON",
+    "TYPE": "SKILL",
+    "COLOR": "RETROSPECT_PURPLE",
+    "IMG": "asset_procurement.png",
+    "COST": 1,
+    "+COST": 0
   }
 }
