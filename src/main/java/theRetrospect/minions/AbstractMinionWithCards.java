@@ -10,12 +10,14 @@ import com.megacrit.cardcrawl.helpers.input.InputHelper;
 import hlysine.friendlymonsters.monsters.AbstractFriendlyMonster;
 import theRetrospect.RetrospectMod;
 import theRetrospect.subscribers.EndOfTurnCardSubscriber;
+import theRetrospect.subscribers.MinionCardsChangedSubscriber;
 import theRetrospect.ui.UIManager;
 import theRetrospect.util.CallbackUtils;
 import theRetrospect.util.HoverableCardStack;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 public class AbstractMinionWithCards extends AbstractFriendlyMonster {
 
@@ -60,6 +62,14 @@ public class AbstractMinionWithCards extends AbstractFriendlyMonster {
             if (this.cards.size() >= MAX_CARDS) break;
             this.cards.add(card);
         }
+    }
+
+    public void triggerCardsChange() {
+        Optional<MinionCardsChangedSubscriber> power = this.powers.stream()
+                .filter(p -> p instanceof MinionCardsChangedSubscriber)
+                .findFirst()
+                .map(p -> (MinionCardsChangedSubscriber) p);
+        power.ifPresent(MinionCardsChangedSubscriber::onCardsChanged);
     }
 
     public void setCardIntents(List<AbstractCard> cardIntents) {

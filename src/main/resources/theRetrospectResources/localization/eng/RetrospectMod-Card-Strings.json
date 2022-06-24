@@ -212,5 +212,12 @@
   "theRetrospect:Converge": {
     "NAME": "Converge",
     "DESCRIPTION": "theretrospect:Collapse all timelines. Gain [E] and draw 1 card for each timeline theretrospect:collapsed. NL Exhaust."
+  },
+  "theRetrospect:SelfCorrection": {
+    "NAME": "Self Correction",
+    "DESCRIPTION": "Remove any number of cards from a timeline. NL Exhaust.",
+    "EXTENDED_DESCRIPTION": [
+      "Choose Any Number of Cards to Remove."
+    ]
   }
 }

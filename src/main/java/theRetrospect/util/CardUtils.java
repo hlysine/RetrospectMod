@@ -14,10 +14,8 @@ import theRetrospect.RetrospectMod;
 import theRetrospect.minions.AbstractMinionWithCards;
 import theRetrospect.patches.CardAddFieldsPatch;
 import theRetrospect.patches.CardReturnToMinionPatch;
-import theRetrospect.powers.TimerPower;
 
 import java.util.List;
-import java.util.Optional;
 
 public class CardUtils {
 
@@ -190,8 +188,7 @@ public class CardUtils {
         ReflectionHacks.setPrivate(soul, Soul.class, "target", new Vector2(timeline.drawX, timeline.drawY));
         ReflectionHacks.privateMethod(Soul.class, "setSharedVariables").invoke(soul);
         timeline.addCard(card);
-        Optional<TimerPower> power = timeline.powers.stream().filter(p -> p instanceof TimerPower).findFirst().map(p -> (TimerPower) p);
-        power.ifPresent(TimerPower::refresh);
+        timeline.triggerCardsChange();
         CardReturnToMinionPatch.SoulAddFieldPatch.returnToMinion.set(soul, timeline);
         ReflectionHacks.setPrivate(soul, Soul.class, "rotation", card.angle + 270.0F);
         ReflectionHacks.setPrivate(soul, Soul.class, "rotateClockwise", true);

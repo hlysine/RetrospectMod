@@ -19,11 +19,12 @@ import theRetrospect.actions.timelineActions.CollapseTimelineAction;
 import theRetrospect.minions.AbstractMinionWithCards;
 import theRetrospect.subscribers.BeforeMinionPlayCardSubscriber;
 import theRetrospect.subscribers.EndOfTurnCardSubscriber;
+import theRetrospect.subscribers.MinionCardsChangedSubscriber;
 import theRetrospect.util.*;
 
 import java.util.concurrent.atomic.AtomicInteger;
 
-public class TimerPower extends AbstractPower implements CloneablePowerInterface, EndOfTurnCardSubscriber {
+public class TimerPower extends AbstractPower implements CloneablePowerInterface, EndOfTurnCardSubscriber, MinionCardsChangedSubscriber {
     public AbstractMinionWithCards minion;
 
     public static final String POWER_ID = RetrospectMod.makeID(TimerPower.class.getSimpleName());
@@ -52,12 +53,7 @@ public class TimerPower extends AbstractPower implements CloneablePowerInterface
 
     @Override
     public void onInitialApplication() {
-        refresh();
-    }
-
-    public void refresh() {
-        updateDescription();
-        updateCardIntents();
+        onCardsChanged();
     }
 
     public void triggerWithoutConsumingCards(Runnable next) {
@@ -135,6 +131,12 @@ public class TimerPower extends AbstractPower implements CloneablePowerInterface
     public void onVictory() {
         new NonTriggeringHealthChange(AbstractDungeon.player, minion.currentHealth).update();
         new InstantKillAction(minion).update();
+    }
+
+    @Override
+    public void onCardsChanged() {
+        updateDescription();
+        updateCardIntents();
     }
 
     private void updateCardIntents() {

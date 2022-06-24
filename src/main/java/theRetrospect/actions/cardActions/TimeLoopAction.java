@@ -6,12 +6,10 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.vfx.combat.EmpowerEffect;
 import theRetrospect.effects.TimelineCircleEffect;
 import theRetrospect.minions.TimelineMinion;
-import theRetrospect.powers.TimerPower;
 import theRetrospect.util.CardUtils;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 public class TimeLoopAction extends AbstractGameAction {
     private final TimelineMinion timeline;
@@ -34,8 +32,7 @@ public class TimeLoopAction extends AbstractGameAction {
             }
         }
 
-        Optional<TimerPower> power = timeline.powers.stream().filter(p -> p instanceof TimerPower).findFirst().map(p -> (TimerPower) p);
-        power.ifPresent(TimerPower::refresh);
+        timeline.triggerCardsChange();
 
         this.isDone = true;
     }

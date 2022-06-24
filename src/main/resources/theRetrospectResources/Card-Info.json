@@ -424,5 +424,13 @@
     "IMG": "converge.png",
     "COST": 1,
     "+COST": 0
+  },
+  "theRetrospect:SelfCorrection": {
+    "RARITY": "RARE",
+    "TYPE": "SKILL",
+    "COLOR": "RETROSPECT_PURPLE",
+    "IMG": "self_correction.png",
+    "COST": 2,
+    "+COST": 1
   }
 }
