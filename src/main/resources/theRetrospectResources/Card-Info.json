@@ -457,8 +457,9 @@
     "TYPE": "ATTACK",
     "COLOR": "RETROSPECT_PURPLE",
     "IMG": "fractal_blade.png",
+    "MAX_UPGRADES": -1,
     "COST": 1,
     "D": 6,
-    "+D": 2
+    "+D": 3
   }
 }
