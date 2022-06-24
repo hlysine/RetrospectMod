@@ -61,6 +61,7 @@ public class ConstructTimelineAction extends AbstractGameAction {
                         (int) (-Settings.WIDTH * 0.5), 0, health);
 
                 MinionUtils.addMinion(player, minion);
+                TimelineUtils.timelinesConstructedThisCombat.add(minion);
 
                 TimelineUtils.repositionTimelines(player);
 

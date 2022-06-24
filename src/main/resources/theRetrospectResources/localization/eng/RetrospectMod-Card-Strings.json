@@ -231,5 +231,12 @@
   "theRetrospect:FractalBlade": {
     "NAME": "Fractal Blade",
     "DESCRIPTION": "Deal !D! damage. Can be upgraded any number of times."
+  },
+  "theRetrospect:Anamnesis": {
+    "NAME": "Anamnesis",
+    "DESCRIPTION": "Deal !D! damage to a random enemy for each timeline theretrospect:constructed this combat.",
+    "EXTENDED_DESCRIPTION": [
+      "{@@} (Constructed !M! timeline{!M!|>1=s}.)"
+    ]
   }
 }

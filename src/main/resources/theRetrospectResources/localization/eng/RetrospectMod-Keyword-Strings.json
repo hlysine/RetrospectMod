@@ -1,7 +1,9 @@
 [
   {
     "NAMES": [
-      "construct"
+      "construct",
+      "constructs",
+      "constructed"
     ],
     "DESCRIPTION": "Create a timeline and share #b40% of your current HP to it."
   },

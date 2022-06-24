@@ -462,5 +462,15 @@
     "COST": 1,
     "D": 6,
     "+D": 3
+  },
+  "theRetrospect:Anamnesis": {
+    "RARITY": "RARE",
+    "TYPE": "ATTACK",
+    "COLOR": "RETROSPECT_PURPLE",
+    "IMG": "anamnesis.png",
+    "COST": 3,
+    "D": 5,
+    "+D": 2,
+    "M/Timeline Count": 0
   }
 }

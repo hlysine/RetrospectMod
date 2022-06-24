@@ -8,10 +8,13 @@ import hlysine.friendlymonsters.utils.MinionUtils;
 import theRetrospect.minions.AbstractMinionWithCards;
 import theRetrospect.minions.TimelineMinion;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class TimelineUtils {
+    public static final List<TimelineMinion> timelinesConstructedThisCombat = new ArrayList<>();
+
     public static void repositionTimelines(AbstractPlayer player) {
         boolean isPlayerSurrounded = player.drawX > Settings.WIDTH * 0.4f;
 
