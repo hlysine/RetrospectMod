@@ -219,5 +219,9 @@
     "EXTENDED_DESCRIPTION": [
       "Choose Any Number of Cards to Remove."
     ]
+  },
+  "theRetrospect:KineticEnergy": {
+    "NAME": "Kinetic Energy",
+    "DESCRIPTION": "Deal !D! damage. Next turn, gain [E]."
   }
 }
