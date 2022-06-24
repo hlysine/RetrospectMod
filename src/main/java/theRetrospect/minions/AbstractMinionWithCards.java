@@ -7,6 +7,7 @@ import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.helpers.input.InputHelper;
+import com.megacrit.cardcrawl.ui.buttons.PeekButton;
 import hlysine.friendlymonsters.monsters.AbstractFriendlyMonster;
 import theRetrospect.RetrospectMod;
 import theRetrospect.subscribers.EndOfTurnCardSubscriber;
@@ -106,13 +107,15 @@ public class AbstractMinionWithCards extends AbstractFriendlyMonster {
     public void update() {
         super.update();
         this.hb.update();
-        if (this.hb.hovered && !AbstractDungeon.isScreenUp) {
+        if (this.hb.hovered && !AbstractDungeon.isScreenUp && !PeekButton.isPeeking) {
             if (InputHelper.justClickedLeft) {
                 this.hb.clickStarted = true;
             }
         }
         if (this.hb.clicked &&
                 AbstractDungeon.overlayMenu.combatPanelsShown &&
+                !AbstractDungeon.isScreenUp &&
+                !PeekButton.isPeeking &&
                 AbstractDungeon.getMonsters() != null &&
                 !AbstractDungeon.getMonsters().areMonstersDead() &&
                 !AbstractDungeon.player.isDead &&
@@ -151,6 +154,8 @@ public class AbstractMinionWithCards extends AbstractFriendlyMonster {
         super.render(sb);
         if (this.hb.hovered &&
                 AbstractDungeon.overlayMenu.combatPanelsShown &&
+                !AbstractDungeon.isScreenUp &&
+                !PeekButton.isPeeking &&
                 AbstractDungeon.getMonsters() != null &&
                 !AbstractDungeon.getMonsters().areMonstersDead() &&
                 !AbstractDungeon.player.isDead &&
