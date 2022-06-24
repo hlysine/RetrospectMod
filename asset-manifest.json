@@ -1,17 +1,17 @@
 {
   "files": {
     "main.css": "/RetrospectMod/static/css/main.ace3b5ff.css",
-    "main.js": "/RetrospectMod/static/js/main.7a9a3206.js",
+    "main.js": "/RetrospectMod/static/js/main.06fb9375.js",
     "static/media/cardui.png": "/RetrospectMod/static/media/cardui.c09b95f5b91fe915f8b3.png",
     "static/media/cardui2.png": "/RetrospectMod/static/media/cardui2.260f2ae22bdf4941feb1.png",
     "static/media/cardui4.png": "/RetrospectMod/static/media/cardui4.c5a7503d656027324493.png",
     "static/media/cardui3.png": "/RetrospectMod/static/media/cardui3.9ef6e1800d3fbaec1525.png",
     "index.html": "/RetrospectMod/index.html",
     "main.ace3b5ff.css.map": "/RetrospectMod/static/css/main.ace3b5ff.css.map",
-    "main.7a9a3206.js.map": "/RetrospectMod/static/js/main.7a9a3206.js.map"
+    "main.06fb9375.js.map": "/RetrospectMod/static/js/main.06fb9375.js.map"
   },
   "entrypoints": [
     "static/css/main.ace3b5ff.css",
-    "static/js/main.7a9a3206.js"
+    "static/js/main.06fb9375.js"
   ]
 }
