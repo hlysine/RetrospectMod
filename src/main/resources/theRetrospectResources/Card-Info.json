@@ -480,5 +480,14 @@
     "IMG": "asset_procurement.png",
     "COST": 1,
     "+COST": 0
+  },
+  "theRetrospect:SynchronizedReflex": {
+    "RARITY": "RARE",
+    "TYPE": "POWER",
+    "COLOR": "RETROSPECT_PURPLE",
+    "IMG": "synchronized_reflex.png",
+    "COST": 2,
+    "M/Power Amount": 1,
+    "+M": 1
   }
 }

@@ -54,5 +54,13 @@
       "in_timeline"
     ],
     "DESCRIPTION": "This effect only happens if the card is played by a timeline."
+  },
+  {
+    "NAMES": [
+      "accelerate",
+      "accelerates",
+      "accelerated"
+    ],
+    "DESCRIPTION": "Allow a timeline to play more cards at the end of each turn."
   }
 ]

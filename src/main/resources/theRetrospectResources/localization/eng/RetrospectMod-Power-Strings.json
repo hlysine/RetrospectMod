@@ -116,5 +116,14 @@
       " round.",
       " rounds."
     ]
+  },
+  "theRetrospect:SynchronizedReflexPower": {
+    "NAME": "Synchronized Reflex",
+    "DESCRIPTIONS": [
+      "Whenever you receive unblocked attack damage, #yaccelerate #b",
+      " random timeline.",
+      " random timelines.",
+      "This power has no effect."
+    ]
   }
 }

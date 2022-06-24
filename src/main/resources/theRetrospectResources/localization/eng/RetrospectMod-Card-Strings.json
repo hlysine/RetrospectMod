@@ -242,5 +242,9 @@
   "theRetrospect:AssetProcurement": {
     "NAME": "Asset Procurement",
     "DESCRIPTION": "Add a random colourless card to your hand."
+  },
+  "theRetrospect:SynchronizedReflex": {
+    "NAME": "Synchronized Reflex",
+    "DESCRIPTION": "{@@}Whenever you receive unblocked attack damage, theretrospect:accelerate !M! random timeline{!M!|>1=s}."
   }
 }
