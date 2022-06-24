@@ -416,5 +416,13 @@
     "COST": 1,
     "M/HP Loss": 40,
     "+M": -10
+  },
+  "theRetrospect:Converge": {
+    "RARITY": "UNCOMMON",
+    "TYPE": "SKILL",
+    "COLOR": "RETROSPECT_PURPLE",
+    "IMG": "converge.png",
+    "COST": 1,
+    "+COST": 0
   }
 }

@@ -207,6 +207,10 @@
   },
   "theRetrospect:IntoTheVoid": {
     "NAME": "Into The Void",
-    "DESCRIPTION": "Lose !M! % HP. Prevent death for 1 round. Exhaust."
+    "DESCRIPTION": "Lose !M! % HP. Prevent death for 1 round. NL Exhaust."
+  },
+  "theRetrospect:Converge": {
+    "NAME": "Converge",
+    "DESCRIPTION": "theretrospect:Collapse all timelines. Gain [E] and draw 1 card for each timeline theretrospect:collapsed. NL Exhaust."
   }
 }
