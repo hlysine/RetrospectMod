@@ -6,7 +6,8 @@ already playable to an extent.
 
 | **[Download Mod](https://github.com/hlysine/RetrospectMod/releases/latest/)** |
 |-------------------------------------------------------------------------------|
-| [View changelog](CHANGELOG.md)                                                |
+| [View Changelog](CHANGELOG.md)                                                |
+| [Preview Cards](https://hlysine.github.io/RetrospectMod/)                     |
 
 ## License
 
