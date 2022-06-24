@@ -223,5 +223,9 @@
   "theRetrospect:KineticEnergy": {
     "NAME": "Kinetic Energy",
     "DESCRIPTION": "Deal !D! damage. Next turn, gain [E]."
+  },
+  "theRetrospect:Fragmentation": {
+    "NAME": "Fragmentation",
+    "DESCRIPTION": "Repeat !M! times, deal !D! damage to a random enemy."
   }
 }

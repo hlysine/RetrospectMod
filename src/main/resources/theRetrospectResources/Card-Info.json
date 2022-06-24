@@ -441,5 +441,15 @@
     "COST": 1,
     "D": 5,
     "+D": 3
+  },
+  "theRetrospect:Fragmentation": {
+    "RARITY": "UNCOMMON",
+    "TYPE": "ATTACK",
+    "COLOR": "RETROSPECT_PURPLE",
+    "IMG": "fragmentation.png",
+    "COST": 1,
+    "D": 1,
+    "M/Repeat Count": 10,
+    "+M": 5
   }
 }
