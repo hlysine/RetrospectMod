@@ -1,12 +1,11 @@
 package theRetrospect.cards.powers;
 
-import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theRetrospect.RetrospectMod;
+import theRetrospect.actions.cardActions.TimeLoopAction;
 import theRetrospect.cards.TimelineTargetingCard;
 import theRetrospect.minions.TimelineMinion;
-import theRetrospect.powers.TimeLoopPower;
 
 public class TimeLoop extends TimelineTargetingCard {
 
@@ -18,6 +17,6 @@ public class TimeLoop extends TimelineTargetingCard {
 
     @Override
     public void useOnTarget(AbstractPlayer p, AbstractMonster m, TimelineMinion target) {
-        addToBot(new ApplyPowerAction(target, p, new TimeLoopPower(target)));
+        addToBot(new TimeLoopAction(target, magicNumber));
     }
 }

@@ -8,11 +8,11 @@ import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.vfx.AbstractGameEffect;
 import hlysine.friendlymonsters.monsters.AbstractFriendlyMonster;
 
-public class TimelineConstructEffect extends AbstractGameEffect {
+public class TimelineCircleEffect extends AbstractGameEffect {
     private final TextureAtlas.AtlasRegion img;
     private final AbstractFriendlyMonster minion;
 
-    public TimelineConstructEffect(AbstractFriendlyMonster minion) {
+    public TimelineCircleEffect(AbstractFriendlyMonster minion) {
         this.minion = minion;
         this.img = ImageMaster.POWER_UP_1;
 

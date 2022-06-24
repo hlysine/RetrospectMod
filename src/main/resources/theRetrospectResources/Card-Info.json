@@ -197,11 +197,12 @@
   },
   "theRetrospect:TimeLoop": {
     "RARITY": "RARE",
-    "TYPE": "POWER",
+    "TYPE": "SKILL",
     "COLOR": "RETROSPECT_PURPLE",
     "IMG": "time_loop.png",
-    "COST": 2,
-    "+COST": 1
+    "COST": 1,
+    "M/Repeat Count": 1,
+    "+M": 1
   },
   "theRetrospect:Shortcut": {
     "RARITY": "RARE",

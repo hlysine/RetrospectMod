@@ -19,6 +19,8 @@ import java.util.List;
 
 public class AbstractMinionWithCards extends AbstractFriendlyMonster {
 
+    public static final int MAX_CARDS = 999;
+
     /**
      * A stack of cards rendered on top of this minion. Used to visualize {@link AbstractMinionWithCards#cardIntents}
      */
@@ -42,6 +44,7 @@ public class AbstractMinionWithCards extends AbstractFriendlyMonster {
     }
 
     public void addCard(AbstractCard card) {
+        if (this.cards.size() >= MAX_CARDS) return;
         card.current_x = card.target_x = this.drawX;
         card.current_y = card.target_y = this.drawY;
         this.cards.add(card);
@@ -53,7 +56,10 @@ public class AbstractMinionWithCards extends AbstractFriendlyMonster {
             card.current_x = card.target_x = this.drawX;
             card.current_y = card.target_y = this.drawY;
         });
-        this.cards.addAll(cards);
+        for (AbstractCard card : cards) {
+            if (this.cards.size() >= MAX_CARDS) break;
+            this.cards.add(card);
+        }
     }
 
     public void setCardIntents(List<AbstractCard> cardIntents) {

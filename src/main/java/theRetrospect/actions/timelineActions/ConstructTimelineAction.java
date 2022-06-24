@@ -16,7 +16,7 @@ import theRetrospect.RetrospectMod;
 import theRetrospect.actions.general.NonTriggeringHealthChange;
 import theRetrospect.cards.AbstractBaseCard;
 import theRetrospect.effects.FlyingOrbEffect;
-import theRetrospect.effects.TimelineConstructEffect;
+import theRetrospect.effects.TimelineCircleEffect;
 import theRetrospect.minions.TimelineMinion;
 import theRetrospect.subscribers.TimelineConstructSubscriber;
 import theRetrospect.util.CardUtils;
@@ -76,7 +76,7 @@ public class ConstructTimelineAction extends AbstractGameAction {
 
                 CardCrawlGame.sound.play("CARD_POWER_IMPACT", 0.1f);
 
-                AbstractDungeon.effectList.add(new TimelineConstructEffect(minion));
+                AbstractDungeon.effectList.add(new TimelineCircleEffect(minion));
 
                 for (AbstractPower power : AbstractDungeon.player.powers) {
                     if (power instanceof TimelineConstructSubscriber) {
