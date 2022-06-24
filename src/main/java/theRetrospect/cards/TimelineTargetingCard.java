@@ -25,6 +25,7 @@ public abstract class TimelineTargetingCard extends AbstractBaseCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         TimelineMinion target = (TimelineMinion) TimelineTargeting.getTarget(this);
+        if (target != null && (target.isDeadOrEscaped() || target.isDead)) target = null;
         if (target == null) target = TimelineUtils.getRandomTimeline(p);
         if (target == null) {
             AbstractDungeon.effectList.add(new ThoughtBubble(p.dialogX, p.dialogY, 3.0F, cardStrings.EXTENDED_DESCRIPTION[0], true));
