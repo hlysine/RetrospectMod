@@ -103,8 +103,8 @@
     "COLOR": "RETROSPECT_PURPLE",
     "IMG": "sleight_of_hand.png",
     "COST": 2,
-    "D": 8,
-    "+D": 4
+    "D": 6,
+    "+D": 3
   },
   "theRetrospect:AlternativeReality": {
     "RARITY": "UNCOMMON",
