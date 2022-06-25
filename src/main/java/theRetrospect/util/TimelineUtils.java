@@ -1,12 +1,22 @@
 package theRetrospect.util;
 
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
+import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.MonsterGroup;
+import com.megacrit.cardcrawl.powers.AbstractPower;
+import com.megacrit.cardcrawl.relics.AbstractRelic;
+import hlysine.friendlymonsters.monsters.AbstractFriendlyMonster;
 import hlysine.friendlymonsters.utils.MinionUtils;
+import theRetrospect.actions.general.NonTriggeringHealthChange;
+import theRetrospect.actions.general.WaitForDeathAction;
+import theRetrospect.actions.timelineActions.RepositionTimelinesAction;
+import theRetrospect.actions.timelineActions.TriggerAfterTimelineCollapseAction;
+import theRetrospect.effects.TimelineCollapseEffect;
 import theRetrospect.minions.AbstractMinionWithCards;
 import theRetrospect.minions.TimelineMinion;
+import theRetrospect.subscribers.TimelineCollapseSubscriber;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -66,5 +76,56 @@ public class TimelineUtils {
                 .filter(m -> m instanceof TimelineMinion)
                 .map(m -> (TimelineMinion) m)
                 .collect(Collectors.toList());
+    }
+
+    public static boolean notifyCollapse(AbstractFriendlyMonster minion) {
+        boolean canCollapse = true;
+
+        for (AbstractPower power : minion.powers) {
+            if (power instanceof TimelineCollapseSubscriber) {
+                TimelineCollapseSubscriber listener = (TimelineCollapseSubscriber) power;
+                canCollapse = listener.beforeTimelineCollapse((TimelineMinion) minion, canCollapse) && canCollapse;
+            }
+        }
+
+        for (AbstractPower power : AbstractDungeon.player.powers) {
+            if (power instanceof TimelineCollapseSubscriber) {
+                TimelineCollapseSubscriber listener = (TimelineCollapseSubscriber) power;
+                canCollapse = listener.beforeTimelineCollapse((TimelineMinion) minion, canCollapse) && canCollapse;
+            }
+        }
+
+        for (AbstractRelic relic : AbstractDungeon.player.relics) {
+            if (relic instanceof TimelineCollapseSubscriber) {
+                TimelineCollapseSubscriber listener = (TimelineCollapseSubscriber) relic;
+                canCollapse = listener.beforeTimelineCollapse((TimelineMinion) minion, canCollapse) && canCollapse;
+            }
+        }
+
+        return canCollapse;
+    }
+
+    public static void queuedCollapse(AbstractFriendlyMonster minion) {
+        CardCrawlGame.sound.playA("STANCE_ENTER_CALM", 0.1f);
+        AbstractDungeon.actionManager.addToTop(new TriggerAfterTimelineCollapseAction((TimelineMinion) minion));
+        AbstractDungeon.actionManager.addToTop(new RepositionTimelinesAction());
+        AbstractDungeon.actionManager.addToTop(new WaitForDeathAction(minion));
+        AbstractDungeon.actionManager.addToTop(new NonTriggeringHealthChange(AbstractDungeon.player, minion.currentHealth));
+        AbstractDungeon.effectsQueue.add(new TimelineCollapseEffect(minion));
+        minion.die(false);
+    }
+
+    public static void instantCollapseWithEffect(AbstractFriendlyMonster minion) {
+        CardCrawlGame.sound.playA("STANCE_ENTER_CALM", 0.1f);
+        AbstractDungeon.actionManager.addToTop(new TriggerAfterTimelineCollapseAction((TimelineMinion) minion));
+        AbstractDungeon.actionManager.addToTop(new RepositionTimelinesAction());
+        AbstractDungeon.actionManager.addToTop(new WaitForDeathAction(minion));
+        AbstractDungeon.effectsQueue.add(new TimelineCollapseEffect(minion));
+        instantCollapseWithoutEffect(minion);
+    }
+
+    public static void instantCollapseWithoutEffect(AbstractFriendlyMonster minion) {
+        new NonTriggeringHealthChange(AbstractDungeon.player, minion.currentHealth).update();
+        minion.die(false);
     }
 }

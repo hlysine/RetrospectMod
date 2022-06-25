@@ -246,5 +246,9 @@
   "theRetrospect:SynchronizedReflex": {
     "NAME": "Synchronized Reflex",
     "DESCRIPTION": "{@@}Whenever you receive unblocked attack damage, theretrospect:accelerate !M! random timeline{!M!|>1=s}."
+  },
+  "theRetrospect:DimensionalRift": {
+    "NAME": "Dimensional Rift",
+    "DESCRIPTION": "When you are about to die, theretrospect:collapse the timeline with the most HP."
   }
 }

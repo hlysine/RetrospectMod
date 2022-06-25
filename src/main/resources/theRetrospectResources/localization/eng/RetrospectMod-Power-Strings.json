@@ -125,5 +125,12 @@
       " random timelines.",
       "This power has no effect."
     ]
+  },
+  "theRetrospect:DimensionalRiftPower": {
+    "NAME": "Dimensional Rift",
+    "DESCRIPTIONS": [
+      "When you are about to die, #ycollapse the timeline with the most HP.",
+      "This power has no effect."
+    ]
   }
 }

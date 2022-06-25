@@ -489,5 +489,13 @@
     "COST": 2,
     "M/Power Amount": 1,
     "+M": 1
+  },
+  "theRetrospect:DimensionalRift": {
+    "RARITY": "RARE",
+    "TYPE": "POWER",
+    "COLOR": "RETROSPECT_PURPLE",
+    "IMG": "dimensional_rift.png",
+    "COST": 2,
+    "+COST": 1
   }
 }

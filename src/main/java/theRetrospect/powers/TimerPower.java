@@ -3,16 +3,13 @@ package theRetrospect.powers;
 import basemod.interfaces.CloneablePowerInterface;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
-import com.megacrit.cardcrawl.actions.common.InstantKillAction;
 import com.megacrit.cardcrawl.actions.utility.WaitAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import theRetrospect.RetrospectMod;
-import theRetrospect.actions.general.NonTriggeringHealthChange;
 import theRetrospect.actions.general.QueueCardIntentAction;
 import theRetrospect.actions.general.RunnableAction;
 import theRetrospect.actions.timelineActions.CollapseTimelineAction;
@@ -25,7 +22,7 @@ import theRetrospect.util.*;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class TimerPower extends AbstractPower implements CloneablePowerInterface, EndOfTurnCardSubscriber, MinionCardsChangedSubscriber {
-    public AbstractMinionWithCards minion;
+    public final AbstractMinionWithCards minion;
 
     public static final String POWER_ID = RetrospectMod.makeID(TimerPower.class.getSimpleName());
     private static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
@@ -43,6 +40,8 @@ public class TimerPower extends AbstractPower implements CloneablePowerInterface
         this.amount = amount;
         if (owner instanceof AbstractMinionWithCards)
             this.minion = (AbstractMinionWithCards) owner;
+        else
+            this.minion = null;
 
         type = PowerType.BUFF;
         isTurnBased = false;
@@ -57,6 +56,10 @@ public class TimerPower extends AbstractPower implements CloneablePowerInterface
     }
 
     public void triggerWithoutConsumingCards(Runnable next) {
+        if (minion == null) {
+            next.run();
+            return;
+        }
         AtomicInteger cardIdx = new AtomicInteger(0);
         CallbackUtils.ForLoop(
                 () -> {
@@ -82,6 +85,10 @@ public class TimerPower extends AbstractPower implements CloneablePowerInterface
 
     @Override
     public void triggerOnEndOfTurnForPlayingCard(Runnable next) {
+        if (minion == null) {
+            next.run();
+            return;
+        }
         AtomicInteger remainingAmount = new AtomicInteger(amount);
         CallbackUtils.ForLoop(
                 () -> {
@@ -129,8 +136,8 @@ public class TimerPower extends AbstractPower implements CloneablePowerInterface
 
     @Override
     public void onVictory() {
-        new NonTriggeringHealthChange(AbstractDungeon.player, minion.currentHealth).update();
-        new InstantKillAction(minion).update();
+        if (minion != null)
+            TimelineUtils.instantCollapseWithoutEffect(minion);
     }
 
     @Override
@@ -140,6 +147,7 @@ public class TimerPower extends AbstractPower implements CloneablePowerInterface
     }
 
     private void updateCardIntents() {
+        if (minion == null) return;
         minion.cardIntents.clear();
         for (int i = 0; i < amount; i++) {
             if (i >= minion.cards.size()) break;

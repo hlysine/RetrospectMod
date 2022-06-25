@@ -33,6 +33,7 @@ public class IntoTheVoidPower extends AbstractPower implements CloneablePowerInt
 
         type = PowerType.BUFF;
         isTurnBased = true;
+        priority = 99;
 
         this.region128 = new TextureAtlas.AtlasRegion(tex84, 0, 0, 84, 84);
         this.region48 = new TextureAtlas.AtlasRegion(tex32, 0, 0, 32, 32);
@@ -66,9 +67,11 @@ public class IntoTheVoidPower extends AbstractPower implements CloneablePowerInt
     }
 
     @Override
-    public boolean onDeathPreProtection(DamageInfo info, boolean canDie) {
-        if (canDie)
+    public boolean onDeathPreProtection(DamageInfo damageInfo, DeathInfo info, boolean canDie) {
+        if (canDie) {
+            flash();
             this.owner.heal(1);
+        }
         return false;
     }
 }
