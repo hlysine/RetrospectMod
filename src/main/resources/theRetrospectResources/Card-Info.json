@@ -515,5 +515,15 @@
     "COST": 0,
     "D": 1,
     "+D": 1
+  },
+  "theRetrospect:Enigma": {
+    "RARITY": "UNCOMMON",
+    "TYPE": "ATTACK",
+    "COLOR": "RETROSPECT_PURPLE",
+    "IMG": "enigma.png",
+    "COST": 1,
+    "D": 0,
+    "M/Damage Multiplier": 3,
+    "+M": 1
   }
 }
