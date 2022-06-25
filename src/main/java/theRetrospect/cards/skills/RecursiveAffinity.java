@@ -25,6 +25,13 @@ public class RecursiveAffinity extends AbstractBaseCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         int cards = info.getBaseValue("cards");
-        CardUtils.addFollowUpActionToBottom(this, new ReplayLastCardsAction(this, null, cards, CardPlaySource.CARD), true, 0);
+        CardUtils.addFollowUpActionToBottom(this, new ReplayLastCardsAction(
+                this,
+                null,
+                cards,
+                CardPlaySource.CARD,
+                this.current_x,
+                this.current_y
+        ), true, 0);
     }
 }

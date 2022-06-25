@@ -254,5 +254,9 @@
   "theRetrospect:VanishingTrick": {
     "NAME": "Vanishing Trick",
     "DESCRIPTION": "theretrospect:Paradoxical. NL Gain !B! Block. NL Replay your last card this turn."
+  },
+  "theRetrospect:RecursionHell": {
+    "NAME": "Recursion Hell",
+    "DESCRIPTION": "theretrospect:Paradoxical. Deal !D! damage. Play 1 *Recursion *Hell."
   }
 }

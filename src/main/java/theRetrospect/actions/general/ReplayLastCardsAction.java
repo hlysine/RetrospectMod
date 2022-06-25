@@ -16,19 +16,20 @@ public class ReplayLastCardsAction extends AbstractGameAction {
     private final Predicate<AbstractCard> filter;
     private final int replayCount;
     private final CardPlaySource source;
+    private final float origin_x;
+    private final float origin_y;
 
-    public ReplayLastCardsAction(AbstractCard originatingCard, Predicate<AbstractCard> filter, int replayCount, CardPlaySource source) {
+    public ReplayLastCardsAction(AbstractCard originatingCard, Predicate<AbstractCard> filter, int replayCount, CardPlaySource source, float origin_x, float origin_y) {
         this.originatingCard = originatingCard;
         this.filter = filter;
         this.replayCount = replayCount;
         this.source = source;
+        this.origin_x = origin_x;
+        this.origin_y = origin_y;
     }
 
     @Override
     public void update() {
-        float origin_x = originatingCard.current_x;
-        float origin_y = originatingCard.current_y;
-
         List<AbstractCard> lastPlayedCards = AbstractDungeon.actionManager.cardsPlayedThisTurn;
         int remaining = replayCount;
         List<AbstractCard> replayCards = new ArrayList<>(replayCount);

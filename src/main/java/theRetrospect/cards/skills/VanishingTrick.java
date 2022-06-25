@@ -26,6 +26,13 @@ public class VanishingTrick extends AbstractBaseCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         addToBot(new GainBlockAction(p, p, block));
-        CardUtils.addFollowUpActionToBottom(this, new ReplayLastCardsAction(this, card -> card != this, 1, CardPlaySource.CARD), true, 0);
+        CardUtils.addFollowUpActionToBottom(this, new ReplayLastCardsAction(
+                this,
+                null,
+                1,
+                CardPlaySource.CARD,
+                this.current_x,
+                this.current_y
+        ), true, 0);
     }
 }

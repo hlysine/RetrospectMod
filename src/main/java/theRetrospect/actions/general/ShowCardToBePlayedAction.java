@@ -1,5 +1,6 @@
 package theRetrospect.actions.general;
 
+import com.badlogic.gdx.math.MathUtils;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -28,8 +29,8 @@ public class ShowCardToBePlayedAction extends AbstractGameAction {
 
     public ShowCardToBePlayedAction(List<AbstractCard> card, float origin_x, float origin_y) {
         this.cards = card;
-        this.origin_x = origin_x;
-        this.origin_y = origin_y;
+        this.origin_x = MathUtils.clamp(origin_x, Settings.WIDTH * 0.3f, Settings.WIDTH * 0.7f);
+        this.origin_y = MathUtils.clamp(origin_y, Settings.HEIGHT * 0.3f, Settings.HEIGHT * 0.7f);
     }
 
     @Override
