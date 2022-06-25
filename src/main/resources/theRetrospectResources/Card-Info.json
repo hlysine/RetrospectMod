@@ -525,5 +525,14 @@
     "D": 0,
     "M/Damage Multiplier": 7,
     "+M": 2
+  },
+  "theRetrospect:Concoction": {
+    "RARITY": "COMMON",
+    "TYPE": "SKILL",
+    "COLOR": "RETROSPECT_PURPLE",
+    "IMG": "concoction.png",
+    "COST": 1,
+    "M/Power Level": 1,
+    "+M": 1
   }
 }

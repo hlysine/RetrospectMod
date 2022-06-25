@@ -265,5 +265,9 @@
     "EXTENDED_DESCRIPTION": [
       " NL (Deal !D! damage.)"
     ]
+  },
+  "theRetrospect:Concoction": {
+    "NAME": "Concoction",
+    "DESCRIPTION": "Gain !M! Strength, !M! Dexterity, and 1 Weak."
   }
 }
