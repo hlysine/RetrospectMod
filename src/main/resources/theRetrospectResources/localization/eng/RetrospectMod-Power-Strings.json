@@ -35,13 +35,6 @@
       " additional cards."
     ]
   },
-  "theRetrospect:AntiqueClockPower": {
-    "NAME": "Antique Clock",
-    "DESCRIPTIONS": [
-      "At the end of your turn, play #b",
-      " #yDivert."
-    ]
-  },
   "theRetrospect:TimeLoopPower": {
     "NAME": "Time Loop",
     "DESCRIPTIONS": [
@@ -100,13 +93,6 @@
       "All timeline construction cards construct #b+",
       " timeline.",
       " timelines."
-    ]
-  },
-  "theRetrospect:AtomicClockPower": {
-    "NAME": "Atomic Clock",
-    "DESCRIPTIONS": [
-      "At the end of your turn, play #b",
-      " #yAvert."
     ]
   },
   "theRetrospect:IntoTheVoidPower": {
