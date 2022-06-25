@@ -67,10 +67,11 @@ public class CardUtils {
      *
      * @param card           The card to store the action in.
      * @param actionAfterUse The action to be executed.
-     * @param skipIfEndTurn  Whether to skip queuing this action when the player's turn has already ended
+     * @param skipIfEndTurn  Whether to skip queuing this action when the player's turn has already ended. This should be true if the action enqueues another card.
+     * @param priority       Actions with a higher priority will be enqueued in a way that results in a smaller index in the queue.
      */
-    public static void addFollowUpActionToBottom(AbstractCard card, AbstractGameAction actionAfterUse, boolean skipIfEndTurn) {
-        addFollowUpAction(card, actionAfterUse, false, skipIfEndTurn);
+    public static void addFollowUpActionToBottom(AbstractCard card, AbstractGameAction actionAfterUse, boolean skipIfEndTurn, int priority) {
+        addFollowUpAction(card, actionAfterUse, false, skipIfEndTurn, priority);
     }
 
     /**
@@ -80,10 +81,11 @@ public class CardUtils {
      *
      * @param card           The card to store the action in.
      * @param actionAfterUse The action to be executed.
-     * @param skipIfEndTurn  Whether to skip queuing this action when the player's turn has already ended
+     * @param skipIfEndTurn  Whether to skip queuing this action when the player's turn has already ended. This should be true if the action enqueues another card.
+     * @param priority       Actions with a higher priority will be enqueued in a way that results in a smaller index in the queue.
      */
-    public static void addFollowUpActionToTop(AbstractCard card, AbstractGameAction actionAfterUse, boolean skipIfEndTurn) {
-        addFollowUpAction(card, actionAfterUse, true, skipIfEndTurn);
+    public static void addFollowUpActionToTop(AbstractCard card, AbstractGameAction actionAfterUse, boolean skipIfEndTurn, int priority) {
+        addFollowUpAction(card, actionAfterUse, true, skipIfEndTurn, priority);
     }
 
     /**
@@ -94,10 +96,11 @@ public class CardUtils {
      * @param card           The card to store the action in.
      * @param actionAfterUse The action to be executed.
      * @param onTop          Whether to immediately execute the action or wait until remaining actions are done.
-     * @param skipIfEndTurn  Whether to skip queuing this action when the player's turn has already ended
+     * @param skipIfEndTurn  Whether to skip queuing this action when the player's turn has already ended. This should be true if the action enqueues another card.
+     * @param priority       Actions with a higher priority will be enqueued in a way that results in a smaller index in the queue.
      */
-    public static void addFollowUpAction(AbstractCard card, AbstractGameAction actionAfterUse, boolean onTop, boolean skipIfEndTurn) {
-        CardAddFieldsPatch.followUpActions.get(card).add(new CardFollowUpAction(actionAfterUse, onTop, skipIfEndTurn));
+    public static void addFollowUpAction(AbstractCard card, AbstractGameAction actionAfterUse, boolean onTop, boolean skipIfEndTurn, int priority) {
+        CardAddFieldsPatch.followUpActions.get(card).add(new CardFollowUpAction(actionAfterUse, onTop, skipIfEndTurn, priority));
     }
 
     /**

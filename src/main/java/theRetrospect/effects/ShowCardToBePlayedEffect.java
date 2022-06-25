@@ -21,7 +21,7 @@ public class ShowCardToBePlayedEffect extends AbstractGameEffect {
                 self.isDone = true;
                 this.isDone = true;
             }
-        }, false);
+        }, false, 1000);
     }
 
     public void update() {

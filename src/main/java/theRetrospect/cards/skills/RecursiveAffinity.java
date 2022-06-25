@@ -7,6 +7,7 @@ import theRetrospect.actions.general.ReplayLastCardsAction;
 import theRetrospect.cards.AbstractBaseCard;
 import theRetrospect.cards.statuses.Paradox;
 import theRetrospect.util.CardPlaySource;
+import theRetrospect.util.CardUtils;
 
 public class RecursiveAffinity extends AbstractBaseCard {
 
@@ -24,6 +25,6 @@ public class RecursiveAffinity extends AbstractBaseCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         int cards = info.getBaseValue("cards");
-        addToBot(new ReplayLastCardsAction(card -> card != this, cards, CardPlaySource.CARD));
+        CardUtils.addFollowUpActionToBottom(this, new ReplayLastCardsAction(card -> card != this, cards, CardPlaySource.CARD), true, 0);
     }
 }

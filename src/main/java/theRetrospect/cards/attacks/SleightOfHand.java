@@ -10,6 +10,7 @@ import theRetrospect.actions.general.ReplayLastCardsAction;
 import theRetrospect.cards.AbstractBaseCard;
 import theRetrospect.cards.statuses.Paradox;
 import theRetrospect.util.CardPlaySource;
+import theRetrospect.util.CardUtils;
 
 public class SleightOfHand extends AbstractBaseCard {
 
@@ -27,6 +28,6 @@ public class SleightOfHand extends AbstractBaseCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         addToBot(new DamageAction(m, new DamageInfo(p, damage, damageTypeForTurn), AbstractGameAction.AttackEffect.SLASH_VERTICAL));
-        addToBot(new ReplayLastCardsAction(card -> card != this, 1, CardPlaySource.CARD));
+        CardUtils.addFollowUpActionToBottom(this, new ReplayLastCardsAction(card -> card != this, 1, CardPlaySource.CARD), true, 0);
     }
 }

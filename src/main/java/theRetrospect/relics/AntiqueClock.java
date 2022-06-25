@@ -41,7 +41,7 @@ public class AntiqueClock extends AbstractBaseRelic implements EndOfTurnCardSubs
             card.purgeOnUse = true;
             card.current_x = card.target_x = AbstractDungeon.player.drawX;
             card.current_y = card.target_y = AbstractDungeon.player.drawY;
-            CardUtils.addFollowUpActionToBottom(card, new RunnableAction(next), true);
+            CardUtils.addFollowUpActionToBottom(card, new RunnableAction(next), true, 0);
             addToBot(new ShowCardToBePlayedAction(card));
             addToBot(new CustomQueueCardAction(card, true, false, true));
             this.grayscale = true;
