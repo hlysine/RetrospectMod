@@ -28,6 +28,6 @@ public class SleightOfHand extends AbstractBaseCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         addToBot(new DamageAction(m, new DamageInfo(p, damage, damageTypeForTurn), AbstractGameAction.AttackEffect.SLASH_VERTICAL));
-        CardUtils.addFollowUpActionToBottom(this, new ReplayLastCardsAction(card -> card != this, 1, CardPlaySource.CARD), true, 0);
+        CardUtils.addFollowUpActionToBottom(this, new ReplayLastCardsAction(this, card -> card != this, 1, CardPlaySource.CARD), true, 0);
     }
 }

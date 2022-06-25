@@ -24,7 +24,7 @@ public class AvertAction extends AbstractGameAction {
             if (card != null) {
                 AbstractDungeon.player.discardPile.removeCard(card);
                 CardUtils.addFollowUpActionToTop(card, new ConstructMultipleTimelineAction(avert, avert.timelineCount), false, 100);
-                addToBot(new ShowCardToBePlayedAction(card));
+                addToBot(new ShowCardToBePlayedAction(card, avert.current_x, avert.current_y));
                 addToBot(new CustomQueueCardAction(card, true, true, true));
                 cardPlayed = true;
             }
