@@ -523,7 +523,7 @@
     "IMG": "enigma.png",
     "COST": 1,
     "D": 0,
-    "M/Damage Multiplier": 3,
+    "M/Damage Multiplier": 5,
     "+M": 1
   }
 }
