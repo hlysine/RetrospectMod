@@ -534,5 +534,14 @@
     "COST": 1,
     "M/Power Level": 1,
     "+M": 1
+  },
+  "theRetrospect:SmartHammer": {
+    "RARITY": "RARE",
+    "TYPE": "ATTACK",
+    "COLOR": "RETROSPECT_PURPLE",
+    "IMG": "smart_hammer.png",
+    "COST": 1,
+    "D": 6,
+    "+D": 3
   }
 }

@@ -5,7 +5,7 @@ import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theRetrospect.RetrospectMod;
-import theRetrospect.actions.general.ChooseFromDiscardPileAction;
+import theRetrospect.actions.general.ChooseFromCardGroupAction;
 import theRetrospect.cards.AbstractBaseCard;
 
 public class Recollection extends AbstractBaseCard {
@@ -28,7 +28,7 @@ public class Recollection extends AbstractBaseCard {
         } else {
             menuText = cardStrings.EXTENDED_DESCRIPTION[0];
         }
-        addToBot(new ChooseFromDiscardPileAction(menuText, magicNumber, false, card -> {
+        addToBot(new ChooseFromCardGroupAction(p.discardPile.group, menuText, magicNumber, false, false, card -> {
             AbstractCard newCard = card.makeStatEquivalentCopy();
             newCard.setCostForTurn(0);
             addToBot(new MakeTempCardInHandAction(newCard));
