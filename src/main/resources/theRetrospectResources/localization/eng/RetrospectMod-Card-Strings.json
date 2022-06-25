@@ -250,5 +250,9 @@
   "theRetrospect:DimensionalRift": {
     "NAME": "Dimensional Rift",
     "DESCRIPTION": "When you are about to die, theretrospect:collapse the timeline with the most HP."
+  },
+  "theRetrospect:VanishingTrick": {
+    "NAME": "Vanishing Trick",
+    "DESCRIPTION": "theretrospect:Paradoxical. NL Gain !B! Block. NL Replay your last card this turn."
   }
 }

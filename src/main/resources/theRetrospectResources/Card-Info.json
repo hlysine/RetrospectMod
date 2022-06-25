@@ -497,5 +497,14 @@
     "IMG": "dimensional_rift.png",
     "COST": 2,
     "+COST": 1
+  },
+  "theRetrospect:VanishingTrick": {
+    "RARITY": "COMMON",
+    "TYPE": "SKILL",
+    "COLOR": "RETROSPECT_PURPLE",
+    "IMG": "vanishing_trick.png",
+    "COST": 2,
+    "B": 5,
+    "+B": 3
   }
 }
