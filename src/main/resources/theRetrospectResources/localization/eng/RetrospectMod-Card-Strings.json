@@ -268,7 +268,7 @@
   },
   "theRetrospect:Concoction": {
     "NAME": "Concoction",
-    "DESCRIPTION": "Gain !M! Strength, NL !M! Dexterity, NL and 1 Vulnerable."
+    "DESCRIPTION": "Gain !M! Strength, NL !M! Dexterity, NL and 1 Weak. NL Exhaust."
   },
   "theRetrospect:SmartHammer": {
     "NAME": "Smart Hammer",
