@@ -287,5 +287,9 @@
     "EXTENDED_DESCRIPTION": [
       " NL (Deal !D! damage.)"
     ]
+  },
+  "theRetrospect:IntoTheVoid": {
+    "NAME": "Into The Void",
+    "DESCRIPTION": "Lose !M! HP. Timelines cost 1 HP to theretrospect:construct this turn."
   }
 }

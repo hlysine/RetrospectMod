@@ -561,5 +561,14 @@
     "COST": 3,
     "+COST": 2,
     "D": 0
+  },
+  "theRetrospect:IntoTheVoid": {
+    "RARITY": "UNCOMMON",
+    "TYPE": "SKILL",
+    "COLOR": "RETROSPECT_PURPLE",
+    "IMG": "into_the_void.png",
+    "COST": 1,
+    "M/HP Loss": 3,
+    "+M": -2
   }
 }

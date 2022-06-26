@@ -126,5 +126,14 @@
       " damage to ALL enemies.",
       " damage to ALL enemies."
     ]
+  },
+  "theRetrospect:IntoTheVoidPower": {
+    "NAME": "Into The Void",
+    "DESCRIPTIONS": [
+      "Timelines cost 1 HP to #yconstruct this turn.",
+      "Timelines cost 1 HP to #yconstruct for #b",
+      " turn.",
+      " turns."
+    ]
   }
 }
