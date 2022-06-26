@@ -135,5 +135,13 @@
       " turn.",
       " turns."
     ]
+  },
+  "theRetrospect:TheBestDefensePower": {
+    "NAME": "The Best Defense",
+    "DESCRIPTIONS": [
+      "This round, return all blocked damage to enemies.",
+      "For ",
+      " rounds, return all blocked damage to enemies."
+    ]
   }
 }

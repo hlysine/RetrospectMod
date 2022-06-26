@@ -295,5 +295,9 @@
   "theRetrospect:DeviatedBurst": {
     "NAME": "Deviated Burst",
     "DESCRIPTION": "Deal random (up to !M!) damage 3 times."
+  },
+  "theRetrospect:TheBestDefense": {
+    "NAME": "The Best Defense",
+    "DESCRIPTION": "{@@}{!Upgrades!|0=|@=Gain !B! Block. }This round, return all blocked damage to enemies."
   }
 }

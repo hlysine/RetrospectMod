@@ -18,7 +18,7 @@ public class IntoTheVoidAction extends AbstractGameAction {
     public void update() {
         AbstractPlayer player = AbstractDungeon.player;
         addToTop(new LoseHPAction(player, player, hpLoss));
-        if (!AbstractDungeon.player.hasPower(IntoTheVoidPower.POWER_ID))
+        if (!player.hasPower(IntoTheVoidPower.POWER_ID))
             addToTop(new ApplyPowerAction(player, player, new IntoTheVoidPower(player, 1)));
         this.isDone = true;
     }
