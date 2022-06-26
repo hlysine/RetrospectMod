@@ -567,7 +567,7 @@
     "TYPE": "SKILL",
     "COLOR": "RETROSPECT_PURPLE",
     "IMG": "into_the_void.png",
-    "COST": 1,
+    "COST": 0,
     "M/HP Loss": 3,
     "+M": -2
   }
