@@ -95,8 +95,8 @@
       " timelines."
     ]
   },
-  "theRetrospect:IntoTheVoidPower": {
-    "NAME": "Into The Void",
+  "theRetrospect:DeathTotemPower": {
+    "NAME": "Death Totem",
     "DESCRIPTIONS": [
       "Prevent death for #b",
       " round.",

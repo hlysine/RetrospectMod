@@ -205,8 +205,8 @@
     "NAME": "Recursive Affinity",
     "DESCRIPTION": "theretrospect:Paradoxical. NL Replay your last 2 cards this turn."
   },
-  "theRetrospect:IntoTheVoid": {
-    "NAME": "Into The Void",
+  "theRetrospect:DeathTotem": {
+    "NAME": "Death Totem",
     "DESCRIPTION": "Lose !M! % HP. Prevent death for 1 round. NL Exhaust."
   },
   "theRetrospect:Converge": {

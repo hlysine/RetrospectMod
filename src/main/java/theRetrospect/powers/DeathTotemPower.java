@@ -14,9 +14,9 @@ import theRetrospect.RetrospectMod;
 import theRetrospect.subscribers.OnDeathPreProtectionSubscriber;
 import theRetrospect.util.TextureLoader;
 
-public class IntoTheVoidPower extends AbstractPower implements CloneablePowerInterface, OnDeathPreProtectionSubscriber {
+public class DeathTotemPower extends AbstractPower implements CloneablePowerInterface, OnDeathPreProtectionSubscriber {
 
-    public static final String POWER_ID = RetrospectMod.makeID(IntoTheVoidPower.class.getSimpleName());
+    public static final String POWER_ID = RetrospectMod.makeID(DeathTotemPower.class.getSimpleName());
     private static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
     public static final String NAME = powerStrings.NAME;
     public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
@@ -24,7 +24,7 @@ public class IntoTheVoidPower extends AbstractPower implements CloneablePowerInt
     private static final Texture tex84 = TextureLoader.getTexture("theRetrospectResources/images/powers/placeholder_power84.png");
     private static final Texture tex32 = TextureLoader.getTexture("theRetrospectResources/images/powers/placeholder_power32.png");
 
-    public IntoTheVoidPower(final AbstractCreature owner, final int amount) {
+    public DeathTotemPower(final AbstractCreature owner, final int amount) {
         name = NAME;
         ID = POWER_ID;
 
@@ -63,7 +63,7 @@ public class IntoTheVoidPower extends AbstractPower implements CloneablePowerInt
 
     @Override
     public AbstractPower makeCopy() {
-        return new IntoTheVoidPower(owner, amount);
+        return new DeathTotemPower(owner, amount);
     }
 
     @Override
