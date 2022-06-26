@@ -16,6 +16,8 @@ public class DejaVu extends AbstractBaseCard {
     public DejaVu() {
         super(ID, TARGET);
 
+        this.misc = this.baseBlock;
+
         this.exhaust = true;
     }
 
