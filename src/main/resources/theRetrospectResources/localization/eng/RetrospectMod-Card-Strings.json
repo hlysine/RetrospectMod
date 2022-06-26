@@ -280,5 +280,12 @@
   "theRetrospect:MasterOfDeception": {
     "NAME": "Master Of Deception",
     "DESCRIPTION": "Whenever you theretrospect:construct a timeline, deal !M! damage to ALL enemies."
+  },
+  "theRetrospect:ConcertedBlast": {
+    "NAME": "Concerted Blast",
+    "DESCRIPTION": "Deal damage equal to the total number of cards in all timelines.",
+    "EXTENDED_DESCRIPTION": [
+      " NL (Deal !D! damage.)"
+    ]
   }
 }

@@ -552,5 +552,14 @@
     "COST": 1,
     "M/Power Amount": 3,
     "+M": 2
+  },
+  "theRetrospect:ConcertedBlast": {
+    "RARITY": "UNCOMMON",
+    "TYPE": "ATTACK",
+    "COLOR": "RETROSPECT_PURPLE",
+    "IMG": "concerted_blast.png",
+    "COST": 3,
+    "+COST": 2,
+    "D": 0
   }
 }
