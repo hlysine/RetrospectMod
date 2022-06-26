@@ -11,10 +11,10 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import theRetrospect.RetrospectMod;
-import theRetrospect.subscribers.OnDeathPreProtectionSubscriber;
+import theRetrospect.subscribers.DeathPreProtectionSubscriber;
 import theRetrospect.util.TextureLoader;
 
-public class DeathTotemPower extends AbstractPower implements CloneablePowerInterface, OnDeathPreProtectionSubscriber {
+public class DeathTotemPower extends AbstractPower implements CloneablePowerInterface, DeathPreProtectionSubscriber {
 
     public static final String POWER_ID = RetrospectMod.makeID(DeathTotemPower.class.getSimpleName());
     private static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);

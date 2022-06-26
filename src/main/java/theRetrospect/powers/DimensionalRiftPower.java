@@ -11,7 +11,7 @@ import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import theRetrospect.RetrospectMod;
 import theRetrospect.minions.TimelineMinion;
-import theRetrospect.subscribers.OnDeathPreProtectionSubscriber;
+import theRetrospect.subscribers.DeathPreProtectionSubscriber;
 import theRetrospect.util.TextureLoader;
 import theRetrospect.util.TimelineUtils;
 
@@ -19,7 +19,7 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
 
-public class DimensionalRiftPower extends AbstractPower implements CloneablePowerInterface, OnDeathPreProtectionSubscriber {
+public class DimensionalRiftPower extends AbstractPower implements CloneablePowerInterface, DeathPreProtectionSubscriber {
     public final AbstractPlayer player;
 
     public static final String POWER_ID = RetrospectMod.makeID(DimensionalRiftPower.class.getSimpleName());
