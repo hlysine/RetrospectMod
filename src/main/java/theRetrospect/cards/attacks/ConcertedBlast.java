@@ -35,7 +35,7 @@ public class ConcertedBlast extends AbstractBaseCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        int count = calculateDamage();
+        calculateDamage();
         this.applyPowers();
 
         if (m != null) {
