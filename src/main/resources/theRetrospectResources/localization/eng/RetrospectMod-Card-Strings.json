@@ -276,5 +276,9 @@
     "EXTENDED_DESCRIPTION": [
       "Choose a Card to Upgrade."
     ]
+  },
+  "theRetrospect:MasterOfDeception": {
+    "NAME": "Master Of Deception",
+    "DESCRIPTION": "Whenever you theretrospect:construct a timeline, deal !M! damage to ALL enemies."
   }
 }

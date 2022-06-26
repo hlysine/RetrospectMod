@@ -118,5 +118,13 @@
       "When you are about to die, #ycollapse the timeline with the most HP.",
       "This power has no effect."
     ]
+  },
+  "theRetrospect:MasterOfDeceptionPower": {
+    "NAME": "Master Of Deception",
+    "DESCRIPTIONS": [
+      "Whenever you #yconstruct a timeline, deal #b",
+      " damage to ALL enemies.",
+      " damage to ALL enemies."
+    ]
   }
 }

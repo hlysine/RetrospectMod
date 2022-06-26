@@ -543,5 +543,14 @@
     "COST": 1,
     "D": 6,
     "+D": 3
+  },
+  "theRetrospect:MasterOfDeception": {
+    "RARITY": "UNCOMMON",
+    "TYPE": "POWER",
+    "COLOR": "RETROSPECT_PURPLE",
+    "IMG": "master_of_deception.png",
+    "COST": 1,
+    "M/Power Amount": 3,
+    "+M": 2
   }
 }
