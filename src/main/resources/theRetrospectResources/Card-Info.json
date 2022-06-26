@@ -443,11 +443,11 @@
     "D": 5,
     "+D": 3
   },
-  "theRetrospect:Fragmentation": {
+  "theRetrospect:ShatteringBurst": {
     "RARITY": "UNCOMMON",
     "TYPE": "ATTACK",
     "COLOR": "RETROSPECT_PURPLE",
-    "IMG": "fragmentation.png",
+    "IMG": "shattering_burst.png",
     "COST": 1,
     "D": 1,
     "M/Repeat Count": 10,

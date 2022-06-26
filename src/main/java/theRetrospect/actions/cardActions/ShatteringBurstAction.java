@@ -6,13 +6,13 @@ import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 
-public class FragmentationAction extends AbstractGameAction {
+public class ShatteringBurstAction extends AbstractGameAction {
     private final int count;
     private final AbstractCreature owner;
     private final int damage;
     private final DamageInfo.DamageType damageType;
 
-    public FragmentationAction(int count, AbstractCreature owner, int damage, DamageInfo.DamageType damageType) {
+    public ShatteringBurstAction(int count, AbstractCreature owner, int damage, DamageInfo.DamageType damageType) {
         this.count = count;
         this.owner = owner;
         this.damage = damage;
@@ -23,7 +23,7 @@ public class FragmentationAction extends AbstractGameAction {
     @Override
     public void update() {
         if (count > 1)
-            addToTop(new FragmentationAction(count - 1, owner, damage, damageType));
+            addToTop(new ShatteringBurstAction(count - 1, owner, damage, damageType));
 
         this.target = AbstractDungeon.getMonsters().getRandomMonster(null, true, AbstractDungeon.cardRandomRng);
         if (this.target != null) {

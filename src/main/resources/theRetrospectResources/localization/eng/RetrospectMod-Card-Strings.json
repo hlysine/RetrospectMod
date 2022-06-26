@@ -224,8 +224,8 @@
     "NAME": "Kinetic Energy",
     "DESCRIPTION": "Deal !D! damage. Next turn, gain [E]."
   },
-  "theRetrospect:Fragmentation": {
-    "NAME": "Fragmentation",
+  "theRetrospect:ShatteringBurst": {
+    "NAME": "Shattering Burst",
     "DESCRIPTION": "Repeat !M! times, deal !D! damage to a random enemy."
   },
   "theRetrospect:FractalBlade": {
