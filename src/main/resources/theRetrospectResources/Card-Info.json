@@ -570,5 +570,14 @@
     "COST": 0,
     "M/HP Loss": 3,
     "+M": -2
+  },
+  "theRetrospect:DeviatedBurst": {
+    "RARITY": "COMMON",
+    "TYPE": "ATTACK",
+    "COLOR": "RETROSPECT_PURPLE",
+    "IMG": "deviated_burst.png",
+    "COST": 0,
+    "M/Random Damage": 4,
+    "+M": 4
   }
 }

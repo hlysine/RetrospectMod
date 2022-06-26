@@ -291,5 +291,9 @@
   "theRetrospect:IntoTheVoid": {
     "NAME": "Into The Void",
     "DESCRIPTION": "Lose !M! HP. Timelines cost 1 HP to theretrospect:construct this turn."
+  },
+  "theRetrospect:DeviatedBurst": {
+    "NAME": "Deviated Burst",
+    "DESCRIPTION": "Deal random (up to !M!) damage 3 times."
   }
 }
