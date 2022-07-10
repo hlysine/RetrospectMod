@@ -299,5 +299,21 @@
   "theRetrospect:TheBestDefense": {
     "NAME": "The Best Defense",
     "DESCRIPTION": "{@@}{!Upgrades!|0=|@=Gain !B! Block. }This round, return all blocked damage to enemies."
+  },
+  "theRetrospect:WildCard": {
+    "NAME": "Wild Card",
+    "DESCRIPTION": "",
+    "EXTENDED_DESCRIPTION": [
+      "Deal !D! damage. NL ",
+      "Gain !B! Block. NL ",
+      "Draw !DrawModifier! card. NL ",
+      "Draw !DrawModifier! cards. NL ",
+      "Apply !WeakModifier! Weak. NL ",
+      "Apply !VulnerableModifier! Vulnerable. NL ",
+      "Gain !DexterityModifier! Dexterity. NL ",
+      "Gain [E]. NL ",
+      "Gain [E] [E]. NL ",
+      "Gain !StrengthModifier! Strength. NL "
+    ]
   }
 }
