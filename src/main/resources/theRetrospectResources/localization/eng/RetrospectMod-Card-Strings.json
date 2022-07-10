@@ -115,7 +115,7 @@
   },
   "theRetrospect:ElectricShock": {
     "NAME": "Electric Shock",
-    "DESCRIPTION": "Deal !D! damage. NL Apply !M! weak."
+    "DESCRIPTION": "Deal !D! damage. NL Apply !M! Weak."
   },
   "theRetrospect:Misdirection": {
     "NAME": "Misdirection",
@@ -222,7 +222,7 @@
   },
   "theRetrospect:KineticEnergy": {
     "NAME": "Kinetic Energy",
-    "DESCRIPTION": "Deal !D! damage. Next turn, gain [E]."
+    "DESCRIPTION": "Deal !D! damage. NL Next turn, gain [E]."
   },
   "theRetrospect:ShatteringBurst": {
     "NAME": "Shattering Burst",
