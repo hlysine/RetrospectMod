@@ -9,6 +9,7 @@ import theRetrospect.RetrospectMod;
 import theRetrospect.cards.AbstractBaseCard;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
@@ -30,22 +31,15 @@ public class WildCard extends AbstractBaseCard implements CustomSavable<List<Str
 
     private static final CardTarget TARGET = CardTarget.SELF;
 
-    private List<WildCardModifier> effects;
+    public List<WildCardModifier> modifiers;
 
     public WildCard() {
-        this(Arrays.asList(new AttackModifier(),
-                new DefendModifier(),
-                new DexterityModifier(),
-                new DrawModifier(),
-                new EnergyModifier(),
-                new StrengthModifier(),
-                new VulnerableModifier(),
-                new WeakModifier()));
+        this(Collections.emptyList());
     }
 
-    public WildCard(List<WildCardModifier> effects) {
+    public WildCard(List<WildCardModifier> modifiers) {
         super(ID, TARGET);
-        this.effects = effects.stream().map(WildCardModifier::makeCopy).collect(Collectors.toList());
+        this.modifiers = modifiers.stream().map(WildCardModifier::makeCopy).collect(Collectors.toList());
         applyModifiers();
     }
 
@@ -55,12 +49,12 @@ public class WildCard extends AbstractBaseCard implements CustomSavable<List<Str
 
     @Override
     public List<String> onSave() {
-        return effects.stream().map(WildCardModifier::getKey).collect(Collectors.toList());
+        return modifiers.stream().map(WildCardModifier::getKey).collect(Collectors.toList());
     }
 
     @Override
     public void onLoad(List<String> object) {
-        effects = object.stream()
+        modifiers = object.stream()
                 .map(WildCard::getModifierForEffect)
                 .filter(Objects::nonNull)
                 .collect(Collectors.toList());
@@ -69,17 +63,19 @@ public class WildCard extends AbstractBaseCard implements CustomSavable<List<Str
 
     @Override
     public AbstractCard makeCopy() {
-        return new WildCard(this.effects);
+        return new WildCard(this.modifiers);
     }
 
     private void applyModifiers() {
-        CardModifierManager.removeAllModifiers(this, false);
-        for (final WildCardModifier effect : effects) {
+        for (WildCardModifier possibleEffect : possibleEffects) {
+            CardModifierManager.removeModifiersById(this, possibleEffect.getKey(), true);
+        }
+        for (final WildCardModifier effect : modifiers) {
             effect.apply(this);
             CardModifierManager.addModifier(this, effect);
         }
 
-        List<CardTarget> targets = effects.stream()
+        List<CardTarget> targets = modifiers.stream()
                 .map(WildCardModifier::getTarget)
                 .distinct()
                 .collect(Collectors.toList());
@@ -105,16 +101,16 @@ public class WildCard extends AbstractBaseCard implements CustomSavable<List<Str
 
     @Override
     public boolean canUpgrade() {
-        return this.timesUpgraded < effects.size();
+        return this.timesUpgraded < modifiers.size();
     }
 
     @Override
     public void upgrade() {
-        if (this.timesUpgraded < effects.size()) {
-            effects.get(this.timesUpgraded).upgrade(this);
+        if (this.timesUpgraded < modifiers.size()) {
+            modifiers.get(this.timesUpgraded).upgrade(this);
             this.timesUpgraded++;
             this.upgraded = true;
-            if (effects.size() == 1)
+            if (modifiers.size() == 1)
                 this.name = cardStrings.NAME + "+";
             else
                 this.name = cardStrings.NAME + "+" + this.timesUpgraded;

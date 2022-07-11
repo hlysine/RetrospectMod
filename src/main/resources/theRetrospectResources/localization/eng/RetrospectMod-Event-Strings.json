@@ -62,5 +62,25 @@
       "[No]",
       "[Leave]"
     ]
+  },
+  "theRetrospect:BlankCanvasEvent": {
+    "NAME": "Blank Canvas",
+    "DESCRIPTIONS": [
+      "An old man approaches you with a cunning smile, holding a blank card with both of his hands. NL NL \"This card is different from ~anything~ you've seen before, because this card is ~whatever~ you want it to be. But...\" NL NL He leans closer. NL NL \"...for your words to take effect, you need to write them with #r~blood~ \"",
+      "The words you wrote become engraved in the card. This takes a lot more effort than you thought.",
+      "The card is #rdraining #ryour #rblood #rfast. Your hand is aching.",
+      "The card seems to be #rglowing #rred. Your eyes are #rlosing #rfocus.",
+      "Your field of vision is #rfilled #rwith #rred. The text on the card starts to float around you.",
+      "You ignore the man and leave, but he has already slipped the card into your pocket.",
+      "You wanted to write more, but you decide to not be too greedy.",
+      "There is no more space on the card. NL NL You are completely frazzled, but you convince yourself that it is worth the effort."
+    ],
+    "OPTIONS": [
+      "[Take the card and leave]",
+      "[Add text to the card] \" ",
+      " \" - #rLose #r",
+      " #rHP",
+      "[Leave]"
+    ]
   }
 }

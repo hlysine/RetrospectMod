@@ -1,6 +1,5 @@
 package theRetrospect.events;
 
-
 import com.badlogic.gdx.math.MathUtils;
 import com.megacrit.cardcrawl.cards.colorless.Apparition;
 import com.megacrit.cardcrawl.core.CardCrawlGame;

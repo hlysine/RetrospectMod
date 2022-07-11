@@ -25,10 +25,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import theRetrospect.cards.AbstractBaseCard;
 import theRetrospect.characters.TheRetrospect;
-import theRetrospect.events.EventHorizonEvent;
-import theRetrospect.events.FutureGadgetsEvent;
-import theRetrospect.events.Ghosts;
-import theRetrospect.events.MysteriousProphetEvent;
+import theRetrospect.events.*;
 import theRetrospect.potions.ButterflyInAJar;
 import theRetrospect.potions.TimelinePotion;
 import theRetrospect.relics.AbstractBaseRelic;
@@ -231,6 +228,9 @@ public class RetrospectMod implements
 
         BaseMod.addEvent(new AddEventParams.Builder(FutureGadgetsEvent.ID, FutureGadgetsEvent.class)
                 .spawnCondition(() -> AbstractDungeon.player.chosenClass != TheRetrospect.Enums.THE_RETROSPECT)
+                .create());
+
+        BaseMod.addEvent(new AddEventParams.Builder(BlankCanvasEvent.ID, BlankCanvasEvent.class)
                 .create());
     }
 
