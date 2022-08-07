@@ -13,7 +13,6 @@ public class SelfCorrection extends TimelineTargetingCard {
 
     public SelfCorrection() {
         super(ID);
-        this.exhaust = true;
     }
 
     @Override

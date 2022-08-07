@@ -422,8 +422,8 @@
     "TYPE": "SKILL",
     "COLOR": "RETROSPECT_PURPLE",
     "IMG": "self_correction.png",
-    "COST": 2,
-    "+COST": 1
+    "COST": 1,
+    "+COST": 0
   },
   "theRetrospect:KineticEnergy": {
     "RARITY": "COMMON",

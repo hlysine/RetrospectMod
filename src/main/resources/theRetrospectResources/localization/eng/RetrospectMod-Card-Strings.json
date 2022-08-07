@@ -211,7 +211,7 @@
   },
   "theRetrospect:SelfCorrection": {
     "NAME": "Self Correction",
-    "DESCRIPTION": "Remove any number of cards from a timeline. NL Exhaust.",
+    "DESCRIPTION": "Remove any number of cards from a timeline.",
     "EXTENDED_DESCRIPTION": [
       "Choose Any Number of Cards to Remove."
     ]
