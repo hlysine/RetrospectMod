@@ -504,8 +504,8 @@
     "COLOR": "RETROSPECT_PURPLE",
     "IMG": "recursion_hell.png",
     "COST": 0,
-    "D": 4,
-    "+D": 2
+    "D": 2,
+    "+D": 3
   },
   "theRetrospect:Enigma": {
     "RARITY": "UNCOMMON",
