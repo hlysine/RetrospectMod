@@ -32,15 +32,17 @@ public class ConstructTimelineAction extends AbstractGameAction {
     public static final float HEALTH_PERCENTAGE_COST = 0.4f;
 
     private final AbstractCard constructionCard;
+    private boolean isConstructing = true;
 
     public ConstructTimelineAction(AbstractCard constructionCard) {
         this.constructionCard = constructionCard;
-        this.duration = 1f;
+        this.duration = Settings.FAST_MODE ? 0.5f : 1f;
     }
 
     @Override
     public void update() {
-        if (this.duration == 1f) {
+        if (isConstructing) {
+            isConstructing = false;
             AbstractPlayer player = AbstractDungeon.player;
 
             if (MinionUtils.getMinions(player).monsters.size() >= MinionUtils.getMaxMinionCount(player)) {
