@@ -577,8 +577,8 @@
     "COLOR": "RETROSPECT_PURPLE",
     "IMG": "the_best_defense.png",
     "COST": 1,
-    "B": 0,
-    "+B": 5
+    "B": 4,
+    "+B": 3
   },
   "theRetrospect:WildCard": {
     "RARITY": "SPECIAL",

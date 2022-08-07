@@ -294,7 +294,7 @@
   },
   "theRetrospect:TheBestDefense": {
     "NAME": "The Best Defense",
-    "DESCRIPTION": "{@@}{!Upgrades!|0=|@=Gain !B! Block. }This round, return all blocked damage to enemies."
+    "DESCRIPTION": "Gain !B! Block. NL This round, return all blocked damage to enemies."
   },
   "theRetrospect:WildCard": {
     "NAME": "Wild Card",
