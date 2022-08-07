@@ -54,7 +54,7 @@ public class TimelineMinion extends AbstractMinionWithCards {
         this.auraEffectTimer -= Gdx.graphics.getDeltaTime();
         if (this.auraEffectTimer < 0.0F) {
             this.auraEffectTimer = MathUtils.random(0.45F, 0.55F);
-            AbstractDungeon.effectsQueue.add(new TimelineAuraEffect(this, this.inTurn));
+            AbstractDungeon.effectsQueue.add(new TimelineAuraEffect(this));
         }
     }
 

@@ -18,16 +18,12 @@ public class TimelineAuraEffect extends AbstractGameEffect {
     private float dx;
     private float dy;
     private final float vY;
+    private boolean wasInTurn;
 
-    public TimelineAuraEffect(TimelineMinion minion, boolean highlight) {
+    public TimelineAuraEffect(TimelineMinion minion) {
         this.minion = minion;
-        if (highlight) {
-            this.color = new Color(MathUtils.random(0.7f, 0.9f), MathUtils.random(0.8f, 1.0f), 0.2f, 0.0f);
-        } else if (MathUtils.randomBoolean()) {
-            this.color = new Color(MathUtils.random(0.6f, 0.7f), MathUtils.random(0.2f, 0.3f), MathUtils.random(0.9f, 1f), 0.0f);
-        } else {
-            this.color = new Color(MathUtils.random(0.5f, 0.55f), MathUtils.random(0.5f, 0.6f), MathUtils.random(0.7f, 0.8f), 0.0f);
-        }
+        this.wasInTurn = minion.inTurn;
+        this.changeColor();
 
         this.dx = MathUtils.random(-minion.hb.width / 16.0F, minion.hb.width / 16.0F);
         this.dy = MathUtils.random(-minion.hb.height / 16.0F, minion.hb.height / 16.0F);
@@ -53,6 +49,10 @@ public class TimelineAuraEffect extends AbstractGameEffect {
     }
 
     public void update() {
+        if (minion.inTurn != this.wasInTurn) {
+            this.changeColor();
+            this.wasInTurn = minion.inTurn;
+        }
         if (this.duration > 1.0F) {
             this.color.a = Interpolation.fade.apply(0.2f, 0.0f, this.duration - 1.0f);
         } else {
@@ -80,5 +80,17 @@ public class TimelineAuraEffect extends AbstractGameEffect {
     }
 
     public void dispose() {
+    }
+
+    private void changeColor() {
+        if (minion.inTurn) {
+            this.color = new Color(MathUtils.random(0.7f, 0.9f), MathUtils.random(0.8f, 1.0f), 0.2f, this.color == null ? 0.0f : this.color.a);
+        } else if (minion.isDying) {
+            this.color = new Color(MathUtils.random(0.5f, 0.7f), MathUtils.random(0.5f, 0.7f), MathUtils.random(0.5f, 0.7f), this.color == null ? 0.0f : this.color.a);
+        } else if (MathUtils.randomBoolean()) {
+            this.color = new Color(MathUtils.random(0.6f, 0.7f), MathUtils.random(0.2f, 0.3f), MathUtils.random(0.9f, 1f), this.color == null ? 0.0f : this.color.a);
+        } else {
+            this.color = new Color(MathUtils.random(0.5f, 0.55f), MathUtils.random(0.5f, 0.6f), MathUtils.random(0.7f, 0.8f), this.color == null ? 0.0f : this.color.a);
+        }
     }
 }
