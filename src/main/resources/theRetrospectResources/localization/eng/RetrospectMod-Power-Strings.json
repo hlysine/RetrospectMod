@@ -143,5 +143,14 @@
       "For ",
       " rounds, return all blocked damage to enemies."
     ]
+  },
+  "theRetrospect:SpeedIsLifePower": {
+    "NAME": "Speed Is Life",
+    "DESCRIPTIONS": [
+      "This round, heal #b",
+      " HP whenever you play a card.",
+      " HP whenever you play a card.",
+      " - TRANSLATOR NOTE: - The above line is for plural if needed to distinguish from singular."
+    ]
   }
 }

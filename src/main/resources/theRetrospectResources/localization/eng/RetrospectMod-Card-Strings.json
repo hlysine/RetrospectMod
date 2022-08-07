@@ -311,5 +311,9 @@
       "Gain [E] [E]. NL ",
       "Gain !StrengthModifier! Strength. NL "
     ]
+  },
+  "theRetrospect:SpeedIsLife": {
+    "NAME": "Speed Is Life",
+    "DESCRIPTION": "{@@}{!Upgrades!|0=|@=Retain. NL }This round, heal !M! HP whenever you play a card."
   }
 }

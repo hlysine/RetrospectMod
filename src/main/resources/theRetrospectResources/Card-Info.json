@@ -606,5 +606,13 @@
     "+EnergyModifier": 1,
     "StrengthModifier": 1,
     "+StrengthModifier": 1
+  },
+  "theRetrospect:SpeedIsLife": {
+    "RARITY": "UNCOMMON",
+    "TYPE": "POWER",
+    "COLOR": "RETROSPECT_PURPLE",
+    "IMG": "speed_is_life.png",
+    "COST": 1,
+    "M/Heal HP": 1
   }
 }
