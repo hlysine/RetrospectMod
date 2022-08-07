@@ -71,4 +71,12 @@ public class ConcertedBlast extends AbstractBaseCard {
         }
         initializeDescription();
     }
+
+    @Override
+    public void upgrade() {
+        if (!upgraded) {
+            this.selfRetain = true;
+        }
+        super.upgrade();
+    }
 }

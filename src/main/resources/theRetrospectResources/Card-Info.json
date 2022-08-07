@@ -549,8 +549,7 @@
     "TYPE": "ATTACK",
     "COLOR": "RETROSPECT_PURPLE",
     "IMG": "concerted_blast.png",
-    "COST": 3,
-    "+COST": 2,
+    "COST": 2,
     "D": 0
   },
   "theRetrospect:IntoTheVoid": {
