@@ -388,7 +388,7 @@
     "COLOR": "RETROSPECT_PURPLE",
     "IMG": "unceasing_strike.png",
     "COST": 1,
-    "D": 10,
+    "D": 13,
     "+D": 3
   },
   "theRetrospect:RecursiveAffinity": {
