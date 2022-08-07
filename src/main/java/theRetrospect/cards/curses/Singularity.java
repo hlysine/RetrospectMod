@@ -7,6 +7,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.vfx.NecronomicurseEffect;
 import theRetrospect.RetrospectMod;
 import theRetrospect.cards.AbstractBaseCard;
+import theRetrospect.relics.BottledSingularity;
 
 public class Singularity extends AbstractBaseCard {
 
@@ -18,7 +19,7 @@ public class Singularity extends AbstractBaseCard {
         super(ID, TARGET);
 
         this.isInnate = true;
-        this.retain = true;
+        this.selfRetain = true;
     }
 
     @Override
@@ -27,8 +28,8 @@ public class Singularity extends AbstractBaseCard {
 
     @Override
     public void onRemoveFromMasterDeck() {
-        if (AbstractDungeon.player.hasRelic("Necronomicon")) {
-            AbstractDungeon.player.getRelic("Necronomicon").flash();
+        if (AbstractDungeon.player.hasRelic(BottledSingularity.ID)) {
+            AbstractDungeon.player.getRelic(BottledSingularity.ID).flash();
         }
         AbstractDungeon.effectsQueue.add(new NecronomicurseEffect(new Singularity(), Settings.WIDTH / 2.0F, Settings.HEIGHT / 2.0F));
     }
