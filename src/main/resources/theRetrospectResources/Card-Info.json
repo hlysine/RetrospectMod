@@ -514,7 +514,7 @@
     "IMG": "enigma.png",
     "COST": 1,
     "D": 0,
-    "M/Damage Multiplier": 7,
+    "M/Damage Multiplier": 6,
     "+M": 2
   },
   "theRetrospect:Concoction": {
