@@ -66,10 +66,6 @@
     "NAME": "Alternative Reality",
     "DESCRIPTION": "{@@}theretrospect:In_timeline, gain !B! Block. NL Otherwise, draw !M! card{!M!|>1=s}."
   },
-  "theRetrospect:Harvest": {
-    "NAME": "Harvest",
-    "DESCRIPTION": "For each timeline you have, deal !D! damage to ALL enemies. Heal HP equal to unblocked damage."
-  },
   "theRetrospect:TemporalAnomaly": {
     "NAME": "Temporal Anomaly",
     "DESCRIPTION": "{@@}Randomly theretrospect:trigger {!Upgrades!|@=X+1|0=X} timelines."

@@ -117,15 +117,6 @@
     "M/Card Draw": 2,
     "+M": 1
   },
-  "theRetrospect:Harvest": {
-    "RARITY": "RARE",
-    "TYPE": "ATTACK",
-    "COLOR": "RETROSPECT_PURPLE",
-    "IMG": "harvest.png",
-    "COST": 2,
-    "D": 4,
-    "+D": 2
-  },
   "theRetrospect:TemporalAnomaly": {
     "RARITY": "UNCOMMON",
     "TYPE": "SKILL",
