@@ -17,7 +17,7 @@ public class Paradox extends AbstractBaseCard {
     public Paradox() {
         super(ID, TARGET);
 
-        this.delusional = true;
+        this.isEthereal = true;
     }
 
     @Override
