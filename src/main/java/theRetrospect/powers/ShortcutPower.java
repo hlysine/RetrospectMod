@@ -20,8 +20,8 @@ public class ShortcutPower extends AbstractPower implements CloneablePowerInterf
     public static final String NAME = powerStrings.NAME;
     public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
 
-    private static final Texture tex84 = TextureLoader.getTexture("theRetrospectResources/images/powers/placeholder_power84.png");
-    private static final Texture tex32 = TextureLoader.getTexture("theRetrospectResources/images/powers/placeholder_power32.png");
+    private static final Texture tex84 = TextureLoader.getTexture("theRetrospectResources/images/powers/shortcut84.png");
+    private static final Texture tex32 = TextureLoader.getTexture("theRetrospectResources/images/powers/shortcut32.png");
 
     private static final int MAX_AMOUNT = (int) (ConstructTimelineAction.HEALTH_PERCENTAGE_COST * 100f);
 
