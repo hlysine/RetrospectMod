@@ -34,4 +34,12 @@ public class RecursiveAffinity extends AbstractBaseCard {
                 this.current_y
         ), true, 0);
     }
+
+    @Override
+    public void upgrade() {
+        if (!upgraded) {
+            this.selfRetain = true;
+        }
+        super.upgrade();
+    }
 }

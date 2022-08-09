@@ -199,7 +199,7 @@
   },
   "theRetrospect:RecursiveAffinity": {
     "NAME": "Recursive Affinity",
-    "DESCRIPTION": "theretrospect:Paradoxical. NL Replay your last 2 cards this turn."
+    "DESCRIPTION": "{@@}theretrospect:Paradoxical. NL {!Upgrades!|0=|@=Retain. NL }Replay your last 2 cards this turn."
   },
   "theRetrospect:DeathTotem": {
     "NAME": "Death Totem",

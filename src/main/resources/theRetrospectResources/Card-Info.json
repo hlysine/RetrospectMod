@@ -396,8 +396,7 @@
     "TYPE": "SKILL",
     "COLOR": "RETROSPECT_PURPLE",
     "IMG": "recursive_affinity.png",
-    "COST": 3,
-    "+COST": 2,
+    "COST": 2,
     "cards": 2
   },
   "theRetrospect:DeathTotem": {
