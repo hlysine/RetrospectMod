@@ -1,5 +1,51 @@
 # Changelog
 
+## [0.5.0] - Balance Update - 2022-08-09
+
+### Cards
+
+- Fix Déjà vu starting with 0 block
+- Fix keywords in Electric Shock
+- Change Paradox from delusional to ethereal
+- Remove Harvest
+- Nerf Enigma damage from 7(9) to 6(8)
+- Reduce Self Correction cost from 2(1) to 1(0) and remove exhaust
+- Buff Master Of Deception damage from 3(5) to 5(7)
+- Buff Unceasing Strike damage from 10(13) to 13(16)
+- Buff The Best Defense block gain from 0(5) to 4(7)
+- Nerf Recursion Hell damage from 4(6) to 2(5)
+- Reduce Concerted Blast cost from 3(2) to 2 and add retain when upgraded
+- Fix Singularity not retaining after first round
+- Rename Avert to Chaotic Offense and add paradoxical attribute
+- Buff Tactical Retreat block gain from 7(11) to 8(12)
+- Buff All-Out Attack damage from 12(16) to 14(18)
+- Reduce Recursive Affinity cost from 3(2) to 2, add retain on upgrade
+- Change Unceasing Strike rarity from rare to uncommon
+- Nerf Shattering Burst damage count from 10(15) to 7(10)
+- Add new cards
+  - Wild Card
+  - Speed Is Life
+  - Unceasing Sprint
+  - Chaotic Defense
+  - Psyche Out
+
+### Events
+
+- Add Blank Canvas event to build and give Wild Card
+
+### Art
+
+- Change Time Loop power icon
+- Add power icons
+  - Shortcut Power
+  - Warm Up Power
+  - Evanescence Power
+
+### VFX
+
+- Speed up timeline construction effect when in fast mode
+- Make the timeline aura effect change color immediately when a timeline is triggered
+
 ## [0.4.0] - Content Update - 2022-06-26
 
 ### Mechanics
