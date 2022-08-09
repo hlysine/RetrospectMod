@@ -630,5 +630,15 @@
     "COST": 2,
     "+COST": 1,
     "theRetrospect:TimelineCount": 1
+  },
+  "theRetrospect:PsycheOut": {
+    "RARITY": "COMMON",
+    "TYPE": "ATTACK",
+    "COLOR": "RETROSPECT_PURPLE",
+    "IMG": "psyche_out.png",
+    "COST": 2,
+    "D": 7,
+    "+D": 5,
+    "theRetrospect:TimelineCount": 1
   }
 }

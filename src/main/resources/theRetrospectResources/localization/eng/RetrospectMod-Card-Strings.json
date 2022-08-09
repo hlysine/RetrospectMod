@@ -323,5 +323,9 @@
   "theRetrospect:ChaoticDefense": {
     "NAME": "Chaotic Defense",
     "DESCRIPTION": "{@@}theretrospect:Paradoxical. NL Play a random skill card from your draw pile, then theretrospect:construct !theRetrospect:TimelineCount! timeline{!theRetrospect:TimelineCount!|>1=s}."
+  },
+  "theRetrospect:PsycheOut": {
+    "NAME": "Psyche Out",
+    "DESCRIPTION": "{@@}Deal !D! damage. NL theretrospect:Construct !theRetrospect:TimelineCount! timeline{!theRetrospect:TimelineCount!|>1=s}."
   }
 }
