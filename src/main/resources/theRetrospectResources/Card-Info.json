@@ -440,8 +440,8 @@
     "IMG": "shattering_burst.png",
     "COST": 1,
     "D": 1,
-    "M/Repeat Count": 10,
-    "+M": 5
+    "M/Repeat Count": 7,
+    "+M": 3
   },
   "theRetrospect:FractalBlade": {
     "RARITY": "UNCOMMON",
