@@ -34,9 +34,9 @@
     "NAME": "Overcore",
     "DESCRIPTION": "{@@}theretrospect:Construct !theRetrospect:TimelineCount! timeline{!theRetrospect:TimelineCount!|>1=s}. Be theretrospect:Frozen for !M! turn{!M!|>1=s}.{!Upgrades!|0= NL Exhaust.}"
   },
-  "theRetrospect:Avert": {
-    "NAME": "Avert",
-    "DESCRIPTION": "{@@}Play a random attack card from your discard pile, then theretrospect:construct !theRetrospect:TimelineCount! timeline{!theRetrospect:TimelineCount!|>1=s}."
+  "theRetrospect:ChaoticOffense": {
+    "NAME": "Chaotic Offense",
+    "DESCRIPTION": "{@@}theretrospect:Paradoxical. NL Play a random attack card from your discard pile, then theretrospect:construct !theRetrospect:TimelineCount! timeline{!theRetrospect:TimelineCount!|>1=s}."
   },
   "theRetrospect:Transmute": {
     "NAME": "Transmute",

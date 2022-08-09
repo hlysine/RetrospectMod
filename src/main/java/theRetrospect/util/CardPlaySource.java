@@ -15,5 +15,9 @@ public enum CardPlaySource {
     /**
      * The card is played by another card.
      */
-    CARD
+    CARD,
+    /**
+     * The card is played by a relic effect.
+     */
+    RELIC
 }

@@ -8,8 +8,9 @@ import theRetrospect.RetrospectMod;
 import theRetrospect.actions.general.CustomQueueCardAction;
 import theRetrospect.actions.general.RunnableAction;
 import theRetrospect.actions.general.ShowCardToBePlayedAction;
-import theRetrospect.cards.skills.Avert;
+import theRetrospect.cards.skills.ChaoticOffense;
 import theRetrospect.subscribers.EndOfTurnCardSubscriber;
+import theRetrospect.util.CardPlaySource;
 import theRetrospect.util.CardUtils;
 import theRetrospect.util.TextureLoader;
 
@@ -34,12 +35,13 @@ public class AtomicClock extends AbstractBaseRelic implements EndOfTurnCardSubsc
     public void triggerOnEndOfTurnForPlayingCard(Runnable next) {
         if (!this.grayscale) {
             flash();
-            AbstractCard card = new Avert();
+            AbstractCard card = new ChaoticOffense();
             card.applyPowers();
             card.purgeOnUse = true;
             card.current_x = card.target_x = AbstractDungeon.player.drawX;
             card.current_y = card.target_y = AbstractDungeon.player.drawY;
             CardUtils.addFollowUpActionToBottom(card, new RunnableAction(next), true, 0);
+            CardUtils.setPlaySource(card, CardPlaySource.RELIC);
             addToBot(new ShowCardToBePlayedAction(card));
             addToBot(new CustomQueueCardAction(card, true, false, true));
             this.grayscale = true;

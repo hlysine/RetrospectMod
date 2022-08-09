@@ -42,11 +42,11 @@
     "theRetrospect:TimelineCount": 3,
     "M/Frozen Count": 1
   },
-  "theRetrospect:Avert": {
+  "theRetrospect:ChaoticOffense": {
     "RARITY": "COMMON",
     "TYPE": "SKILL",
     "COLOR": "RETROSPECT_PURPLE",
-    "IMG": "avert.png",
+    "IMG": "chaotic_offense.png",
     "COST": 2,
     "+COST": 1,
     "theRetrospect:TimelineCount": 1
