@@ -319,5 +319,9 @@
   "theRetrospect:UnceasingSprint": {
     "NAME": "Unceasing Sprint",
     "DESCRIPTION": "{@@}End your turn. NL theretrospect:In_timeline: theretrospect:Accelerate !M! random timeline{!M!|>1=s}."
+  },
+  "theRetrospect:ChaoticDefense": {
+    "NAME": "Chaotic Defense",
+    "DESCRIPTION": "{@@}theretrospect:Paradoxical. NL Play a random skill card from your draw pile, then theretrospect:construct !theRetrospect:TimelineCount! timeline{!theRetrospect:TimelineCount!|>1=s}."
   }
 }

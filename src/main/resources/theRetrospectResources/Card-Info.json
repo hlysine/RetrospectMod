@@ -621,5 +621,14 @@
     "COST": 1,
     "+COST": 0,
     "M/Power amount": 1
+  },
+  "theRetrospect:ChaoticDefense": {
+    "RARITY": "COMMON",
+    "TYPE": "SKILL",
+    "COLOR": "RETROSPECT_PURPLE",
+    "IMG": "chaotic_defense.png",
+    "COST": 2,
+    "+COST": 1,
+    "theRetrospect:TimelineCount": 1
   }
 }

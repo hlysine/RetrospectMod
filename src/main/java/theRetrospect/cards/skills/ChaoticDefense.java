@@ -8,13 +8,13 @@ import theRetrospect.cards.AbstractBaseCard;
 import theRetrospect.cards.statuses.Paradox;
 import theRetrospect.util.CardUtils;
 
-public class ChaoticOffense extends AbstractBaseCard {
+public class ChaoticDefense extends AbstractBaseCard {
 
-    public static final String ID = RetrospectMod.makeID(ChaoticOffense.class.getSimpleName());
+    public static final String ID = RetrospectMod.makeID(ChaoticDefense.class.getSimpleName());
 
     private static final CardTarget TARGET = CardTarget.SELF;
 
-    public ChaoticOffense() {
+    public ChaoticDefense() {
         super(ID, TARGET);
 
         paradoxical = true;
@@ -23,6 +23,6 @@ public class ChaoticOffense extends AbstractBaseCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        CardUtils.addFollowUpActionToBottom(this, new ChaoticCardAction(this, p.discardPile, CardType.ATTACK), true, 0);
+        CardUtils.addFollowUpActionToBottom(this, new ChaoticCardAction(this, p.drawPile, CardType.SKILL), true, 0);
     }
 }
