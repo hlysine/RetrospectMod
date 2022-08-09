@@ -315,5 +315,9 @@
   "theRetrospect:SpeedIsLife": {
     "NAME": "Speed Is Life",
     "DESCRIPTION": "{@@}{!Upgrades!|0=|@=Retain. NL }This round, heal !M! HP whenever you play a card."
+  },
+  "theRetrospect:UnceasingSprint": {
+    "NAME": "Unceasing Sprint",
+    "DESCRIPTION": "{@@}End your turn. NL theretrospect:In_timeline: theretrospect:Accelerate !M! random timeline{!M!|>1=s}."
   }
 }

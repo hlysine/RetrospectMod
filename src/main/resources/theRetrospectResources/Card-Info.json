@@ -612,5 +612,14 @@
     "IMG": "speed_is_life.png",
     "COST": 1,
     "M/Heal HP": 1
+  },
+  "theRetrospect:UnceasingSprint": {
+    "RARITY": "UNCOMMON",
+    "TYPE": "SKILL",
+    "COLOR": "RETROSPECT_PURPLE",
+    "IMG": "unceasing_sprint.png",
+    "COST": 1,
+    "+COST": 0,
+    "M/Power amount": 1
   }
 }
