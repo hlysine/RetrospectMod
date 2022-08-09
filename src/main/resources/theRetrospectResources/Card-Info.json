@@ -383,7 +383,7 @@
     "M/Timeline HP Reduction": 10
   },
   "theRetrospect:UnceasingStrike": {
-    "RARITY": "RARE",
+    "RARITY": "UNCOMMON",
     "TYPE": "ATTACK",
     "COLOR": "RETROSPECT_PURPLE",
     "IMG": "unceasing_strike.png",
