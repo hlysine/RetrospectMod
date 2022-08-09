@@ -15,6 +15,8 @@ public class SpeedIsLife extends AbstractBaseCard {
 
     public SpeedIsLife() {
         super(ID, TARGET);
+
+        this.tags.add(CardTags.HEALING);
     }
 
     @Override
