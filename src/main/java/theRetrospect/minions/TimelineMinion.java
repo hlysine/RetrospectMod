@@ -14,6 +14,8 @@ import theRetrospect.RetrospectMod;
 import theRetrospect.effects.TimelineAuraEffect;
 import theRetrospect.powers.TimerPower;
 import theRetrospect.util.AnimationUtils;
+import theRetrospect.util.CardPlaySource;
+import theRetrospect.util.CardUtils;
 
 import java.util.List;
 
@@ -46,6 +48,13 @@ public class TimelineMinion extends AbstractMinionWithCards {
         setCards(cards);
         addPower(new TimerPower(this, 1));
         this.powers.forEach(AbstractPower::onInitialApplication);
+    }
+
+    @Override
+    protected void processNewCard(AbstractCard card) {
+        super.processNewCard(card);
+        CardUtils.setPlaySource(card, CardPlaySource.TIMELINE);
+        card.beginGlowing();
     }
 
     @Override

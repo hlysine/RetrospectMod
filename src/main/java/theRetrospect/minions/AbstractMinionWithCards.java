@@ -50,6 +50,7 @@ public class AbstractMinionWithCards extends AbstractFriendlyMonster {
         if (this.cards.size() >= MAX_CARDS) return;
         card.current_x = card.target_x = this.drawX;
         card.current_y = card.target_y = this.drawY;
+        processNewCard(card);
         this.cards.add(card);
     }
 
@@ -58,11 +59,20 @@ public class AbstractMinionWithCards extends AbstractFriendlyMonster {
         cards.forEach(card -> {
             card.current_x = card.target_x = this.drawX;
             card.current_y = card.target_y = this.drawY;
+            processNewCard(card);
         });
         for (AbstractCard card : cards) {
             if (this.cards.size() >= MAX_CARDS) break;
             this.cards.add(card);
         }
+    }
+
+    /**
+     * Do optional processing on the card before it is added to this minion.
+     *
+     * @param card The card to process.
+     */
+    protected void processNewCard(AbstractCard card) {
     }
 
     public void triggerCardsChange() {

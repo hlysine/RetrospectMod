@@ -4,6 +4,7 @@ import basemod.AutoAdd;
 import basemod.BaseMod;
 import basemod.abstracts.CustomRelic;
 import basemod.eventUtil.AddEventParams;
+import basemod.helpers.CardBorderGlowManager;
 import basemod.interfaces.*;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.files.FileHandle;
@@ -13,6 +14,7 @@ import com.evacipated.cardcrawl.mod.stslib.Keyword;
 import com.evacipated.cardcrawl.mod.stslib.patches.CustomTargeting;
 import com.evacipated.cardcrawl.modthespire.lib.SpireInitializer;
 import com.google.gson.Gson;
+import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.dungeons.TheCity;
 import com.megacrit.cardcrawl.helpers.CardHelper;
@@ -29,9 +31,7 @@ import theRetrospect.events.*;
 import theRetrospect.potions.ButterflyInAJar;
 import theRetrospect.potions.TimelinePotion;
 import theRetrospect.relics.AbstractBaseRelic;
-import theRetrospect.util.IDCheckDontTouchPls;
-import theRetrospect.util.TextureLoader;
-import theRetrospect.util.TimelineTargeting;
+import theRetrospect.util.*;
 import theRetrospect.variables.CustomVariable;
 import theRetrospect.variables.TimelineCountVariable;
 
@@ -298,6 +298,23 @@ public class RetrospectMod implements
                 .cards();
 
         logger.info("Done adding cards!");
+
+        CardBorderGlowManager.addGlowInfo(new CardBorderGlowManager.GlowInfo() {
+            @Override
+            public boolean test(AbstractCard card) {
+                return CardUtils.getPlaySource(card) == CardPlaySource.TIMELINE;
+            }
+
+            @Override
+            public Color getColor(AbstractCard card) {
+                return RetrospectMod.RETROSPECT_VIOLET.cpy();
+            }
+
+            @Override
+            public String glowID() {
+                return makeID("timeline_glow");
+            }
+        });
     }
 
     @Override
