@@ -1,8 +1,6 @@
 package theRetrospect.minions;
 
-import basemod.ReflectionHacks;
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.math.MathUtils;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -64,16 +62,6 @@ public class TimelineMinion extends AbstractMinionWithCards {
         if (this.auraEffectTimer < 0.0F) {
             this.auraEffectTimer = MathUtils.random(0.45F, 0.55F);
             AbstractDungeon.effectsQueue.add(new TimelineAuraEffect(this));
-        }
-    }
-
-    @Override
-    public void playDeathAnimation() {
-        super.playDeathAnimation();
-        this.tint.color = new Color(1, 1, 1, 0.5f);
-        for (AbstractCard card : cardStack.cards) {
-            Color tint = ReflectionHacks.getPrivate(card, AbstractCard.class, "tintColor");
-            tint.a = 0.3f;
         }
     }
 }
