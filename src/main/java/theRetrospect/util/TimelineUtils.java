@@ -68,8 +68,10 @@ public class TimelineUtils {
     public static TimelineMinion getRandomTimeline(AbstractPlayer player) {
         MonsterGroup monsters = MinionUtils.getMinions(player);
         List<TimelineMinion> timelines = monsters.monsters.stream().filter(m -> m instanceof TimelineMinion).map(m -> (TimelineMinion) m).collect(Collectors.toList());
-        if (timelines.size() <= 0) {
+        if (timelines.size() == 0) {
             return null;
+        } else if (timelines.size() == 1) {
+            return timelines.get(0);
         }
         return timelines.get(AbstractDungeon.cardRandomRng.random(timelines.size() - 1));
     }
