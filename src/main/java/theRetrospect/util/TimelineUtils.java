@@ -9,6 +9,7 @@ import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 import hlysine.friendlymonsters.monsters.AbstractFriendlyMonster;
 import hlysine.friendlymonsters.utils.MinionUtils;
+import theRetrospect.RetrospectMod;
 import theRetrospect.actions.general.NonTriggeringHealthChange;
 import theRetrospect.actions.general.WaitForDeathAction;
 import theRetrospect.actions.timelineActions.RepositionTimelinesAction;
@@ -23,6 +24,8 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class TimelineUtils {
+    public static final String TIMELINE_TIP = RetrospectMod.makeID("TIMELINE_TIP");
+
     public static final List<TimelineMinion> timelinesConstructedThisCombat = new ArrayList<>();
 
     public static void repositionTimelines(AbstractPlayer player) {

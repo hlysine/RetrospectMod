@@ -68,7 +68,7 @@ public class ShowCardToBePlayedEffect extends AbstractGameEffect {
     }
 
     public void render(SpriteBatch sb) {
-        if (!this.isDone)
+        if (!this.isDone && AbstractDungeon.ftue == null)
             for (AbstractCard card : this.cardsToPlay) {
                 card.render(sb);
             }

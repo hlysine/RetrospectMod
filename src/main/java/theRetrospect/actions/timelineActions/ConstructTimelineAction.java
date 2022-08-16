@@ -1,5 +1,6 @@
 package theRetrospect.actions.timelineActions;
 
+import basemod.ReflectionHacks;
 import com.badlogic.gdx.graphics.Color;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -7,9 +8,12 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.helpers.TipTracker;
 import com.megacrit.cardcrawl.localization.CardStrings;
+import com.megacrit.cardcrawl.localization.TutorialStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
+import com.megacrit.cardcrawl.ui.FtueTip;
 import com.megacrit.cardcrawl.vfx.ThoughtBubble;
 import hlysine.friendlymonsters.utils.MinionUtils;
 import theRetrospect.RetrospectMod;
@@ -28,6 +32,8 @@ public class ConstructTimelineAction extends AbstractGameAction {
 
     public static final String ID = RetrospectMod.makeID(AbstractBaseCard.class.getSimpleName());
     private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
+
+    private static final TutorialStrings tutorialStrings = CardCrawlGame.languagePack.getTutorialString(RetrospectMod.makeID(ConstructTimelineAction.class.getSimpleName()));
 
     public static final float HEALTH_PERCENTAGE_COST = 0.4f;
 
@@ -80,6 +86,19 @@ public class ConstructTimelineAction extends AbstractGameAction {
                 CardCrawlGame.sound.play("CARD_POWER_IMPACT", 0.1f);
 
                 AbstractDungeon.effectList.add(new TimelineCircleEffect(minion));
+
+                if (!TipTracker.tips.get(TimelineUtils.TIMELINE_TIP)) {
+                    AbstractDungeon.ftue = new FtueTip(
+                            tutorialStrings.LABEL[0],
+                            tutorialStrings.TEXT[0],
+                            minion.target_x + minion.hb.width / 2 + 300,
+                            minion.target_y,
+                            FtueTip.TipType.CREATURE
+                    );
+                    ReflectionHacks.setPrivate(AbstractDungeon.ftue, AbstractDungeon.ftue.getClass(), "m", minion);
+
+                    TipTracker.neverShowAgain(TimelineUtils.TIMELINE_TIP);
+                }
 
                 for (AbstractPower power : AbstractDungeon.player.powers) {
                     if (power instanceof TimelineConstructSubscriber) {
