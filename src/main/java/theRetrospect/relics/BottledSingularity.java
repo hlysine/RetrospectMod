@@ -2,7 +2,6 @@ package theRetrospect.relics;
 
 import basemod.abstracts.CustomBottleRelic;
 import basemod.abstracts.CustomSavable;
-import com.badlogic.gdx.graphics.Texture;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.CardGroup;
 import com.megacrit.cardcrawl.core.Settings;
@@ -14,14 +13,10 @@ import com.megacrit.cardcrawl.vfx.cardManip.ShowCardAndObtainEffect;
 import theRetrospect.RetrospectMod;
 import theRetrospect.cards.curses.Singularity;
 import theRetrospect.util.CardUtils;
-import theRetrospect.util.TextureLoader;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Predicate;
-
-import static theRetrospect.RetrospectMod.makeRelicOutlinePath;
-import static theRetrospect.RetrospectMod.makeRelicPath;
 
 public class BottledSingularity extends AbstractBaseRelic implements CustomBottleRelic, CustomSavable<List<Integer>> {
 
@@ -31,11 +26,9 @@ public class BottledSingularity extends AbstractBaseRelic implements CustomBottl
     private boolean cardsSelected = true;
 
     public static final String ID = RetrospectMod.makeID(BottledSingularity.class.getSimpleName());
-    private static final Texture IMG = TextureLoader.getTexture(makeRelicPath("bottled_singularity.png"));
-    private static final Texture OUTLINE = TextureLoader.getTexture(makeRelicOutlinePath("bottled_singularity.png"));
 
     public BottledSingularity() {
-        super(ID, IMG, OUTLINE, RelicTier.SPECIAL, LandingSound.HEAVY);
+        super(ID, LandingSound.HEAVY);
         tips.clear();
         tips.add(new PowerTip(name, description));
     }

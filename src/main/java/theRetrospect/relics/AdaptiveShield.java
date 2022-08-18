@@ -1,27 +1,18 @@
 package theRetrospect.relics;
 
-import com.badlogic.gdx.graphics.Texture;
 import com.megacrit.cardcrawl.actions.common.RelicAboveCreatureAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import theRetrospect.RetrospectMod;
-import theRetrospect.util.TextureLoader;
-
-import static theRetrospect.RetrospectMod.makeRelicOutlinePath;
-import static theRetrospect.RetrospectMod.makeRelicPath;
 
 public class AdaptiveShield extends AbstractBaseRelic {
 
     public static final String ID = RetrospectMod.makeID(AdaptiveShield.class.getSimpleName());
 
-    private static final Texture IMG = TextureLoader.getTexture(makeRelicPath("placeholder_relic.png"));
-    private static final Texture OUTLINE = TextureLoader.getTexture(makeRelicOutlinePath("placeholder_relic.png"));
-
-    private static final RelicTier TIER = RelicTier.UNCOMMON;
     private static final LandingSound LANDING_SOUND = LandingSound.SOLID;
 
     public AdaptiveShield() {
-        super(ID, IMG, OUTLINE, TIER, LANDING_SOUND);
+        super(ID, LANDING_SOUND);
     }
 
     @Override

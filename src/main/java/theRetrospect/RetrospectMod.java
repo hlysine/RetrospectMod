@@ -31,6 +31,8 @@ import theRetrospect.events.*;
 import theRetrospect.potions.ButterflyInAJar;
 import theRetrospect.potions.TimelinePotion;
 import theRetrospect.relics.AbstractBaseRelic;
+import theRetrospect.relics.RelicInfo;
+import theRetrospect.relics.RelicInfoRepository;
 import theRetrospect.util.*;
 import theRetrospect.variables.CustomVariable;
 import theRetrospect.variables.TimelineCountVariable;
@@ -86,9 +88,14 @@ public class RetrospectMod implements
     public static final String BADGE_IMAGE = "theRetrospectResources/images/Badge.png";
 
     private static CardInfoRepository cardInfoRepository;
+    private static RelicInfoRepository relicInfoRepository;
 
     public static CardInfo getCardInfo(String cardId) {
         return cardInfoRepository.getCardInfo(cardId);
+    }
+
+    public static RelicInfo getRelicInfo(String relicId) {
+        return relicInfoRepository.getCardInfo(relicId);
     }
 
     public static String makeCardPath(String resourcePath) {
@@ -254,6 +261,12 @@ public class RetrospectMod implements
 
     @Override
     public void receiveEditRelics() {
+        logger.info("Loading card info");
+
+        relicInfoRepository = new RelicInfoRepository(
+                RetrospectMod.class.getResourceAsStream("/" + getModID() + "Resources/Relic-Info.json")
+        );
+
         logger.info("Adding relics");
 
         new AutoAdd("RetrospectMod")

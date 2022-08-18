@@ -1,18 +1,23 @@
 package theRetrospect.relics;
 
 import basemod.abstracts.CustomRelic;
-import com.badlogic.gdx.graphics.Texture;
+import theRetrospect.util.TextureLoader;
+
+import static theRetrospect.RetrospectMod.*;
 
 public abstract class AbstractBaseRelic extends CustomRelic {
-    public AbstractBaseRelic(String id, Texture texture, RelicTier tier, LandingSound sfx) {
-        super(id, texture, tier, sfx);
-    }
 
-    public AbstractBaseRelic(String id, Texture texture, Texture outline, RelicTier tier, LandingSound sfx) {
-        super(id, texture, outline, tier, sfx);
-    }
+    protected final RelicInfo info;
 
-    public AbstractBaseRelic(String id, String imgName, RelicTier tier, LandingSound sfx) {
-        super(id, imgName, tier, sfx);
+    public AbstractBaseRelic(String id, LandingSound sfx) {
+        super(
+                id,
+                TextureLoader.getTexture(makeRelicPath(getRelicInfo(id).getImage())),
+                TextureLoader.getTexture(makeRelicOutlinePath(getRelicInfo(id).getImage())),
+                getRelicInfo(id).getTier(),
+                sfx
+        );
+
+        info = getRelicInfo(id);
     }
 }
