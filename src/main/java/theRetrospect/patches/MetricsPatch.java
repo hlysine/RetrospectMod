@@ -10,7 +10,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 public class MetricsPatch {
-    public static final String UPLOAD_URL = "http://127.0.0.1:8887";
+    public static final String UPLOAD_URL = "https://retrospect.vercel.app/api/metrics";
 
     private static final Logger logger = LogManager.getLogger(MetricsPatch.class.getName());
 
