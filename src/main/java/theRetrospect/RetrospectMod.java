@@ -95,7 +95,7 @@ public class RetrospectMod implements
     }
 
     public static RelicInfo getRelicInfo(String relicId) {
-        return relicInfoRepository.getCardInfo(relicId);
+        return relicInfoRepository.getRelicInfo(relicId);
     }
 
     public static String makeCardPath(String resourcePath) {

@@ -23,7 +23,7 @@ public class RelicInfoRepository {
         relicInfoMap = gson.fromJson(new InputStreamReader(jsonStream, StandardCharsets.UTF_8), type);
     }
 
-    public RelicInfo getCardInfo(String relicId) {
+    public RelicInfo getRelicInfo(String relicId) {
         return relicInfoMap.get(relicId);
     }
 }

@@ -3,14 +3,14 @@ package theRetrospect.relics;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 
 public class RelicInfo {
-    String IMAGE;
-    AbstractRelic.RelicTier TIER;
+    String IMG;
+    AbstractRelic.RelicTier RARITY;
 
     public String getImage() {
-        return IMAGE;
+        return IMG;
     }
 
-    public AbstractRelic.RelicTier getTier() {
-        return TIER;
+    public AbstractRelic.RelicTier getRarity() {
+        return RARITY;
     }
 }

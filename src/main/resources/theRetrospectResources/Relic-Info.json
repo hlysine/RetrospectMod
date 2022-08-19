@@ -1,26 +1,26 @@
 {
   "theRetrospect:AdaptiveShield": {
-    "IMAGE": "placeholder_relic.png",
-    "TIER": "UNCOMMON"
+    "IMG": "placeholder_relic.png",
+    "RARITY": "UNCOMMON"
   },
   "theRetrospect:AntiqueClock": {
-    "IMAGE": "antique_clock.png",
-    "TIER": "STARTER"
+    "IMG": "antique_clock.png",
+    "RARITY": "STARTER"
   },
   "theRetrospect:QuantumHourglass": {
-    "IMAGE": "quantum_hourglass.png",
-    "TIER": "RARE"
+    "IMG": "quantum_hourglass.png",
+    "RARITY": "RARE"
   },
   "theRetrospect:SlantedMirror": {
-    "IMAGE": "placeholder_relic2.png",
-    "TIER": "RARE"
+    "IMG": "placeholder_relic2.png",
+    "RARITY": "RARE"
   },
   "theRetrospect:BottledSingularity": {
-    "IMAGE": "bottled_singularity.png",
-    "TIER": "SPECIAL"
+    "IMG": "bottled_singularity.png",
+    "RARITY": "SPECIAL"
   },
   "theRetrospect:AtomicClock": {
-    "IMAGE": "placeholder_relic2.png",
-    "TIER": "BOSS"
+    "IMG": "placeholder_relic2.png",
+    "RARITY": "BOSS"
   }
 }

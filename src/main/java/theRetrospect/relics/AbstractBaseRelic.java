@@ -14,7 +14,7 @@ public abstract class AbstractBaseRelic extends CustomRelic {
                 id,
                 TextureLoader.getTexture(makeRelicPath(getRelicInfo(id).getImage())),
                 TextureLoader.getTexture(makeRelicOutlinePath(getRelicInfo(id).getImage())),
-                getRelicInfo(id).getTier(),
+                getRelicInfo(id).getRarity(),
                 sfx
         );
 
