@@ -65,27 +65,27 @@ public class RetrospectMod implements
     public static final Color RETROSPECT_COLOR = CardHelper.getColor(100, 76, 112);
 
     // Card backgrounds - The actual rectangular card.
-    private static final String CARD_BG_ATTACK = "theRetrospectResources/images/512/bg_attack_retrospect_green.png";
-    private static final String CARD_BG_SKILL = "theRetrospectResources/images/512/bg_skill_retrospect_green.png";
-    private static final String CARD_BG_POWER = "theRetrospectResources/images/512/bg_power_retrospect_green.png";
+    private static final String CARD_BG_ATTACK = "theRetrospectResources/images/cardui/bg_attack_512_green.png";
+    private static final String CARD_BG_SKILL = "theRetrospectResources/images/cardui/bg_skill_512_green.png";
+    private static final String CARD_BG_POWER = "theRetrospectResources/images/cardui/bg_power_512_green.png";
 
-    private static final String ENERGY_ORB_SMALL = "theRetrospectResources/images/512/card_text_energy_icon_small.png";
-    private static final String ENERGY_ORB_CARD_CORNER = "theRetrospectResources/images/512/card_corner_energy_green.png";
-    private static final String ENERGY_ORB_LARGE = "theRetrospectResources/images/1024/card_text_energy_icon_large_green.png";
+    private static final String ENERGY_ORB_SMALL = "theRetrospectResources/images/cardui/small_energy_icon_green.png";
+    private static final String ENERGY_ORB_CARD_CORNER = "theRetrospectResources/images/cardui/card_corner_energy_green.png";
+    private static final String ENERGY_ORB_LARGE = "theRetrospectResources/images/cardui/large_energy_icon_green.png";
 
-    private static final String CARD_BG_ATTACK_LARGE = "theRetrospectResources/images/1024/bg_attack_retrospect_green.png";
-    private static final String CARD_BG_SKILL_LARGE = "theRetrospectResources/images/1024/bg_skill_retrospect_green.png";
-    private static final String CARD_BG_POWER_LARGE = "theRetrospectResources/images/1024/bg_power_retrospect_green.png";
+    private static final String CARD_BG_ATTACK_LARGE = "theRetrospectResources/images/cardui/bg_attack_1024_green.png";
+    private static final String CARD_BG_SKILL_LARGE = "theRetrospectResources/images/cardui/bg_skill_1024_green.png";
+    private static final String CARD_BG_POWER_LARGE = "theRetrospectResources/images/cardui/bg_power_1024_green.png";
 
     // Character assets
-    private static final String THE_RETROSPECT_BUTTON = "theRetrospectResources/images/charSelect/RetrospectCharacterButton.png";
-    private static final String THE_RETROSPECT_PORTRAIT = "theRetrospectResources/images/charSelect/RetrospectCharacterPortraitBG.png";
-    public static final String THE_RETROSPECT_SHOULDER_1 = "theRetrospectResources/images/char/retrospectCharacter/shoulder.png";
-    public static final String THE_RETROSPECT_SHOULDER_2 = "theRetrospectResources/images/char/retrospectCharacter/shoulder2.png";
-    public static final String THE_RETROSPECT_CORPSE = "theRetrospectResources/images/char/retrospectCharacter/corpse.png";
+    private static final String THE_RETROSPECT_BUTTON = "theRetrospectResources/images/characterSelect/button.png";
+    private static final String THE_RETROSPECT_PORTRAIT = "theRetrospectResources/images/characterSelect/background.png";
+    public static final String THE_RETROSPECT_SHOULDER_1 = "theRetrospectResources/images/character/shoulder.png";
+    public static final String THE_RETROSPECT_SHOULDER_2 = "theRetrospectResources/images/character/shoulder2.png";
+    public static final String THE_RETROSPECT_CORPSE = "theRetrospectResources/images/character/corpse.png";
 
     //Mod Badge - A small icon that appears in the mod settings menu.
-    public static final String BADGE_IMAGE = "theRetrospectResources/images/Badge.png";
+    public static final String BADGE_IMAGE = "theRetrospectResources/images/badge.png";
 
     private static CardInfoRepository cardInfoRepository;
     private static RelicInfoRepository relicInfoRepository;

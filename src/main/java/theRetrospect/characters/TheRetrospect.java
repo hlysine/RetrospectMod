@@ -80,25 +80,25 @@ public class TheRetrospect extends AbstractPlayerWithMinions {
     // =============== /STRINGS/ =================
 
     // Atlas and JSON files for the Animations
-    public static final String SKELETON_ATLAS = "theRetrospectResources/images/char/retrospectCharacter/skeleton.atlas";
-    public static final String SKELETON_JSON = "theRetrospectResources/images/char/retrospectCharacter/skeleton.json";
-    public static final String CHARACTER_PORTRAIT = "theRetrospectResources/images/char/retrospectCharacter/retro_chara_3.png";
+    public static final String SKELETON_ATLAS = "theRetrospectResources/images/character/spine/skeleton.atlas";
+    public static final String SKELETON_JSON = "theRetrospectResources/images/character/spine/skeleton.json";
+    public static final String CHARACTER_PORTRAIT = "theRetrospectResources/images/character/portrait.png";
 
 
     // =============== TEXTURES OF BIG ENERGY ORB ===============
 
     public static final String[] orbTextures = {
-            "theRetrospectResources/images/char/retrospectCharacter/energyOrb/layer1_green.png",
-            "theRetrospectResources/images/char/retrospectCharacter/energyOrb/layer2_green.png",
-            "theRetrospectResources/images/char/retrospectCharacter/energyOrb/layer3_green.png",
-            "theRetrospectResources/images/char/retrospectCharacter/energyOrb/layer4_green.png",
-            "theRetrospectResources/images/char/retrospectCharacter/energyOrb/layer5_green.png",
-            "theRetrospectResources/images/char/retrospectCharacter/energyOrb/layer6.png",
-            "theRetrospectResources/images/char/retrospectCharacter/energyOrb/layer1d.png",
-            "theRetrospectResources/images/char/retrospectCharacter/energyOrb/layer2d.png",
-            "theRetrospectResources/images/char/retrospectCharacter/energyOrb/layer3d.png",
-            "theRetrospectResources/images/char/retrospectCharacter/energyOrb/layer4d.png",
-            "theRetrospectResources/images/char/retrospectCharacter/energyOrb/layer5d.png",};
+            "theRetrospectResources/images/energyOrb/layer1_green.png",
+            "theRetrospectResources/images/energyOrb/layer2_green.png",
+            "theRetrospectResources/images/energyOrb/layer3_green.png",
+            "theRetrospectResources/images/energyOrb/layer4_green.png",
+            "theRetrospectResources/images/energyOrb/layer5_green.png",
+            "theRetrospectResources/images/energyOrb/layer6.png",
+            "theRetrospectResources/images/energyOrb/layer1d.png",
+            "theRetrospectResources/images/energyOrb/layer2d.png",
+            "theRetrospectResources/images/energyOrb/layer3d.png",
+            "theRetrospectResources/images/energyOrb/layer4d.png",
+            "theRetrospectResources/images/energyOrb/layer5d.png",};
 
     // =============== /TEXTURES OF BIG ENERGY ORB/ ===============
 
@@ -106,7 +106,7 @@ public class TheRetrospect extends AbstractPlayerWithMinions {
 
     public TheRetrospect(String name, PlayerClass setClass) {
         super(name, setClass, orbTextures,
-                "theRetrospectResources/images/char/retrospectCharacter/energyOrb/vfx_green.png",
+                "theRetrospectResources/images/energyOrb/vfx_green.png",
                 new float[]{
                         -35.0F, 35.0F, -20.0F, 20.0F, 0
                 },
