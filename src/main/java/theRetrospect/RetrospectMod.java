@@ -62,20 +62,20 @@ public class RetrospectMod implements
     private static final String DESCRIPTION = "A character mod for the Retrospect.";
 
     // Character Color
-    public static final Color RETROSPECT_VIOLET = CardHelper.getColor(102, 27, 255);
+    public static final Color RETROSPECT_COLOR = CardHelper.getColor(100, 76, 112);
 
     // Card backgrounds - The actual rectangular card.
-    private static final String CARD_BG_ATTACK = "theRetrospectResources/images/512/bg_attack_retrospect_purple.png";
-    private static final String CARD_BG_SKILL = "theRetrospectResources/images/512/bg_skill_retrospect_purple.png";
-    private static final String CARD_BG_POWER = "theRetrospectResources/images/512/bg_power_retrospect_purple.png";
+    private static final String CARD_BG_ATTACK = "theRetrospectResources/images/512/bg_attack_retrospect_green.png";
+    private static final String CARD_BG_SKILL = "theRetrospectResources/images/512/bg_skill_retrospect_green.png";
+    private static final String CARD_BG_POWER = "theRetrospectResources/images/512/bg_power_retrospect_green.png";
 
     private static final String ENERGY_ORB_SMALL = "theRetrospectResources/images/512/card_text_energy_icon_small.png";
-    private static final String ENERGY_ORB_CARD_CORNER = "theRetrospectResources/images/512/card_corner_energy.png";
-    private static final String ENERGY_ORB_LARGE = "theRetrospectResources/images/1024/card_text_energy_icon_large.png";
+    private static final String ENERGY_ORB_CARD_CORNER = "theRetrospectResources/images/512/card_corner_energy_green.png";
+    private static final String ENERGY_ORB_LARGE = "theRetrospectResources/images/1024/card_text_energy_icon_large_green.png";
 
-    private static final String CARD_BG_ATTACK_LARGE = "theRetrospectResources/images/1024/bg_attack_retrospect_purple.png";
-    private static final String CARD_BG_SKILL_LARGE = "theRetrospectResources/images/1024/bg_skill_retrospect_purple.png";
-    private static final String CARD_BG_POWER_LARGE = "theRetrospectResources/images/1024/bg_power_retrospect_purple.png";
+    private static final String CARD_BG_ATTACK_LARGE = "theRetrospectResources/images/1024/bg_attack_retrospect_green.png";
+    private static final String CARD_BG_SKILL_LARGE = "theRetrospectResources/images/1024/bg_skill_retrospect_green.png";
+    private static final String CARD_BG_POWER_LARGE = "theRetrospectResources/images/1024/bg_power_retrospect_green.png";
 
     // Character assets
     private static final String THE_RETROSPECT_BUTTON = "theRetrospectResources/images/charSelect/RetrospectCharacterButton.png";
@@ -134,13 +134,13 @@ public class RetrospectMod implements
         logger.info("Creating the color " + TheRetrospect.Enums.RETROSPECT_CARD_VIOLET.toString());
 
         BaseMod.addColor(TheRetrospect.Enums.RETROSPECT_CARD_VIOLET,
-                RETROSPECT_VIOLET,
-                RETROSPECT_VIOLET,
-                RETROSPECT_VIOLET,
-                RETROSPECT_VIOLET,
-                RETROSPECT_VIOLET,
-                RETROSPECT_VIOLET,
-                RETROSPECT_VIOLET,
+                RETROSPECT_COLOR,
+                RETROSPECT_COLOR,
+                RETROSPECT_COLOR,
+                RETROSPECT_COLOR,
+                RETROSPECT_COLOR,
+                RETROSPECT_COLOR,
+                RETROSPECT_COLOR,
                 CARD_BG_ATTACK,
                 CARD_BG_SKILL,
                 CARD_BG_POWER,
@@ -320,7 +320,7 @@ public class RetrospectMod implements
 
             @Override
             public Color getColor(AbstractCard card) {
-                return RetrospectMod.RETROSPECT_VIOLET.cpy();
+                return RetrospectMod.RETROSPECT_COLOR.cpy();
             }
 
             @Override

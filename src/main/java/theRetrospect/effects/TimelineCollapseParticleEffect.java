@@ -23,7 +23,7 @@ public class TimelineCollapseParticleEffect extends AbstractGameEffect {
 
     public TimelineCollapseParticleEffect(AbstractFriendlyMonster minion) {
         this.duration = MathUtils.random(1.3F, 1.8F);
-        this.color = new Color(MathUtils.random(0.5f, 0.6f), MathUtils.random(0.1f, 0.2f), MathUtils.random(0.7f, 8f), 0.0f);
+        this.color = new Color(MathUtils.random(0.6f, 0.7f), MathUtils.random(0.3f, 0.4f), MathUtils.random(0.7f, 0.8f), 0.0f);
 
         dur_div2 = this.duration / 2.0F;
 

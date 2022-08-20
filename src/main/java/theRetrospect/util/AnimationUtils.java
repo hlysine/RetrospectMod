@@ -37,6 +37,8 @@ public class AnimationUtils {
                 ModelInstance animInstance = ReflectionHacks.getPrivate(newAnim, G3DJAnimation.class, "myInstance");
                 animInstance.transform.scale(scale, 1.0f, scale);
                 return newAnim;
+            } else {
+                return new NoAnimation();
             }
         } else {
             return new SpineAnimation(
@@ -45,12 +47,10 @@ public class AnimationUtils {
                     AnimationPatch.CreatureAnimationFieldsPatch.animationLoadScale.get(player) / scale
             );
         }
-
-        return null;
     }
 
     public static void cloneAnimationStates(AbstractPlayer from, AbstractFriendlyMonster to) {
-        if (to.animation.type() == AbstractAnimation.Type.NONE) {
+        if (to.animation instanceof SpineAnimation) {
             AnimationState.TrackEntry current = from.state.getCurrent(0);
             AnimationState.TrackEntry e = to.state.setAnimation(0, current.getAnimation().getName(), current.getLoop());
             AnimationStateData stateData = ReflectionHacks.getPrivate(from, AbstractCreature.class, "stateData");

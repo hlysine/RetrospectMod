@@ -32,7 +32,7 @@ public class TimelineUtils {
         boolean isPlayerSurrounded = player.drawX > Settings.WIDTH * 0.4f;
 
         float midX = Settings.WIDTH * (isPlayerSurrounded ? 0.5f : 0.35f);
-        float y = AbstractDungeon.floorY + player.hb_h * (isPlayerSurrounded ? 1f : 0.2f);
+        float y = AbstractDungeon.floorY + player.hb_h * (isPlayerSurrounded ? 0.9f : 0.1f);
         float gap = 20 * Settings.scale;
 
         List<AbstractMinionWithCards> minions = MinionUtils.getMinions(player).monsters.stream()

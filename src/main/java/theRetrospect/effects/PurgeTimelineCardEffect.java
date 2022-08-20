@@ -30,7 +30,7 @@ public class PurgeTimelineCardEffect extends AbstractGameEffect {
         if (!this.card.fadingOut && this.duration < 0.7F &&
                 !AbstractDungeon.player.hand.contains(this.card)) {
             this.card.fadingOut = true;
-            this.card.superFlash(RetrospectMod.RETROSPECT_VIOLET.cpy());
+            this.card.superFlash(RetrospectMod.RETROSPECT_COLOR.cpy());
             this.card.stopGlowing();
             this.card.lighten(false);
         }

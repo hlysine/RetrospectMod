@@ -1,10 +1,7 @@
 package theRetrospect.characters;
 
-import basemod.animations.SpriterAnimation;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
-import com.badlogic.gdx.math.MathUtils;
-import com.esotericsoftware.spine.AnimationState;
 import com.evacipated.cardcrawl.modthespire.lib.SpireEnum;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -27,6 +24,7 @@ import theRetrospect.cards.skills.Defend;
 import theRetrospect.cards.skills.Divert;
 import theRetrospect.cards.skills.DoubleTime;
 import theRetrospect.relics.AntiqueClock;
+import theRetrospect.util.NoAnimation;
 
 import java.util.ArrayList;
 
@@ -84,6 +82,7 @@ public class TheRetrospect extends AbstractPlayerWithMinions {
     // Atlas and JSON files for the Animations
     public static final String SKELETON_ATLAS = "theRetrospectResources/images/char/retrospectCharacter/skeleton.atlas";
     public static final String SKELETON_JSON = "theRetrospectResources/images/char/retrospectCharacter/skeleton.json";
+    public static final String CHARACTER_PORTRAIT = "theRetrospectResources/images/char/retrospectCharacter/retro_chara_3.png";
 
 
     // =============== TEXTURES OF BIG ENERGY ORB ===============
@@ -111,8 +110,7 @@ public class TheRetrospect extends AbstractPlayerWithMinions {
                 new float[]{
                         -20.0F, 20.0F, -40.0F, 40.0F, 0
                 },
-                new SpriterAnimation(
-                        "theRetrospectResources/images/char/retrospectCharacter/Spriter/theRetrospectAnimation.scml"));
+                new NoAnimation());
 
 
         // =============== TEXT BUBBLE LOCATION =================
@@ -125,12 +123,12 @@ public class TheRetrospect extends AbstractPlayerWithMinions {
 
         // =============== TEXTURES, ENERGY, LOADOUT =================  
 
-        initializeClass(null, // required call to load textures and setup energy/loadout.
+        initializeClass(CHARACTER_PORTRAIT, // required call to load textures and setup energy/loadout.
                 // I left these in DefaultMod.java (Ctrl+click them to see where they are, Ctrl+hover to see what they read.)
                 THE_RETROSPECT_SHOULDER_2, // campfire pose
                 THE_RETROSPECT_SHOULDER_1, // another campfire pose
                 THE_RETROSPECT_CORPSE, // dead corpse
-                getLoadout(), 20.0F, -10.0F, 220.0F, 290.0F, new EnergyManager(ENERGY_PER_TURN)); // energy manager
+                getLoadout(), 0f, 0f, 180f, 300f, new EnergyManager(ENERGY_PER_TURN)); // energy manager
 
         // =============== /TEXTURES, ENERGY, LOADOUT/ =================
 
@@ -141,8 +139,10 @@ public class TheRetrospect extends AbstractPlayerWithMinions {
                 SKELETON_ATLAS,
                 SKELETON_JSON,
                 1.0f);
-        AnimationState.TrackEntry e = state.setAnimation(0, "animation", true);
-        e.setTime(e.getEndTime() * MathUtils.random());
+        this.atlas.dispose();
+        this.atlas = null;
+//        AnimationState.TrackEntry e = state.setAnimation(0, "animation", true);
+//        e.setTime(e.getEndTime() * MathUtils.random());
 
         // =============== /ANIMATIONS/ =================
     }
@@ -229,7 +229,7 @@ public class TheRetrospect extends AbstractPlayerWithMinions {
     // Should return a color object to be used to color the trail of moving cards
     @Override
     public Color getCardTrailColor() {
-        return RetrospectMod.RETROSPECT_VIOLET;
+        return RetrospectMod.RETROSPECT_COLOR;
     }
 
     // Should return a BitmapFont object that you can use to customize how your
@@ -266,14 +266,14 @@ public class TheRetrospect extends AbstractPlayerWithMinions {
     // Should return a Color object to be used to color the miniature card images in run history.
     @Override
     public Color getCardRenderColor() {
-        return RetrospectMod.RETROSPECT_VIOLET;
+        return RetrospectMod.RETROSPECT_COLOR;
     }
 
     // Should return a Color object to be used as screen tint effect when your
     // character attacks the heart.
     @Override
     public Color getSlashAttackColor() {
-        return RetrospectMod.RETROSPECT_VIOLET;
+        return RetrospectMod.RETROSPECT_COLOR;
     }
 
     // Should return an AttackEffect array of any size greater than 0. These effects

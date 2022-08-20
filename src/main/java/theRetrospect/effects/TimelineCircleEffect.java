@@ -19,7 +19,7 @@ public class TimelineCircleEffect extends AbstractGameEffect {
         this.scale = MathUtils.random(3, 3.5f);
         this.startingDuration = this.duration = 2;
 
-        this.color = new Color(MathUtils.random(0.3f, 0.5f), 0.2f, MathUtils.random(0.8f, 1.0f), 0.4f);
+        this.color = new Color(MathUtils.random(0.5f, 0.6f), 0.4f, MathUtils.random(0.7f, 0.9f), 0.4f);
 
         this.renderBehind = true;
     }

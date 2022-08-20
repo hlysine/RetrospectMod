@@ -79,7 +79,7 @@ public class ConstructTimelineAction extends AbstractGameAction {
                     AbstractDungeon.effectList.add(new FlyingOrbEffect(
                             player.hb.cX, player.hb.cY,
                             minion.target_x, minion.target_y + minion.hb.height / 2,
-                            new Color(0.5f, 0.2f, 1f, 0.4f)
+                            new Color(0.7f, 0.5f, 0.8f, 0.4f)
                     ));
                 }
 

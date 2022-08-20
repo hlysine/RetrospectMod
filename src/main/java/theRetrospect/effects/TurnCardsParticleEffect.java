@@ -27,8 +27,8 @@ public class TurnCardsParticleEffect extends AbstractGameEffect {
         this.color = new Color();
         this.color.a = 0.0F;
         this.color.g = MathUtils.random(0.2F, 0.4F);
-        this.color.r = this.color.g + 0.1F;
-        this.color.b = this.color.r + 0.1F;
+        this.color.r = this.color.g + 0.2F;
+        this.color.b = this.color.r + 0.05F;
 
         this.x = x;
         this.y = y;

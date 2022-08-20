@@ -10,6 +10,7 @@ import com.badlogic.gdx.math.MathUtils;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.vfx.AbstractGameEffect;
+import theRetrospect.RetrospectMod;
 
 public class TimelinePurgeParticleEffect extends AbstractGameEffect {
     private float x;
@@ -22,7 +23,7 @@ public class TimelinePurgeParticleEffect extends AbstractGameEffect {
     private final TextureAtlas.AtlasRegion img;
 
     public TimelinePurgeParticleEffect(float x, float y) {
-        this.color = new Color(MathUtils.random(0.4f, 1.0f), MathUtils.random(0.1f, 0.2f), MathUtils.random(0.8f, 1.0f), 1.0F);
+        this.color = RetrospectMod.RETROSPECT_COLOR.cpy().add(MathUtils.random(0.2f, 0.25f), MathUtils.random(0.2f, 0.25f), MathUtils.random(0.2f, 0.25f), 0);
 
         this.duration = MathUtils.random(0.6F, 1.4F);
         this.duration *= this.duration;
