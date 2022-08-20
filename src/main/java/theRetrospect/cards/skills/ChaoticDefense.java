@@ -23,6 +23,11 @@ public class ChaoticDefense extends AbstractBaseCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        CardUtils.addFollowUpActionToBottom(this, new ChaoticCardAction(this, p.drawPile, CardType.SKILL), true, 0);
+        CardUtils.addFollowUpActionToBottom(
+                this,
+                new ChaoticCardAction(this, p.drawPile, CardType.SKILL, CardUtils.createFollowUpActionHandler(this)),
+                true,
+                0
+        );
     }
 }

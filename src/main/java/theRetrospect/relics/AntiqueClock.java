@@ -10,6 +10,7 @@ import theRetrospect.actions.general.RunnableAction;
 import theRetrospect.actions.general.ShowCardToBePlayedAction;
 import theRetrospect.cards.skills.Divert;
 import theRetrospect.subscribers.EndOfTurnCardSubscriber;
+import theRetrospect.util.CardPlaySource;
 import theRetrospect.util.CardUtils;
 
 @AutoAdd.Seen
@@ -33,6 +34,7 @@ public class AntiqueClock extends AbstractBaseRelic implements EndOfTurnCardSubs
             card.current_x = card.target_x = AbstractDungeon.player.drawX;
             card.current_y = card.target_y = AbstractDungeon.player.drawY;
             CardUtils.addFollowUpActionToBottom(card, new RunnableAction(next), true, 0);
+            CardUtils.setPlaySource(card, CardPlaySource.RELIC);
             addToBot(new ShowCardToBePlayedAction(card));
             addToBot(new CustomQueueCardAction(card, true, false, true));
             this.grayscale = true;

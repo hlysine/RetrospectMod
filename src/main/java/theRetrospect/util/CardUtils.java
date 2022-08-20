@@ -114,6 +114,22 @@ public class CardUtils {
         return CardAddFieldsPatch.followUpActions.get(card).removeIf(t -> t.action == actionAfterUse);
     }
 
+    /**
+     * Transfer follow-up actions to a handler to schedule those actions.
+     * This will clear follow-up actions and related info from the card itself.
+     *
+     * @param card The card to transfer follow-up actions from.
+     * @return A follow-up actions handler.
+     */
+    public static CardFollowUpActionHandler createFollowUpActionHandler(AbstractCard card) {
+        CardFollowUpActionHandler handler = new CardFollowUpActionHandler(getFollowUpActions(card), getTurnEnding(card));
+
+        CardUtils.clearFollowUpActions(card);
+        CardUtils.setTurnEnding(card, false);
+
+        return handler;
+    }
+
     public static AbstractMinionWithCards getReturnToMinion(AbstractCard card) {
         return CardAddFieldsPatch.returnToMinion.get(card);
     }
