@@ -88,11 +88,11 @@ public class TheRetrospect extends AbstractPlayerWithMinions {
     // =============== TEXTURES OF BIG ENERGY ORB ===============
 
     public static final String[] orbTextures = {
-            "theRetrospectResources/images/char/retrospectCharacter/energyOrb/layer1.png",
-            "theRetrospectResources/images/char/retrospectCharacter/energyOrb/layer2.png",
-            "theRetrospectResources/images/char/retrospectCharacter/energyOrb/layer3.png",
-            "theRetrospectResources/images/char/retrospectCharacter/energyOrb/layer4.png",
-            "theRetrospectResources/images/char/retrospectCharacter/energyOrb/layer5.png",
+            "theRetrospectResources/images/char/retrospectCharacter/energyOrb/layer1_green.png",
+            "theRetrospectResources/images/char/retrospectCharacter/energyOrb/layer2_green.png",
+            "theRetrospectResources/images/char/retrospectCharacter/energyOrb/layer3_green.png",
+            "theRetrospectResources/images/char/retrospectCharacter/energyOrb/layer4_green.png",
+            "theRetrospectResources/images/char/retrospectCharacter/energyOrb/layer5_green.png",
             "theRetrospectResources/images/char/retrospectCharacter/energyOrb/layer6.png",
             "theRetrospectResources/images/char/retrospectCharacter/energyOrb/layer1d.png",
             "theRetrospectResources/images/char/retrospectCharacter/energyOrb/layer2d.png",
@@ -106,9 +106,9 @@ public class TheRetrospect extends AbstractPlayerWithMinions {
 
     public TheRetrospect(String name, PlayerClass setClass) {
         super(name, setClass, orbTextures,
-                "theRetrospectResources/images/char/retrospectCharacter/energyOrb/vfx.png",
+                "theRetrospectResources/images/char/retrospectCharacter/energyOrb/vfx_green.png",
                 new float[]{
-                        -20.0F, 20.0F, -40.0F, 40.0F, 0
+                        -35.0F, 35.0F, -20.0F, 20.0F, 0
                 },
                 new NoAnimation());
 
