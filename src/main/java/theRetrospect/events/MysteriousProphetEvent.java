@@ -2,6 +2,7 @@ package theRetrospect.events;
 
 import basemod.abstracts.events.PhasedEvent;
 import basemod.abstracts.events.phases.TextPhase;
+import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -32,7 +33,10 @@ public class MysteriousProphetEvent extends PhasedEvent {
 
         registerPhase("Prophet's Words", new TextPhase(DESCRIPTIONS[1])
                 .addOption(OPTIONS[1], (i) -> transitionKey("Offer"))
-                .addOption(OPTIONS[2], (i) -> transitionKey("Rejection"))
+                .addOption(OPTIONS[2], (i) -> {
+                    logMetricIgnored(ID);
+                    transitionKey("Rejection");
+                })
         );
 
         registerPhase("Rejection", new TextPhase(DESCRIPTIONS[2])
@@ -41,19 +45,27 @@ public class MysteriousProphetEvent extends PhasedEvent {
 
         registerPhase("Offer", new TextPhase(DESCRIPTIONS[3])
                 .addOption(new TextPhase.OptionInfo(OPTIONS[4], new SoullessDemon()), (i) -> {
-                    AbstractDungeon.effectList.add(new ShowCardAndObtainEffect(new SoullessDemon(), Settings.WIDTH / 2f, Settings.HEIGHT / 2f));
+                    AbstractCard card = new SoullessDemon();
+                    AbstractDungeon.effectList.add(new ShowCardAndObtainEffect(card, Settings.WIDTH / 2f, Settings.HEIGHT / 2f));
+                    logMetricObtainCard(ID, "Red", card);
                     transitionKey("Complete");
                 })
                 .addOption(new TextPhase.OptionInfo(OPTIONS[5], new NoxiousWraith()), (i) -> {
-                    AbstractDungeon.effectList.add(new ShowCardAndObtainEffect(new NoxiousWraith(), Settings.WIDTH / 2f, Settings.HEIGHT / 2f));
+                    AbstractCard card = new NoxiousWraith();
+                    AbstractDungeon.effectList.add(new ShowCardAndObtainEffect(card, Settings.WIDTH / 2f, Settings.HEIGHT / 2f));
+                    logMetricObtainCard(ID, "Green", card);
                     transitionKey("Complete");
                 })
                 .addOption(new TextPhase.OptionInfo(OPTIONS[6], new DefectiveEcho()), (i) -> {
-                    AbstractDungeon.effectList.add(new ShowCardAndObtainEffect(new DefectiveEcho(), Settings.WIDTH / 2f, Settings.HEIGHT / 2f));
+                    AbstractCard card = new DefectiveEcho();
+                    AbstractDungeon.effectList.add(new ShowCardAndObtainEffect(card, Settings.WIDTH / 2f, Settings.HEIGHT / 2f));
+                    logMetricObtainCard(ID, "Blue", card);
                     transitionKey("Complete");
                 })
                 .addOption(new TextPhase.OptionInfo(OPTIONS[7], new DivineEye()), (i) -> {
-                    AbstractDungeon.effectList.add(new ShowCardAndObtainEffect(new DivineEye(), Settings.WIDTH / 2f, Settings.HEIGHT / 2f));
+                    AbstractCard card = new DivineEye();
+                    AbstractDungeon.effectList.add(new ShowCardAndObtainEffect(card, Settings.WIDTH / 2f, Settings.HEIGHT / 2f));
+                    logMetricObtainCard(ID, "Purple", card);
                     transitionKey("Complete");
                 })
         );

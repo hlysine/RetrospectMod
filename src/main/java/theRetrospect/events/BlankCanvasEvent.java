@@ -37,6 +37,7 @@ public class BlankCanvasEvent extends AbstractImageEvent {
     private final List<WildCardModifier> choices = WildCard.possibleEffects.stream().map(WildCardModifier::makeCopy).collect(Collectors.toList());
     private WildCard card = new WildCard();
     private List<WildCardModifier> currentChoices;
+    private final List<List<WildCardModifier>> choiceHistory = new ArrayList<>();
 
     public BlankCanvasEvent() {
         super(NAME, "test", "images/events/ghost.jpg");
@@ -64,6 +65,12 @@ public class BlankCanvasEvent extends AbstractImageEvent {
         this.hpLoss += HP_LOSS_INCREASE;
         WildCardModifier newChoice = this.currentChoices.get(buttonPressed);
         this.choices.remove(newChoice);
+
+        List<WildCardModifier> choiceRecord = new ArrayList<>(this.currentChoices);
+        choiceRecord.remove(newChoice);
+        choiceRecord.add(0, newChoice);
+        this.choiceHistory.add(choiceRecord);
+
         List<WildCardModifier> modifiers = new ArrayList<>(card.modifiers);
         modifiers.add(newChoice);
         card = new WildCard(modifiers);
@@ -77,13 +84,30 @@ public class BlankCanvasEvent extends AbstractImageEvent {
     }
 
     private void showExitScreen() {
-        if (this.screenNum == 0 && choices.size() > 0)
+        String playerChoice;
+        if (this.screenNum == 0 && choices.size() > 0) {
             this.imageEventText.updateBodyText(IGNORE_BODY);
-        else if (choices.size() == 0)
+        } else if (choices.size() == 0) {
             this.imageEventText.updateBodyText(COMPLETE_BODY);
-        else
+            this.currentChoices.clear();
+        } else {
             this.imageEventText.updateBodyText(EXIT_BODY);
+        }
+
+        if (this.currentChoices.size() > 0) {
+            ArrayList<WildCardModifier> finalChoices = new ArrayList<>(this.currentChoices);
+            finalChoices.add(0, null);
+            this.choiceHistory.add(finalChoices);
+        }
+        playerChoice = this.choiceHistory.stream()
+                .map(list -> list.stream()
+                        .map(mod -> mod == null ? "" : mod.getKey())
+                        .collect(Collectors.joining(">"))
+                )
+                .collect(Collectors.joining("|"));
+
         AbstractDungeon.effectList.add(new ShowCardAndObtainEffect(card.makeStatEquivalentCopy(), Settings.WIDTH * 0.6F, Settings.HEIGHT / 2.0F));
+        logMetricObtainCard(ID, playerChoice, card);
         this.screenNum = -1;
         this.imageEventText.updateDialogOption(0, OPTIONS[4]);
         this.imageEventText.clearRemainingOptions();

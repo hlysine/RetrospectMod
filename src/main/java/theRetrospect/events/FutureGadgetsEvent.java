@@ -2,6 +2,7 @@ package theRetrospect.events;
 
 import basemod.abstracts.events.PhasedEvent;
 import basemod.abstracts.events.phases.TextPhase;
+import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -25,10 +26,15 @@ public class FutureGadgetsEvent extends PhasedEvent {
 
         registerPhase("Encounter", new TextPhase(DESCRIPTIONS[0])
                 .addOption(new TextPhase.OptionInfo(OPTIONS[0], new Divert()), (i) -> {
-                    AbstractDungeon.effectList.add(new ShowCardAndObtainEffect(new Divert(), Settings.WIDTH / 2f, Settings.HEIGHT / 2f));
+                    AbstractCard card = new Divert();
+                    AbstractDungeon.effectList.add(new ShowCardAndObtainEffect(card, Settings.WIDTH / 2f, Settings.HEIGHT / 2f));
+                    logMetricObtainCard(ID, "Yes", card);
                     transitionKey("Yes");
                 })
-                .addOption(OPTIONS[1], (i) -> transitionKey("No"))
+                .addOption(OPTIONS[1], (i) -> {
+                    logMetricIgnored(ID);
+                    transitionKey("No");
+                })
         );
 
         registerPhase("Yes", new TextPhase(DESCRIPTIONS[1])

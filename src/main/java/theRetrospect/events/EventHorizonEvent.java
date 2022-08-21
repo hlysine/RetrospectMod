@@ -26,9 +26,13 @@ public class EventHorizonEvent extends PhasedEvent {
         registerPhase("Encounter", new TextPhase(DESCRIPTIONS[0])
                 .addOption(new TextPhase.OptionInfo(OPTIONS[0], new Singularity(), new BottledSingularity()), (i) -> {
                     AbstractDungeon.getCurrRoom().spawnRelicAndObtain(Settings.WIDTH / 2f, Settings.HEIGHT / 2f, new BottledSingularity());
+                    logMetricObtainRelic(ID, "Capture", new BottledSingularity());
                     transitionKey("Capture");
                 })
-                .addOption(OPTIONS[1], (i) -> transitionKey("Escape"))
+                .addOption(OPTIONS[1], (i) -> {
+                    logMetricIgnored(ID);
+                    transitionKey("Escape");
+                })
         );
 
         registerPhase("Capture", new TextPhase(DESCRIPTIONS[1])
