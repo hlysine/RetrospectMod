@@ -1,6 +1,7 @@
 package theRetrospect.patches;
 
 import basemod.ReflectionHacks;
+import com.evacipated.cardcrawl.modthespire.Loader;
 import com.evacipated.cardcrawl.modthespire.lib.SpirePatch;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.metrics.Metrics;
@@ -9,7 +10,12 @@ import com.megacrit.cardcrawl.screens.GameOverScreen;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.stream.Collectors;
+
 public class MetricsPatch {
+    // public static final String UPLOAD_URL = "http://127.0.0.1:3001/api/metrics";
     public static final String UPLOAD_URL = "https://retrospect.vercel.app/api/metrics";
 
     private static final Logger logger = LogManager.getLogger(MetricsPatch.class.getName());
@@ -31,8 +37,9 @@ public class MetricsPatch {
             method = "gatherAllData"
     )
     public static class MetricsGatherAllDataPatch {
-        public static void Prefix() {
+        public static void Prefix(Metrics __instance, boolean death, boolean trueVictor, MonsterGroup monsters, HashMap<Object, Object> ___params) {
             logger.info("Gathering metrics data");
+            ___params.put("installed_mods", Arrays.stream(Loader.MODINFOS).map(modInfo -> modInfo.ID).collect(Collectors.toList()));
         }
     }
 
