@@ -15,8 +15,8 @@ public interface DeathPreProtectionSubscriber {
     boolean onDeathPreProtection(DamageInfo damageInfo, DeathInfo deathInfo, boolean canDie);
 
     class DeathInfo {
-        public int healthBeforeDamage;
-        public int finalHPDamage;
+        public final int healthBeforeDamage;
+        public final int finalHPDamage;
 
         public DeathInfo(int healthBeforeDamage, int finalHPDamage) {
             this.healthBeforeDamage = healthBeforeDamage;

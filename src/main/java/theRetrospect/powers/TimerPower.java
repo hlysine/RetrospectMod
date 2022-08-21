@@ -63,7 +63,7 @@ public class TimerPower extends AbstractPower implements CloneablePowerInterface
         AtomicInteger cardIdx = new AtomicInteger(0);
         CallbackUtils.ForLoop(
                 () -> {
-                    if (minion.cards.size() <= 0) return false;
+                    if (minion.cards.size() == 0) return false;
                     int idx = cardIdx.get();
                     if (minion.cards.size() <= idx) return false;
                     if (idx >= amount) return false;
@@ -94,7 +94,7 @@ public class TimerPower extends AbstractPower implements CloneablePowerInterface
                 () -> {
                     updateDescription();
                     updateCardIntents();
-                    if (minion.cards.size() <= 0) {
+                    if (minion.cards.size() == 0) {
                         addToBot(new CollapseTimelineAction(minion));
                         return false;
                     }

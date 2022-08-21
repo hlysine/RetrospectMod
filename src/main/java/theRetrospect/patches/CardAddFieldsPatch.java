@@ -40,6 +40,6 @@ public class CardAddFieldsPatch {
     /**
      * Whether this card is bottled by Bottled Singularity.
      */
-    public static SpireField<Boolean> isInBottledSingularity = new SpireField<>(() -> false);
+    public static final SpireField<Boolean> isInBottledSingularity = new SpireField<>(() -> false);
 }
 

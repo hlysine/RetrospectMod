@@ -41,7 +41,7 @@ public abstract class TimelineTargetingCard extends AbstractBaseCard {
     public boolean canUse(AbstractPlayer p, AbstractMonster m) {
         if (!super.canUse(p, m)) return false;
 
-        if (TimelineUtils.getTimelines(p).size() <= 0) {
+        if (TimelineUtils.getTimelines(p).size() == 0) {
             cantUseMessage = cardStrings.EXTENDED_DESCRIPTION[0];
             return false;
         }

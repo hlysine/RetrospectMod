@@ -20,7 +20,7 @@ import java.util.function.Predicate;
 
 public class BottledSingularity extends AbstractBaseRelic implements CustomBottleRelic, CustomSavable<List<Integer>> {
 
-    public static int CARD_COUNT = 3;
+    public static final int CARD_COUNT = 3;
 
     private static List<AbstractCard> cards = new ArrayList<>();
     private boolean cardsSelected = true;

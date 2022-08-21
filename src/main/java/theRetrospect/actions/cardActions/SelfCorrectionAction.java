@@ -24,7 +24,7 @@ public class SelfCorrectionAction extends AbstractGameAction {
 
     @Override
     public void update() {
-        if (timeline.cards.size() <= 0) {
+        if (timeline.cards.size() == 0) {
             this.isDone = true;
             return;
         }
