@@ -28,6 +28,7 @@ import org.apache.logging.log4j.Logger;
 import theRetrospect.cards.AbstractBaseCard;
 import theRetrospect.characters.TheRetrospect;
 import theRetrospect.events.*;
+import theRetrospect.patches.metrics.DevCommandsMetricPatch;
 import theRetrospect.potions.ButterflyInAJar;
 import theRetrospect.potions.TimelinePotion;
 import theRetrospect.relics.AbstractBaseRelic;
@@ -218,7 +219,9 @@ public class RetrospectMod implements
 
         CustomTargeting.registerCustomTargeting(TimelineTargeting.TIMELINE, new TimelineTargeting());
 
-        logger.info("Done loading badge Image and mod options");
+        BaseMod.addSaveField(RetrospectMod.makeID(DevCommandsMetricPatch.DevCommandsMetricSavable.class.getSimpleName()), new DevCommandsMetricPatch.DevCommandsMetricSavable());
+
+        logger.info("Done loading badge image and mod options");
 
         BaseMod.addEvent(new AddEventParams.Builder(MysteriousProphetEvent.ID, MysteriousProphetEvent.class)
                 .playerClass(TheRetrospect.Enums.THE_RETROSPECT)
