@@ -40,7 +40,7 @@ public class RandomCursePatch {
             method = "getCurse",
             paramtypez = {AbstractCard.class, Random.class}
     )
-    public static class GetCurseWithoutPatch {
+    public static class GetCurseWithRandomPatch {
         @SpireInsertPatch(
                 locator = Locator.class,
                 localvars = {"tmp"}
