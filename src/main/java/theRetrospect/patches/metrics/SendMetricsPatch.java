@@ -9,6 +9,7 @@ import com.megacrit.cardcrawl.monsters.MonsterGroup;
 import com.megacrit.cardcrawl.screens.GameOverScreen;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import theRetrospect.RetrospectMod;
 
 import java.util.Arrays;
 import java.util.HashMap;
@@ -41,6 +42,7 @@ public class SendMetricsPatch {
             logger.info("Gathering metrics data");
             ___params.put("installed_mods", Arrays.stream(Loader.MODINFOS).map(modInfo -> modInfo.ID).collect(Collectors.toList()));
             ___params.put("used_dev_commands", DevCommandsMetricPatch.usedDevCommands);
+            ___params.put("mod_version", RetrospectMod.class.getPackage().getSpecificationVersion());
         }
     }
 
