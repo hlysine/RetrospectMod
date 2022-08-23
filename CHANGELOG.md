@@ -1,5 +1,39 @@
 # Changelog
 
+## [0.6.0] - Art and QoL Update - 2022-08-23
+
+### Mechanics
+
+- Add FTUE tip when a timeline is first constructed
+- Don't use RNG when there is only one choice
+
+### Cards
+
+- Fix Chaotic Defense and Chaotic Offense not triggering timelines after being played by relics
+- Prevent random curse draws from drawing Singularity
+
+### Art
+
+- Add power icons
+  - Active Echo
+  - Defective Echo
+  - Death Totem
+- Add character art
+- Change theme color from purple to green
+- Change energy panel to green
+- change card background from blue/purple to green/purple
+
+### VFX
+
+- Add glow effect for cards in timelines
+- Add special purge effect for cards in timelines
+- Fix timeline corpse images turning black
+
+### Misc
+
+- Collect gameplay data for balancing
+- Gather relic information in a JSON file for online preview
+
 ## [0.5.0] - Balance Update - 2022-08-09
 
 ### Cards
