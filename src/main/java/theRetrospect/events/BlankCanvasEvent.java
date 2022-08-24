@@ -101,7 +101,7 @@ public class BlankCanvasEvent extends AbstractImageEvent {
         }
         playerChoice = this.choiceHistory.stream()
                 .map(list -> list.stream()
-                        .map(mod -> mod == null ? "" : mod.getKey())
+                        .map(mod -> mod == null ? "SKIP" : mod.getKey())
                         .collect(Collectors.joining(">"))
                 )
                 .collect(Collectors.joining("|"));
