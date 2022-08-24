@@ -25,9 +25,9 @@ public class Divert extends AbstractBaseCard {
 
     @Override
     public void upgrade() {
-        super.upgrade();
         if (!this.upgraded) {
             this.isEthereal = false;
         }
+        super.upgrade();
     }
 }

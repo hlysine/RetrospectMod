@@ -28,9 +28,9 @@ public class Overcore extends AbstractBaseCard {
 
     @Override
     public void upgrade() {
-        super.upgrade();
         if (!this.upgraded) {
             this.exhaust = false;
         }
+        super.upgrade();
     }
 }

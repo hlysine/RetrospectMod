@@ -33,9 +33,9 @@ public class ShadowForm extends AbstractBaseCard {
 
     @Override
     public void upgrade() {
-        super.upgrade();
         if (!upgraded) {
             this.isEthereal = false;
         }
+        super.upgrade();
     }
 }
