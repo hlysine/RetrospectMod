@@ -1,5 +1,15 @@
 # Changelog
 
+## [0.6.1] - Hotfix - 2022-08-24
+
+### Cards
+
+- Fix Divert, Overcore and Shadow Form not getting their attributes updated on upgrade
+
+### Misc
+
+- Slight change to the metrics reported by the Blank Canvas event
+
 ## [0.6.0] - Art and QoL Update - 2022-08-23
 
 ### Mechanics
