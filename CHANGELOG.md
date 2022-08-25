@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.7.0] - Run Mod Update - 2022-08-25
+
+### Run Mods
+
+- Add mod In Time
+
 ## [0.6.1] - Hotfix - 2022-08-24
 
 ### Cards
