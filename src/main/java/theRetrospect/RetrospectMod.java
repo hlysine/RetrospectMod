@@ -123,6 +123,10 @@ public class RetrospectMod implements
         return getModID() + "Resources/images/events/" + resourcePath;
     }
 
+    public static String makeRunModPath(String resourcePath) {
+        return getModID() + "Resources/images/runMods/" + resourcePath;
+    }
+
     public RetrospectMod() {
         logger.info("Subscribe to BaseMod hooks");
 
@@ -366,6 +370,9 @@ public class RetrospectMod implements
 
         BaseMod.loadCustomStringsFile(MonsterStrings.class,
                 getModID() + "Resources/localization/eng/RetrospectMod-Monster-Strings.json");
+
+        BaseMod.loadCustomStringsFile(RunModStrings.class,
+                getModID() + "Resources/localization/eng/RetrospectMod-RunMod-Strings.json");
 
         logger.info("Done editing strings");
     }

@@ -1,0 +1,6 @@
+{
+  "theRetrospect:InTime": {
+    "NAME": "In Time",
+    "DESCRIPTION": "Heal HP equal to unblock damage dealt. Lose 2 HP per second in your turn."
+  }
+}
