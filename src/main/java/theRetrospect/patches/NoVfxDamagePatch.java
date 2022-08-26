@@ -37,6 +37,12 @@ public class NoVfxDamagePatch {
                                 "else { $_ = new theRetrospect.effects.NoEffect(); } }");
                     }
                 }
+
+                public void edit(javassist.expr.MethodCall m) throws CannotCompileException {
+                    if (m.getMethodName().equals("useStaggerAnimation")) {
+                        m.replace("{ if (!theRetrospect.util.DamageInfoUtils.getNoVisualEffect(info)) { $_ = $proceed($$); } }");
+                    }
+                }
             };
         }
     }
