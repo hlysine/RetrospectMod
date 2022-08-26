@@ -15,6 +15,7 @@ import com.megacrit.cardcrawl.helpers.FontHelper;
 import com.megacrit.cardcrawl.helpers.ModHelper;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
+import com.megacrit.cardcrawl.ui.buttons.EndTurnButton;
 import hlysine.friendlymonsters.monsters.AbstractFriendlyMonster;
 import javassist.CannotCompileException;
 import javassist.CtBehavior;
@@ -57,6 +58,19 @@ public class InTimePatch {
                 Matcher finalMatcher = new Matcher.NewExprMatcher(EnableEndTurnButtonAction.class);
 
                 return LineFinder.findAllInOrder(ctMethodToPatch, finalMatcher);
+            }
+        }
+    }
+
+    @SpirePatch(
+            clz = EndTurnButton.class,
+            method = "disable",
+            paramtypez = {boolean.class}
+    )
+    public static class EndTurnButtonPatch {
+        public static void Prefix() {
+            if (ModHelper.isModEnabled(InTime.ID)) {
+                InTime.atEndOfTurn();
             }
         }
     }
