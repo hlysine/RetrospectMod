@@ -3,6 +3,7 @@ package theRetrospect.runmods;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.helpers.ModHelper;
 import com.megacrit.cardcrawl.localization.RunModStrings;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -87,7 +88,8 @@ public class InTime extends CustomDailyMod {
 
     private static void tick() {
         logger.info("InTime tick");
-        if (AbstractDungeon.player != null
+        if (ModHelper.isModEnabled(ID)
+                && AbstractDungeon.player != null
                 && !AbstractDungeon.player.isDeadOrEscaped()
                 && !AbstractDungeon.player.isDead
                 && !AbstractDungeon.player.isDying

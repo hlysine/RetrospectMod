@@ -86,6 +86,18 @@ public class InTimePatch {
     }
 
     @SpirePatch(
+            clz = ModHelper.class,
+            method = "setModsFalse"
+    )
+    public static class OnDisableModsPatch {
+        public static void Prefix() {
+            if (ModHelper.isModEnabled(InTime.ID)) {
+                InTime.atEndOfTurn();
+            }
+        }
+    }
+
+    @SpirePatch(
             clz = AbstractMonster.class,
             method = "damage"
     )
