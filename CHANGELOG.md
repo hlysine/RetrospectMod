@@ -1,5 +1,16 @@
 # Changelog
 
+## [0.7.1] - Hotfix - 2022-08-26
+
+### Art
+
+- Use correct icon for Energized power granted by Quantum Hourglass
+
+### Run Mods
+
+- Fix In Time timer not stopping after save and quit
+- Stop In Time timer instantly when the end turn button is pressed
+
 ## [0.7.0] - Run Mod Update - 2022-08-25
 
 ### Run Mods
