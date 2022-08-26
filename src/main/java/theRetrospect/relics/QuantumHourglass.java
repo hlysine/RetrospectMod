@@ -3,9 +3,9 @@ package theRetrospect.relics;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.RelicAboveCreatureAction;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import com.megacrit.cardcrawl.powers.EnergizedPower;
 import theRetrospect.RetrospectMod;
 import theRetrospect.minions.TimelineMinion;
+import theRetrospect.powers.EnergizedPower;
 import theRetrospect.subscribers.TimelineCollapseSubscriber;
 
 public class QuantumHourglass extends AbstractBaseRelic implements TimelineCollapseSubscriber {
