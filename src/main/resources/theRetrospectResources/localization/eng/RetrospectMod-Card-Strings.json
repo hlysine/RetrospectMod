@@ -327,5 +327,9 @@
   "theRetrospect:PsycheOut": {
     "NAME": "Psyche Out",
     "DESCRIPTION": "{@@}Deal !D! damage. NL theretrospect:Construct !theRetrospect:TimelineCount! timeline{!theRetrospect:TimelineCount!|>1=s}."
+  },
+  "theRetrospect:Rewind": {
+    "NAME": "Rewind",
+    "DESCRIPTION": "theretrospect:Paradoxical. NL Replay your last card this turn."
   }
 }

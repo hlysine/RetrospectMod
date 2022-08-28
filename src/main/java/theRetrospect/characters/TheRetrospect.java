@@ -22,7 +22,7 @@ import theRetrospect.RetrospectMod;
 import theRetrospect.cards.attacks.Strike;
 import theRetrospect.cards.skills.Defend;
 import theRetrospect.cards.skills.Divert;
-import theRetrospect.cards.skills.DoubleTime;
+import theRetrospect.cards.skills.Rewind;
 import theRetrospect.relics.AntiqueClock;
 import theRetrospect.util.NoAnimation;
 
@@ -176,12 +176,12 @@ public class TheRetrospect extends AbstractPlayerWithMinions {
         retVal.add(Defend.ID);
 
         retVal.add(Divert.ID);
-        retVal.add(DoubleTime.ID);
+        retVal.add(Rewind.ID);
 
         UnlockTracker.markCardAsSeen(Strike.ID);
         UnlockTracker.markCardAsSeen(Defend.ID);
         UnlockTracker.markCardAsSeen(Divert.ID);
-        UnlockTracker.markCardAsSeen(DoubleTime.ID);
+        UnlockTracker.markCardAsSeen(Rewind.ID);
 
         return retVal;
     }
