@@ -30,8 +30,9 @@
     "TYPE": "SKILL",
     "COLOR": "RETROSPECT_PURPLE",
     "IMG": "double_time.png",
-    "COST": 1,
-    "+COST": 0
+    "COST": 0,
+    "M/Timeline Trigger Count": 1,
+    "+M": 1
   },
   "theRetrospect:Overcore": {
     "RARITY": "RARE",
