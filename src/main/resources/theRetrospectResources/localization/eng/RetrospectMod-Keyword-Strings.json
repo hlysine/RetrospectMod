@@ -62,5 +62,19 @@
       "accelerated"
     ],
     "DESCRIPTION": "Allow a timeline to play more cards at the end of each turn."
+  },
+  {
+    "NAMES": [
+      "divert"
+    ],
+    "DESCRIPTION": "A skill card that #yconstructs 1 timeline."
+  },
+  {
+    "PROPER_NAME": "Chaotic Offense",
+    "NAMES": [
+      "Chaotic Offense",
+      "chaotic_offense"
+    ],
+    "DESCRIPTION": "A skill card that plays a random attack card from your discard pile, then #yconstructs 1 timeline."
   }
 ]

@@ -10,21 +10,21 @@
     "NAME": "Antique Clock",
     "FLAVOR": "Antique in your eyes, futuristic in others'.",
     "DESCRIPTIONS": [
-      "At the end of your first turn, play 1 #yDivert."
+      "At the end of your first turn, play 1 #ytheretrospect:Divert."
     ]
   },
   "theRetrospect:QuantumHourglass": {
     "NAME": "Quantum Hourglass",
     "FLAVOR": "An hourglass that drips both ways simultaneously.",
     "DESCRIPTIONS": [
-      "When a timeline #ycollapses, gain [E] next turn."
+      "When a timeline #ytheretrospect:collapses, gain [E] next turn."
     ]
   },
   "theRetrospect:SlantedMirror": {
     "NAME": "Slanted Mirror",
     "FLAVOR": "Magicians' favourite.",
     "DESCRIPTIONS": [
-      "When you #yconstruct a timeline, gain 10 Block."
+      "When you #ytheretrospect:construct a timeline, gain 10 Block."
     ]
   },
   "theRetrospect:BottledSingularity": {
@@ -41,7 +41,7 @@
     "NAME": "Atomic Clock",
     "FLAVOR": "Cutting-edge technology even in your era.",
     "DESCRIPTIONS": [
-      "Replaces #pAntique #pClock. At the end of your first turn, play 1 #yChaotic #yOffense."
+      "Replaces #pAntique #pClock. At the end of your first turn, play 1 #ytheretrospect:Chaotic_Offense."
     ]
   }
 }
