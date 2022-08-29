@@ -23,8 +23,19 @@ public class Paradox extends AbstractBaseCard {
     @Override
     public boolean canPlay(AbstractCard card) {
         if (AbstractDungeon.player.hand.size() >= BaseMod.MAX_HAND_SIZE) {
+            for (AbstractCard c : AbstractDungeon.player.hand.group) {
+                if (c instanceof Paradox) {
+                    c.beginGlowing();
+                    c.flash(RetrospectMod.RETROSPECT_COLOR.cpy());
+                }
+            }
             card.cantUseMessage = cardStrings.EXTENDED_DESCRIPTION[0];
             return false;
+        }
+        for (AbstractCard c : AbstractDungeon.player.hand.group) {
+            if (c instanceof Paradox) {
+                c.stopGlowing();
+            }
         }
         return true;
     }
