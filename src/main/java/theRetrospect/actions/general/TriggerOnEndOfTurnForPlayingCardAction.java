@@ -15,7 +15,7 @@ import theRetrospect.util.CallbackUtils;
 /**
  * Trigger onEndOfTurnForPlayingCard for player powers, relics and minions
  */
-public class TriggerOnEndOfTurnForPlayingCard extends AbstractGameAction {
+public class TriggerOnEndOfTurnForPlayingCardAction extends AbstractGameAction {
     public void update() {
         AbstractPlayer player = AbstractDungeon.player;
         CallbackUtils.ForEachLoop(player.powers, (power, next) -> {

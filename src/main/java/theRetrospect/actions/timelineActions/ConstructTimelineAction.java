@@ -17,7 +17,7 @@ import com.megacrit.cardcrawl.ui.FtueTip;
 import com.megacrit.cardcrawl.vfx.ThoughtBubble;
 import hlysine.friendlymonsters.utils.MinionUtils;
 import theRetrospect.RetrospectMod;
-import theRetrospect.actions.general.NonTriggeringHealthChange;
+import theRetrospect.actions.general.SilentHealthChangeAction;
 import theRetrospect.cards.AbstractBaseCard;
 import theRetrospect.effects.FlyingOrbEffect;
 import theRetrospect.effects.TimelineCircleEffect;
@@ -73,7 +73,7 @@ public class ConstructTimelineAction extends AbstractGameAction {
 
                 TimelineUtils.repositionTimelines(player);
 
-                addToTop(new NonTriggeringHealthChange(player, -health));
+                addToTop(new SilentHealthChangeAction(player, -health));
 
                 for (int i = 0; i < minion.cards.size() && i < 10; i++) {
                     AbstractDungeon.effectList.add(new FlyingOrbEffect(

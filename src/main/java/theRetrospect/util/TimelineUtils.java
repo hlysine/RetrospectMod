@@ -10,7 +10,7 @@ import com.megacrit.cardcrawl.relics.AbstractRelic;
 import hlysine.friendlymonsters.monsters.AbstractFriendlyMonster;
 import hlysine.friendlymonsters.utils.MinionUtils;
 import theRetrospect.RetrospectMod;
-import theRetrospect.actions.general.NonTriggeringHealthChange;
+import theRetrospect.actions.general.SilentHealthChangeAction;
 import theRetrospect.actions.general.WaitForDeathAction;
 import theRetrospect.actions.timelineActions.RepositionTimelinesAction;
 import theRetrospect.actions.timelineActions.TriggerAfterTimelineCollapseAction;
@@ -115,7 +115,7 @@ public class TimelineUtils {
         AbstractDungeon.actionManager.addToTop(new TriggerAfterTimelineCollapseAction((TimelineMinion) minion));
         AbstractDungeon.actionManager.addToTop(new RepositionTimelinesAction());
         AbstractDungeon.actionManager.addToTop(new WaitForDeathAction(minion));
-        AbstractDungeon.actionManager.addToTop(new NonTriggeringHealthChange(AbstractDungeon.player, minion.currentHealth));
+        AbstractDungeon.actionManager.addToTop(new SilentHealthChangeAction(AbstractDungeon.player, minion.currentHealth));
         AbstractDungeon.effectsQueue.add(new TimelineCollapseEffect(minion));
         minion.die(false);
     }
@@ -130,7 +130,7 @@ public class TimelineUtils {
     }
 
     public static void instantCollapseWithoutEffect(AbstractFriendlyMonster minion) {
-        new NonTriggeringHealthChange(AbstractDungeon.player, minion.currentHealth).update();
+        new SilentHealthChangeAction(AbstractDungeon.player, minion.currentHealth).update();
         minion.die(false);
     }
 }

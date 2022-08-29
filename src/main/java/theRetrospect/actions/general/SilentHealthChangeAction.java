@@ -3,12 +3,12 @@ package theRetrospect.actions.general;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 
-public class NonTriggeringHealthChange extends AbstractGameAction {
+public class SilentHealthChangeAction extends AbstractGameAction {
 
     private final AbstractCreature creature;
     private final int change;
 
-    public NonTriggeringHealthChange(AbstractCreature creature, int change) {
+    public SilentHealthChangeAction(AbstractCreature creature, int change) {
         this.creature = creature;
         this.change = change;
     }
