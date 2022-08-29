@@ -414,7 +414,8 @@
     "COLOR": "RETROSPECT_PURPLE",
     "IMG": "converge.png",
     "COST": 1,
-    "+COST": 0
+    "+COST": 0,
+    "M/Card draw": 2
   },
   "theRetrospect:SelfCorrection": {
     "RARITY": "RARE",

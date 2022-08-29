@@ -19,6 +19,6 @@ public class Converge extends AbstractBaseCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new ConvergeAction());
+        addToBot(new ConvergeAction(1, magicNumber));
     }
 }
