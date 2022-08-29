@@ -140,7 +140,7 @@
     "TYPE": "SKILL",
     "COLOR": "RETROSPECT_PURPLE",
     "IMG": "deja_vu.png",
-    "COST": 1,
+    "COST": 2,
     "B": 1,
     "M/Block Increase": 1,
     "+M": 1

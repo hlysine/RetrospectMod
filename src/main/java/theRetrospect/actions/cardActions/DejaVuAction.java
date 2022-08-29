@@ -34,42 +34,39 @@ public class DejaVuAction extends AbstractGameAction {
 
         for (TimelineMinion timeline : timelines) {
             for (AbstractCard c : timeline.cards) {
-                if (c instanceof DejaVu) {
-                    if (upgradedIds.stream().noneMatch(id -> id.equals(c.uuid))) {
-                        addToBot(new IncreaseMiscAction(c.uuid, c.misc, card.magicNumber));
-                        upgradedIds.add(c.uuid);
-                    }
-                }
-            }
-        }
-
-        for (AbstractCard c : AbstractDungeon.player.discardPile.group) {
-            if (c instanceof DejaVu) {
-                if (upgradedIds.stream().noneMatch(id -> id.equals(c.uuid))) {
-                    addToBot(new IncreaseMiscAction(c.uuid, c.misc, card.magicNumber));
-                    upgradedIds.add(c.uuid);
-                }
+                processCard(c, upgradedIds);
             }
         }
 
         for (AbstractCard c : AbstractDungeon.player.drawPile.group) {
-            if (c instanceof DejaVu) {
-                if (upgradedIds.stream().noneMatch(id -> id.equals(c.uuid))) {
-                    addToBot(new IncreaseMiscAction(c.uuid, c.misc, card.magicNumber));
-                    upgradedIds.add(c.uuid);
-                }
-            }
+            processCard(c, upgradedIds);
+        }
+
+        for (AbstractCard c : AbstractDungeon.player.discardPile.group) {
+            processCard(c, upgradedIds);
+        }
+
+        for (AbstractCard c : AbstractDungeon.player.exhaustPile.group) {
+            processCard(c, upgradedIds);
+        }
+
+        for (AbstractCard c : AbstractDungeon.player.limbo.group) {
+            processCard(c, upgradedIds);
         }
 
         for (AbstractCard c : AbstractDungeon.player.hand.group) {
-            if (c instanceof DejaVu) {
-                if (upgradedIds.stream().noneMatch(id -> id.equals(c.uuid))) {
-                    addToBot(new IncreaseMiscAction(c.uuid, c.misc, card.magicNumber));
-                    upgradedIds.add(c.uuid);
-                }
-            }
+            processCard(c, upgradedIds);
         }
 
         this.isDone = true;
+    }
+
+    private void processCard(AbstractCard c, List<UUID> upgradedIds) {
+        if (c instanceof DejaVu) {
+            if (upgradedIds.stream().noneMatch(id -> id.equals(c.uuid))) {
+                addToBot(new IncreaseMiscAction(c.uuid, c.misc, card.magicNumber));
+                upgradedIds.add(c.uuid);
+            }
+        }
     }
 }
