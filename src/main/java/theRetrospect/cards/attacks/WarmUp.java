@@ -1,8 +1,8 @@
 package theRetrospect.cards.attacks;
 
+import com.evacipated.cardcrawl.mod.stslib.actions.common.DamageCallbackAction;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
-import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
@@ -18,11 +18,17 @@ public class WarmUp extends AbstractBaseCard {
 
     public WarmUp() {
         super(ID, TARGET);
+
+        this.exhaust = true;
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new DamageAction(m, new DamageInfo(p, damage, damageTypeForTurn), AbstractGameAction.AttackEffect.BLUNT_LIGHT));
-        addToTop(new ApplyPowerAction(p, p, new WarmUpPower(p, this.magicNumber), this.magicNumber));
+        addToBot(new DamageCallbackAction(
+                m,
+                new DamageInfo(p, damage, damageTypeForTurn),
+                AbstractGameAction.AttackEffect.BLUNT_LIGHT,
+                damageDone -> addToBot(new ApplyPowerAction(p, p, new WarmUpPower(p, damageDone), damageDone))
+        ));
     }
 }

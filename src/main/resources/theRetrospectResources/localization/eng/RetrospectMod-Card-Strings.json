@@ -138,7 +138,7 @@
   },
   "theRetrospect:WarmUp": {
     "NAME": "Warm Up",
-    "DESCRIPTION": "Deal !D! damage. NL Gain !M! Dexterity next turn."
+    "DESCRIPTION": "Deal !D! damage. NL Next turn, gain Dexterity equal to unblocked damage dealt. NL Exhaust."
   },
   "theRetrospect:Telekinesis": {
     "NAME": "Telekinesis",
