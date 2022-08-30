@@ -25,9 +25,11 @@ public class UnceasingSprint extends AbstractBaseCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         if (CardUtils.getPlaySource(this) == CardPlaySource.TIMELINE) {
-            TimelineMinion timeline = TimelineUtils.getRandomTimeline(p);
-            if (timeline != null) {
-                addToTop(new ApplyPowerAction(timeline, p, new TimerPower(timeline, 1)));
+            for (int i = 0; i < this.magicNumber; i++) {
+                TimelineMinion timeline = TimelineUtils.getRandomTimeline(p, t -> t.cards.size() > 0);
+                if (timeline != null) {
+                    addToTop(new ApplyPowerAction(timeline, p, new TimerPower(timeline, 1)));
+                }
             }
         }
         addToBot(new PressEndTurnButtonAction());

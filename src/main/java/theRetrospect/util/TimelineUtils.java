@@ -21,6 +21,7 @@ import theRetrospect.subscribers.TimelineCollapseSubscriber;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 public class TimelineUtils {
@@ -66,8 +67,16 @@ public class TimelineUtils {
     }
 
     public static TimelineMinion getRandomTimeline(AbstractPlayer player) {
+        return getRandomTimeline(player, null);
+    }
+
+    public static TimelineMinion getRandomTimeline(AbstractPlayer player, Predicate<TimelineMinion> timelineFilter) {
         MonsterGroup monsters = MinionUtils.getMinions(player);
-        List<TimelineMinion> timelines = monsters.monsters.stream().filter(m -> m instanceof TimelineMinion).map(m -> (TimelineMinion) m).collect(Collectors.toList());
+        List<TimelineMinion> timelines = monsters.monsters.stream()
+                .filter(m -> m instanceof TimelineMinion)
+                .map(m -> (TimelineMinion) m)
+                .filter(m -> timelineFilter == null || timelineFilter.test(m))
+                .collect(Collectors.toList());
         if (timelines.size() == 0) {
             return null;
         } else if (timelines.size() == 1) {

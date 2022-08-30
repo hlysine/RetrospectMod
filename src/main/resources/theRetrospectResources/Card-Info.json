@@ -621,7 +621,7 @@
     "IMG": "unceasing_sprint.png",
     "COST": 1,
     "+COST": 0,
-    "M/Power amount": 1
+    "M/Power amount": 2
   },
   "theRetrospect:ChaoticDefense": {
     "RARITY": "COMMON",
