@@ -26,6 +26,11 @@ public class AttackModifier extends WildCardModifier {
     }
 
     @Override
+    public float getWeight() {
+        return 1f;
+    }
+
+    @Override
     public void apply(AbstractCard card) {
         card.damage = card.baseDamage = RetrospectMod.getCardInfo(card.cardID).getBaseValue(ID);
     }

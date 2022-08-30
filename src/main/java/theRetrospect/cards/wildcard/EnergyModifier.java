@@ -34,6 +34,11 @@ public class EnergyModifier extends WildCardModifier {
     }
 
     @Override
+    public float getWeight() {
+        return 0.5f;
+    }
+
+    @Override
     public void apply(AbstractCard card) {
         amount = RetrospectMod.getCardInfo(card.cardID).getBaseValue(ID);
     }

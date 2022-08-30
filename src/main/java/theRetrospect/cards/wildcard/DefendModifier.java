@@ -24,6 +24,11 @@ public class DefendModifier extends WildCardModifier {
     }
 
     @Override
+    public float getWeight() {
+        return 1f;
+    }
+
+    @Override
     public void apply(AbstractCard card) {
         card.block = card.baseBlock = RetrospectMod.getCardInfo(card.cardID).getBaseValue(ID);
     }

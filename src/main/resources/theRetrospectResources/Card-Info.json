@@ -584,7 +584,7 @@
     "TYPE": "SKILL",
     "COLOR": "RETROSPECT_PURPLE",
     "IMG": "Skill.png",
-    "COST": 1,
+    "COST": 2,
     "D": 6,
     "+D": 3,
     "B": 5,

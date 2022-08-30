@@ -12,6 +12,7 @@ import com.megacrit.cardcrawl.vfx.combat.SwirlyBloodEffect;
 import theRetrospect.RetrospectMod;
 import theRetrospect.cards.wildcard.WildCard;
 import theRetrospect.cards.wildcard.WildCardModifier;
+import theRetrospect.util.DistributedRNG;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -127,7 +128,11 @@ public class BlankCanvasEvent extends AbstractImageEvent {
         int count = Math.min(2, pool.size());
         currentChoices = new ArrayList<>(count);
         for (int i = 0; i < count; i++) {
-            currentChoices.add(pool.remove(AbstractDungeon.miscRng.random(pool.size() - 1)));
+            DistributedRNG rng = new DistributedRNG();
+            for (int j = 0; j < pool.size(); j++) {
+                rng.addNumber(j, pool.get(j).getWeight());
+            }
+            currentChoices.add(pool.remove(rng.getDistributedRandomNumber(AbstractDungeon.miscRng)));
         }
         for (WildCardModifier option : currentChoices) {
             WildCard tempCard = new WildCard(Collections.singletonList(option));
