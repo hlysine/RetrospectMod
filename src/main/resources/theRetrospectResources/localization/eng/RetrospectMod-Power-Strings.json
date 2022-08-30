@@ -22,8 +22,8 @@
   "theRetrospect:FrozenPower": {
     "NAME": "Frozen",
     "DESCRIPTIONS": [
+      "You cannot play any cards this turn, except auto-played cards.",
       "You cannot play any cards for #b",
-      " turn, except auto-played cards.",
       " turns, except auto-played cards."
     ]
   },

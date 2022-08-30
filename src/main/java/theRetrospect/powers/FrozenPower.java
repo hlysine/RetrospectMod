@@ -25,16 +25,12 @@ public class FrozenPower extends AbstractPower implements CloneablePowerInterfac
     private static final Texture tex84 = TextureLoader.getTexture("theRetrospectResources/images/powers/frozen84.png");
     private static final Texture tex32 = TextureLoader.getTexture("theRetrospectResources/images/powers/frozen32.png");
 
-    private boolean justApplied;
-
     public FrozenPower(final AbstractCreature owner, final int amount) {
         name = NAME;
         ID = POWER_ID;
 
         this.owner = owner;
         this.amount = amount;
-
-        this.justApplied = true;
 
         type = PowerType.DEBUFF;
         isTurnBased = true;
@@ -47,11 +43,6 @@ public class FrozenPower extends AbstractPower implements CloneablePowerInterfac
 
     @Override
     public void atEndOfRound() {
-        if (this.justApplied) {
-            this.justApplied = false;
-            return;
-        }
-
         if (this.amount > 1) {
             addToBot(new ReducePowerAction(this.owner, this.owner, ID, 1));
         } else {
@@ -66,12 +57,11 @@ public class FrozenPower extends AbstractPower implements CloneablePowerInterfac
 
     @Override
     public void updateDescription() {
-        description = DESCRIPTIONS[0] + describeNumber(this.amount, 1);
-    }
-
-    private String describeNumber(int number, int singularIndex) {
-        if (number > 1) return number + DESCRIPTIONS[singularIndex + 1];
-        else return number + DESCRIPTIONS[singularIndex];
+        if (this.amount == 1) {
+            description = DESCRIPTIONS[0];
+        } else {
+            description = DESCRIPTIONS[1] + this.amount + DESCRIPTIONS[2];
+        }
     }
 
     @Override
