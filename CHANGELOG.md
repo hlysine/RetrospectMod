@@ -1,5 +1,57 @@
 # Changelog
 
+## [0.8.0] - Balance Update - 2022-08-30
+
+### Mechanics
+
+- Random timeline picker no longer pick timelines with no cards
+- Fix timelines healing HP by collapsing twice
+
+### Cards
+
+- Rework Double Time to trigger a timeline once(twice), then collapse it
+- Reduce Double Time cost from 1(0) to 0
+- Change Double Time from starter to common card
+- Rework Warm Up: Deal 1(2) damage. Next turn, gain Dexterity equal to unblocked damage dealt. Exhaust.
+- Increase Deja Vu cost from 1 to 2
+- Fix Deja Vu not working for exhausted/purged copies
+- Buff Unceasing Strike damage from 13(16) to 20(28)
+- Buff Converge to draw 2 cards instead of 1 per timeline
+- Increase Recursion Hell cost from 0 to 1
+- Remove timeline HP cost reduction from Shadow Form
+- Nerf Recollection card count from 2(3) to 1(2)
+- Nerf Master Of Deception damage from 5(7) to 4(6)
+- Change Overcore description to match other cards that give turn-based powers
+- Buff Unceasing Sprint power amount from 1 to 2
+- Increase Wild Card cost from 1 to 2
+- Add new cards
+  - Rewind (replaces Double Time in starter deck)
+  - Exponential Blast
+
+### Run Mods
+
+- Fix In Time mod triggering effects related to losing HP from cards
+
+### Events
+
+- Blank Canvas event now has uneven weights for different card text choices
+
+### Relics
+
+- Add keywords to all relics
+
+### Art
+
+- Change the placeholder image of Charge Rifle
+
+### VFX
+
+- Add glow to Paradox when it is in effect
+
+### Misc
+
+- USe relic info classes provided by STSItemInfo
+
 ## [0.7.1] - Hotfix - 2022-08-26
 
 ### Art
