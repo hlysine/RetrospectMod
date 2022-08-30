@@ -541,7 +541,7 @@
     "COLOR": "RETROSPECT_PURPLE",
     "IMG": "master_of_deception.png",
     "COST": 1,
-    "M/Power Amount": 5,
+    "M/Power Amount": 4,
     "+M": 2
   },
   "theRetrospect:ConcertedBlast": {
