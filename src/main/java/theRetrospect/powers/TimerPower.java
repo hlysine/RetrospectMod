@@ -136,7 +136,7 @@ public class TimerPower extends AbstractPower implements CloneablePowerInterface
 
     @Override
     public void onVictory() {
-        if (minion != null)
+        if (minion != null && !minion.isDead && !minion.isDying)
             TimelineUtils.instantCollapseWithoutEffect(minion);
     }
 

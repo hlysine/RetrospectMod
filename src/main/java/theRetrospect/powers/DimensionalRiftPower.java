@@ -64,7 +64,9 @@ public class DimensionalRiftPower extends AbstractPower implements CloneablePowe
         if (player == null) return true;
         if (canDie) {
             List<TimelineMinion> timelines = TimelineUtils.getTimelines(player);
-            Optional<TimelineMinion> target = timelines.stream().max(Comparator.comparingInt(t -> t.currentHealth));
+            Optional<TimelineMinion> target = timelines.stream()
+                    .filter(t -> !t.isDying && !t.isDead)
+                    .max(Comparator.comparingInt(t -> t.currentHealth));
             if (target.isPresent()) {
                 flash();
                 TimelineUtils.instantCollapseWithEffect(target.get());
