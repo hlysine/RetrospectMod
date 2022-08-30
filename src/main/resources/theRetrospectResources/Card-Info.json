@@ -649,5 +649,14 @@
     "IMG": "rewind.png",
     "COST": 2,
     "+COST": 1
+  },
+  "theRetrospect:ExponentialBlast": {
+    "RARITY": "RARE",
+    "TYPE": "ATTACK",
+    "COLOR": "RETROSPECT_PURPLE",
+    "IMG": "exponential_blast.png",
+    "COST": 0,
+    "M/Energy Loss": 3,
+    "+M": -1
   }
 }

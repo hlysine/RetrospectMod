@@ -331,5 +331,9 @@
   "theRetrospect:Rewind": {
     "NAME": "Rewind",
     "DESCRIPTION": "theretrospect:Paradoxical. NL Replay your last card this turn."
+  },
+  "theRetrospect:ExponentialBlast": {
+    "NAME": "Exponential Blast",
+    "DESCRIPTION": "{@@}Lose {!Upgrades!|0=[E] [E] [E]|@=[E] [E]}. NL Deal damage equal to 2 to the power of remaining energy count. NL Exhaust."
   }
 }
