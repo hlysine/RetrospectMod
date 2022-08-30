@@ -289,7 +289,7 @@
     "COLOR": "RETROSPECT_PURPLE",
     "IMG": "recollection.png",
     "COST": 2,
-    "M/Card Count": 2,
+    "M/Card Count": 1,
     "+M": 1
   },
   "theRetrospect:Ambush": {
