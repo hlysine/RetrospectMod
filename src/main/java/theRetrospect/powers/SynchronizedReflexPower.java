@@ -56,7 +56,7 @@ public class SynchronizedReflexPower extends AbstractPower implements CloneableP
                 damageAmount > 0) {
             boolean flashed = false;
             for (int i = 0; i < this.amount; i++) {
-                TimelineMinion timeline = TimelineUtils.getRandomTimeline((AbstractPlayer) this.owner);
+                TimelineMinion timeline = TimelineUtils.getRandomTimeline((AbstractPlayer) this.owner, t -> t.cards.size() > 0);
                 if (timeline != null) {
                     if (!flashed) {
                         flash();

@@ -44,7 +44,7 @@ public class TriggerTimelineAction extends AbstractGameAction {
     @Override
     public void update() {
         TimelineMinion target = this.minion;
-        if (target == null) target = TimelineUtils.getRandomTimeline(AbstractDungeon.player);
+        if (target == null) target = TimelineUtils.getRandomTimeline(AbstractDungeon.player, t -> t.cards.size() > 0);
         if (target == null) {
             this.isDone = true;
             return;
