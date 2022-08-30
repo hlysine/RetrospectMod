@@ -64,8 +64,8 @@
         </dependency>
         <dependency>
             <groupId>hlysine</groupId>
-            <artifactId>STSCardInfo</artifactId>
-            <version>0.1.0</version>
+            <artifactId>STSItemInfo</artifactId>
+            <version>0.2.0</version>
             <scope>compile</scope>
         </dependency>
     </dependencies>

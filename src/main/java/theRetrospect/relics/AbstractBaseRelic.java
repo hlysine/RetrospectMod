@@ -1,6 +1,7 @@
 package theRetrospect.relics;
 
 import basemod.abstracts.CustomRelic;
+import hlysine.STSItemInfo.RelicInfo;
 import theRetrospect.util.TextureLoader;
 
 import static theRetrospect.RetrospectMod.*;

@@ -20,9 +20,7 @@ import com.megacrit.cardcrawl.dungeons.TheCity;
 import com.megacrit.cardcrawl.helpers.CardHelper;
 import com.megacrit.cardcrawl.localization.*;
 import com.megacrit.cardcrawl.unlock.UnlockTracker;
-import hlysine.STSCardInfo.CardInfo;
-import hlysine.STSCardInfo.CardInfoRepository;
-import hlysine.STSCardInfo.ValueHandler;
+import hlysine.STSItemInfo.*;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import theRetrospect.cards.AbstractBaseCard;
@@ -32,8 +30,6 @@ import theRetrospect.patches.metrics.DevCommandsMetricPatch;
 import theRetrospect.potions.ButterflyInAJar;
 import theRetrospect.potions.TimelinePotion;
 import theRetrospect.relics.AbstractBaseRelic;
-import theRetrospect.relics.RelicInfo;
-import theRetrospect.relics.RelicInfoRepository;
 import theRetrospect.util.*;
 import theRetrospect.variables.CustomVariable;
 import theRetrospect.variables.TimelineCountVariable;
@@ -43,6 +39,7 @@ import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 @SpireInitializer
@@ -271,7 +268,7 @@ public class RetrospectMod implements
         logger.info("Loading card info");
 
         relicInfoRepository = new RelicInfoRepository(
-                RetrospectMod.class.getResourceAsStream("/" + getModID() + "Resources/Relic-Info.json")
+                Objects.requireNonNull(RetrospectMod.class.getResourceAsStream("/" + getModID() + "Resources/Relic-Info.json"))
         );
 
         logger.info("Adding relics");

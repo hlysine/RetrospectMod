@@ -5,7 +5,7 @@ import com.megacrit.cardcrawl.actions.common.ExhaustSpecificCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
-import hlysine.STSCardInfo.CardInfo;
+import hlysine.STSItemInfo.CardInfo;
 import theRetrospect.RetrospectMod;
 
 import static com.megacrit.cardcrawl.core.CardCrawlGame.languagePack;
