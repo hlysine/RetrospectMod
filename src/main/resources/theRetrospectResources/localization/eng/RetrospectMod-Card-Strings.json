@@ -191,7 +191,7 @@
   },
   "theRetrospect:ShadowForm": {
     "NAME": "Shadow Form",
-    "DESCRIPTION": "{@@}{!Upgrades!|0=Ethereal. NL }Reduce timeline HP cost by !M! %. All timeline cards theretrospect:construct +1 timeline."
+    "DESCRIPTION": "{@@}{!Upgrades!|0=Ethereal. NL }All timeline cards theretrospect:construct !M! extra timeline{!M!|>1=s}."
   },
   "theRetrospect:UnceasingStrike": {
     "NAME": "Unceasing Strike",

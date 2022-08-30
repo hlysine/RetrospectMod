@@ -7,15 +7,12 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theRetrospect.RetrospectMod;
 import theRetrospect.cards.AbstractBaseCard;
 import theRetrospect.powers.ShadowFormPower;
-import theRetrospect.powers.ShortcutPower;
 
 public class ShadowForm extends AbstractBaseCard {
 
     public static final String ID = RetrospectMod.makeID(ShadowForm.class.getSimpleName());
 
     private static final CardTarget TARGET = CardTarget.SELF;
-
-    private static final int POWER_AMOUNT = 1;
 
     public ShadowForm() {
         super(ID, TARGET);
@@ -27,8 +24,7 @@ public class ShadowForm extends AbstractBaseCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new ApplyPowerAction(p, p, new ShortcutPower(p, magicNumber)));
-        addToBot(new ApplyPowerAction(p, p, new ShadowFormPower(p, POWER_AMOUNT)));
+        addToBot(new ApplyPowerAction(p, p, new ShadowFormPower(p, magicNumber)));
     }
 
     @Override

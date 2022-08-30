@@ -380,7 +380,7 @@
     "COLOR": "RETROSPECT_PURPLE",
     "IMG": "shadow_form.png",
     "COST": 3,
-    "M/Timeline HP Reduction": 10
+    "M/Power amount": 1
   },
   "theRetrospect:UnceasingStrike": {
     "RARITY": "UNCOMMON",
