@@ -90,9 +90,9 @@
   "theRetrospect:ShadowFormPower": {
     "NAME": "Shadow Form",
     "DESCRIPTIONS": [
-      "All timeline construction cards construct #b+",
-      " timeline.",
-      " timelines."
+      "All timeline construction cards construct #b",
+      " extra timeline.",
+      " extra timelines."
     ]
   },
   "theRetrospect:DeathTotemPower": {
