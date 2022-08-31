@@ -36,7 +36,7 @@ public class StrengthModifier extends WildCardModifier {
 
     @Override
     public float getWeight() {
-        return 0.2f;
+        return 0.1f;
     }
 
     @Override

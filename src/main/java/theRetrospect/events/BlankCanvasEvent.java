@@ -31,7 +31,7 @@ public class BlankCanvasEvent extends AbstractImageEvent {
     private static final String IGNORE_BODY = DESCRIPTIONS[5];
     private static final String EXIT_BODY = DESCRIPTIONS[6];
     private static final String COMPLETE_BODY = DESCRIPTIONS[7];
-    private static final int INITIAL_HP_LOSS = 3;
+    private static final int INITIAL_HP_LOSS = 4;
     private static final int HP_LOSS_INCREASE = 2;
     private int screenNum = 0, hpLoss = INITIAL_HP_LOSS;
 
