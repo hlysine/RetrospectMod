@@ -68,7 +68,7 @@ public class TurnCardsPanel extends AbstractPanel {
                 AbstractDungeon.overlayMenu.combatPanelsShown &&
                 AbstractDungeon.getMonsters() != null &&
                 !AbstractDungeon.getMonsters().areMonstersDead() &&
-                !AbstractDungeon.player.isDead &&
+                !AbstractDungeon.player.isDeadOrEscaped() &&
                 !AbstractDungeon.actionManager.cardsPlayedThisTurn.isEmpty()) {
 
             this.hb.clicked = false;

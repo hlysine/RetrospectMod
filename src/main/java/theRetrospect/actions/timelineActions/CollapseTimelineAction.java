@@ -18,7 +18,7 @@ public class CollapseTimelineAction extends AbstractGameAction {
 
     @Override
     public void update() {
-        if (minion.isDead || minion.isDying) {
+        if (minion.isDeadOrEscaped()) {
             logger.warn("Timeline is already dead before collapsing");
             this.isDone = true;
             return;

@@ -67,7 +67,7 @@ public class TimerPower extends AbstractPower implements CloneablePowerInterface
                     int idx = cardIdx.get();
                     if (minion.cards.size() <= idx) return false;
                     if (idx >= amount) return false;
-                    return !minion.isDead;
+                    return !minion.isDeadOrEscaped();
                 },
                 () -> {
                     int i = cardIdx.decrementAndGet();
@@ -99,7 +99,7 @@ public class TimerPower extends AbstractPower implements CloneablePowerInterface
                         return false;
                     }
                     if (remainingAmount.get() <= 0) return false;
-                    return !minion.isDead;
+                    return !minion.isDeadOrEscaped();
                 },
                 () -> {
                     int i = remainingAmount.decrementAndGet();
@@ -136,7 +136,7 @@ public class TimerPower extends AbstractPower implements CloneablePowerInterface
 
     @Override
     public void onVictory() {
-        if (minion != null && !minion.isDead && !minion.isDying)
+        if (minion != null && !minion.isDeadOrEscaped())
             TimelineUtils.instantCollapseWithoutEffect(minion);
     }
 

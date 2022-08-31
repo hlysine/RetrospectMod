@@ -91,8 +91,6 @@ public class InTime extends CustomDailyMod {
         if (ModHelper.isModEnabled(ID)
                 && AbstractDungeon.player != null
                 && !AbstractDungeon.player.isDeadOrEscaped()
-                && !AbstractDungeon.player.isDead
-                && !AbstractDungeon.player.isDying
                 && AbstractDungeon.player.currentHealth > 0)
             AbstractDungeon.player.damage(
                     DamageInfoUtils.withNoVisualEffect(new DamageInfo(null, 1, DamageInfo.DamageType.HP_LOSS))

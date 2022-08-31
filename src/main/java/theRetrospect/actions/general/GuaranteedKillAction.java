@@ -16,7 +16,7 @@ public class GuaranteedKillAction extends AbstractGameAction {
     public void update() {
         creature.currentHealth = 0;
         creature.healthBarUpdatedEvent();
-        for (int i = 0; i < 99999 && !creature.isDead; i++) {
+        for (int i = 0; i < 99999 && !creature.isDeadOrEscaped(); i++) {
             creature.damage(new DamageInfo(null, 99999, DamageInfo.DamageType.HP_LOSS));
         }
         this.isDone = true;

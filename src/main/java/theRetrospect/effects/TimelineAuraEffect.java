@@ -85,7 +85,7 @@ public class TimelineAuraEffect extends AbstractGameEffect {
     private void changeColor() {
         if (minion.inTurn) {
             this.color = new Color(MathUtils.random(0.7f, 0.9f), MathUtils.random(0.8f, 1.0f), 0.2f, this.color == null ? 0.0f : this.color.a);
-        } else if (minion.isDying) {
+        } else if (minion.isDeadOrEscaped()) {
             this.color = new Color(MathUtils.random(0.5f, 0.7f), MathUtils.random(0.5f, 0.7f), MathUtils.random(0.5f, 0.7f), this.color == null ? 0.0f : this.color.a);
         } else if (MathUtils.randomBoolean()) {
             this.color = new Color(MathUtils.random(0.6f, 0.7f), MathUtils.random(0.2f, 0.3f), MathUtils.random(0.9f, 1f), this.color == null ? 0.0f : this.color.a);

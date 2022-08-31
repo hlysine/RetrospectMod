@@ -128,8 +128,8 @@ public class AbstractMinionWithCards extends AbstractFriendlyMonster {
                 !PeekButton.isPeeking &&
                 AbstractDungeon.getMonsters() != null &&
                 !AbstractDungeon.getMonsters().areMonstersDead() &&
-                !AbstractDungeon.player.isDead &&
-                !this.isDeadOrEscaped() && !this.isDead &&
+                !AbstractDungeon.player.isDeadOrEscaped() &&
+                !this.isDeadOrEscaped() &&
                 !cards.isEmpty()) {
             this.hb.clicked = false;
             this.hb.hovered = false;
@@ -168,8 +168,8 @@ public class AbstractMinionWithCards extends AbstractFriendlyMonster {
                 !PeekButton.isPeeking &&
                 AbstractDungeon.getMonsters() != null &&
                 !AbstractDungeon.getMonsters().areMonstersDead() &&
-                !AbstractDungeon.player.isDead &&
-                !this.isDeadOrEscaped() && !this.isDead &&
+                !AbstractDungeon.player.isDeadOrEscaped() &&
+                !this.isDeadOrEscaped() &&
                 !cards.isEmpty()) {
             renderPeekButton(sb);
         }

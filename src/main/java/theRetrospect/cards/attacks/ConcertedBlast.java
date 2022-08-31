@@ -26,7 +26,7 @@ public class ConcertedBlast extends AbstractBaseCard {
     private int calculateDamage() {
         int count = 0;
         for (TimelineMinion timeline : TimelineUtils.getTimelines(AbstractDungeon.player)) {
-            if (timeline.isDead || timeline.isDeadOrEscaped()) continue;
+            if (timeline.isDeadOrEscaped()) continue;
             count += timeline.cards.size();
         }
         this.damage = this.baseDamage = count;

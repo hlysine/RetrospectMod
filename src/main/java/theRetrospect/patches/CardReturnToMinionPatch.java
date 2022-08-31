@@ -46,7 +46,7 @@ public class CardReturnToMinionPatch {
         public static SpireReturn<Void> Insert(UseCardAction __instance, AbstractCard ___targetCard) {
             AbstractMinionWithCards timeline = CardUtils.getReturnToMinion(___targetCard);
             if (timeline != null) {
-                if (!timeline.isDead) {
+                if (!timeline.isDeadOrEscaped()) {
                     AbstractDungeon.actionManager.removeFromQueue(___targetCard);
                     if (AbstractDungeon.player.limbo.contains(___targetCard)) {
                         AbstractDungeon.player.limbo.removeCard(___targetCard);
