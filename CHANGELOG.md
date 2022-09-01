@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.8.2] - Hotfix - 2022-09-01
+
+### Mechanics
+
+- Fix a crash when creating timelines for characters with no static images
+
 ## [0.8.1] - Balance Update - 2022-09-01
 
 ### Mechanics
