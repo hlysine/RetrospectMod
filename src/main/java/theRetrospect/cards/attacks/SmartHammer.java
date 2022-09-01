@@ -6,6 +6,7 @@ import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
+import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.vfx.cardManip.ShowCardBrieflyEffect;
 import theRetrospect.RetrospectMod;
@@ -37,7 +38,7 @@ public class SmartHammer extends AbstractBaseCard {
                     }
                     AbstractCard copy = card.makeStatEquivalentCopy();
                     copy.superFlash();
-                    addToBot(new VFXAction(new ShowCardBrieflyEffect(copy)));
+                    addToBot(new VFXAction(new ShowCardBrieflyEffect(copy, Settings.WIDTH / 2f + 30.0F * Settings.scale + AbstractCard.IMG_WIDTH, Settings.HEIGHT / 2f)));
                 }
         ));
     }

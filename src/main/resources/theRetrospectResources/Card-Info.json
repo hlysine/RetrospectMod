@@ -528,7 +528,7 @@
     "+M": 1
   },
   "theRetrospect:SmartHammer": {
-    "RARITY": "RARE",
+    "RARITY": "UNCOMMON",
     "TYPE": "ATTACK",
     "COLOR": "RETROSPECT_PURPLE",
     "IMG": "smart_hammer.png",
