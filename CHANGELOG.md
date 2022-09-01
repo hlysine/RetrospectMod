@@ -1,5 +1,37 @@
 # Changelog
 
+## [0.8.1] - Balance Update - 2022-09-01
+
+### Mechanics
+
+- Update all death checks to consider the death animation
+- Fix timelines getting interrupted when there are no valid attack targets on screen
+
+### Cards
+
+- Change Concoction to give Vulnerable instead of Weak
+- Nerf Tap The Future: Gain 2 energy, shuffle a Void(Empty) into draw pile
+- Nerf Paradox: Adds 1 damage at the end of turn
+- Rework Warm Up: Change rarity from uncommon to rare, upgrade reduces cost instead of increasing damage
+- Nerf Shadow Form: Add 1 Dexterity loss
+- Buff Smart Hammer from rare to uncommon
+- Rework Exponential Blast to be an X cost card, reduce X cost effect by 1
+- Rework Rewind: upgrade grants Retain but does not reduce cost
+- Nerf Recursion Hell damage from 2(5) to 2(4)
+
+### Powers
+
+- Update Shadow Form power description to match the card
+
+### Events
+
+- Increase Blank Canvas event HP loss by 1
+- Reduce probability of Dexterity/Strength modifiers in Blank Canvas event
+
+### Misc
+
+- Disable action manager logging when not in debug mode
+
 ## [0.8.0] - Balance Update - 2022-08-30
 
 ### Mechanics
