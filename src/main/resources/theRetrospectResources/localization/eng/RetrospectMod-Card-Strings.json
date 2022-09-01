@@ -334,6 +334,6 @@
   },
   "theRetrospect:ExponentialBlast": {
     "NAME": "Exponential Blast",
-    "DESCRIPTION": "{@@}Lose {!Upgrades!|0=[E] [E] [E]|@=[E] [E]}. NL Deal damage equal to 2 to the power of remaining energy count. NL Exhaust."
+    "DESCRIPTION": "Deal damage equal to 2 to the power of (X - !M!). NL Exhaust."
   }
 }

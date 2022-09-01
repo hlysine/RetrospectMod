@@ -656,8 +656,8 @@
     "TYPE": "ATTACK",
     "COLOR": "RETROSPECT_PURPLE",
     "IMG": "exponential_blast.png",
-    "COST": 0,
-    "M/Energy Loss": 3,
+    "COST": -1,
+    "M/X effect loss": 4,
     "+M": -1
   }
 }
