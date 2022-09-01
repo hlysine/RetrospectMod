@@ -4,6 +4,7 @@ import basemod.helpers.BaseModCardTags;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.powers.DexterityPower;
 import theRetrospect.RetrospectMod;
 import theRetrospect.cards.AbstractBaseCard;
 import theRetrospect.powers.ShadowFormPower;
@@ -24,7 +25,8 @@ public class ShadowForm extends AbstractBaseCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new ApplyPowerAction(p, p, new ShadowFormPower(p, magicNumber)));
+        addToBot(new ApplyPowerAction(p, p, new ShadowFormPower(p, info.getBaseValue("power"))));
+        addToBot(new ApplyPowerAction(p, p, new DexterityPower(p, -magicNumber)));
     }
 
     @Override
