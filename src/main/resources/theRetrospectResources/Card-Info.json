@@ -185,7 +185,8 @@
     "TYPE": "STATUS",
     "COLOR": "COLORLESS",
     "IMG": "empty.png",
-    "COST": -2
+    "COST": -2,
+    "M/Damage": 1
   },
   "theRetrospect:TimeLoop": {
     "RARITY": "RARE",

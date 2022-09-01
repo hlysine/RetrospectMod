@@ -96,7 +96,7 @@
   },
   "theRetrospect:Paradox": {
     "NAME": "Paradox",
-    "DESCRIPTION": "Unplayable. NL Ethereal. NL You cannot play any cards when your hand is full.",
+    "DESCRIPTION": "{@@}Unplayable. NL Ethereal. NL You cannot play any cards when your hand is full.{!M!|>0= NL Take !M! damage.}",
     "EXTENDED_DESCRIPTION": [
       "My #rHand #ris #rFull!"
     ]
