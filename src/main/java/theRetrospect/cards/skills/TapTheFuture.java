@@ -2,6 +2,7 @@ package theRetrospect.cards.skills;
 
 import com.megacrit.cardcrawl.actions.common.GainEnergyAction;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInDrawPileAction;
+import com.megacrit.cardcrawl.cards.status.VoidCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theRetrospect.RetrospectMod;
@@ -17,7 +18,7 @@ public class TapTheFuture extends AbstractBaseCard {
     public TapTheFuture() {
         super(ID, TARGET);
 
-        this.cardsToPreview = new Empty();
+        this.cardsToPreview = new VoidCard();
     }
 
     @Override
@@ -25,5 +26,13 @@ public class TapTheFuture extends AbstractBaseCard {
         int cards = info.getBaseValue("cards");
         addToBot(new GainEnergyAction(this.magicNumber));
         addToBot(new MakeTempCardInDrawPileAction(this.cardsToPreview.makeStatEquivalentCopy(), cards, true, true));
+    }
+
+    @Override
+    public void upgrade() {
+        if (!this.upgraded) {
+            this.cardsToPreview = new Empty();
+        }
+        super.upgrade();
     }
 }

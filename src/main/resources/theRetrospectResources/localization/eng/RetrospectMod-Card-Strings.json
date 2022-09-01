@@ -56,7 +56,7 @@
   },
   "theRetrospect:TapTheFuture": {
     "NAME": "Tap the Future",
-    "DESCRIPTION": "{@@}Gain {!Upgrades!|@=[E] [E] [E]|0=[E] [E]}. NL Shuffle an *Empty to your draw pile."
+    "DESCRIPTION": "{@@}Gain [E] [E]. NL Shuffle {!Upgrades!|@=an *Empty|0=a *Void} to your draw pile."
   },
   "theRetrospect:SleightOfHand": {
     "NAME": "Sleight of Hand",

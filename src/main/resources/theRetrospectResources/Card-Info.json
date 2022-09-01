@@ -95,8 +95,7 @@
     "IMG": "tap_the_future.png",
     "COST": 0,
     "M/Energy Gain": 2,
-    "+M": 1,
-    "cards/Empty Card Count": 1
+    "cards/Status Card Count": 1
   },
   "theRetrospect:SleightOfHand": {
     "RARITY": "COMMON",
