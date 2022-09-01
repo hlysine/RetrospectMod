@@ -33,4 +33,12 @@ public class Rewind extends AbstractBaseCard {
                 this.current_y
         ), true, 0);
     }
+
+    @Override
+    public void upgrade() {
+        if (!this.upgraded) {
+            this.selfRetain = true;
+        }
+        super.upgrade();
+    }
 }
