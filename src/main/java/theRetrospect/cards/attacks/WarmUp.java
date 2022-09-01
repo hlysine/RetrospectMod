@@ -28,7 +28,11 @@ public class WarmUp extends AbstractBaseCard {
                 m,
                 new DamageInfo(p, damage, damageTypeForTurn),
                 AbstractGameAction.AttackEffect.BLUNT_LIGHT,
-                damageDone -> addToBot(new ApplyPowerAction(p, p, new WarmUpPower(p, damageDone), damageDone))
+                damageDone -> {
+                    if (damageDone > 0) {
+                        addToBot(new ApplyPowerAction(p, p, new WarmUpPower(p, damageDone), damageDone));
+                    }
+                }
         ));
     }
 }
