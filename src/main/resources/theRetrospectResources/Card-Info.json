@@ -506,7 +506,7 @@
     "IMG": "recursion_hell.png",
     "COST": 1,
     "D": 2,
-    "+D": 3
+    "+D": 2
   },
   "theRetrospect:Enigma": {
     "RARITY": "UNCOMMON",
