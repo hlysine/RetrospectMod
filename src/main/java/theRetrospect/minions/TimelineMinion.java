@@ -41,8 +41,10 @@ public class TimelineMinion extends AbstractMinionWithCards {
 
         this.loadAnimation(AnimationUtils.cloneAnimation(summoner, this.scale));
         AnimationUtils.cloneAnimationStates(summoner, this);
-        this.img = new Texture(summoner.img.getTextureData());
-        this.corpseImg = new Texture(summoner.corpseImg.getTextureData());
+        if (summoner.img != null && summoner.img.getTextureData() != null)
+            this.img = new Texture(summoner.img.getTextureData());
+        if (summoner.corpseImg != null && summoner.corpseImg.getTextureData() != null)
+            this.corpseImg = new Texture(summoner.corpseImg.getTextureData());
 
         setCards(cards);
         addPower(new TimerPower(this, 1));
