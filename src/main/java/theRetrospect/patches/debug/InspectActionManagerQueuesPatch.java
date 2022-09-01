@@ -20,7 +20,7 @@ public class InspectActionManagerQueuesPatch {
     public static List<CardQueueItem> lastCards = new ArrayList<>();
 
     public static void Prefix(GameActionManager __instance) {
-        if (!Settings.isDebug) {
+        if (Settings.isDebug) {
             ArrayList<AbstractGameAction> actions = __instance.actions;
             ArrayList<CardQueueItem> cards = __instance.cardQueue;
             AbstractGameAction currentAction = __instance.currentAction;
