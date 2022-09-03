@@ -88,7 +88,7 @@
   },
   "theRetrospect:QuickThinking": {
     "NAME": "Quick Thinking",
-    "DESCRIPTION": "{@@}At the start of your turn, draw !M! additional card{!M!|>1=s}."
+    "DESCRIPTION": "{@@}Ethereal. NL At the start of your turn, draw !M! additional card{!M!|>1=s}."
   },
   "theRetrospect:UnstableChronology": {
     "NAME": "Unstable Chronology",

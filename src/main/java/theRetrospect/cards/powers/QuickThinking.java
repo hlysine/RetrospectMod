@@ -15,6 +15,8 @@ public class QuickThinking extends AbstractBaseCard {
 
     public QuickThinking() {
         super(ID, TARGET);
+
+        this.isEthereal = true;
     }
 
     @Override
