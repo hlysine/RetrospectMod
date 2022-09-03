@@ -7,13 +7,13 @@ import com.megacrit.cardcrawl.powers.DrawPower;
 import theRetrospect.RetrospectMod;
 import theRetrospect.cards.AbstractBaseCard;
 
-public class QuickThinker extends AbstractBaseCard {
+public class QuickThinking extends AbstractBaseCard {
 
-    public static final String ID = RetrospectMod.makeID(QuickThinker.class.getSimpleName());
+    public static final String ID = RetrospectMod.makeID(QuickThinking.class.getSimpleName());
 
     private static final CardTarget TARGET = CardTarget.SELF;
 
-    public QuickThinker() {
+    public QuickThinking() {
         super(ID, TARGET);
     }
 

@@ -86,8 +86,8 @@
     "NAME": "Rewrite History",
     "DESCRIPTION": "Deal !D! damage for each card in your discard pile. Shuffle your discard pile into your draw pile. NL Exhaust."
   },
-  "theRetrospect:QuickThinker": {
-    "NAME": "Quick Thinker",
+  "theRetrospect:QuickThinking": {
+    "NAME": "Quick Thinking",
     "DESCRIPTION": "{@@}At the start of your turn, draw !M! additional card{!M!|>1=s}."
   },
   "theRetrospect:UnstableChronology": {
