@@ -12,36 +12,40 @@ import theRetrospect.minions.TimelineMinion;
 import theRetrospect.subscribers.EndOfTurnCardSubscriber;
 import theRetrospect.util.CallbackUtils;
 
+import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.function.BiConsumer;
+
 /**
  * Trigger onEndOfTurnForPlayingCard for player powers, relics and minions
  */
 public class TriggerOnEndOfTurnForPlayingCardAction extends AbstractGameAction {
-    public void update() {
-        AbstractPlayer player = AbstractDungeon.player;
-        CallbackUtils.ForEachLoop(player.powers, (power, next) -> {
-            if (power instanceof EndOfTurnCardSubscriber) {
-                EndOfTurnCardSubscriber cardPower = (EndOfTurnCardSubscriber) power;
-                cardPower.triggerOnEndOfTurnForPlayingCard(() -> {
+
+    private <T> BiConsumer<T, Runnable> createLoopBody(AtomicBoolean skipWait) {
+        return (item, next) -> {
+            if (item instanceof EndOfTurnCardSubscriber) {
+                EndOfTurnCardSubscriber subscriber = (EndOfTurnCardSubscriber) item;
+                subscriber.triggerOnEndOfTurnForPlayingCard(() -> {
                     addToBot(new WaitAction(1f));
+                    skipWait.set(false);
                     next.run();
                 });
             } else {
                 next.run();
             }
-        }, () -> {
-            addToBot(new WaitAction(1f));
-            CallbackUtils.ForEachLoop(player.relics, (relic, next) -> {
-                if (relic instanceof EndOfTurnCardSubscriber) {
-                    EndOfTurnCardSubscriber cardRelic = (EndOfTurnCardSubscriber) relic;
-                    cardRelic.triggerOnEndOfTurnForPlayingCard(() -> {
-                        addToBot(new WaitAction(1f));
-                        next.run();
-                    });
-                } else {
-                    next.run();
-                }
-            }, () -> {
+        };
+    }
+
+    public void update() {
+        AbstractPlayer player = AbstractDungeon.player;
+        AtomicBoolean skipWait = new AtomicBoolean(true);
+
+        CallbackUtils.ForEachLoop(player.powers, createLoopBody(skipWait), () -> {
+            if (!skipWait.get())
                 addToBot(new WaitAction(1f));
+            skipWait.set(true);
+            CallbackUtils.ForEachLoop(player.relics, createLoopBody(skipWait), () -> {
+                if (!skipWait.get())
+                    addToBot(new WaitAction(1f));
                 MonsterGroup minions = MinionUtils.getMinions(AbstractDungeon.player);
                 for (AbstractMonster monster : minions.monsters) {
                     if (monster instanceof TimelineMinion) {
