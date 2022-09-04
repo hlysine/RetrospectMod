@@ -335,5 +335,9 @@
   "theRetrospect:ExponentialBlast": {
     "NAME": "Exponential Blast",
     "DESCRIPTION": "Deal damage equal to 2 to the power of (X - !M!). NL Exhaust."
+  },
+  "theRetrospect:TimeLeap": {
+    "NAME": "Time Leap",
+    "DESCRIPTION": "Deal !D! damage. Gain !B! Block. Move this card to the front of a random timeline."
   }
 }

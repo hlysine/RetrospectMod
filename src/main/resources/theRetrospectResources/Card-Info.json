@@ -649,5 +649,16 @@
     "COST": -1,
     "M/X effect loss": 4,
     "+M": -1
+  },
+  "theRetrospect:TimeLeap": {
+    "RARITY": "UNCOMMON",
+    "TYPE": "ATTACK",
+    "COLOR": "RETROSPECT_PURPLE",
+    "IMG": "time_leap.png",
+    "COST": 1,
+    "D": 3,
+    "+D": 2,
+    "B": 3,
+    "+B": 2
   }
 }

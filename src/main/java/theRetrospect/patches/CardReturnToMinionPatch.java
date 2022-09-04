@@ -12,6 +12,7 @@ import com.megacrit.cardcrawl.vfx.combat.EmpowerEffect;
 import javassist.CannotCompileException;
 import javassist.CtBehavior;
 import theRetrospect.minions.AbstractMinionWithCards;
+import theRetrospect.util.CardReturnInfo;
 import theRetrospect.util.CardUtils;
 
 public class CardReturnToMinionPatch {
@@ -44,9 +45,9 @@ public class CardReturnToMinionPatch {
                 locator = Locator.class
         )
         public static SpireReturn<Void> Insert(UseCardAction __instance, AbstractCard ___targetCard) {
-            AbstractMinionWithCards timeline = CardUtils.getReturnToMinion(___targetCard);
-            if (timeline != null) {
-                if (!timeline.isDeadOrEscaped()) {
+            CardReturnInfo info = CardUtils.getReturnInfo(___targetCard);
+            if (info.minion != null) {
+                if (!info.minion.isDeadOrEscaped()) {
                     AbstractDungeon.actionManager.removeFromQueue(___targetCard);
                     if (AbstractDungeon.player.limbo.contains(___targetCard)) {
                         AbstractDungeon.player.limbo.removeCard(___targetCard);
@@ -60,7 +61,7 @@ public class CardReturnToMinionPatch {
 
                     ___targetCard.shrink();
                     ___targetCard.darken(false);
-                    CardUtils.soulReturnToMinion(AbstractDungeon.getCurrRoom().souls, ___targetCard, timeline);
+                    CardUtils.soulReturnToMinion(AbstractDungeon.getCurrRoom().souls, ___targetCard, info.minion, info.toTop);
 
                     __instance.isDone = true;
                     AbstractDungeon.player.cardInUse = null;

@@ -130,12 +130,14 @@ public class CardUtils {
         return handler;
     }
 
-    public static AbstractMinionWithCards getReturnToMinion(AbstractCard card) {
-        return CardAddFieldsPatch.returnToMinion.get(card);
+    public static CardReturnInfo getReturnInfo(AbstractCard card) {
+        return CardAddFieldsPatch.returnInfo.get(card);
     }
 
-    public static void setReturnToMinion(AbstractCard card, AbstractMinionWithCards timeline) {
-        CardAddFieldsPatch.returnToMinion.set(card, timeline);
+    public static void setReturnInfo(AbstractCard card, AbstractMinionWithCards minion, boolean toTop) {
+        CardReturnInfo info = CardAddFieldsPatch.returnInfo.get(card);
+        info.minion = minion;
+        info.toTop = toTop;
     }
 
     public static boolean getTurnEnding(AbstractCard card) {
@@ -180,14 +182,14 @@ public class CardUtils {
         return effect;
     }
 
-    public static void soulReturnToMinion(SoulGroup souls, AbstractCard card, AbstractMinionWithCards timeline) {
+    public static void soulReturnToMinion(SoulGroup souls, AbstractCard card, AbstractMinionWithCards timeline, boolean toTop) {
         boolean needMoreSouls = true;
         List<Soul> soulList = ReflectionHacks.getPrivate(souls, SoulGroup.class, "souls");
         for (Soul s : soulList) {
             if (s.isReadyForReuse) {
                 card.untip();
                 card.unhover();
-                setUpSoulForMinion(s, card, timeline);
+                setUpSoulForMinion(s, card, timeline, toTop);
                 needMoreSouls = false;
                 break;
             }
@@ -195,18 +197,23 @@ public class CardUtils {
         if (needMoreSouls) {
             RetrospectMod.logger.info("Not enough souls, creating...");
             Soul s = new Soul();
-            setUpSoulForMinion(s, card, timeline);
+            setUpSoulForMinion(s, card, timeline, toTop);
             soulList.add(s);
         }
     }
 
-    private static void setUpSoulForMinion(Soul soul, AbstractCard card, AbstractMinionWithCards timeline) {
+    private static void setUpSoulForMinion(Soul soul, AbstractCard card, AbstractMinionWithCards timeline, boolean toTop) {
         soul.card = card;
         soul.group = null;
         ReflectionHacks.setPrivate(soul, Soul.class, "pos", new Vector2(card.current_x, card.current_y));
         ReflectionHacks.setPrivate(soul, Soul.class, "target", new Vector2(timeline.drawX, timeline.drawY));
         ReflectionHacks.privateMethod(Soul.class, "setSharedVariables").invoke(soul);
-        timeline.addCard(card);
+        final float ROTATION_RATE = ReflectionHacks.getPrivateStatic(Soul.class, "ROTATION_RATE");
+        ReflectionHacks.setPrivate(soul, Soul.class, "rotationRate", ROTATION_RATE * 10);
+        if (toTop)
+            timeline.addCard(0, card);
+        else
+            timeline.addCard(card);
         timeline.triggerCardsChange();
         CardReturnToMinionPatch.SoulAddFieldPatch.returnToMinion.set(soul, timeline);
         ReflectionHacks.setPrivate(soul, Soul.class, "rotation", card.angle + 270.0F);

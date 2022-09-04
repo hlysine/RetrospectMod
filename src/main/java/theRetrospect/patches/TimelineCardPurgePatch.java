@@ -9,6 +9,7 @@ import javassist.CannotCompileException;
 import javassist.CtBehavior;
 import theRetrospect.actions.general.ShowTimelineCardAndPurgeAction;
 import theRetrospect.util.CardPlaySource;
+import theRetrospect.util.CardReturnInfo;
 import theRetrospect.util.CardUtils;
 
 @SpirePatch(
@@ -17,11 +18,20 @@ import theRetrospect.util.CardUtils;
 )
 public class TimelineCardPurgePatch {
 
+    private static boolean shouldBePurged(AbstractCard card) {
+        CardReturnInfo info = CardUtils.getReturnInfo(card);
+        if (info.minion == null) return true;
+        if (info.minion.isDeadOrEscaped()) return true;
+        return false;
+    }
+
     @SpireInsertPatch(
             locator = Locator.class
     )
     public static SpireReturn<Void> Insert(UseCardAction __instance, AbstractCard ___targetCard) {
-        if (___targetCard.purgeOnUse && CardUtils.getPlaySource(___targetCard) == CardPlaySource.TIMELINE) {
+        if (___targetCard.purgeOnUse
+                && CardUtils.getPlaySource(___targetCard) == CardPlaySource.TIMELINE
+                && shouldBePurged(___targetCard)) {
             AbstractDungeon.actionManager.addToTop(new ShowTimelineCardAndPurgeAction(___targetCard));
             __instance.isDone = true;
             AbstractDungeon.player.cardInUse = null;

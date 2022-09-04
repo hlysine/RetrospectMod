@@ -3,9 +3,9 @@ package theRetrospect.patches;
 import com.evacipated.cardcrawl.modthespire.lib.SpireField;
 import com.evacipated.cardcrawl.modthespire.lib.SpirePatch;
 import com.megacrit.cardcrawl.cards.AbstractCard;
-import theRetrospect.minions.AbstractMinionWithCards;
 import theRetrospect.util.CardFollowUpAction;
 import theRetrospect.util.CardPlaySource;
+import theRetrospect.util.CardReturnInfo;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,9 +26,9 @@ public class CardAddFieldsPatch {
     public static final SpireField<List<CardFollowUpAction>> followUpActions = new SpireField<>(ArrayList::new);
 
     /**
-     * If not null, return this card to a minion (timeline) after playing instead of purging it.
+     * Contains information about the minion that this card should return to after being played.
      */
-    public static final SpireField<AbstractMinionWithCards> returnToMinion = new SpireField<>(() -> null);
+    public static final SpireField<CardReturnInfo> returnInfo = new SpireField<>(CardReturnInfo::new);
 
     /**
      * Whether this card causes the player's turn to end.

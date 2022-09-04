@@ -17,7 +17,7 @@ import theRetrospect.util.CardUtils;
 public class CardFollowUpActionsPatch {
     private static void triggerFollowUpActions(AbstractCard card) {
         CardUtils.setPlaySource(card, null);
-        CardUtils.setReturnToMinion(card, null);
+        CardUtils.setReturnInfo(card, null, false);
 
         CardUtils.createFollowUpActionHandler(card).scheduleFollowUpActions();
     }
