@@ -99,26 +99,6 @@ public class WildCard extends AbstractBaseCard implements CustomSavable<List<Str
         }
     }
 
-    @Override
-    public boolean canUpgrade() {
-        return this.timesUpgraded < modifiers.size();
-    }
-
-    @Override
-    public void upgrade() {
-        if (this.timesUpgraded < modifiers.size()) {
-            modifiers.get(this.timesUpgraded).upgrade(this);
-            this.timesUpgraded++;
-            this.upgraded = true;
-            if (modifiers.size() == 1)
-                this.name = cardStrings.NAME + "+";
-            else
-                this.name = cardStrings.NAME + "+" + this.timesUpgraded;
-            initializeTitle();
-            initializeDescription();
-        }
-    }
-
     private static WildCardModifier getModifierForEffect(String effect) {
         return possibleEffects.stream()
                 .filter(x -> x.getKey().equals(effect))

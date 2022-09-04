@@ -17,8 +17,6 @@ public abstract class WildCardModifier extends AbstractCardModifier {
 
     public abstract void apply(AbstractCard card);
 
-    public abstract void upgrade(AbstractCard card);
-
     @Override
     public abstract WildCardModifier makeCopy();
 }

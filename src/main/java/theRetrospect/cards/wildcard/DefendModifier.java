@@ -34,12 +34,6 @@ public class DefendModifier extends WildCardModifier {
     }
 
     @Override
-    public void upgrade(AbstractCard card) {
-        card.baseBlock += RetrospectMod.getCardInfo(card.cardID).getUpgradeValue(ID);
-        card.upgradedBlock = true;
-    }
-
-    @Override
     public String modifyDescription(String rawDescription, AbstractCard card) {
         return rawDescription + cardStrings.EXTENDED_DESCRIPTION[1];
     }

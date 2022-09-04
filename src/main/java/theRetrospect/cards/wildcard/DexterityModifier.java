@@ -45,11 +45,6 @@ public class DexterityModifier extends WildCardModifier {
     }
 
     @Override
-    public void upgrade(AbstractCard card) {
-        amount += RetrospectMod.getCardInfo(card.cardID).getUpgradeValue(ID);
-    }
-
-    @Override
     public String modifyDescription(String rawDescription, AbstractCard card) {
         return rawDescription + cardStrings.EXTENDED_DESCRIPTION[6].replace("!" + ID + "!", amount + "");
     }
