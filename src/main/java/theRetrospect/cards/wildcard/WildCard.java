@@ -1,5 +1,6 @@
 package theRetrospect.cards.wildcard;
 
+import basemod.ReflectionHacks;
 import basemod.abstracts.CustomSavable;
 import basemod.helpers.CardModifierManager;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -97,6 +98,33 @@ public class WildCard extends AbstractBaseCard implements CustomSavable<List<Str
         } else {
             this.target = CardTarget.NONE;
         }
+
+        List<CardType> types = modifiers.stream()
+                .map(WildCardModifier::getType)
+                .distinct()
+                .collect(Collectors.toList());
+        if (types.contains(CardType.POWER)) {
+            this.type = CardType.POWER;
+        } else if (types.contains(CardType.ATTACK)) {
+            this.type = CardType.ATTACK;
+        } else if (types.contains(CardType.SKILL)) {
+            this.type = CardType.SKILL;
+        } else if (types.contains(CardType.STATUS)) {
+            this.type = CardType.STATUS;
+            this.color = AbstractCard.CardColor.COLORLESS;
+        } else {
+            this.type = CardType.CURSE;
+            this.color = AbstractCard.CardColor.CURSE;
+        }
+
+        ReflectionHacks.privateMethod(AbstractCard.class, "createCardImage").invoke(this);
+
+        if (this.type == CardType.ATTACK) {
+            this.textureImg = RetrospectMod.makeCardPath(info.getImage().split("\\.")[0] + "_attack.png");
+        } else {
+            this.textureImg = RetrospectMod.makeCardPath(info.getImage());
+        }
+        loadCardImage(textureImg);
     }
 
     private static WildCardModifier getModifierForEffect(String effect) {

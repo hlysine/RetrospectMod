@@ -30,6 +30,11 @@ public class DexterityModifier extends WildCardModifier {
     }
 
     @Override
+    public AbstractCard.CardType getType() {
+        return AbstractCard.CardType.SKILL;
+    }
+
+    @Override
     public AbstractCard.CardTarget getTarget() {
         return AbstractCard.CardTarget.SELF;
     }

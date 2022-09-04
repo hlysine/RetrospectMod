@@ -11,6 +11,8 @@ public abstract class WildCardModifier extends AbstractCardModifier {
 
     public abstract String getKey();
 
+    public abstract AbstractCard.CardType getType();
+
     public abstract AbstractCard.CardTarget getTarget();
 
     public abstract float getWeight();
