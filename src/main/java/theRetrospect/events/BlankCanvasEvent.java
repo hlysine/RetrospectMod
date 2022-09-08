@@ -147,6 +147,9 @@ public class BlankCanvasEvent extends AbstractImageEvent {
                 .collect(Collectors.joining(" NL "))
                 .replace("!D!", card.damage + "")
                 .replace("!B!", card.block + "")
-                .replace("*", "#y");
+                .replace("*", "#y")
+                .replace("[E] [E] [E]", "3" + OPTIONS[6])
+                .replace("[E] [E]", "2" + OPTIONS[6])
+                .replace("[E]", "1" + OPTIONS[5]);
     }
 }

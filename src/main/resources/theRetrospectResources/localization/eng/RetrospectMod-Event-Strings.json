@@ -80,7 +80,10 @@
       "[Add text to the card] \" ",
       " \" - #rLose #r",
       " #rHP",
-      "[Leave]"
+      "[Leave]",
+      " Energy",
+      " Energy",
+      " - TRANSLATOR NOTE: - The above line is for plural if needed to distinguish from singular."
     ]
   }
 }
