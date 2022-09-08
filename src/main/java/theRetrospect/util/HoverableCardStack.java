@@ -46,6 +46,7 @@ public class HoverableCardStack {
             if (card.hb.hovered) {
                 card.drawScale = HOVERED_SCALE;
                 card.targetDrawScale = HOVERED_SCALE;
+                card.target_y = Math.min(this.y + AbstractCard.IMG_HEIGHT * UNHOVERED_SCALE / 2, Settings.HEIGHT - AbstractCard.IMG_HEIGHT * HOVERED_SCALE / 2 - SPACING);
             } else {
                 resetAllCardPositions();
             }
@@ -68,6 +69,7 @@ public class HoverableCardStack {
             } else {
                 setCardPosition(hoverIndex);
                 AbstractCard newHoveredCard = cards.get(hoverIndex);
+                newHoveredCard.target_y = Math.min(this.y + AbstractCard.IMG_HEIGHT * UNHOVERED_SCALE / 2, Settings.HEIGHT - AbstractCard.IMG_HEIGHT * HOVERED_SCALE / 2 - SPACING);
                 newHoveredCard.update();
                 for (int i = 0; i < cards.size(); i++) {
                     AbstractCard card = cards.get(i);
