@@ -335,7 +335,7 @@
     "TYPE": "SKILL",
     "COLOR": "RETROSPECT_PURPLE",
     "IMG": "soulless_demon.png",
-    "COST": 1,
+    "COST": 2,
     "M/Strength Power": 2,
     "+M": 1
   },
