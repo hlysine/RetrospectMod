@@ -142,4 +142,9 @@ public class WildCard extends AbstractBaseCard implements CustomSavable<List<Str
                 .map(WildCardModifier::makeCopy)
                 .orElse(null);
     }
+
+    @Override
+    public boolean canUpgrade() {
+        return !this.upgraded;
+    }
 }
