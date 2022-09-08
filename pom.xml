@@ -6,7 +6,12 @@
     <artifactId>RetrospectMod</artifactId>
     <name>The Retrospect</name>
     <version>0.8.2</version>
-    <description>A character mod adding the Retrospect into the game.</description>
+    <description>The Retrospect is a custom Slay The Spire character with brand-new mechanics that require you to think
+        ahead and calculate your moves. You often have to fight with low effective HP and pay extra attention to the
+        playing order of your cards. Even playing Strike and Defend in different order can make a huge difference. In
+        return, you get the ability to evade card costs and manipulate cards like no other characters. Nothing is more
+        satisfying than decimating your enemies with a pile of cards you spent no energy on.
+    </description>
 
     <properties>
         <maven.compiler.source>1.8</maven.compiler.source>
