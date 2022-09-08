@@ -1,5 +1,51 @@
 # Changelog
 
+## [0.8.3] - Polishing Update - 2022-09-08
+
+### Mechanics
+
+- Skip consecutive wait actions in the end turn sequence
+- Rename "trigger timeline" to "advance timeline"
+- Improve timeline positioning to reduce overlaps
+- Move timeline cards in-bound when they are hovered
+
+### Cards
+
+- Rename Quick thinker to Quick Thinking
+- Nerf Quick Thinking: add ethereal
+- Buff Tactical Retreat block gain from 8(12) to 10(14)
+- Change Wild Card upgrade to simply reduce cost from 2 to 1
+- Change Wild Card type and color based on the modifiers applied
+- Increase Soulless Demon cost from 1 to 2
+- Rename All-Out Attack to Fist Fight
+- Show upgrade preview for curse cards that are upgradable
+- Add new card
+  - Time Leap
+
+### Run Mods
+
+- Increase difficulty of In Time: only heal half of unblock damage dealt, but lose 1 HP every 600ms
+
+### Events
+
+- Fix energy modifier description in Blank Canvas event
+
+### Powers
+
+- Use Draw power instead of a custom Quick Thinking power
+
+### Art
+
+- Synchronized Reflex power now use the old icon of Quick Thinking power
+
+### VFX
+
+- Add end turn FX to Unceasing Strike and Unceasing Sprint
+
+### Misc
+
+- Updated mod description
+
 ## [0.8.2] - Hotfix - 2022-09-01
 
 ### Mechanics
