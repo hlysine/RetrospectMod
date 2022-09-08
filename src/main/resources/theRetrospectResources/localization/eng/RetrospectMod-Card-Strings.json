@@ -28,7 +28,7 @@
   },
   "theRetrospect:DoubleTime": {
     "NAME": "Double Time",
-    "DESCRIPTION": "{@@}theretrospect:Trigger a timeline {!Upgrades!|0=once|@=twice} and theretrospect:collapse it."
+    "DESCRIPTION": "{@@}theretrospect:Advance a timeline {!Upgrades!|0=once|@=twice} and theretrospect:collapse it."
   },
   "theRetrospect:Overcore": {
     "NAME": "Overcore",
@@ -68,7 +68,7 @@
   },
   "theRetrospect:TemporalAnomaly": {
     "NAME": "Temporal Anomaly",
-    "DESCRIPTION": "{@@}Randomly theretrospect:trigger {!Upgrades!|@=X+1|0=X} timelines."
+    "DESCRIPTION": "{@@}Randomly theretrospect:advance {!Upgrades!|@=X+1|0=X} timelines."
   },
   "theRetrospect:ChargeRifle": {
     "NAME": "Charge Rifle",

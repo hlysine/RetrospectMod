@@ -5,7 +5,7 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.ui.panels.EnergyPanel;
 import theRetrospect.RetrospectMod;
-import theRetrospect.actions.timelineActions.TriggerTimelineAction;
+import theRetrospect.actions.timelineActions.AdvanceTimelineAction;
 import theRetrospect.cards.AbstractBaseCard;
 import theRetrospect.util.CallbackUtils;
 import theRetrospect.util.CardUtils;
@@ -38,7 +38,7 @@ public class TemporalAnomaly extends AbstractBaseCard {
             CallbackUtils.ForLoop(
                     () -> remainingEffect.get() > 0,
                     remainingEffect::decrementAndGet,
-                    next -> addToBot(new TriggerTimelineAction(null, true, new AbstractGameAction() {
+                    next -> addToBot(new AdvanceTimelineAction(null, true, new AbstractGameAction() {
                         @Override
                         public void update() {
                             next.run();

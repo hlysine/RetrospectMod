@@ -30,8 +30,8 @@
   },
   {
     "NAMES": [
-      "trigger",
-      "triggers"
+      "advance",
+      "advances"
     ],
     "DESCRIPTION": "Cause a timeline to play its cards."
   },

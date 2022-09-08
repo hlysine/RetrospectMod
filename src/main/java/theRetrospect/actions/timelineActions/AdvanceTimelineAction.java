@@ -11,7 +11,7 @@ import theRetrospect.util.TimelineUtils;
 import java.util.Optional;
 import java.util.concurrent.atomic.AtomicInteger;
 
-public class TriggerTimelineAction extends AbstractGameAction {
+public class AdvanceTimelineAction extends AbstractGameAction {
 
     private final TimelineMinion minion;
     private final int triggerCount;
@@ -19,25 +19,25 @@ public class TriggerTimelineAction extends AbstractGameAction {
     private final AbstractGameAction followUpAction;
 
     /**
-     * Create an action that triggers a timeline.
+     * Create an action that advances a timeline.
      *
      * @param minion       The timeline to trigger. Use null for a random timeline.
-     * @param triggerCount How many times the timeline should be triggered.
+     * @param advanceCount How many times the timeline should be advanced.
      * @param consumeCards Whether the played cards should disappear from the timeline.
      */
-    public TriggerTimelineAction(TimelineMinion minion, int triggerCount, boolean consumeCards, AbstractGameAction followUpAction) {
+    public AdvanceTimelineAction(TimelineMinion minion, int advanceCount, boolean consumeCards, AbstractGameAction followUpAction) {
         this.minion = minion;
-        this.triggerCount = triggerCount;
+        this.triggerCount = advanceCount;
         this.consumeCards = consumeCards;
         this.followUpAction = followUpAction;
     }
 
     /**
-     * Create an action that triggers a timeline.
+     * Create an action that advances a timeline.
      *
-     * @param minion The timeline to trigger. Use null for a random timeline.
+     * @param minion The timeline to advance. Use null for a random timeline.
      */
-    public TriggerTimelineAction(TimelineMinion minion, boolean consumeCards, AbstractGameAction followUpAction) {
+    public AdvanceTimelineAction(TimelineMinion minion, boolean consumeCards, AbstractGameAction followUpAction) {
         this(minion, 1, consumeCards, followUpAction);
     }
 

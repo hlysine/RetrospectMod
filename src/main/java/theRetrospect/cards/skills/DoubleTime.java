@@ -3,8 +3,8 @@ package theRetrospect.cards.skills;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theRetrospect.RetrospectMod;
+import theRetrospect.actions.timelineActions.AdvanceTimelineAction;
 import theRetrospect.actions.timelineActions.CollapseTimelineAction;
-import theRetrospect.actions.timelineActions.TriggerTimelineAction;
 import theRetrospect.cards.TimelineTargetingCard;
 import theRetrospect.minions.TimelineMinion;
 
@@ -18,6 +18,6 @@ public class DoubleTime extends TimelineTargetingCard {
 
     @Override
     public void useOnTarget(AbstractPlayer p, AbstractMonster m, TimelineMinion target) {
-        addToBot(new TriggerTimelineAction(target, magicNumber, true, new CollapseTimelineAction(target)));
+        addToBot(new AdvanceTimelineAction(target, magicNumber, true, new CollapseTimelineAction(target)));
     }
 }

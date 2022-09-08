@@ -31,7 +31,7 @@
     "COLOR": "RETROSPECT_PURPLE",
     "IMG": "double_time.png",
     "COST": 0,
-    "M/Timeline Trigger Count": 1,
+    "M/Timeline Advance Count": 1,
     "+M": 1
   },
   "theRetrospect:Overcore": {
