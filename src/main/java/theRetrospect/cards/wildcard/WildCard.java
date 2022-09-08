@@ -119,6 +119,10 @@ public class WildCard extends AbstractBaseCard implements CustomSavable<List<Str
 
         ReflectionHacks.privateMethod(AbstractCard.class, "createCardImage").invoke(this);
 
+        initializeTitle();
+        initializeDescription();
+        ReflectionHacks.privateMethod(AbstractCard.class, "updateTransparency").invoke(this);
+
         if (this.type == CardType.ATTACK) {
             this.textureImg = RetrospectMod.makeCardPath(info.getImage().split("\\.")[0] + "_attack.png");
         } else {
