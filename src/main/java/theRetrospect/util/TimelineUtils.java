@@ -31,9 +31,11 @@ public class TimelineUtils {
 
     public static void repositionTimelines(AbstractPlayer player) {
         boolean isPlayerSurrounded = player.drawX > Settings.WIDTH * 0.4f;
+        boolean tooManyEnemies = AbstractDungeon.getMonsters().monsters.stream().anyMatch(m -> !m.isDeadOrEscaped() && m.hb.cX - m.hb.width / 2f < Settings.WIDTH * 0.5f);
+        boolean placeOnTop = isPlayerSurrounded || tooManyEnemies;
 
-        float midX = Settings.WIDTH * (isPlayerSurrounded ? 0.5f : 0.35f);
-        float y = AbstractDungeon.floorY + player.hb_h * (isPlayerSurrounded ? 0.9f : 0.1f);
+        float midX = placeOnTop ? player.hb.cX : (Settings.WIDTH * 0.35f);
+        float y = AbstractDungeon.floorY + player.hb_h * (placeOnTop ? 0.93f : 0.1f);
         float gap = 20 * Settings.scale;
 
         List<AbstractMinionWithCards> minions = MinionUtils.getMinions(player).monsters.stream()
@@ -45,24 +47,26 @@ public class TimelineUtils {
         for (AbstractMinionWithCards minion : minions) {
             width += minion.hb_w + gap;
         }
+        width -= gap;
 
         float startX = midX + width / 2;
         for (int i = 0; i < minions.size(); i++) {
             AbstractMinionWithCards minion = minions.get(i);
 
-            minion.target_x = startX;
+            minion.target_x = startX - minion.hb_w / 2;
             minion.target_y = y + player.hb_h * (i % 2 == 0 ? 0.1f : -0.1f);
 
             startX -= minion.hb_w + gap;
         }
 
-        if (!isPlayerSurrounded) {
+        if (!placeOnTop) {
             startX -= player.hb_w / 2;
-            startX += gap;
-            player.movePosition(Math.min(Settings.WIDTH * 0.25f, startX), player.drawY);
-            for (int i = 0; i < player.orbs.size(); i++) {
-                player.orbs.get(i).setSlot(i, player.maxOrbs);
-            }
+            player.movePosition(Math.min(Settings.WIDTH * 0.25f, startX), AbstractDungeon.floorY);
+        } else {
+            player.movePosition(Settings.WIDTH * (isPlayerSurrounded ? 0.5f : 0.25f), AbstractDungeon.floorY - 40);
+        }
+        for (int i = 0; i < player.orbs.size(); i++) {
+            player.orbs.get(i).setSlot(i, player.maxOrbs);
         }
     }
 
