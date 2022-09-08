@@ -102,7 +102,7 @@
                                     </excludes>
                                 </filter>
                                 <filter>
-                                    <artifact>hlysine:STSCardInfo:*</artifact>
+                                    <artifact>hlysine:STSItemInfo:*</artifact>
                                     <excludes>
                                         <exclude>META-INF/MANIFEST.MF</exclude>
                                     </excludes>
