@@ -1,5 +1,6 @@
 package theRetrospect.runmods;
 
+import com.badlogic.gdx.math.MathUtils;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -17,7 +18,8 @@ public class InTime extends CustomDailyMod {
     private static final RunModStrings modStrings = CardCrawlGame.languagePack.getRunModString(ID);
     public static final String NAME = modStrings.NAME, DESC = modStrings.DESCRIPTION;
 
-    public static final float HP_LOSS_INTERVAL = 0.5f;
+    public static final float HP_LOSS_INTERVAL = 0.6f;
+    public static final float HP_SYPHON_RATIO = 0.5f;
 
     private static final Logger logger = LogManager.getLogger(InTime.class);
 
@@ -32,6 +34,10 @@ public class InTime extends CustomDailyMod {
 
     public static boolean isRunning() {
         return isRunning;
+    }
+
+    public static float getTickFraction() {
+        return Math.max(0, cumulativeTime / HP_LOSS_INTERVAL);
     }
 
     public static void start() {
@@ -83,7 +89,7 @@ public class InTime extends CustomDailyMod {
     }
 
     public static void onAttack(int damage) {
-        AbstractDungeon.player.heal(damage, true);
+        AbstractDungeon.player.heal(MathUtils.floor(damage * HP_SYPHON_RATIO), true);
     }
 
     private static void tick() {
@@ -91,7 +97,8 @@ public class InTime extends CustomDailyMod {
         if (ModHelper.isModEnabled(ID)
                 && AbstractDungeon.player != null
                 && !AbstractDungeon.player.isDeadOrEscaped()
-                && AbstractDungeon.player.currentHealth > 0)
+                && AbstractDungeon.player.currentHealth > 0
+                && !AbstractDungeon.getMonsters().areMonstersBasicallyDead())
             AbstractDungeon.player.damage(
                     DamageInfoUtils.withNoVisualEffect(new DamageInfo(null, 1, DamageInfo.DamageType.HP_LOSS))
             );

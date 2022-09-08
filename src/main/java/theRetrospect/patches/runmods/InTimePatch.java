@@ -127,13 +127,14 @@ public class InTimePatch {
         }
     }
 
-    private static final Color hbTimeColor = new Color(0.7F, 0.9F, 0.5F, 1.0F);
+    private static final Color hbTimeColorSelf = new Color(0.7F, 0.9F, 0.5F, 1.0F);
+    private static final Color hbTimeColorEnemy = new Color(0.9F, 0.5F, 0.5F, 1.0F);
     private static final Color hbTimeColorActive = new Color(0.8F, 0.4F, 1F, 1.0F);
 
-    public static String getTimeFromHealth(int hp) {
-        hp = (int) Math.floor(hp * InTime.HP_LOSS_INTERVAL);
+    public static String getTimeFromHealth(float hp, boolean isEnemy) {
+        hp = hp * (isEnemy ? InTime.HP_SYPHON_RATIO : 1) * InTime.HP_LOSS_INTERVAL;
         int minutes = (int) Math.floor(hp / 60f);
-        int seconds = hp % 60;
+        int seconds = (int) Math.floor(hp % 60);
         return String.format("%d:%02d", minutes, seconds);
     }
 
@@ -148,15 +149,16 @@ public class InTimePatch {
         )
         public static void Insert(AbstractCreature __instance, SpriteBatch sb, float y) {
             if (__instance instanceof AbstractPlayer) return; // player is handled in another patch
+            boolean isFriendly = __instance instanceof AbstractFriendlyMonster;
             if (ModHelper.isModEnabled(InTime.ID)) {
                 if (__instance.currentHealth > 0) {
                     FontHelper.renderFontCentered(
                             sb,
                             FontHelper.healthInfoFont,
-                            getTimeFromHealth(__instance.currentHealth),
+                            getTimeFromHealth(__instance.currentHealth, !isFriendly),
                             __instance.hb.cX,
                             y + 6f * Settings.scale,
-                            hbTimeColor
+                            isFriendly ? hbTimeColorSelf : hbTimeColorEnemy
                     );
                 }
             }
@@ -186,10 +188,10 @@ public class InTimePatch {
                     FontHelper.renderFontCentered(
                             sb,
                             FontHelper.healthInfoFont,
-                            getTimeFromHealth(__instance.currentHealth),
+                            getTimeFromHealth(__instance.currentHealth - InTime.getTickFraction(), false),
                             __instance.hb.cX,
                             __instance.hb.cY - __instance.hb.height / 2.0F + 6f * Settings.scale,
-                            InTime.isRunning() ? hbTimeColorActive : hbTimeColor
+                            InTime.isRunning() ? hbTimeColorActive : hbTimeColorSelf
                     );
                 }
             }
