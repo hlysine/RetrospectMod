@@ -583,7 +583,7 @@
   "theRetrospect:WildCard": {
     "RARITY": "SPECIAL",
     "TYPE": "CURSE",
-    "COLOR": "RETROSPECT_PURPLE",
+    "COLOR": "CURSE",
     "IMG": "wild_card.png",
     "COST": 2,
     "+COST": 1,
