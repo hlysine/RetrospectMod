@@ -10,13 +10,13 @@ import com.megacrit.cardcrawl.powers.WeakPower;
 import theRetrospect.RetrospectMod;
 import theRetrospect.cards.AbstractBaseCard;
 
-public class AllOutAttack extends AbstractBaseCard {
+public class FistFight extends AbstractBaseCard {
 
-    public static final String ID = RetrospectMod.makeID(AllOutAttack.class.getSimpleName());
+    public static final String ID = RetrospectMod.makeID(FistFight.class.getSimpleName());
 
     private static final CardTarget TARGET = CardTarget.ENEMY;
 
-    public AllOutAttack() {
+    public FistFight() {
         super(ID, TARGET);
     }
 

@@ -132,8 +132,8 @@
     "NAME": "Fast Forward",
     "DESCRIPTION": "{@@}Draw !M! card{!M!|>1=s}. NL Discard up to !M! card{!M!|>1=s}."
   },
-  "theRetrospect:AllOutAttack": {
-    "NAME": "All-Out Attack",
+  "theRetrospect:FistFight": {
+    "NAME": "Fist Fight",
     "DESCRIPTION": "Deal !D! damage. NL Gain !M! Weak."
   },
   "theRetrospect:WarmUp": {

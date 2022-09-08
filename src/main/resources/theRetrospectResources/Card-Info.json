@@ -255,13 +255,13 @@
     "M/Card Count": 2,
     "+M": 1
   },
-  "theRetrospect:AllOutAttack": {
+  "theRetrospect:FistFight": {
     "RARITY": "COMMON",
     "TYPE": "ATTACK",
     "COLOR": "RETROSPECT_PURPLE",
-    "IMG": "all_out_attack.png",
+    "IMG": "fist_fight.png",
     "COST": 1,
-    "D": 14,
+    "D": 15,
     "+D": 4,
     "M/Weak Power": 1
   },
