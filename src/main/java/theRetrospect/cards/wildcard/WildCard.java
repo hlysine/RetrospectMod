@@ -8,6 +8,7 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theRetrospect.RetrospectMod;
 import theRetrospect.cards.AbstractBaseCard;
+import theRetrospect.characters.TheRetrospect;
 
 import java.util.Arrays;
 import java.util.Collections;
@@ -105,10 +106,13 @@ public class WildCard extends AbstractBaseCard implements CustomSavable<List<Str
                 .collect(Collectors.toList());
         if (types.contains(CardType.POWER)) {
             this.type = CardType.POWER;
+            this.color = TheRetrospect.Enums.RETROSPECT_CARD_VIOLET;
         } else if (types.contains(CardType.ATTACK)) {
             this.type = CardType.ATTACK;
+            this.color = TheRetrospect.Enums.RETROSPECT_CARD_VIOLET;
         } else if (types.contains(CardType.SKILL)) {
             this.type = CardType.SKILL;
+            this.color = TheRetrospect.Enums.RETROSPECT_CARD_VIOLET;
         } else if (types.contains(CardType.STATUS)) {
             this.type = CardType.STATUS;
             this.color = AbstractCard.CardColor.COLORLESS;
