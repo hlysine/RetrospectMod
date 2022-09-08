@@ -582,7 +582,7 @@
   },
   "theRetrospect:WildCard": {
     "RARITY": "SPECIAL",
-    "TYPE": "SKILL",
+    "TYPE": "CURSE",
     "COLOR": "RETROSPECT_PURPLE",
     "IMG": "wild_card.png",
     "COST": 2,
