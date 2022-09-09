@@ -23,8 +23,8 @@ public class MasterOfDeceptionPower extends AbstractPower implements CloneablePo
     public static final String NAME = powerStrings.NAME;
     public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
 
-    private static final Texture tex84 = TextureLoader.getTexture("theRetrospectResources/images/powers/placeholder_power84.png");
-    private static final Texture tex32 = TextureLoader.getTexture("theRetrospectResources/images/powers/placeholder_power32.png");
+    private static final Texture tex84 = TextureLoader.getTexture("theRetrospectResources/images/powers/master_of_deception84.png");
+    private static final Texture tex32 = TextureLoader.getTexture("theRetrospectResources/images/powers/master_of_deception32.png");
 
     public MasterOfDeceptionPower(final AbstractCreature owner, final int amount) {
         name = NAME;

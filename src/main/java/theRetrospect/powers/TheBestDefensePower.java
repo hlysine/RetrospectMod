@@ -22,8 +22,8 @@ public class TheBestDefensePower extends AbstractPower implements CreatureBlocke
     public static final String NAME = powerStrings.NAME;
     public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
 
-    private static final Texture tex84 = TextureLoader.getTexture("theRetrospectResources/images/powers/placeholder_power84.png");
-    private static final Texture tex32 = TextureLoader.getTexture("theRetrospectResources/images/powers/placeholder_power32.png");
+    private static final Texture tex84 = TextureLoader.getTexture("theRetrospectResources/images/powers/the_best_defense84.png");
+    private static final Texture tex32 = TextureLoader.getTexture("theRetrospectResources/images/powers/the_best_defense32.png");
 
     public TheBestDefensePower(final AbstractCreature owner, final int amount) {
         name = NAME;
