@@ -1,8 +1,4 @@
 {
-  "theRetrospect:AdaptiveShield": {
-    "IMG": "placeholder_relic.png",
-    "RARITY": "UNCOMMON"
-  },
   "theRetrospect:AntiqueClock": {
     "IMG": "antique_clock.png",
     "RARITY": "STARTER"
