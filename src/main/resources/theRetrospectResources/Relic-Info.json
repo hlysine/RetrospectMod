@@ -18,5 +18,9 @@
   "theRetrospect:AtomicClock": {
     "IMG": "placeholder_relic2.png",
     "RARITY": "BOSS"
+  },
+  "theRetrospect:SmartCollar": {
+    "IMG": "placeholder_relic2.png",
+    "RARITY": "UNCOMMON"
   }
 }

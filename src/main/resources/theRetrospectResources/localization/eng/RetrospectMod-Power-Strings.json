@@ -144,5 +144,11 @@
       " HP whenever you play a card.",
       " - TRANSLATOR NOTE: - The above line is for plural if needed to distinguish from singular."
     ]
+  },
+  "theRetrospect:SmartCollarPower": {
+    "NAME": "Smart Collar",
+    "DESCRIPTIONS": [
+      "The next #ytimeline you construct borrows #b1 HP only."
+    ]
   }
 }

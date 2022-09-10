@@ -36,5 +36,12 @@
     "DESCRIPTIONS": [
       "Replaces #pAntique #pClock. At the end of your first turn, play 1 #ytheretrospect:Chaotic_Offense."
     ]
+  },
+  "theRetrospect:SmartCollar": {
+    "NAME": "Smart Collar",
+    "FLAVOR": "A modern synchronization device suspiciously located in the Spire.",
+    "DESCRIPTIONS": [
+      "Every #b7th timeline you #ytheretrospect:construct borrows #b1 HP only."
+    ]
   }
 }
