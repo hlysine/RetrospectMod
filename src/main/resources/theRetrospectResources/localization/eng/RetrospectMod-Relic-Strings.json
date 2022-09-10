@@ -13,9 +13,9 @@
       "When a timeline #ytheretrospect:collapses, gain [E] next turn."
     ]
   },
-  "theRetrospect:SlantedMirror": {
-    "NAME": "Slanted Mirror",
-    "FLAVOR": "The cracks are invisible when seen from a specific angle.",
+  "theRetrospect:ShatteredMirror": {
+    "NAME": "Shattered Mirror",
+    "FLAVOR": "The cracks are invisible when viewed from a specific angle.",
     "DESCRIPTIONS": [
       "When you #ytheretrospect:construct a timeline, gain 10 Block."
     ]

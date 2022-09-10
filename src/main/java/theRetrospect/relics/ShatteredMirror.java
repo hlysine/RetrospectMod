@@ -7,13 +7,13 @@ import theRetrospect.RetrospectMod;
 import theRetrospect.minions.TimelineMinion;
 import theRetrospect.subscribers.TimelineConstructSubscriber;
 
-public class SlantedMirror extends AbstractBaseRelic implements TimelineConstructSubscriber {
+public class ShatteredMirror extends AbstractBaseRelic implements TimelineConstructSubscriber {
 
-    public static final String ID = RetrospectMod.makeID(SlantedMirror.class.getSimpleName());
+    public static final String ID = RetrospectMod.makeID(ShatteredMirror.class.getSimpleName());
 
     private static final LandingSound LANDING_SOUND = LandingSound.MAGICAL;
 
-    public SlantedMirror() {
+    public ShatteredMirror() {
         super(ID, LANDING_SOUND);
     }
 
