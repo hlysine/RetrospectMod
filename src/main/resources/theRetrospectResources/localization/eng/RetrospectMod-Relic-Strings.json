@@ -1,7 +1,7 @@
 {
   "theRetrospect:AntiqueClock": {
     "NAME": "Antique Clock",
-    "FLAVOR": "Antique in your eyes, futuristic in others'.",
+    "FLAVOR": "A keepsake you obtained before you left the Spire.",
     "DESCRIPTIONS": [
       "At the end of your first turn, play 1 #ytheretrospect:Divert."
     ]
@@ -15,14 +15,14 @@
   },
   "theRetrospect:SlantedMirror": {
     "NAME": "Slanted Mirror",
-    "FLAVOR": "Magicians' favourite.",
+    "FLAVOR": "The cracks are invisible when seen from a specific angle.",
     "DESCRIPTIONS": [
       "When you #ytheretrospect:construct a timeline, gain 10 Block."
     ]
   },
   "theRetrospect:BottledSingularity": {
     "NAME": "Bottled Singularity",
-    "FLAVOR": "No bottle can overcome the immense gravity. The singularity is forever stuck to your hand.",
+    "FLAVOR": "Such concentrated energy...",
     "DESCRIPTIONS": [
       "Upon pick up, choose 3 cards and obtain a special Curse. Start each combat with these cards in your hand.",
       "Start each combat with the 3 bottled cards in your hand.",
@@ -32,7 +32,7 @@
   },
   "theRetrospect:AtomicClock": {
     "NAME": "Atomic Clock",
-    "FLAVOR": "Cutting-edge technology even in your era.",
+    "FLAVOR": "Spectacular foreign technology. Why is it here?",
     "DESCRIPTIONS": [
       "Replaces #pAntique #pClock. At the end of your first turn, play 1 #ytheretrospect:Chaotic_Offense."
     ]
