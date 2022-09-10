@@ -85,5 +85,12 @@
       " Energy",
       " - TRANSLATOR NOTE: - The above line is for plural if needed to distinguish from singular."
     ]
+  },
+  "theRetrospect:SensoryStone": {
+    "NAME": "Sensory Stone",
+    "DESCRIPTIONS": [
+      "~[#a482b5]REGRET.~ NL NL You stand in the middle of the City. Fierce beasts cover the sky. You look around and find nothing but #rruins and #rburnt #rcorpses. NL NL Tears well up in your eyes. You hold your necklace and the surroundings begin to #p~distort.~ You are traveling, but to where? to when? NL NL You #rblack #rout before you can get your answers. The gravitational force is too immense."
+    ],
+    "OPTIONS": []
   }
 }
