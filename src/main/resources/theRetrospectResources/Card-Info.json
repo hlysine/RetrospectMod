@@ -372,7 +372,9 @@
     "TYPE": "CURSE",
     "COLOR": "CURSE",
     "IMG": "singularity.png",
-    "COST": -2
+    "COST": -2,
+    "M/Damage": 2,
+    "+M": 1
   },
   "theRetrospect:ShadowForm": {
     "RARITY": "RARE",

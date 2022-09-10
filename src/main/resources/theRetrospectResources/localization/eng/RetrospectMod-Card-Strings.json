@@ -187,7 +187,7 @@
   },
   "theRetrospect:Singularity": {
     "NAME": "Singularity",
-    "DESCRIPTION": "This card is forever stuck to your hand."
+    "DESCRIPTION": "This card is forever stuck to your hand. NL Take !M! damage at the end of your turn."
   },
   "theRetrospect:ShadowForm": {
     "NAME": "Shadow Form",
