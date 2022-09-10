@@ -34,7 +34,7 @@ public class TimelineUtils {
         boolean tooManyEnemies = AbstractDungeon.getMonsters().monsters.stream().anyMatch(m -> !m.isDeadOrEscaped() && m.hb.cX - m.hb.width / 2f < Settings.WIDTH * 0.5f);
         boolean placeOnTop = isPlayerSurrounded || tooManyEnemies;
 
-        float midX = placeOnTop ? player.hb.cX : (Settings.WIDTH * 0.35f);
+        float midX = placeOnTop ? Settings.WIDTH * 0.25f : (Settings.WIDTH * 0.35f);
         float y = AbstractDungeon.floorY + player.hb_h * (placeOnTop ? 0.93f : 0.1f);
         float gap = 20 * Settings.scale;
 
