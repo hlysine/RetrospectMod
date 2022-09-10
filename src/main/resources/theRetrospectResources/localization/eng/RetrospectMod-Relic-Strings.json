@@ -43,5 +43,12 @@
     "DESCRIPTIONS": [
       "Every #b7th timeline you #ytheretrospect:construct borrows #b1 HP only."
     ]
+  },
+  "theRetrospect:AnkleWeights": {
+    "NAME": "Ankle Weights",
+    "FLAVOR": "Adds extra swiftness to your steps once you take the weights off.",
+    "DESCRIPTIONS": [
+      "You can now #yTrain at rest sites. Each training draws 1 extra card at the start of each combat. (3 times max)"
+    ]
   }
 }

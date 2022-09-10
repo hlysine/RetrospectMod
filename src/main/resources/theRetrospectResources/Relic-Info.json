@@ -22,5 +22,9 @@
   "theRetrospect:SmartCollar": {
     "IMG": "placeholder_relic2.png",
     "RARITY": "UNCOMMON"
+  },
+  "theRetrospect:AnkleWeights": {
+    "IMG": "placeholder_relic2.png",
+    "RARITY": "COMMON"
   }
 }

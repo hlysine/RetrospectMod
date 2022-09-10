@@ -10,5 +10,12 @@
       "These cards belong to the timeline.",
       "Return"
     ]
+  },
+  "theRetrospect:TrainOption": {
+    "TEXT": [
+      "Train",
+      "Start battles with 1 extra card. (Up to 3)",
+      ""
+    ]
   }
 }
