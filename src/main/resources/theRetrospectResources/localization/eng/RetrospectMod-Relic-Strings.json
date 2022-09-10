@@ -17,7 +17,7 @@
     "NAME": "Shattered Mirror",
     "FLAVOR": "The cracks are invisible when viewed from a specific angle.",
     "DESCRIPTIONS": [
-      "When you #ytheretrospect:construct a timeline, gain 10 Block."
+      "When you #ytheretrospect:construct a timeline, gain 5 Block."
     ]
   },
   "theRetrospect:BottledSingularity": {

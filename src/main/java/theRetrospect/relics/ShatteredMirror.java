@@ -21,7 +21,7 @@ public class ShatteredMirror extends AbstractBaseRelic implements TimelineConstr
     public void afterTimelineConstruct(TimelineMinion timeline) {
         flash();
         addToTop(new RelicAboveCreatureAction(AbstractDungeon.player, this));
-        addToTop(new GainBlockAction(AbstractDungeon.player, 10));
+        addToTop(new GainBlockAction(AbstractDungeon.player, 5));
     }
 
     @Override
