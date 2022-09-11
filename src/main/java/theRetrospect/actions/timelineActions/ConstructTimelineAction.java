@@ -35,7 +35,7 @@ public class ConstructTimelineAction extends AbstractGameAction {
 
     private static final TutorialStrings tutorialStrings = CardCrawlGame.languagePack.getTutorialString(RetrospectMod.makeID(ConstructTimelineAction.class.getSimpleName()));
 
-    public static final float HEALTH_PERCENTAGE_COST = 0.4f;
+    public static final float HEALTH_PERCENTAGE_COST = 0.3f;
 
     private final AbstractCard constructionCard;
     private boolean isConstructing = true;

@@ -408,7 +408,7 @@
     "COLOR": "RETROSPECT_PURPLE",
     "IMG": "death_totem.png",
     "COST": 1,
-    "M/HP Loss": 40,
+    "M/HP Loss": 30,
     "+M": -10
   },
   "theRetrospect:Converge": {
