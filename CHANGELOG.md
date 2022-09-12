@@ -1,5 +1,53 @@
 # Changelog
 
+## [0.9.0] - Art & Relics Update - 2022-09-12
+
+### Mechanics
+
+- Fix timeline positioning when new monsters are spawned mid-combat
+- Reduce base timeline HP cost to 30% of current HP
+
+### Cards
+
+- Add 2 damage to Singularity
+- Buff Fist Fight damage from 15(19) to 17(21)
+- Buff Blind Strike damage from 12(16) to 15(19)
+- Buff Unceasing Strike damage from 20(28) to 24(32)
+- Reduce Rewind cost from 2 to 1, add exhaust, which is removed on upgrade
+
+### Relics
+
+- Remove Adaptive Shield
+- Change all relic flavor text
+- Rename Slanted Mirror to Shattered Mirror
+- Nerf Shattered Mirror block gain from 10 to 5
+- Add new relics
+  - Smart Collar
+  - Ankle Weights
+
+### Events
+
+- Rewrite Event Horizon event
+- Edit Future Gadgets event slightly
+- Add Retrospect text to Sensory Stone event
+
+### Art
+
+- Add power icons
+  - Dimensional Rift
+  - Into The Void
+  - Master Of Deception
+  - Shadow Form
+  - Speed Is Life
+  - The Best Defense
+  - Smart Collar
+- Add relic icons
+  - Shattered Mirror
+  - Smart Collar
+  - Atomic Clock
+  - Ankle Weights
+- Fix blurry relic outlines
+
 ## [0.8.3] - Polishing Update - 2022-09-08
 
 ### Mechanics
