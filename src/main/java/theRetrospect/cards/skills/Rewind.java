@@ -19,6 +19,7 @@ public class Rewind extends AbstractBaseCard {
         super(ID, TARGET);
 
         paradoxical = true;
+        exhaust = true;
         cardsToPreview = new Paradox();
     }
 
@@ -37,7 +38,7 @@ public class Rewind extends AbstractBaseCard {
     @Override
     public void upgrade() {
         if (!this.upgraded) {
-            this.selfRetain = true;
+            this.exhaust = false;
         }
         super.upgrade();
     }

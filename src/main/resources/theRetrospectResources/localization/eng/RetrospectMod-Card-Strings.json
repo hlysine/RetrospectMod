@@ -330,7 +330,7 @@
   },
   "theRetrospect:Rewind": {
     "NAME": "Rewind",
-    "DESCRIPTION": "{@@}theretrospect:Paradoxical. NL {!Upgrades!|0=|@=Retain. NL }Replay your last card this turn."
+    "DESCRIPTION": "{@@}theretrospect:Paradoxical. NL Replay your last card this turn.{!Upgrades!|0= NL Exhaust.}"
   },
   "theRetrospect:ExponentialBlast": {
     "NAME": "Exponential Blast",
