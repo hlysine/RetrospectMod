@@ -15,7 +15,7 @@ enemies with a pile of cards you spent no energy on.
 
 - 1 new character: The Retrospect
 - 70+ cards, including statuses and curses
-- 6 new relics
+- 7 new relics
 - 2 new potions
 - 5 new events
 - 1 new custom modifier
