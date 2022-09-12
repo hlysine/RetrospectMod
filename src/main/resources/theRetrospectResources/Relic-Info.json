@@ -8,7 +8,7 @@
     "RARITY": "RARE"
   },
   "theRetrospect:ShatteredMirror": {
-    "IMG": "placeholder_relic2.png",
+    "IMG": "shattered_mirror.png",
     "RARITY": "RARE"
   },
   "theRetrospect:BottledSingularity": {
@@ -20,7 +20,7 @@
     "RARITY": "BOSS"
   },
   "theRetrospect:SmartCollar": {
-    "IMG": "placeholder_relic2.png",
+    "IMG": "smart_collar.png",
     "RARITY": "UNCOMMON"
   },
   "theRetrospect:AnkleWeights": {
