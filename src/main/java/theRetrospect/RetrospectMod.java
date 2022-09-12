@@ -124,6 +124,10 @@ public class RetrospectMod implements
         return getModID() + "Resources/images/runMods/" + resourcePath;
     }
 
+    public static String makeUiPath(String resourcePath) {
+        return getModID() + "Resources/images/ui/" + resourcePath;
+    }
+
     public RetrospectMod() {
         logger.info("Subscribe to BaseMod hooks");
 
