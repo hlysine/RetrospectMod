@@ -16,6 +16,7 @@ public class TurnCardsParticleEffect extends AbstractGameEffect {
     private float scale;
     private final float targetScale;
     private static Texture img;
+    private static float globalRotation = 0.0F;
 
     public TurnCardsParticleEffect(float x, float y) {
         if (img == null) {
@@ -26,13 +27,14 @@ public class TurnCardsParticleEffect extends AbstractGameEffect {
         this.scale = 0.1f;
         this.color = new Color();
         this.color.a = 0.0F;
-        this.color.g = MathUtils.random(0.2F, 0.4F);
-        this.color.r = this.color.g + 0.2F;
-        this.color.b = this.color.r + 0.05F;
+        this.color.g = MathUtils.random(0.7F, 0.9F);
+        this.color.r = this.color.g - 0.4F;
+        this.color.b = this.color.r - 0.2F;
 
         this.x = x;
         this.y = y;
-        this.rotation = MathUtils.random(360.0F);
+        this.rotation = globalRotation;
+        globalRotation = (globalRotation + 64.0F) % 360.0F;
         this.startingDuration = 2.0F;
         this.duration = this.startingDuration;
     }

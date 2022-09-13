@@ -22,7 +22,7 @@ public class TurnCardsPanel extends AbstractPanel {
     private static final float COUNT_CIRCLE_W = 128.0F * Settings.scale;
     private final Hitbox hb = new Hitbox(0.0F, 0.0F, 100.0F * Settings.scale, 100.0F * Settings.scale);
     public static float energyVfxTimer = 0.0F;
-    public static final Color textColor = CardHelper.getColor(170, 40, 200);
+    public static final Color textColor = CardHelper.getColor(40, 200, 150);
 
     public TurnCardsPanel() {
         super(
