@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.9.2] - Art Update - 2022-09-13
+
+### Art
+
+- Add placeholder for character select background
+- Add placeholder for character select button
+
 ## [0.9.1] - UI Update - 2022-09-13
 
 ### Power
