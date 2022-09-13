@@ -11,6 +11,8 @@ enemies with a pile of cards you spent no energy on.
 | [View Changelog](CHANGELOG.md)                                                |
 | [Preview Cards](https://retrospect.vercel.app/cards)                          |
 
+This mod depends on [FriendlyMonsters](https://github.com/hlysine/FriendlyMonsters). You need to subscribe to it on Steam or download its jar to play the Retrospect.
+
 ## Content
 
 - 1 new character: The Retrospect
