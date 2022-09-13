@@ -10,7 +10,7 @@
   },
   "theRetrospect:ConstructTimelineAction": {
     "TEXT": [
-      "You have just created a timeline. It contains all the cards you've played this turn. In the following rounds, it will replay those cards one by one."
+      "You have just created a timeline. It contains all the cards you've played this turn. In the following rounds, it will replay those cards one by one. Click on the timeline to see its cards."
     ],
     "LABEL": [
       "Timeline"
