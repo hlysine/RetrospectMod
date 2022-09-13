@@ -1,5 +1,16 @@
 # Changelog
 
+## [0.9.1] - UI Update - 2022-09-13
+
+### Power
+
+- Change Timer power description
+
+### UI
+
+- Add details in timeline FTUE
+- Improve "Cards played this turn" button VFX
+
 ## [0.9.0] - Art & Relics Update - 2022-09-12
 
 ### Mechanics
