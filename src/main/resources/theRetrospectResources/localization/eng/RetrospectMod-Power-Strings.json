@@ -2,7 +2,7 @@
   "theRetrospect:TimerPower": {
     "NAME": "Timer",
     "DESCRIPTIONS": [
-      "#yAdvance at the end of your turn: Play #b",
+      "#yAdvance when you end your turn: Play #b",
       " out of #b",
       " card",
       " cards",
