@@ -229,7 +229,7 @@ public class TheRetrospect extends AbstractPlayerWithMinions {
     // Should return a color object to be used to color the trail of moving cards
     @Override
     public Color getCardTrailColor() {
-        return RetrospectMod.RETROSPECT_COLOR;
+        return RetrospectMod.RETROSPECT_COLOR.cpy();
     }
 
     // Should return a BitmapFont object that you can use to customize how your
