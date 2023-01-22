@@ -1,7 +1,7 @@
 {
   "theRetrospect:TurnCardsViewScreen": {
     "TEXT": [
-      "These cards were played this turn.",
+      "These cards were manually played by you this turn.",
       "Return"
     ]
   },
