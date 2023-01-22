@@ -15,9 +15,12 @@ import theRetrospect.minions.AbstractMinionWithCards;
 import theRetrospect.patches.CardAddFieldsPatch;
 import theRetrospect.patches.CardReturnToMinionPatch;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class CardUtils {
+
+    public static List<AbstractCard> cardsManuallyPlayedThisTurn = new ArrayList<>();
 
     public static boolean getHovered(AbstractCard card) {
         return ReflectionHacks.getPrivate(card, AbstractCard.class, "hovered");

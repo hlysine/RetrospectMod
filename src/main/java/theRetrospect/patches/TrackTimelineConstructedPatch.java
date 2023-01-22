@@ -8,7 +8,7 @@ import theRetrospect.util.TimelineUtils;
         clz = GameActionManager.class,
         method = "clear"
 )
-public class ActionManagerClearPatch {
+public class TrackTimelineConstructedPatch {
     public static void Prefix() {
         TimelineUtils.timelinesConstructedThisCombat.clear();
     }

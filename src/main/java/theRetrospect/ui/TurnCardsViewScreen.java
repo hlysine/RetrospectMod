@@ -4,6 +4,7 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.UIStrings;
 import theRetrospect.RetrospectMod;
+import theRetrospect.util.CardUtils;
 
 public class TurnCardsViewScreen extends AbstractViewScreen {
     public static final String ID = RetrospectMod.makeID(TurnCardsViewScreen.class.getSimpleName());
@@ -19,6 +20,6 @@ public class TurnCardsViewScreen extends AbstractViewScreen {
     }
 
     public void open() {
-        open(AbstractDungeon.actionManager.cardsPlayedThisTurn);
+        open(CardUtils.cardsManuallyPlayedThisTurn);
     }
 }

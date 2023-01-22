@@ -9,6 +9,7 @@ import com.megacrit.cardcrawl.random.Random;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import theRetrospect.effects.PlayerTurnWithoutEnergyEffect;
+import theRetrospect.util.CardUtils;
 import theRetrospect.util.CloneUtils;
 
 import java.util.ArrayList;
@@ -35,6 +36,7 @@ public class CombatState {
     public Random miscRng;
 
     public ArrayList<AbstractCard> cardsPlayedThisTurn;
+    public ArrayList<AbstractCard> cardsManuallyPlayedThisTurn;
     public ArrayList<AbstractOrb> orbsChanneledThisTurn;
     public int mantraGained;
     public int totalDiscardedThisTurn = 0;
@@ -69,6 +71,7 @@ public class CombatState {
         state.miscRng = AbstractDungeon.miscRng.copy();
 
         state.cardsPlayedThisTurn = new ArrayList<>(AbstractDungeon.actionManager.cardsPlayedThisTurn);
+        state.cardsManuallyPlayedThisTurn = new ArrayList<>(CardUtils.cardsManuallyPlayedThisTurn);
         state.orbsChanneledThisTurn = new ArrayList<>(AbstractDungeon.actionManager.orbsChanneledThisTurn);
         state.mantraGained = AbstractDungeon.actionManager.mantraGained;
         state.totalDiscardedThisTurn = GameActionManager.totalDiscardedThisTurn;
@@ -90,6 +93,7 @@ public class CombatState {
         AbstractDungeon.miscRng = this.miscRng.copy();
 
         AbstractDungeon.actionManager.cardsPlayedThisTurn = new ArrayList<>(this.cardsPlayedThisTurn);
+        CardUtils.cardsManuallyPlayedThisTurn = new ArrayList<>(this.cardsManuallyPlayedThisTurn);
         AbstractDungeon.actionManager.orbsChanneledThisTurn = new ArrayList<>(this.orbsChanneledThisTurn);
         AbstractDungeon.actionManager.mantraGained = this.mantraGained;
         GameActionManager.totalDiscardedThisTurn = this.totalDiscardedThisTurn;
@@ -102,7 +106,7 @@ public class CombatState {
 
     public void restoreStateCompletely() {
         AbstractDungeon.getCurrRoom().monsters = CloneUtils.cloneMonsterGroup(this.monsters);
-        this.player.restoreStateForRewind(AbstractDungeon.player);
+        this.player.restoreStateCompletely(AbstractDungeon.player);
 
         AbstractDungeon.monsterRng = this.monsterRng.copy();
         AbstractDungeon.mapRng = this.mapRng.copy();
@@ -119,6 +123,7 @@ public class CombatState {
         AbstractDungeon.miscRng = this.miscRng.copy();
 
         AbstractDungeon.actionManager.cardsPlayedThisTurn = new ArrayList<>(this.cardsPlayedThisTurn);
+        CardUtils.cardsManuallyPlayedThisTurn = new ArrayList<>(this.cardsManuallyPlayedThisTurn);
         AbstractDungeon.actionManager.orbsChanneledThisTurn = new ArrayList<>(this.orbsChanneledThisTurn);
         AbstractDungeon.actionManager.mantraGained = this.mantraGained;
         GameActionManager.totalDiscardedThisTurn = this.totalDiscardedThisTurn;

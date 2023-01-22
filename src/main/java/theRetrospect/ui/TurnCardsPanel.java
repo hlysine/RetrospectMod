@@ -13,6 +13,7 @@ import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import com.megacrit.cardcrawl.ui.panels.AbstractPanel;
 import theRetrospect.RetrospectMod;
 import theRetrospect.effects.TurnCardsParticleEffect;
+import theRetrospect.util.CardUtils;
 
 public class TurnCardsPanel extends AbstractPanel {
     public static final String ID = RetrospectMod.makeID(TurnCardsPanel.class.getSimpleName());
@@ -38,7 +39,7 @@ public class TurnCardsPanel extends AbstractPanel {
         super.updatePositions();
 
         if (!this.isHidden &&
-                AbstractDungeon.actionManager.cardsPlayedThisTurn.size() > 0) {
+                CardUtils.cardsManuallyPlayedThisTurn.size() > 0) {
             this.hb.update();
             updateVfx();
         }
@@ -69,7 +70,7 @@ public class TurnCardsPanel extends AbstractPanel {
                 AbstractDungeon.getMonsters() != null &&
                 !AbstractDungeon.getMonsters().areMonstersDead() &&
                 !AbstractDungeon.player.isDeadOrEscaped() &&
-                !AbstractDungeon.actionManager.cardsPlayedThisTurn.isEmpty()) {
+                !CardUtils.cardsManuallyPlayedThisTurn.isEmpty()) {
 
             this.hb.clicked = false;
             this.hb.hovered = false;
@@ -107,10 +108,10 @@ public class TurnCardsPanel extends AbstractPanel {
 
 
     public void render(SpriteBatch sb) {
-        if (!AbstractDungeon.actionManager.cardsPlayedThisTurn.isEmpty()) {
+        if (!CardUtils.cardsManuallyPlayedThisTurn.isEmpty()) {
             this.hb.move(this.current_x, this.current_y);
 
-            String msg = Integer.toString(AbstractDungeon.actionManager.cardsPlayedThisTurn.size());
+            String msg = Integer.toString(CardUtils.cardsManuallyPlayedThisTurn.size());
             sb.setColor(Settings.TWO_THIRDS_TRANSPARENT_BLACK_COLOR);
             sb.draw(ImageMaster.DECK_COUNT_CIRCLE, this.current_x - COUNT_CIRCLE_W / 2.0F, this.current_y - COUNT_CIRCLE_W / 2.0F, COUNT_CIRCLE_W, COUNT_CIRCLE_W);
 
