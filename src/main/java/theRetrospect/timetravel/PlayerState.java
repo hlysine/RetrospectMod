@@ -147,4 +147,40 @@ public class PlayerState {
         }
         return newGroup;
     }
+
+    public PlayerState copy() {
+        PlayerState state = new PlayerState();
+
+        state.powers = this.powers.stream().map(CloneUtils::clonePower).collect(Collectors.toCollection(ArrayList::new));
+
+        state.lastDamageTaken = this.lastDamageTaken;
+        state.currentHealth = this.currentHealth;
+        state.maxHealth = this.maxHealth;
+        state.currentBlock = this.currentBlock;
+        state.tempHp = this.tempHp;
+
+        state.energyManagerEnergy = this.energyManagerEnergy;
+        state.energyManagerEnergyMaster = this.energyManagerEnergyMaster;
+        state.currentEnergy = this.currentEnergy;
+
+        state.orbs = this.orbs.stream().map(CloneUtils::cloneOrb).collect(Collectors.toCollection(ArrayList::new));
+        state.maxOrbs = this.maxOrbs;
+
+        state.relics = this.relics.stream().map(CloneUtils::cloneRelic).collect(Collectors.toCollection(ArrayList::new));
+
+        state.potions = this.potions.stream().map(CloneUtils::clonePotion).collect(Collectors.toCollection(ArrayList::new));
+        state.potionSlots = this.potionSlots;
+
+        state.stance = CloneUtils.cloneStance(this.stance);
+
+        state.cardsPlayedThisTurn = this.cardsPlayedThisTurn;
+
+        state.drawPile = CloneUtils.cloneCardGroup(this.drawPile);
+        state.hand = CloneUtils.cloneCardGroup(this.hand);
+        state.discardPile = CloneUtils.cloneCardGroup(this.discardPile);
+        state.exhaustPile = CloneUtils.cloneCardGroup(this.exhaustPile);
+        state.limbo = CloneUtils.cloneCardGroup(this.limbo);
+
+        return state;
+    }
 }

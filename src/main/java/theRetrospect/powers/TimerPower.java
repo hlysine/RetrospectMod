@@ -120,10 +120,12 @@ public class TimerPower extends AbstractPower implements CloneablePowerInterface
     }
 
     private void playCard(AbstractCard cardToPlay, HoverableCardStack cardStack) {
-        this.owner.powers.stream()
-                .filter(p -> p instanceof BeforeMinionPlayCardSubscriber)
-                .map(p -> (BeforeMinionPlayCardSubscriber) p)
-                .forEach(p -> p.beforeMinionPlayCard(this.minion, cardToPlay));
+        for (AbstractPower p : this.owner.powers) {
+            if (p instanceof BeforeMinionPlayCardSubscriber) {
+                BeforeMinionPlayCardSubscriber beforeMinionPlayCardSubscriber = (BeforeMinionPlayCardSubscriber) p;
+                beforeMinionPlayCardSubscriber.beforeMinionPlayCard(this.minion, cardToPlay);
+            }
+        }
         addToBot(new QueueCardIntentAction(cardToPlay, cardStack, CardPlaySource.TIMELINE, false));
     }
 

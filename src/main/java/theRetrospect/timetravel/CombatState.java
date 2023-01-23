@@ -133,4 +133,36 @@ public class CombatState {
 
         AbstractDungeon.topLevelEffects.add(new PlayerTurnWithoutEnergyEffect());
     }
+
+    public CombatState copy() {
+        CombatState state = new CombatState();
+
+        state.monsters = CloneUtils.cloneMonsterGroup(this.monsters);
+        state.player = this.player.copy();
+
+        state.monsterRng = this.monsterRng.copy();
+        state.mapRng = this.mapRng.copy();
+        state.eventRng = this.eventRng.copy();
+        state.merchantRng = this.merchantRng.copy();
+        state.cardRng = this.cardRng.copy();
+        state.treasureRng = this.treasureRng.copy();
+        state.relicRng = this.relicRng.copy();
+        state.potionRng = this.potionRng.copy();
+        state.monsterHpRng = this.monsterHpRng.copy();
+        state.aiRng = this.aiRng.copy();
+        state.shuffleRng = this.shuffleRng.copy();
+        state.cardRandomRng = this.cardRandomRng.copy();
+        state.miscRng = this.miscRng.copy();
+
+        state.cardsPlayedThisTurn = new ArrayList<>(this.cardsPlayedThisTurn);
+        state.cardsManuallyPlayedThisTurn = new ArrayList<>(this.cardsManuallyPlayedThisTurn);
+        state.orbsChanneledThisTurn = new ArrayList<>(this.orbsChanneledThisTurn);
+        state.mantraGained = this.mantraGained;
+        state.totalDiscardedThisTurn = this.totalDiscardedThisTurn;
+        state.damageReceivedThisTurn = this.damageReceivedThisTurn;
+        state.playerHpLastTurn = this.playerHpLastTurn;
+        state.turn = this.turn;
+
+        return state;
+    }
 }

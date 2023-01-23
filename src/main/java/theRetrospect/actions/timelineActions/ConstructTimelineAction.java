@@ -23,6 +23,7 @@ import theRetrospect.effects.FlyingOrbEffect;
 import theRetrospect.effects.TimelineCircleEffect;
 import theRetrospect.minions.TimelineMinion;
 import theRetrospect.subscribers.TimelineConstructSubscriber;
+import theRetrospect.timetravel.CombatState;
 import theRetrospect.util.CardUtils;
 import theRetrospect.util.TimelineUtils;
 
@@ -66,7 +67,7 @@ public class ConstructTimelineAction extends AbstractGameAction {
                                 .filter(card -> card != constructionCard)
                                 .map(card -> CardUtils.makeAdvancedCopy(card, true))
                                 .collect(Collectors.toList()),
-                        (int) (-Settings.WIDTH * 0.5), 0, health);
+                        (int) (-Settings.WIDTH * 0.5), 0, health, CombatState.extractState());
 
                 MinionUtils.addMinion(player, minion);
                 TimelineUtils.timelinesConstructedThisCombat.add(minion);

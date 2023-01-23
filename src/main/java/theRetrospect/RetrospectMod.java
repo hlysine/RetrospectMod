@@ -128,6 +128,10 @@ public class RetrospectMod implements
         return getModID() + "Resources/images/ui/" + resourcePath;
     }
 
+    public static String makeShaderPath(String resourcePath) {
+        return getModID() + "Resources/shaders/" + resourcePath;
+    }
+
     public RetrospectMod() {
         logger.info("Subscribe to BaseMod hooks");
 

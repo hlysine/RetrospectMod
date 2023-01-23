@@ -4,6 +4,7 @@ import com.evacipated.cardcrawl.modthespire.lib.*;
 import com.evacipated.cardcrawl.modthespire.patcher.PatchingException;
 import com.megacrit.cardcrawl.actions.GameActionManager;
 import com.megacrit.cardcrawl.actions.common.EnableEndTurnButtonAction;
+import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import javassist.CannotCompileException;
 import javassist.CtBehavior;
@@ -44,6 +45,26 @@ public class StateManagerEventsPatch {
     public static class ActionManagerClearPatch {
         public static void Prefix() {
             StateManager.reset();
+        }
+    }
+
+    @SpirePatch(
+            clz = GameActionManager.class,
+            method = "callEndOfTurnActions"
+    )
+    public static class EndOfTurnPatch {
+        public static void Prefix() {
+            StateManager.atEndOfTurn();
+        }
+    }
+
+    @SpirePatch(
+            clz = AbstractPlayer.class,
+            method = "onVictory"
+    )
+    public static class OnVictoryPatch {
+        public static void Postfix() {
+            StateManager.atEndOfTurn();
         }
     }
 }

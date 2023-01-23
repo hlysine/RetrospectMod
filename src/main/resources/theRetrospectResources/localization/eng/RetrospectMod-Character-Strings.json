@@ -12,7 +12,10 @@
   },
   "theRetrospect:TimelineMinion": {
     "NAMES": [
-      "Timeline"
+      "Alternative Timeline"
+    ],
+    "TEXT": [
+      "This timeline does not exist in the current time."
     ]
   }
 }
