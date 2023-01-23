@@ -1,12 +1,15 @@
 package theRetrospect.timetravel;
 
 import com.megacrit.cardcrawl.actions.GameActionManager;
+import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import hlysine.friendlymonsters.utils.MinionUtils;
 import theRetrospect.actions.general.RunnableAction;
 import theRetrospect.subscribers.StateChangeSubscriber;
 import theRetrospect.util.CardUtils;
+
+import java.util.stream.Collectors;
 
 public class StateManager {
     public static CombatStateTree stateTree;
@@ -36,15 +39,23 @@ public class StateManager {
     /**
      * Travel to a previous round. Present game state is saved as a mid-state of the current round while the previous round is restored.
      *
-     * @param rounds Number of rounds to travel back.
-     * @return A Linear Path with the origin at the present time.
+     * @param rounds        Number of rounds to travel back.
+     * @param cardToExclude Card to exclude from the rewind. This is used to prevent the rewind card from being played again.
+     * @return A Linear Path with the origin at the rewind destination and target at the time before rewinding.
      */
-    public static CombatStateTree.LinearPath rewindTime(int rounds) {
+    public static CombatStateTree.LinearPath rewindTime(int rounds, AbstractCard cardToExclude) {
         // Save current state before rewinding
         CombatState currentState = CombatState.extractState();
         stateTree.getActiveNode().midStates.add(currentState);
         stateTree.getActiveNode().cardsPlayedManually.clear();
-        stateTree.getActiveNode().cardsPlayedManually.addAll(CardUtils.cardsManuallyPlayedThisTurn);
+        stateTree.getActiveNode().cardsPlayedManually.addAll(
+                // Exclude the rewind card from the list of manually played cards
+                // Note that the rewind card is not excluded from the list in the extracted state.
+                // It is only excluded from the list of cards that will be playable through the timeline.
+                CardUtils.cardsManuallyPlayedThisTurn.stream()
+                        .filter(c -> c != cardToExclude)
+                        .collect(Collectors.toList())
+        );
 
         // Rewind to the parent node of destination
         CombatStateTree.LinearPath path = stateTree.createLinearPath(stateTree.getActiveNode(), currentState, rounds);

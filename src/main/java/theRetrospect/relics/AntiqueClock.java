@@ -8,7 +8,7 @@ import theRetrospect.RetrospectMod;
 import theRetrospect.actions.general.CustomQueueCardAction;
 import theRetrospect.actions.general.RunnableAction;
 import theRetrospect.actions.general.ShowCardToBePlayedAction;
-import theRetrospect.cards.skills.Divert;
+import theRetrospect.cards.skills.Rewind;
 import theRetrospect.subscribers.EndOfTurnCardSubscriber;
 import theRetrospect.util.CardPlaySource;
 import theRetrospect.util.CardUtils;
@@ -28,7 +28,7 @@ public class AntiqueClock extends AbstractBaseRelic implements EndOfTurnCardSubs
     public void triggerOnEndOfTurnForPlayingCard(Runnable next) {
         if (!this.grayscale) {
             flash();
-            AbstractCard card = new Divert();
+            AbstractCard card = new Rewind();
             card.applyPowers();
             card.purgeOnUse = true;
             card.current_x = card.target_x = AbstractDungeon.player.drawX;

@@ -3,7 +3,7 @@
     "NAME": "Antique Clock",
     "FLAVOR": "A keepsake you obtained before you left the Spire.",
     "DESCRIPTIONS": [
-      "At the end of your first turn, play 1 #ytheretrospect:Divert."
+      "At the end of your first turn, play 1 #ytheretrospect:Rewind."
     ]
   },
   "theRetrospect:QuantumHourglass": {

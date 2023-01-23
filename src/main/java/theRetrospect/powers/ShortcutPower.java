@@ -9,7 +9,6 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import theRetrospect.RetrospectMod;
-import theRetrospect.actions.timelineActions.ConstructTimelineAction;
 import theRetrospect.subscribers.TimelineConstructSubscriber;
 import theRetrospect.util.TextureLoader;
 
@@ -23,7 +22,7 @@ public class ShortcutPower extends AbstractPower implements CloneablePowerInterf
     private static final Texture tex84 = TextureLoader.getTexture("theRetrospectResources/images/powers/shortcut84.png");
     private static final Texture tex32 = TextureLoader.getTexture("theRetrospectResources/images/powers/shortcut32.png");
 
-    private static final int MAX_AMOUNT = (int) (ConstructTimelineAction.HEALTH_PERCENTAGE_COST * 100f);
+    private static final int MAX_AMOUNT = (int) (0.4f * 100f);
 
     public ShortcutPower(final AbstractCreature owner, int amount) {
         name = NAME;

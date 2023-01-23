@@ -14,6 +14,7 @@ import com.badlogic.gdx.graphics.g3d.ModelInstance;
 import com.esotericsoftware.spine.AnimationState;
 import com.esotericsoftware.spine.AnimationStateData;
 import com.esotericsoftware.spine.Skeleton;
+import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.CardGroup;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.AbstractCreature;
@@ -171,9 +172,13 @@ public class CloneUtils {
         return cloner.deepClone(group);
     }
 
+    public static ArrayList<AbstractCard> cloneCardList(List<AbstractCard> list) {
+        return list.stream().map(c -> CardUtils.makeAdvancedCopy(c, true)).collect(Collectors.toCollection(ArrayList::new));
+    }
+
     public static CardGroup cloneCardGroup(CardGroup group) {
         CardGroup newGroup = new CardGroup(group.type);
-        newGroup.group = group.group.stream().map(c -> CardUtils.makeAdvancedCopy(c, true)).collect(Collectors.toCollection(ArrayList::new));
+        newGroup.group = cloneCardList(group.group);
         return newGroup;
     }
 }

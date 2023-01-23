@@ -65,9 +65,9 @@
   },
   {
     "NAMES": [
-      "divert"
+      "rewind"
     ],
-    "DESCRIPTION": "A skill card that #yconstructs 1 timeline."
+    "DESCRIPTION": "A skill card that replays your last card this turn."
   },
   {
     "PROPER_NAME": "Chaotic Offense",

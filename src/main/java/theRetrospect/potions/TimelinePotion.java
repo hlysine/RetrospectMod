@@ -12,7 +12,7 @@ import com.megacrit.cardcrawl.localization.PotionStrings;
 import com.megacrit.cardcrawl.potions.AbstractPotion;
 import hlysine.friendlymonsters.utils.MinionUtils;
 import theRetrospect.RetrospectMod;
-import theRetrospect.actions.timelineActions.ConstructMultipleTimelineAction;
+import theRetrospect.actions.timetravel.RewindAction;
 
 public class TimelinePotion extends CustomPotion {
 
@@ -39,7 +39,7 @@ public class TimelinePotion extends CustomPotion {
 
     @Override
     public void use(AbstractCreature target) {
-        addToBot(new ConstructMultipleTimelineAction(null, this.potency));
+        addToBot(new RewindAction(null, this.potency));
     }
 
     @Override

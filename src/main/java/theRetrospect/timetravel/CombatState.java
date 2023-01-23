@@ -70,8 +70,8 @@ public class CombatState {
         state.cardRandomRng = AbstractDungeon.cardRandomRng.copy();
         state.miscRng = AbstractDungeon.miscRng.copy();
 
-        state.cardsPlayedThisTurn = new ArrayList<>(AbstractDungeon.actionManager.cardsPlayedThisTurn);
-        state.cardsManuallyPlayedThisTurn = new ArrayList<>(CardUtils.cardsManuallyPlayedThisTurn);
+        state.cardsPlayedThisTurn = CloneUtils.cloneCardList(AbstractDungeon.actionManager.cardsPlayedThisTurn);
+        state.cardsManuallyPlayedThisTurn = CloneUtils.cloneCardList(CardUtils.cardsManuallyPlayedThisTurn);
         state.orbsChanneledThisTurn = new ArrayList<>(AbstractDungeon.actionManager.orbsChanneledThisTurn);
         state.mantraGained = AbstractDungeon.actionManager.mantraGained;
         state.totalDiscardedThisTurn = GameActionManager.totalDiscardedThisTurn;
@@ -92,8 +92,8 @@ public class CombatState {
         AbstractDungeon.aiRng = this.aiRng.copy();
         AbstractDungeon.miscRng = this.miscRng.copy();
 
-        AbstractDungeon.actionManager.cardsPlayedThisTurn = new ArrayList<>(this.cardsPlayedThisTurn);
-        CardUtils.cardsManuallyPlayedThisTurn = new ArrayList<>(this.cardsManuallyPlayedThisTurn);
+        AbstractDungeon.actionManager.cardsPlayedThisTurn = CloneUtils.cloneCardList(this.cardsPlayedThisTurn);
+        CardUtils.cardsManuallyPlayedThisTurn = CloneUtils.cloneCardList(this.cardsManuallyPlayedThisTurn);
         AbstractDungeon.actionManager.orbsChanneledThisTurn = new ArrayList<>(this.orbsChanneledThisTurn);
         AbstractDungeon.actionManager.mantraGained = this.mantraGained;
         GameActionManager.totalDiscardedThisTurn = this.totalDiscardedThisTurn;
@@ -122,8 +122,8 @@ public class CombatState {
         AbstractDungeon.cardRandomRng = this.cardRandomRng.copy();
         AbstractDungeon.miscRng = this.miscRng.copy();
 
-        AbstractDungeon.actionManager.cardsPlayedThisTurn = new ArrayList<>(this.cardsPlayedThisTurn);
-        CardUtils.cardsManuallyPlayedThisTurn = new ArrayList<>(this.cardsManuallyPlayedThisTurn);
+        AbstractDungeon.actionManager.cardsPlayedThisTurn = CloneUtils.cloneCardList(this.cardsPlayedThisTurn);
+        CardUtils.cardsManuallyPlayedThisTurn = CloneUtils.cloneCardList(this.cardsManuallyPlayedThisTurn);
         AbstractDungeon.actionManager.orbsChanneledThisTurn = new ArrayList<>(this.orbsChanneledThisTurn);
         AbstractDungeon.actionManager.mantraGained = this.mantraGained;
         GameActionManager.totalDiscardedThisTurn = this.totalDiscardedThisTurn;
@@ -154,8 +154,8 @@ public class CombatState {
         state.cardRandomRng = this.cardRandomRng.copy();
         state.miscRng = this.miscRng.copy();
 
-        state.cardsPlayedThisTurn = new ArrayList<>(this.cardsPlayedThisTurn);
-        state.cardsManuallyPlayedThisTurn = new ArrayList<>(this.cardsManuallyPlayedThisTurn);
+        state.cardsPlayedThisTurn = CloneUtils.cloneCardList(this.cardsPlayedThisTurn);
+        state.cardsManuallyPlayedThisTurn = CloneUtils.cloneCardList(this.cardsManuallyPlayedThisTurn);
         state.orbsChanneledThisTurn = new ArrayList<>(this.orbsChanneledThisTurn);
         state.mantraGained = this.mantraGained;
         state.totalDiscardedThisTurn = this.totalDiscardedThisTurn;

@@ -26,6 +26,7 @@ import java.util.stream.Collectors;
 
 public class TimelineUtils {
     public static final String TIMELINE_TIP = RetrospectMod.makeID("TIMELINE_TIP");
+    public static final String REWIND_TIP = RetrospectMod.makeID("REWIND_TIP");
 
     public static final List<TimelineMinion> timelinesConstructedThisCombat = new ArrayList<>();
 

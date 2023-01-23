@@ -5,7 +5,7 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theRetrospect.RetrospectMod;
-import theRetrospect.actions.timelineActions.ConstructMultipleTimelineAction;
+import theRetrospect.actions.timetravel.RewindAction;
 import theRetrospect.cards.AbstractBaseCard;
 
 public class LightspeedLeap extends AbstractBaseCard {
@@ -20,7 +20,7 @@ public class LightspeedLeap extends AbstractBaseCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new ConstructMultipleTimelineAction(this, timelineCount));
+        addToBot(new RewindAction(this, timelineCount));
     }
 
     @Override

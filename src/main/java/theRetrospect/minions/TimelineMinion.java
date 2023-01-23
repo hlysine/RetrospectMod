@@ -70,13 +70,15 @@ public class TimelineMinion extends AbstractMinionWithCards implements StateChan
         if (node == null || node.round < timelinePath.originNode.round) {
             halfDead = true;
             timelineTip = new PowerTip(NAME, TEXT[0]);
+            hideHealthBar();
             if (round > timelinePath.targetNode.round) {
                 addToBot(new CollapseTimelineAction(this));
             }
         } else {
             halfDead = false;
-            timelineTip = null;
-            setCards(new ArrayList<>(node.baseState.cardsManuallyPlayedThisTurn));
+            timelineTip = new PowerTip(NAME, TEXT[1] + timelinePath.targetNode.round + TEXT[2]);
+            showHealthBar();
+            setCards(CloneUtils.cloneCardList(node.cardsPlayedManually));
             setCardIntents(this.cards);
             this.currentHealth = node.baseState.player.currentHealth;
             this.maxHealth = node.baseState.player.maxHealth;

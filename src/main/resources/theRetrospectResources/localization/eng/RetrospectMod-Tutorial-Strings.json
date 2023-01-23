@@ -15,5 +15,13 @@
     "LABEL": [
       "Timeline"
     ]
+  },
+  "theRetrospect:RewindAction": {
+    "TEXT": [
+      "You have gone back in time and your past self now appears as an alternative timeline. You can view the cards played by your past self in each turn and replay those cards."
+    ],
+    "LABEL": [
+      "Alternative Timeline"
+    ]
   }
 }

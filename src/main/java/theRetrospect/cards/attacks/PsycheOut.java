@@ -6,7 +6,7 @@ import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theRetrospect.RetrospectMod;
-import theRetrospect.actions.timelineActions.ConstructMultipleTimelineAction;
+import theRetrospect.actions.timetravel.RewindAction;
 import theRetrospect.cards.AbstractBaseCard;
 
 public class PsycheOut extends AbstractBaseCard {
@@ -22,6 +22,6 @@ public class PsycheOut extends AbstractBaseCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         addToBot(new DamageAction(m, new DamageInfo(p, damage, damageTypeForTurn), AbstractGameAction.AttackEffect.SLASH_DIAGONAL));
-        addToBot(new ConstructMultipleTimelineAction(this, timelineCount));
+        addToBot(new RewindAction(this, timelineCount));
     }
 }
