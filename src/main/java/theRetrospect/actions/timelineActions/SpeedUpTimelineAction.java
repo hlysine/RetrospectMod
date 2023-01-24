@@ -20,7 +20,7 @@ public class SpeedUpTimelineAction extends AbstractGameAction {
     @Override
     public void update() {
         AbstractDungeon.actionManager.addToBottom(new VFXAction(new EmpowerEffect(minion.drawX, minion.drawY)));
-        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(minion, AbstractDungeon.player, new TimerPower(minion, amount)));
+        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(minion, AbstractDungeon.player, new TimerPower(minion)));
         this.isDone = true;
     }
 }

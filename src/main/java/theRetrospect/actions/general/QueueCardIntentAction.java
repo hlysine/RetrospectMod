@@ -13,16 +13,35 @@ public class QueueCardIntentAction extends AbstractGameAction {
     private final HoverableCardStack cardStack;
     private final CardPlaySource source;
     private final boolean inFrontOfQueue;
+    private final boolean autoplayCard;
 
-    public QueueCardIntentAction(AbstractCard card, CardPlaySource source, boolean inFrontOfQueue) {
-        this(card, null, source, inFrontOfQueue);
+    /**
+     * Queues a card to be played. The card will be purged after being played.
+     *
+     * @param card           The card to queue.
+     * @param source         The source of the card.
+     * @param inFrontOfQueue Whether to add the card to the front of the card queue.
+     * @param autoplayCard   Whether to spend energy when playing the card. The card will fail to play if there is not enough energy and autoplay is off.
+     */
+    public QueueCardIntentAction(AbstractCard card, CardPlaySource source, boolean inFrontOfQueue, boolean autoplayCard) {
+        this(card, null, source, inFrontOfQueue, autoplayCard);
     }
 
-    public QueueCardIntentAction(AbstractCard card, HoverableCardStack cardStack, CardPlaySource source, boolean inFrontOfQueue) {
+    /**
+     * Queues a card to be played. The card will be purged after being played.
+     *
+     * @param card           The card to queue.
+     * @param cardStack      The card stack to remove the card from.
+     * @param source         The source of the card.
+     * @param inFrontOfQueue Whether to add the card to the front of the card queue.
+     * @param autoplayCard   Whether to spend energy when playing the card. The card will fail to play if there is not enough energy and autoplay is off.
+     */
+    public QueueCardIntentAction(AbstractCard card, HoverableCardStack cardStack, CardPlaySource source, boolean inFrontOfQueue, boolean autoplayCard) {
         this.card = card;
         this.cardStack = cardStack;
         this.source = source;
         this.inFrontOfQueue = inFrontOfQueue;
+        this.autoplayCard = autoplayCard;
     }
 
     @Override
@@ -34,7 +53,7 @@ public class QueueCardIntentAction extends AbstractGameAction {
         CardUtils.setPlaySource(card, source);
         AbstractDungeon.player.limbo.addToBottom(card);
         AbstractDungeon.effectList.add(new CardFlashVfx(card));
-        addToTop(new CustomQueueCardAction(card, true, inFrontOfQueue, true));
+        addToTop(new CustomQueueCardAction(card, true, inFrontOfQueue, autoplayCard));
         this.isDone = true;
     }
 }

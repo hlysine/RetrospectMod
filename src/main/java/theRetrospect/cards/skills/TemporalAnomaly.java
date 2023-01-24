@@ -38,7 +38,7 @@ public class TemporalAnomaly extends AbstractBaseCard {
             CallbackUtils.ForLoop(
                     () -> remainingEffect.get() > 0,
                     remainingEffect::decrementAndGet,
-                    next -> addToBot(new AdvanceTimelineAction(null, true, new AbstractGameAction() {
+                    next -> addToBot(new AdvanceTimelineAction(null, new AbstractGameAction() {
                         @Override
                         public void update() {
                             next.run();

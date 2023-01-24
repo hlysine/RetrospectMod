@@ -13,10 +13,12 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.PowerTip;
 import com.megacrit.cardcrawl.localization.CharacterStrings;
+import com.megacrit.cardcrawl.powers.AbstractPower;
 import theRetrospect.RetrospectMod;
 import theRetrospect.actions.general.RunnableAction;
 import theRetrospect.actions.timelineActions.CollapseTimelineAction;
 import theRetrospect.effects.TimelineAuraEffect;
+import theRetrospect.powers.TimerPower;
 import theRetrospect.subscribers.StateChangeSubscriber;
 import theRetrospect.timetravel.CombatStateTree;
 import theRetrospect.timetravel.StateManager;
@@ -55,6 +57,9 @@ public class TimelineMinion extends AbstractMinionWithCards implements StateChan
             this.img = new Texture(summoner.img.getTextureData());
         if (summoner.corpseImg != null && summoner.corpseImg.getTextureData() != null)
             this.corpseImg = new Texture(summoner.corpseImg.getTextureData());
+
+        this.addPower(new TimerPower(this));
+        this.powers.forEach(AbstractPower::onInitialApplication);
 
         this.timelinePath = timelinePath;
         applyStateForRound(StateManager.getActiveRound());

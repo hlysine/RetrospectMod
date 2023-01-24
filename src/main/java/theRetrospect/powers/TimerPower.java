@@ -9,19 +9,16 @@ import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
+import com.megacrit.cardcrawl.ui.panels.EnergyPanel;
 import theRetrospect.RetrospectMod;
 import theRetrospect.actions.general.QueueCardIntentAction;
 import theRetrospect.actions.general.RunnableAction;
-import theRetrospect.actions.timelineActions.CollapseTimelineAction;
 import theRetrospect.minions.AbstractMinionWithCards;
 import theRetrospect.subscribers.BeforeMinionPlayCardSubscriber;
 import theRetrospect.subscribers.EndOfTurnCardSubscriber;
-import theRetrospect.subscribers.MinionCardsChangedSubscriber;
 import theRetrospect.util.*;
 
-import java.util.concurrent.atomic.AtomicInteger;
-
-public class TimerPower extends AbstractPower implements CloneablePowerInterface, EndOfTurnCardSubscriber, MinionCardsChangedSubscriber {
+public class TimerPower extends AbstractPower implements CloneablePowerInterface, EndOfTurnCardSubscriber {
     public final AbstractMinionWithCards minion;
 
     public static final String POWER_ID = RetrospectMod.makeID(TimerPower.class.getSimpleName());
@@ -32,12 +29,12 @@ public class TimerPower extends AbstractPower implements CloneablePowerInterface
     private static final Texture tex84 = TextureLoader.getTexture("theRetrospectResources/images/powers/timer84.png");
     private static final Texture tex32 = TextureLoader.getTexture("theRetrospectResources/images/powers/timer32.png");
 
-    public TimerPower(final AbstractCreature owner, final int amount) {
+    public TimerPower(final AbstractCreature owner) {
         name = NAME;
         ID = POWER_ID;
 
         this.owner = owner;
-        this.amount = amount;
+        this.amount = -1;
         if (owner instanceof AbstractMinionWithCards)
             this.minion = (AbstractMinionWithCards) owner;
         else
@@ -48,71 +45,35 @@ public class TimerPower extends AbstractPower implements CloneablePowerInterface
 
         this.region128 = new TextureAtlas.AtlasRegion(tex84, 0, 0, 84, 84);
         this.region48 = new TextureAtlas.AtlasRegion(tex32, 0, 0, 32, 32);
-    }
 
-    @Override
-    public void onInitialApplication() {
-        onCardsChanged();
-    }
-
-    public void triggerWithoutConsumingCards(Runnable next) {
-        if (minion == null) {
-            next.run();
-            return;
-        }
-        AtomicInteger cardIdx = new AtomicInteger(0);
-        CallbackUtils.ForLoop(
-                () -> {
-                    if (minion.cards.size() == 0) return false;
-                    int idx = cardIdx.get();
-                    if (minion.cards.size() <= idx) return false;
-                    if (idx >= amount) return false;
-                    return !minion.isDeadOrEscaped();
-                },
-                () -> {
-                    int i = cardIdx.decrementAndGet();
-                    if (i < amount - 1)
-                        addToBot(new WaitAction(0.75f));
-                },
-                nxt -> {
-                    AbstractCard cardToPlay = CardUtils.makeAdvancedCopy(minion.cards.get(cardIdx.get()), true);
-                    CardUtils.addFollowUpActionToBottom(cardToPlay, new RunnableAction(nxt), true, 0);
-                    playCard(cardToPlay, null);
-                },
-                next
-        );
+        updateDescription();
     }
 
     @Override
     public void triggerOnEndOfTurnForPlayingCard(Runnable next) {
-        if (minion == null) {
+        if (minion == null || minion.isDeadOrEscaped()) {
             next.run();
             return;
         }
-        AtomicInteger remainingAmount = new AtomicInteger(amount);
         CallbackUtils.ForLoop(
                 () -> {
-                    updateDescription();
-                    updateCardIntents();
-                    if (minion.cards.size() == 0) {
-                        addToBot(new CollapseTimelineAction(minion));
+                    if (minion.cards.size() == 0) return false;
+                    AbstractCard cardToPlay = minion.cards.get(0);
+                    if (EnergyPanel.getCurrentEnergy() < cardToPlay.costForTurn) {
                         return false;
                     }
-                    if (remainingAmount.get() <= 0) return false;
                     return !minion.isDeadOrEscaped();
                 },
                 () -> {
-                    int i = remainingAmount.decrementAndGet();
-                    if (i > 0)
+                    if (minion.cards.size() == 0) return;
+                    AbstractCard cardToPlay = minion.cards.get(0);
+                    if (EnergyPanel.getCurrentEnergy() >= cardToPlay.costForTurn) {
                         addToBot(new WaitAction(0.75f));
+                    }
                 },
                 nxt -> {
                     AbstractCard cardToPlay = minion.cards.remove(0);
                     CardUtils.addFollowUpActionToBottom(cardToPlay, new RunnableAction(nxt), true, 0);
-                    CardUtils.addFollowUpActionToTop(cardToPlay, new RunnableAction(() -> {
-                        updateDescription();
-                        updateCardIntents();
-                    }), false, 1000);
                     playCard(cardToPlay, minion.cardStack);
                 },
                 next
@@ -126,54 +87,19 @@ public class TimerPower extends AbstractPower implements CloneablePowerInterface
                 beforeMinionPlayCardSubscriber.beforeMinionPlayCard(this.minion, cardToPlay);
             }
         }
-        addToBot(new QueueCardIntentAction(cardToPlay, cardStack, CardPlaySource.TIMELINE, false));
-    }
-
-    @Override
-    public void stackPower(int stackAmount) {
-        super.stackPower(stackAmount);
-        updateDescription();
-        updateCardIntents();
-    }
-
-    @Override
-    public void onVictory() {
-        if (minion != null && !minion.isDeadOrEscaped())
-            TimelineUtils.instantCollapseWithoutEffect(minion);
-    }
-
-    @Override
-    public void onCardsChanged() {
-        updateDescription();
-        updateCardIntents();
-    }
-
-    private void updateCardIntents() {
-        if (minion == null) return;
-        minion.cardIntents.clear();
-        for (int i = 0; i < amount; i++) {
-            if (i >= minion.cards.size()) break;
-            minion.cardIntents.add(minion.cards.get(i));
-        }
+        addToBot(new QueueCardIntentAction(cardToPlay, cardStack, CardPlaySource.TIMELINE, false, false));
     }
 
     @Override
     public void updateDescription() {
         if (minion == null)
-            description = DESCRIPTIONS[6];
-        else if (minion.cards.size() == 0)
-            description = DESCRIPTIONS[5];
+            description = DESCRIPTIONS[1];
         else
-            description = DESCRIPTIONS[0] + Math.min(amount, minion.cards.size()) + DESCRIPTIONS[1] + describeNumber(minion.cards.size(), 2) + DESCRIPTIONS[4];
-    }
-
-    private String describeNumber(int number, int singularIndex) {
-        if (number > 1) return number + DESCRIPTIONS[singularIndex + 1];
-        else return number + DESCRIPTIONS[singularIndex];
+            description = DESCRIPTIONS[0];
     }
 
     @Override
     public AbstractPower makeCopy() {
-        return new TimerPower(owner, amount);
+        return new TimerPower(owner);
     }
 }

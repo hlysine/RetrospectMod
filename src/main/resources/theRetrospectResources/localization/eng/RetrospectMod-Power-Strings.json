@@ -2,12 +2,7 @@
   "theRetrospect:TimerPower": {
     "NAME": "Timer",
     "DESCRIPTIONS": [
-      "#yAdvance when you end your turn: Play #b",
-      " out of #b",
-      " card",
-      " cards",
-      ". NL #yCollapse this timeline when there are no cards left.",
-      "#yCollapse this timeline at the end of this turn.",
+      "Spend energy to play cards at the end of your turn.",
       "This power has no effect."
     ]
   },

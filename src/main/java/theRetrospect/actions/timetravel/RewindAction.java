@@ -11,6 +11,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.TipTracker;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.localization.TutorialStrings;
+import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 import com.megacrit.cardcrawl.ui.FtueTip;
@@ -26,6 +27,8 @@ import theRetrospect.subscribers.TimelineConstructSubscriber;
 import theRetrospect.timetravel.CombatStateTree;
 import theRetrospect.timetravel.StateManager;
 import theRetrospect.util.TimelineUtils;
+
+import java.util.ArrayList;
 
 public class RewindAction extends AbstractGameAction {
 
@@ -59,7 +62,14 @@ public class RewindAction extends AbstractGameAction {
             CombatStateTree.LinearPath timelinePath = StateManager.rewindTime(rounds, rewindCard);
 
             TimelineMinion minion = new TimelineMinion(player, (int) (-Settings.WIDTH * 0.5), 0, timelinePath);
+
+            // add to the end of the list first to trigger events
             MinionUtils.addMinion(player, minion);
+            // move to the front of the list
+            ArrayList<AbstractMonster> monsters = MinionUtils.getMinions(player).monsters;
+            monsters.remove(minion);
+            monsters.add(0, minion);
+
             TimelineUtils.timelinesConstructedThisCombat.add(minion);
 
             TimelineUtils.repositionTimelines(player);

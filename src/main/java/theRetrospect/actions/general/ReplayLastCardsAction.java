@@ -44,7 +44,7 @@ public class ReplayLastCardsAction extends AbstractGameAction {
         addToBot(new ShowCardToBePlayedAction(replayCards, origin_x, origin_y));
         CallbackUtils.ForEachLoop(replayCards, (card, next) -> {
             CardUtils.addFollowUpActionToBottom(card, new RunnableAction(next), true, 0);
-            addToBot(new QueueCardIntentAction(card, null, source, true));
+            addToBot(new QueueCardIntentAction(card, null, source, true, true));
         });
         this.isDone = true;
     }

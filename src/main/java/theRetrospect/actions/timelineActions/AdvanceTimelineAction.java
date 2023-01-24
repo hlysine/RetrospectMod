@@ -15,7 +15,6 @@ public class AdvanceTimelineAction extends AbstractGameAction {
 
     private final TimelineMinion minion;
     private final int triggerCount;
-    private final boolean consumeCards;
     private final AbstractGameAction followUpAction;
 
     /**
@@ -23,12 +22,10 @@ public class AdvanceTimelineAction extends AbstractGameAction {
      *
      * @param minion       The timeline to trigger. Use null for a random timeline.
      * @param advanceCount How many times the timeline should be advanced.
-     * @param consumeCards Whether the played cards should disappear from the timeline.
      */
-    public AdvanceTimelineAction(TimelineMinion minion, int advanceCount, boolean consumeCards, AbstractGameAction followUpAction) {
+    public AdvanceTimelineAction(TimelineMinion minion, int advanceCount, AbstractGameAction followUpAction) {
         this.minion = minion;
         this.triggerCount = advanceCount;
-        this.consumeCards = consumeCards;
         this.followUpAction = followUpAction;
     }
 
@@ -37,8 +34,8 @@ public class AdvanceTimelineAction extends AbstractGameAction {
      *
      * @param minion The timeline to advance. Use null for a random timeline.
      */
-    public AdvanceTimelineAction(TimelineMinion minion, boolean consumeCards, AbstractGameAction followUpAction) {
-        this(minion, 1, consumeCards, followUpAction);
+    public AdvanceTimelineAction(TimelineMinion minion, AbstractGameAction followUpAction) {
+        this(minion, 1, followUpAction);
     }
 
     @Override
@@ -63,10 +60,7 @@ public class AdvanceTimelineAction extends AbstractGameAction {
                     },
                     next -> {
                         finalTarget.inTurn = true;
-                        if (consumeCards)
-                            timer.get().triggerOnEndOfTurnForPlayingCard(next);
-                        else
-                            timer.get().triggerWithoutConsumingCards(next);
+                        timer.get().triggerOnEndOfTurnForPlayingCard(next);
                     },
                     () -> {
                         finalTarget.inTurn = false;

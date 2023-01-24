@@ -28,7 +28,7 @@ public class UnceasingSprint extends AbstractBaseCard {
             for (int i = 0; i < this.magicNumber; i++) {
                 TimelineMinion timeline = TimelineUtils.getRandomTimeline(p, t -> t.cards.size() > 0);
                 if (timeline != null) {
-                    addToTop(new ApplyPowerAction(timeline, p, new TimerPower(timeline, 1)));
+                    addToTop(new ApplyPowerAction(timeline, p, new TimerPower(timeline)));
                 }
             }
         }

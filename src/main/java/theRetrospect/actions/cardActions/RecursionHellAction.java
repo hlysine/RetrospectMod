@@ -21,7 +21,7 @@ public class RecursionHellAction extends AbstractGameAction {
     public void update() {
         AbstractCard recursionCard = new RecursionHell();
         addToBot(new ShowCardToBePlayedAction(recursionCard, origin_x, origin_y));
-        addToBot(new QueueCardIntentAction(recursionCard, null, CardPlaySource.CARD, true));
+        addToBot(new QueueCardIntentAction(recursionCard, null, CardPlaySource.CARD, true, true));
         this.isDone = true;
     }
 }

@@ -62,7 +62,7 @@ public class SynchronizedReflexPower extends AbstractPower implements CloneableP
                         flash();
                         flashed = true;
                     }
-                    addToTop(new ApplyPowerAction(timeline, owner, new TimerPower(timeline, 1)));
+                    addToTop(new ApplyPowerAction(timeline, owner, new TimerPower(timeline)));
                 }
             }
         }

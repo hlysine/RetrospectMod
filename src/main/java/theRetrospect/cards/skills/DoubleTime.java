@@ -18,6 +18,6 @@ public class DoubleTime extends TimelineTargetingCard {
 
     @Override
     public void useOnTarget(AbstractPlayer p, AbstractMonster m, TimelineMinion target) {
-        addToBot(new AdvanceTimelineAction(target, magicNumber, true, new CollapseTimelineAction(target)));
+        addToBot(new AdvanceTimelineAction(target, magicNumber, new CollapseTimelineAction(target)));
     }
 }
