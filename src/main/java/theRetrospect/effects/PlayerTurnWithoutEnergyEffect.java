@@ -47,6 +47,7 @@ public class PlayerTurnWithoutEnergyEffect extends AbstractGameEffect {
     }
 
     public static String getOrdinalNaming(int i) {
+        i = Math.abs(i);
         return i % 100 != 11 && i % 100 != 12 && i % 100 != 13 ? (new String[]{"th", "st", "nd", "rd", "th", "th", "th", "th", "th", "th"})[i % 10] : "th";
     }
 

@@ -15,7 +15,11 @@
       "Alternative Timeline"
     ],
     "TEXT": [
-      "This timeline does not exist in the current time.",
+      "This timeline only exists in round #b",
+      ".",
+      "This timeline only exists between round #b",
+      " and #b",
+      ".",
       "This timeline exists until round #b",
       "."
     ]

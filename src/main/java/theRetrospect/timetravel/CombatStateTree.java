@@ -8,9 +8,10 @@ import java.util.List;
 public class CombatStateTree {
 
     /**
-     * Root of the tree, storing the node of the first round.
+     * Roots of the tree, storing nodes of the first round in each timeline.
+     * The round number may not be exactly 1 if the player rewinds past the first round.
      */
-    public Node root = null;
+    public final List<Node> roots = new ArrayList<>();
     /**
      * Current node of the tree, storing the node of the current round in the current timeline.
      */
@@ -28,15 +29,21 @@ public class CombatStateTree {
         return activeNode.round;
     }
 
-    public void addNode(int round, CombatState state) {
+    public Node addNode(int round, CombatState state) {
         Node node = new Node(round, state, activeNode);
-        if (root == null) {
-            root = node;
-        }
         if (activeNode != null) {
             activeNode.children.add(node);
+        } else {
+            roots.add(node);
         }
         activeNode = node;
+        return node;
+    }
+
+    public Node addRoot(int round, CombatState state) {
+        Node node = new Node(round, state, null);
+        roots.add(node);
+        return node;
     }
 
     /**
@@ -66,7 +73,52 @@ public class CombatStateTree {
      */
     public LinearPath createLinearPath(Node targetNode, CombatState targetState, int originOffset) {
         Node originNode = getNodeForRound(targetNode, targetNode.round - originOffset);
+        if (originNode == null) {
+            originNode = getRoot(targetNode);
+        }
         return createLinearPath(targetNode, targetState, originNode);
+    }
+
+    /**
+     * Get the node at the specified round in the path leading up to the target node.
+     * The provided round number must be smaller than the round number of the target node.
+     *
+     * @param targetNode Node at which the path ends.
+     * @param round      Round to get the node for.
+     * @return Node at the specified round.
+     */
+    public Node getNodeForRound(Node targetNode, int round) {
+        if (round > targetNode.round) {
+            return null;
+        }
+
+        if (round == targetNode.round) {
+            return targetNode;
+        }
+
+        Node node = targetNode;
+        while (node.round > round) {
+            if (node.parent == null) {
+                return null;
+            }
+            node = node.parent;
+        }
+
+        return node;
+    }
+
+    /**
+     * Get the corresponding root node of the provided target node.
+     *
+     * @param targetNode Target node.
+     * @return Root node of the provided target node.
+     */
+    public Node getRoot(Node targetNode) {
+        Node node = targetNode;
+        while (node.parent != null) {
+            node = node.parent;
+        }
+        return node;
     }
 
     public static class Node {
@@ -92,34 +144,6 @@ public class CombatStateTree {
             this.baseState = baseState;
             this.parent = parent;
         }
-    }
-
-    /**
-     * Get the node at the specified round in the path leading up to the target node.
-     * The provided round number must be smaller than the round number of the target node.
-     *
-     * @param targetNode Node at which the path ends.
-     * @param round      Round to get the node for.
-     * @return Node at the specified round.
-     */
-    private static Node getNodeForRound(Node targetNode, int round) {
-        if (round > targetNode.round) {
-            return null;
-        }
-
-        if (round == targetNode.round) {
-            return targetNode;
-        }
-
-        Node node = targetNode;
-        while (node.round > round) {
-            if (node.parent == null) {
-                return null;
-            }
-            node = node.parent;
-        }
-
-        return node;
     }
 
     public static class LinearPath {
@@ -158,7 +182,7 @@ public class CombatStateTree {
                 return cachedNode;
             }
 
-            cachedNode = CombatStateTree.getNodeForRound(targetNode, round);
+            cachedNode = tree.getNodeForRound(targetNode, round);
             return cachedNode;
         }
     }

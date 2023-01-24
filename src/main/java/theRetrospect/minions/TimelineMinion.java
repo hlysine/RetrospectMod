@@ -45,7 +45,7 @@ public class TimelineMinion extends AbstractMinionWithCards implements StateChan
     public CombatStateTree.LinearPath timelinePath;
 
     public TimelineMinion(AbstractPlayer summoner, int offsetX, int offsetY, CombatStateTree.LinearPath timelinePath) {
-        super(NAME, ID, timelinePath.getNodeForRound(StateManager.getActiveRound()).baseState.player.maxHealth, 0, 0, 120, 140, null, offsetX, offsetY);
+        super(NAME, ID, AbstractDungeon.player.maxHealth, 0, 0, 120, 140, null, offsetX, offsetY);
 
         this.scale = 0.5f;
 
@@ -58,6 +58,7 @@ public class TimelineMinion extends AbstractMinionWithCards implements StateChan
 
         this.timelinePath = timelinePath;
         applyStateForRound(StateManager.getActiveRound());
+        addToBot(new RunnableAction(() -> applyStateForRound(StateManager.getActiveRound())));
     }
 
     @Override
@@ -69,19 +70,39 @@ public class TimelineMinion extends AbstractMinionWithCards implements StateChan
         CombatStateTree.Node node = timelinePath.getNodeForRound(round);
         if (node == null || node.round < timelinePath.originNode.round) {
             halfDead = true;
-            timelineTip = new PowerTip(NAME, TEXT[0]);
+            int start = timelinePath.originNode.round;
+            int end = timelinePath.targetNode.round;
+            if (start == end) {
+                timelineTip = new PowerTip(NAME, TEXT[0] + start + TEXT[1]);
+            } else {
+                timelineTip = new PowerTip(NAME, TEXT[2] + timelinePath.originNode.round + TEXT[3] + timelinePath.targetNode.round + TEXT[4]);
+            }
+
             setCards(new ArrayList<>());
             setCardIntents(new ArrayList<>());
+
             hideHealthBar();
+
+            Color c = this.tint.color.cpy();
+            c.a = 0.5f;
+            this.tint.changeColor(c, 5f);
+
             if (round > timelinePath.targetNode.round) {
                 addToBot(new CollapseTimelineAction(this));
             }
         } else {
             halfDead = false;
-            timelineTip = new PowerTip(NAME, TEXT[1] + timelinePath.targetNode.round + TEXT[2]);
-            showHealthBar();
+            timelineTip = new PowerTip(NAME, TEXT[5] + timelinePath.targetNode.round + TEXT[6]);
+
             setCards(CloneUtils.cloneCardList(node.cardsPlayedManually));
             setCardIntents(this.cards);
+
+            showHealthBar();
+
+            Color c = this.tint.color.cpy();
+            c.a = 1f;
+            this.tint.changeColor(c, 5f);
+
             this.currentHealth = node.baseState.player.currentHealth;
             this.maxHealth = node.baseState.player.maxHealth;
             this.currentBlock = node.baseState.player.currentBlock;

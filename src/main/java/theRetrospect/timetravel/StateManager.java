@@ -57,15 +57,32 @@ public class StateManager {
                         .collect(Collectors.toList())
         );
 
-        // Rewind to the parent node of destination
-        CombatStateTree.LinearPath path = stateTree.createLinearPath(stateTree.getActiveNode(), currentState, rounds);
-        stateTree.setActiveNode(path.originNode.parent); // todo: handle null, which means rewinding past round 1
+        // Rewind to the destination
+        CombatStateTree.Node destination = stateTree.getNodeForRound(stateTree.getActiveNode(), stateTree.getActiveRound() - rounds);
+        if (destination == null) {
+            destination = stateTree.addRoot(stateTree.getActiveRound() - rounds, stateTree.getRoot(stateTree.getActiveNode()).baseState.copy());
+            destination.baseState.turn = destination.round;
 
-        // Set a new node as destination
-        stateTree.addNode(path.originNode.round, path.originNode.baseState.copy());
-        stateTree.getActiveNode().baseState.restoreStateForRewind();
-        onActiveNodeChanged();
-        return path;
+            CombatStateTree.LinearPath path = stateTree.createLinearPath(stateTree.getActiveNode(), currentState, rounds);
+
+            stateTree.setActiveNode(destination);
+            stateTree.getActiveNode().baseState.restoreStateForRewind();
+            onActiveNodeChanged();
+            return path;
+        } else {
+            CombatStateTree.LinearPath path = stateTree.createLinearPath(stateTree.getActiveNode(), currentState, rounds);
+            if (path.originNode.parent == null) {
+                // Rewinding to exactly round 1
+                stateTree.setActiveNode(stateTree.addRoot(path.originNode.round, path.originNode.baseState.copy()));
+            } else {
+                // Rewinding to a later round
+                stateTree.setActiveNode(path.originNode.parent);
+                stateTree.addNode(path.originNode.round, path.originNode.baseState.copy());
+            }
+            stateTree.getActiveNode().baseState.restoreStateForRewind();
+            onActiveNodeChanged();
+            return path;
+        }
     }
 
     private static void onActiveNodeChanged() {
