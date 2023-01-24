@@ -7,6 +7,7 @@ import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.helpers.input.InputHelper;
+import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.ui.buttons.PeekButton;
 import hlysine.friendlymonsters.monsters.AbstractFriendlyMonster;
 import theRetrospect.RetrospectMod;
@@ -18,7 +19,6 @@ import theRetrospect.util.HoverableCardStack;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 public class AbstractMinionWithCards extends AbstractFriendlyMonster {
 
@@ -84,11 +84,11 @@ public class AbstractMinionWithCards extends AbstractFriendlyMonster {
     }
 
     public void triggerCardsChange() {
-        Optional<MinionCardsChangedSubscriber> power = this.powers.stream()
-                .filter(p -> p instanceof MinionCardsChangedSubscriber)
-                .findFirst()
-                .map(p -> (MinionCardsChangedSubscriber) p);
-        power.ifPresent(MinionCardsChangedSubscriber::onCardsChanged);
+        for (AbstractPower power : this.powers) {
+            if (power instanceof MinionCardsChangedSubscriber) {
+                ((MinionCardsChangedSubscriber) power).onCardsChanged();
+            }
+        }
     }
 
     public void setCardIntents(List<AbstractCard> cardIntents) {
