@@ -3,7 +3,7 @@ package theRetrospect.cards.skills;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theRetrospect.RetrospectMod;
-import theRetrospect.actions.cardActions.TheBestDefenseAction;
+import theRetrospect.actions.card.TheBestDefenseAction;
 import theRetrospect.cards.AbstractBaseCard;
 
 public class TheBestDefense extends AbstractBaseCard {

@@ -5,7 +5,7 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.ui.panels.EnergyPanel;
 import theRetrospect.RetrospectMod;
-import theRetrospect.actions.timelineActions.AdvanceTimelineAction;
+import theRetrospect.actions.timeline.AdvanceTimelineAction;
 import theRetrospect.cards.AbstractBaseCard;
 import theRetrospect.util.CallbackUtils;
 import theRetrospect.util.CardUtils;

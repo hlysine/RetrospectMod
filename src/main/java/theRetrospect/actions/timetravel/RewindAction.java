@@ -24,8 +24,8 @@ import theRetrospect.effects.TimeTravelEffect;
 import theRetrospect.effects.TimelineCircleEffect;
 import theRetrospect.minions.TimelineMinion;
 import theRetrospect.subscribers.TimelineConstructSubscriber;
-import theRetrospect.timetravel.CombatStateTree;
-import theRetrospect.timetravel.StateManager;
+import theRetrospect.mechanics.timetravel.CombatStateTree;
+import theRetrospect.mechanics.timetravel.StateManager;
 import theRetrospect.util.TimelineUtils;
 
 import java.util.ArrayList;

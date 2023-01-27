@@ -3,7 +3,7 @@ package theRetrospect.cards.skills;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theRetrospect.RetrospectMod;
-import theRetrospect.actions.cardActions.SelfCorrectionAction;
+import theRetrospect.actions.card.SelfCorrectionAction;
 import theRetrospect.cards.TimelineTargetingCard;
 import theRetrospect.minions.TimelineMinion;
 

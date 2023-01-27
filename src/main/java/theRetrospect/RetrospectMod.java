@@ -11,6 +11,7 @@ import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.evacipated.cardcrawl.mod.stslib.Keyword;
+import com.evacipated.cardcrawl.mod.stslib.icons.CustomIconHelper;
 import com.evacipated.cardcrawl.mod.stslib.patches.CustomTargeting;
 import com.evacipated.cardcrawl.modthespire.lib.SpireInitializer;
 import com.google.gson.Gson;
@@ -26,6 +27,8 @@ import org.apache.logging.log4j.Logger;
 import theRetrospect.cards.AbstractBaseCard;
 import theRetrospect.characters.TheRetrospect;
 import theRetrospect.events.*;
+import theRetrospect.icons.UnstableEnergyIcon;
+import theRetrospect.mechanics.cardAttributes.CardPlaySource;
 import theRetrospect.patches.metrics.DevCommandsMetricPatch;
 import theRetrospect.potions.ButterflyInAJar;
 import theRetrospect.potions.TimelinePotion;
@@ -168,7 +171,7 @@ public class RetrospectMod implements
         Gson coolG = new Gson();
         InputStream in = RetrospectMod.class.getResourceAsStream("/IDCheckStringsDONT-EDIT-AT-ALL.json");
         assert in != null;
-        IDCheckDontTouchPls EXCEPTION_STRINGS = coolG.fromJson(new InputStreamReader(in, StandardCharsets.UTF_8), IDCheckDontTouchPls.class);
+        ModIdCheck EXCEPTION_STRINGS = coolG.fromJson(new InputStreamReader(in, StandardCharsets.UTF_8), ModIdCheck.class);
         logger.info("You are attempting to set your mod ID as: " + ID);
         if (ID.equals(EXCEPTION_STRINGS.DEFAULTID)) {
             throw new RuntimeException(EXCEPTION_STRINGS.EXCEPTION);
@@ -188,7 +191,7 @@ public class RetrospectMod implements
         Gson coolG = new Gson();
         InputStream in = RetrospectMod.class.getResourceAsStream("/IDCheckStringsDONT-EDIT-AT-ALL.json");
         assert in != null;
-        IDCheckDontTouchPls EXCEPTION_STRINGS = coolG.fromJson(new InputStreamReader(in, StandardCharsets.UTF_8), IDCheckDontTouchPls.class);
+        ModIdCheck EXCEPTION_STRINGS = coolG.fromJson(new InputStreamReader(in, StandardCharsets.UTF_8), ModIdCheck.class);
         String packageName = RetrospectMod.class.getPackage().getName();
         FileHandle resourcePathExists = Gdx.files.internal(getModID() + "Resources");
         if (!modID.equals(EXCEPTION_STRINGS.DEVID)) {
@@ -298,6 +301,8 @@ public class RetrospectMod implements
     @Override
     public void receiveEditCards() {
         pathCheck();
+
+        CustomIconHelper.addCustomIcon(UnstableEnergyIcon.get());
 
         List<CustomVariable> customVariables = new ArrayList<>();
         customVariables.add(new TimelineCountVariable());

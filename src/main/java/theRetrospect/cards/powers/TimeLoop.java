@@ -3,7 +3,7 @@ package theRetrospect.cards.powers;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theRetrospect.RetrospectMod;
-import theRetrospect.actions.cardActions.TimeLoopAction;
+import theRetrospect.actions.card.TimeLoopAction;
 import theRetrospect.cards.TimelineTargetingCard;
 import theRetrospect.minions.TimelineMinion;
 

@@ -16,13 +16,13 @@ import com.megacrit.cardcrawl.localization.CharacterStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import theRetrospect.RetrospectMod;
 import theRetrospect.actions.general.RunnableAction;
-import theRetrospect.actions.timelineActions.CollapseTimelineAction;
+import theRetrospect.actions.timeline.CollapseTimelineAction;
 import theRetrospect.effects.TimelineAuraEffect;
 import theRetrospect.powers.TimerPower;
 import theRetrospect.subscribers.StateChangeSubscriber;
-import theRetrospect.timetravel.CombatStateTree;
-import theRetrospect.timetravel.StateManager;
-import theRetrospect.util.CardPlaySource;
+import theRetrospect.mechanics.timetravel.CombatStateTree;
+import theRetrospect.mechanics.timetravel.StateManager;
+import theRetrospect.mechanics.cardAttributes.CardPlaySource;
 import theRetrospect.util.CardUtils;
 import theRetrospect.util.CloneUtils;
 

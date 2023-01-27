@@ -6,7 +6,7 @@ import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theRetrospect.RetrospectMod;
-import theRetrospect.actions.cardActions.ChargeRifleAction;
+import theRetrospect.actions.card.ChargeRifleAction;
 import theRetrospect.cards.AbstractBaseCard;
 
 public class ChargeRifle extends AbstractBaseCard {

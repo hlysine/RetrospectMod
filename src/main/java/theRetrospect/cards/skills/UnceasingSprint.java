@@ -4,11 +4,11 @@ import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theRetrospect.RetrospectMod;
-import theRetrospect.actions.cardActions.UnceasingEndTurnAction;
+import theRetrospect.actions.card.UnceasingEndTurnAction;
 import theRetrospect.cards.AbstractBaseCard;
 import theRetrospect.minions.TimelineMinion;
 import theRetrospect.powers.TimerPower;
-import theRetrospect.util.CardPlaySource;
+import theRetrospect.mechanics.cardAttributes.CardPlaySource;
 import theRetrospect.util.CardUtils;
 import theRetrospect.util.TimelineUtils;
 

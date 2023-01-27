@@ -8,7 +8,7 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import javassist.CannotCompileException;
 import javassist.CtBehavior;
-import theRetrospect.timetravel.StateManager;
+import theRetrospect.mechanics.timetravel.StateManager;
 
 public class StateManagerEventsPatch {
 

@@ -31,12 +31,11 @@ public class ShowCardToBePlayedEffect extends AbstractGameEffect {
         }
 
         this.cardsToPlay = new ArrayList<>(cardsToPlay);
-        ShowCardToBePlayedEffect self = this;
         for (AbstractCard card : this.cardsToPlay) {
             CardUtils.addFollowUpActionToTop(card, new AbstractGameAction() {
                 @Override
                 public void update() {
-                    self.cardsToPlay.remove(card);
+                    ShowCardToBePlayedEffect.this.cardsToPlay.remove(card);
                     this.isDone = true;
                 }
             }, false, 1000);

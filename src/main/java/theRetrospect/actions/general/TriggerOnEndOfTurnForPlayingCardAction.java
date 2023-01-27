@@ -50,7 +50,8 @@ public class TriggerOnEndOfTurnForPlayingCardAction extends AbstractGameAction {
                 for (AbstractMonster monster : minions.monsters) {
                     if (monster instanceof TimelineMinion) {
                         TimelineMinion timeline = (TimelineMinion) monster;
-                        timeline.inTurn = true;
+                        if (!timeline.isDeadOrEscaped())
+                            timeline.inTurn = true;
                     }
                 }
                 CallbackUtils.ForEachLoop(minions.monsters, (monster, next) -> {

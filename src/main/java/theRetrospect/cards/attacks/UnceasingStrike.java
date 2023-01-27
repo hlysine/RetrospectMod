@@ -6,9 +6,9 @@ import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theRetrospect.RetrospectMod;
-import theRetrospect.actions.cardActions.UnceasingEndTurnAction;
+import theRetrospect.actions.card.UnceasingEndTurnAction;
 import theRetrospect.cards.AbstractBaseCard;
-import theRetrospect.util.CardPlaySource;
+import theRetrospect.mechanics.cardAttributes.CardPlaySource;
 import theRetrospect.util.CardUtils;
 
 public class UnceasingStrike extends AbstractBaseCard {

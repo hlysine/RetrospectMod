@@ -3,7 +3,7 @@ package theRetrospect.cards.attacks;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theRetrospect.RetrospectMod;
-import theRetrospect.actions.cardActions.ShatteringBurstAction;
+import theRetrospect.actions.card.ShatteringBurstAction;
 import theRetrospect.cards.AbstractBaseCard;
 
 public class ShatteringBurst extends AbstractBaseCard {

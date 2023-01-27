@@ -11,9 +11,13 @@ import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.ui.panels.EnergyPanel;
 import theRetrospect.RetrospectMod;
+import theRetrospect.mechanics.cardAttributes.CardFollowUpAction;
+import theRetrospect.mechanics.cardAttributes.CardFollowUpActionHandler;
+import theRetrospect.mechanics.cardAttributes.CardPlaySource;
+import theRetrospect.mechanics.cardAttributes.CardReturnInfo;
 import theRetrospect.minions.AbstractMinionWithCards;
-import theRetrospect.patches.CardAddFieldsPatch;
-import theRetrospect.patches.CardReturnToMinionPatch;
+import theRetrospect.patches.cards.CardAddFieldsPatch;
+import theRetrospect.patches.cards.CardReturnToMinionPatch;
 
 import java.util.ArrayList;
 import java.util.List;

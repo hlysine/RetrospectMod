@@ -10,7 +10,7 @@ import theRetrospect.actions.general.RunnableAction;
 import theRetrospect.actions.general.ShowCardToBePlayedAction;
 import theRetrospect.cards.skills.Rewind;
 import theRetrospect.subscribers.EndOfTurnCardSubscriber;
-import theRetrospect.util.CardPlaySource;
+import theRetrospect.mechanics.cardAttributes.CardPlaySource;
 import theRetrospect.util.CardUtils;
 
 @AutoAdd.Seen

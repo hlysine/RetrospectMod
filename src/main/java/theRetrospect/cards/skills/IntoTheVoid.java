@@ -3,7 +3,7 @@ package theRetrospect.cards.skills;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theRetrospect.RetrospectMod;
-import theRetrospect.actions.cardActions.IntoTheVoidAction;
+import theRetrospect.actions.card.IntoTheVoidAction;
 import theRetrospect.cards.AbstractBaseCard;
 
 public class IntoTheVoid extends AbstractBaseCard {

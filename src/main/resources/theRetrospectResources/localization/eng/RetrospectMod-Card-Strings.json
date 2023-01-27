@@ -24,7 +24,7 @@
   },
   "theRetrospect:Divert": {
     "NAME": "Divert",
-    "DESCRIPTION": "{@@}{!Upgrades!|0=Ethereal. NL }theretrospect:Construct !theRetrospect:TimelineCount! timeline{!theRetrospect:TimelineCount!|>1=s}."
+    "DESCRIPTION": "{@@}{!Upgrades!|0=Ethereal. NL }theretrospect:Construct !theRetrospect:TimelineCount! timeline{!theRetrospect:TimelineCount!|>1=s}. Gain [theRetrospect:UnstableEnergyIcon] ."
   },
   "theRetrospect:DoubleTime": {
     "NAME": "Double Time",
