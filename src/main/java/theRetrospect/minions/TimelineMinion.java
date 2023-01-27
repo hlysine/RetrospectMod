@@ -18,11 +18,11 @@ import theRetrospect.RetrospectMod;
 import theRetrospect.actions.general.RunnableAction;
 import theRetrospect.actions.timeline.CollapseTimelineAction;
 import theRetrospect.effects.TimelineAuraEffect;
-import theRetrospect.powers.TimerPower;
-import theRetrospect.subscribers.StateChangeSubscriber;
+import theRetrospect.mechanics.card.CardPlaySource;
 import theRetrospect.mechanics.timetravel.CombatStateTree;
 import theRetrospect.mechanics.timetravel.StateManager;
-import theRetrospect.mechanics.card.CardPlaySource;
+import theRetrospect.powers.TimerPower;
+import theRetrospect.subscribers.StateChangeSubscriber;
 import theRetrospect.util.CardUtils;
 import theRetrospect.util.CloneUtils;
 
@@ -45,6 +45,7 @@ public class TimelineMinion extends AbstractMinionWithCards implements StateChan
     public boolean inTurn = false;
 
     public CombatStateTree.LinearPath timelinePath;
+    private CombatStateTree.Node currentNode;
 
     public TimelineMinion(AbstractPlayer summoner, int offsetX, int offsetY, CombatStateTree.LinearPath timelinePath) {
         super(NAME, ID, AbstractDungeon.player.maxHealth, 0, 0, 120, 140, null, offsetX, offsetY);
@@ -75,6 +76,7 @@ public class TimelineMinion extends AbstractMinionWithCards implements StateChan
         CombatStateTree.Node node = timelinePath.getNodeForRound(round);
         if (node == null || node.round < timelinePath.originNode.round) {
             halfDead = true;
+
             int start = timelinePath.originNode.round;
             int end = timelinePath.targetNode.round;
             if (start == end) {
@@ -95,12 +97,17 @@ public class TimelineMinion extends AbstractMinionWithCards implements StateChan
             if (round > timelinePath.targetNode.round) {
                 addToBot(new CollapseTimelineAction(this));
             }
+
+            currentNode = null;
         } else {
             halfDead = false;
+
             timelineTip = new PowerTip(NAME, TEXT[5] + timelinePath.targetNode.round + TEXT[6]);
 
-            setCards(CloneUtils.cloneCardList(node.cardsPlayedManually));
-            setCardIntents(this.cards);
+            if (currentNode != node) { // prevent cards from jerking when the list hasn't changed
+                setCards(CloneUtils.cloneCardList(node.cardsPlayedManually));
+                setCardIntents(this.cards);
+            }
 
             showHealthBar();
 
@@ -112,6 +119,8 @@ public class TimelineMinion extends AbstractMinionWithCards implements StateChan
             this.maxHealth = node.baseState.player.maxHealth;
             this.currentBlock = node.baseState.player.currentBlock;
             TempHPField.tempHp.set(this, node.baseState.player.tempHp);
+
+            currentNode = node;
         }
     }
 
