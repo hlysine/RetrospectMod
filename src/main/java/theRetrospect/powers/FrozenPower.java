@@ -11,7 +11,7 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import theRetrospect.RetrospectMod;
-import theRetrospect.mechanics.cardAttributes.CardPlaySource;
+import theRetrospect.mechanics.card.CardPlaySource;
 import theRetrospect.util.CardUtils;
 import theRetrospect.util.TextureLoader;
 

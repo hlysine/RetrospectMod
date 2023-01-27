@@ -1,4 +1,4 @@
-package theRetrospect.patches.cards;
+package theRetrospect.patches.card;
 
 import com.evacipated.cardcrawl.modthespire.lib.*;
 import com.evacipated.cardcrawl.modthespire.patcher.PatchingException;
@@ -12,7 +12,7 @@ import com.megacrit.cardcrawl.vfx.combat.EmpowerEffect;
 import javassist.CannotCompileException;
 import javassist.CtBehavior;
 import theRetrospect.minions.AbstractMinionWithCards;
-import theRetrospect.mechanics.cardAttributes.CardReturnInfo;
+import theRetrospect.mechanics.card.CardReturnInfo;
 import theRetrospect.util.CardUtils;
 
 public class CardReturnToMinionPatch {

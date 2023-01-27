@@ -1,4 +1,4 @@
-package theRetrospect.mechanics.cardAttributes;
+package theRetrospect.mechanics.card;
 
 import theRetrospect.minions.AbstractMinionWithCards;
 

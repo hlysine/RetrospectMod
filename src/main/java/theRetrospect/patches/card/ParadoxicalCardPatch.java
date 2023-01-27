@@ -1,4 +1,4 @@
-package theRetrospect.patches.cards;
+package theRetrospect.patches.card;
 
 import com.evacipated.cardcrawl.modthespire.lib.*;
 import com.evacipated.cardcrawl.modthespire.patcher.PatchingException;
@@ -10,7 +10,7 @@ import javassist.CannotCompileException;
 import javassist.CtBehavior;
 import theRetrospect.cards.AbstractBaseCard;
 import theRetrospect.cards.statuses.Paradox;
-import theRetrospect.mechanics.cardAttributes.CardPlaySource;
+import theRetrospect.mechanics.card.CardPlaySource;
 import theRetrospect.util.CardUtils;
 
 @SpirePatch(

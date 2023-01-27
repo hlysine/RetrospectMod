@@ -1,4 +1,4 @@
-package theRetrospect.patches.relics;
+package theRetrospect.patches.relic;
 
 import basemod.ReflectionHacks;
 import com.evacipated.cardcrawl.modthespire.lib.SpirePatch;

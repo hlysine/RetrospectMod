@@ -4,7 +4,7 @@ import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.vfx.cardManip.CardFlashVfx;
-import theRetrospect.mechanics.cardAttributes.CardPlaySource;
+import theRetrospect.mechanics.card.CardPlaySource;
 import theRetrospect.util.CardUtils;
 import theRetrospect.util.HoverableCardStack;
 

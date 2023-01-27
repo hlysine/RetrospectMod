@@ -1,4 +1,4 @@
-package theRetrospect.patches.cards;
+package theRetrospect.patches.card;
 
 import com.evacipated.cardcrawl.modthespire.lib.*;
 import com.evacipated.cardcrawl.modthespire.patcher.PatchingException;

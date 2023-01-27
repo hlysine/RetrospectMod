@@ -8,7 +8,7 @@ import theRetrospect.actions.card.UnceasingEndTurnAction;
 import theRetrospect.cards.AbstractBaseCard;
 import theRetrospect.minions.TimelineMinion;
 import theRetrospect.powers.TimerPower;
-import theRetrospect.mechanics.cardAttributes.CardPlaySource;
+import theRetrospect.mechanics.card.CardPlaySource;
 import theRetrospect.util.CardUtils;
 import theRetrospect.util.TimelineUtils;
 

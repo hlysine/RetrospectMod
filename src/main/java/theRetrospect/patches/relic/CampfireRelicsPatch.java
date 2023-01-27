@@ -1,4 +1,4 @@
-package theRetrospect.patches.relics;
+package theRetrospect.patches.relic;
 
 import com.evacipated.cardcrawl.modthespire.lib.SpirePatch;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;

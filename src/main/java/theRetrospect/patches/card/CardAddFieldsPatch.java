@@ -1,11 +1,11 @@
-package theRetrospect.patches.cards;
+package theRetrospect.patches.card;
 
 import com.evacipated.cardcrawl.modthespire.lib.SpireField;
 import com.evacipated.cardcrawl.modthespire.lib.SpirePatch;
 import com.megacrit.cardcrawl.cards.AbstractCard;
-import theRetrospect.mechanics.cardAttributes.CardFollowUpAction;
-import theRetrospect.mechanics.cardAttributes.CardPlaySource;
-import theRetrospect.mechanics.cardAttributes.CardReturnInfo;
+import theRetrospect.mechanics.card.CardFollowUpAction;
+import theRetrospect.mechanics.card.CardPlaySource;
+import theRetrospect.mechanics.card.CardReturnInfo;
 
 import java.util.ArrayList;
 import java.util.List;

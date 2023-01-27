@@ -1,4 +1,4 @@
-package theRetrospect.mechanics.cardAttributes;
+package theRetrospect.mechanics.card;
 
 /**
  * Denotes the source that causes a card to be played.

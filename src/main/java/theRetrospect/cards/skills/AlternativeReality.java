@@ -6,7 +6,7 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theRetrospect.RetrospectMod;
 import theRetrospect.cards.AbstractBaseCard;
-import theRetrospect.mechanics.cardAttributes.CardPlaySource;
+import theRetrospect.mechanics.card.CardPlaySource;
 import theRetrospect.util.CardUtils;
 
 public class AlternativeReality extends AbstractBaseCard {

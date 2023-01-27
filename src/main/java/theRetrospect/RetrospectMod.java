@@ -28,7 +28,7 @@ import theRetrospect.cards.AbstractBaseCard;
 import theRetrospect.characters.TheRetrospect;
 import theRetrospect.events.*;
 import theRetrospect.icons.UnstableEnergyIcon;
-import theRetrospect.mechanics.cardAttributes.CardPlaySource;
+import theRetrospect.mechanics.card.CardPlaySource;
 import theRetrospect.patches.metrics.DevCommandsMetricPatch;
 import theRetrospect.potions.ButterflyInAJar;
 import theRetrospect.potions.TimelinePotion;

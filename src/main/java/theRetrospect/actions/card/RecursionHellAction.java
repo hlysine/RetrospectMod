@@ -5,7 +5,7 @@ import com.megacrit.cardcrawl.cards.AbstractCard;
 import theRetrospect.actions.general.QueueCardIntentAction;
 import theRetrospect.actions.general.ShowCardToBePlayedAction;
 import theRetrospect.cards.attacks.RecursionHell;
-import theRetrospect.mechanics.cardAttributes.CardPlaySource;
+import theRetrospect.mechanics.card.CardPlaySource;
 
 public class RecursionHellAction extends AbstractGameAction {
 

@@ -1,4 +1,4 @@
-package theRetrospect.mechanics.cardAttributes;
+package theRetrospect.mechanics.card;
 
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction;

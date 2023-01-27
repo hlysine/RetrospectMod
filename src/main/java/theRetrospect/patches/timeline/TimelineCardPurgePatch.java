@@ -8,8 +8,8 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import javassist.CannotCompileException;
 import javassist.CtBehavior;
 import theRetrospect.actions.general.ShowTimelineCardAndPurgeAction;
-import theRetrospect.mechanics.cardAttributes.CardPlaySource;
-import theRetrospect.mechanics.cardAttributes.CardReturnInfo;
+import theRetrospect.mechanics.card.CardPlaySource;
+import theRetrospect.mechanics.card.CardReturnInfo;
 import theRetrospect.util.CardUtils;
 
 @SpirePatch(

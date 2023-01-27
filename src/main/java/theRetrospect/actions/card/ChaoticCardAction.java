@@ -9,7 +9,7 @@ import theRetrospect.actions.general.RunnableAction;
 import theRetrospect.actions.general.ShowCardToBePlayedAction;
 import theRetrospect.actions.timetravel.RewindAction;
 import theRetrospect.cards.AbstractBaseCard;
-import theRetrospect.mechanics.cardAttributes.CardFollowUpActionHandler;
+import theRetrospect.mechanics.card.CardFollowUpActionHandler;
 import theRetrospect.util.CardUtils;
 
 import java.util.List;

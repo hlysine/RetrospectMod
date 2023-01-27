@@ -9,7 +9,7 @@ import theRetrospect.RetrospectMod;
 import theRetrospect.actions.general.ReplayLastCardsAction;
 import theRetrospect.cards.AbstractBaseCard;
 import theRetrospect.cards.statuses.Paradox;
-import theRetrospect.mechanics.cardAttributes.CardPlaySource;
+import theRetrospect.mechanics.card.CardPlaySource;
 import theRetrospect.util.CardUtils;
 
 public class SleightOfHand extends AbstractBaseCard {

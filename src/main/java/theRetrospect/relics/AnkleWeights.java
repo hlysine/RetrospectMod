@@ -6,7 +6,7 @@ import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.ui.campfire.AbstractCampfireOption;
 import theRetrospect.RetrospectMod;
-import theRetrospect.patches.relics.CampfireRelicsPatch;
+import theRetrospect.patches.relic.CampfireRelicsPatch;
 
 import java.util.ArrayList;
 

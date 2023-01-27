@@ -22,7 +22,7 @@ import theRetrospect.powers.TimerPower;
 import theRetrospect.subscribers.StateChangeSubscriber;
 import theRetrospect.mechanics.timetravel.CombatStateTree;
 import theRetrospect.mechanics.timetravel.StateManager;
-import theRetrospect.mechanics.cardAttributes.CardPlaySource;
+import theRetrospect.mechanics.card.CardPlaySource;
 import theRetrospect.util.CardUtils;
 import theRetrospect.util.CloneUtils;
 
