@@ -29,6 +29,7 @@ import theRetrospect.characters.TheRetrospect;
 import theRetrospect.events.*;
 import theRetrospect.icons.VolatileEnergyIcon;
 import theRetrospect.mechanics.card.CardPlaySource;
+import theRetrospect.mechanics.timeline.TimelineTargeting;
 import theRetrospect.patches.metrics.DevCommandsMetricPatch;
 import theRetrospect.potions.ButterflyInAJar;
 import theRetrospect.potions.TimelinePotion;
@@ -36,7 +37,6 @@ import theRetrospect.relics.AbstractBaseRelic;
 import theRetrospect.util.CardUtils;
 import theRetrospect.util.ModIdCheck;
 import theRetrospect.util.TextureLoader;
-import theRetrospect.util.TimelineTargeting;
 import theRetrospect.variables.CustomVariable;
 import theRetrospect.variables.TimelineCountVariable;
 

@@ -5,7 +5,6 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.evacipated.cardcrawl.mod.stslib.cards.targeting.TargetingHandler;
 import com.evacipated.cardcrawl.mod.stslib.patches.CustomTargeting;
-import com.evacipated.cardcrawl.modthespire.lib.SpireEnum;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.AbstractCreature;
@@ -15,22 +14,28 @@ import com.megacrit.cardcrawl.helpers.Hitbox;
 import com.megacrit.cardcrawl.helpers.controller.CInputActionSet;
 import com.megacrit.cardcrawl.helpers.input.InputActionSet;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.monsters.MonsterGroup;
-import hlysine.friendlymonsters.utils.MinionUtils;
-import theRetrospect.minions.TimelineMinion;
 
-import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
 import java.util.Optional;
 
-public class TimelineTargeting extends TargetingHandler<AbstractCreature> {
-    @SpireEnum
-    public static AbstractCard.CardTarget TIMELINE;
+public abstract class BaseTargeting<T extends AbstractCreature> extends TargetingHandler<T> {
 
-    public static AbstractCreature getTarget(AbstractCard card) {
+    private static final Comparator<AbstractCreature> sortByHitbox = ((o1, o2) -> (int) (o1.hb.cX - o2.hb.cX));
+
+    public static <T extends AbstractCreature> T getTarget(AbstractCard card) {
         return CustomTargeting.getCardTarget(card);
     }
 
-    private AbstractCreature hovered = null;
+    private T hovered = null;
+
+    /**
+     * This method should return a list of all possible targets for the targeting mode.
+     * Note that the returned list may be mutated by the targeting mode, so it should be a copy of the original list.
+     *
+     * @return A list of all possible targets for the targeting mode.
+     */
+    protected abstract List<T> getTargets();
 
     @Override
     public boolean hasTarget() {
@@ -41,20 +46,17 @@ public class TimelineTargeting extends TargetingHandler<AbstractCreature> {
     public void updateHovered() {
         hovered = null;
 
-        MonsterGroup minions = MinionUtils.getMinions(AbstractDungeon.player);
-        for (AbstractMonster minion : minions.monsters) {
-            if (!minion.isDeadOrEscaped() && minion instanceof TimelineMinion) {
-                minion.hb.update();
-                if (minion.hb.hovered) {
-                    hovered = minion;
-                    break;
-                }
+        for (T target : getTargets()) {
+            target.hb.update();
+            if (target.hb.hovered) {
+                hovered = target;
+                break;
             }
         }
     }
 
     @Override
-    public AbstractCreature getHovered() {
+    public T getHovered() {
         return hovered;
     }
 
@@ -70,23 +72,23 @@ public class TimelineTargeting extends TargetingHandler<AbstractCreature> {
         }
     }
 
-    //Keyboard support is entirely optional, but this is an example based on how the basegame implements it
+    //Keyboard support is entirely optional, but this is an example based on how the base game implements it
     @Override
     public void setDefaultTarget() {
-        Optional<AbstractMonster> minion = MinionUtils.getMinions(AbstractDungeon.player).monsters.stream().filter(m -> m instanceof TimelineMinion).findFirst();
-        minion.ifPresent(abstractMonster -> hovered = abstractMonster);
+        Optional<T> target = getTargets().stream().findFirst();
+        target.ifPresent(creature -> hovered = creature);
     }
 
     @Override
     public int getDefaultTargetX() {
-        Optional<AbstractMonster> minion = MinionUtils.getMinions(AbstractDungeon.player).monsters.stream().filter(m -> m instanceof TimelineMinion).findFirst();
-        return minion.map(abstractMonster -> (int) abstractMonster.hb.cX).orElse(Settings.WIDTH / 2);
+        Optional<T> target = getTargets().stream().findFirst();
+        return target.map(creature -> (int) creature.hb.cX).orElse(Settings.WIDTH / 2);
     }
 
     @Override
     public int getDefaultTargetY() {
-        Optional<AbstractMonster> minion = MinionUtils.getMinions(AbstractDungeon.player).monsters.stream().filter(m -> m instanceof TimelineMinion).findFirst();
-        return minion.map(abstractMonster -> (int) abstractMonster.hb.cY).orElse(Settings.HEIGHT / 2);
+        Optional<T> target = getTargets().stream().findFirst();
+        return target.map(creature -> (int) creature.hb.cY).orElse(Settings.HEIGHT / 2);
     }
 
     @Override
@@ -102,22 +104,15 @@ public class TimelineTargeting extends TargetingHandler<AbstractCreature> {
         }
 
         if (directionIndex != 0) {
-            MonsterGroup minions = MinionUtils.getMinions(AbstractDungeon.player);
-            ArrayList<AbstractMonster> sortedMonsters = new ArrayList<>(minions.monsters);
-
-            sortedMonsters.removeIf(AbstractCreature::isDeadOrEscaped);
-            sortedMonsters.removeIf(m -> !(m instanceof TimelineMinion));
-
-            AbstractCreature newTarget;
-
+            List<T> sortedMonsters = getTargets();
             if (sortedMonsters.isEmpty()) return;
+            sortedMonsters.sort(sortByHitbox);
 
-            sortedMonsters.sort(AbstractMonster.sortByHitbox);
-
+            T newTarget;
             if (this.hovered == null) {
                 newTarget = sortedMonsters.get(0);
             } else {
-                @SuppressWarnings("SuspiciousMethodCalls") int currentTargetIndex = sortedMonsters.indexOf(hovered);
+                int currentTargetIndex = sortedMonsters.indexOf(hovered);
 
                 int newTargetIndex = currentTargetIndex + directionIndex;
                 newTargetIndex = (newTargetIndex + sortedMonsters.size()) % sortedMonsters.size();

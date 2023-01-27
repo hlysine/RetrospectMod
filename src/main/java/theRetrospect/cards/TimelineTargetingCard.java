@@ -7,8 +7,8 @@ import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.vfx.ThoughtBubble;
 import theRetrospect.RetrospectMod;
+import theRetrospect.mechanics.timeline.TimelineTargeting;
 import theRetrospect.minions.TimelineMinion;
-import theRetrospect.util.TimelineTargeting;
 import theRetrospect.util.TimelineUtils;
 
 public abstract class TimelineTargetingCard extends AbstractBaseCard {
@@ -24,7 +24,7 @@ public abstract class TimelineTargetingCard extends AbstractBaseCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        TimelineMinion target = (TimelineMinion) TimelineTargeting.getTarget(this);
+        TimelineMinion target = TimelineTargeting.getTarget(this);
         if (target != null && target.isDeadOrEscaped()) target = null;
         if (target == null) target = TimelineUtils.getRandomTimeline(p, t -> t.cards.size() > 0);
         if (target == null) {
