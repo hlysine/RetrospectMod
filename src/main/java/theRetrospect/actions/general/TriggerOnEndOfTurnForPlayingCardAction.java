@@ -7,6 +7,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.monsters.MonsterGroup;
 import hlysine.friendlymonsters.utils.MinionUtils;
+import theRetrospect.mechanics.timeline.EnergySwitch;
 import theRetrospect.minions.AbstractMinionWithCards;
 import theRetrospect.minions.TimelineMinion;
 import theRetrospect.subscribers.EndOfTurnCardSubscriber;
@@ -46,29 +47,36 @@ public class TriggerOnEndOfTurnForPlayingCardAction extends AbstractGameAction {
             CallbackUtils.ForEachLoop(player.relics, createLoopBody(skipWait), () -> {
                 if (!skipWait.get())
                     addToBot(new WaitAction(1f));
+
                 MonsterGroup minions = MinionUtils.getMinions(AbstractDungeon.player);
+                boolean activeMinions = false;
                 for (AbstractMonster monster : minions.monsters) {
                     if (monster instanceof TimelineMinion) {
                         TimelineMinion timeline = (TimelineMinion) monster;
-                        if (!timeline.isDeadOrEscaped())
+                        if (!timeline.isDeadOrEscaped()) {
                             timeline.inTurn = true;
+                            activeMinions = true;
+                        }
                     }
                 }
-                CallbackUtils.ForEachLoop(minions.monsters, (monster, next) -> {
-                    if (monster instanceof AbstractMinionWithCards && !monster.isDeadOrEscaped()) {
-                        AbstractMinionWithCards minion = (AbstractMinionWithCards) monster;
-                        minion.triggerOnEndOfTurnForPlayingCard(() -> {
-                            if (minion instanceof TimelineMinion) {
-                                TimelineMinion timeline = (TimelineMinion) minion;
-                                timeline.inTurn = false;
-                            }
-                            addToBot(new WaitAction(1f));
+                if (activeMinions) {
+                    EnergySwitch.setCurrentSource(EnergySwitch.EnergySource.VOLATILE);
+                    CallbackUtils.ForEachLoop(minions.monsters, (monster, next) -> {
+                        if (monster instanceof AbstractMinionWithCards && !monster.isDeadOrEscaped()) {
+                            AbstractMinionWithCards minion = (AbstractMinionWithCards) monster;
+                            minion.triggerOnEndOfTurnForPlayingCard(() -> {
+                                if (minion instanceof TimelineMinion) {
+                                    TimelineMinion timeline = (TimelineMinion) minion;
+                                    timeline.inTurn = false;
+                                }
+                                addToBot(new WaitAction(1f));
+                                next.run();
+                            });
+                        } else {
                             next.run();
-                        });
-                    } else {
-                        next.run();
-                    }
-                });
+                        }
+                    }, () -> EnergySwitch.setCurrentSource(EnergySwitch.EnergySource.NORMAL));
+                }
             });
         });
         this.isDone = true;

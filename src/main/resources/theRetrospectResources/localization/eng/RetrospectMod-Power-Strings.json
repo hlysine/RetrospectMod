@@ -145,5 +145,13 @@
     "DESCRIPTIONS": [
       "The next #ytimeline you construct borrows #b1 HP only."
     ]
+  },
+  "theRetrospect:VolatileEnergyPower": {
+    "NAME": "Volatile Energy",
+    "DESCRIPTIONS": [
+      "Recharges #b",
+      " [theRetrospect:VolatileEnergyIcon] #yVolatile #yEnergy at the end of your turn, allowing cards in timelines to be played. NL Decays by half per round.",
+      " [theRetrospect:VolatileEnergyIcon] #yVolatile #yEnergy at the end of your turn, allowing cards in timelines to be played. NL Decays by half per round."
+    ]
   }
 }

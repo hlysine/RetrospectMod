@@ -7,18 +7,18 @@ import theRetrospect.util.TextureLoader;
 import java.util.Collections;
 import java.util.List;
 
-public class UnstableEnergyIcon extends AbstractCustomIcon {
-    public static final String ID = RetrospectMod.makeID("UnstableEnergy");
-    public static final List<String> KEYWORDS = Collections.singletonList(RetrospectMod.makeID("unstable_energy").toLowerCase());
-    private static UnstableEnergyIcon singleton;
+public class VolatileEnergyIcon extends AbstractCustomIcon {
+    public static final String ID = RetrospectMod.makeID("VolatileEnergy");
+    public static final List<String> KEYWORDS = Collections.singletonList(RetrospectMod.makeID("volatile_energy").toLowerCase());
+    private static VolatileEnergyIcon singleton;
 
-    public UnstableEnergyIcon() {
+    public VolatileEnergyIcon() {
         super(ID, TextureLoader.getTexture(RetrospectMod.makePowerPath("placeholder_power84.png")));
     }
 
-    public static UnstableEnergyIcon get() {
+    public static VolatileEnergyIcon get() {
         if (singleton == null) {
-            singleton = new UnstableEnergyIcon();
+            singleton = new VolatileEnergyIcon();
         }
         return singleton;
     }

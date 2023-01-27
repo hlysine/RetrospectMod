@@ -27,13 +27,16 @@ import org.apache.logging.log4j.Logger;
 import theRetrospect.cards.AbstractBaseCard;
 import theRetrospect.characters.TheRetrospect;
 import theRetrospect.events.*;
-import theRetrospect.icons.UnstableEnergyIcon;
+import theRetrospect.icons.VolatileEnergyIcon;
 import theRetrospect.mechanics.card.CardPlaySource;
 import theRetrospect.patches.metrics.DevCommandsMetricPatch;
 import theRetrospect.potions.ButterflyInAJar;
 import theRetrospect.potions.TimelinePotion;
 import theRetrospect.relics.AbstractBaseRelic;
-import theRetrospect.util.*;
+import theRetrospect.util.CardUtils;
+import theRetrospect.util.ModIdCheck;
+import theRetrospect.util.TextureLoader;
+import theRetrospect.util.TimelineTargeting;
 import theRetrospect.variables.CustomVariable;
 import theRetrospect.variables.TimelineCountVariable;
 
@@ -302,7 +305,7 @@ public class RetrospectMod implements
     public void receiveEditCards() {
         pathCheck();
 
-        CustomIconHelper.addCustomIcon(UnstableEnergyIcon.get());
+        CustomIconHelper.addCustomIcon(VolatileEnergyIcon.get());
 
         List<CustomVariable> customVariables = new ArrayList<>();
         customVariables.add(new TimelineCountVariable());

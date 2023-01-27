@@ -2,6 +2,7 @@ package theRetrospect.actions.timetravel;
 
 import basemod.ReflectionHacks;
 import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.math.Vector2;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -22,10 +23,10 @@ import theRetrospect.cards.AbstractBaseCard;
 import theRetrospect.effects.FlyingOrbEffect;
 import theRetrospect.effects.TimeTravelEffect;
 import theRetrospect.effects.TimelineCircleEffect;
-import theRetrospect.minions.TimelineMinion;
-import theRetrospect.subscribers.TimelineConstructSubscriber;
 import theRetrospect.mechanics.timetravel.CombatStateTree;
 import theRetrospect.mechanics.timetravel.StateManager;
+import theRetrospect.minions.TimelineMinion;
+import theRetrospect.subscribers.TimelineConstructSubscriber;
 import theRetrospect.util.TimelineUtils;
 
 import java.util.ArrayList;
@@ -39,18 +40,21 @@ public class RewindAction extends AbstractGameAction {
 
     private final int rounds;
     private final AbstractCard rewindCard;
-    private boolean firstFrame = true;
+    private boolean rewindDone = false;
 
     public RewindAction(AbstractCard rewindCard, int rounds) {
         this.rewindCard = rewindCard;
         this.rounds = rounds;
-        this.duration = Settings.FAST_MODE ? 0.5f : 1f;
+        this.duration = this.startDuration = 1.5f;
     }
 
     @Override
     public void update() {
-        if (firstFrame) {
-            firstFrame = false;
+        if (this.duration == this.startDuration) {
+            AbstractDungeon.topLevelEffects.add(new TimeTravelEffect(new Vector2(AbstractDungeon.player.hb.cX, AbstractDungeon.player.hb.cY)));
+        }
+        if (this.duration < this.startDuration / 2 && !rewindDone) {
+            rewindDone = true;
             AbstractPlayer player = AbstractDungeon.player;
 
             if (MinionUtils.getMinions(player).monsters.size() >= MinionUtils.getMaxMinionCount(player)) {
@@ -82,7 +86,6 @@ public class RewindAction extends AbstractGameAction {
                 ));
             }
             AbstractDungeon.effectList.add(new TimelineCircleEffect(minion));
-            AbstractDungeon.topLevelEffects.add(new TimeTravelEffect());
             CardCrawlGame.sound.play("CARD_POWER_IMPACT", 0.1f);
 
             if (!TipTracker.tips.get(TimelineUtils.REWIND_TIP)) {

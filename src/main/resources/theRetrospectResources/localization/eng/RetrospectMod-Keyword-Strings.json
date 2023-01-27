@@ -78,9 +78,9 @@
     "DESCRIPTION": "A skill card that plays a random attack card from your discard pile, then #yconstructs 1 timeline."
   },
   {
-    "PROPER_NAME": "[theRetrospect:UnstableEnergyIcon] Unstable Energy",
+    "PROPER_NAME": "[theRetrospect:VolatileEnergyIcon] Volatile Energy",
     "NAMES": [
-      "unstable_energy"
+      "volatile_energy"
     ],
     "DESCRIPTION": "Energy that allows cards in timelines to be played at the end of your turn. Decays by half per turn."
   }
