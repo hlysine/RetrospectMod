@@ -24,6 +24,8 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.Hitbox;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.monsters.MonsterGroup;
+import com.megacrit.cardcrawl.monsters.beyond.Reptomancer;
+import com.megacrit.cardcrawl.monsters.beyond.SnakeDagger;
 import com.megacrit.cardcrawl.monsters.city.TheCollector;
 import com.megacrit.cardcrawl.monsters.city.TorchHead;
 import com.megacrit.cardcrawl.orbs.AbstractOrb;
@@ -335,6 +337,22 @@ public class CloneUtils {
                         dummy.isDying = true;
                         dummy.currentHealth = 0;
                         enemySlots.put(i, dummy);
+                    }
+                }
+            }
+        } else if (m instanceof Reptomancer) {
+            // Add any missing daggers to the internal array of daggers when rewinding from a state of no daggers
+            // to a state with daggers.
+            AbstractMonster[] daggers = ReflectionHacks.getPrivate(m, Reptomancer.class, "daggers");
+            for (AbstractMonster monster : group.monsters) {
+                if (monster instanceof SnakeDagger) {
+                    if (Arrays.stream(daggers).noneMatch(d -> d == monster)) {
+                        for (int i = 0; i < 4; i++) {
+                            if (daggers[i] == null) {
+                                daggers[i] = monster;
+                                break;
+                            }
+                        }
                     }
                 }
             }
