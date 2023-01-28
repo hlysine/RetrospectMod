@@ -1,6 +1,5 @@
 package theRetrospect.patches.timetravel;
 
-import basemod.ReflectionHacks;
 import com.evacipated.cardcrawl.modthespire.lib.*;
 import com.evacipated.cardcrawl.modthespire.patcher.PatchingException;
 import com.rits.cloning.Cloner;
@@ -39,37 +38,10 @@ public class FastClonerPatch {
                 locator = Locator.class,
                 localvars = {"aClass", "cloner"}
         )
-        public static void Insert(Cloner __instance, Object o, Map<Object, Object> clones, Map<Class<?>, IFastCloner> ___fastCloners, Map<Class<?>, IDeepCloner> ___cloners, Class<?> aClass, @ByRef IDeepCloner[] cloner) {
+        public static void Insert(Cloner __instance, Object o, Map<Object, Object> clones, IDeepCloner ___deepCloner, Map<Class<?>, IFastCloner> ___fastCloners, Class<?> aClass, @ByRef IDeepCloner[] cloner) {
             for (Map.Entry<Class<?>, IFastCloner> entry : ___fastCloners.entrySet()) {
                 if (entry.getKey().isAssignableFrom(aClass) && !entry.getKey().equals(aClass)) {
-                    Object original = o;
-                    cloner[0] = new FastClonerCloner(entry.getValue(), new IDeepCloner() {
-                        @Override
-                        public <T> T deepClone(T o, Map<Object, Object> clones) {
-                            if (o == null) return null;
-                            if (o == this) return null;
-
-                            // Prevent cycles, expensive but necessary
-                            if (clones != null) {
-                                @SuppressWarnings("unchecked") T clone = (T) clones.get(o);
-                                if (clone != null) {
-                                    return clone;
-                                }
-                            }
-
-                            Class<?> aClass = o.getClass();
-                            IDeepCloner cloner;
-                            // the cloner cache is not used because fast cloners that uses this cloner wrapper
-                            // (e.g. AbstractMonster) may call clone on itself. Using the cache would cause a stack overflow.
-                            cloner = ReflectionHacks.privateMethod(Cloner.class, "findDeepCloner", Class.class).invoke(__instance, aClass);
-                            if (cloner == ReflectionHacks.getPrivateStatic(Cloner.class, "IGNORE_CLONER")) {
-                                return o;
-                            } else if (cloner == ReflectionHacks.getPrivateStatic(Cloner.class, "NULL_CLONER")) {
-                                return null;
-                            }
-                            return cloner.deepClone(o, clones);
-                        }
-                    });
+                    cloner[0] = new FastClonerCloner(entry.getValue(), ___deepCloner);
                 }
             }
         }

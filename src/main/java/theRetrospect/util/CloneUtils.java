@@ -24,16 +24,15 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.Hitbox;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.monsters.MonsterGroup;
+import com.megacrit.cardcrawl.monsters.city.TheCollector;
+import com.megacrit.cardcrawl.monsters.city.TorchHead;
 import com.megacrit.cardcrawl.orbs.AbstractOrb;
 import com.megacrit.cardcrawl.potions.AbstractPotion;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import com.megacrit.cardcrawl.stances.AbstractStance;
-import com.rits.cloning.Cloner;
-import com.rits.cloning.FastClonerArrayList;
-import com.rits.cloning.FastClonerHashMap;
-import com.rits.cloning.ICloningStrategy;
+import com.rits.cloning.*;
 import hlysine.friendlymonsters.monsters.AbstractFriendlyMonster;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -180,7 +179,8 @@ public class CloneUtils {
             if (o == null) return null;
             AbstractMonster m = (AbstractMonster) o;
             if (MonsterUtils.isSameMonster(m, monster)) {
-                return cloner.deepClone(o, clones);
+                IDeepCloner baseCloner = getBaseCloner(o.getClass());
+                return baseCloner.deepClone(o, clones);
             }
             for (AbstractMonster m1 : group.monsters) {
                 if (MonsterUtils.isSameMonster(m, m1)) {
@@ -258,13 +258,15 @@ public class CloneUtils {
         AbstractMonster newReplacement = cloneMonster(replacement, group);
         cloner.registerFastCloner(AbstractMonster.class, (o, cloner, clones) -> {
             if (o == null) return null;
+            IDeepCloner baseCloner = getBaseCloner(o.getClass());
             if (MonsterUtils.isSameMonster((AbstractMonster) o, newReplacement)) {
-                return cloner.deepClone(newReplacement, clones);
+                return baseCloner.deepClone(newReplacement, clones);
             } else {
-                return cloner.deepClone(o, clones);
+                return baseCloner.deepClone((AbstractMonster) o, clones);
             }
         });
         MonsterGroup newGroup = cloner.deepClone(group);
+        newGroup.monsters.replaceAll(m -> fixMonsterState(m, newGroup));
         cloner.unregisterFastCloner(AbstractMonster.class);
         return newGroup;
     }
@@ -281,5 +283,62 @@ public class CloneUtils {
         CardGroup newGroup = new CardGroup(group.type);
         newGroup.group = cloneCardList(group.group);
         return newGroup;
+    }
+
+    /**
+     * Gets the un-patched cloner for a class.
+     * This is to avoid infinite recursion when a fast cloner uses the provided deep cloner to clone itself.
+     * Only works for fast cloners that are registered using a base class type.
+     *
+     * @param clazz The class to get the cloner for.
+     * @return The cloner for the class.
+     */
+    private static IDeepCloner getBaseCloner(Class<?> clazz) {
+        return ReflectionHacks.privateMethod(Cloner.class, "findDeepCloner", Class.class).invoke(cloner, clazz);
+    }
+
+    /**
+     * Fixes the state of a monster after accompanying monsters are changed.
+     *
+     * @param m     The monster to fix.
+     * @param group The monster group the monster is in.
+     * @return The fixed monster.
+     */
+    private static AbstractMonster fixMonsterState(AbstractMonster m, MonsterGroup group) {
+        if (m instanceof TheCollector) {
+            HashMap<Integer, AbstractMonster> enemySlots = ReflectionHacks.getPrivate(m, TheCollector.class, "enemySlots");
+
+            // If the player kills a Torch Head, then wait until The Collector to summon a new one before rewinding,
+            // the new Torch Head will be added to the internal map of The Collector, and then be removed when rewinding
+            // because the 2 Torch Heads have different UUIDs. This causes the old Torch Head to not be recognized as a
+            // minion of The Collector.
+            for (AbstractMonster monster : group.monsters) {
+                if (monster instanceof TorchHead) {
+                    if (!enemySlots.containsValue(monster)) {
+                        for (int i = 1; i < 3; i++) {
+                            if (enemySlots.get(i) == null) {
+                                enemySlots.put(i, monster);
+                                break;
+                            }
+                        }
+                    }
+                }
+            }
+
+            // The Collector only spawns new minions when one of the minions in its internal map has isDying == true.
+            // If The Collector is linked to a state with no minions, it will never spawn new minions without this fix
+            // because the internal map is cleared when it is being cloned.
+            if (!(boolean) ReflectionHacks.getPrivate(m, TheCollector.class, "initialSpawn")) {
+                for (int i = 1; i < 3; i++) {
+                    if (enemySlots.get(i) == null) {
+                        TorchHead dummy = new TorchHead(0, 0);
+                        dummy.isDying = true;
+                        dummy.currentHealth = 0;
+                        enemySlots.put(i, dummy);
+                    }
+                }
+            }
+        }
+        return m;
     }
 }
