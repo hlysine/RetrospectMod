@@ -37,12 +37,12 @@ public class ChaoticCardAction extends AbstractGameAction {
         if (!candidates.isEmpty()) {
             AbstractCard card = candidates.get(AbstractDungeon.cardRng.random(candidates.size() - 1));
             cardGroup.removeCard(card);
-            CardUtils.addFollowUpActionToTop(card, new RewindAction(chaoticCard, chaoticCard.timelineCount), false, 100);
+            CardUtils.addFollowUpActionToTop(card, new RewindAction(chaoticCard, chaoticCard.timelineCount, null), false, 100);
             CardUtils.addFollowUpActionToTop(card, new RunnableAction(followUpActionHandler::scheduleFollowUpActions), false, 0);
             addToBot(new ShowCardToBePlayedAction(card, chaoticCard.current_x, chaoticCard.current_y));
             addToBot(new CustomQueueCardAction(card, true, true, true));
         } else {
-            addToBot(new RewindAction(chaoticCard, chaoticCard.timelineCount));
+            addToBot(new RewindAction(chaoticCard, chaoticCard.timelineCount, null)); // todo: time travel target
             addToBot(new RunnableAction(followUpActionHandler::scheduleFollowUpActions));
         }
         this.isDone = true;

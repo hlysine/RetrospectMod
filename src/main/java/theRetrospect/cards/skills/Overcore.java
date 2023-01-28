@@ -22,7 +22,7 @@ public class Overcore extends AbstractBaseCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new RewindAction(this, timelineCount));
+        addToBot(new RewindAction(this, timelineCount, null));
         addToBot(new ApplyPowerAction(p, p, new FrozenPower(p, this.magicNumber)));
     }
 

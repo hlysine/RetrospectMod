@@ -39,7 +39,7 @@ public class TimelinePotion extends CustomPotion {
 
     @Override
     public void use(AbstractCreature target) {
-        addToBot(new RewindAction(null, this.potency));
+        addToBot(new RewindAction(null, this.potency, null));
     }
 
     @Override

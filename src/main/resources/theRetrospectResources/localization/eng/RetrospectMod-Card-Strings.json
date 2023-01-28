@@ -22,9 +22,20 @@
       "I have no timelines."
     ]
   },
+  "theRetrospect:TimeTravelCard": {
+    "NAME": "Time Travel Card",
+    "DESCRIPTION": "theretrospect:Rewind 1 round.",
+    "EXTENDED_DESCRIPTION": [
+      "No valid destination.",
+      "No #yTime #yLink available.",
+      "I need #r",
+      " round of Time Link for that.",
+      " rounds of Time Link for that."
+    ]
+  },
   "theRetrospect:Divert": {
     "NAME": "Divert",
-    "DESCRIPTION": "{@@}{!Upgrades!|0=Ethereal. NL }theretrospect:Construct !theRetrospect:TimelineCount! timeline{!theRetrospect:TimelineCount!|>1=s}. Gain [theRetrospect:VolatileEnergyIcon] ."
+    "DESCRIPTION": "{@@}theretrospect:Rewind !theRetrospect:TimelineCount! round{!theRetrospect:TimelineCount!|>1=s}. NL Gain {!Upgrades!|0=[theRetrospect:VolatileEnergyIcon]|@=[theRetrospect:VolatileEnergyIcon] [theRetrospect:VolatileEnergyIcon]} ."
   },
   "theRetrospect:DoubleTime": {
     "NAME": "Double Time",

@@ -153,5 +153,13 @@
       " [theRetrospect:VolatileEnergyIcon] #yVolatile #yEnergy at the end of your turn, allowing cards in timelines to be played. NL Decays by half per round.",
       " [theRetrospect:VolatileEnergyIcon] #yVolatile #yEnergy at the end of your turn, allowing cards in timelines to be played. NL Decays by half per round."
     ]
+  },
+  "theRetrospect:TimeLinkPower": {
+    "NAME": "Time Link",
+    "DESCRIPTIONS": [
+      "You can bring this creature with you when you time travel for #b",
+      " round.",
+      " rounds."
+    ]
   }
 }

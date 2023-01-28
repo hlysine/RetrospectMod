@@ -38,13 +38,15 @@ public class RewindAction extends AbstractGameAction {
 
     private static final TutorialStrings tutorialStrings = CardCrawlGame.languagePack.getTutorialString(RetrospectMod.makeID(RewindAction.class.getSimpleName()));
 
-    private final int rounds;
     private final AbstractCard rewindCard;
+    private final int rounds;
+    private final AbstractMonster persistingMonster;
     private boolean rewindDone = false;
 
-    public RewindAction(AbstractCard rewindCard, int rounds) {
+    public RewindAction(AbstractCard rewindCard, int rounds, AbstractMonster persistingMonster) {
         this.rewindCard = rewindCard;
         this.rounds = rounds;
+        this.persistingMonster = persistingMonster;
         this.duration = this.startDuration = 1.5f;
     }
 
@@ -63,7 +65,7 @@ public class RewindAction extends AbstractGameAction {
                 return;
             }
 
-            CombatStateTree.LinearPath timelinePath = StateManager.rewindTime(rounds, rewindCard);
+            CombatStateTree.LinearPath timelinePath = StateManager.rewindTime(rounds, rewindCard, persistingMonster);
 
             TimelineMinion minion = new TimelineMinion(player, (int) (-Settings.WIDTH * 0.5), 0, timelinePath);
 

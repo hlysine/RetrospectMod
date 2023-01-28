@@ -20,7 +20,7 @@ public class LightspeedLeap extends AbstractBaseCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new RewindAction(this, timelineCount));
+        addToBot(new RewindAction(this, timelineCount, null));
     }
 
     @Override

@@ -97,6 +97,7 @@ public class PlayerState {
         player.cardsPlayedThisTurn = cardsPlayedThisTurn;
 
         player.healthBarUpdatedEvent();
+        player.hand.refreshHandLayout();
         AbstractDungeon.actionManager.addToBottom(new HandCheckAction());
     }
 
@@ -132,6 +133,7 @@ public class PlayerState {
         player.limbo = CloneUtils.cloneCardGroup(limbo);
 
         player.healthBarUpdatedEvent();
+        player.hand.refreshHandLayout();
         AbstractDungeon.actionManager.addToBottom(new HandCheckAction());
     }
 

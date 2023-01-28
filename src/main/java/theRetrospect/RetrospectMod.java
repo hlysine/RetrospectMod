@@ -30,6 +30,7 @@ import theRetrospect.events.*;
 import theRetrospect.icons.VolatileEnergyIcon;
 import theRetrospect.mechanics.card.CardPlaySource;
 import theRetrospect.mechanics.timeline.TimelineTargeting;
+import theRetrospect.mechanics.timetravel.TimeTravelTargeting;
 import theRetrospect.patches.metrics.DevCommandsMetricPatch;
 import theRetrospect.potions.ButterflyInAJar;
 import theRetrospect.potions.TimelinePotion;
@@ -233,6 +234,7 @@ public class RetrospectMod implements
         BaseMod.registerModBadge(badgeTexture, MOD_NAME, AUTHOR, DESCRIPTION, null);
 
         CustomTargeting.registerCustomTargeting(TimelineTargeting.TIMELINE, new TimelineTargeting());
+        CustomTargeting.registerCustomTargeting(TimeTravelTargeting.TIME_TRAVEL, new TimeTravelTargeting());
 
         BaseMod.addSaveField(RetrospectMod.makeID(DevCommandsMetricPatch.DevCommandsMetricSavable.class.getSimpleName()), new DevCommandsMetricPatch.DevCommandsMetricSavable());
 

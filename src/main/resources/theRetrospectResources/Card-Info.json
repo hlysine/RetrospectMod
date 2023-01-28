@@ -23,7 +23,9 @@
     "COLOR": "RETROSPECT_PURPLE",
     "IMG": "divert.png",
     "COST": 1,
-    "theRetrospect:TimelineCount": 1
+    "theRetrospect:TimelineCount": 2,
+    "M/Volatile energy gain": 1,
+    "+M": 1
   },
   "theRetrospect:DoubleTime": {
     "RARITY": "COMMON",

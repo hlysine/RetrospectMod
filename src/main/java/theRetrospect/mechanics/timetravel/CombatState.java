@@ -3,6 +3,7 @@ package theRetrospect.mechanics.timetravel;
 import com.megacrit.cardcrawl.actions.GameActionManager;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.monsters.MonsterGroup;
 import com.megacrit.cardcrawl.orbs.AbstractOrb;
 import com.megacrit.cardcrawl.random.Random;
@@ -134,10 +135,10 @@ public class CombatState {
         AbstractDungeon.topLevelEffects.add(new PlayerTurnWithoutEnergyEffect());
     }
 
-    public CombatState copy() {
+    public CombatState copy(AbstractMonster replacement) {
         CombatState state = new CombatState();
 
-        state.monsters = CloneUtils.cloneMonsterGroup(this.monsters);
+        state.monsters = replacement == null ? CloneUtils.cloneMonsterGroup(this.monsters) : CloneUtils.cloneMonsterGroup(this.monsters, replacement);
         state.player = this.player.copy();
 
         state.monsterRng = this.monsterRng.copy();

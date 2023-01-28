@@ -20,6 +20,6 @@ public class Misdirection extends AbstractBaseCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         addToBot(new GainBlockAction(p, p, block));
-        addToBot(new RewindAction(this, timelineCount));
+        addToBot(new RewindAction(this, timelineCount, null));
     }
 }

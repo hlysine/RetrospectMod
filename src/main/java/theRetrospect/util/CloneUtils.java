@@ -22,6 +22,7 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.Hitbox;
+import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.monsters.MonsterGroup;
 import com.megacrit.cardcrawl.orbs.AbstractOrb;
 import com.megacrit.cardcrawl.potions.AbstractPotion;
@@ -30,15 +31,15 @@ import com.megacrit.cardcrawl.relics.AbstractRelic;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import com.megacrit.cardcrawl.stances.AbstractStance;
 import com.rits.cloning.Cloner;
+import com.rits.cloning.FastClonerArrayList;
+import com.rits.cloning.FastClonerHashMap;
 import com.rits.cloning.ICloningStrategy;
 import hlysine.friendlymonsters.monsters.AbstractFriendlyMonster;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import theRetrospect.patches.AnimationPatch;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class CloneUtils {
@@ -52,8 +53,7 @@ public class CloneUtils {
             AbstractPlayer.class,
             AbstractDungeon.class,
             AbstractRoom.class,
-            CardCrawlGame.class,
-            AbstractRelic.class
+            CardCrawlGame.class
     );
 
     static {
@@ -166,6 +166,107 @@ public class CloneUtils {
 
     public static AbstractPotion clonePotion(AbstractPotion potion) {
         return cloner.deepClone(potion);
+    }
+
+    /**
+     * Clones a monster, updating its internal monster references to those in the provided group.
+     *
+     * @param monster The monster to clone.
+     * @param group   The group to update the monster's references to.
+     * @return The cloned monster.
+     */
+    public static AbstractMonster cloneMonster(AbstractMonster monster, MonsterGroup group) {
+        cloner.registerFastCloner(AbstractMonster.class, (o, cloner, clones) -> {
+            if (o == null) return null;
+            AbstractMonster m = (AbstractMonster) o;
+            if (MonsterUtils.isSameMonster(m, monster)) {
+                return cloner.deepClone(o, clones);
+            }
+            for (AbstractMonster m1 : group.monsters) {
+                if (MonsterUtils.isSameMonster(m, m1)) {
+                    return m1;
+                }
+            }
+            return null;
+        });
+        cloner.unregisterFastCloner(HashMap.class);
+        cloner.registerFastCloner(HashMap.class, (o, cloner, clones) -> {
+            if (o == null) return null;
+            HashMap<?, ?> map = new HashMap<>((HashMap<?, ?>) o);
+            Set<? extends Map.Entry<?, ?>> entries = map.entrySet();
+            for (Iterator<? extends Map.Entry<?, ?>> iterator = entries.iterator(); iterator.hasNext(); ) {
+                Map.Entry<?, ?> entry = iterator.next();
+                if (entry.getValue() instanceof AbstractMonster) {
+                    AbstractMonster m = (AbstractMonster) entry.getValue();
+                    Optional<AbstractMonster> replacement = group.monsters.stream().filter(m1 -> MonsterUtils.isSameMonster(m, m1)).findFirst();
+                    if (!replacement.isPresent())
+                        iterator.remove();
+                }
+                if (entry.getKey() instanceof AbstractMonster) {
+                    AbstractMonster m = (AbstractMonster) entry.getKey();
+                    Optional<AbstractMonster> replacement = group.monsters.stream().filter(m1 -> MonsterUtils.isSameMonster(m, m1)).findFirst();
+                    if (!replacement.isPresent())
+                        iterator.remove();
+                }
+            }
+
+            HashMap<Object, Object> result = new HashMap<>(map.size());
+            for (Map.Entry<?, ?> e : map.entrySet()) {
+                result.put(cloner.deepClone(e.getKey(), clones), cloner.deepClone(e.getValue(), clones));
+            }
+
+            return result;
+        });
+        cloner.unregisterFastCloner(ArrayList.class);
+        cloner.registerFastCloner(ArrayList.class, (o, cloner, clones) -> {
+            if (o == null) return null;
+            ArrayList<?> list = new ArrayList<>((ArrayList<?>) o);
+            Iterator<?> it = list.iterator();
+            while (it.hasNext()) {
+                Object o1 = it.next();
+                if (o1 instanceof AbstractMonster) {
+                    AbstractMonster m = (AbstractMonster) o1;
+                    Optional<AbstractMonster> replacement = group.monsters.stream().filter(m1 -> MonsterUtils.isSameMonster(m, m1)).findFirst();
+                    if (!replacement.isPresent())
+                        it.remove();
+                }
+            }
+
+            ArrayList<Object> result = new ArrayList<>(list.size());
+            for (Object e : list) {
+                result.add(cloner.deepClone(e, clones));
+            }
+            return result;
+        });
+        AbstractMonster newMonster = cloner.deepClone(monster);
+        cloner.unregisterFastCloner(AbstractMonster.class);
+        cloner.unregisterFastCloner(HashMap.class);
+        cloner.registerFastCloner(HashMap.class, new FastClonerHashMap());
+        cloner.unregisterFastCloner(ArrayList.class);
+        cloner.registerFastCloner(ArrayList.class, new FastClonerArrayList());
+        return newMonster;
+    }
+
+    /**
+     * Clones a monster group, while replacing a specific monster with the provided instance.
+     *
+     * @param group       The group to clone.
+     * @param replacement The monster to replace. This monster will also be cloned.
+     * @return The cloned group.
+     */
+    public static MonsterGroup cloneMonsterGroup(MonsterGroup group, AbstractMonster replacement) {
+        AbstractMonster newReplacement = cloneMonster(replacement, group);
+        cloner.registerFastCloner(AbstractMonster.class, (o, cloner, clones) -> {
+            if (o == null) return null;
+            if (MonsterUtils.isSameMonster((AbstractMonster) o, newReplacement)) {
+                return cloner.deepClone(newReplacement, clones);
+            } else {
+                return cloner.deepClone(o, clones);
+            }
+        });
+        MonsterGroup newGroup = cloner.deepClone(group);
+        cloner.unregisterFastCloner(AbstractMonster.class);
+        return newGroup;
     }
 
     public static MonsterGroup cloneMonsterGroup(MonsterGroup group) {
