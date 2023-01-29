@@ -11,8 +11,11 @@ import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.vfx.ThoughtBubble;
 import theRetrospect.RetrospectMod;
 import theRetrospect.actions.general.RunnableAction;
+import theRetrospect.mechanics.timetravel.CombatStateTree;
+import theRetrospect.mechanics.timetravel.StateManager;
 import theRetrospect.mechanics.timetravel.TimeTravelTargeting;
 import theRetrospect.powers.TimeLinkPower;
+import theRetrospect.util.MonsterUtils;
 
 public abstract class TimeTravelCard extends AbstractBaseCard {
 
@@ -52,19 +55,13 @@ public abstract class TimeTravelCard extends AbstractBaseCard {
         AbstractMonster monster = (AbstractMonster) target;
 
         if (monster.isDeadOrEscaped()) {
-            cantUseMessage = cardStrings.EXTENDED_DESCRIPTION[0];
-            addToBot(new RunnableAction(() -> p.hand.refreshHandLayout()));
-            CustomTargeting.setCardTarget(this, null);
-            return false;
+            return cantUse(cardStrings.EXTENDED_DESCRIPTION[0]);
         }
 
         AbstractPower timeLink = monster.getPower(TimeLinkPower.POWER_ID);
         int travelDistance = getTravelDistance();
         if (timeLink == null) {
-            cantUseMessage = cardStrings.EXTENDED_DESCRIPTION[1];
-            addToBot(new RunnableAction(() -> p.hand.refreshHandLayout()));
-            CustomTargeting.setCardTarget(this, null);
-            return false;
+            return cantUse(cardStrings.EXTENDED_DESCRIPTION[1]);
         } else if (timeLink.amount < travelDistance) {
             StringBuilder sb = new StringBuilder();
             sb.append(cardStrings.EXTENDED_DESCRIPTION[2]);
@@ -74,12 +71,23 @@ public abstract class TimeTravelCard extends AbstractBaseCard {
             } else {
                 sb.append(cardStrings.EXTENDED_DESCRIPTION[4]);
             }
-            cantUseMessage = sb.toString();
-            addToBot(new RunnableAction(() -> p.hand.refreshHandLayout()));
-            CustomTargeting.setCardTarget(this, null);
-            return false;
+            return cantUse(sb.toString());
+        } else {
+            CombatStateTree stateTree = StateManager.stateTree;
+            CombatStateTree.Node destination = stateTree.getNodeForRound(stateTree.getActiveNode(), stateTree.getActiveRound() - travelDistance);
+            if (destination == null) destination = stateTree.getRoot(stateTree.getActiveNode());
+            if (destination.baseState.monsters.monsters.stream().noneMatch(m1 -> MonsterUtils.isSameMonster(m1, monster))) {
+                return cantUse(cardStrings.EXTENDED_DESCRIPTION[5]);
+            }
         }
 
         return true;
+    }
+
+    private boolean cantUse(String cantUseMessage) {
+        this.cantUseMessage = cantUseMessage;
+        addToBot(new RunnableAction(() -> AbstractDungeon.player.hand.refreshHandLayout()));
+        CustomTargeting.setCardTarget(this, null);
+        return false;
     }
 }
