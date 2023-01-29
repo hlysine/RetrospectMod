@@ -16,7 +16,7 @@ import com.megacrit.cardcrawl.vfx.AbstractGameEffect;
 import com.megacrit.cardcrawl.vfx.combat.BattleStartEffect;
 
 public class PlayerTurnWithoutEnergyEffect extends AbstractGameEffect {
-    private static final float DUR = 2.0F;
+    public static final float DUR = 2.0F;
     private static final float HEIGHT_DIV_2 = (float) Settings.HEIGHT / 2.0F;
     private static final float WIDTH_DIV_2 = (float) Settings.WIDTH / 2.0F;
     private final Color bgColor;

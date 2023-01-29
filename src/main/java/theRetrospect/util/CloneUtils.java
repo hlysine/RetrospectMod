@@ -24,23 +24,25 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.Hitbox;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.monsters.MonsterGroup;
-import com.megacrit.cardcrawl.monsters.beyond.Reptomancer;
-import com.megacrit.cardcrawl.monsters.beyond.SnakeDagger;
 import com.megacrit.cardcrawl.monsters.city.TheCollector;
-import com.megacrit.cardcrawl.monsters.city.TorchHead;
 import com.megacrit.cardcrawl.orbs.AbstractOrb;
 import com.megacrit.cardcrawl.potions.AbstractPotion;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import com.megacrit.cardcrawl.stances.AbstractStance;
-import com.rits.cloning.*;
+import com.rits.cloning.Cloner;
+import com.rits.cloning.ICloningStrategy;
+import com.rits.cloning.IDeepCloner;
 import hlysine.friendlymonsters.monsters.AbstractFriendlyMonster;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import theRetrospect.patches.AnimationPatch;
 
+import java.lang.reflect.Field;
+import java.lang.reflect.Modifier;
 import java.util.*;
+import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.stream.Collectors;
 
 public class CloneUtils {
@@ -58,6 +60,10 @@ public class CloneUtils {
     );
 
     static {
+        initializeCloner();
+    }
+
+    private static void initializeCloner() {
         cloner.registerCloningStrategy((o, field) -> {
             if (classesToIgnore.stream().anyMatch(c -> c.isAssignableFrom(field.getType()))) {
                 logger.info("Ignoring " + field.getType().getName() + " in field " + field.getName() + " of class " + o.getClass().getName());
@@ -169,110 +175,6 @@ public class CloneUtils {
         return cloner.deepClone(potion);
     }
 
-    /**
-     * Clones a monster, updating its internal monster references to those in the provided group.
-     *
-     * @param monster The monster to clone.
-     * @param group   The group to update the monster's references to.
-     * @return The cloned monster.
-     */
-    public static AbstractMonster cloneMonster(AbstractMonster monster, MonsterGroup group) {
-        cloner.registerFastCloner(AbstractMonster.class, (o, cloner, clones) -> {
-            if (o == null) return null;
-            AbstractMonster m = (AbstractMonster) o;
-            if (MonsterUtils.isSameMonster(m, monster)) {
-                IDeepCloner baseCloner = getBaseCloner(o.getClass());
-                return baseCloner.deepClone(o, clones);
-            }
-            for (AbstractMonster m1 : group.monsters) {
-                if (MonsterUtils.isSameMonster(m, m1)) {
-                    return m1;
-                }
-            }
-            return null;
-        });
-        cloner.unregisterFastCloner(HashMap.class);
-        cloner.registerFastCloner(HashMap.class, (o, cloner, clones) -> {
-            if (o == null) return null;
-            HashMap<?, ?> map = new HashMap<>((HashMap<?, ?>) o);
-            Set<? extends Map.Entry<?, ?>> entries = map.entrySet();
-            for (Iterator<? extends Map.Entry<?, ?>> iterator = entries.iterator(); iterator.hasNext(); ) {
-                Map.Entry<?, ?> entry = iterator.next();
-                if (entry.getValue() instanceof AbstractMonster) {
-                    AbstractMonster m = (AbstractMonster) entry.getValue();
-                    Optional<AbstractMonster> replacement = group.monsters.stream().filter(m1 -> MonsterUtils.isSameMonster(m, m1)).findFirst();
-                    if (!replacement.isPresent())
-                        iterator.remove();
-                }
-                if (entry.getKey() instanceof AbstractMonster) {
-                    AbstractMonster m = (AbstractMonster) entry.getKey();
-                    Optional<AbstractMonster> replacement = group.monsters.stream().filter(m1 -> MonsterUtils.isSameMonster(m, m1)).findFirst();
-                    if (!replacement.isPresent())
-                        iterator.remove();
-                }
-            }
-
-            HashMap<Object, Object> result = new HashMap<>(map.size());
-            for (Map.Entry<?, ?> e : map.entrySet()) {
-                result.put(cloner.deepClone(e.getKey(), clones), cloner.deepClone(e.getValue(), clones));
-            }
-
-            return result;
-        });
-        cloner.unregisterFastCloner(ArrayList.class);
-        cloner.registerFastCloner(ArrayList.class, (o, cloner, clones) -> {
-            if (o == null) return null;
-            ArrayList<?> list = new ArrayList<>((ArrayList<?>) o);
-            Iterator<?> it = list.iterator();
-            while (it.hasNext()) {
-                Object o1 = it.next();
-                if (o1 instanceof AbstractMonster) {
-                    AbstractMonster m = (AbstractMonster) o1;
-                    Optional<AbstractMonster> replacement = group.monsters.stream().filter(m1 -> MonsterUtils.isSameMonster(m, m1)).findFirst();
-                    if (!replacement.isPresent())
-                        it.remove();
-                }
-            }
-
-            ArrayList<Object> result = new ArrayList<>(list.size());
-            for (Object e : list) {
-                result.add(cloner.deepClone(e, clones));
-            }
-            return result;
-        });
-        AbstractMonster newMonster = cloner.deepClone(monster);
-        cloner.unregisterFastCloner(AbstractMonster.class);
-        cloner.unregisterFastCloner(HashMap.class);
-        cloner.registerFastCloner(HashMap.class, new FastClonerHashMap());
-        cloner.unregisterFastCloner(ArrayList.class);
-        cloner.registerFastCloner(ArrayList.class, new FastClonerArrayList());
-        return newMonster;
-    }
-
-    /**
-     * Clones a monster group, while replacing a specific monster with the provided instance.
-     *
-     * @param group       The group to clone.
-     * @param replacement The monster to replace. This monster will also be cloned.
-     * @return The cloned group.
-     */
-    public static MonsterGroup cloneMonsterGroup(MonsterGroup group, AbstractMonster replacement) {
-        AbstractMonster newReplacement = cloneMonster(replacement, group);
-        cloner.registerFastCloner(AbstractMonster.class, (o, cloner, clones) -> {
-            if (o == null) return null;
-            IDeepCloner baseCloner = getBaseCloner(o.getClass());
-            if (MonsterUtils.isSameMonster((AbstractMonster) o, newReplacement)) {
-                return baseCloner.deepClone(newReplacement, clones);
-            } else {
-                return baseCloner.deepClone((AbstractMonster) o, clones);
-            }
-        });
-        MonsterGroup newGroup = cloner.deepClone(group);
-        newGroup.monsters.replaceAll(m -> fixMonsterState(m, newGroup));
-        cloner.unregisterFastCloner(AbstractMonster.class);
-        return newGroup;
-    }
-
     public static MonsterGroup cloneMonsterGroup(MonsterGroup group) {
         return cloner.deepClone(group);
     }
@@ -299,64 +201,112 @@ public class CloneUtils {
         return ReflectionHacks.privateMethod(Cloner.class, "findDeepCloner", Class.class).invoke(cloner, clazz);
     }
 
+    private static void registerPriorityCloningStrategy(ICloningStrategy strategy) {
+        List<ICloningStrategy> cloningStrategies = ReflectionHacks.getPrivate(cloner, Cloner.class, "cloningStrategies");
+        if (cloningStrategies == null) {
+            cloningStrategies = new ArrayList<>();
+            ReflectionHacks.setPrivate(cloner, Cloner.class, "cloningStrategies", cloningStrategies);
+        }
+        cloningStrategies.add(0, strategy);
+    }
+
+    private static void unregisterCloningStrategy(ICloningStrategy strategy) {
+        List<ICloningStrategy> cloningStrategies = ReflectionHacks.getPrivate(cloner, Cloner.class, "cloningStrategies");
+        cloningStrategies.remove(strategy);
+    }
+
+    private static final List<MonsterField> baseMonsterFields = enumerateFieldsForMonster(AbstractMonster.class, Object.class);
+
+    private static final Map<Class<?>, List<MonsterField>> monsterFields = new HashMap<>();
+
+    private static List<MonsterField> enumerateFieldsForMonster(Class<?> monsterClass, Class<?> baseClass) {
+        List<MonsterField> fields = new ArrayList<>();
+        Class<?> sc = monsterClass;
+        do {
+            Field[] fs = sc.getDeclaredFields();
+            for (final Field f : fs) {
+                if (!f.isAccessible()) {
+                    f.setAccessible(true);
+                }
+                int modifiers = f.getModifiers();
+                if (!Modifier.isStatic(modifiers)) {
+                    fields.add(new MonsterField(f));
+                }
+            }
+        } while (!Objects.equals(sc = sc.getSuperclass(), baseClass) && sc != null);
+        return fields;
+    }
+
+    private static AbstractMonster fixMonsterStates(AbstractMonster monster) {
+        if (monster instanceof TheCollector) {
+            // Allow initial spawning of Torch Heads if The Collector is rewound to the start of the fight.
+            HashMap<Integer, AbstractMonster> enemySlots = ReflectionHacks.getPrivate(monster, TheCollector.class, "enemySlots");
+            if (enemySlots.size() == 0)
+                ReflectionHacks.setPrivate(monster, TheCollector.class, "initialSpawn", true);
+        }
+        return monster;
+    }
+
     /**
-     * Fixes the state of a monster after accompanying monsters are changed.
+     * Copies all appropriate creature states from one monster to another, mutating the destination monster.
      *
-     * @param m     The monster to fix.
-     * @param group The monster group the monster is in.
-     * @return The fixed monster.
+     * @param source      The monster to copy from.
+     * @param destination The monster to copy to.
      */
-    private static AbstractMonster fixMonsterState(AbstractMonster m, MonsterGroup group) {
-        if (m instanceof TheCollector) {
-            HashMap<Integer, AbstractMonster> enemySlots = ReflectionHacks.getPrivate(m, TheCollector.class, "enemySlots");
-
-            // If the player kills a Torch Head, then wait until The Collector to summon a new one before rewinding,
-            // the new Torch Head will be added to the internal map of The Collector, and then be removed when rewinding
-            // because the 2 Torch Heads have different UUIDs. This causes the old Torch Head to not be recognized as a
-            // minion of The Collector.
-            for (AbstractMonster monster : group.monsters) {
-                if (monster instanceof TorchHead) {
-                    if (!enemySlots.containsValue(monster)) {
-                        for (int i = 1; i < 3; i++) {
-                            if (enemySlots.get(i) == null) {
-                                enemySlots.put(i, monster);
-                                break;
-                            }
-                        }
-                    }
+    public static void copyMonsterStates(AbstractMonster source, AbstractMonster destination) {
+        if (!source.getClass().equals(destination.getClass())) {
+            throw new IllegalArgumentException("Source and destination monster classes must be the same.");
+        }
+        List<MonsterField> fields = monsterFields.get(source.getClass());
+        if (fields == null) {
+            fields = enumerateFieldsForMonster(source.getClass(), AbstractMonster.class);
+            monsterFields.put(source.getClass(), new ArrayList<>(fields));
+        }
+        fields.addAll(baseMonsterFields);
+        AtomicBoolean containsMonsterField = new AtomicBoolean(false);
+        ICloningStrategy strategy = (o, field) -> {
+            try {
+                if (o instanceof AbstractMonster && o != source) {
+                    containsMonsterField.set(true);
+                    return ICloningStrategy.Strategy.SAME_INSTANCE_INSTEAD_OF_CLONE;
+                } else if (AbstractMonster.class.isAssignableFrom(field.getType()) && field.get(o) != source) {
+                    containsMonsterField.set(true);
+                    return ICloningStrategy.Strategy.SAME_INSTANCE_INSTEAD_OF_CLONE;
+                } else {
+                    return ICloningStrategy.Strategy.IGNORE;
                 }
+            } catch (IllegalAccessException e) {
+                throw new RuntimeException(e);
             }
-
-            // The Collector only spawns new minions when one of the minions in its internal map has isDying == true.
-            // If The Collector is linked to a state with no minions, it will never spawn new minions without this fix
-            // because the internal map is cleared when it is being cloned.
-            if (!(boolean) ReflectionHacks.getPrivate(m, TheCollector.class, "initialSpawn")) {
-                for (int i = 1; i < 3; i++) {
-                    if (enemySlots.get(i) == null) {
-                        TorchHead dummy = new TorchHead(0, 0);
-                        dummy.isDying = true;
-                        dummy.currentHealth = 0;
-                        enemySlots.put(i, dummy);
-                    }
-                }
+        };
+        registerPriorityCloningStrategy(strategy);
+        for (MonsterField field : fields) {
+            if (field.ignore) {
+                continue;
             }
-        } else if (m instanceof Reptomancer) {
-            // Add any missing daggers to the internal array of daggers when rewinding from a state of no daggers
-            // to a state with daggers.
-            AbstractMonster[] daggers = ReflectionHacks.getPrivate(m, Reptomancer.class, "daggers");
-            for (AbstractMonster monster : group.monsters) {
-                if (monster instanceof SnakeDagger) {
-                    if (Arrays.stream(daggers).noneMatch(d -> d == monster)) {
-                        for (int i = 0; i < 4; i++) {
-                            if (daggers[i] == null) {
-                                daggers[i] = monster;
-                                break;
-                            }
-                        }
-                    }
+            try {
+                Object value = field.field.get(source);
+                containsMonsterField.set(false);
+                value = cloner.deepClone(value);
+                if (containsMonsterField.get()) {
+                    field.ignore = true;
+                } else {
+                    field.field.set(destination, value);
                 }
+            } catch (IllegalAccessException e) {
+                e.printStackTrace();
             }
         }
-        return m;
+        unregisterCloningStrategy(strategy);
+        fixMonsterStates(destination);
+    }
+
+    private static class MonsterField {
+        Field field;
+        boolean ignore = false;
+
+        MonsterField(Field field) {
+            this.field = field;
+        }
     }
 }

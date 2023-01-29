@@ -1,5 +1,6 @@
 package theRetrospect.mechanics.timetravel;
 
+import com.badlogic.gdx.utils.Disposable;
 import com.evacipated.cardcrawl.mod.stslib.patches.core.AbstractCreature.TempHPField;
 import com.megacrit.cardcrawl.actions.utility.HandCheckAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -19,7 +20,7 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.stream.Collectors;
 
-public class PlayerState {
+public class PlayerState implements Disposable {
     public ArrayList<AbstractPower> powers;
 
     public int lastDamageTaken;
@@ -186,5 +187,10 @@ public class PlayerState {
         state.limbo = CloneUtils.cloneCardGroup(this.limbo);
 
         return state;
+    }
+
+    @Override
+    public void dispose() {
+
     }
 }

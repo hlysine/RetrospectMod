@@ -1,6 +1,8 @@
 package theRetrospect.mechanics.timetravel;
 
+import com.badlogic.gdx.utils.Disposable;
 import com.megacrit.cardcrawl.actions.GameActionManager;
+import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
@@ -15,7 +17,7 @@ import theRetrospect.util.CloneUtils;
 
 import java.util.ArrayList;
 
-public class CombatState {
+public class CombatState implements Disposable {
 
     private static final Logger logger = LogManager.getLogger(CombatState.class);
 
@@ -102,7 +104,7 @@ public class CombatState {
         GameActionManager.playerHpLastTurn = this.playerHpLastTurn;
         GameActionManager.turn = this.turn;
 
-        AbstractDungeon.topLevelEffects.add(new PlayerTurnWithoutEnergyEffect());
+        AbstractDungeon.actionManager.addToBottom(new VFXAction(AbstractDungeon.player, new PlayerTurnWithoutEnergyEffect(), PlayerTurnWithoutEnergyEffect.DUR, true));
     }
 
     public void restoreStateCompletely() {
@@ -132,13 +134,13 @@ public class CombatState {
         GameActionManager.playerHpLastTurn = this.playerHpLastTurn;
         GameActionManager.turn = this.turn;
 
-        AbstractDungeon.topLevelEffects.add(new PlayerTurnWithoutEnergyEffect());
+        AbstractDungeon.actionManager.addToBottom(new VFXAction(AbstractDungeon.player, new PlayerTurnWithoutEnergyEffect(), PlayerTurnWithoutEnergyEffect.DUR, true));
     }
 
-    public CombatState copy(AbstractMonster replacement) {
+    public CombatState copy() {
         CombatState state = new CombatState();
 
-        state.monsters = replacement == null ? CloneUtils.cloneMonsterGroup(this.monsters) : CloneUtils.cloneMonsterGroup(this.monsters, replacement);
+        state.monsters = CloneUtils.cloneMonsterGroup(this.monsters);
         state.player = this.player.copy();
 
         state.monsterRng = this.monsterRng.copy();
@@ -165,5 +167,13 @@ public class CombatState {
         state.turn = this.turn;
 
         return state;
+    }
+
+    @Override
+    public void dispose() {
+        for (AbstractMonster monster : this.monsters.monsters) {
+            monster.dispose();
+        }
+        this.player.dispose();
     }
 }

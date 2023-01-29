@@ -42,32 +42,34 @@ public class RewindAction extends AbstractGameAction {
     private final int rounds;
     private final AbstractMonster persistingMonster;
     private boolean rewindDone = false;
+    private boolean endingDone = false;
+    private TimelineMinion minion;
 
     public RewindAction(AbstractCard rewindCard, int rounds, AbstractMonster persistingMonster) {
         this.rewindCard = rewindCard;
         this.rounds = rounds;
         this.persistingMonster = persistingMonster;
-        this.duration = this.startDuration = 1.5f;
+        this.duration = this.startDuration = TimeTravelEffect.DURATION;
     }
 
     @Override
     public void update() {
+        AbstractPlayer player = AbstractDungeon.player;
         if (this.duration == this.startDuration) {
             AbstractDungeon.topLevelEffects.add(new TimeTravelEffect(new Vector2(AbstractDungeon.player.hb.cX, AbstractDungeon.player.hb.cY)));
-        }
-        if (this.duration < this.startDuration / 2 && !rewindDone) {
-            rewindDone = true;
-            AbstractPlayer player = AbstractDungeon.player;
 
             if (MinionUtils.getMinions(player).monsters.size() >= MinionUtils.getMaxMinionCount(player)) {
                 AbstractDungeon.effectList.add(new ThoughtBubble(player.dialogX, player.dialogY, 3.0F, cardStrings.EXTENDED_DESCRIPTION[1], true));
                 this.isDone = true;
                 return;
             }
+        }
+        if (this.duration < this.startDuration / 2 && !rewindDone) {
+            rewindDone = true;
 
             CombatStateTree.LinearPath timelinePath = StateManager.rewindTime(rounds, rewindCard, persistingMonster);
 
-            TimelineMinion minion = new TimelineMinion(player, (int) (-Settings.WIDTH * 0.5), 0, timelinePath);
+            minion = new TimelineMinion(player, (int) (-Settings.WIDTH * 0.5), 0, timelinePath);
 
             // add to the end of the list first to trigger events
             MinionUtils.addMinion(player, minion);
@@ -80,6 +82,11 @@ public class RewindAction extends AbstractGameAction {
 
             TimelineUtils.repositionTimelines(player);
 
+            CardCrawlGame.sound.play("CARD_POWER_IMPACT", 0.1f);
+        }
+        if (this.duration < this.startDuration / 5 && !endingDone) {
+            endingDone = true;
+
             for (int i = 0; i < minion.cards.size() && i < 10; i++) {
                 AbstractDungeon.effectList.add(new FlyingOrbEffect(
                         minion.target_x, minion.target_y + minion.hb.height / 2,
@@ -88,7 +95,6 @@ public class RewindAction extends AbstractGameAction {
                 ));
             }
             AbstractDungeon.effectList.add(new TimelineCircleEffect(minion));
-            CardCrawlGame.sound.play("CARD_POWER_IMPACT", 0.1f);
 
             if (!TipTracker.tips.get(TimelineUtils.REWIND_TIP)) {
                 AbstractDungeon.ftue = new FtueTip(

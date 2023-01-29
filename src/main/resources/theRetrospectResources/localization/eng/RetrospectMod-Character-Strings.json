@@ -21,7 +21,8 @@
       " and #b",
       ".",
       "This timeline exists until round #b",
-      "."
+      ".",
+      "This timeline is synchronizing..."
     ]
   }
 }

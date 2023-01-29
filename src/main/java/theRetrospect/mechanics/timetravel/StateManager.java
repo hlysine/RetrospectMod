@@ -6,16 +6,20 @@ import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import hlysine.friendlymonsters.utils.MinionUtils;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import theRetrospect.actions.general.RunnableAction;
 import theRetrospect.powers.TimeLinkPower;
 import theRetrospect.subscribers.StateChangeSubscriber;
 import theRetrospect.util.CardUtils;
+import theRetrospect.util.CloneUtils;
 import theRetrospect.util.MonsterUtils;
 
 import java.util.Optional;
 import java.util.stream.Collectors;
 
 public class StateManager {
+    private static Logger logger = LogManager.getLogger(StateManager.class);
     public static CombatStateTree stateTree;
 
     public static int getActiveRound() {
@@ -23,6 +27,9 @@ public class StateManager {
     }
 
     public static void reset() {
+        if (stateTree != null) {
+            stateTree.dispose();
+        }
         stateTree = new CombatStateTree();
     }
 
@@ -49,6 +56,9 @@ public class StateManager {
      * @return A Linear Path with the origin at the rewind destination and target at the time before rewinding.
      */
     public static CombatStateTree.LinearPath rewindTime(int rounds, AbstractCard cardToExclude, AbstractMonster persistingMonster) {
+        logger.info("Start rewinding time");
+        long startTime = System.currentTimeMillis();
+
         // Save current state before rewinding
         CombatState currentState = CombatState.extractState();
         stateTree.getActiveNode().midStates.add(currentState);
@@ -66,7 +76,7 @@ public class StateManager {
         CombatStateTree.Node destination = stateTree.getNodeForRound(stateTree.getActiveNode(), stateTree.getActiveRound() - rounds);
         CombatStateTree.LinearPath path;
         if (destination == null) {
-            destination = stateTree.addRoot(stateTree.getActiveRound() - rounds, stateTree.getRoot(stateTree.getActiveNode()).baseState.copy(persistingMonster));
+            destination = stateTree.addRoot(stateTree.getActiveRound() - rounds, stateTree.getRoot(stateTree.getActiveNode()).baseState.copy());
             destination.baseState.turn = destination.round;
 
             path = stateTree.createLinearPath(stateTree.getActiveNode(), currentState, rounds);
@@ -76,12 +86,19 @@ public class StateManager {
             path = stateTree.createLinearPath(stateTree.getActiveNode(), currentState, rounds);
             if (path.originNode.parent == null) {
                 // Rewinding to exactly round 1
-                stateTree.setActiveNode(stateTree.addRoot(path.originNode.round, path.originNode.baseState.copy(persistingMonster)));
+                stateTree.setActiveNode(stateTree.addRoot(path.originNode.round, path.originNode.baseState.copy()));
             } else {
                 // Rewinding to a later round
                 stateTree.setActiveNode(path.originNode.parent);
-                stateTree.addNode(path.originNode.round, path.originNode.baseState.copy(persistingMonster));
+                stateTree.addNode(path.originNode.round, path.originNode.baseState.copy());
             }
+        }
+
+        if (persistingMonster != null) {
+            Optional<AbstractMonster> monster = stateTree.getActiveNode().baseState.monsters.monsters.stream()
+                    .filter(m -> MonsterUtils.isSameMonster(m, persistingMonster))
+                    .findFirst();
+            monster.ifPresent(m -> CloneUtils.copyMonsterStates(persistingMonster, m));
         }
 
         stateTree.getActiveNode().baseState.restoreStateForRewind();
@@ -93,6 +110,9 @@ public class StateManager {
         }
 
         onActiveNodeChanged();
+
+        logger.info("Rewinding time took " + (System.currentTimeMillis() - startTime) + "ms");
+
         return path;
     }
 

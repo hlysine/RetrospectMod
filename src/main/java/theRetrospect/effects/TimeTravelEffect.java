@@ -18,9 +18,11 @@ import org.apache.logging.log4j.Logger;
 import theRetrospect.RetrospectMod;
 
 public class TimeTravelEffect extends AbstractGameEffect {
-    private static final float DURATION = 1.5f;
+    public static final float DURATION = 2f;
     private static final Logger logger = LogManager.getLogger(TimeTravelEffect.class);
     private static final ShaderProgram whirlShader;
+    private static final Interpolation swingIn1 = new Interpolation.SwingIn(2f);
+    private static final Interpolation swingIn2 = new Interpolation.SwingIn(1f);
 
     static {
         whirlShader = new ShaderProgram(
@@ -82,10 +84,13 @@ public class TimeTravelEffect extends AbstractGameEffect {
             ShaderProgram oldShader = sb.getShader();
 
             whirlShader.begin();
-            float progress = 1 - Math.abs(duration - DURATION / 2) / (DURATION / 2);
-            progress = Interpolation.pow2.apply(progress);
-            whirlShader.setUniformf("radius", diagRadius * progress);
-            whirlShader.setUniformf("angle", progress * 1.2f);
+
+            float angleProgress = 1 - Math.abs(duration - DURATION / 2);
+            angleProgress = (duration > DURATION / 2 ? swingIn1 : swingIn2).apply(angleProgress);
+            float radiusProgress = Math.min(1, 1 - (duration - DURATION / 2));
+            radiusProgress = Interpolation.pow2.apply(radiusProgress);
+            whirlShader.setUniformf("angle", angleProgress * 2f);
+            whirlShader.setUniformf("radius", diagRadius * radiusProgress);
             whirlShader.end();
 
             sb.setShader(whirlShader);

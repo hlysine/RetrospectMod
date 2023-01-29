@@ -1,11 +1,12 @@
 package theRetrospect.mechanics.timetravel;
 
+import com.badlogic.gdx.utils.Disposable;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class CombatStateTree {
+public class CombatStateTree implements Disposable {
 
     /**
      * Roots of the tree, storing nodes of the first round in each timeline.
@@ -121,7 +122,16 @@ public class CombatStateTree {
         return node;
     }
 
-    public static class Node {
+    @Override
+    public void dispose() {
+        for (Node node : roots) {
+            node.dispose();
+        }
+        roots.clear();
+        activeNode = null;
+    }
+
+    public static class Node implements Disposable {
         public final int round;
         /**
          * The state of this round, captured at the start of the round.
@@ -143,6 +153,20 @@ public class CombatStateTree {
             this.round = round;
             this.baseState = baseState;
             this.parent = parent;
+        }
+
+        @Override
+        public void dispose() {
+            baseState.dispose();
+            for (CombatState state : midStates) {
+                state.dispose();
+            }
+            midStates.clear();
+            cardsPlayedManually.clear();
+            for (Node child : children) {
+                child.dispose();
+            }
+            children.clear();
         }
     }
 

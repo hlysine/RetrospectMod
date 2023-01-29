@@ -5,7 +5,7 @@
     <groupId>retrospectmod</groupId>
     <artifactId>RetrospectMod</artifactId>
     <name>The Retrospect</name>
-    <version>0.9.2</version>
+    <version>0.10.0</version>
     <description>A custom Slay the Spire character - The Retrospect.</description>
 
     <properties>

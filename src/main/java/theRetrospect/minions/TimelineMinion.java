@@ -62,8 +62,20 @@ public class TimelineMinion extends AbstractMinionWithCards implements StateChan
         this.addPower(new TimerPower(this));
         this.powers.forEach(AbstractPower::onInitialApplication);
 
+        this.halfDead = true;
+
+        this.timelineTip = new PowerTip(NAME, TEXT[7]);
+
+        setCards(new ArrayList<>());
+        setCardIntents(new ArrayList<>());
+
+        hideHealthBar();
+
+        Color c = this.tint.color.cpy();
+        c.a = 0.5f;
+        this.tint.changeColor(c, 5f);
+
         this.timelinePath = timelinePath;
-        applyStateForRound(StateManager.getActiveRound());
         addToBot(new RunnableAction(() -> applyStateForRound(StateManager.getActiveRound())));
     }
 
@@ -109,7 +121,8 @@ public class TimelineMinion extends AbstractMinionWithCards implements StateChan
                 setCardIntents(this.cards);
             }
 
-            showHealthBar();
+            if (this.hbAlpha < 0.1f)
+                showHealthBar();
 
             Color c = this.tint.color.cpy();
             c.a = 1f;
@@ -128,7 +141,7 @@ public class TimelineMinion extends AbstractMinionWithCards implements StateChan
     public void renderCustomTips(SpriteBatch sb, ArrayList<PowerTip> tips) {
         super.renderCustomTips(sb, tips);
         if (timelineTip != null) {
-            tips.add(timelineTip);
+            tips.add(0, timelineTip);
         }
     }
 
