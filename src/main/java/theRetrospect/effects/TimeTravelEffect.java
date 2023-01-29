@@ -85,8 +85,8 @@ public class TimeTravelEffect extends AbstractGameEffect {
             whirlShader.setUniformf("center", center.x, center.y);
             if (focus != null) {
                 whirlShader.setUniformf("focus", focus.x, focus.y);
-                whirlShader.setUniformf("focus_radius", focusRadius);
-                whirlShader.setUniformf("focus_radius_2", 500);
+                whirlShader.setUniformf("focus_radius", 0);
+                whirlShader.setUniformf("focus_radius_2", focusRadius);
             } else {
                 whirlShader.setUniformf("focus_radius", 0);
                 whirlShader.setUniformf("focus_radius_2", 0);
@@ -102,12 +102,15 @@ public class TimeTravelEffect extends AbstractGameEffect {
 
             whirlShader.begin();
 
-            float angleProgress = 1 - Math.abs(duration - startingDuration / 2) / (startingDuration / 2);
-            angleProgress = (duration > startingDuration / 2 ? swingIn1 : swingIn2).apply(angleProgress);
-            float radiusProgress = Math.min(1, 1 - (duration - startingDuration / 2) / (startingDuration / 2));
-            radiusProgress = Interpolation.pow2.apply(radiusProgress);
-            whirlShader.setUniformf("angle", angleProgress * 2f);
-            whirlShader.setUniformf("radius", diagRadius * radiusProgress);
+            float bouncingProgress = 1 - Math.abs(duration - startingDuration / 2) / (startingDuration / 2);
+            float stepProgress = Math.min(1, 1 - (duration - startingDuration / 2) / (startingDuration / 2));
+            whirlShader.setUniformf("angle", 2f * (duration > startingDuration / 2 ? swingIn1 : swingIn2).apply(bouncingProgress));
+            whirlShader.setUniformf("radius", diagRadius * Interpolation.pow2.apply(stepProgress));
+            if (focus != null) {
+                float focusProgress = Interpolation.pow2In.apply(stepProgress);
+                whirlShader.setUniformf("focus_radius", focusRadius * (0.2f + focusProgress * 0.8f));
+                whirlShader.setUniformf("focus_radius_2", focusRadius + 200 + 300 * focusProgress);
+            }
             whirlShader.end();
 
             sb.setShader(whirlShader);
