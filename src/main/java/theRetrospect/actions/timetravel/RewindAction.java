@@ -49,14 +49,21 @@ public class RewindAction extends AbstractGameAction {
         this.rewindCard = rewindCard;
         this.rounds = rounds;
         this.persistingMonster = persistingMonster;
-        this.duration = this.startDuration = TimeTravelEffect.DURATION;
+        this.duration = this.startDuration = Settings.FAST_MODE ? TimeTravelEffect.SHORT_DURATION : TimeTravelEffect.LONG_DURATION;
     }
 
     @Override
     public void update() {
         AbstractPlayer player = AbstractDungeon.player;
         if (this.duration == this.startDuration) {
-            AbstractDungeon.topLevelEffects.add(new TimeTravelEffect(new Vector2(AbstractDungeon.player.hb.cX, AbstractDungeon.player.hb.cY)));
+            if (persistingMonster != null) {
+                AbstractDungeon.topLevelEffects.add(new TimeTravelEffect(
+                        new Vector2(AbstractDungeon.player.hb.cX, AbstractDungeon.player.hb.cY),
+                        new Vector2(persistingMonster.hb.cX, persistingMonster.hb.cY),
+                        Math.max(persistingMonster.hb.height, persistingMonster.hb.width) / 2));
+            } else {
+                AbstractDungeon.topLevelEffects.add(new TimeTravelEffect(new Vector2(AbstractDungeon.player.hb.cX, AbstractDungeon.player.hb.cY)));
+            }
 
             if (MinionUtils.getMinions(player).monsters.size() >= MinionUtils.getMaxMinionCount(player)) {
                 AbstractDungeon.effectList.add(new ThoughtBubble(player.dialogX, player.dialogY, 3.0F, cardStrings.EXTENDED_DESCRIPTION[1], true));

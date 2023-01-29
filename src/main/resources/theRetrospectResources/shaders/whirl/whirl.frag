@@ -19,11 +19,15 @@ uniform float res_y;
 uniform float radius = 200.0;
 uniform float angle = 0.8;
 uniform vec2 center = vec2(400.0, 300.0);
+uniform vec2 focus = vec2(600, 300.0);
+uniform float focus_radius = 100.0;
+uniform float focus_radius_2 = 500.0;
 
 vec4 PostFX(sampler2D tex, vec2 uv)
 {
     vec2 texSize = vec2(res_x, res_y);
-    vec2 tc = uv * texSize;
+    vec2 orig_tc = uv * texSize;
+    vec2 tc = orig_tc;
     tc -= center;
     float dist = length(tc);
     if (dist < radius)
@@ -35,6 +39,13 @@ vec4 PostFX(sampler2D tex, vec2 uv)
         tc = vec2(dot(tc, vec2(c, -s)), dot(tc, vec2(s, c)));
     }
     tc += center;
+    float clear_dist = length(orig_tc - focus);
+    if (clear_dist < focus_radius) {
+        tc = orig_tc;
+    } else if (clear_dist < focus_radius_2) {
+        float progress = (clear_dist - focus_radius) / (focus_radius_2 - focus_radius);
+        tc = orig_tc * (1.0 - progress) + tc * progress;
+    }
     vec3 color = texture2D(u_texture, tc / texSize).rgb;
     return vec4(color, 1.0);
 }

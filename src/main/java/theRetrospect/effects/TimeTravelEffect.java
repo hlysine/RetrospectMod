@@ -9,6 +9,7 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.graphics.glutils.ShaderProgram;
 import com.badlogic.gdx.math.Interpolation;
 import com.badlogic.gdx.math.Vector2;
+import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.vfx.AbstractGameEffect;
 import com.megacrit.cardcrawl.vfx.BorderLongFlashEffect;
@@ -18,7 +19,8 @@ import org.apache.logging.log4j.Logger;
 import theRetrospect.RetrospectMod;
 
 public class TimeTravelEffect extends AbstractGameEffect {
-    public static final float DURATION = 2f;
+    public static final float LONG_DURATION = 5f;
+    public static final float SHORT_DURATION = 2f;
     private static final Logger logger = LogManager.getLogger(TimeTravelEffect.class);
     private static final ShaderProgram whirlShader;
     private static final Interpolation swingIn1 = new Interpolation.SwingIn(2f);
@@ -37,18 +39,25 @@ public class TimeTravelEffect extends AbstractGameEffect {
 
     private final PostProcessor postProcessor;
     private final Vector2 center;
+    private final Vector2 focus;
+    private final float focusRadius;
 
-    public TimeTravelEffect(Vector2 center) {
-        this.duration = DURATION;
-        this.startingDuration = DURATION;
+    public TimeTravelEffect(Vector2 center, Vector2 focus, float focusRadius) {
+        this.duration = this.startingDuration = Settings.FAST_MODE ? SHORT_DURATION : LONG_DURATION;
         this.center = center;
+        this.focus = focus;
+        this.focusRadius = focusRadius;
         this.postProcessor = new PostProcessor();
         AbstractDungeon.topLevelEffects.add(new BorderLongFlashEffect(RetrospectMod.RETROSPECT_COLOR.cpy()));
     }
 
+    public TimeTravelEffect(Vector2 center) {
+        this(center, null, 0);
+    }
+
     @Override
     public void update() {
-        if (this.duration == DURATION) {
+        if (this.duration == this.startingDuration) {
             ScreenPostProcessorManager.addPostProcessor(postProcessor);
         }
         this.duration -= Gdx.graphics.getDeltaTime();
@@ -74,6 +83,14 @@ public class TimeTravelEffect extends AbstractGameEffect {
             whirlShader.setUniformf("res_x", Gdx.graphics.getWidth());
             whirlShader.setUniformf("res_y", Gdx.graphics.getHeight());
             whirlShader.setUniformf("center", center.x, center.y);
+            if (focus != null) {
+                whirlShader.setUniformf("focus", focus.x, focus.y);
+                whirlShader.setUniformf("focus_radius", focusRadius);
+                whirlShader.setUniformf("focus_radius_2", 500);
+            } else {
+                whirlShader.setUniformf("focus_radius", 0);
+                whirlShader.setUniformf("focus_radius_2", 0);
+            }
             whirlShader.end();
 
             diagRadius = (float) Math.sqrt(Math.pow(Gdx.graphics.getWidth(), 2) + Math.pow(Gdx.graphics.getHeight(), 2));
@@ -85,9 +102,9 @@ public class TimeTravelEffect extends AbstractGameEffect {
 
             whirlShader.begin();
 
-            float angleProgress = 1 - Math.abs(duration - DURATION / 2);
-            angleProgress = (duration > DURATION / 2 ? swingIn1 : swingIn2).apply(angleProgress);
-            float radiusProgress = Math.min(1, 1 - (duration - DURATION / 2));
+            float angleProgress = 1 - Math.abs(duration - startingDuration / 2) / (startingDuration / 2);
+            angleProgress = (duration > startingDuration / 2 ? swingIn1 : swingIn2).apply(angleProgress);
+            float radiusProgress = Math.min(1, 1 - (duration - startingDuration / 2) / (startingDuration / 2));
             radiusProgress = Interpolation.pow2.apply(radiusProgress);
             whirlShader.setUniformf("angle", angleProgress * 2f);
             whirlShader.setUniformf("radius", diagRadius * radiusProgress);
