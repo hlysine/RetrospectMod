@@ -13,7 +13,7 @@ public class MonsterNoDisposeOnDeathPatch {
         return new ExprEditor() {
             public void edit(javassist.expr.MethodCall m) throws CannotCompileException {
                 if (m.getMethodName().equals("dispose")) {
-                    m.replace("{  }");
+                    m.replace("{ theRetrospect.mechanics.timetravel.StateManager.scheduleDisposable(this); }");
                 }
             }
         };

@@ -15,11 +15,17 @@ import theRetrospect.util.CardUtils;
 import theRetrospect.util.CloneUtils;
 import theRetrospect.util.MonsterUtils;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
 public class StateManager {
-    private static Logger logger = LogManager.getLogger(StateManager.class);
+    private static final Logger logger = LogManager.getLogger(StateManager.class);
+    /**
+     * Contains all dead monsters that need to be disposed when combat ends.
+     */
+    private static final List<AbstractMonster> pendingDispose = new ArrayList<>();
     public static CombatStateTree stateTree;
 
     public static int getActiveRound() {
@@ -30,7 +36,23 @@ public class StateManager {
         if (stateTree != null) {
             stateTree.dispose();
         }
+        pendingDispose.forEach(AbstractMonster::dispose);
+        pendingDispose.clear();
         stateTree = new CombatStateTree();
+    }
+
+    /**
+     * Schedule a {@link AbstractMonster} to be disposed when combat ends.
+     * This is used because the monster shares textures with other monsters of the same type,
+     * so they can only be disposed when all instances are dead.
+     *
+     * @param disposable Monster to be disposed.
+     */
+    public static void scheduleDisposable(AbstractMonster disposable) {
+        if (pendingDispose.contains(disposable)) {
+            return;
+        }
+        pendingDispose.add(disposable);
     }
 
     public static void atStartOfTurn() {
