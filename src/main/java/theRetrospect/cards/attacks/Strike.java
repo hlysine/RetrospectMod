@@ -26,6 +26,6 @@ public class Strike extends AbstractBaseCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         addToBot(new DamageAction(m, new DamageInfo(p, damage, damageTypeForTurn), AbstractGameAction.AttackEffect.SLASH_DIAGONAL));
-        addToBot(new ApplyPowerAction(m, p, new TimeLinkPower(m, 1))); // todo: debug only
+        addToBot(new ApplyPowerAction(m, p, new TimeLinkPower(m, damage))); // todo: debug only
     }
 }
