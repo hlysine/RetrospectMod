@@ -24,7 +24,8 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.Hitbox;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.monsters.MonsterGroup;
-import com.megacrit.cardcrawl.monsters.city.TheCollector;
+import com.megacrit.cardcrawl.monsters.beyond.AwakenedOne;
+import com.megacrit.cardcrawl.monsters.beyond.Darkling;
 import com.megacrit.cardcrawl.orbs.AbstractOrb;
 import com.megacrit.cardcrawl.potions.AbstractPotion;
 import com.megacrit.cardcrawl.powers.AbstractPower;
@@ -34,9 +35,11 @@ import com.megacrit.cardcrawl.stances.AbstractStance;
 import com.rits.cloning.Cloner;
 import com.rits.cloning.ICloningStrategy;
 import com.rits.cloning.IDeepCloner;
+import com.rits.cloning.IFastCloner;
 import hlysine.friendlymonsters.monsters.AbstractFriendlyMonster;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import theRetrospect.mechanics.timetravel.CombatState;
 import theRetrospect.patches.AnimationPatch;
 
 import java.lang.reflect.Field;
@@ -219,6 +222,14 @@ public class CloneUtils {
 
     private static final Map<Class<?>, List<MonsterField>> monsterFields = new HashMap<>();
 
+    private static final List<String> alwaysCopyFields = Arrays.asList(
+            "damage",
+            "powers"
+    );
+    private static final List<String> alwaysIgnoreFields = Arrays.asList(
+            "initialSpawn" // for The Collector
+    );
+
     private static List<MonsterField> enumerateFieldsForMonster(Class<?> monsterClass, Class<?> baseClass) {
         List<MonsterField> fields = new ArrayList<>();
         Class<?> sc = monsterClass;
@@ -237,26 +248,44 @@ public class CloneUtils {
         return fields;
     }
 
-    private static AbstractMonster fixMonsterStates(AbstractMonster monster) {
-        if (monster instanceof TheCollector) {
-            // Allow initial spawning of Torch Heads if The Collector is rewound to the start of the fight.
-            HashMap<Integer, AbstractMonster> enemySlots = ReflectionHacks.getPrivate(monster, TheCollector.class, "enemySlots");
-            if (enemySlots.size() == 0)
-                ReflectionHacks.setPrivate(monster, TheCollector.class, "initialSpawn", true);
+    /**
+     * Fix the incorrect states after a monster is being added to a combat state that it didn't originally belong to.
+     * Both the monster and the combat state may be mutated.
+     *
+     * @param monster     The monster to fix.
+     * @param combatState The combat state that the monster has been added to.
+     */
+    public static void fixMonsterStates(AbstractMonster monster, CombatState combatState) {
+        if (monster instanceof AwakenedOne) {
+            combatState.cannotLose = ReflectionHacks.getPrivate(monster, AwakenedOne.class, "form1");
+        } else if (monster instanceof Darkling) {
+            boolean allDead = true;
+            for (AbstractMonster m : combatState.monsters.monsters) {
+                if (m.id.equals(Darkling.ID) && !m.halfDead) {
+                    allDead = false;
+                    break;
+                }
+            }
+            combatState.cannotLose = !allDead;
         }
-        return monster;
     }
 
     /**
      * Copies all appropriate creature states from one monster to another, mutating the destination monster.
+     * {@link CloneUtils#fixMonsterStates(AbstractMonster, CombatState)} should be called after this method.
      *
-     * @param source      The monster to copy from.
-     * @param destination The monster to copy to.
+     * @param source           The monster to copy from.
+     * @param destination      The monster to copy to.
+     * @param destinationGroup The monster group that the destination monster belongs to.
      */
-    public static void copyMonsterStates(AbstractMonster source, AbstractMonster destination) {
+    public static void copyMonsterStates(AbstractMonster source, AbstractMonster destination, MonsterGroup destinationGroup) {
         if (!source.getClass().equals(destination.getClass())) {
             throw new IllegalArgumentException("Source and destination monster classes must be the same.");
         }
+
+        logger.info("Starting to copy monster states");
+        long startTime = System.currentTimeMillis();
+
         List<MonsterField> fields = monsterFields.get(source.getClass());
         if (fields == null) {
             fields = enumerateFieldsForMonster(source.getClass(), AbstractMonster.class);
@@ -269,8 +298,15 @@ public class CloneUtils {
                 if (o instanceof AbstractMonster && o != source) {
                     containsMonsterField.set(true);
                     return ICloningStrategy.Strategy.SAME_INSTANCE_INSTEAD_OF_CLONE;
-                } else if (AbstractMonster.class.isAssignableFrom(field.getType()) && field.get(o) != source) {
-                    containsMonsterField.set(true);
+                } else if (field.get(o) instanceof AbstractMonster) {
+                    if (field.get(o) != source) {
+                        containsMonsterField.set(true);
+                    }
+                    return ICloningStrategy.Strategy.SAME_INSTANCE_INSTEAD_OF_CLONE;
+                } else if (field.getType().isArray() && field.get(o) instanceof Object[] && Arrays.stream((Object[]) field.get(o)).anyMatch(e -> e instanceof AbstractMonster)) {
+                    if (Arrays.stream((Object[]) field.get(o)).anyMatch(e -> e instanceof AbstractMonster && e != source)) {
+                        containsMonsterField.set(true);
+                    }
                     return ICloningStrategy.Strategy.SAME_INSTANCE_INSTEAD_OF_CLONE;
                 } else {
                     return ICloningStrategy.Strategy.IGNORE;
@@ -279,26 +315,54 @@ public class CloneUtils {
                 throw new RuntimeException(e);
             }
         };
-        registerPriorityCloningStrategy(strategy);
+        IFastCloner fastCloner = (o, cloner1, clones1) -> {
+            if (o == null) return null;
+            AbstractMonster m = (AbstractMonster) o;
+            if (MonsterUtils.isSameMonster(m, source)) {
+                return destination;
+            }
+            for (AbstractMonster m1 : destinationGroup.monsters) {
+                if (MonsterUtils.isSameMonster(m, m1)) {
+                    return m1;
+                }
+            }
+            return null;
+        };
+        List<String> ignoredFields = new ArrayList<>();
+        List<String> copiedFields = new ArrayList<>();
+        // use a shared clones map for all fields to maintain cross-references
+        Map<Object, Object> clones = new ClonesMap();
         for (MonsterField field : fields) {
-            if (field.ignore) {
+            if (field.ignore || alwaysIgnoreFields.contains(field.field.getName())) {
+                ignoredFields.add(field.field.getName());
                 continue;
             }
             try {
                 Object value = field.field.get(source);
-                containsMonsterField.set(false);
-                value = cloner.deepClone(value);
-                if (containsMonsterField.get()) {
-                    field.ignore = true;
-                } else {
-                    field.field.set(destination, value);
+                if (!alwaysCopyFields.contains(field.field.getName())) {
+                    containsMonsterField.set(false);
+                    // expensive but easiest way to check if the field should be cloned at all
+                    registerPriorityCloningStrategy(strategy);
+                    cloner.deepClone(value);
+                    unregisterCloningStrategy(strategy);
+                    if (containsMonsterField.get()) {
+                        field.ignore = true;
+                        ignoredFields.add(field.field.getName());
+                        continue;
+                    }
                 }
+                cloner.registerFastCloner(AbstractMonster.class, fastCloner);
+                value = ReflectionHacks.privateMethod(Cloner.class, "cloneInternal", Object.class, Map.class).invoke(cloner, value, clones);
+                cloner.unregisterFastCloner(AbstractMonster.class);
+                field.field.set(destination, value);
+                copiedFields.add(field.field.getName());
             } catch (IllegalAccessException e) {
                 e.printStackTrace();
             }
         }
-        unregisterCloningStrategy(strategy);
-        fixMonsterStates(destination);
+        logger.info("Monster field copy complete in " + (System.currentTimeMillis() - startTime) + "ms: " + source.getClass().getSimpleName() + " -> " + destination.getClass().getSimpleName());
+        logger.info("Ignored fields: " + ignoredFields);
+        logger.info("Copied fields: " + copiedFields);
     }
 
     private static class MonsterField {
@@ -307,6 +371,18 @@ public class CloneUtils {
 
         MonsterField(Field field) {
             this.field = field;
+        }
+    }
+
+    private static class ClonesMap extends IdentityHashMap<Object, Object> {
+        @Override
+        public Object get(Object key) {
+            Map<Object, Object> ignoredInstances = ReflectionHacks.getPrivate(cloner, Cloner.class, "ignoredInstances");
+            if (ignoredInstances != null) {
+                Object o = ignoredInstances.get(key);
+                if (o != null) return o;
+            }
+            return super.get(key);
         }
     }
 }

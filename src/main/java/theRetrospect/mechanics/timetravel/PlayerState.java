@@ -91,10 +91,6 @@ public class PlayerState implements Disposable {
     }
 
     public void restoreStateForRewind(AbstractPlayer player) {
-        player.currentHealth = currentHealth;
-        player.maxHealth = maxHealth;
-        TempHPField.tempHp.set(player, tempHp);
-
         player.cardsPlayedThisTurn = cardsPlayedThisTurn;
 
         player.healthBarUpdatedEvent();

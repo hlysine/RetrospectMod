@@ -47,6 +47,12 @@ public class CombatState implements Disposable {
     public int playerHpLastTurn;
     public int turn = 0;
 
+    public boolean cannotLose;
+    public boolean mugged;
+    public boolean smoked;
+    public boolean skipMonsterTurn;
+    public boolean rewardAllowed;
+
     private CombatState() {
     }
 
@@ -82,6 +88,12 @@ public class CombatState implements Disposable {
         state.playerHpLastTurn = GameActionManager.playerHpLastTurn;
         state.turn = GameActionManager.turn;
 
+        state.cannotLose = AbstractDungeon.getCurrRoom().cannotLose;
+        state.mugged = AbstractDungeon.getCurrRoom().mugged;
+        state.smoked = AbstractDungeon.getCurrRoom().smoked;
+        state.skipMonsterTurn = AbstractDungeon.getCurrRoom().skipMonsterTurn;
+        state.rewardAllowed = AbstractDungeon.getCurrRoom().rewardAllowed;
+
         logger.info("Extracting combat state took " + (System.currentTimeMillis() - startTime) + "ms");
         return state;
     }
@@ -103,6 +115,12 @@ public class CombatState implements Disposable {
         GameActionManager.damageReceivedThisTurn = this.damageReceivedThisTurn;
         GameActionManager.playerHpLastTurn = this.playerHpLastTurn;
         GameActionManager.turn = this.turn;
+
+        AbstractDungeon.getCurrRoom().cannotLose = this.cannotLose;
+        AbstractDungeon.getCurrRoom().mugged = this.mugged;
+        AbstractDungeon.getCurrRoom().smoked = this.smoked;
+        AbstractDungeon.getCurrRoom().skipMonsterTurn = this.skipMonsterTurn;
+        AbstractDungeon.getCurrRoom().rewardAllowed = this.rewardAllowed;
 
         AbstractDungeon.actionManager.addToBottom(new VFXAction(AbstractDungeon.player, new PlayerTurnWithoutEnergyEffect(), PlayerTurnWithoutEnergyEffect.DUR, true));
     }
@@ -133,6 +151,12 @@ public class CombatState implements Disposable {
         GameActionManager.damageReceivedThisTurn = this.damageReceivedThisTurn;
         GameActionManager.playerHpLastTurn = this.playerHpLastTurn;
         GameActionManager.turn = this.turn;
+
+        AbstractDungeon.getCurrRoom().cannotLose = this.cannotLose;
+        AbstractDungeon.getCurrRoom().mugged = this.mugged;
+        AbstractDungeon.getCurrRoom().smoked = this.smoked;
+        AbstractDungeon.getCurrRoom().skipMonsterTurn = this.skipMonsterTurn;
+        AbstractDungeon.getCurrRoom().rewardAllowed = this.rewardAllowed;
 
         AbstractDungeon.actionManager.addToBottom(new VFXAction(AbstractDungeon.player, new PlayerTurnWithoutEnergyEffect(), PlayerTurnWithoutEnergyEffect.DUR, true));
     }
@@ -165,6 +189,12 @@ public class CombatState implements Disposable {
         state.damageReceivedThisTurn = this.damageReceivedThisTurn;
         state.playerHpLastTurn = this.playerHpLastTurn;
         state.turn = this.turn;
+
+        state.cannotLose = this.cannotLose;
+        state.mugged = this.mugged;
+        state.smoked = this.smoked;
+        state.skipMonsterTurn = this.skipMonsterTurn;
+        state.rewardAllowed = this.rewardAllowed;
 
         return state;
     }

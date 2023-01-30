@@ -120,7 +120,10 @@ public class StateManager {
             Optional<AbstractMonster> monster = stateTree.getActiveNode().baseState.monsters.monsters.stream()
                     .filter(m -> MonsterUtils.isSameMonster(m, persistingMonster))
                     .findFirst();
-            monster.ifPresent(m -> CloneUtils.copyMonsterStates(persistingMonster, m));
+            monster.ifPresent(m -> {
+                CloneUtils.copyMonsterStates(persistingMonster, m, stateTree.getActiveNode().baseState.monsters);
+                CloneUtils.fixMonsterStates(m, stateTree.getActiveNode().baseState);
+            });
         }
 
         stateTree.getActiveNode().baseState.restoreStateForRewind();
