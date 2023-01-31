@@ -19,6 +19,7 @@ uniform float res_y;
 uniform float radius = 200.0;
 uniform float angle = 0.8;
 uniform vec2 center = vec2(400.0, 300.0);
+
 uniform vec2 focus = vec2(600, 300.0);
 uniform float focus_radius = 100.0;
 uniform float focus_radius_2 = 500.0;

@@ -17,7 +17,7 @@ void main()
     v_color = vec4(1, 1, 1, 1);
     v_texCoords = a_texCoord0;
 
-    // sgl_Position is a special output variable from
+    // gl_Position is a special output variable from
     // openGL that must be set in the vertex shader
     gl_Position = u_projTrans * a_position;
 }
