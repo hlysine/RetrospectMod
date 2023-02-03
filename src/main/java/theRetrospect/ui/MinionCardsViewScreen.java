@@ -5,7 +5,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.UIStrings;
 import theRetrospect.RetrospectMod;
 
-public class MinionCardsViewScreen extends AbstractViewScreen {
+public class MinionCardsViewScreen extends AbstractPeekableViewScreen {
     public static final String ID = RetrospectMod.makeID(MinionCardsViewScreen.class.getSimpleName());
 
     @Override

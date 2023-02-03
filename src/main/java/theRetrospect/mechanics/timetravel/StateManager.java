@@ -47,6 +47,10 @@ public class StateManager {
         }));
     }
 
+    public static void onPeekStatusChanged() {
+        // todo: peek timeline
+    }
+
 
     public static int getActiveRound() {
         return stateTree.getActiveRound();

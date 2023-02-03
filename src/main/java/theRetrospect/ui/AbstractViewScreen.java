@@ -152,7 +152,7 @@ public abstract class AbstractViewScreen implements ScrollBarListener {
     }
 
 
-    private void updateScrolling() {
+    protected void updateScrolling() {
         int y = InputHelper.mY;
 
         if (!this.grabbedScreen) {
@@ -309,7 +309,7 @@ public abstract class AbstractViewScreen implements ScrollBarListener {
         this.scrollBar.parentScrolledToPercent(percent);
     }
 
-    private boolean shouldShowScrollBar() {
+    protected boolean shouldShowScrollBar() {
         return (this.scrollUpperBound > SCROLL_BAR_THRESHOLD);
     }
 }

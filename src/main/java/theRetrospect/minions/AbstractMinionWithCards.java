@@ -130,28 +130,28 @@ public class AbstractMinionWithCards extends AbstractFriendlyMonster {
                 this.hb.clickStarted = true;
             }
         }
-        if (this.hb.clicked &&
-                AbstractDungeon.overlayMenu.combatPanelsShown &&
-                !AbstractDungeon.isScreenUp &&
-                !PeekButton.isPeeking &&
-                AbstractDungeon.getMonsters() != null &&
-                !AbstractDungeon.getMonsters().areMonstersDead() &&
-                !AbstractDungeon.player.isDeadOrEscaped() &&
-                !this.isDeadOrEscaped() &&
-                !cards.isEmpty()) {
+        if (this.hb.clicked) {
+            if (AbstractDungeon.overlayMenu.combatPanelsShown &&
+                    !AbstractDungeon.isScreenUp &&
+                    !PeekButton.isPeeking &&
+                    AbstractDungeon.getMonsters() != null &&
+                    !AbstractDungeon.getMonsters().areMonstersDead() &&
+                    !AbstractDungeon.player.isDeadOrEscaped() &&
+                    !this.isDeadOrEscaped()) {
+                RetrospectMod.logger.info("Open card view screen for timeline");
+
+                if (AbstractDungeon.isScreenUp) {
+                    if (AbstractDungeon.previousScreen == null) {
+                        AbstractDungeon.previousScreen = AbstractDungeon.screen;
+                    }
+                } else {
+                    AbstractDungeon.previousScreen = null;
+                }
+
+                openMinionCardsViewScreen();
+            }
             this.hb.clicked = false;
             this.hb.hovered = false;
-            RetrospectMod.logger.info("Open card view screen for timeline");
-
-            if (AbstractDungeon.isScreenUp) {
-                if (AbstractDungeon.previousScreen == null) {
-                    AbstractDungeon.previousScreen = AbstractDungeon.screen;
-                }
-            } else {
-                AbstractDungeon.previousScreen = null;
-            }
-
-            openMinionCardsViewScreen();
         }
         cardStack.update();
     }
@@ -177,8 +177,7 @@ public class AbstractMinionWithCards extends AbstractFriendlyMonster {
                 AbstractDungeon.getMonsters() != null &&
                 !AbstractDungeon.getMonsters().areMonstersDead() &&
                 !AbstractDungeon.player.isDeadOrEscaped() &&
-                !this.isDeadOrEscaped() &&
-                !cards.isEmpty()) {
+                !this.isDeadOrEscaped()) {
             renderPeekButton(sb);
         }
         if (!this.renderCorpse)

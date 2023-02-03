@@ -1,0 +1,52 @@
+package theRetrospect.patches.ui;
+
+import com.evacipated.cardcrawl.modthespire.lib.*;
+import com.evacipated.cardcrawl.modthespire.patcher.PatchingException;
+import com.megacrit.cardcrawl.core.OverlayMenu;
+import com.megacrit.cardcrawl.ui.buttons.PeekButton;
+import javassist.CannotCompileException;
+import javassist.CtBehavior;
+import theRetrospect.mechanics.timetravel.StateManager;
+
+// todo: also handle exiting peek via other methods
+public class PeekChangeNotifierPatch {
+    @SpirePatch(
+            clz = PeekButton.class,
+            method = "render"
+    )
+    public static class StartPeekingPatch {
+        @SpireInsertPatch(
+                locator = Locator.class
+        )
+        public static void Insert(PeekButton __instance) {
+            StateManager.onPeekStatusChanged();
+        }
+
+        private static class Locator extends SpireInsertLocator {
+            public int[] Locate(CtBehavior ctMethodToPatch) throws CannotCompileException, PatchingException {
+                Matcher finalMatcher = new Matcher.MethodCallMatcher(OverlayMenu.class, "hideBlackScreen");
+                return LineFinder.findAllInOrder(ctMethodToPatch, finalMatcher);
+            }
+        }
+    }
+
+    @SpirePatch(
+            clz = PeekButton.class,
+            method = "render"
+    )
+    public static class StopPeekingPatch {
+        @SpireInsertPatch(
+                locator = Locator.class
+        )
+        public static void Insert(PeekButton __instance) {
+            StateManager.onPeekStatusChanged();
+        }
+
+        private static class Locator extends SpireInsertLocator {
+            public int[] Locate(CtBehavior ctMethodToPatch) throws CannotCompileException, PatchingException {
+                Matcher finalMatcher = new Matcher.MethodCallMatcher(OverlayMenu.class, "showBlackScreen");
+                return LineFinder.findAllInOrder(ctMethodToPatch, finalMatcher);
+            }
+        }
+    }
+}
