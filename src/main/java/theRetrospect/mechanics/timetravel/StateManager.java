@@ -68,6 +68,7 @@ public class StateManager {
      *
      * @param disposable Monster to be disposed.
      */
+    @SuppressWarnings("unused") // Used by instrument patch to AbstractMonster.updateDeathTimer()
     public static void scheduleDisposable(AbstractMonster disposable) {
         if (pendingDispose.contains(disposable)) {
             return;
