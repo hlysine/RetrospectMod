@@ -7,7 +7,7 @@ import com.megacrit.cardcrawl.helpers.CardLibrary;
 import com.megacrit.cardcrawl.random.Random;
 import javassist.CannotCompileException;
 import javassist.CtBehavior;
-import theRetrospect.cards.curses.Singularity;
+import theRetrospect.cards.old.curses.Singularity;
 
 import java.util.ArrayList;
 

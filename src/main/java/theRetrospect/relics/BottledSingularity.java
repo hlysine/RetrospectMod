@@ -11,7 +11,7 @@ import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import com.megacrit.cardcrawl.unlock.UnlockTracker;
 import com.megacrit.cardcrawl.vfx.cardManip.ShowCardAndObtainEffect;
 import theRetrospect.RetrospectMod;
-import theRetrospect.cards.curses.Singularity;
+import theRetrospect.cards.old.curses.Singularity;
 import theRetrospect.util.CardUtils;
 
 import java.util.ArrayList;

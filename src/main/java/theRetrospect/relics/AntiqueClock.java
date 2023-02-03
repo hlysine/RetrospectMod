@@ -8,9 +8,9 @@ import theRetrospect.RetrospectMod;
 import theRetrospect.actions.general.CustomQueueCardAction;
 import theRetrospect.actions.general.RunnableAction;
 import theRetrospect.actions.general.ShowCardToBePlayedAction;
-import theRetrospect.cards.skills.Rewind;
-import theRetrospect.subscribers.EndOfTurnCardSubscriber;
+import theRetrospect.cards.old.skills.Rewind;
 import theRetrospect.mechanics.card.CardPlaySource;
+import theRetrospect.subscribers.EndOfTurnCardSubscriber;
 import theRetrospect.util.CardUtils;
 
 @AutoAdd.Seen

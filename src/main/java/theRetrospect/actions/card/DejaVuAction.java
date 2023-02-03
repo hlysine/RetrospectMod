@@ -5,7 +5,7 @@ import com.megacrit.cardcrawl.actions.defect.IncreaseMiscAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import hlysine.friendlymonsters.utils.MinionUtils;
-import theRetrospect.cards.skills.DejaVu;
+import theRetrospect.cards.old.skills.DejaVu;
 import theRetrospect.minions.TimelineMinion;
 
 import java.util.ArrayList;

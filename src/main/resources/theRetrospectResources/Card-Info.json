@@ -24,7 +24,7 @@
     "IMG": "divert.png",
     "COST": 1,
     "theRetrospect:TimelineCount": 2,
-    "M/Volatile energy gain": 1,
+    "M/Volatile energy gain": 2,
     "+M": 1
   },
   "theRetrospect:DoubleTime": {

@@ -36,7 +36,7 @@
   },
   "theRetrospect:Divert": {
     "NAME": "Divert",
-    "DESCRIPTION": "{@@}theretrospect:Rewind !theRetrospect:TimelineCount! round{!theRetrospect:TimelineCount!|>1=s}. NL Gain {!Upgrades!|0=[theRetrospect:VolatileEnergyIcon]|@=[theRetrospect:VolatileEnergyIcon] [theRetrospect:VolatileEnergyIcon]} ."
+    "DESCRIPTION": "{@@}theretrospect:Rewind !theRetrospect:TimelineCount! round{!theRetrospect:TimelineCount!|>1=s}. NL Gain {!Upgrades!|0=[theRetrospect:VolatileEnergyIcon] [theRetrospect:VolatileEnergyIcon]|@=[theRetrospect:VolatileEnergyIcon] [theRetrospect:VolatileEnergyIcon] [theRetrospect:VolatileEnergyIcon]} ."
   },
   "theRetrospect:DoubleTime": {
     "NAME": "Double Time",

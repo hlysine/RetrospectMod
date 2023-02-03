@@ -4,7 +4,7 @@ import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import hlysine.friendlymonsters.utils.MinionUtils;
-import theRetrospect.cards.attacks.ChargeRifle;
+import theRetrospect.cards.old.attacks.ChargeRifle;
 import theRetrospect.minions.TimelineMinion;
 
 import java.util.List;

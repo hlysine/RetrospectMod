@@ -6,7 +6,7 @@ import com.megacrit.cardcrawl.cards.CardGroup;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import theRetrospect.actions.general.FreeUpHandAction;
 import theRetrospect.actions.general.SpecificCardToHandAction;
-import theRetrospect.cards.curses.Singularity;
+import theRetrospect.cards.old.curses.Singularity;
 
 @SpirePatch(
         clz = CardGroup.class,

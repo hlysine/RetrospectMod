@@ -1,0 +1,34 @@
+package theRetrospect.cards.old.powers;
+
+import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import com.megacrit.cardcrawl.characters.AbstractPlayer;
+import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import theRetrospect.RetrospectMod;
+import theRetrospect.cards.AbstractBaseCard;
+import theRetrospect.powers.SpeedIsLifePower;
+
+public class SpeedIsLife extends AbstractBaseCard {
+
+    public static final String ID = RetrospectMod.makeID(SpeedIsLife.class.getSimpleName());
+
+    private static final CardTarget TARGET = CardTarget.SELF;
+
+    public SpeedIsLife() {
+        super(ID, TARGET);
+
+        this.tags.add(CardTags.HEALING);
+    }
+
+    @Override
+    public void use(AbstractPlayer p, AbstractMonster m) {
+        addToBot(new ApplyPowerAction(p, p, new SpeedIsLifePower(p, magicNumber)));
+    }
+
+    @Override
+    public void upgrade() {
+        if (!upgraded) {
+            this.selfRetain = true;
+        }
+        super.upgrade();
+    }
+}

@@ -20,9 +20,9 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import theRetrospect.RetrospectMod;
 import theRetrospect.cards.attacks.Strike;
+import theRetrospect.cards.old.skills.Rewind;
 import theRetrospect.cards.skills.Defend;
 import theRetrospect.cards.skills.Divert;
-import theRetrospect.cards.skills.Rewind;
 import theRetrospect.relics.AntiqueClock;
 import theRetrospect.util.NoAnimation;
 

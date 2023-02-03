@@ -9,7 +9,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import javassist.CannotCompileException;
 import javassist.CtBehavior;
 import theRetrospect.cards.AbstractBaseCard;
-import theRetrospect.cards.statuses.Paradox;
+import theRetrospect.cards.old.statuses.Paradox;
 import theRetrospect.mechanics.card.CardPlaySource;
 import theRetrospect.util.CardUtils;
 

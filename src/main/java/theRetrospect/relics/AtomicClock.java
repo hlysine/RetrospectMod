@@ -7,9 +7,9 @@ import theRetrospect.RetrospectMod;
 import theRetrospect.actions.general.CustomQueueCardAction;
 import theRetrospect.actions.general.RunnableAction;
 import theRetrospect.actions.general.ShowCardToBePlayedAction;
-import theRetrospect.cards.skills.ChaoticOffense;
-import theRetrospect.subscribers.EndOfTurnCardSubscriber;
+import theRetrospect.cards.old.skills.ChaoticOffense;
 import theRetrospect.mechanics.card.CardPlaySource;
+import theRetrospect.subscribers.EndOfTurnCardSubscriber;
 import theRetrospect.util.CardUtils;
 
 public class AtomicClock extends AbstractBaseRelic implements EndOfTurnCardSubscriber {

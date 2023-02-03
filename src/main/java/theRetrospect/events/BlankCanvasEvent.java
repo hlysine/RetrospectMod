@@ -10,8 +10,8 @@ import com.megacrit.cardcrawl.localization.EventStrings;
 import com.megacrit.cardcrawl.vfx.cardManip.ShowCardAndObtainEffect;
 import com.megacrit.cardcrawl.vfx.combat.SwirlyBloodEffect;
 import theRetrospect.RetrospectMod;
-import theRetrospect.cards.wildcard.WildCard;
-import theRetrospect.cards.wildcard.WildCardModifier;
+import theRetrospect.cards.old.wildcard.WildCard;
+import theRetrospect.cards.old.wildcard.WildCardModifier;
 import theRetrospect.util.DistributedRNG;
 
 import java.util.ArrayList;

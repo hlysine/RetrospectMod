@@ -7,7 +7,7 @@ import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.EventStrings;
 import theRetrospect.RetrospectMod;
-import theRetrospect.cards.curses.Singularity;
+import theRetrospect.cards.old.curses.Singularity;
 import theRetrospect.relics.BottledSingularity;
 
 import static theRetrospect.RetrospectMod.makeEventPath;
