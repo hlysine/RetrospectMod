@@ -32,6 +32,7 @@ import theRetrospect.mechanics.card.CardPlaySource;
 import theRetrospect.mechanics.timeline.TimelineTargeting;
 import theRetrospect.mechanics.timetravel.TimeTravelTargeting;
 import theRetrospect.patches.metrics.DevCommandsMetricPatch;
+import theRetrospect.patches.timetravel.UnstableRngPatch;
 import theRetrospect.potions.ButterflyInAJar;
 import theRetrospect.potions.TimelinePotion;
 import theRetrospect.relics.AbstractBaseRelic;
@@ -237,6 +238,7 @@ public class RetrospectMod implements
         CustomTargeting.registerCustomTargeting(TimeTravelTargeting.TIME_TRAVEL, new TimeTravelTargeting());
 
         BaseMod.addSaveField(RetrospectMod.makeID(DevCommandsMetricPatch.DevCommandsMetricSavable.class.getSimpleName()), new DevCommandsMetricPatch.DevCommandsMetricSavable());
+        BaseMod.addSaveField(RetrospectMod.makeID(UnstableRngPatch.UnstableRngSavable.class.getSimpleName()), new UnstableRngPatch.UnstableRngSavable());
 
         logger.info("Done loading badge image and mod options");
 

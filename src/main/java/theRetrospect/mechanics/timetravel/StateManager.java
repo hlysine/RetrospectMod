@@ -5,6 +5,7 @@ import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.random.Random;
 import hlysine.friendlymonsters.utils.MinionUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -26,7 +27,26 @@ public class StateManager {
      * Contains all dead monsters that need to be disposed when combat ends.
      */
     private static final List<AbstractMonster> pendingDispose = new ArrayList<>();
+
+
     public static CombatStateTree stateTree;
+    public static Random unstableRng;
+
+
+    public static void atStartOfTurn() {
+        AbstractDungeon.actionManager.addToBottom(new RunnableAction(() -> {
+            stateTree.addNode(GameActionManager.turn, CombatState.extractState());
+            onActiveNodeChanged();
+        }));
+    }
+
+    public static void atEndOfTurn() {
+        AbstractDungeon.actionManager.addToBottom(new RunnableAction(() -> {
+            stateTree.getActiveNode().cardsPlayedManually.clear();
+            stateTree.getActiveNode().cardsPlayedManually.addAll(CardUtils.cardsManuallyPlayedThisTurn);
+        }));
+    }
+
 
     public static int getActiveRound() {
         return stateTree.getActiveRound();
@@ -53,20 +73,6 @@ public class StateManager {
             return;
         }
         pendingDispose.add(disposable);
-    }
-
-    public static void atStartOfTurn() {
-        AbstractDungeon.actionManager.addToBottom(new RunnableAction(() -> {
-            stateTree.addNode(GameActionManager.turn, CombatState.extractState());
-            onActiveNodeChanged();
-        }));
-    }
-
-    public static void atEndOfTurn() {
-        AbstractDungeon.actionManager.addToBottom(new RunnableAction(() -> {
-            stateTree.getActiveNode().cardsPlayedManually.clear();
-            stateTree.getActiveNode().cardsPlayedManually.addAll(CardUtils.cardsManuallyPlayedThisTurn);
-        }));
     }
 
     /**
