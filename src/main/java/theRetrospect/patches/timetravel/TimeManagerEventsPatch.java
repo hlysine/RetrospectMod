@@ -10,7 +10,7 @@ import javassist.CannotCompileException;
 import javassist.CtBehavior;
 import theRetrospect.mechanics.timetravel.TimeManager;
 
-public class StateManagerEventsPatch {
+public class TimeManagerEventsPatch {
 
     @SpirePatch(
             clz = GameActionManager.class,

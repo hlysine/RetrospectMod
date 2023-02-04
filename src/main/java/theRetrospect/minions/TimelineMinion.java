@@ -15,7 +15,6 @@ import com.megacrit.cardcrawl.helpers.PowerTip;
 import com.megacrit.cardcrawl.localization.CharacterStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import theRetrospect.RetrospectMod;
-import theRetrospect.actions.general.RunnableAction;
 import theRetrospect.actions.timeline.CollapseTimelineAction;
 import theRetrospect.effects.TimelineAuraEffect;
 import theRetrospect.mechanics.card.CardPlaySource;
@@ -76,12 +75,12 @@ public class TimelineMinion extends AbstractMinionWithCards implements StateChan
         this.tint.changeColor(c, 5f);
 
         this.timelinePath = timelinePath;
-        addToBot(new RunnableAction(() -> applyStateForRound(TimeManager.getActiveRound())));
+        applyStateForRound(TimeManager.getActiveRound());
     }
 
     @Override
     public void onActiveNodeChanged() {
-        addToBot(new RunnableAction(() -> applyStateForRound(TimeManager.getActiveRound())));
+        applyStateForRound(TimeManager.getActiveRound());
     }
 
     public TimeTree.Node getCurrentNode() {

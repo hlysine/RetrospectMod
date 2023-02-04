@@ -136,7 +136,7 @@ public class TimeTree implements Disposable {
         /**
          * The state of this round, captured at the start of the round.
          */
-        public final CombatState baseState;
+        public CombatState baseState;
         /**
          * The states of this round, captured in the middle of the round just before time traveling.
          */
@@ -149,7 +149,7 @@ public class TimeTree implements Disposable {
         public final Node parent;
         public final List<Node> children = new ArrayList<>();
 
-        private Node(final int round, final CombatState baseState, final Node parent) {
+        private Node(final int round, CombatState baseState, final Node parent) {
             this.round = round;
             this.baseState = baseState;
             this.parent = parent;

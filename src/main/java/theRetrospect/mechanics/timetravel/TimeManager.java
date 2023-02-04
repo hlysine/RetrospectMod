@@ -53,9 +53,10 @@ public class TimeManager {
 
 
     public static void atStartOfTurn() {
+        TimeTree.Node newNode = timeTree.addNode(GameActionManager.turn, null);
+        onActiveNodeChanged();
         AbstractDungeon.actionManager.addToBottom(new RunnableAction(() -> {
-            timeTree.addNode(GameActionManager.turn, CombatState.extractState());
-            onActiveNodeChanged();
+            newNode.baseState = CombatState.extractState();
         }));
     }
 
