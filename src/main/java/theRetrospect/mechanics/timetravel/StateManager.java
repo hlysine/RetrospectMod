@@ -1,17 +1,22 @@
 package theRetrospect.mechanics.timetravel;
 
+import com.badlogic.gdx.math.Vector2;
 import com.megacrit.cardcrawl.actions.GameActionManager;
 import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.random.Random;
+import com.megacrit.cardcrawl.ui.buttons.PeekButton;
 import hlysine.friendlymonsters.utils.MinionUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import theRetrospect.actions.general.RunnableAction;
+import theRetrospect.effects.PeekFrostedEffect;
+import theRetrospect.minions.TimelineMinion;
 import theRetrospect.powers.TimeLinkPower;
 import theRetrospect.subscribers.StateChangeSubscriber;
+import theRetrospect.ui.UIManager;
 import theRetrospect.util.CardUtils;
 import theRetrospect.util.CloneUtils;
 import theRetrospect.util.MonsterUtils;
@@ -31,6 +36,8 @@ public class StateManager {
 
     public static CombatStateTree stateTree;
     public static Random unstableRng;
+    public static TimelineMinion peekMinion;
+    public static CombatState savedState;
 
 
     public static void atStartOfTurn() {
@@ -48,7 +55,19 @@ public class StateManager {
     }
 
     public static void onPeekStatusChanged() {
-        // todo: peek timeline
+        if (AbstractDungeon.screen == UIManager.TIMELINE_CARDS_VIEW) {
+            AbstractDungeon.topLevelEffects.add(new PeekFrostedEffect(
+                    new Vector2(peekMinion.hb.cX, peekMinion.hb.cY),
+                    Math.max(peekMinion.hb.height, peekMinion.hb.width) / 2
+            ));
+            if (PeekButton.isPeeking) {
+                savedState = CombatState.extractState();
+                peekMinion.getCurrentNode().baseState.restoreStateCompletely();
+            } else if (savedState != null) {
+                savedState.restoreStateCompletely();
+                savedState = null;
+            }
+        }
     }
 
 

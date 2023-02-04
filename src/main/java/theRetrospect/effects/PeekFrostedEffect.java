@@ -9,20 +9,19 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.graphics.glutils.ShaderProgram;
 import com.badlogic.gdx.math.Interpolation;
 import com.badlogic.gdx.math.Vector2;
-import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.vfx.AbstractGameEffect;
-import com.megacrit.cardcrawl.vfx.BorderLongFlashEffect;
+import com.megacrit.cardcrawl.vfx.BorderFlashEffect;
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import theRetrospect.RetrospectMod;
 
-public class FrostedEffect extends AbstractGameEffect {
-    public static final float LONG_DURATION = 5f;
-    public static final float SHORT_DURATION = 2f;
-    private static final Logger logger = LogManager.getLogger(FrostedEffect.class);
+public class PeekFrostedEffect extends AbstractGameEffect {
+    public static final float LONG_DURATION = 1f;
+    public static final float SHORT_DURATION = 0.5f;
+    private static final Logger logger = LogManager.getLogger(PeekFrostedEffect.class);
     private static final ShaderProgram frostedShader;
 
     static {
@@ -37,21 +36,15 @@ public class FrostedEffect extends AbstractGameEffect {
     }
 
     private final PostProcessor postProcessor;
-    private final Vector2 center;
     private final Vector2 focus;
     private final float focusRadius;
 
-    public FrostedEffect(Vector2 center, Vector2 focus, float focusRadius) {
+    public PeekFrostedEffect(Vector2 focus, float focusRadius) {
         this.duration = this.startingDuration = Settings.FAST_MODE ? SHORT_DURATION : LONG_DURATION;
-        this.center = center;
         this.focus = focus;
         this.focusRadius = focusRadius;
         this.postProcessor = new PostProcessor();
-        AbstractDungeon.topLevelEffects.add(new BorderLongFlashEffect(RetrospectMod.RETROSPECT_COLOR.cpy()));
-    }
-
-    public FrostedEffect(Vector2 center) {
-        this(center, null, 0);
+        AbstractDungeon.topLevelEffects.add(new BorderFlashEffect(RetrospectMod.RETROSPECT_COLOR.cpy()));
     }
 
     @Override
@@ -63,7 +56,6 @@ public class FrostedEffect extends AbstractGameEffect {
         if (this.duration < 0.0F) {
             this.isDone = true;
             ScreenPostProcessorManager.removePostProcessor(postProcessor);
-            AbstractDungeon.actionManager.addToBottom(new VFXAction(AbstractDungeon.player, new PlayerTurnWithoutEnergyEffect(), PlayerTurnWithoutEnergyEffect.DUR, true));
         }
     }
 
@@ -102,7 +94,8 @@ public class FrostedEffect extends AbstractGameEffect {
 
             float bouncingProgress = 1 - Math.abs(duration - startingDuration / 2) / (startingDuration / 2);
             float stepProgress = Math.min(1, 1 - (duration - startingDuration / 2) / (startingDuration / 2));
-            frostedShader.setUniformf("rnd_factor", Interpolation.pow2.apply(bouncingProgress) * 0.2f);
+            frostedShader.setUniformf("rnd_factor", Interpolation.pow2.apply(bouncingProgress) * 0.05f);
+            frostedShader.setUniformf("rnd_scale", 0.5f + bouncingProgress);
             if (focus != null) {
                 float focusProgress = Interpolation.pow2In.apply(stepProgress);
                 frostedShader.setUniformf("focus_radius", focusRadius * (0.5f + focusProgress * 0.5f));

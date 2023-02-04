@@ -44,7 +44,7 @@ public class TimelineMinion extends AbstractMinionWithCards implements StateChan
      */
     public boolean inTurn = false;
 
-    public CombatStateTree.LinearPath timelinePath;
+    public final CombatStateTree.LinearPath timelinePath;
     private CombatStateTree.Node currentNode;
 
     public TimelineMinion(AbstractPlayer summoner, int offsetX, int offsetY, CombatStateTree.LinearPath timelinePath) {
@@ -82,6 +82,10 @@ public class TimelineMinion extends AbstractMinionWithCards implements StateChan
     @Override
     public void onActiveNodeChanged() {
         addToBot(new RunnableAction(() -> applyStateForRound(StateManager.getActiveRound())));
+    }
+
+    public CombatStateTree.Node getCurrentNode() {
+        return currentNode;
     }
 
     public void applyStateForRound(int round) {
@@ -150,6 +154,11 @@ public class TimelineMinion extends AbstractMinionWithCards implements StateChan
         super.processNewCard(card);
         CardUtils.setPlaySource(card, CardPlaySource.TIMELINE);
         card.beginGlowing();
+    }
+
+    @Override
+    protected void beforeCardViewOpen() {
+        StateManager.peekMinion = this;
     }
 
     @Override

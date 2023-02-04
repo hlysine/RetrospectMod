@@ -156,11 +156,16 @@ public class AbstractMinionWithCards extends AbstractFriendlyMonster {
         cardStack.update();
     }
 
+    protected void beforeCardViewOpen() {
+
+    }
+
     private void openMinionCardsViewScreen() {
         if (AbstractDungeon.player.hoveredCard != null) {
             AbstractDungeon.player.releaseCard();
         }
 
+        beforeCardViewOpen();
         AbstractDungeon.dynamicBanner.hide();
         UIManager.minionCardsViewScreen.open(cards);
         this.hb.hovered = false;

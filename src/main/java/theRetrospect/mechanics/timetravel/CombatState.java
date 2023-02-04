@@ -157,8 +157,6 @@ public class CombatState implements Disposable {
         AbstractDungeon.getCurrRoom().smoked = this.smoked;
         AbstractDungeon.getCurrRoom().skipMonsterTurn = this.skipMonsterTurn;
         AbstractDungeon.getCurrRoom().rewardAllowed = this.rewardAllowed;
-
-        AbstractDungeon.actionManager.addToBottom(new VFXAction(AbstractDungeon.player, new PlayerTurnWithoutEnergyEffect(), PlayerTurnWithoutEnergyEffect.DUR, true));
     }
 
     public CombatState copy() {
