@@ -646,11 +646,11 @@
     "+D": 5,
     "theRetrospect:TimelineCount": 1
   },
-  "theRetrospect:Rewind": {
+  "theRetrospect:Replay": {
     "RARITY": "BASIC",
     "TYPE": "SKILL",
     "COLOR": "RETROSPECT_PURPLE",
-    "IMG": "rewind.png",
+    "IMG": "replay.png",
     "COST": 1
   },
   "theRetrospect:ExponentialBlast": {

@@ -9,13 +9,13 @@ import theRetrospect.cards.old.statuses.Paradox;
 import theRetrospect.mechanics.card.CardPlaySource;
 import theRetrospect.util.CardUtils;
 
-public class Rewind extends AbstractBaseCard {
+public class Replay extends AbstractBaseCard {
 
-    public static final String ID = RetrospectMod.makeID(Rewind.class.getSimpleName());
+    public static final String ID = RetrospectMod.makeID(Replay.class.getSimpleName());
 
     private static final CardTarget TARGET = CardTarget.NONE;
 
-    public Rewind() {
+    public Replay() {
         super(ID, TARGET);
 
         paradoxical = true;

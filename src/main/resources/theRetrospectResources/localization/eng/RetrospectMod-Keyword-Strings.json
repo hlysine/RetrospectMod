@@ -65,7 +65,7 @@
   },
   {
     "NAMES": [
-      "rewind"
+      "replay"
     ],
     "DESCRIPTION": "A skill card that replays your last card this turn."
   },
@@ -83,5 +83,19 @@
       "volatile_energy"
     ],
     "DESCRIPTION": "Energy that allows cards in timelines to be played at the end of your turn. Decays by half per turn."
+  },
+  {
+    "NAMES": [
+      "rewind",
+      "rewinds"
+    ],
+    "DESCRIPTION": "Travel back in time, moving your current progress into an #yAlternative #yTimeline. Only enemies are affected by the time travel."
+  },
+  {
+    "NAMES": [
+      "shift",
+      "shifts"
+    ],
+    "DESCRIPTION": "Shift timeline, turning an #yAlternative #yTimeline into your current timeline, and vice versa. Everything resets to the state in the targeted alternative timeline."
   }
 ]

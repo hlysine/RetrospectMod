@@ -40,7 +40,7 @@
   },
   "theRetrospect:ReturnTicket": {
     "NAME": "Return Ticket",
-    "DESCRIPTION": "Shift to another timeline. NL Exhaust."
+    "DESCRIPTION": "theretrospect:Shift to another timeline. NL Exhaust."
   },
   "theRetrospect:DoubleTime": {
     "NAME": "Double Time",
@@ -344,8 +344,8 @@
     "NAME": "Psyche Out",
     "DESCRIPTION": "{@@}Deal !D! damage. NL theretrospect:Construct !theRetrospect:TimelineCount! timeline{!theRetrospect:TimelineCount!|>1=s}."
   },
-  "theRetrospect:Rewind": {
-    "NAME": "Rewind",
+  "theRetrospect:Replay": {
+    "NAME": "Replay",
     "DESCRIPTION": "{@@}theretrospect:Paradoxical. NL Replay your last card this turn.{!Upgrades!|0= NL Exhaust.}"
   },
   "theRetrospect:ExponentialBlast": {

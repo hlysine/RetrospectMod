@@ -20,7 +20,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import theRetrospect.RetrospectMod;
 import theRetrospect.cards.attacks.Strike;
-import theRetrospect.cards.old.skills.Rewind;
+import theRetrospect.cards.old.skills.Replay;
 import theRetrospect.cards.skills.Defend;
 import theRetrospect.cards.skills.Divert;
 import theRetrospect.relics.AntiqueClock;
@@ -176,12 +176,12 @@ public class TheRetrospect extends AbstractPlayerWithMinions {
         retVal.add(Defend.ID);
 
         retVal.add(Divert.ID);
-        retVal.add(Rewind.ID);
+        retVal.add(Replay.ID);
 
         UnlockTracker.markCardAsSeen(Strike.ID);
         UnlockTracker.markCardAsSeen(Defend.ID);
         UnlockTracker.markCardAsSeen(Divert.ID);
-        UnlockTracker.markCardAsSeen(Rewind.ID);
+        UnlockTracker.markCardAsSeen(Replay.ID);
 
         return retVal;
     }
