@@ -1,6 +1,7 @@
 package theRetrospect.cards;
 
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
+import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
@@ -41,7 +42,7 @@ public abstract class TimelineTargetingCard extends AbstractBaseCard {
     public boolean canUse(AbstractPlayer p, AbstractMonster m) {
         if (!super.canUse(p, m)) return false;
 
-        if (TimelineUtils.getTimelines(p).size() == 0) {
+        if (TimelineUtils.getTimelines(p).stream().allMatch(AbstractCreature::isDeadOrEscaped)) {
             cantUseMessage = cardStrings.EXTENDED_DESCRIPTION[0];
             return false;
         }

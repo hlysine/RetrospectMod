@@ -18,10 +18,10 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import theRetrospect.RetrospectMod;
 
-public class PeekFrostedEffect extends AbstractGameEffect {
+public class TimelinePeekEffect extends AbstractGameEffect {
     public static final float LONG_DURATION = 1f;
     public static final float SHORT_DURATION = 0.5f;
-    private static final Logger logger = LogManager.getLogger(PeekFrostedEffect.class);
+    private static final Logger logger = LogManager.getLogger(TimelinePeekEffect.class);
     private static final ShaderProgram frostedShader;
 
     static {
@@ -39,7 +39,7 @@ public class PeekFrostedEffect extends AbstractGameEffect {
     private final Vector2 focus;
     private final float focusRadius;
 
-    public PeekFrostedEffect(Vector2 focus, float focusRadius) {
+    public TimelinePeekEffect(Vector2 focus, float focusRadius) {
         this.duration = this.startingDuration = Settings.FAST_MODE ? SHORT_DURATION : LONG_DURATION;
         this.focus = focus;
         this.focusRadius = focusRadius;

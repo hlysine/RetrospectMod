@@ -19,10 +19,10 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import theRetrospect.RetrospectMod;
 
-public class FrostedEffect extends AbstractGameEffect {
+public class TimeShiftEffect extends AbstractGameEffect {
     public static final float LONG_DURATION = 5f;
     public static final float SHORT_DURATION = 2f;
-    private static final Logger logger = LogManager.getLogger(FrostedEffect.class);
+    private static final Logger logger = LogManager.getLogger(TimeShiftEffect.class);
     private static final ShaderProgram frostedShader;
 
     static {
@@ -37,21 +37,19 @@ public class FrostedEffect extends AbstractGameEffect {
     }
 
     private final PostProcessor postProcessor;
-    private final Vector2 center;
     private final Vector2 focus;
     private final float focusRadius;
 
-    public FrostedEffect(Vector2 center, Vector2 focus, float focusRadius) {
+    public TimeShiftEffect(Vector2 focus, float focusRadius) {
         this.duration = this.startingDuration = Settings.FAST_MODE ? SHORT_DURATION : LONG_DURATION;
-        this.center = center;
         this.focus = focus;
         this.focusRadius = focusRadius;
         this.postProcessor = new PostProcessor();
         AbstractDungeon.topLevelEffects.add(new BorderLongFlashEffect(RetrospectMod.RETROSPECT_COLOR.cpy()));
     }
 
-    public FrostedEffect(Vector2 center) {
-        this(center, null, 0);
+    public TimeShiftEffect() {
+        this(null, 0);
     }
 
     @Override

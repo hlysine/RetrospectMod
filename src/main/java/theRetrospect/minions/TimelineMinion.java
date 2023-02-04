@@ -15,6 +15,7 @@ import com.megacrit.cardcrawl.helpers.PowerTip;
 import com.megacrit.cardcrawl.localization.CharacterStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import theRetrospect.RetrospectMod;
+import theRetrospect.actions.general.RunnableAction;
 import theRetrospect.actions.timeline.CollapseTimelineAction;
 import theRetrospect.effects.TimelineAuraEffect;
 import theRetrospect.mechanics.card.CardPlaySource;
@@ -43,7 +44,7 @@ public class TimelineMinion extends AbstractMinionWithCards implements StateChan
      */
     public boolean inTurn = false;
 
-    public final TimeTree.LinearPath timelinePath;
+    public TimeTree.LinearPath timelinePath;
     private TimeTree.Node currentNode;
 
     public TimelineMinion(AbstractPlayer summoner, int offsetX, int offsetY, TimeTree.LinearPath timelinePath) {
@@ -104,6 +105,7 @@ public class TimelineMinion extends AbstractMinionWithCards implements StateChan
             setCardIntents(new ArrayList<>());
 
             hideHealthBar();
+            addToTop(new RunnableAction(this::hideHealthBar)); // need to delay this because showHealthBar is called after the minion is constructed
 
             Color c = this.tint.color.cpy();
             c.a = 0.5f;
@@ -138,6 +140,7 @@ public class TimelineMinion extends AbstractMinionWithCards implements StateChan
 
             currentNode = node;
         }
+        this.healthBarUpdatedEvent();
     }
 
     @Override

@@ -155,6 +155,17 @@ public class TimeTree implements Disposable {
             this.parent = parent;
         }
 
+        public boolean isRecursiveParentOf(Node node) {
+            Node parent = node.parent;
+            while (parent != null) {
+                if (parent == this) {
+                    return true;
+                }
+                parent = parent.parent;
+            }
+            return false;
+        }
+
         @Override
         public void dispose() {
             baseState.dispose();

@@ -27,6 +27,14 @@
     "M/Volatile energy gain": 2,
     "+M": 1
   },
+  "theRetrospect:ReturnTicket": {
+    "RARITY": "SPECIAL",
+    "TYPE": "SKILL",
+    "COLOR": "RETROSPECT_PURPLE",
+    "IMG": "return_ticket.png",
+    "COST": 1,
+    "+COST": 0
+  },
   "theRetrospect:DoubleTime": {
     "RARITY": "COMMON",
     "TYPE": "SKILL",

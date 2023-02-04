@@ -31,12 +31,12 @@ import theRetrospect.util.TimelineUtils;
 
 import java.util.ArrayList;
 
-public class RewindAction extends AbstractGameAction {
+public class RewindTimeAction extends AbstractGameAction {
 
     public static final String ID = RetrospectMod.makeID(AbstractBaseCard.class.getSimpleName());
     private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
 
-    private static final TutorialStrings tutorialStrings = CardCrawlGame.languagePack.getTutorialString(RetrospectMod.makeID(RewindAction.class.getSimpleName()));
+    private static final TutorialStrings tutorialStrings = CardCrawlGame.languagePack.getTutorialString(RetrospectMod.makeID(RewindTimeAction.class.getSimpleName()));
 
     private final AbstractCard rewindCard;
     private final int rounds;
@@ -45,7 +45,7 @@ public class RewindAction extends AbstractGameAction {
     private boolean endingDone = false;
     private TimelineMinion minion;
 
-    public RewindAction(AbstractCard rewindCard, int rounds, AbstractMonster persistingMonster) {
+    public RewindTimeAction(AbstractCard rewindCard, int rounds, AbstractMonster persistingMonster) {
         this.rewindCard = rewindCard;
         this.rounds = rounds;
         this.persistingMonster = persistingMonster;

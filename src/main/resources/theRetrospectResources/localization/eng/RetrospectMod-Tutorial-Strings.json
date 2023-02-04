@@ -16,12 +16,20 @@
       "Timeline"
     ]
   },
-  "theRetrospect:RewindAction": {
+  "theRetrospect:RewindTimeAction": {
     "TEXT": [
-      "You have gone back in time and your past self now appears as an alternative timeline. You can view the cards played by your past self in each turn and replay those cards."
+      "You have gone back in time and your past self now appears as an #yAlternative #yTimeline. You can view the cards played by your past self in each turn and replay those cards."
     ],
     "LABEL": [
       "Alternative Timeline"
+    ]
+  },
+  "theRetrospect:ShiftTimeAction": {
+    "TEXT": [
+      "You have shifted from one timeline to another. The future of this timeline has been erased and the previous timeline now appears as an #yAlternative #yTimeline."
+    ],
+    "LABEL": [
+      "Timeline Shift"
     ]
   }
 }

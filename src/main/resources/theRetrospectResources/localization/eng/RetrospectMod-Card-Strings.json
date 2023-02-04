@@ -38,6 +38,10 @@
     "NAME": "Divert",
     "DESCRIPTION": "{@@}theretrospect:Rewind !theRetrospect:TimelineCount! round{!theRetrospect:TimelineCount!|>1=s}. NL Gain {!Upgrades!|0=[theRetrospect:VolatileEnergyIcon] [theRetrospect:VolatileEnergyIcon]|@=[theRetrospect:VolatileEnergyIcon] [theRetrospect:VolatileEnergyIcon] [theRetrospect:VolatileEnergyIcon]} ."
   },
+  "theRetrospect:ReturnTicket": {
+    "NAME": "Return Ticket",
+    "DESCRIPTION": "Shift to another timeline. NL Exhaust."
+  },
   "theRetrospect:DoubleTime": {
     "NAME": "Double Time",
     "DESCRIPTION": "{@@}theretrospect:Advance a timeline {!Upgrades!|0=once|@=twice} and theretrospect:collapse it."
