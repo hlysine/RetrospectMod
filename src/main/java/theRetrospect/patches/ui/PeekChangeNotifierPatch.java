@@ -7,7 +7,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.ui.buttons.PeekButton;
 import javassist.CannotCompileException;
 import javassist.CtBehavior;
-import theRetrospect.mechanics.timetravel.StateManager;
+import theRetrospect.mechanics.timetravel.TimeManager;
 
 // todo: also handle exiting peek via other methods
 public class PeekChangeNotifierPatch {
@@ -20,7 +20,7 @@ public class PeekChangeNotifierPatch {
                 locator = Locator.class
         )
         public static void Insert(PeekButton __instance) {
-            StateManager.onPeekStatusChanged();
+            TimeManager.onPeekStatusChanged();
         }
 
         private static class Locator extends SpireInsertLocator {
@@ -40,7 +40,7 @@ public class PeekChangeNotifierPatch {
                 locator = Locator.class
         )
         public static void Insert(PeekButton __instance) {
-            StateManager.onPeekStatusChanged();
+            TimeManager.onPeekStatusChanged();
         }
 
         private static class Locator extends SpireInsertLocator {
@@ -59,9 +59,9 @@ public class PeekChangeNotifierPatch {
         public static void Prefix() {
             if (PeekButton.isPeeking) {
                 PeekButton.isPeeking = false;
-                StateManager.onPeekStatusChanged();
+                TimeManager.onPeekStatusChanged();
             }
-            StateManager.peekMinion = null;
+            TimeManager.peekMinion = null;
         }
     }
 }

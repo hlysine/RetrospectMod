@@ -26,31 +26,43 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-public class StateManager {
-    private static final Logger logger = LogManager.getLogger(StateManager.class);
+public class TimeManager {
+    private static final Logger logger = LogManager.getLogger(TimeManager.class);
     /**
      * Contains all dead monsters that need to be disposed when combat ends.
      */
     private static final List<AbstractMonster> pendingDispose = new ArrayList<>();
 
 
-    public static CombatStateTree stateTree;
+    /**
+     * The time tree of the current combat, storing {@link CombatState}s at each round in each timeline.
+     */
+    public static TimeTree timeTree;
+    /**
+     * The RNG used to decide unstable outcomes. This is the only RNG not affected by any form of time travel.
+     */
     public static Random unstableRng;
+    /**
+     * The timeline that is being peeked.
+     */
     public static TimelineMinion peekMinion;
+    /**
+     * The state of the combat before peeking.
+     */
     public static CombatState savedState;
 
 
     public static void atStartOfTurn() {
         AbstractDungeon.actionManager.addToBottom(new RunnableAction(() -> {
-            stateTree.addNode(GameActionManager.turn, CombatState.extractState());
+            timeTree.addNode(GameActionManager.turn, CombatState.extractState());
             onActiveNodeChanged();
         }));
     }
 
     public static void atEndOfTurn() {
         AbstractDungeon.actionManager.addToBottom(new RunnableAction(() -> {
-            stateTree.getActiveNode().cardsPlayedManually.clear();
-            stateTree.getActiveNode().cardsPlayedManually.addAll(CardUtils.cardsManuallyPlayedThisTurn);
+            timeTree.getActiveNode().cardsPlayedManually.clear();
+            timeTree.getActiveNode().cardsPlayedManually.addAll(CardUtils.cardsManuallyPlayedThisTurn);
         }));
     }
 
@@ -72,16 +84,16 @@ public class StateManager {
 
 
     public static int getActiveRound() {
-        return stateTree.getActiveRound();
+        return timeTree.getActiveRound();
     }
 
     public static void reset() {
-        if (stateTree != null) {
-            stateTree.dispose();
+        if (timeTree != null) {
+            timeTree.dispose();
         }
         pendingDispose.forEach(AbstractMonster::dispose);
         pendingDispose.clear();
-        stateTree = new CombatStateTree();
+        timeTree = new TimeTree();
     }
 
     /**
@@ -107,15 +119,15 @@ public class StateManager {
      * @param persistingMonster Monster to persist through the effect of {@link theRetrospect.powers.TimeLinkPower}.
      * @return A Linear Path with the origin at the rewind destination and target at the time before rewinding.
      */
-    public static CombatStateTree.LinearPath rewindTime(int rounds, AbstractCard cardToExclude, AbstractMonster persistingMonster) {
+    public static TimeTree.LinearPath rewindTime(int rounds, AbstractCard cardToExclude, AbstractMonster persistingMonster) {
         logger.info("Start rewinding time");
         long startTime = System.currentTimeMillis();
 
         // Save current state before rewinding
         CombatState currentState = CombatState.extractState();
-        stateTree.getActiveNode().midStates.add(currentState);
-        stateTree.getActiveNode().cardsPlayedManually.clear();
-        stateTree.getActiveNode().cardsPlayedManually.addAll(
+        timeTree.getActiveNode().midStates.add(currentState);
+        timeTree.getActiveNode().cardsPlayedManually.clear();
+        timeTree.getActiveNode().cardsPlayedManually.addAll(
                 // Exclude the rewind card from the list of manually played cards
                 // Note that the rewind card is not excluded from the list in the extracted state.
                 // It is only excluded from the list of cards that will be playable through the timeline.
@@ -125,38 +137,38 @@ public class StateManager {
         );
 
         // Rewind to the destination
-        CombatStateTree.Node destination = stateTree.getNodeForRound(stateTree.getActiveNode(), stateTree.getActiveRound() - rounds);
-        CombatStateTree.LinearPath path;
+        TimeTree.Node destination = timeTree.getNodeForRound(timeTree.getActiveNode(), timeTree.getActiveRound() - rounds);
+        TimeTree.LinearPath path;
         if (destination == null) {
-            destination = stateTree.addRoot(stateTree.getActiveRound() - rounds, stateTree.getRoot(stateTree.getActiveNode()).baseState.copy());
+            destination = timeTree.addRoot(timeTree.getActiveRound() - rounds, timeTree.getRoot(timeTree.getActiveNode()).baseState.copy());
             destination.baseState.turn = destination.round;
 
-            path = stateTree.createLinearPath(stateTree.getActiveNode(), currentState, rounds);
+            path = timeTree.createLinearPath(timeTree.getActiveNode(), currentState, rounds);
 
-            stateTree.setActiveNode(destination);
+            timeTree.setActiveNode(destination);
         } else {
-            path = stateTree.createLinearPath(stateTree.getActiveNode(), currentState, rounds);
+            path = timeTree.createLinearPath(timeTree.getActiveNode(), currentState, rounds);
             if (path.originNode.parent == null) {
                 // Rewinding to exactly round 1
-                stateTree.setActiveNode(stateTree.addRoot(path.originNode.round, path.originNode.baseState.copy()));
+                timeTree.setActiveNode(timeTree.addRoot(path.originNode.round, path.originNode.baseState.copy()));
             } else {
                 // Rewinding to a later round
-                stateTree.setActiveNode(path.originNode.parent);
-                stateTree.addNode(path.originNode.round, path.originNode.baseState.copy());
+                timeTree.setActiveNode(path.originNode.parent);
+                timeTree.addNode(path.originNode.round, path.originNode.baseState.copy());
             }
         }
 
         if (persistingMonster != null) {
-            Optional<AbstractMonster> monster = stateTree.getActiveNode().baseState.monsters.monsters.stream()
+            Optional<AbstractMonster> monster = timeTree.getActiveNode().baseState.monsters.monsters.stream()
                     .filter(m -> MonsterUtils.isSameMonster(m, persistingMonster))
                     .findFirst();
             monster.ifPresent(m -> {
-                CloneUtils.copyMonsterStates(persistingMonster, m, stateTree.getActiveNode().baseState.monsters);
-                CloneUtils.fixMonsterStates(m, stateTree.getActiveNode().baseState);
+                CloneUtils.copyMonsterStates(persistingMonster, m, timeTree.getActiveNode().baseState.monsters);
+                CloneUtils.fixMonsterStates(m, timeTree.getActiveNode().baseState);
             });
         }
 
-        stateTree.getActiveNode().baseState.restoreStateForRewind();
+        timeTree.getActiveNode().baseState.restoreStateForRewind();
 
         if (persistingMonster != null) {
             // Remove the Time Link power from the persisting monster

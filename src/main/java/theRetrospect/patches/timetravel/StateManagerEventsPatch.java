@@ -8,7 +8,7 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import javassist.CannotCompileException;
 import javassist.CtBehavior;
-import theRetrospect.mechanics.timetravel.StateManager;
+import theRetrospect.mechanics.timetravel.TimeManager;
 
 public class StateManagerEventsPatch {
 
@@ -26,7 +26,7 @@ public class StateManagerEventsPatch {
                 locator = Locator.class
         )
         public static void Insert() {
-            StateManager.atStartOfTurn();
+            TimeManager.atStartOfTurn();
         }
 
         private static class Locator extends SpireInsertLocator {
@@ -44,7 +44,7 @@ public class StateManagerEventsPatch {
     )
     public static class ActionManagerClearPatch {
         public static void Prefix() {
-            StateManager.reset();
+            TimeManager.reset();
         }
     }
 
@@ -54,7 +54,7 @@ public class StateManagerEventsPatch {
     )
     public static class EndOfTurnPatch {
         public static void Prefix() {
-            StateManager.atEndOfTurn();
+            TimeManager.atEndOfTurn();
         }
     }
 
@@ -64,7 +64,7 @@ public class StateManagerEventsPatch {
     )
     public static class OnVictoryPatch {
         public static void Postfix() {
-            StateManager.atEndOfTurn();
+            TimeManager.atEndOfTurn();
         }
     }
 }

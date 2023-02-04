@@ -19,8 +19,8 @@ import theRetrospect.actions.general.RunnableAction;
 import theRetrospect.actions.timeline.CollapseTimelineAction;
 import theRetrospect.effects.TimelineAuraEffect;
 import theRetrospect.mechanics.card.CardPlaySource;
-import theRetrospect.mechanics.timetravel.CombatStateTree;
-import theRetrospect.mechanics.timetravel.StateManager;
+import theRetrospect.mechanics.timetravel.TimeManager;
+import theRetrospect.mechanics.timetravel.TimeTree;
 import theRetrospect.powers.TimerPower;
 import theRetrospect.subscribers.StateChangeSubscriber;
 import theRetrospect.util.CardUtils;
@@ -44,10 +44,10 @@ public class TimelineMinion extends AbstractMinionWithCards implements StateChan
      */
     public boolean inTurn = false;
 
-    public final CombatStateTree.LinearPath timelinePath;
-    private CombatStateTree.Node currentNode;
+    public final TimeTree.LinearPath timelinePath;
+    private TimeTree.Node currentNode;
 
-    public TimelineMinion(AbstractPlayer summoner, int offsetX, int offsetY, CombatStateTree.LinearPath timelinePath) {
+    public TimelineMinion(AbstractPlayer summoner, int offsetX, int offsetY, TimeTree.LinearPath timelinePath) {
         super(NAME, ID, AbstractDungeon.player.maxHealth, 0, 0, 120, 140, null, offsetX, offsetY);
 
         this.scale = 0.5f;
@@ -76,20 +76,20 @@ public class TimelineMinion extends AbstractMinionWithCards implements StateChan
         this.tint.changeColor(c, 5f);
 
         this.timelinePath = timelinePath;
-        addToBot(new RunnableAction(() -> applyStateForRound(StateManager.getActiveRound())));
+        addToBot(new RunnableAction(() -> applyStateForRound(TimeManager.getActiveRound())));
     }
 
     @Override
     public void onActiveNodeChanged() {
-        addToBot(new RunnableAction(() -> applyStateForRound(StateManager.getActiveRound())));
+        addToBot(new RunnableAction(() -> applyStateForRound(TimeManager.getActiveRound())));
     }
 
-    public CombatStateTree.Node getCurrentNode() {
+    public TimeTree.Node getCurrentNode() {
         return currentNode;
     }
 
     public void applyStateForRound(int round) {
-        CombatStateTree.Node node = timelinePath.getNodeForRound(round);
+        TimeTree.Node node = timelinePath.getNodeForRound(round);
         if (node == null || node.round < timelinePath.originNode.round) {
             halfDead = true;
 
@@ -158,7 +158,7 @@ public class TimelineMinion extends AbstractMinionWithCards implements StateChan
 
     @Override
     protected void beforeCardViewOpen() {
-        StateManager.peekMinion = this;
+        TimeManager.peekMinion = this;
     }
 
     @Override

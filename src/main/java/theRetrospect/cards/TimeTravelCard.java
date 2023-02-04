@@ -11,9 +11,9 @@ import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.vfx.ThoughtBubble;
 import theRetrospect.RetrospectMod;
 import theRetrospect.actions.general.RunnableAction;
-import theRetrospect.mechanics.timetravel.CombatStateTree;
-import theRetrospect.mechanics.timetravel.StateManager;
+import theRetrospect.mechanics.timetravel.TimeManager;
 import theRetrospect.mechanics.timetravel.TimeTravelTargeting;
+import theRetrospect.mechanics.timetravel.TimeTree;
 import theRetrospect.powers.TimeLinkPower;
 import theRetrospect.util.MonsterUtils;
 
@@ -73,8 +73,8 @@ public abstract class TimeTravelCard extends AbstractBaseCard {
             }
             return cantUse(sb.toString());
         } else {
-            CombatStateTree stateTree = StateManager.stateTree;
-            CombatStateTree.Node destination = stateTree.getNodeForRound(stateTree.getActiveNode(), stateTree.getActiveRound() - travelDistance);
+            TimeTree stateTree = TimeManager.timeTree;
+            TimeTree.Node destination = stateTree.getNodeForRound(stateTree.getActiveNode(), stateTree.getActiveRound() - travelDistance);
             if (destination == null) destination = stateTree.getRoot(stateTree.getActiveNode());
             if (destination.baseState.monsters.monsters.stream().noneMatch(m1 -> MonsterUtils.isSameMonster(m1, monster))) {
                 return cantUse(cardStrings.EXTENDED_DESCRIPTION[5]);

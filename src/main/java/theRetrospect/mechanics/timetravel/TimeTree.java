@@ -6,7 +6,7 @@ import com.megacrit.cardcrawl.cards.AbstractCard;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CombatStateTree implements Disposable {
+public class TimeTree implements Disposable {
 
     /**
      * Roots of the tree, storing nodes of the first round in each timeline.
@@ -171,7 +171,7 @@ public class CombatStateTree implements Disposable {
     }
 
     public static class LinearPath {
-        public final CombatStateTree tree;
+        public final TimeTree tree;
         /**
          * The node from which the path originates. The path is invalid for nodes before this node.
          */
@@ -187,7 +187,7 @@ public class CombatStateTree implements Disposable {
 
         private Node cachedNode = null;
 
-        private LinearPath(final CombatStateTree tree, final Node targetNode, final CombatState targetState, final Node originNode) {
+        private LinearPath(final TimeTree tree, final Node targetNode, final CombatState targetState, final Node originNode) {
             this.tree = tree;
             this.targetNode = targetNode;
             this.targetState = targetState;

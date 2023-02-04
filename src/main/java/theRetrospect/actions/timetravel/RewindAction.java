@@ -23,8 +23,8 @@ import theRetrospect.cards.AbstractBaseCard;
 import theRetrospect.effects.FlyingOrbEffect;
 import theRetrospect.effects.TimeTravelEffect;
 import theRetrospect.effects.TimelineCircleEffect;
-import theRetrospect.mechanics.timetravel.CombatStateTree;
-import theRetrospect.mechanics.timetravel.StateManager;
+import theRetrospect.mechanics.timetravel.TimeManager;
+import theRetrospect.mechanics.timetravel.TimeTree;
 import theRetrospect.minions.TimelineMinion;
 import theRetrospect.subscribers.TimelineConstructSubscriber;
 import theRetrospect.util.TimelineUtils;
@@ -74,7 +74,7 @@ public class RewindAction extends AbstractGameAction {
         if (this.duration < this.startDuration / 2 && !rewindDone) {
             rewindDone = true;
 
-            CombatStateTree.LinearPath timelinePath = StateManager.rewindTime(rounds, rewindCard, persistingMonster);
+            TimeTree.LinearPath timelinePath = TimeManager.rewindTime(rounds, rewindCard, persistingMonster);
 
             minion = new TimelineMinion(player, (int) (-Settings.WIDTH * 0.5), 0, timelinePath);
 
