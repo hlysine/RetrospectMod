@@ -63,7 +63,7 @@ public class FrostedEffect extends AbstractGameEffect {
         if (this.duration < 0.0F) {
             this.isDone = true;
             ScreenPostProcessorManager.removePostProcessor(postProcessor);
-            AbstractDungeon.actionManager.addToBottom(new VFXAction(AbstractDungeon.player, new PlayerTurnWithoutEnergyEffect(), PlayerTurnWithoutEnergyEffect.DUR, true));
+            AbstractDungeon.actionManager.addToBottom(new VFXAction(AbstractDungeon.player, new PlayerTurnWithoutEnergyEffect(), 0, true));
         }
     }
 

@@ -2,7 +2,6 @@ package theRetrospect.mechanics.timetravel;
 
 import com.badlogic.gdx.utils.Disposable;
 import com.megacrit.cardcrawl.actions.GameActionManager;
-import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
@@ -11,7 +10,6 @@ import com.megacrit.cardcrawl.orbs.AbstractOrb;
 import com.megacrit.cardcrawl.random.Random;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import theRetrospect.effects.PlayerTurnWithoutEnergyEffect;
 import theRetrospect.util.CardUtils;
 import theRetrospect.util.CloneUtils;
 
@@ -121,8 +119,6 @@ public class CombatState implements Disposable {
         AbstractDungeon.getCurrRoom().smoked = this.smoked;
         AbstractDungeon.getCurrRoom().skipMonsterTurn = this.skipMonsterTurn;
         AbstractDungeon.getCurrRoom().rewardAllowed = this.rewardAllowed;
-
-        AbstractDungeon.actionManager.addToBottom(new VFXAction(AbstractDungeon.player, new PlayerTurnWithoutEnergyEffect(), PlayerTurnWithoutEnergyEffect.DUR, true));
     }
 
     public void restoreStateCompletely() {
