@@ -77,9 +77,14 @@ public class TimeManager {
             if (PeekButton.isPeeking) {
                 savedState = CombatState.extractState();
                 peekMinion.getCurrentNode().baseState.restoreStateCompletely();
+                AbstractDungeon.getMonsters().showIntent();
             } else if (savedState != null) {
                 savedState.restoreStateCompletely();
                 savedState = null;
+            }
+            for (AbstractMonster monster : AbstractDungeon.getMonsters().monsters) {
+                if (monster.intentAlphaTarget > 0.9f)
+                    monster.intentAlpha = 1.0f;
             }
         }
     }
