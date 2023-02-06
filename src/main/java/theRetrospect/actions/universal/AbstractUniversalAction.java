@@ -1,10 +1,12 @@
 package theRetrospect.actions.universal;
 
+import com.badlogic.gdx.math.Vector2;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
+import theRetrospect.effects.ShockwaveEffect;
 import theRetrospect.mechanics.timetravel.TimeManager;
 import theRetrospect.mechanics.timetravel.TimeTree;
 import theRetrospect.minions.TimelineMinion;
@@ -32,6 +34,7 @@ public abstract class AbstractUniversalAction extends AbstractGameAction {
         AbstractMonster m = target;
         TimeManager.timeTree.getActiveNode().universalActions.add(this);
         applyToCurrent(p, m);
+        AbstractDungeon.topLevelEffects.add(new ShockwaveEffect(new Vector2(p.hb.cX, p.hb.cY)));
         for (TimelineMinion timeline : TimelineUtils.getTimelines(p)) {
             applyToNode(timeline.getCurrentNode(), p, m != null ? MonsterUtils.getUuid(m) : null);
         }
