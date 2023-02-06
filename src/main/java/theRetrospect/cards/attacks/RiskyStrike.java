@@ -10,14 +10,16 @@ import theRetrospect.RetrospectMod;
 import theRetrospect.cards.AbstractBaseCard;
 import theRetrospect.mechanics.timetravel.TimeManager;
 
-public class UnstableTest extends AbstractBaseCard {
+public class RiskyStrike extends AbstractBaseCard {
 
-    public static final String ID = RetrospectMod.makeID(UnstableTest.class.getSimpleName());
+    public static final String ID = RetrospectMod.makeID(RiskyStrike.class.getSimpleName());
 
     private static final CardTarget TARGET = CardTarget.ENEMY;
 
-    public UnstableTest() {
+    public RiskyStrike() {
         super(ID, TARGET);
+
+        this.tags.add(CardTags.STRIKE);
     }
 
     @Override

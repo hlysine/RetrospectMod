@@ -35,15 +35,24 @@
     "COST": 1,
     "+COST": 0
   },
-  "theRetrospect:UnstableTest": {
+  "theRetrospect:RiskyStrike": {
     "RARITY": "COMMON",
     "TYPE": "ATTACK",
     "COLOR": "RETROSPECT_PURPLE",
-    "IMG": "strike.png",
+    "IMG": "risky_strike.png",
     "COST": 1,
     "D": 20,
     "M/Unstable Chance": 2,
     "+M": 2
+  },
+  "theRetrospect:UniversalCharge": {
+    "RARITY": "UNCOMMON",
+    "TYPE": "SKILL",
+    "COLOR": "RETROSPECT_PURPLE",
+    "IMG": "universal_charge.png",
+    "COST": 1,
+    "+COST": 0,
+    "M/Universal strength": 1
   },
   "theRetrospect:DoubleTime": {
     "RARITY": "COMMON",

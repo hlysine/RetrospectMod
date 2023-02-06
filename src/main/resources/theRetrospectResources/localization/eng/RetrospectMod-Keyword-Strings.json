@@ -102,6 +102,13 @@
     "NAMES": [
       "unstable"
     ],
-    "DESCRIPTION": "This action is determined by true random probability that cannot be manipulated by time travel. "
+    "DESCRIPTION": "This action is determined by true random probability that cannot be manipulated by time travel."
+  },
+  {
+    "NAMES": [
+      "universal",
+      "universally"
+    ],
+    "DESCRIPTION": "This action is applied across all current and future timelines."
   }
 ]
