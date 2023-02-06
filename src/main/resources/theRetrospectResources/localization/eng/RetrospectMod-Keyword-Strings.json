@@ -97,5 +97,11 @@
       "shifts"
     ],
     "DESCRIPTION": "Shift timeline, turning an #yAlternative #yTimeline into your current timeline, and vice versa. Everything resets to the state in the targeted alternative timeline."
+  },
+  {
+    "NAMES": [
+      "unstable"
+    ],
+    "DESCRIPTION": "This action is determined by true random probability that cannot be manipulated by time travel. "
   }
 ]

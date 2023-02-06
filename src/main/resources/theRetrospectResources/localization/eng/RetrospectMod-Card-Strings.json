@@ -42,6 +42,10 @@
     "NAME": "Return Ticket",
     "DESCRIPTION": "theretrospect:Shift to another timeline. NL Exhaust."
   },
+  "theRetrospect:UnstableTest": {
+    "NAME": "Unstable Test",
+    "DESCRIPTION": "{@@}theretrospect:Unstable. NL *{!M!|2=50|4=25}%: Heal !D! HP. NL *{!M!|2=50|4=75}%: Deal !D! damage."
+  },
   "theRetrospect:DoubleTime": {
     "NAME": "Double Time",
     "DESCRIPTION": "{@@}theretrospect:Advance a timeline {!Upgrades!|0=once|@=twice} and theretrospect:collapse it."

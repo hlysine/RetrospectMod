@@ -35,6 +35,16 @@
     "COST": 1,
     "+COST": 0
   },
+  "theRetrospect:UnstableTest": {
+    "RARITY": "COMMON",
+    "TYPE": "ATTACK",
+    "COLOR": "RETROSPECT_PURPLE",
+    "IMG": "strike.png",
+    "COST": 1,
+    "D": 20,
+    "M/Unstable Chance": 2,
+    "+M": 2
+  },
   "theRetrospect:DoubleTime": {
     "RARITY": "COMMON",
     "TYPE": "SKILL",
