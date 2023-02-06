@@ -7,6 +7,7 @@ import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theRetrospect.RetrospectMod;
+import theRetrospect.actions.universal.UniversalStrengthAction;
 import theRetrospect.cards.AbstractBaseCard;
 import theRetrospect.powers.TimeLinkPower;
 
@@ -27,5 +28,6 @@ public class Strike extends AbstractBaseCard {
     public void use(AbstractPlayer p, AbstractMonster m) {
         addToBot(new DamageAction(m, new DamageInfo(p, damage, damageTypeForTurn), AbstractGameAction.AttackEffect.SLASH_DIAGONAL));
         addToBot(new ApplyPowerAction(m, p, new TimeLinkPower(m, damage))); // todo: debug only
+        addToBot(new UniversalStrengthAction(1));
     }
 }

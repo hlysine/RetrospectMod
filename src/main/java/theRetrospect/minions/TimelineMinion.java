@@ -7,6 +7,7 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.MathUtils;
 import com.evacipated.cardcrawl.mod.stslib.patches.core.AbstractCreature.TempHPField;
+import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
@@ -17,6 +18,7 @@ import com.megacrit.cardcrawl.powers.AbstractPower;
 import theRetrospect.RetrospectMod;
 import theRetrospect.actions.general.RunnableAction;
 import theRetrospect.actions.timeline.CollapseTimelineAction;
+import theRetrospect.actions.universal.AbstractUniversalAction;
 import theRetrospect.effects.TimelineAuraEffect;
 import theRetrospect.mechanics.card.CardPlaySource;
 import theRetrospect.mechanics.timetravel.TimeManager;
@@ -107,6 +109,8 @@ public class TimelineMinion extends AbstractMinionWithCards implements StateChan
             hideHealthBar();
             addToTop(new RunnableAction(this::hideHealthBar)); // need to delay this because showHealthBar is called after the minion is constructed
 
+            this.powers.removeIf(p -> p instanceof AbstractUniversalAction.Power);
+
             Color c = this.tint.color.cpy();
             c.a = 0.5f;
             this.tint.changeColor(c, 5f);
@@ -128,6 +132,12 @@ public class TimelineMinion extends AbstractMinionWithCards implements StateChan
 
             if (this.hbAlpha < 0.1f)
                 showHealthBar();
+
+            this.powers.removeIf(p -> p instanceof AbstractUniversalAction.Power);
+            for (AbstractUniversalAction action : node.universalActions) {
+                addToBot(new ApplyPowerAction(this, this, action.getPowerForTimeline(this)));
+                action.applyToCurrent();
+            }
 
             Color c = this.tint.color.cpy();
             c.a = 1f;

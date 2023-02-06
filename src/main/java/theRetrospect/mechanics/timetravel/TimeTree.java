@@ -2,9 +2,11 @@ package theRetrospect.mechanics.timetravel;
 
 import com.badlogic.gdx.utils.Disposable;
 import com.megacrit.cardcrawl.cards.AbstractCard;
+import theRetrospect.actions.universal.AbstractUniversalAction;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Consumer;
 
 public class TimeTree implements Disposable {
 
@@ -146,6 +148,11 @@ public class TimeTree implements Disposable {
          * or in the middle of the round just before time traveling.
          */
         public final List<AbstractCard> cardsPlayedManually = new ArrayList<>();
+        /**
+         * The universal actions performed in this node.
+         * These actions are performed again when a new timeline reaches the same round as this node.
+         */
+        public final List<AbstractUniversalAction> universalActions = new ArrayList<>();
         public final Node parent;
         public final List<Node> children = new ArrayList<>();
 
@@ -164,6 +171,13 @@ public class TimeTree implements Disposable {
                 parent = parent.parent;
             }
             return false;
+        }
+
+        public void applyRecursively(Consumer<Node> consumer) {
+            consumer.accept(this);
+            for (Node child : children) {
+                child.applyRecursively(consumer);
+            }
         }
 
         @Override

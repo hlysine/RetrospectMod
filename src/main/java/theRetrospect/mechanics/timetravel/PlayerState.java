@@ -1,5 +1,6 @@
 package theRetrospect.mechanics.timetravel;
 
+import basemod.ReflectionHacks;
 import com.badlogic.gdx.utils.Disposable;
 import com.evacipated.cardcrawl.mod.stslib.patches.core.AbstractCreature.TempHPField;
 import com.megacrit.cardcrawl.actions.utility.HandCheckAction;
@@ -52,6 +53,23 @@ public class PlayerState implements Disposable {
     public CardGroup limbo = new CardGroup(CardGroup.CardGroupType.UNSPECIFIED);
 
     private PlayerState() {
+    }
+
+    public void addPower(AbstractPower powerToApply) {
+        boolean hasBuffAlready = false;
+
+        for (AbstractPower p : this.powers) {
+            if (p.ID.equals(powerToApply.ID)) {
+                p.stackPower(powerToApply.amount);
+                p.updateDescription();
+                ReflectionHacks.setPrivate(p, AbstractPower.class, "fontScale", 1.0f);
+                hasBuffAlready = true;
+            }
+        }
+
+        if (!hasBuffAlready) {
+            this.powers.add(powerToApply);
+        }
     }
 
     public static PlayerState extractState(AbstractPlayer player) {

@@ -225,6 +225,8 @@ public class TimeManager {
         destination.children.clear();
         destination.midStates.forEach(TimeManager::scheduleDisposable);
         destination.midStates.clear();
+        destination.cardsPlayedManually.clear();
+        destination.universalActions.clear();
 
         if (persistingMonster != null) {
             Optional<AbstractMonster> monster = timeTree.getActiveNode().baseState.monsters.monsters.stream()
