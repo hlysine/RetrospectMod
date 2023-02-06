@@ -1,16 +1,18 @@
 package theRetrospect.cards.old.statuses;
 
 import basemod.BaseMod;
-import com.megacrit.cardcrawl.actions.AbstractGameAction;
-import com.megacrit.cardcrawl.actions.common.DamageAction;
+import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import com.megacrit.cardcrawl.actions.unique.LoseEnergyAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.CardQueueItem;
-import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theRetrospect.RetrospectMod;
 import theRetrospect.cards.AbstractBaseCard;
+import theRetrospect.mechanics.card.CardPlaySource;
+import theRetrospect.powers.VolatileEnergyPower;
+import theRetrospect.util.CardUtils;
 
 public class Paradox extends AbstractBaseCard {
 
@@ -26,6 +28,9 @@ public class Paradox extends AbstractBaseCard {
 
     @Override
     public boolean canPlay(AbstractCard card) {
+        if (CardUtils.getPlaySource(card) != CardPlaySource.CARD) {
+            return true;
+        }
         if (AbstractDungeon.player.hand.size() >= BaseMod.MAX_HAND_SIZE) {
             for (AbstractCard c : AbstractDungeon.player.hand.group) {
                 if (c instanceof Paradox) {
@@ -47,7 +52,8 @@ public class Paradox extends AbstractBaseCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         if (this.dontTriggerOnUseCard) {
-            addToBot(new DamageAction(AbstractDungeon.player, new DamageInfo(AbstractDungeon.player, this.magicNumber, DamageInfo.DamageType.THORNS), AbstractGameAction.AttackEffect.LIGHTNING));
+            addToBot(new LoseEnergyAction(magicNumber));
+            addToBot(new ApplyPowerAction(p, p, new VolatileEnergyPower(p, magicNumber)));
         }
     }
 

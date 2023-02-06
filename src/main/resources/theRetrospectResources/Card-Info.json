@@ -54,6 +54,14 @@
     "+COST": 0,
     "M/Universal strength": 1
   },
+  "theRetrospect:Paradox": {
+    "RARITY": "SPECIAL",
+    "TYPE": "STATUS",
+    "COLOR": "COLORLESS",
+    "IMG": "empty.png",
+    "COST": -2,
+    "M/Energy conversion": 1
+  },
   "theRetrospect:DoubleTime": {
     "RARITY": "COMMON",
     "TYPE": "SKILL",
@@ -208,14 +216,6 @@
     "COST": 4,
     "+COST": 3,
     "theRetrospect:TimelineCount": 1
-  },
-  "theRetrospect:Paradox": {
-    "RARITY": "SPECIAL",
-    "TYPE": "STATUS",
-    "COLOR": "COLORLESS",
-    "IMG": "empty.png",
-    "COST": -2,
-    "M/Damage": 1
   },
   "theRetrospect:TimeLoop": {
     "RARITY": "RARE",

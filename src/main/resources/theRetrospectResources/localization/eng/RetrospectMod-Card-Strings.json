@@ -50,6 +50,13 @@
     "NAME": "Universal Charge",
     "DESCRIPTION": "Gain !M! Strength theretrospect:universally. NL Exhaust."
   },
+  "theRetrospect:Paradox": {
+    "NAME": "Paradox",
+    "DESCRIPTION": "{@@}Unplayable. NL Ethereal. NL Halt recursion when your hand is full. NL Lose !M! [E]. NL Gain !M! [theRetrospect:VolatileEnergyIcon] .",
+    "EXTENDED_DESCRIPTION": [
+      "My #rHand #ris #rFull!"
+    ]
+  },
   "theRetrospect:DoubleTime": {
     "NAME": "Double Time",
     "DESCRIPTION": "{@@}theretrospect:Advance a timeline {!Upgrades!|0=once|@=twice} and theretrospect:collapse it."
@@ -117,13 +124,6 @@
   "theRetrospect:UnstableChronology": {
     "NAME": "Unstable Chronology",
     "DESCRIPTION": "{@@}Cost 1 less [E] for each time you take damage in this combat. NL theretrospect:Construct !theRetrospect:TimelineCount! timeline{!theRetrospect:TimelineCount!|>1=s}."
-  },
-  "theRetrospect:Paradox": {
-    "NAME": "Paradox",
-    "DESCRIPTION": "{@@}Unplayable. NL Ethereal. NL You cannot play any cards when your hand is full.{!M!|>0= NL Take !M! damage.}",
-    "EXTENDED_DESCRIPTION": [
-      "My #rHand #ris #rFull!"
-    ]
   },
   "theRetrospect:TimeLoop": {
     "NAME": "Time Loop",
