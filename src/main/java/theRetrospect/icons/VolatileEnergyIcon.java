@@ -13,7 +13,7 @@ public class VolatileEnergyIcon extends AbstractCustomIcon {
     private static VolatileEnergyIcon singleton;
 
     public VolatileEnergyIcon() {
-        super(ID, TextureLoader.getTexture(RetrospectMod.makePowerPath("placeholder_power84.png")));
+        super(ID, TextureLoader.getTexture(RetrospectMod.makeCardIconPath("volatile_energy_icon.png")));
     }
 
     public static VolatileEnergyIcon get() {

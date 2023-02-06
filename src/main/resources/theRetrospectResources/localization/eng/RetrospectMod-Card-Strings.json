@@ -52,7 +52,7 @@
   },
   "theRetrospect:Paradox": {
     "NAME": "Paradox",
-    "DESCRIPTION": "{@@}Unplayable. NL Ethereal. NL Halt recursion when your hand is full. NL Lose !M! [E]. NL Gain !M! [theRetrospect:VolatileEnergyIcon] .",
+    "DESCRIPTION": "{@@}Unplayable. NL Ethereal. NL You cannot play cards when your hand is full. NL Lose !M! [E]. Gain !M! [theRetrospect:VolatileEnergyIcon] .",
     "EXTENDED_DESCRIPTION": [
       "My #rHand #ris #rFull!"
     ]

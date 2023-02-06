@@ -10,9 +10,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theRetrospect.RetrospectMod;
 import theRetrospect.cards.AbstractBaseCard;
-import theRetrospect.mechanics.card.CardPlaySource;
 import theRetrospect.powers.VolatileEnergyPower;
-import theRetrospect.util.CardUtils;
 
 public class Paradox extends AbstractBaseCard {
 
@@ -28,9 +26,6 @@ public class Paradox extends AbstractBaseCard {
 
     @Override
     public boolean canPlay(AbstractCard card) {
-        if (CardUtils.getPlaySource(card) != CardPlaySource.CARD) {
-            return true;
-        }
         if (AbstractDungeon.player.hand.size() >= BaseMod.MAX_HAND_SIZE) {
             for (AbstractCard c : AbstractDungeon.player.hand.group) {
                 if (c instanceof Paradox) {

@@ -136,6 +136,10 @@ public class RetrospectMod implements
         return getModID() + "Resources/images/ui/" + resourcePath;
     }
 
+    public static String makeCardIconPath(String resourcePath) {
+        return getModID() + "Resources/images/cardIcons/" + resourcePath;
+    }
+
     public static String makeShaderPath(String resourcePath) {
         return getModID() + "Resources/shaders/" + resourcePath;
     }
